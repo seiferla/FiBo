@@ -66,65 +66,62 @@ Users can register themself, log into their account, log off and delete themself
 
 ### 1.4 References
 
-| Title                                                              | Date       | Publishing organization   |
-| -------------------------------------------------------------------|:----------:| ------------------------- |
-| [Common Playground Blog](http://commonplayground.wordpress.com)    | 18.10.2018 | Common Playground Team    |
-| [GitHub](https://github.com/nilskre/CommonPlayground)              | 18.10.2018 | Common Playground Team    |
+| Title                                              |    Date    | Publishing organization |
+|----------------------------------------------------|:----------:|-------------------------|
+| [FiBo Blog](https://fibo952390745.wordpress.com/)  | 24.10.2022 | FiBo Team               |
+| [GitHub](https://github.com/Cebox82/FiBo)          | 24.10.2022 | FiBo Team               |
 
 ### 1.5 Overview
 
 The following chapter provides an overview of this project with vision and Overall Use Case Diagram. The third chapter (
-Requirements Specification) delivers more details about the specific requirements in terms of functionality, usability
+[Specific Requirements](#3-specific-requirements)) delivers more details about the specific requirements in terms of
+functionality, usability
 and design parameters. Finally there is a chapter with supporting information.
 
 ## 2. Overall Description
 
 ### 2.1 Vision
 
-Inspired by carpool coordination services like ‘BlaBlaCar’ or ‘Mitfahrzentrale’ we want to build an application to
-coordinate game sessions. We plan to create a platform for people who are looking for other people to play games with.
-Covering online multiplayer games, tabletop, pen and paper or regular board games we want to provide a kind of bulletin
-board where people can state what they want to play, when and where they want to do it and how many people they are
-looking for. Others can then react to the postings and virtually join the play session to be connected by us so everyone
-can coordinate the actual play session together on a Common Playground.
+We want to build an app for managing your finances. An app to track and decrease your expenses easily, an app to plan
+your financial future. You will be able to scan all your receipts, with your phone and FiBo will do the rest for you. It
+automatically categorizes your expenses and tells you how much money you have left for the month. Fibo also integrates
+you bank account, so that you can directly see your balance, without changing the app. You want to save money for a big
+investment, no problem FiBo got your back, it tells you how long it will probably take you to reach your goal.
+FiBo is the all-in-one app for managing your finances.
+And we want to build it!
 
 ### 2.2 Use Case Diagram
 
-![OUCD](./UseCaseDiagramCP.png)
-
-- Green: Planned till end of december
-- Yellow: Planned till end of june
+![OUCD](./use-case-diagram.drawio.svg)
 
 ### 2.3 Technology Stack
 
 The technology we use is:
 
-Backend:
--Gradle and Springboot
--H2 Database
+Backend:  
+- Django
+- PostgreSQL
 
-Frontend:
--Android with Java and XML
+Frontend:  
+- Android 
+- Java 
+- XML
 
 IDE:
--IntelliJ and Android Studio
+- IntelliJ
+- Android Studio
 
 Project Management:
--YouTrack
--GitHub
--Microsoft Teams
+- YouTrack
+- GitHub
+- Discord
 
-Deployment:
--Travis CI
--Docker and Heroku
+Deployment:  
+TBD
 
 Testing:
--Cucumber
--Espresso
--JUnit
--Codacy
--CodeMR
--RestAssured
+- Cucumber
+- JUnit
 
 ## 3. Specific Requirements
 
@@ -132,108 +129,7 @@ Testing:
 
 This section will explain the different use cases, you could see in the Use Case Diagram, and their functionality.  
 Until December we plan to implement:
-
-- 3.1.1 Posting a session
-- 3.1.2 Getting an overview
-- 3.1.3 Creating an account
-- 3.1.4 Logging in
-- 3.1.5 Logging out
-
-Until June, we want to implement:
-
-- 3.1.6 Joining a session
-- 3.1.7 Keeping track of your sessions
-- 3.1.8 Leaving a session
-- 3.1.9 Finding a session
-- 3.1.10 Getting in touch
-
-#### 3.1.1 Posting a session
-
-This feature is the essential one of our project. The user gets the possibility to post a session. Therefore, they have
-to select a game and also set the time when they want to play.For offline games, they have to set a location, too. For
-online games the location can be a server for example or simply be tagged as 'online'.
-
-[Posting a session](./use_cases/UC1_Post_Session.md)
-
-#### 3.1.2 Getting an overview
-
-This feature provides a basic overview over all current sessions. All posted sessions are added here. From this overview
-you can select a session and from there join this session.
-
-[Session overview](./use_cases/UC3_Session_Overview.md)
-
-#### 3.1.3 Creating an account
-
-To identify all useres we need an account system. This account system enables us to build important functions such as
-joining a session, leaving a session or a personalized overview over all sessions (Keeping track of your sessions).
-
-[Create an account](./use_cases/UC4_Create_Account.md)
-
-#### 3.1.4 Logging in
-
-The app will provide the possibility to register and log in. This will also make the usability easier when a user wants
-to manage his sessions, post or join a session because they don't have to enter their mail address every time.
-
-[Login](./use_cases/UC5_Login.md)
-
-#### 3.1.5 Logging out
-
-In case you share your phone, have multiple accounts or just want to be cautius about your privacy you should be able to
-manually log out.
-
-[Logout](./use_cases/UC6_Logout.md)
-
-#### 3.1.6 Joining a session
-
-There is also the possibility to join an existing game session. Therefore, the user can select a specific session.
-
-[Join a session](./use_cases/UC2_Join_Session.md)
-
-#### 3.1.7 Keeping track of your sessions
-
-The app provides the user with a seperate page view where they get an overview of all sessions they posted or joined.
-When the user clicks on a session, he can also see who joined his posted sessions.
-
-[Keeping track of your sessions](./use_cases/UC7_Keeping_Track.md)
-
-#### 3.1.8 Leaving a session
-
-The user gets also the possibility to delete a session he posted or to leave a session he joined.
-
-[Leaving a session](./use_cases/UC8_Leave_Session.md)
-
-#### 3.1.9 Finding a session
-
-Based on the overview over all sessions this features enables the user to find sessions by specific parameters.
-Therefore, the user can find a session by tags or other parameters like date. Later on, finding a session will be
-provided by geolocalization that the users can search for a session in a specific area.
-
-[Finding a session](./use_cases/UC9_Find_Session.md)
-
-#### 3.1.10 Getting in touch
-
-There must be the possibility that two people who want to play together can communicate with each other. The player who
-joins the session gets the possibility to contact the owner and vice versa. Later on, when we will have implemented
-profiles, then they will form another way to communicate with each other.
-
-[Getting in Touch](./use_cases/UC10_Getting_In_Touch.md)
-
-#### 3.1.11 Presenting yourself and checking out others
-
-With the possibility to log in there comes another functionality, the profile. Every user will have their own profile
-where they can write some informations about themselves. Because of the privacy policy in Europe, the user has the
-possibility to only write the information they want other people to see. Using the profile, users can also check out
-other players and learn e.g. their favorite games.
-
-#### 3.1.12 Reporting users and managing friends
-
-After a session, the app provides the users with the possibility to report the other participants. This is helpful
-because we want a community with fair players. Additionally, when they found an interesting person they can also add
-them to their friend list which also has a seperate page view.
-
-#### 3.1.13 Banning users and deleting posts
-
-There are also some functionalities for the admins. They will get the possibility to ban users and to delete any posts.
+#### TBD
 
 ### 3.2 Usability
 
@@ -255,11 +151,11 @@ with the app without having to get to know new interfaces.
 #### 3.3.1 Availability
 
 The server shall be available 95% of the time. This also means we have to figure out the "rush hours" of our app because
-the downtime of the server is only tolerable when as few as possible players want to use the app.
+the downtime of the server is only tolerable when as few as possible people want to use the app.
 
 #### 3.3.2 Defect Rate
 
-Our goal is that we have no loss of any data. This is important so that the game sessions can carry on, even after a
+Our goal is that we have no loss of any data. This is important so that the users financial data is save, even after a
 downtime of the server.
 
 ### 3.4 Perfomance
@@ -296,8 +192,7 @@ Further mistakes in the implementation will be discovered instantly and it will 
 We are trying to provide a modern and easy to handle design for the UI aswell as for the architecture of our
 application. To achieve that the functionalities will be kept as modular as possible.
 
-Because we are progamming an Android App we chose Java as our programming language. Also we are using the common
-MVC-architecture to keep the front end and back end seperated. For a clean front end structure we use MVVM.
+Because we are progamming an Android App we chose Java as our programming language. 
 To make the communication between the two parts easy, we will implement a RESTful-API between them which will provide
 the data in JSON-Format.
 The supported Platforms will be:
@@ -307,7 +202,7 @@ The supported Platforms will be:
 
 ### 3.7 On-line User Documentation and Help System Requirements
 
-The usage of the app should be as intuitive as possible so it won't need any further documentation. If the user needs
+The usage of the app should be as intuitive as possible, so it won't need any further documentation. If the user needs
 some help we will implement a "Help"-Button in the App which includes a FAQ and a formular to contact the developement
 team.
 
@@ -321,16 +216,7 @@ We don't have any purchased components yet. If there will be purchased component
 
 The User interfaces that will be implented are:
 
-- Dashboard - lists all session and makes it possible to filter sessions
-- Session Page - shows detailed information about the session and makes it possible to connect session attendants for
-  example via messaging system
-- Login - this page is used to log in
-- Register - provides a registration form
-- Overwiew of personal sessions - shows all the sessions a user participates in
-- Friend List - friends can be added
-- Profile - makes it possible to post information about yourself, might provide messaging feature, also shows additional
-  information about users (for example: Language, country, favorite games, etc.)
-- Settings - shows the settings
+#### TBD
 
 #### 3.9.2 Hardware Interfaces
 
@@ -338,7 +224,7 @@ The User interfaces that will be implented are:
 
 #### 3.9.3 Software Interfaces
 
-The app will be runnable on Android 4.4 and higher. iOS won't be featured at the moment.
+The app will be runnable on Android 5.0 and higher. iOS won't be featured at the moment.
 
 #### 3.9.4 Communication Interfaces
 
@@ -348,25 +234,26 @@ The server and hardware will communicate using the http protocol.
 
 ### 3.11 Legal, Copyright, and Other Notices
 
-The logo is licensed to the Common Playground Team and is only allowed to use for the application. We do not take
+The logo is licensed to the FiBo Team and is only allowed to use for the application. We do not take
 responsibilty for any incorrect data or errors in the application.
 
 ### 3.12 Applicable Standards
 
 The development will follow the common clean code standards and naming conventions. Also we will create a definition of
-d which will be added here as soon as its complete.
+done which will be added here as soon as its complete.
 
 ## 4. Supporting Information
 
-For any further information you can contact the Common Playground Team or check
-our [Common Playground Blog](http://commonplayground.wordpress.com).
+For any further information you can contact the FiBo Team or check
+our [FiBo Blog](https://fibo952390745.wordpress.com/).  
 The Team Members are:
 
-- Celina Adam
-- Inga Batton
-- Nils Krehl
-- Denis Reibel
+- Jens Hausdorf
+- Jonas Karl
+- Lars Seifert
+- Christopher Ewert
+- Markus Götz
 
 <!-- Picture-Link definitions: -->
 
-[OUCD]: https://github.com/IB-KA/CommonPlayground/blob/master/UseCaseDiagramCP.png "Overall Use Case Diagram"
+[OUCD]: https://github.com/Cebox82/FiBo/blob/master/docs/use-case-diagram.drawio.svg "Overall Use Case Diagram"
