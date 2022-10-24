@@ -44,14 +44,14 @@ Planned Subsystems are:
 
 * Dashboard:  
 The dashboard is the main view of our user interface. It visualizes all the data that the user enters and offers the possibility to customize the view according to the user's wishes while also alow to categorize and filter the displayed data.
-* Manage receipts:
+* Manage receipts and income:
+A user can manage receipts (manually creating a new one, create one by scanning a physical receipt, delete receipts) and can set their (monthly) budget. The budget is managed by entering a monthly income.
 * Share costs:
+Users can invite other users of our product to bear costs (at least partially) by category or by receipt or by whole expenses (for example, a couple might do a 70:30 cut for the whole month, while a flat-sharing community might only share expenses they use together on an individual basis).
 * Data Management:
+Data is saved and can be retrieved.
 * Account Management:
-
-// Rest needs to be adjusted as well  
-
-
+Users can register themself, log into their account, log off and delete themself. Upon deletion, all user data is deleted as well.
 
 ### 1.3 Definitions, Acronyms and Abbreviations
 
