@@ -5,6 +5,8 @@
 [Blog](https://fibo952390745.wordpress.com)<br>
 [YouTrack](https://dhbw-karlsruhe.myjetbrains.com/youtrack/dashboard?id=3a05db8f-60ae-41e1-9a4a-5b7688cedc66)<br>
 
+We will upload a weekly update of the project. We would be happy if you visit our blog and leave a comment there.
+
 ## Introduction
 
 We are a group of five CS students from DHBW Karlsruhe working on the project FiBo with the goal to get a better overview of your financial expenses. 
