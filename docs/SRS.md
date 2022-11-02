@@ -29,6 +29,7 @@
 - [Supporting Information](#4-supporting-information)
 
 ## 1. Introduction
+ja hai
 
 ### 1.1 Purpose
 
@@ -42,7 +43,7 @@ The project is going to be realized as an Android App.
 
 Planned Subsystems are:
 
-* Dashboard:  
+* Dashboard:
 The dashboard is the main view of our user interface. It visualizes all the data that the user enters and offers the possibility to customize the view according to the user's wishes while also alow to categorize and filter the displayed data.
 * Manage receipts and income:
 A user can manage receipts (manually creating a new one, create one by scanning a physical receipt, delete receipts) and can set their (monthly) budget. The budget is managed by entering a monthly income.
@@ -89,13 +90,13 @@ We want to build an app for managing your finances. An app to track and decrease
 
 The technology we use is:
 
-Backend:  
+Backend:
 - Django
 - PostgreSQL
 
-Frontend:  
-- Android 
-- Java 
+Frontend:
+- Android
+- Java
 - XML
 
 IDE:
@@ -107,7 +108,7 @@ Project Management:
 - GitHub
 - Discord
 
-Deployment:  
+Deployment:
 TBD
 
 Testing:
@@ -118,7 +119,7 @@ Testing:
 
 ### 3.1 Functionality
 
-This section will explain the different use cases, you could see in the Use Case Diagram, and their functionality.  
+This section will explain the different use cases, you could see in the Use Case Diagram, and their functionality.
 Until December, we plan to implement:
 
 > TBD
@@ -220,7 +221,7 @@ The development will follow the common clean code standards and naming conventio
 ## 4. Supporting Information
 
 For any further information you can contact the FiBo Team or check our [FiBo Blog](https://fibo952390745.wordpress.com/).
-  
+
 The Team Members are:
 
 - Jens Hausdorf
