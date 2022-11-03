@@ -6,8 +6,7 @@ Manual adding of data
 
 ## 1.1 Brief Description
 
-Every user should be able to add data of a receipt manually with their mobile device. The data the
-user has to note is the following:
+Every user should be able to add data of a receipt manually with their mobile device. The data the user has to note is the following:
 
 - store
 - items with the respective deposited category
@@ -22,8 +21,7 @@ user has to note is the following:
 - Inside the app a new page with a form is shown
 - User can fill out the form
 - Data gets checked for a valid format
-- If the format is not valid an error message will pop up and the User will be returned to the form.
-  Otherwise the data will be processed, categorized and added to the history.
+- If the format is not valid an error message will pop up and the User will be returned to the form. Otherwise, the data will be processed, categorized and added to the history.
 - The Dashboard will be updated
 - Finally, the user is shown a success message
 
@@ -33,9 +31,9 @@ user has to note is the following:
 
 ### 2.1.2 Mock-up
 
-![Home](./start.png)
-![Add receipt Button clicked](./add_button_clicked.png)
+![Home](./home_menu.png)
 
+![Add receipt Button clicked](./add_button_clicked.png)
 
 ### 2.1.3 Narrative
 
@@ -43,8 +41,8 @@ user has to note is the following:
 Feature: manual adding of data
 
   As a signed in user
-  i want to add a receipt by manually entering the data
-  in order to track my spend money.
+  I want to add a receipt by manually entering the data
+  in order to track my spent money.
 
   Background:
     And I am on the homepage
@@ -56,7 +54,6 @@ Feature: manual adding of data
     Then I see two additional buttons "Add manually" and "Scan receipt" fade in
     When I press the "Add manually" button
     Then I am on the "manuall adding of data" form
-    
 
   Scenario: enter valid data and save it
     Given I am signed in with username "USER" and password "PASSWORD"
