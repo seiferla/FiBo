@@ -7,4 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#12213F</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="income">#70D831</color>
+    <color name="expense">#D8315B</color>
 </resources>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FiBo</string>
+    <string name="app_activity_main_title">Übersicht</string>
 </resources>
