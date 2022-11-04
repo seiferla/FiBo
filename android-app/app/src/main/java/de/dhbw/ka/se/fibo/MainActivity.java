@@ -1,7 +1,5 @@
 package de.dhbw.ka.se.fibo;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,13 +7,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 
 import de.dhbw.ka.se.fibo.adapters.CashflowAdapter;
-import de.dhbw.ka.se.fibo.models.CashflowType;
 import de.dhbw.ka.se.fibo.models.Cashflow;
+import de.dhbw.ka.se.fibo.models.CashflowType;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Cashflow clickedItem=(Cashflow) list.getItemAtPosition(position);
-                Toast.makeText(MainActivity.this, clickedItem.getOverallValue().toString(),Toast.LENGTH_LONG).show();
+                Cashflow clickedItem = (Cashflow) list.getItemAtPosition(position);
+                Toast.makeText(MainActivity.this, clickedItem.getOverallValue().toString(), Toast.LENGTH_LONG).show();
             }
         });
     }

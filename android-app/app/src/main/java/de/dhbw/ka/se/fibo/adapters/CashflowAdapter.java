@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import java.math.BigDecimal;
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -24,7 +25,7 @@ import de.dhbw.ka.se.fibo.models.CashflowType;
 
 public class CashflowAdapter extends ArrayAdapter<Cashflow> {
 
-    private LayoutInflater inflater;
+    private final LayoutInflater inflater;
 
     public CashflowAdapter(@NonNull Context context, int resource, ArrayList<Cashflow> arrayList) {
         super(context, resource, arrayList);
@@ -41,17 +42,17 @@ public class CashflowAdapter extends ArrayAdapter<Cashflow> {
         @SuppressLint("ViewHolder") // TODO: Use a view holder to improve performance
         View view = this.inflater.inflate(R.layout.row_layout, null);
 
-        TextView nameText = (TextView) view.findViewById(R.id.placeName);
+        TextView nameText = view.findViewById(R.id.placeName);
         nameText.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         nameText.setText(cashflow.getName());
 
-        TextView overallValueText = (TextView) view.findViewById(R.id.overallValue);
+        TextView overallValueText = view.findViewById(R.id.overallValue);
         overallValueText.setText(cashflowType.getSign() + Helpers.formatBigDecimalCurrency(overallValue));
         overallValueText.setTextColor(
                 getContext().getResources().getColor(cashflowType.getColor()));
         overallValueText.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
 
-        TextView timestamp = (TextView) view.findViewById(R.id.timestamp);
+        TextView timestamp = view.findViewById(R.id.timestamp);
         Format formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMANY);
         timestamp.setText(formatter.format(cashflow.getTimestamp()));
 

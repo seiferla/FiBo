@@ -17,20 +17,20 @@ public class Cashflow {
         this.setName(name);
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getName() {
         return this.name;
     }
 
-    public void setType(CashflowType type) {
-        this.type = type;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public CashflowType getType() {
         return type;
+    }
+
+    public void setType(CashflowType type) {
+        this.type = type;
     }
 
     public BigDecimal getOverallValue() {
@@ -41,11 +41,11 @@ public class Cashflow {
         this.overallValue = overallValue.setScale(2, RoundingMode.HALF_UP);
     }
 
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
-    }
-
     public Date getTimestamp() {
         return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 }

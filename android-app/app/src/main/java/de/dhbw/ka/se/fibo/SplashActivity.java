@@ -9,7 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
 
-@SuppressLint("CustomSplashScreen") // We need a custom splash screen because we want to support Android versions below 11
+@SuppressLint("CustomSplashScreen")
+// We need a custom splash screen because we want to support Android versions below 11
 public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
