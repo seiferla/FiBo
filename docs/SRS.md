@@ -41,7 +41,7 @@ The project is going to be realized as an Android App.
 
 Planned Subsystems are:
 
-* Dashboard:
+* Dashboard:  
   The dashboard is the main view of our user interface. It visualizes all the data that the user enters and offers the possibility to customize the view according to the user's wishes while also allow to categorize and filter the displayed data.
 * Manage receipts and income:
   A user can manage receipts (manually creating a new one, create one by scanning a physical receipt, delete receipts) and can set their (monthly) budget. The budget is managed by entering a monthly income.
@@ -111,7 +111,7 @@ Project Management:
 - GitHub
 - Discord
 
-Deployment:
+Deployment:  
 TBD
 
 Testing:
@@ -123,7 +123,7 @@ Testing:
 
 ### 3.1 Functionality
 
-This section will explain the different use cases, you could see in the Use Case Diagram, and their functionality.
+This section will explain the different use cases, you could see in the Use Case Diagram, and their functionality.  
 Until December we plan to implement:
 
 - [3.1.1 Create Account](#311-create-account)
@@ -146,7 +146,7 @@ In case you share your phone, have multiple accounts or just want to be cautious
 
 #### 3.1.4 Manual adding of data
 
-This is one of the essentials of our project. The user gets the possibility to manually add his expenses. Therefore the User has tho enter the store of the purchase, and the items with the respective deposited category and the price
+This is one of the essentials of our project. The user gets the possibility to manually add his expenses. Therefore the User has tho enter the store of the purchase, and the items with the respective deposited category and the price  
 
 [Manual adding of Data](./use_cases/UC_4_manual_adding_of_data/UC_4_manual_adding_of_data.md)
 
@@ -249,7 +249,7 @@ The development will follow the common clean code standards and naming conventio
 
 ## 4. Supporting Information
 
-For any further information you can contact the FiBo Team or check our [FiBo Blog](https://fibo952390745.wordpress.com/).
+For any further information you can contact the FiBo Team or check our [FiBo Blog](https://fibo952390745.wordpress.com/).  
 The Team Members are:
 
 - Jens Hausdorf
