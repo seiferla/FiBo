@@ -10,4 +10,6 @@
 
     <color name="income">#70D831</color>
     <color name="expense">#D8315B</color>
+    <color name="lightBackground">#FFFBFE</color>
+    <color name="mainTextColor">#1C1B1F</color>
 </resources>
