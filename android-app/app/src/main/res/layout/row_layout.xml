@@ -7,7 +7,9 @@
     android:layout_height="wrap_content"
     android:clickable="false"
     android:elevation="10dp"
-    android:textAlignment="center">
+    android:textAlignment="center"
+    android:paddingBottom="3dp"
+    android:paddingTop="3dp">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardViewContainer"
