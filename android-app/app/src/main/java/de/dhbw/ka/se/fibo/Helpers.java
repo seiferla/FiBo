@@ -27,7 +27,7 @@ public class Helpers {
         );
         textview.setLayoutParams(layoutParams);
         textview.setText(text);
-        textview.setTextColor(context.getResources().getColor(R.color.black));
+        textview.setTextColor(context.getResources().getColor(R.color.mainTextColor));
 
         textview.setGravity(Gravity.CENTER);
         textview.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
