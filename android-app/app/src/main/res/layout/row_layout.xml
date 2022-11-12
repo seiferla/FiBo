@@ -6,14 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="false"
-    android:elevation="10dp"
     android:textAlignment="center"
-    android:paddingBottom="3dp"
-    android:paddingTop="3dp">
+    android:paddingBottom="6dp"
+    android:paddingTop="6dp">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardViewContainer"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
