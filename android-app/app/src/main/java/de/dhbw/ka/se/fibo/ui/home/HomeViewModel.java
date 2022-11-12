@@ -4,17 +4,23 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import java.util.List;
+
+import de.dhbw.ka.se.fibo.models.Cashflow;
+
 public class HomeViewModel extends ViewModel {
 
-    //TODO add List
-    private final MutableLiveData<String> mText;
+//TODO understand how to use HomeViewModel
+    private LiveData<List<Cashflow>> mList;
 
-    public HomeViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+    public LiveData<List<Cashflow>> getListView() {
+        if (mList == null) {
+            mList = new MutableLiveData<>();
+        }
+        return mList;
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public void setmList(LiveData<List<Cashflow>> mList) {
+        this.mList = mList;
     }
 }
