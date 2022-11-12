@@ -6,9 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="false"
-    android:textAlignment="center"
+    android:paddingTop="6dp"
     android:paddingBottom="6dp"
-    android:paddingTop="6dp">
+    android:textAlignment="center">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardViewContainer"
@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
-        app:cardBackgroundColor="@color/lightBackground"
+        style="@style/Style.FiBo.CardView.Filled"
         app:contentPaddingBottom="12dp"
         app:contentPaddingTop="12dp"
         app:layout_constraintBottom_toBottomOf="parent"

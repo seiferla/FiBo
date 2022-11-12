@@ -16,5 +16,10 @@
     <style name="Style.FiBo.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:color">#E1E9FA</item>
     </style>
+    <style name="Style.FiBo.CardView.Filled" parent="Widget.Material3.CardView.Outlined">
+        <item name="cardBackgroundColor">#FFFFFF</item>
+        <item name="strokeColor">#CCCCCC</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
 
 </resources>
