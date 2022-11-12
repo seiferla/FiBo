@@ -51,8 +51,9 @@ public class HomeFragment extends Fragment {
 
         ArrayAdapter<Cashflow> listAdapter = new CashflowAdapter(requireActivity(), android.R.layout.simple_list_item_1, arrayList);
         listView.setAdapter(listAdapter);
-//        homeViewModel.getText().observe(getViewLifecycleOwner(), ListView);
+       //TODO make onClick work
         listView.setOnItemClickListener((parent, view, position, id) -> {
+            System.out.println("position: " + position);
             Cashflow clickedItem = (Cashflow) listView.getItemAtPosition(position);
             Toast.makeText(getActivity(), clickedItem.getOverallValue().toString(), Toast.LENGTH_LONG).show();
         });
