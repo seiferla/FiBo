@@ -66,13 +66,13 @@ public class DashboardFragment extends Fragment {
     }
 
     private void setDateCardTitle() {
-        binding.datePickerTitle.setText("Ausgewählter Zeitraum");
+        binding.datePickerTitle.setText(R.string.dateCardTitle);
     }
 
     private void createDatePicker() {
         picker = MaterialDatePicker.Builder
                 .dateRangePicker()
-                .setTitleText("Dashboard range")
+                .setTitleText(R.string.datePickerTitle)
                 .build();
 
         //TODO implement method for "save" button
