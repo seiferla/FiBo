@@ -5,23 +5,23 @@ import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.util.Pair;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.datepicker.MaterialDatePicker;
 
 import java.util.Date;
-import java.util.Objects;
 
+import de.dhbw.ka.se.fibo.R;
 import de.dhbw.ka.se.fibo.databinding.FragmentDashboardBinding;
 
 public class DashboardFragment extends Fragment {
 
     private FragmentDashboardBinding binding;
-    private MaterialDatePicker picker;
+    private MaterialDatePicker<Pair<Long, Long>> picker;
     private Date startDate;
     private Date endDate;
 
