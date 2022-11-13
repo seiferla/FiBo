@@ -6,8 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="false"
-    android:paddingTop="6dp"
-    android:paddingBottom="6dp"
     android:textAlignment="center">
 
     <com.google.android.material.card.MaterialCardView
@@ -43,8 +41,8 @@
 
                 <TextView
                     android:id="@+id/initial"
-                    android:layout_width="48sp"
-                    android:layout_height="48sp"
+                    android:layout_width="32sp"
+                    android:layout_height="32sp"
                     android:background="@drawable/card_initial_background"
                     android:gravity="center"
                     android:text="I"
