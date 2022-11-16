@@ -38,8 +38,6 @@ public class DashboardFragment extends Fragment {
 
         initializeDateCard();
         createDatePicker();
-
-
         return root;
     }
 
