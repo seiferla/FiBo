@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">FiBo</string>
+    <string name="app_activity_main_title">Übersicht</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_settings">Settings</string>
+    <string name="dateCardTitle">Ausgewählter Zeitraum</string>
+    <string name="datePickerTitle">Dashboard Zeitraum</string>
 </resources>
