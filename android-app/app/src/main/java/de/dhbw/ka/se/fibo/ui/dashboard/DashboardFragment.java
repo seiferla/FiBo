@@ -33,9 +33,6 @@ public class DashboardFragment extends Fragment {
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
-
-
         initializeDateCard();
         createDatePicker();
         return root;
@@ -59,7 +56,6 @@ public class DashboardFragment extends Fragment {
         if (endDate == null) {
             endDate = new Date();
         }
-
         binding.dateStartEndText.setText(String.format("%s - %s", DateFormat.format("dd.MM", startDate), DateFormat.format("dd.MM", endDate)));
     }
 
