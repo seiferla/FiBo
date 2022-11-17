@@ -12,6 +12,10 @@ import java.util.Objects;
 @SuppressLint("CustomSplashScreen")
 // We need a custom splash screen because we want to support Android versions below 11
 public class SplashActivity extends AppCompatActivity {
+
+    private Thread welcomeThread;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,22 +26,30 @@ public class SplashActivity extends AppCompatActivity {
         Objects.requireNonNull(supportActionBar);
         supportActionBar.hide();
 
-        Thread welcomeThread = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    super.run();
-                    sleep(2000);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    Intent i = new Intent(SplashActivity.this,
-                            MainActivity.class);
-                    startActivity(i);
-                    finish();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (this.welcomeThread == null) {
+            this.welcomeThread = new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        super.run();
+                        sleep(2000);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    } finally {
+                        Intent i = new Intent(SplashActivity.this,
+                                MainActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
                 }
-            }
-        };
-        welcomeThread.start();
+            };
+            this.welcomeThread.start();
+        }
     }
 }
