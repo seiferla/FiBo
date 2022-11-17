@@ -1,5 +1,6 @@
 package de.dhbw.ka.se.fibo;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +10,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.Locale;
 
 import de.dhbw.ka.se.fibo.databinding.ActivityMainBinding;
 
@@ -20,6 +23,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        Locale locale = Locale.GERMANY;
+        Locale.setDefault(locale);
+        Configuration configuration = getApplicationContext().getResources().getConfiguration();
+        configuration.setLocale(locale);
+        configuration.setLayoutDirection(locale);
+
+        getApplicationContext().createConfigurationContext(configuration);
+
+
         Helpers.updateSupportActionBarText(
                 getApplicationContext(),
                 getSupportActionBar(),
