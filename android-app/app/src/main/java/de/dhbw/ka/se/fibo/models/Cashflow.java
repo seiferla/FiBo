@@ -9,12 +9,22 @@ public class Cashflow {
     private BigDecimal overallValue;
     private Date timestamp;
     private String name;
+    private Category category;
 
-    public Cashflow(CashflowType type, BigDecimal overallValue, Date timestamp, String name) {
+    public Cashflow(Category category, CashflowType type, BigDecimal overallValue, Date timestamp, String name) {
         this.setType(type);
         this.setOverallValue(overallValue);
         this.setTimestamp(timestamp);
         this.setName(name);
+        this.category = category;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public String getName() {

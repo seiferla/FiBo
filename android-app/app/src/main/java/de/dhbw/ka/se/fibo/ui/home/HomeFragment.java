@@ -21,6 +21,7 @@ import de.dhbw.ka.se.fibo.adapters.CashflowAdapter;
 import de.dhbw.ka.se.fibo.databinding.FragmentHomeBinding;
 import de.dhbw.ka.se.fibo.models.Cashflow;
 import de.dhbw.ka.se.fibo.models.CashflowType;
+import de.dhbw.ka.se.fibo.models.Category;
 
 public class HomeFragment extends Fragment {
 
@@ -37,17 +38,12 @@ public class HomeFragment extends Fragment {
         final ListView listView = binding.cashFlowList;
         ArrayList<Cashflow> arrayList = new ArrayList<>();
 
-        arrayList.add(new Cashflow(CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "dm"));
-        arrayList.add(new Cashflow(CashflowType.INCOME, BigDecimal.valueOf(120.5), new Date(), "Gehalt"));
-        arrayList.add(new Cashflow(CashflowType.EXPENSE, BigDecimal.valueOf(120.5), new Date(), "Bla"));
-        arrayList.add(new Cashflow(CashflowType.EXPENSE, BigDecimal.valueOf(120.5), new Date(), "Foo"));
-        arrayList.add(new Cashflow(CashflowType.EXPENSE, BigDecimal.valueOf(120.5), new Date(), "Foo"));
-        arrayList.add(new Cashflow(CashflowType.EXPENSE, BigDecimal.valueOf(120.5), new Date(), "Foo"));
-        arrayList.add(new Cashflow(CashflowType.EXPENSE, BigDecimal.valueOf(120.5), new Date(), "Foo"));
-        arrayList.add(new Cashflow(CashflowType.EXPENSE, BigDecimal.valueOf(120.5), new Date(), "Fasel"));
-        arrayList.add(new Cashflow(CashflowType.EXPENSE, BigDecimal.valueOf(120.5), new Date(), "Fasel"));
-        arrayList.add(new Cashflow(CashflowType.EXPENSE, BigDecimal.valueOf(120.5), new Date(), "Fasel"));
-        arrayList.add(new Cashflow(CashflowType.EXPENSE, BigDecimal.valueOf(120.5), new Date(), "Fasel"));
+        arrayList.add(new Cashflow(Category.RESTAURANT, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "dm"));
+        arrayList.add(new Cashflow(Category.GESCHENK, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "dm"));
+        arrayList.add(new Cashflow(Category.MOBILITÄT, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "dm"));
+        arrayList.add(new Cashflow(Category.SONSTIGE, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "dm"));
+        arrayList.add(new Cashflow(Category.GESUNDHEIT, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "dm"));
+
 
         ArrayAdapter<Cashflow> listAdapter = new CashflowAdapter(requireActivity(), android.R.layout.simple_list_item_1, arrayList);
         listView.setAdapter(listAdapter);
