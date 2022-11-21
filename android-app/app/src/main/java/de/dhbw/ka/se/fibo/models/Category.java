@@ -9,13 +9,13 @@ import java.util.Random;
 public enum Category {
 
 
-    RESTAURANT(new Color(), "Restaurant"), GESUNDHEIT(new Color(), "Gesundheit"), WOHNEN(new Color(), "Wohnen"), HAUSHALT(new Color(), "Haushalt"), KULTUR(new Color(), "Kultur"), BILDUNG(new Color(), "Bildung"), SOZIALLEBEN(new Color(), "Sozialleben"), MOBILITÄT(new Color(), "Mobilit\u00e4t"), BEKLEIDUNG(new Color(), "Bekleidung"), GESCHENK(new Color(), "Geschenk"), SONSTIGE(new Color(), "Sonstige"), VERSICHERUNG(new Color(), "");
+    RESTAURANT(Color.rgb(216, 49, 91), "Restaurant"), GESUNDHEIT(Color.rgb(89, 178, 34), "Gesundheit"), WOHNEN(Color.rgb(231,74,22), "Wohnen"), HAUSHALT(Color.rgb(33,11,99), "Haushalt"), KULTUR(Color.rgb(53,23,200), "Kultur"), BILDUNG(Color.rgb(234,33,11), "Bildung"), SOZIALLEBEN(Color.rgb(223,22,44), "Sozialleben"), MOBILITÄT(Color.rgb(23,99,22), "Mobilit\u00e4t"), BEKLEIDUNG(Color.rgb(234,200,18), "Bekleidung"), GESCHENK(Color.rgb(66,83,244), "Geschenk"), SONSTIGE(Color.rgb(33,1,9), "Sonstige"), VERSICHERUNG(Color.rgb(23,42,44), "Versicherung");
 
 
-    private Color color;
+    private int color;
     private String name;
 
-    Category(Color color, String name) {
+    Category(int color, String name) {
 
         this.name = name;
         this.color = color;
@@ -27,23 +27,20 @@ public enum Category {
 
         Random random = new Random();
 
-        int a = random.nextInt(255) + 1;
         int r = random.nextInt(255) + 1;
         int g = random.nextInt(255) + 1;
         int b = random.nextInt(255) + 1;
 
-        // Hängt mit der API version zusammen
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            this.color = Color.valueOf(Color.argb(a, r, g, b));
+        this.color = Color.rgb(r,g,b);
 
-        }
+
     }
 
-    public Color getColor() {
+    public int getColor() {
         return color;
     }
 
-    public void setColor(Color color) {
+    public void setColor(int color) {
         this.color = color;
     }
 

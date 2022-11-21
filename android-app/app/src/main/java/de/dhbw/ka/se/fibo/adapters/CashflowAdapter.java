@@ -32,6 +32,7 @@ public class CashflowAdapter extends ArrayAdapter<Cashflow> {
         this.inflater = LayoutInflater.from(context);
     }
 
+    @SuppressLint("ResourceType")
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -47,8 +48,7 @@ public class CashflowAdapter extends ArrayAdapter<Cashflow> {
         nameText.setText(cashflow.getName());
 
         TextView initial = view.findViewById(R.id.initial);
-        initial.setText(String.valueOf(cashflow.getName().charAt(0)).toUpperCase());
-
+        initial.setText(String.valueOf(cashflow.getCategory().getName().charAt(0)).toUpperCase());
 
         TextView overallValueText = view.findViewById(R.id.cashFlowValue);
         overallValueText.setText(cashflowType.getSign() + Helpers.formatBigDecimalCurrency(overallValue));
