@@ -87,6 +87,8 @@ backend/api/migrations
 **/.env
 backend/env/**
 backend/.idea
+backend/api/__pycache__
+backend/backend/__pycache__
 
 # Android App
 app/build
