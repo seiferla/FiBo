@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.math.BigDecimal;
 import java.text.Format;
@@ -41,7 +42,9 @@ public class CashflowAdapter extends ArrayAdapter<Cashflow> {
         BigDecimal overallValue = cashflow.getOverallValue();
 
         @SuppressLint("ViewHolder") // TODO: Use a view holder to improve performance
+
         View view = this.inflater.inflate(R.layout.row_layout, null);
+
 
         TextView nameText = view.findViewById(R.id.cardTitle);
         nameText.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));

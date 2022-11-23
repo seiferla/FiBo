@@ -2,6 +2,8 @@ package de.dhbw.ka.se.fibo;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -14,6 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.Locale;
 
 import de.dhbw.ka.se.fibo.databinding.ActivityMainBinding;
+import de.dhbw.ka.se.fibo.ui.home.HomeFragment;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
@@ -32,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
         getApplicationContext().createConfigurationContext(configuration);
 
-
         Helpers.updateSupportActionBarText(
                 getApplicationContext(),
                 getSupportActionBar(),
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+
 
     }
 }

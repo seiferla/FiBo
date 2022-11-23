@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="de.dhbw.ka.se.fibo.ui.home.HomeFragment"
+        android:name="de.dhbw.ka.se.fibo.ui.home.HomeViewModel$HomeFragment$HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
