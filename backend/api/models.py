@@ -19,7 +19,7 @@ class Cashflow(models.Model):
     is_income = models.BooleanField()
     overall_value = models.FloatField()
     timestamp = models.DateTimeField(default=timezone.now)
-    category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)  # please review ("ask Jens")
+    categories = models.ManyToManyField(Category)
     place = models.OneToOneField(Place, on_delete=models.DO_NOTHING, blank=True, null=True)
 
 
