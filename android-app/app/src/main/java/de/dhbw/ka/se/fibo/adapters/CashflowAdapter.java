@@ -43,7 +43,7 @@ public class CashflowAdapter extends ArrayAdapter<Cashflow> {
 
         @SuppressLint("ViewHolder") // TODO: Use a view holder to improve performance
 
-        View view = this.inflater.inflate(R.layout.row_layout, null);
+        View view = this.inflater.inflate(R.layout.recycler_view_row, null);
 
 
         TextView nameText = view.findViewById(R.id.cardTitle);

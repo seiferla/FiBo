@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import de.dhbw.ka.se.fibo.R;
 import de.dhbw.ka.se.fibo.models.Cashflow;
 
 public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
@@ -22,15 +23,15 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_row, parent, false);
         return new RecyclerViewHolder(view);
     }
 
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
 
-        //holder.cashFlowValue.setText(cashflowArrayList.get(position).getOverallValue().toString());
+        holder.cashFlowValue.setText(cashflowArrayList.get(position).getOverallValue().toString());
         holder.cardTitle.setText(cashflowArrayList.get(position).getName());
-        //holder.date.setText(cashflowArrayList.get(position).getTimestamp().toString());
+        holder.date.setText(cashflowArrayList.get(position).getTimestamp().toString());
 
     }
 

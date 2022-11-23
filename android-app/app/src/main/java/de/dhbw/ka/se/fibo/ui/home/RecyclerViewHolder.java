@@ -7,12 +7,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.textview.MaterialTextView;
+
 import de.dhbw.ka.se.fibo.R;
 
 public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
-    ImageView imageView;
-    TextView cardTitle, date, cashFlowValue;
+    TextView imageView;
+    MaterialTextView cardTitle, date, cashFlowValue;
 
     public RecyclerViewHolder(@NonNull View itemView) {
         super(itemView);

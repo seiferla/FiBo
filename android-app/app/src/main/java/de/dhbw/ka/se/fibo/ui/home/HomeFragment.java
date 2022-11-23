@@ -37,10 +37,12 @@ public class HomeFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+
+        initializeData();
+
         recyclerView.setAdapter(new ListAdapter(arrayList));
 
 
-        initializeData();
 
         return view;
     }
