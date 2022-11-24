@@ -28,9 +28,11 @@ import de.dhbw.ka.se.fibo.models.CashflowType;
 public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
 
     private ArrayList<Cashflow> cashflowArrayList;
+    private Context context;
 
-    public ListAdapter(ArrayList<Cashflow> cashflowArrayList) {
+    public ListAdapter(Context context, ArrayList<Cashflow> cashflowArrayList) {
         this.cashflowArrayList = cashflowArrayList;
+        this.context = context;
     }
 
     @NonNull
@@ -51,7 +53,8 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
 
         holder.imageView.setText(String.valueOf(cashflowArrayList.get(position).getCategory().getName().charAt(0)).toUpperCase());
         holder.cashFlowValue.setText(cashflowType.getSign() + Helpers.formatBigDecimalCurrency(overallValue));
-        holder.cashFlowValue.setTextColor(cashflowType.getColor());
+        holder.cashFlowValue.setTextColor(context.getResources().getColor(cashflowType.getColor()));
+
         holder.cashFlowValue.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         Format formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMANY);
         holder.date.setText(formatter.format(cashflowArrayList.get(position).getTimestamp()));

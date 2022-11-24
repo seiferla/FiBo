@@ -39,7 +39,7 @@ public class HomeFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        recyclerView.setAdapter(new ListAdapter(arrayList));
+        recyclerView.setAdapter(new ListAdapter(getContext(), arrayList));
 
         initializeData();
         return view;
@@ -50,7 +50,7 @@ public class HomeFragment extends Fragment {
         arrayList.add(new Cashflow(Category.GESCHENK, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "dm"));
         arrayList.add(new Cashflow(Category.MOBILITÄT, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), new Date(), "dm"));
         arrayList.add(new Cashflow(Category.SONSTIGE, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "dm"));
-        arrayList.add(new Cashflow(Category.GESUNDHEIT, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "dm"));
+        arrayList.add(new Cashflow(Category.GESUNDHEIT, CashflowType.INCOME, BigDecimal.valueOf(12.5), new Date(), "dm"));
     }
 
     @Override
