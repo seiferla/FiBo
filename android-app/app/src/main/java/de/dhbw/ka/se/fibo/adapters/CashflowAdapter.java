@@ -11,7 +11,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
+import de.dhbw.ka.se.fibo.Helpers;
+import de.dhbw.ka.se.fibo.R;
+import de.dhbw.ka.se.fibo.models.Cashflow;
+import de.dhbw.ka.se.fibo.models.CashflowType;
 import java.math.BigDecimal;
 import java.text.Format;
 import java.text.SimpleDateFormat;
