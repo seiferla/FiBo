@@ -16,7 +16,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.Locale;
 
 import de.dhbw.ka.se.fibo.databinding.ActivityMainBinding;
-import de.dhbw.ka.se.fibo.ui.home.HomeFragment;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;

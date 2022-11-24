@@ -11,7 +11,7 @@ import com.google.android.material.textview.MaterialTextView;
 
 import de.dhbw.ka.se.fibo.R;
 
-public class RecyclerViewHolder extends RecyclerView.ViewHolder {
+public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     TextView imageView;
     MaterialTextView cardTitle, date, cashFlowValue;
@@ -22,7 +22,12 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         cardTitle = itemView.findViewById(R.id.cardTitle);
         date = itemView.findViewById(R.id.date);
         cashFlowValue = itemView.findViewById(R.id.cashFlowValue);
+        itemView.setOnClickListener(this);
 
     }
 
+    @Override
+    public void onClick(View v) {
+
+    }
 }
