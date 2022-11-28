@@ -50,7 +50,12 @@ public class HomeFragment extends Fragment {
         arrayList.add(new Cashflow(Category.GESCHENK, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "dm"));
         arrayList.add(new Cashflow(Category.MOBILITÄT, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), new Date(), "dm"));
         arrayList.add(new Cashflow(Category.SONSTIGE, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "dm"));
-        arrayList.add(new Cashflow(Category.GESUNDHEIT, CashflowType.INCOME, BigDecimal.valueOf(12.5), new Date(), "dm"));
+        arrayList.add(new Cashflow(Category.BILDUNG, CashflowType.INCOME, BigDecimal.valueOf(12.5), new Date(), "dm"));
+        arrayList.add(new Cashflow(Category.RESTAURANT, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "dm"));
+        arrayList.add(new Cashflow(Category.GESCHENK, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "dm"));
+        arrayList.add(new Cashflow(Category.KULTUR, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), new Date(), "dm"));
+        arrayList.add(new Cashflow(Category.SOZIALLEBEN, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "dm"));
+        arrayList.add(new Cashflow(Category.BILDUNG, CashflowType.INCOME, BigDecimal.valueOf(12.5), new Date(), "dm"));
     }
 
     @Override
