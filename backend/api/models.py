@@ -14,13 +14,18 @@ class Category(models.Model):
     name = models.CharField(max_length=55)
 
 
+class Account(models.Model):
+    account_id = models.CharField(max_length=55, primary_key=True)
+
+
 class Cashflow(models.Model):
     cashflow_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     is_income = models.BooleanField()
     overall_value = models.FloatField()
     timestamp = models.DateTimeField(default=timezone.now)
-    categories = models.ManyToManyField(Category)
+    category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
     place = models.OneToOneField(Place, on_delete=models.DO_NOTHING, blank=True, null=True)
+    account = models.ForeignKey(Account, on_delete=models.CASCADE)
 
 
 class Item(models.Model):
@@ -31,16 +36,11 @@ class Item(models.Model):
     value = models.FloatField()
 
 
-class Account(models.Model):
-    account_id = models.CharField(max_length=55, primary_key=True)
-    cashflow = models.ForeignKey(Cashflow, on_delete=models.CASCADE)
-
-
 class User(models.Model):
     user_id = models.CharField(max_length=55, primary_key=True, unique=True)
     email = models.CharField(max_length=55, unique=True)
     password = models.CharField(max_length=55)
-    account = models.ManyToManyField(Account, blank=True, null=True)
+    account = models.ManyToManyField(Account, blank=True)
 
 
 class RefreshToken(models.Model):
