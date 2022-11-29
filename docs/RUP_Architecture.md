@@ -16,35 +16,38 @@ This document is based on the following template: https://sce.uhcl.edu/helm/Rati
 > TODO: Generate TOC
 
 ## Software Architecture Document
-### Introduction
-
-[The introduction of the Software Architecture Document should provide an overview of the entire Software Architecture Document. It should include the purpose, scope, definitions, acronyms, abbreviations, references, and overview of the Software Architecture Document.]
-
 #### Purpose
 
-This document provides a comprehensive architectural overview of the system, using a number of different architectural views to depict different aspects of the system.  It is intended to capture and convey the significant architectural decisions which have been made on the system.
-
-[This section defines the purpose of the Software Architecture Document, in the overall project documentation, and briefly describes the structure of the document. The specific audiences for the document should be identified, with an indication of how they are expected to use the document.]
+This document provides a comprehensive architectural overview of the system, using a number of different architectural views to depict different aspects of the system. It is intended to capture and convey the significant architectural decisions which have been made on the system.
 
 #### Scope
-
-[A brief description of what the Software Architecture Document applies to; what is affected or influenced by this document.]
+The scope of this Software Architecture document is to show the architecture of the FiBo project. We illustrate the use cases and the overall structure.
 
 #### Definitions, Acronyms and Abbreviations
 
-[This subsection should provide the definitions of all terms, acronyms, and abbreviations required to properly interpret the Software Architecture Document.  This information may be provided by reference to the project Glossary.]
+| Abbreviation | Description |
+| --- | --- |
+| API | Application Programming Interface |
+| SRS | Software Requirement Specification |
+| n/a | not applicable |
+| UC | use case |
 
 #### References
 
-[This subsection should provide a complete list of all documents referenced elsewhere in the Software Architecture Document.  Each document should be identified by title, report number (if applicable), date, and publishing organization.  Specify the sources from which the references can be obtained. This information may be provided by reference to an appendix or to another document.]
+| Name and link | Date | Publishing organization |
+| --- | --- | --- |
+| [Blog](https://fibo952390745.wordpress.com/) | ongoing | FiBo project team |
+| [Git repository](https://github.com/Cebox82/FiBo) | ongoing | FiBo project team |
+| [SRS](https://github.com/Cebox82/FiBo/blob/master/docs/SRS.md) | 16/11/2022 | FiBo project team |
+| [UC 4 - Manual adding of data](https://github.com/Cebox82/FiBo/blob/master/docs/use_cases/UC_4_manual_adding_of_data/UC_4_manual_adding_of_data.md) | 21/11/2022 | FiBo project team |
 
 #### Overview
 
-[This subsection should describe what the rest of the Software Architecture Document contains and explain how the Software Architecture Document is organized.]
+This document contains the Architectural Representation, Goals and Constraints as well as the Logical, Deployment, Implementation and Data Views.
 
 ### Architectural Representation
 
-[This section describes what software architecture is for the current system, and how it is represented. Of the Use-Case, Logical, Process, Deployment, and Implementation Views, it enumerates the views that are necessary, and for each view, explains what types of model elements it contains.]
+The backend (Django based) and the frontend are both developed separted from each other and only communicate over a REST API. That said, it is hard to follow one of the known patterns (MVC, MVP, MVVM) for the whole project, as the frontend ecosystem (an Android app) can only be so much used to follow one of some known pattterns.
 
 ### Architectural Goals and Constraints
 
