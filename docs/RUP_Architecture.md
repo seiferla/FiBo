@@ -31,6 +31,7 @@ The scope of this Software Architecture document is to show the architecture of 
 | SRS | Software Requirement Specification |
 | n/a | not applicable |
 | UC | use case |
+| CRUD | create-read-update-delete |
 
 #### References
 
@@ -48,6 +49,8 @@ This document contains the Architectural Representation, Goals and Constraints a
 ### Architectural Representation
 
 The backend (Django based) and the frontend are both developed separted from each other and only communicate over a REST API. That said, it is hard to follow one of the known patterns (MVC, MVP, MVVM) for the whole project, as the frontend ecosystem (an Android app) can only be so much used to follow one of some known pattterns.
+
+Please also see this [introduction to the technologies](https://fibo952390745.wordpress.com/2022/10/18/week-2-roles-and-technologies/).
 
 ### Architectural Goals and Constraints
 
@@ -67,7 +70,11 @@ The backend (Django based) and the frontend are both developed separted from eac
 
 #### Overview
 
-[This subsection describes the overall decomposition of the design model in terms of its package hierarchy and layers.]
+We have, for now, two packages that interact with each other: the frontend and the backend.
+
+The backend mainly serves requests for the frontend, which is entitled to the entire CRUD workflow. A special focus is on serving requests that relate to retrieving previously created or updated data, so it can be visualized nicely.
+
+The frontend is in charge of providing a human-useable interface that provides functionality to create, read, update and delete data.
 
 #### Architecturally Significant Design Packages
 
@@ -101,10 +108,22 @@ For each significant class in the package, include its name, brief description, 
 
 ### Size and Performance
 
-[A description of the major dimensioning characteristics of the software that impact the architecture, as well as the target performance constraints.]
+REST API interaction are designed for brevity to eliminate unnecessary bytes traveling across the internet, while consuming time and other worthy resources. We will make sure to use the following terms:
+
+| Terminology | Duration | Response |
+| --- | --- | --- |
+Instantaneous | up to 100ms | Acknowledge user input within this time frame. Ideally, a visible process towards the completion of the task begins within this time span (e.g. form checking).
+Immediate | 500–1000ms | Answers to simple requests must be completed within this time frame
+Continuous | 2000–5000ms | Answers to complex questions must be completed within this time frame (e.g. a complex dashboard should be fully loaded)
+Captive | 7000–10000ms | Users will begin switching tasks at this point. If a process takes longer than this, it should be segmented.
+
+Source (adapted after): https://design.firefox.com/photon/introduction/design-for-performance.html
+<!-- Yes, I love Mozilla Firefox and it's thoughtful design process -->
+
+We should strive for duration to be Immediate at most. In rare cases, we might be forced to have a Continous process. We should avoid Captive processes at all costs and segment these really complex tasks.
 
 ### Quality
 
-[A description of how the software architecture contributes to all capabilities (other than functionality) of the system: extensibility, reliability, portability, and so on. If these characteristics have special significance, for example safety, security or privacy implications, they should be clearly delineated.]
+To make sure we are able to deliver apps of great quality with even greater confidence, we want to implement UI tests that can be run automatically. Within these, we will create scenarios that will cover each aspect (even edge cases) of all the workflows and use-cases.
 
-Artifacts > Analysis & Design Artifact Set > Software Architecture Document > rup_sad.htm
+For the backend, first considerations are that we use an automated tool that tests the published REST API. This can also be automated.
