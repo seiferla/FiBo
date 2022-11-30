@@ -9,7 +9,6 @@ public class Cashflow {
     private BigDecimal overallValue;
     private Date timestamp;
     private String name;
-    private Category category;
 
     public Cashflow(Category category, CashflowType type, BigDecimal overallValue, Date timestamp, String name) {
         this.setType(type);
