@@ -6,4 +6,16 @@
   <string name="title_settings">Settings</string>
   <string name="dateCardTitle">Ausgewählter Zeitraum</string>
   <string name="datePickerTitle">Dashboard Zeitraum</string>
+  <string name="INSURANCE">Insurance</string>
+  <string name="HEALTH">Health</string>
+  <string name="LIVING">Living</string>
+  <string name="HOUSEHOLD">Household</string>
+  <string name="CULTURE">Culture</string>
+  <string name="EDUCATION">Education</string>
+  <string name="SOCIALLIFE">Sociallife</string>
+  <string name="MOBILITY">Mobility</string>
+  <string name="CLOTHES">Clothes</string>
+  <string name="GIFT">Gift</string>
+  <string name="OTHER">Other</string>
+  <string name="RESTAURANT">Restaurant</string>
 </resources>

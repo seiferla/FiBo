@@ -26,7 +26,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+            new ViewModelProvider(this).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -34,20 +34,29 @@ public class HomeFragment extends Fragment {
         final ListView listView = binding.cashFlowList;
         ArrayList<Cashflow> arrayList = new ArrayList<>();
 
-        arrayList.add(new Cashflow(Category.RESTAURANT, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "dm"));
-        arrayList.add(new Cashflow(Category.GESCHENK, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "dm"));
-        arrayList.add(new Cashflow(Category.MOBILITÄT, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "dm"));
-        arrayList.add(new Cashflow(Category.SONSTIGE, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "dm"));
-        arrayList.add(new Cashflow(Category.GESUNDHEIT, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "dm"));
+        arrayList.add(
+            new Cashflow(Category.RESTAURANT, CashflowType.EXPENSE, BigDecimal.valueOf(12.5),
+                new Date(), "dm"));
+        arrayList.add(new Cashflow(Category.CULTURE, CashflowType.EXPENSE, BigDecimal.valueOf(12.5),
+            new Date(), "dm"));
+        arrayList.add(
+            new Cashflow(Category.SOCIALLIFE, CashflowType.EXPENSE, BigDecimal.valueOf(12.5),
+                new Date(), "dm"));
+        arrayList.add(new Cashflow(Category.HEALTH, CashflowType.EXPENSE, BigDecimal.valueOf(12.5),
+            new Date(), "dm"));
+        arrayList.add(
+            new Cashflow(Category.INSURANCE, CashflowType.EXPENSE, BigDecimal.valueOf(12.5),
+                new Date(), "dm"));
 
-
-        ArrayAdapter<Cashflow> listAdapter = new CashflowAdapter(requireActivity(), android.R.layout.simple_list_item_1, arrayList);
+        ArrayAdapter<Cashflow> listAdapter = new CashflowAdapter(requireActivity(),
+            android.R.layout.simple_list_item_1, arrayList);
         listView.setAdapter(listAdapter);
-       //TODO make onClick work
+        //TODO make onClick work
         listView.setOnItemClickListener((parent, view, position, id) -> {
             System.out.println("position: " + position);
             Cashflow clickedItem = (Cashflow) listView.getItemAtPosition(position);
-            Toast.makeText(getActivity(), clickedItem.getOverallValue().toString(), Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), clickedItem.getOverallValue().toString(),
+                Toast.LENGTH_LONG).show();
         });
 
         return root;
