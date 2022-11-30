@@ -8,15 +8,11 @@ Envisioned scanning receipts
 
 Every user should be able to add data of a receipt using their camera. The data the mechanism has to automatically gather is the following:
 
-- store
+- store (optional, best-effort basis)
 - price
 - date
-
-Optional data:
-
 - category
-- a document
-- notes
+- income/expense
 
 # 2 Flow of Events
 
@@ -66,11 +62,11 @@ Feature: automatic scanning
     When I press the "Scan receipt" button
     Then I am on the "scanning receipt" form
 
-  Scenario: enter valid data and save it
+  Scenario: scan valid data and save it
     Given I am signed in with username "USER" and password "PASSWORD"
     And I am at the "scanning receipt" form
     When I take a picture of a receipt
-    And I get a overview
+    And I get a overview of the detected data
     And there is an edit button
     When I can click the "Save" button
     And I receive a "success" message
