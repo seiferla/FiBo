@@ -33,7 +33,7 @@ Optional data:
 
 ### 2.1.1 Activity Diagram
 
-![Manual adding of data Activity Diagram](./manual_adding_act_diagram.drawio.svg)
+![Manual adding of data Activity Diagram](./manual_adding_of_data_updated.drawio.svg)
 
 ### 2.1.2 Mock-up
 
