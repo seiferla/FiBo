@@ -52,6 +52,8 @@ The backend (Django based) and the frontend are both developed separted from eac
 
 Please also see this [introduction to the technologies](https://fibo952390745.wordpress.com/2022/10/18/week-2-roles-and-technologies/).
 
+![Overview of the Architecture](architectural_UML_Diagram.drawio.svg "Architecture")
+
 ### Architectural Goals and Constraints
 
 [This section describes the software requirements and objectives that have some significant impact on the architecture, for example, safety, security, privacy, use of an off-the-shelf product, portability, distribution, and reuse. It also captures the special constraints that may apply: design and implementation strategy, development tools, team structure, schedule, legacy code, and so on.]
