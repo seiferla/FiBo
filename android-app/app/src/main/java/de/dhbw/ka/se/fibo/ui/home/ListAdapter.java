@@ -1,17 +1,13 @@
 package de.dhbw.ka.se.fibo.ui.home;
 
 
-import static java.security.AccessController.getContext;
-
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.math.BigDecimal;
@@ -31,6 +27,7 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
     private Context context;
 
     public ListAdapter(Context context, ArrayList<Cashflow> cashflowArrayList) {
+        setHasStableIds(true);
         this.cashflowArrayList = cashflowArrayList;
         this.context = context;
     }
@@ -50,7 +47,6 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
 
         holder.cardTitle.setText(cashflowArrayList.get(position).getName());
         holder.cardTitle.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-
         holder.imageView.setText(String.valueOf(cashflowArrayList.get(position).getCategory().getName().charAt(0)).toUpperCase());
         holder.cashFlowValue.setText(cashflowType.getSign() + Helpers.formatBigDecimalCurrency(overallValue));
         holder.cashFlowValue.setTextColor(context.getResources().getColor(cashflowType.getColor()));
@@ -59,6 +55,11 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
         Format formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMANY);
         holder.date.setText(formatter.format(cashflowArrayList.get(position).getTimestamp()));
 
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     private Cashflow getItem(int position) {

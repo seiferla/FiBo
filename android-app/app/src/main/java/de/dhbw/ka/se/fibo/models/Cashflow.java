@@ -19,8 +19,6 @@ public class Cashflow {
         this.category = category;
     }
 
-    public Cashflow(CashflowType expense, BigDecimal valueOf, Date date, String bla) {
-    }
 
     public Category getCategory() {
         return category;
