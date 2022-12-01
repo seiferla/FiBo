@@ -5,48 +5,58 @@ import java.math.RoundingMode;
 import java.util.Date;
 
 public class Cashflow {
+    private CashflowType type;
+    private BigDecimal overallValue;
+    private Date timestamp;
+    private String name;
+    private Category category;
 
-  private CashflowType type;
-  private BigDecimal overallValue;
-  private Date timestamp;
-  private String name;
+    public Cashflow(Category category, CashflowType type, BigDecimal overallValue, Date timestamp, String name) {
+        this.setType(type);
+        this.setOverallValue(overallValue);
+        this.setTimestamp(timestamp);
+        this.setName(name);
+        this.category = category;
+    }
 
-  public Cashflow(CashflowType type, BigDecimal overallValue, Date timestamp, String name) {
-    setType(type);
-    setOverallValue(overallValue);
-    setTimestamp(timestamp);
-    setName(name);
-  }
 
-  public String getName() {
-    return name;
-  }
+    public Category getCategory() {
+        return category;
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
-  public CashflowType getType() {
-    return type;
-  }
+    public String getName() {
+        return this.name;
+    }
 
-  public void setType(CashflowType type) {
-    this.type = type;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public BigDecimal getOverallValue() {
-    return overallValue;
-  }
+    public CashflowType getType() {
+        return type;
+    }
 
-  public void setOverallValue(BigDecimal overallValue) {
-    this.overallValue = overallValue.setScale(2, RoundingMode.HALF_UP);
-  }
+    public void setType(CashflowType type) {
+        this.type = type;
+    }
 
-  public Date getTimestamp() {
-    return timestamp;
-  }
+    public BigDecimal getOverallValue() {
+        return overallValue;
+    }
 
-  public void setTimestamp(Date timestamp) {
-    this.timestamp = timestamp;
-  }
+    public void setOverallValue(BigDecimal overallValue) {
+        this.overallValue = overallValue.setScale(2, RoundingMode.HALF_UP);
+    }
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
+    }
 }
