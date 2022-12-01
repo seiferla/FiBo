@@ -80,3 +80,18 @@ fabric.properties
 
 # Android studio 3.1+ serialized cache file
 **/.idea/caches/build_file_checksums.ser
+
+
+# Django Backend
+backend/api/migrations
+**/.env
+backend/env/**
+backend/.idea
+backend/api/__pycache__
+backend/backend/__pycache__
+
+# Android App
+app/build
+android-app/app/build
+android-app/.idea/workspace.xml
+android-app/.idea/shelf/
