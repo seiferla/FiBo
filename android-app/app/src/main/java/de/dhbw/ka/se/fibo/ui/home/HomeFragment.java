@@ -6,60 +6,56 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import de.dhbw.ka.se.fibo.adapters.CashflowAdapter;
-import de.dhbw.ka.se.fibo.databinding.FragmentHomeBinding;
-import de.dhbw.ka.se.fibo.models.Cashflow;
-import de.dhbw.ka.se.fibo.models.CashflowType;
-import de.dhbw.ka.se.fibo.models.Category;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 
+import de.dhbw.ka.se.fibo.R;
+import de.dhbw.ka.se.fibo.databinding.FragmentHomeBinding;
+import de.dhbw.ka.se.fibo.models.Cashflow;
+import de.dhbw.ka.se.fibo.models.CashflowType;
+import de.dhbw.ka.se.fibo.models.Category;
+
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
+    ArrayList<Cashflow> arrayList = new ArrayList<>();
+    private RecyclerView recyclerView;
+
+
+    public HomeFragment() {
+        super();
+        initializeData();
+
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-            new ViewModelProvider(this).get(HomeViewModel.class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
 
-        final ListView listView = binding.cashFlowList;
-        ArrayList<Cashflow> arrayList = new ArrayList<>();
+        View view = inflater.from(getContext()).inflate(R.layout.fragment_home, container, false);
 
-        arrayList.add(
-            new Cashflow(Category.RESTAURANT, CashflowType.EXPENSE, BigDecimal.valueOf(12.5),
-                new Date(), "dm"));
-        arrayList.add(new Cashflow(Category.CULTURE, CashflowType.EXPENSE, BigDecimal.valueOf(12.5),
-            new Date(), "dm"));
-        arrayList.add(
-            new Cashflow(Category.SOCIALLIFE, CashflowType.EXPENSE, BigDecimal.valueOf(12.5),
-                new Date(), "dm"));
-        arrayList.add(new Cashflow(Category.HEALTH, CashflowType.EXPENSE, BigDecimal.valueOf(12.5),
-            new Date(), "dm"));
-        arrayList.add(
-            new Cashflow(Category.INSURANCE, CashflowType.EXPENSE, BigDecimal.valueOf(12.5),
-                new Date(), "dm"));
+        recyclerView = view.findViewById(R.id.recyclerview);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        recyclerView.setAdapter(new ListAdapter(getContext(), arrayList));
 
-        ArrayAdapter<Cashflow> listAdapter = new CashflowAdapter(requireActivity(),
-            android.R.layout.simple_list_item_1, arrayList);
-        listView.setAdapter(listAdapter);
-        //TODO make onClick work
-        listView.setOnItemClickListener((parent, view, position, id) -> {
-            System.out.println("position: " + position);
-            Cashflow clickedItem = (Cashflow) listView.getItemAtPosition(position);
-            Toast.makeText(getActivity(), clickedItem.getOverallValue().toString(),
-                Toast.LENGTH_LONG).show();
-        });
+        return view;
+    }
 
-        return root;
+    private void initializeData() {
+        arrayList.add(new Cashflow(Category.RESTAURANT, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "dm"));
+        arrayList.add(new Cashflow(Category.GESCHENK, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "lidl"));
+        arrayList.add(new Cashflow(Category.MOBILITÄT, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), new Date(), "kaufland"));
+
     }
 
     @Override
@@ -67,4 +63,5 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
 }
