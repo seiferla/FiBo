@@ -2,10 +2,7 @@ package de.dhbw.ka.se.fibo;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
 
->>>>>>>>> Temporary merge branch 2
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -13,8 +10,10 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import de.dhbw.ka.se.fibo.databinding.ActivityMainBinding;
+
 import java.util.Locale;
+
+import de.dhbw.ka.se.fibo.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;

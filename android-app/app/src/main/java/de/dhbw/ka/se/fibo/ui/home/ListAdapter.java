@@ -45,15 +45,15 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
         CashflowType cashflowType = cashflow.getType();
         BigDecimal overallValue = cashflow.getOverallValue();
 
-        holder.cardTitle.setText(cashflowArrayList.get(position).getName());
+        holder.cardTitle.setText(cashflow.getName());
         holder.cardTitle.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-        holder.imageView.setText(String.valueOf(cashflowArrayList.get(position).getCategory().getName().charAt(0)).toUpperCase());
+        holder.imageView.setText(String.valueOf(context.getResources().getText(cashflow.getCategory().getName())).substring(0, 1));
         holder.cashFlowValue.setText(cashflowType.getSign() + Helpers.formatBigDecimalCurrency(overallValue));
         holder.cashFlowValue.setTextColor(context.getResources().getColor(cashflowType.getColor()));
-
+        context.getResources().getText(cashflow.getCategory().getName()).charAt(0);
         holder.cashFlowValue.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         Format formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMANY);
-        holder.date.setText(formatter.format(cashflowArrayList.get(position).getTimestamp()));
+        holder.date.setText(formatter.format(cashflow.getTimestamp()));
 
     }
 
