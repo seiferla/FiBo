@@ -29,6 +29,8 @@ The following data can be customized by the user:
 
 ### 2.1.1 Activity Diagram
 
+![Change_added_data_Activity_Diagram](change_added_data_diagram.svg)
+
 ### 2.1.2 Narrative
 
 ```gherkin
