@@ -2,14 +2,12 @@
 
 ## Name of use case
 
-Create account
+Log in to an account
 
 ## 1.1 Brief Description
 
-Each user should be able to create an account using their mobile device. The data that the user must provide are as follows:
-
+Each user should be able to log in to an account using their mobile device. The data that the user must provide is as follows:
 - email
-- username
 - password
 
 # 2 Flow of Events
@@ -29,7 +27,7 @@ Each user should be able to create an account using their mobile device. The dat
 ### 2.1.2 Mock-up
 
 ![login_account_diagram](./Anmeldung.png)
-![splash_activity](./Anmeldung.png)
+![splash_activity](./splash_activity.png)
 
 
 
@@ -43,38 +41,24 @@ Feature: manual adding of data
   in order to track my spent money.
 
   Background:
-    And I am on the homepage
+    And I have a account
 
-  Scenario: open new "manual adding of data" form
-    Given I am signed in with username "USER" and password "PASSWORD"
-    And I am on the "home" page
-    When I press the "New receipt" button
-    Then I see two additional buttons "Add manually" and "Scan receipt" fade in
-    When I press the "Add manually" button
-    Then I am on the "manual adding of data" form
+  Scenario: successfully login
+    Given I have an existing account
+    When I am starting the app
+    Then I am on the login page
+    Then I sign in with username and password
+    When I see the splash screen
+    Then I am logged in successfully
+    
+  Scenario: unsuccessful login
+    Given I have an existing account
+    When I am starting the app
+    Then I am on the login page
+    Then I sign in with username and password
+    When I get a error message
+    Then I have entered the wrong data
 
-  Scenario: enter valid data and save it
-    Given I am signed in with username "USER" and password "PASSWORD"
-    And I am at the "manual adding of data" form
-    When I enter "store xy" in the field "Store"
-    And I enter "x€" in the field "Price"
-    And I enter "DD/MM/YYYY" in the field "Date"
-    And I enter "category xy" in the field "Category"
-    And I add a file to the form
-    And I enter "note xy" in the field "Notes"
-    When I press the "save" button
-    Then I am on the "home" page
-    And I receive a "success" message
-
-  Scenario: enter invalid data and save the operation
-    Given I am signed in with username "USER" and password "PASSWORD"
-    And I am at the "manual adding of data" form
-    When I enter "x€" in the field "Store"
-    And I enter "store xy" in the field "Price"
-    And I enter "DD/MM/YYYY" in the field "Date"
-    And I press the "save" button
-    Then I am at the "manual adding of data" form
-    And I receive a "error" message
 ```
 
 ## 2.2 Alternative Flows
@@ -87,7 +71,9 @@ Feature: manual adding of data
 
 # 4 Preconditions
 
-(n/a)
+## 4.1 Login
+
+The user must have an existing account
 
 # 5 Postconditions
 
