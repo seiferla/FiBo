@@ -27,7 +27,7 @@ Each user should be able to log in to an account using their mobile device. The 
 ### 2.1.2 Mock-up
 
 ![login_account_diagram](./Anmeldung.png)
-![splash_activity](./splash_activity.png)
+![splash_activity](../splash_activity.png)
 
 
 
@@ -36,9 +36,9 @@ Each user should be able to log in to an account using their mobile device. The 
 ```gherkin
 Feature: manual adding of data
 
-  As a signed in user
-  I want to add a receipt by manually entering the data
-  in order to track my spent money.
+  As a registered user,
+  I want to log in to my account
+
 
   Background:
     And I have a account
@@ -48,6 +48,7 @@ Feature: manual adding of data
     When I am starting the app
     Then I am on the login page
     Then I sign in with username and password
+    Then I click the login button
     When I see the splash screen
     Then I am logged in successfully
     
