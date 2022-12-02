@@ -5,18 +5,28 @@
 Show incomes and expenses in a list
 ## 1.1 Brief Description
 
+Every user should be able to list their different cash flows in the home dashboard. The data that is displayed per cash flow is as follows:
 
+- date
+- type of flow (expense/income)
+- price
+- store
+- category icon
 
 # 2 Flow of Events
 
 ## 2.1 Basic Flow
 
+- User clicks on "Home" navigation
+- 
 
 ### 2.1.1 Activity Diagram
 
+![expenses_income_diagram](./expenses_income.drawio.svg)
 
 ### 2.1.2 Mock-up
 
+![mockup_homefragment](../home_menu.png)
 
 
 ### 2.1.3 Narrative
@@ -35,9 +45,9 @@ Show incomes and expenses in a list
 
 # 4 Preconditions
 
-## 4.1 Login
+## 4.1 Data
 
-The user has to be logged in to the system.
+The user must have created at least one valid cash flow
 
 # 5 Postconditions
 
