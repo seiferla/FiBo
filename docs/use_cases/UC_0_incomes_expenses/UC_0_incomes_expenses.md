@@ -18,7 +18,7 @@ Every user should be able to list their different cash flows in the home dashboa
 ## 2.1 Basic Flow
 
 - User clicks on "Home" navigation
-- 
+- User can see his cash flow history
 
 ### 2.1.1 Activity Diagram
 
@@ -32,6 +32,18 @@ Every user should be able to list their different cash flows in the home dashboa
 ### 2.1.3 Narrative
 
 ```gherkin
+Feature: Show incomes and expenses in a list
+  
+  As a logged-in user
+  I want to see a overview of the cash flows
+  
+  Background: 
+    And I am on the homepage and logged-in
+    
+    Scenario: see cash flows
+      Given I am signed in with username "USER" and password "PASSWORD"
+      And I am on the "home" page
+      Then I can see the different cash flows income and expenses
 
 ```
 
