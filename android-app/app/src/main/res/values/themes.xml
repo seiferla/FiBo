@@ -1,27 +1,36 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-  <!-- Base application theme. -->
-  <style name="Theme.FiBo" parent="Theme.Material3.DayNight">
-    <!-- Primary brand color. -->
-    <item name="colorPrimary">#D4E3FF</item>
-    <item name="colorPrimaryVariant">#1E92EA</item>
-    <item name="colorOnPrimary">@color/white</item>
-    <!-- Secondary brand color. -->
-    <item name="colorSecondary">@color/teal_200</item>
-    <item name="colorSecondaryVariant">@color/teal_700</item>
-    <item name="colorOnSecondary">@color/black</item>
-    <!-- Status bar color. -->
-    <!--        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>-->
-    <!-- Customize your theme here. -->
-  </style>
+    <!-- Base application theme. -->
+    <style name="Theme.FiBo" parent="Theme.Material3.DayNight">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#D4E3FF</item>
+        <item name="colorPrimaryVariant">#1E92EA</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <!--        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>-->
+        <!-- Customize your theme here. -->
+    </style>
 
-  <style name="Style.FiBo.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-    <item name="android:color">#E1E9FA</item>
-  </style>
+    <style name="Style.FiBo.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">#E1E9FA</item>
+    </style>
 
-  <style name="Style.FiBo.CardView.Filled" parent="Widget.Material3.CardView.Outlined">
-    <item name="cardBackgroundColor">#FFFFFF</item>
-    <item name="strokeColor">#CCCCCC</item>
-    <item name="strokeWidth">1dp</item>
-  </style>
+    <style name="Style.FiBo.CardView.Filled" parent="Widget.Material3.CardView.Outlined">
+        <item name="cardBackgroundColor">#FFFFFF</item>
+        <item name="strokeColor">#CCCCCC</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <style name="Theme.FiBo.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.FiBo.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.FiBo.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

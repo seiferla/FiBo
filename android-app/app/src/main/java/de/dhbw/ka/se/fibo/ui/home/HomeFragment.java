@@ -1,12 +1,18 @@
 package de.dhbw.ka.se.fibo.ui.home;
 
+import static androidx.navigation.Navigation.findNavController;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +26,8 @@ import de.dhbw.ka.se.fibo.models.Cashflow;
 import de.dhbw.ka.se.fibo.models.CashflowType;
 import de.dhbw.ka.se.fibo.models.Category;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
@@ -27,16 +35,17 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
 
 
+
     public HomeFragment() {
         super();
         initializeData();
-
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.from(getContext()).inflate(R.layout.fragment_home, container, false);
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
 
         recyclerView = view.findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
@@ -44,6 +53,19 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(new ListAdapter(getContext(), arrayList));
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        FloatingActionButton actionButton = binding.floatingButton;
+        actionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View e) {
+                Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_navigation_adding);
+            }
+        });
     }
 
     private void initializeData() {

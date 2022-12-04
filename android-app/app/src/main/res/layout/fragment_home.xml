@@ -25,7 +25,9 @@
       android:layout_marginEnd="24dp"
       android:contentDescription="Add Cashflow"
       android:src="@drawable/home_fab_image"
+      android:clickable="true"
       app:backgroundTint="@color/FAB_color"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent" />
+      app:layout_constraintEnd_toEndOf="parent"
+      android:focusable="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>

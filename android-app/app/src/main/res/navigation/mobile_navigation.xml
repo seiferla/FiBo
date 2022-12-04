@@ -9,7 +9,11 @@
     android:id="@+id/navigation_home"
     android:label="@string/title_home"
     android:name="de.dhbw.ka.se.fibo.ui.home.HomeFragment"
-    tools:layout="@layout/fragment_home" />
+    tools:layout="@layout/fragment_home" >
+    <action
+        android:id="@+id/action_navigation_home_to_navigation_adding"
+        app:destination="@id/navigation_adding" />
+  </fragment>
 
   <fragment
     android:id="@+id/navigation_dashboard"
@@ -22,4 +26,14 @@
     android:label="@string/title_settings"
     android:name="de.dhbw.ka.se.fibo.ui.settings.SettingsFragment"
     tools:layout="@layout/fragment_settings" />
+
+  <fragment
+      android:id="@+id/navigation_adding"
+      android:label="@string/title_adding"
+      android:name="de.dhbw.ka.se.fibo.ui.adding.AddingFragment"
+      tools:layout="@layout/fragment_adding" >
+    <action
+        android:id="@+id/action_navigation_adding_to_navigation_home"
+        app:destination="@id/navigation_home" />
+  </fragment>
 </navigation>
