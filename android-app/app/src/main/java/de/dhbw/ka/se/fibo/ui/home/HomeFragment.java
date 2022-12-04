@@ -36,7 +36,6 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-
         View view = inflater.from(getContext()).inflate(R.layout.fragment_home, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerview);
