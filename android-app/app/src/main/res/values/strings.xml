@@ -20,6 +20,13 @@
     <string name="OTHER">Sonstige</string>
     <string name="RESTAURANT">Restaurant</string>
     <string name="title_activity_adding">AddingActivity</string>
+    <string name="adding_expense">Ausgabe</string>
+    <string name="adding_income">Einnahme</string>
+    <string name="adding_store">Erworben bei</string>
+    <string name="adding_amount">Betrag</string>
+    <string name="adding_date">Datum</string>
+    <string name="adding_category">Kategorie</string>
+    <string name="adding_notes">Notizen</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
