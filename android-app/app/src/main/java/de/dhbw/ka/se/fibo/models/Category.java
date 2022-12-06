@@ -6,7 +6,6 @@ import de.dhbw.ka.se.fibo.R;
 
 public enum Category {
 
-
     RESTAURANT(R.color.orange, R.string.INSURANCE), HEALTH(R.color.purple,
         R.string.CLOTHES), LIVING(R.color.green, R.string.LIVING), HOUSEHOLD(R.color.blue,
         R.string.HOUSEHOLD), CULTURE(R.color.pink, R.string.CULTURE), EDUCATION(R.color.yellow,
@@ -15,17 +14,13 @@ public enum Category {
         R.string.GIFT), OTHER(R.color.black, R.string.OTHER), INSURANCE(R.color.lightpurple,
         R.string.INSURANCE);
 
-
     private int color;
     private int name;
 
     Category(int color, int name) {
-
         this.name = name;
         this.color = color;
     }
-
-
 
     public int getColor() {
         return color;

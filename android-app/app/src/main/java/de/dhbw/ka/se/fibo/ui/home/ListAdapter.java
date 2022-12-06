@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.math.BigDecimal;
 import java.text.Format;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import de.dhbw.ka.se.fibo.Helpers;
@@ -23,10 +23,10 @@ import de.dhbw.ka.se.fibo.models.CashflowType;
 
 public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
 
-    private ArrayList<Cashflow> cashflowArrayList;
+    private List<Cashflow> cashflowArrayList;
     private Context context;
 
-    public ListAdapter(Context context, ArrayList<Cashflow> cashflowArrayList) {
+    public ListAdapter(Context context, List<Cashflow> cashflowArrayList) {
         setHasStableIds(true);
         this.cashflowArrayList = cashflowArrayList;
         this.context = context;
