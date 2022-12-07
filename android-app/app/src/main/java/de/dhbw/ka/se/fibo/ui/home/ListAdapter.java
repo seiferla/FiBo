@@ -59,11 +59,16 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
         DateTimeFormatter formatter = new DateTimeFormatterBuilder()
                 .padNext(2, '0')
                 .appendValue(ChronoField.DAY_OF_MONTH)
-                .appendLiteral(".")
+                .appendLiteral('.')
                 .padNext(2, '0')
                 .appendValue(ChronoField.MONTH_OF_YEAR)
-                .appendLiteral(".")
+                .appendLiteral('.')
                 .appendValue(ChronoField.YEAR)
+                .appendLiteral(' ')
+                .appendValue(ChronoField.HOUR_OF_DAY)
+                .appendLiteral(':')
+                .appendValue(ChronoField.MINUTE_OF_HOUR)
+                .appendLiteral(" Uhr")
                 .toFormatter(Locale.getDefault());
         holder.date.setText(formatter.format(cashflow.getTimestamp()));
 

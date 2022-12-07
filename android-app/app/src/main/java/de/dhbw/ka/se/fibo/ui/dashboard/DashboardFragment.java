@@ -89,11 +89,11 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
         Stream<Cashflow> cashflowStream = cashflows.stream();
 
         if (this.startDate != null) {
-            cashflowStream = cashflowStream.filter(x -> this.startDate.isBefore(ChronoLocalDate.from(x.getTimestamp())));
+            cashflowStream = cashflowStream.filter(x -> this.startDate.minusDays(1).isBefore(ChronoLocalDate.from(x.getTimestamp())));
         }
 
         if (this.endDate != null) {
-            cashflowStream = cashflowStream.filter(x -> this.endDate.isAfter(ChronoLocalDate.from(x.getTimestamp())));
+            cashflowStream = cashflowStream.filter(x -> this.endDate.plusDays(1).isAfter(ChronoLocalDate.from(x.getTimestamp())));
         }
 
         Map<Category, BigDecimal> expensesPerCategory = new HashMap<>();
