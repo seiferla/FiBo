@@ -87,7 +87,6 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
         Map<Category, BigDecimal> expensesPerCategory = new HashMap<>();
 
         for (Cashflow cashflow : cashflows) {
-            // TODO: Check whether cashflow is inside the timespan
             if (null != this.startDate && this.startDate.isAfter(ChronoLocalDate.from(cashflow.getTimestamp()))) {
                 continue;
             }
