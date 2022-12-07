@@ -19,6 +19,7 @@ import de.dhbw.ka.se.fibo.databinding.FragmentHomeBinding;
 import de.dhbw.ka.se.fibo.models.Cashflow;
 import de.dhbw.ka.se.fibo.models.CashflowType;
 import de.dhbw.ka.se.fibo.models.Category;
+import de.dhbw.ka.se.fibo.models.Place;
 
 public class HomeFragment extends Fragment {
 
@@ -48,9 +49,9 @@ public class HomeFragment extends Fragment {
     }
 
     private void initializeData() {
-        arrayList.add(new Cashflow(Category.RESTAURANT, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "dm"));
-        arrayList.add(new Cashflow(Category.HEALTH, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "lidl"));
-        arrayList.add(new Cashflow(Category.SOCIALLIFE, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), new Date(), "kaufland"));
+        arrayList.add(new Cashflow(Category.RESTAURANT, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), new Place("dm", 124, "am dm-platz")));
+        arrayList.add(new Cashflow(Category.HEALTH, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), new Place("kaufland", 243, "Kaufplatz")));
+        arrayList.add(new Cashflow(Category.EDUCATION, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), new Date(), new Place("lidl", 342, "lidlplatz")));
 
     }
 
