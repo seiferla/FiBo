@@ -2,16 +2,17 @@ package de.dhbw.ka.se.fibo.models;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Cashflow {
     private CashflowType type;
     private BigDecimal overallValue;
-    private Date timestamp;
+    private LocalDateTime timestamp;
     private String name;
     private Category category;
 
-    public Cashflow(Category category, CashflowType type, BigDecimal overallValue, Date timestamp, String name) {
+    public Cashflow(Category category, CashflowType type, BigDecimal overallValue, LocalDateTime timestamp, String name) {
         this.setType(type);
         this.setOverallValue(overallValue);
         this.setTimestamp(timestamp);
@@ -52,11 +53,11 @@ public class Cashflow {
         this.overallValue = overallValue.setScale(2, RoundingMode.HALF_UP);
     }
 
-    public Date getTimestamp() {
+    public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
+    public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
 }
