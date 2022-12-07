@@ -38,6 +38,8 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.SortedSet;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import de.dhbw.ka.se.fibo.ApplicationState;
 import de.dhbw.ka.se.fibo.R;
@@ -84,16 +86,19 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
         Context context = requireContext();
         SortedSet<Cashflow> cashflows = ApplicationState.getInstance(context).getCashflows();
 
+        Stream<Cashflow> cashflowStream = cashflows.stream();
+
+        if (this.startDate != null) {
+            cashflowStream = cashflowStream.filter(x -> this.startDate.isBefore(ChronoLocalDate.from(x.getTimestamp())));
+        }
+
+        if (this.endDate != null) {
+            cashflowStream = cashflowStream.filter(x -> this.endDate.isAfter(ChronoLocalDate.from(x.getTimestamp())));
+        }
+
         Map<Category, BigDecimal> expensesPerCategory = new HashMap<>();
 
-        for (Cashflow cashflow : cashflows) {
-            if (null != this.startDate && this.startDate.isAfter(ChronoLocalDate.from(cashflow.getTimestamp()))) {
-                continue;
-            }
-            if (null != this.endDate && this.endDate.isBefore(ChronoLocalDate.from(cashflow.getTimestamp()))) {
-                continue;
-            }
-
+        for (Cashflow cashflow : cashflowStream.collect(Collectors.toList())) {
             Category category = cashflow.getCategory();
 
             BigDecimal newValue = expensesPerCategory
