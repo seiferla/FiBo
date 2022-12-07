@@ -14,8 +14,10 @@ import java.math.BigDecimal;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.SortedSet;
 
 import de.dhbw.ka.se.fibo.Helpers;
 import de.dhbw.ka.se.fibo.R;
@@ -27,9 +29,9 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
     private List<Cashflow> cashflowArrayList;
     private Context context;
 
-    public ListAdapter(Context context, List<Cashflow> cashflowArrayList) {
+    public ListAdapter(Context context, SortedSet<Cashflow> cashflowArrayList) {
         setHasStableIds(true);
-        this.cashflowArrayList = cashflowArrayList;
+        this.cashflowArrayList = new ArrayList<>(cashflowArrayList);
         this.context = context;
     }
 
@@ -73,7 +75,6 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
     }
 
     private Cashflow getItem(int position) {
-
         return cashflowArrayList.get(position);
     }
 

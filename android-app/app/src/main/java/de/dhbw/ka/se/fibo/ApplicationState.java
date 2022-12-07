@@ -10,6 +10,8 @@ import java.time.chrono.ChronoLocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import de.dhbw.ka.se.fibo.models.Cashflow;
 import de.dhbw.ka.se.fibo.models.CashflowType;
@@ -19,7 +21,7 @@ public class ApplicationState {
 
     private final Context context;
     private static ApplicationState instance;
-    private List<Cashflow> cashflows;
+    private SortedSet<Cashflow> cashflows;
 
 
     private ApplicationState(Context context) {
@@ -27,11 +29,11 @@ public class ApplicationState {
 
         this.context = context;
 
-        cashflows = new ArrayList<>();
+        cashflows = new TreeSet<>();
         cashflows.add(new Cashflow(Category.RESTAURANT, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), LocalDateTime.now(), "dm"));
-        cashflows.add(new Cashflow(Category.HEALTH, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), LocalDateTime.now(), "lidl"));
-        cashflows.add(new Cashflow(Category.SOCIALLIFE, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now(), "kaufland"));
-        cashflows.add(new Cashflow(Category.CULTURE, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now(), "kaufland"));
+        cashflows.add(new Cashflow(Category.HEALTH, CashflowType.EXPENSE, BigDecimal.valueOf(12.5), LocalDateTime.now().minusDays(5), "lidl"));
+        cashflows.add(new Cashflow(Category.SOCIALLIFE, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(2), "Club"));
+        cashflows.add(new Cashflow(Category.CULTURE, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(1), "ZKM"));
     }
 
     public static ApplicationState getInstance(Context context) {
@@ -41,7 +43,7 @@ public class ApplicationState {
         return ApplicationState.instance;
     }
 
-    public List<Cashflow> getCashflows() {
+    public SortedSet<Cashflow> getCashflows() {
         Log.v("FiBo", "ApplicationState#getCashflows()");
 
         return cashflows;

@@ -35,9 +35,9 @@ import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.SortedSet;
 
 import de.dhbw.ka.se.fibo.ApplicationState;
 import de.dhbw.ka.se.fibo.R;
@@ -82,7 +82,7 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
 
     private void initializePieChart(View root) {
         Context context = requireContext();
-        List<Cashflow> cashflows = ApplicationState.getInstance(context).getCashflows();
+        SortedSet<Cashflow> cashflows = ApplicationState.getInstance(context).getCashflows();
 
         Map<Category, BigDecimal> expensesPerCategory = new HashMap<>();
 
@@ -102,6 +102,8 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
 
             expensesPerCategory.put(category, newValue);
         }
+
+        // TODO: Check whether we have no data in the selected timespan
 
         ArrayList<PieEntry> entries = new ArrayList<>();
         int[] colors = new int[expensesPerCategory.size()];
@@ -152,10 +154,10 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
             DateTimeFormatterBuilder builder = new DateTimeFormatterBuilder()
                     .padNext(2, '0')
                     .appendValue(ChronoField.DAY_OF_MONTH)
-                    .appendLiteral(".")
+                    .appendLiteral('.')
                     .padNext(2, '0')
                     .appendValue(ChronoField.MONTH_OF_YEAR)
-                    .appendLiteral(".");
+                    .appendLiteral('.');
 
             if (this.startDate.getYear() != this.endDate.getYear()) {
                 builder = builder.appendValue(ChronoField.YEAR);
@@ -174,11 +176,21 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
     }
 
     private void createDatePicker(View root) {
+        Cashflow firstCashflow = ApplicationState.getInstance(root.getContext()).getCashflows().first();
+        Cashflow lastCashflow = ApplicationState.getInstance(root.getContext()).getCashflows().last();
+
+        CalendarConstraints.Builder builder = new CalendarConstraints.Builder();
+        if (null != firstCashflow) {
+            builder.setStart(firstCashflow.getTimestamp().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
+        }
+        if (null != lastCashflow) {
+            builder.setEnd(lastCashflow.getTimestamp().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
+        }
+
         picker = MaterialDatePicker.Builder
                 .dateRangePicker()
                 .setTitleText(R.string.datePickerTitle)
-                // TODO: Add calendar constraints
-                .setCalendarConstraints(new CalendarConstraints.Builder().build())
+                .setCalendarConstraints(builder.build())
                 .build();
 
         picker.addOnPositiveButtonClickListener(e -> {

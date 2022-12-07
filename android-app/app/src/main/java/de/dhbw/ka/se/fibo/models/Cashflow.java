@@ -5,7 +5,7 @@ import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-public class Cashflow {
+public class Cashflow implements Comparable<Cashflow> {
     private CashflowType type;
     private BigDecimal overallValue;
     private LocalDateTime timestamp;
@@ -59,5 +59,11 @@ public class Cashflow {
 
     public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
+    }
+
+    @Override
+    public int compareTo(Cashflow other) {
+        // It is a Public API that it is sorted ASC
+        return this.getTimestamp().compareTo(other.getTimestamp());
     }
 }
