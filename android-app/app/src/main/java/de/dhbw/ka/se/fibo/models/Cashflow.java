@@ -63,7 +63,7 @@ public class Cashflow implements Comparable<Cashflow> {
 
     @Override
     public int compareTo(Cashflow other) {
-        // It is a Public API that it is sorted ASC
-        return this.getTimestamp().compareTo(other.getTimestamp());
+        // It is a Public API that it is sorted DESC
+        return other.getTimestamp().compareTo(this.getTimestamp());
     }
 }
