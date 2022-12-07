@@ -66,4 +66,15 @@ public class Cashflow implements Comparable<Cashflow> {
         // It is a Public API that it is sorted DESC
         return other.getTimestamp().compareTo(this.getTimestamp());
     }
+
+    @Override
+    public String toString() {
+        return "Cashflow{" +
+            "type=" + type +
+            ", overallValue=" + overallValue +
+            ", timestamp=" + timestamp +
+            ", name='" + name + '\'' +
+            ", category=" + category +
+            '}';
+    }
 }

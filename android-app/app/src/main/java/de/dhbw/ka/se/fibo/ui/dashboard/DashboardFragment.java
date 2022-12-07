@@ -181,26 +181,31 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
     }
 
     private void createDatePicker(View root) {
-        SortedSet<Cashflow> cashflows = ApplicationState.getInstance(root.getContext()).getCashflows();
-        Cashflow firstCashflow = cashflows.first();
-        Cashflow lastCashflow = cashflows.last();
+        SortedSet<Cashflow> cashflows = ApplicationState.getInstance(root.getContext())
+            .getCashflows();
+        Cashflow newestCashflow = cashflows.first();
+        Cashflow oldestCashflow = cashflows.last();
 
         CalendarConstraints.Builder builder = new CalendarConstraints.Builder();
-        if (null != firstCashflow) {
-            builder.setStart(firstCashflow.getTimestamp().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
+        if (null != oldestCashflow) {
+            builder.setStart(
+                oldestCashflow.getTimestamp().atZone(ZoneId.systemDefault()).toInstant()
+                    .toEpochMilli());
         }
-        if (null != lastCashflow) {
-            builder.setEnd(lastCashflow.getTimestamp().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
+        if (null != newestCashflow) {
+            builder.setEnd(newestCashflow.getTimestamp().atZone(ZoneId.systemDefault()).toInstant()
+                .toEpochMilli());
         }
 
         picker = MaterialDatePicker.Builder
-                .dateRangePicker()
-                .setTitleText(R.string.datePickerTitle)
-                .setCalendarConstraints(builder.build())
-                .build();
+            .dateRangePicker()
+            .setTitleText(R.string.datePickerTitle)
+            .setCalendarConstraints(builder.build())
+            .build();
 
         picker.addOnPositiveButtonClickListener(e -> {
-            this.startDate = Instant.ofEpochMilli(e.first).atZone(ZoneId.systemDefault()).toLocalDate();
+            this.startDate = Instant.ofEpochMilli(e.first).atZone(ZoneId.systemDefault())
+                .toLocalDate();
             this.endDate = Instant.ofEpochMilli(e.second).atZone(ZoneId.systemDefault()).toLocalDate();
 
             this.setDateCardTime();
