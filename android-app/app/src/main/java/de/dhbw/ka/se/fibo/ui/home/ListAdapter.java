@@ -45,7 +45,7 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
         CashflowType cashflowType = cashflow.getType();
         BigDecimal overallValue = cashflow.getOverallValue();
 
-        holder.cardTitle.setText(cashflow.getName());
+        holder.cardTitle.setText(cashflow.getPlace().getName());
         holder.cardTitle.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         holder.imageView.setText(String.valueOf(context.getResources().getText(cashflow.getCategory().getName())).substring(0, 1));
         holder.cashFlowValue.setText(cashflowType.getSign() + Helpers.formatBigDecimalCurrency(overallValue));

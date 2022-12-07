@@ -8,17 +8,25 @@ public class Cashflow {
     private CashflowType type;
     private BigDecimal overallValue;
     private Date timestamp;
-    private String name;
     private Category category;
+    private Place place;
 
-    public Cashflow(Category category, CashflowType type, BigDecimal overallValue, Date timestamp, String name) {
+    public Cashflow(Category category, CashflowType type, BigDecimal overallValue, Date timestamp, Place place) {
         this.setType(type);
         this.setOverallValue(overallValue);
         this.setTimestamp(timestamp);
-        this.setName(name);
         this.category = category;
+        this.place = place;
+
     }
 
+    public Place getPlace() {
+        return place;
+    }
+
+    public void setPlace(Place place) {
+        this.place = place;
+    }
 
     public Category getCategory() {
         return category;
@@ -26,14 +34,6 @@ public class Cashflow {
 
     public void setCategory(Category category) {
         this.category = category;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public CashflowType getType() {
