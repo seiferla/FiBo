@@ -8,7 +8,7 @@ Envisioned scanning receipts
 
 Every user should be able to add data of a receipt using their camera. The data the mechanism has to automatically gather is the following:
 
-- store (optional, best-effort basis)
+- store
 - price
 - date
 - category
