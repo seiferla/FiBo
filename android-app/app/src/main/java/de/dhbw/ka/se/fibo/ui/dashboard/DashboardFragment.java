@@ -181,8 +181,9 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
     }
 
     private void createDatePicker(View root) {
-        Cashflow firstCashflow = ApplicationState.getInstance(root.getContext()).getCashflows().first();
-        Cashflow lastCashflow = ApplicationState.getInstance(root.getContext()).getCashflows().last();
+        SortedSet<Cashflow> cashflows = ApplicationState.getInstance(root.getContext()).getCashflows();
+        Cashflow firstCashflow = cashflows.first();
+        Cashflow lastCashflow = cashflows.last();
 
         CalendarConstraints.Builder builder = new CalendarConstraints.Builder();
         if (null != firstCashflow) {
