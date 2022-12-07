@@ -42,7 +42,7 @@ public class AddingFragment extends Fragment {
         View view = binding.getRoot();
         ImageButton datePickerButton = binding.datePickerButton;
         createDatePicker();
-        binding.dateTextfield.setEnabled(false);
+        binding.dateTextField.setEnabled(false);
         datePickerButton.setOnClickListener(v -> datePicker.show(requireActivity().getSupportFragmentManager(), "datePick"));
         return view;
     }
@@ -55,7 +55,7 @@ public class AddingFragment extends Fragment {
             @Override
             public void onPositiveButtonClick(Long selection) {
                 Format formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMANY);
-                binding.dateTextfield.setText(formatter.format(selection));
+                binding.dateTextField.setText(formatter.format(selection));
             }
         });
     }
