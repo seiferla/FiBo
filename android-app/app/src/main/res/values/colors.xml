@@ -27,4 +27,6 @@
   <color name="initial_background">#143166</color>
   <color name="iconColor">#FF000000</color>
   <color name="FAB_color">#B6CBF2</color>
+
+  <color name="mockup_purple">#6750A4</color>
 </resources>

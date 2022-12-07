@@ -34,7 +34,12 @@
     <style name="Theme.FiBo.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="Theme.FiBo.TextView" parent="android:Widget.TextView">
-        <item name="android:textColor">#6750A4</item>
+        <item name="android:textColor">@color/mockup_purple</item>
+    </style>
+
+    <style name="Theme.FiBo.TabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabTextColor">@color/mockup_purple</item>
+        <item name="tabIndicatorColor">@color/mockup_purple</item>
     </style>
 
 </resources>
