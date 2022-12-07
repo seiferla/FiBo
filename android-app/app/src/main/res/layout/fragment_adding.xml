@@ -232,26 +232,40 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <ImageButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/document_button"
+            style="@style/Theme.FiBo.Button.Border"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:clickable="true"
-            android:contentDescription="Bla"
-            android:focusable="true"
+
             android:layout_marginStart="6dp"
-            android:scaleX="1.5"
-            android:scaleY="1.5"
-            android:background="@drawable/button_border"
-            android:src="@drawable/ic_document_purple"
+            android:clickable="true"
+            android:contentDescription="@string/add_attachments_button"
+
+            android:focusable="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/category_textInput"
-            app:layout_constraintTop_toTopOf="@id/category_textInput" />
+            app:layout_constraintTop_toTopOf="@id/category_textInput">
 
+        </com.google.android.material.button.MaterialButton>
+
+
+        <ImageView
+            android:id="@+id/documentImageView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/add_attachments_icon"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_document"
+            app:layout_constraintBottom_toBottomOf="@id/document_button"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="@+id/document_button"
+            app:layout_constraintStart_toStartOf="@+id/document_button"
+            app:layout_constraintTop_toTopOf="@+id/document_button">
+
+
+        </ImageView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

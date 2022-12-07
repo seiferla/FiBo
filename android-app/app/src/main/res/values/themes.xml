@@ -34,12 +34,18 @@
     <style name="Theme.FiBo.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="Theme.FiBo.TextView" parent="android:Widget.TextView">
-        <item name="android:textColor">@color/mockup_purple</item>
+        <item name="android:textColor">@color/hint_text_blue</item>
     </style>
 
     <style name="Theme.FiBo.TabLayout" parent="Widget.Design.TabLayout">
-        <item name="tabTextColor">@color/mockup_purple</item>
-        <item name="tabIndicatorColor">@color/mockup_purple</item>
+        <item name="tabTextColor">@color/hint_text_blue</item>
+        <item name="tabIndicatorColor">@color/hint_text_blue</item>
+    </style>
+
+    <style name="Theme.FiBo.Button.Border" parent="@style/Widget.Material3.Button.IconButton.Outlined">
+        <item name="strokeColor">@color/hint_text_blue</item>
+        <item name="strokeWidth">1.5dp</item>
+        <item name="cornerRadius">6dp</item>
     </style>
 
 </resources>
