@@ -19,7 +19,8 @@
             android:id="@+id/expense_radiobutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/adding_expense" />
+            android:text="@string/adding_expense"
+             />
 
         <RadioButton
             android:id="@+id/income_radiobutton"
@@ -34,7 +35,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_radioGroup">
+        app:layout_constraintTop_toBottomOf="@+id/top_radioGroup"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp">
 
         <TextView
             android:id="@+id/store_textView"
@@ -42,6 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/adding_store"
+            style="@style/Theme.FiBo.TextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteY="61dp" />
@@ -70,25 +75,27 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstLine_constraintLayout">
+        app:layout_constraintTop_toBottomOf="@+id/firstLine_constraintLayout"
+        android:layout_margin="20dp" >
 
         <TextView
             android:id="@+id/amount_textView"
+            style="@style/Theme.FiBo.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/adding_amount"
-            tools:layout_editor_absoluteY="61dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/amount_textInput"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingEnd="12dp"
-            app:layout_constraintEnd_toStartOf="@+id/date_textInput"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/amount_textView">
+            app:layout_constraintEnd_toStartOf="@+id/date_textDate"
+            app:layout_constraintTop_toBottomOf="@id/amount_textView"
+            app:layout_constraintBottom_toBottomOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -99,43 +106,45 @@
 
         <TextView
             android:id="@+id/date_textView"
+            style="@style/Theme.FiBo.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/adding_date"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="@id/date_textInput" />
+            app:layout_constraintStart_toStartOf="@id/date_textDate"
+            app:layout_constraintTop_toTopOf="parent" />
 
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/date_textInput"
+        <EditText
+            android:id="@+id/date_textDate"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:ems="10"
+            android:inputType="date"
+            android:hint="hint"
+            app:layout_constraintBottom_toBottomOf="@+id/amount_textInput"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/amount_textInput"
-            app:layout_constraintTop_toBottomOf="@id/date_textView">
+            app:layout_constraintTop_toTopOf="@id/amount_textInput" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="hint" />
-        </com.google.android.material.textfield.TextInputLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/thirdLine_constraintLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/secondLine_constraintLayout">
 
         <TextView
             android:id="@+id/category_textView"
+            style="@style/Theme.FiBo.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/adding_category"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/category_textInput"
@@ -170,7 +179,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/thirdLine_constraintLayout">
+        app:layout_constraintTop_toBottomOf="@+id/thirdLine_constraintLayout"
+        android:layout_margin="20dp">
 
 
         <TextView
@@ -178,11 +188,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/adding_notes"
+            style="@style/Theme.FiBo.TextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/notes_mulitLine"
+            android:id="@+id/notes_multiLine"
             android:layout_width="0dp"
             android:layout_height="128sp"
             android:ems="10"
