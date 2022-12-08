@@ -38,9 +38,10 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
 
-        View view = inflater.from(getContext()).inflate(R.layout.fragment_home, container, false);
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
 
-        recyclerView = view.findViewById(R.id.recyclerview);
+        recyclerView = binding.recyclerview;
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(new ListAdapter(getContext(), arrayList));
