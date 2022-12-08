@@ -63,7 +63,7 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
 
     //Todo implement method
     private void openDetailsPage(MaterialCardView materialCardView, Cashflow cashflow, int position) {
-       Toast.makeText(context, position + ". " + cashflow.getPlace().getName() + " " + cashflow.getType().getSign() + cashflow.getOverallValue(), Toast.LENGTH_SHORT).show();
+       Toast.makeText(context, position + ". " + cashflow.getPlace().getName() + " " + cashflow.getType().getSign() + cashflow.getOverallValue() +"€", Toast.LENGTH_SHORT).show();
     }
 
     @Override
