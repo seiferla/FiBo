@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 import de.dhbw.ka.se.fibo.R;
 import de.dhbw.ka.se.fibo.databinding.FragmentHomeBinding;
@@ -48,7 +49,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
         Drawable verticalDivider = ContextCompat.getDrawable(requireContext(), R.drawable.card_divider);
-        dividerItemDecoration.setDrawable(verticalDivider);
+        dividerItemDecoration.setDrawable(Objects.requireNonNull(verticalDivider));
         recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(new ListAdapter(getContext(), arrayList));
