@@ -128,10 +128,12 @@ Until the end of December we plan to implement:
 
 - [3.1.1 Create Account](#311-create-account)
 - [3.1.2 Logging in](#312-logging-in)
-- [3.1.3 Logging out](#313-logging-out)
+- [3.1.3 Change added data](#313-change-added-data)
 - [3.1.4 Manual adding of data](#314-manual-adding-of-data)
 - [3.1.5 Show data in a dashboard](#315-show-data-in-a-dashboard)
 - [3.1.6 Evaluate scanning receipts](#316-evaluate-scanning-receipts)
+- [3.1.7 Logging out](#317-logging-out)
+
 
 #### 3.1.1 Create account
 
