@@ -25,8 +25,4 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         date = itemView.findViewById(R.id.date);
         cashFlowValue = itemView.findViewById(R.id.cashFlowValue);
     }
-
-    public void openDetails(){
-
-    }
 }
