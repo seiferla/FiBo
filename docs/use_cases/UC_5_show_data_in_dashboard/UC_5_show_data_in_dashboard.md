@@ -16,22 +16,22 @@ per category depending on period
 
 ## 2.1 Basic Flow
 
-- User clicks on "New receipt" button. A menu opens.
-- User selects "Add manually" button
-- Inside the app a new page with a form is shown
-- User can fill out the form
-- Data gets checked for a valid format
-- If the format is not valid an error message will pop up and the User will be returned to the form. Otherwise, the data will be processed, categorized and added to the history.
+- User clicks on dashboard
+- User selects a specific time slot
+  Data gets checked for availability depending on the time period
+- If more than one cash flow of a category is available, the value is summed up
 - The Dashboard will be updated
-- Finally, the user is shown a success message
 
 ### 2.1.1 Activity Diagram
 
-![Manual adding of data Activity Diagram](./manual_adding_of_data_updated.drawio.svg)
+![show_dashboard_data Activity Diagram](show_dashboard.drawio.svg)
 
 ### 2.1.2 Mock-up
 
-![Home](../home_menu.png)
+![dashboard](../UC_5_show_data_in_dashboard/dashboard.png)
+![dashboard](../UC_5_show_data_in_dashboard/dashboard_zeitraum.png)
+
+
 
 
 ### 2.1.3 Narrative
