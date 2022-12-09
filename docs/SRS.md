@@ -147,10 +147,11 @@ The app will provide the possibility to register and log in. This will also make
 [Logging in](./use_cases/UC_2_login_account/UC_2_login_account.md)
 
 
-#### 3.1.3 Logging out
+#### 3.1.3 Change added data
 
-In case you share your phone, have multiple accounts or just want to be cautious about your privacy you should be able to manually log out.
+In case you want to change data in the cashflows, you should be able to edit the data with a simple click on the respective item.
 
+[Change added data](./use_cases/UC_3_change_added_data/UC_3_change_added_data.md)
 
 #### 3.1.4 Manual adding of data
 
@@ -162,7 +163,7 @@ This is one of the essentials of our project. The user gets the possibility to m
 
 All the different kinds of data our users feed us with should be displayed graphically. At this point in time, it must not be user-configurable, yet still showing the most important pieces of information at a breeze.
 
-[Show data in dashboard](./use_cases/UC_5_show_data_in_dashboard)
+[Show data in dashboard](./use_cases/UC_5_show_data_in_dashboard/UC_5_show_data_in_dashboard.md)
 
 
 #### 3.1.6 Evaluate scanning receipts
@@ -170,6 +171,15 @@ All the different kinds of data our users feed us with should be displayed graph
 We want to get a clear view on technologies that enable us to automatically scan receipts with high confidence. Until December, we should have some first pointers and have built an initial understanding on how to tackle this feature.
 
 [Evaluate scanning receipts](./use_cases/UC_6_evaluate_scanning_receipts/UC_6_evaluate_scanning_receipts.md)
+
+#### 3.1.7 Logging out
+
+In case you share your phone, have multiple accounts or just want to be cautious about your privacy you should be able to manually log out.
+
+[Logging out](./use_cases/UC_4_manual_adding_of_data/UC_4_manual_adding_of_data.md)
+
+
+
 
 ### 3.2 Usability
 
