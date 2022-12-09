@@ -37,45 +37,23 @@ per category depending on period
 ### 2.1.3 Narrative
 
 ```gherkin
-Feature: manual adding of data
+Feature: show data in dashboard
 
-  As a signed in user
-  I want to add a receipt by manually entering the data
-  in order to track my spent money.
+  As a signed-in user
+  I want to display the summed cash flows 
+  in a pie chart 
+  depending on a time window and category
 
   Background:
-    And I am on the homepage
+    And I am on the dashboard
 
-  Scenario: open new "manual adding of data" form
+  Scenario: show cash flow data depending on time slot
     Given I am signed in with username "USER" and password "PASSWORD"
-    And I am on the "home" page
-    When I press the "New receipt" button
-    Then I see two additional buttons "Add manually" and "Scan receipt" fade in
-    When I press the "Add manually" button
-    Then I am on the "manual adding of data" form
+    And I am on the "dashboard" page
+    When I select a specific time slot
+    Then I click the save button
+    Then I see a updated pie chart with different colors depending on the category and time slot
 
-  Scenario: enter valid data and save it
-    Given I am signed in with username "USER" and password "PASSWORD"
-    And I am at the "manual adding of data" form
-    When I enter "store xy" in the field "Store"
-    And I enter "x€" in the field "Price"
-    And I enter "DD/MM/YYYY" in the field "Date"
-    And I enter "category xy" in the field "Category"
-    And I add a file to the form
-    And I enter "note xy" in the field "Notes"
-    When I press the "save" button
-    Then I am on the "home" page
-    And I receive a "success" message
-
-  Scenario: enter invalid data and save the operation
-    Given I am signed in with username "USER" and password "PASSWORD"
-    And I am at the "manual adding of data" form
-    When I enter "x€" in the field "Store"
-    And I enter "store xy" in the field "Price"
-    And I enter "DD/MM/YYYY" in the field "Date"
-    And I press the "save" button
-    Then I am at the "manual adding of data" form
-    And I receive a "error" message
 ```
 
 ## 2.2 Alternative Flows
