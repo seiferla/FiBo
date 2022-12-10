@@ -28,11 +28,11 @@ The following data can be customized by the user:
 - Finally, the user is shown a success message
 
 ### 2.1.1 Activity Diagram
-![Change_added_data_Activity_Diagram](change_added_data_diagram.svg)
+![Change_added_data_Activity_Diagram](change_added_data.drawio.svg)
 
 
 ### 2.1.2 Mock-up
-![Change_added_data_Activity_Diagram](../UC_4_manual_adding_of_data/home_menu.png)
+![Change_added_data_Activity_Diagram](../home_menu.png)
 
 ![Change_added_data_Activity_Diagram](../UC_4_manual_adding_of_data/add_expense.png)
 
