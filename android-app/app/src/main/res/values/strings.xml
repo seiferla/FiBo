@@ -23,7 +23,7 @@
     <string name="adding_expense">Ausgabe</string>
     <string name="adding_income">Einnahme</string>
     <string name="adding_store">Erworben bei</string>
-    <string name="adding_amount">Betrag</string>
+    <string name="adding_amount">Betrag (€)</string>
     <string name="adding_date">Datum</string>
     <string name="adding_category">Kategorie</string>
     <string name="adding_notes">Notizen</string>
@@ -74,4 +74,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="add_attachments_icon">Anhänge hinzufügen Icon</string>
     <string name="add_attachments_button">Anhänge hinzufügen Button</string>
+    <string name="saveButton">Speichern</string>
+    <string name="cancelButton">Abbruch</string>
+    <string name="place">Geschäft</string>
 </resources>
