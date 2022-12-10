@@ -30,4 +30,7 @@
 
     <!--  <color name="mockup_purple">#6750A4</color>-->
     <color name="hint_text_blue">#12598F</color>
+    <color name="light_primary">#C8E6FA</color>
+    <color name="application_background">#FEFAFD</color>
+    <color name="field_stroke_color">#CCCCCC</color>
 </resources>
