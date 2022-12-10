@@ -213,7 +213,10 @@ public class AddingFragment extends Fragment {
 
     private void createDatePicker() {
         datePicker = MaterialDatePicker.Builder.datePicker()
-                .setTitleText("Select date")
+                .setTitleText(R.string.selectDate)
+                .setNegativeButtonText(R.string.datePickerNegativeButtonText)
+                .setPositiveButtonText(R.string.DatePickerPositiveButtonText)
+                .setSelection(new Date().toInstant().toEpochMilli())
                 .build();
         datePicker.addOnPositiveButtonClickListener(selection -> {
             Format formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMANY);

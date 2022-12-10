@@ -75,6 +75,9 @@
     <string name="add_attachments_icon">Anhänge hinzufügen Icon</string>
     <string name="add_attachments_button">Anhänge hinzufügen Button</string>
     <string name="saveButton">Speichern</string>
-    <string name="cancelButton">Abbruch</string>
+    <string name="cancelButton">Abbrechen</string>
     <string name="place">Geschäft</string>
+    <string name="selectDate">Datum auswählen</string>
+    <string name="DatePickerPositiveButtonText">OK</string>
+    <string name="datePickerNegativeButtonText">Abbrechen</string>
 </resources>
