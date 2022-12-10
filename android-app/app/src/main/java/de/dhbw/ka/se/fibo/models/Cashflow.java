@@ -59,4 +59,15 @@ public class Cashflow {
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
+
+    @Override
+    public String toString() {
+        return "Cashflow{" +
+                "type=" + type +
+                ", overallValue=" + overallValue +
+                ", timestamp=" + timestamp +
+                ", name='" + name + '\'' +
+                ", category=" + category +
+                '}';
+    }
 }
