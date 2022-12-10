@@ -5,14 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         style="@style/Theme.FiBo.TabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -32,40 +31,28 @@
         android:id="@+id/firstLine_constraintLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout">
+        app:layout_constraintTop_toBottomOf="@id/tabLayout">
 
-        <TextView
-            android:id="@+id/store_textView"
-            style="@style/Theme.FiBo.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/adding_store"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteY="61dp" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/store_textInput"
+            android:id="@+id/store_text_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            app:hintEnabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/store_textView">
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/store_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Geschäft" />
+                android:hint="@string/place" />
 
         </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -75,65 +62,51 @@
         android:id="@+id/secondLine_constraintLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/firstLine_constraintLayout">
 
-        <TextView
-            android:id="@+id/amount_textView"
-            style="@style/Theme.FiBo.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/adding_amount"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/amount_textInput"
+            android:id="@+id/amount_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:paddingEnd="6dp"
             app:hintEnabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/date_textDate"
+            app:layout_constraintEnd_toStartOf="@+id/value_and_date_layout"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/amount_textView">
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/amount_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Betrag"
-                android:inputType="numberDecimal" />
+                android:digits="0123456789,.€"
+                android:hint="@string/adding_amount"
+                android:inputType="numberDecimal"
+                android:textColor="@color/green" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/date_textView"
-            style="@style/Theme.FiBo.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:text="@string/adding_date"
-            app:layout_constraintStart_toStartOf="@id/date_textDate"
-            app:layout_constraintTop_toTopOf="parent" />
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/date_textDate"
+            android:id="@+id/value_and_date_layout"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/amount_textInput"
-            app:layout_constraintTop_toTopOf="@id/amount_textInput">
+            app:layout_constraintStart_toEndOf="@id/amount_layout"
+            app:layout_constraintTop_toTopOf="@id/amount_layout">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/date_textInput"
+
+                android:id="@+id/date_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/datePickerButton"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="0dp"
                 android:paddingStart="6dp"
@@ -144,10 +117,12 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/dateTextField"
+                    android:id="@+id/date_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="07.12.2022" />
+                    android:hint="@string/adding_date" />
+
+
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -172,35 +147,30 @@
         android:id="@+id/thirdLine_constraintLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/secondLine_constraintLayout">
 
-        <TextView
-            android:id="@+id/category_textView"
-            style="@style/Theme.FiBo.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/adding_category"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/category_textInput"
+            android:id="@+id/category_layout"
+            style="@style/Style.FiBo.Dropdown"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:layout_marginEnd="6dp"
-            app:hintEnabled="false"
             app:layout_constraintEnd_toStartOf="@+id/document_button"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/category_textView">
+            app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/category_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Kategorie" />
+                android:hint="@string/adding_category"
+                android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -217,8 +187,8 @@
             android:focusable="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/category_textInput"
-            app:layout_constraintTop_toTopOf="@id/category_textInput">
+            app:layout_constraintStart_toEndOf="@+id/category_layout"
+            app:layout_constraintTop_toTopOf="@id/category_layout">
 
         </com.google.android.material.button.MaterialButton>
 
@@ -244,28 +214,20 @@
         android:id="@+id/fourthLine_constraintLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/thirdLine_constraintLayout">
 
 
-        <TextView
-            android:id="@+id/notes_textView"
-            style="@style/Theme.FiBo.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/adding_notes"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <EditText
             android:id="@+id/notes_multiLine"
             android:layout_width="0dp"
             android:layout_height="128sp"
-            android:ems="10"
             android:gravity="start|top"
-            android:hint="Weitere Notizen"
+            android:hint="@string/adding_notes"
             android:inputType="textMultiLine"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
