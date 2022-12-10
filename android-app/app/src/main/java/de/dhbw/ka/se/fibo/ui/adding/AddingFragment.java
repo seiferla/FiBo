@@ -190,6 +190,7 @@ public class AddingFragment extends Fragment {
 
     private void setUpDateTextField() {
         dateText.setEnabled(false);
+        dateText.setTextColor(requireContext().getColor(R.color.mainTextColor));
         binding.dateLayout.setEndIconOnClickListener(v -> datePicker.show(requireActivity().getSupportFragmentManager(), "datePick"));
     }
 
