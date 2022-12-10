@@ -2,8 +2,10 @@
     <!-- Base application theme. -->
     <style name="Theme.FiBo" parent="Theme.Material3.DayNight">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#D4E3FF</item>
-        <item name="colorPrimaryVariant">#1E92EA</item>
+        <!--        <item name="colorPrimary">#D4E3FF</item>-->
+        <item name="colorPrimary">#12598F</item>
+        <!--        <item name="colorPrimaryVariant">#1E92EA</item>-->
+        <item name="colorPrimaryVariant">#C8E6FA</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -15,13 +17,17 @@
     </style>
 
     <style name="Style.FiBo.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="android:color">#E1E9FA</item>
+        <item name="android:color">?attr/colorPrimaryVariant</item>
     </style>
 
     <style name="Style.FiBo.Dropdown" parent="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
         <item name="boxStrokeWidth">1dp</item>
         <item name="boxBackgroundColor">#FEFAFD</item>
+    </style>
 
+    <style name="Style.FiBo.FAB.Primary" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="backgroundTint">?attr/colorPrimary</item>
+        <item name="tint">?attr/colorOnPrimary</item>
     </style>
 
     <style name="Style.FiBo.CardView.Filled" parent="Widget.Material3.CardView.Outlined">
@@ -40,16 +46,16 @@
     <style name="Theme.FiBo.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="Theme.FiBo.TextView" parent="android:Widget.TextView">
-        <item name="android:textColor">@color/hint_text_blue</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
     </style>
 
     <style name="Theme.FiBo.TabLayout" parent="Widget.Design.TabLayout">
-        <item name="tabTextColor">@color/hint_text_blue</item>
-        <item name="tabIndicatorColor">@color/hint_text_blue</item>
+        <item name="tabTextColor">?attr/colorPrimary</item>
+        <item name="tabIndicatorColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="Theme.FiBo.Button.Border" parent="@style/Widget.Material3.Button.IconButton.Outlined">
-        <item name="strokeColor">@color/hint_text_blue</item>
+    <style name="Theme.FiBo.Button.Border" parent="@style/Widget.AppCompat.ImageButton">
+        <item name="strokeColor">?attr/colorPrimary</item>
         <item name="strokeWidth">1.5dp</item>
         <item name="cornerRadius">6dp</item>
     </style>

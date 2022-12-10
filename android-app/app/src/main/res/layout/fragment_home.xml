@@ -18,16 +18,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-      android:id="@+id/floatingButton"
-      android:layout_width="wrap_content"
-      android:layout_height="0dp"
-      android:layout_marginBottom="16dp"
-      android:layout_marginEnd="24dp"
-      android:contentDescription="Add Cashflow"
-      android:src="@drawable/home_fab_image"
-      android:clickable="true"
-      app:backgroundTint="@color/FAB_color"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      android:focusable="true" />
+        android:id="@+id/floatingButton"
+        style="@style/Style.FiBo.FAB.Primary"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:contentDescription="Add Cashflow"
+        android:focusable="true"
+        android:src="@drawable/home_fab_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
