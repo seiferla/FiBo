@@ -80,4 +80,5 @@
     <string name="selectDate">Datum auswählen</string>
     <string name="DatePickerPositiveButtonText">OK</string>
     <string name="datePickerNegativeButtonText">Abbrechen</string>
+    <string name="FAB_add_cashflow">Add Cashflow</string>
 </resources>

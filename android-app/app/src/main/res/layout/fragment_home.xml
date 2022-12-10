@@ -25,7 +25,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
         android:clickable="true"
-        android:contentDescription="Add Cashflow"
+        android:contentDescription="@string/FAB_add_cashflow"
         android:focusable="true"
         android:src="@drawable/home_fab_image"
         app:layout_constraintBottom_toBottomOf="parent"
