@@ -18,6 +18,12 @@
         <item name="android:color">#E1E9FA</item>
     </style>
 
+    <style name="Style.FiBo.Dropdown" parent="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxBackgroundColor">#FEFAFD</item>
+
+    </style>
+
     <style name="Style.FiBo.CardView.Filled" parent="Widget.Material3.CardView.Outlined">
         <item name="cardBackgroundColor">#FFFFFF</item>
         <item name="strokeColor">#CCCCCC</item>
