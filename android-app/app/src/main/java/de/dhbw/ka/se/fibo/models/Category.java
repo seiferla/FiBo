@@ -26,7 +26,6 @@ public enum Category {
     }
 
 
-
     public int getColor() {
         return color;
     }

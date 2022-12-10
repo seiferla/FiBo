@@ -6,9 +6,12 @@ import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.card.MaterialCardView;
 
 import java.math.BigDecimal;
 import java.text.Format;
@@ -40,12 +43,10 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
     }
 
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
-
         Cashflow cashflow = this.getItem(position);
         CashflowType cashflowType = cashflow.getType();
         BigDecimal overallValue = cashflow.getOverallValue();
-
-        holder.cardTitle.setText(cashflow.getName());
+        holder.cardTitle.setText(cashflow.getPlace().getName());
         holder.cardTitle.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         holder.imageView.setText(String.valueOf(context.getResources().getText(cashflow.getCategory().getName())).substring(0, 1));
         holder.cashFlowValue.setText(cashflowType.getSign() + Helpers.formatBigDecimalCurrency(overallValue));
@@ -54,7 +55,15 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
         holder.cashFlowValue.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         Format formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMANY);
         holder.date.setText(formatter.format(cashflow.getTimestamp()));
+        holder.materialCard.setOnClickListener(view -> {
+            openDetailsPage((MaterialCardView) view, cashflow, position);
+        });
 
+    }
+
+    //Todo implement method
+    private void openDetailsPage(MaterialCardView materialCardView, Cashflow cashflow, int position) {
+        Toast.makeText(context, position + ". " + cashflow.getPlace().getName() + " " + cashflow.getType().getSign() + Helpers.formatBigDecimalCurrency(cashflow.getOverallValue()), Toast.LENGTH_SHORT).show();
     }
 
     @Override
