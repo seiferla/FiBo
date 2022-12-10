@@ -42,7 +42,7 @@ Feature: show data in dashboard
   As a signed-in user
   I want to display the summed cash flows 
   in a pie chart 
-  depending on a time window and category
+  depending on a time window and seperated by category
 
   Background:
     And I am on the dashboard
@@ -54,6 +54,12 @@ Feature: show data in dashboard
     Then I click the save button
     Then I see a updated pie chart with different colors depending on the category and time slot
 
+
+  Scenario: show cash flow data without selecting a time slot
+    Given I am signed in with username "USER" and password "PASSWORD"
+    And I am on the "dashboard" page
+    When I don't select any specific time slot
+    Then I see a updated pie chart where the data is collected over the complete time
 ```
 
 ## 2.2 Alternative Flows
