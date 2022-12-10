@@ -14,6 +14,7 @@ import androidx.navigation.Navigation;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -45,7 +46,9 @@ public class AddingFragment extends Fragment {
     private MaterialAutoCompleteTextView categoriesDropdown;
     private MaterialButton cancelButton;
     private MaterialButton okayButton;
+    private TabLayout tabLayout;
 
+    private CashflowType newCashFlowType;
 
     @Nullable
     @Override
@@ -61,11 +64,44 @@ public class AddingFragment extends Fragment {
         categoriesDropdown = binding.categoryText;
         cancelButton = binding.cancel;
         okayButton = binding.okayButton;
+        tabLayout = binding.tabLayout;
+        setUpTabLayout();
         initializeButtons();
         initializeDropdownValues();
         createDatePicker();
         setUpDateTextField();
         return view;
+    }
+
+    private void setUpTabLayout() {
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                setDataWithSelectedTab(tab);
+            }
+
+            private void setDataWithSelectedTab(TabLayout.Tab tab) {
+                if (tab == binding.tabLayout.getTabAt(0)) {
+                    newCashFlowType = CashflowType.EXPENSE;
+                    binding.amountText.setTextColor(requireActivity().getColor(CashflowType.EXPENSE.getColor()));
+                } else if (tab == binding.tabLayout.getTabAt(1)) {
+                    binding.amountText.setTextColor(requireActivity().getColor(CashflowType.INCOME.getColor()));
+                    newCashFlowType = CashflowType.INCOME;
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                setDataWithSelectedTab(tab);
+            }
+        });
+        tabLayout.selectTab(tabLayout.getTabAt(0));
     }
 
     private void initializeButtons() {
@@ -89,7 +125,6 @@ public class AddingFragment extends Fragment {
     private Cashflow createCashFlow() {
         boolean isRequiredDataPresent = false;
         Category category;
-        CashflowType type;
         BigDecimal value;
         Date date;
         String place;
@@ -106,11 +141,6 @@ public class AddingFragment extends Fragment {
             }).collect(Collectors.toList());
 
             category = collect.get(0);
-            if (Objects.requireNonNull(binding.tabLayout.getTabAt(0)).isSelected()) {
-                type = CashflowType.EXPENSE;
-            } else {
-                type = CashflowType.INCOME;
-            }
 
             value = BigDecimal.valueOf(Double.parseDouble(getFieldValue(amount)));
 
@@ -120,7 +150,7 @@ public class AddingFragment extends Fragment {
             try {
                 date = format.parse(getFieldValue(dateText));
 
-                return new Cashflow(category, type, value, date, place);
+                return new Cashflow(category, newCashFlowType, value, date, place);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
