@@ -66,7 +66,7 @@ public class Cashflow {
                 "type=" + type +
                 ", overallValue=" + overallValue +
                 ", timestamp=" + timestamp +
-                ", name='" + name + '\'' +
+                ", name='" + place.getName() + '\'' +
                 ", category=" + category +
                 '}';
     }

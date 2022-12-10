@@ -34,6 +34,7 @@ import de.dhbw.ka.se.fibo.databinding.FragmentAddingBinding;
 import de.dhbw.ka.se.fibo.models.Cashflow;
 import de.dhbw.ka.se.fibo.models.CashflowType;
 import de.dhbw.ka.se.fibo.models.Category;
+import de.dhbw.ka.se.fibo.models.Place;
 
 public class AddingFragment extends Fragment {
 
@@ -127,7 +128,7 @@ public class AddingFragment extends Fragment {
         Category category;
         BigDecimal value;
         Date date;
-        String place;
+        Place place;
         try {
             isRequiredDataPresent = checkForRequiredData();
         } catch (Exception e) {
@@ -146,7 +147,9 @@ public class AddingFragment extends Fragment {
 
             SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
 
-            place = getFieldValue(store);
+            //TODO use unique PlaceID
+            //TODO let the user enter an Address
+            place = new Place("dm", 220, "Adresse xy");
             try {
                 date = format.parse(getFieldValue(dateText));
 
