@@ -46,12 +46,9 @@ public class AddingFragment extends Fragment {
         datePicker = MaterialDatePicker.Builder.datePicker()
                 .setTitleText("Select date")
                 .build();
-        datePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener<Long>() {
-            @Override
-            public void onPositiveButtonClick(Long selection) {
-                Format formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMANY);
-                binding.dateTextField.setText(formatter.format(selection));
-            }
+        datePicker.addOnPositiveButtonClickListener(selection -> {
+            Format formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMANY);
+            dateText.setText(formatter.format(selection));
         });
     }
 }
