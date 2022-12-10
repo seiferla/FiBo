@@ -55,9 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        System.out.println("Working");
         navController.popBackStack();
-
         return super.onOptionsItemSelected(item);
     }
 }
