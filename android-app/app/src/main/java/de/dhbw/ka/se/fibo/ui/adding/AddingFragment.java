@@ -31,6 +31,7 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import de.dhbw.ka.se.fibo.ApplicationState;
 import de.dhbw.ka.se.fibo.R;
 import de.dhbw.ka.se.fibo.databinding.FragmentAddingBinding;
 import de.dhbw.ka.se.fibo.models.Cashflow;
@@ -117,8 +118,8 @@ public class AddingFragment extends Fragment {
             if (null == newCashFlow) {
                 //TODO handle invalid data
             } else {
+                ApplicationState.getInstance(requireContext()).addCashFlow(newCashFlow);
                 System.out.println(newCashFlow);
-                //TODO add CashFlow to HomeFragmentList
                 navigateToHome();
             }
 
