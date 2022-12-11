@@ -68,8 +68,8 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         initializeDateCard();
-        createDatePicker(root);
-        initializePieChart(root);
+        createDatePicker();
+        initializePieChart();
 
         Duration duration = Duration.between(instant, Instant.now());
         long millis = duration.toMillis();
@@ -82,7 +82,7 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
         return root;
     }
 
-    private void initializePieChart(View root) {
+    private void initializePieChart() {
         Context context = requireContext();
         SortedSet<Cashflow> cashflows = ApplicationState.getInstance(context).getCashflows();
 
@@ -131,11 +131,11 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
 
         PieData pieData = new PieData(dataSet);
 
-        pieChart = root.findViewById(R.id.dashboard_piechart);
+        pieChart = binding.dashboardPiechart;
         pieChart.setDrawEntryLabels(false);
         pieChart.setData(pieData);
         pieChart.getDescription().setText("");
-        pieChart.setCenterTextSizePixels(12f);
+        pieChart.setCenterTextSize(12f);
         pieChart.getLegend().setTextSize(12f);
 
         pieChart.animateY(DashboardFragment.PIE_CHART_ANIMATION_DURATION, Easing.EaseInOutQuad);
@@ -149,7 +149,7 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
 
     private void setListener() {
         binding.button.setOnClickListener(
-                e -> picker.show(requireActivity().getSupportFragmentManager(), "date_pange_picker"));
+                e -> picker.show(requireActivity().getSupportFragmentManager(), "date_range_picker"));
     }
 
     private void setDateCardTime() {
@@ -180,25 +180,26 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
         binding.datePickerTitle.setText(R.string.dateCardTitle);
     }
 
-    private void createDatePicker(View root) {
-        SortedSet<Cashflow> cashflows = ApplicationState.getInstance(root.getContext())
-            .getCashflows();
-        Cashflow newestCashflow = cashflows.first();
-        Cashflow oldestCashflow = cashflows.last();
-
+    private void createDatePicker() {
+        SortedSet<Cashflow> cashflows = ApplicationState.getInstance(requireContext())
+                .getCashflows();
+        Cashflow newestCashflow = null;
+        Cashflow oldestCashflow = null;
         CalendarConstraints.Builder builder = new CalendarConstraints.Builder();
-        if (null != oldestCashflow) {
+
+        if (!cashflows.isEmpty()) {
+            newestCashflow = cashflows.first();
+            oldestCashflow = cashflows.last();
+
             builder.setStart(
-                oldestCashflow.getTimestamp().atZone(ZoneId.systemDefault()).toInstant()
-                    .toEpochMilli());
-        }
-        if (null != newestCashflow) {
+                    oldestCashflow.getTimestamp().atZone(ZoneId.systemDefault()).toInstant()
+                            .toEpochMilli());
             builder.setEnd(newestCashflow.getTimestamp().atZone(ZoneId.systemDefault()).toInstant()
-                .toEpochMilli());
+                    .toEpochMilli());
         }
 
         picker = MaterialDatePicker.Builder
-            .dateRangePicker()
+                .dateRangePicker()
             .setTitleText(R.string.datePickerTitle)
             .setCalendarConstraints(builder.build())
             .build();
@@ -211,7 +212,7 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
             this.setDateCardTime();
 
             // update pie chart to only include data in the selected timespan
-            this.initializePieChart(root);
+            this.initializePieChart();
         });
     }
 
@@ -223,13 +224,7 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
 
     @Override
     public void onValueSelected(Entry e, Highlight h) {
-        if (null == e) {
-            return;
-        }
-
-        Log.i("FiBo",
-                "Value: " + e.getY() + ", index: " + h.getX()
-                        + ", DataSet index: " + h.getDataSetIndex());
+        // noop
     }
 
     @Override

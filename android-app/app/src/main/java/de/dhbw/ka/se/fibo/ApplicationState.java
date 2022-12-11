@@ -1,15 +1,11 @@
 package de.dhbw.ka.se.fibo;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.time.chrono.ChronoLocalDate;
-import java.time.chrono.ChronoLocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -20,6 +16,7 @@ import de.dhbw.ka.se.fibo.models.Category;
 public class ApplicationState {
 
     private final Context context;
+    @SuppressLint("StaticFieldLeak")
     private static ApplicationState instance;
     private SortedSet<Cashflow> cashflows;
 
