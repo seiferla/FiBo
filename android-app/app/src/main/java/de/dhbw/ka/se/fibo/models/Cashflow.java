@@ -3,6 +3,7 @@ package de.dhbw.ka.se.fibo.models;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Cashflow implements Comparable<Cashflow> {
     private CashflowType type;
@@ -66,13 +67,26 @@ public class Cashflow implements Comparable<Cashflow> {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cashflow cashflow = (Cashflow) o;
+        return type == cashflow.type && overallValue.equals(cashflow.overallValue) && timestamp.equals(cashflow.timestamp) && category == cashflow.category && place.equals(cashflow.place);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(type, overallValue, timestamp, category, place);
+    }
+
+    @Override
     public String toString() {
         return "Cashflow{" +
-            "type=" + type +
-            ", overallValue=" + overallValue +
-            ", timestamp=" + timestamp +
-            ", category=" + category +
-            ", place=" + place +
-            '}';
+                "type=" + type +
+                ", overallValue=" + overallValue +
+                ", timestamp=" + timestamp +
+                ", category=" + category +
+                ", place=" + place +
+                '}';
     }
 }
