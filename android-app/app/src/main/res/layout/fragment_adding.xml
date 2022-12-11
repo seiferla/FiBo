@@ -10,7 +10,6 @@
         style="@style/Theme.FiBo.TabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -24,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/adding_income" />
+
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,7 +36,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tabLayout">
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/store_text_layout"
@@ -54,8 +53,8 @@
                 android:hint="@string/place" />
 
         </com.google.android.material.textfield.TextInputLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/secondLine_constraintLayout"
@@ -67,7 +66,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/firstLine_constraintLayout">
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/amount_layout"
@@ -90,7 +88,6 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/value_and_date_layout"
             android:layout_width="0dp"
@@ -101,7 +98,6 @@
             app:layout_constraintTop_toTopOf="@id/amount_layout">
 
             <com.google.android.material.textfield.TextInputLayout
-
                 android:id="@+id/date_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -121,12 +117,9 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/adding_date" />
 
-
             </com.google.android.material.textfield.TextInputLayout>
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -140,7 +133,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/secondLine_constraintLayout">
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/category_layout"
@@ -186,6 +178,7 @@
             app:layout_constraintTop_toTopOf="@id/category_layout">
 
         </com.google.android.material.button.MaterialButton>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -198,7 +191,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/thirdLine_constraintLayout">
-
 
         <EditText
             android:id="@+id/notes_multiLine"
