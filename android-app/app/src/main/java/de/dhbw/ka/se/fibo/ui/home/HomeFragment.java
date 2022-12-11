@@ -1,8 +1,5 @@
 package de.dhbw.ka.se.fibo.ui.home;
 
-import static androidx.navigation.Navigation.findNavController;
-
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,26 +10,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import de.dhbw.ka.se.fibo.ApplicationState;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.Objects;
 
+import de.dhbw.ka.se.fibo.ApplicationState;
 import de.dhbw.ka.se.fibo.R;
 import de.dhbw.ka.se.fibo.databinding.FragmentHomeBinding;
-import de.dhbw.ka.se.fibo.models.Cashflow;
-import de.dhbw.ka.se.fibo.models.CashflowType;
-import de.dhbw.ka.se.fibo.models.Category;
-import de.dhbw.ka.se.fibo.models.Place;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class HomeFragment extends Fragment {
 
