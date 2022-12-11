@@ -15,16 +15,13 @@ public enum Category {
             R.string.GIFT), OTHER(R.color.black, R.string.OTHER), INSURANCE(R.color.lightpurple,
             R.string.INSURANCE);
 
-
     private int color;
     private int name;
 
     Category(int color, int name) {
-
         this.name = name;
         this.color = color;
     }
-
 
     public int getColor() {
         return color;

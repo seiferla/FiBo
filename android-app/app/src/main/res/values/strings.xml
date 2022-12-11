@@ -7,6 +7,8 @@
     <string name="title_adding">Daten hinzufügen</string>
     <string name="dateCardTitle">Ausgewählter Zeitraum</string>
     <string name="datePickerTitle">Dashboard Zeitraum</string>
+    <string name="timespanAllData">gesamter Zeitraum</string>
+    <string name="timespanStartToEnd">%s – %s</string>
     <string name="INSURANCE">Versicherung</string>
     <string name="HEALTH">Gesundheit</string>
     <string name="LIVING">Wohnen</string>
