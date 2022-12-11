@@ -46,4 +46,9 @@ public class ApplicationState {
 
         return cashflows;
     }
+
+    public void addCashFlow(Cashflow cashFlow) {
+        cashflows.add(cashFlow);
+
+    }
 }
