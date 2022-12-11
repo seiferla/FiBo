@@ -14,10 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.card.MaterialCardView;
 
 import java.math.BigDecimal;
-import java.text.Format;
-import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.ChronoField;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+import java.util.SortedSet;
 
 import de.dhbw.ka.se.fibo.Helpers;
 import de.dhbw.ka.se.fibo.R;
@@ -26,12 +29,12 @@ import de.dhbw.ka.se.fibo.models.CashflowType;
 
 public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
 
-    private ArrayList<Cashflow> cashflowArrayList;
+    private List<Cashflow> cashflowArrayList;
     private Context context;
 
-    public ListAdapter(Context context, ArrayList<Cashflow> cashflowArrayList) {
+    public ListAdapter(Context context, SortedSet<Cashflow> cashflowArrayList) {
         setHasStableIds(true);
-        this.cashflowArrayList = cashflowArrayList;
+        this.cashflowArrayList = new ArrayList<>(cashflowArrayList);
         this.context = context;
     }
 
@@ -53,7 +56,23 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
         holder.cashFlowValue.setTextColor(context.getResources().getColor(cashflowType.getColor()));
         context.getResources().getText(cashflow.getCategory().getName()).charAt(0);
         holder.cashFlowValue.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-        Format formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMANY);
+
+        DateTimeFormatter formatter = new DateTimeFormatterBuilder()
+                .padNext(2, '0')
+                .appendValue(ChronoField.DAY_OF_MONTH)
+                .appendLiteral('.')
+                .padNext(2, '0')
+                .appendValue(ChronoField.MONTH_OF_YEAR)
+                .appendLiteral('.')
+                .appendValue(ChronoField.YEAR)
+                .appendLiteral(' ')
+                .padNext(2, '0')
+                .appendValue(ChronoField.HOUR_OF_DAY)
+                .appendLiteral(':')
+                .padNext(2, '0')
+                .appendValue(ChronoField.MINUTE_OF_HOUR)
+                .appendLiteral(" Uhr")
+                .toFormatter(Locale.getDefault());
         holder.date.setText(formatter.format(cashflow.getTimestamp()));
         holder.materialCard.setOnClickListener(view -> {
             openDetailsPage((MaterialCardView) view, cashflow, position);
@@ -72,7 +91,6 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
     }
 
     private Cashflow getItem(int position) {
-
         return cashflowArrayList.get(position);
     }
 
