@@ -3,23 +3,29 @@ package de.dhbw.ka.se.fibo.models;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class Cashflow implements Comparable<Cashflow> {
     private CashflowType type;
     private BigDecimal overallValue;
     private LocalDateTime timestamp;
-    private String name;
     private Category category;
+    private Place place;
 
-    public Cashflow(Category category, CashflowType type, BigDecimal overallValue, LocalDateTime timestamp, String name) {
+    public Cashflow(Category category, CashflowType type, BigDecimal overallValue, LocalDateTime timestamp, Place place) {
         this.setType(type);
         this.setOverallValue(overallValue);
         this.setTimestamp(timestamp);
-        this.setName(name);
         this.category = category;
+        this.place = place;
     }
 
+    public Place getPlace() {
+        return place;
+    }
+
+    public void setPlace(Place place) {
+        this.place = place;
+    }
 
     public Category getCategory() {
         return category;
@@ -27,14 +33,6 @@ public class Cashflow implements Comparable<Cashflow> {
 
     public void setCategory(Category category) {
         this.category = category;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public CashflowType getType() {
@@ -73,8 +71,8 @@ public class Cashflow implements Comparable<Cashflow> {
             "type=" + type +
             ", overallValue=" + overallValue +
             ", timestamp=" + timestamp +
-            ", name='" + name + '\'' +
             ", category=" + category +
+            ", place=" + place +
             '}';
     }
 }
