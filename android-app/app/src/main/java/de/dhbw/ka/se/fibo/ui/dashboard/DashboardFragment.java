@@ -137,6 +137,7 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
         pieChart.getDescription().setText("");
         pieChart.setCenterTextSize(12f);
         pieChart.getLegend().setTextSize(12f);
+        pieChart.getLegend().setWordWrapEnabled(true);
 
         pieChart.animateY(DashboardFragment.PIE_CHART_ANIMATION_DURATION, Easing.EaseInOutQuad);
     }
