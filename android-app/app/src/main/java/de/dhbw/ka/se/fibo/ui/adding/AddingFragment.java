@@ -225,4 +225,11 @@ public class AddingFragment extends Fragment {
             dateText.setText(formatter.format(selection));
         });
     }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
 }
