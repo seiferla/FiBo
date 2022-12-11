@@ -169,16 +169,16 @@ public class AddingFragment extends Fragment {
 
         if (null == store.getText()
                 | store.getText().toString().trim().isEmpty()) {
-            throw new IllegalArgumentException("store must be set");
+            throw new IllegalArgumentException("Store must be set");
         } else if (null == amount.getText()
                 | amount.getText().toString().trim().isEmpty()) {
-            throw new IllegalArgumentException("store must be set");
+            throw new IllegalArgumentException("Amount must be set");
         } else if (null == dateText.getText()
                 | dateText.getText().toString().trim().isEmpty()) {
-            throw new IllegalArgumentException("store must be set");
+            throw new IllegalArgumentException("Date must be set");
         } else if (null == categoriesDropdown.getText()
                 | categoriesDropdown.getText().toString().trim().isEmpty()) {
-            throw new IllegalArgumentException("store must be set");
+            throw new IllegalArgumentException("Category must be set");
         }
         //others are currently not stored in our database or not required
 
