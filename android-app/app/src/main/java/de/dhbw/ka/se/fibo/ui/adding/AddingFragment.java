@@ -23,7 +23,7 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZoneOffset;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
@@ -218,7 +218,7 @@ public class AddingFragment extends Fragment {
                 .setTitleText(R.string.selectDate)
                 .setNegativeButtonText(R.string.datePickerNegativeButtonText)
                 .setPositiveButtonText(R.string.DatePickerPositiveButtonText)
-                .setSelection(LocalDateTime.now().toEpochSecond(ZoneOffset.ofHours(0)))
+                .setSelection(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli())
                 .build();
         datePicker.addOnPositiveButtonClickListener(selection -> {
             Format formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMANY);
