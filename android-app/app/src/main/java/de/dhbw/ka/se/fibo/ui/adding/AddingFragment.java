@@ -20,10 +20,12 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.math.BigDecimal;
 import java.text.Format;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -127,7 +129,7 @@ public class AddingFragment extends Fragment {
         boolean isRequiredDataPresent = false;
         Category category;
         BigDecimal value;
-        Date date;
+        LocalDateTime date;
         Place place;
         try {
             isRequiredDataPresent = checkForRequiredData();
@@ -145,18 +147,14 @@ public class AddingFragment extends Fragment {
 
             value = BigDecimal.valueOf(Double.parseDouble(getFieldValue(amount)));
 
-            SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-
             //TODO use unique PlaceID
             //TODO let the user enter an Address
             place = new Place("dm", 220, "Adresse xy");
-            try {
-                date = format.parse(getFieldValue(dateText));
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
 
-                return new Cashflow(category, newCashFlowType, value, date, place);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+            date = LocalDate.parse(getFieldValue(dateText), formatter).atStartOfDay();
+
+            return new Cashflow(category, newCashFlowType, value, date, place);
         }
 
 
@@ -220,7 +218,7 @@ public class AddingFragment extends Fragment {
                 .setTitleText(R.string.selectDate)
                 .setNegativeButtonText(R.string.datePickerNegativeButtonText)
                 .setPositiveButtonText(R.string.DatePickerPositiveButtonText)
-                .setSelection(new Date().toInstant().toEpochMilli())
+                .setSelection(LocalDateTime.now().toEpochSecond(ZoneOffset.ofHours(0)))
                 .build();
         datePicker.addOnPositiveButtonClickListener(selection -> {
             Format formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMANY);
