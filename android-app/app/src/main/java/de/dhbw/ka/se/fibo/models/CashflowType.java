@@ -1,5 +1,7 @@
 package de.dhbw.ka.se.fibo.models;
 
+import androidx.annotation.NonNull;
+
 import de.dhbw.ka.se.fibo.R;
 
 public enum CashflowType {
@@ -18,6 +20,16 @@ public enum CashflowType {
             return '+';
         } else {
             return '-';
+        }
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        if (CashflowType.INCOME == this) {
+            return "Income";
+        } else {
+            return "Expense";
         }
     }
 }

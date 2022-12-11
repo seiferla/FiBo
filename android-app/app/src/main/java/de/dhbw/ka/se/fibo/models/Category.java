@@ -38,4 +38,11 @@ public enum Category {
     public void setName(int name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "name=" + name +
+                '}';
+    }
 }
