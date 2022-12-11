@@ -150,7 +150,7 @@ public class AddingFragment extends Fragment {
 
             //TODO use unique PlaceID
             //TODO let the user enter an Address
-            place = new Place("dm", 220, "Adresse xy");
+            place = new Place(getFieldValue(store), 220, "Adresse xy");
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
 
             date = LocalDate.parse(getFieldValue(dateText), formatter).atStartOfDay();
