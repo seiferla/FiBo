@@ -45,6 +45,7 @@ import de.dhbw.ka.se.fibo.ApplicationState;
 import de.dhbw.ka.se.fibo.R;
 import de.dhbw.ka.se.fibo.databinding.FragmentDashboardBinding;
 import de.dhbw.ka.se.fibo.models.Cashflow;
+import de.dhbw.ka.se.fibo.models.CashflowType;
 import de.dhbw.ka.se.fibo.models.Category;
 
 public class DashboardFragment extends Fragment implements OnChartValueSelectedListener {
@@ -86,7 +87,7 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
         Context context = requireContext();
         SortedSet<Cashflow> cashflows = ApplicationState.getInstance(context).getCashflows();
 
-        Stream<Cashflow> cashflowStream = cashflows.stream();
+        Stream<Cashflow> cashflowStream = cashflows.stream().filter(x -> x.getType() == CashflowType.EXPENSE);
 
         if (this.startDate != null) {
             cashflowStream = cashflowStream.filter(x -> this.startDate.minusDays(1).isBefore(ChronoLocalDate.from(x.getTimestamp())));

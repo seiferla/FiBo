@@ -65,13 +65,6 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
                 .appendValue(ChronoField.MONTH_OF_YEAR)
                 .appendLiteral('.')
                 .appendValue(ChronoField.YEAR)
-                .appendLiteral(' ')
-                .padNext(2, '0')
-                .appendValue(ChronoField.HOUR_OF_DAY)
-                .appendLiteral(':')
-                .padNext(2, '0')
-                .appendValue(ChronoField.MINUTE_OF_HOUR)
-                .appendLiteral(" Uhr")
                 .toFormatter(Locale.getDefault());
         holder.date.setText(formatter.format(cashflow.getTimestamp()));
         holder.materialCard.setOnClickListener(view -> {
