@@ -208,13 +208,13 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
 
         picker = MaterialDatePicker.Builder
                 .dateRangePicker()
-            .setTitleText(R.string.datePickerTitle)
-            .setCalendarConstraints(builder.build())
-            .build();
+                .setTitleText(R.string.datePickerTitle)
+                .setCalendarConstraints(builder.build())
+                .build();
 
         picker.addOnPositiveButtonClickListener(e -> {
             this.startDate = Instant.ofEpochMilli(e.first).atZone(ZoneId.systemDefault())
-                .toLocalDate();
+                    .toLocalDate();
             this.endDate = Instant.ofEpochMilli(e.second).atZone(ZoneId.systemDefault()).toLocalDate();
 
             this.setDateCardTime();
