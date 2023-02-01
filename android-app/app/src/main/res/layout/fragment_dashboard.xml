@@ -41,7 +41,7 @@
           android:id="@+id/datePickerTitle"
           android:layout_width="fill_parent"
           android:layout_height="wrap_content"
-          android:text="@string/date_picker_title_placeholder"
+          android:text="Date picker title"
           android:textSize="@dimen/smallTextSize"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent" />
@@ -51,7 +51,7 @@
           android:layout_width="fill_parent"
           android:layout_height="wrap_content"
           android:layout_marginTop="12dp"
-          android:text="@string/placeholder_date"
+          android:text="18 Aug - 12 Nov"
           android:textSize="@dimen/standardTextSize"
           app:layout_constraintStart_toStartOf="@+id/datePickerTitle"
           app:layout_constraintTop_toBottomOf="@+id/datePickerTitle" />
@@ -76,7 +76,7 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginEnd="8dp"
-                    android:contentDescription="@string/EditTimeRangeIconDescription"
+                    android:contentDescription="Edit time range"
                     app:icon="@drawable/edit_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -109,13 +109,14 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:contentDescription="@string/change_view_icon_description"
+                android:contentDescription="change View"
                 app:icon="@drawable/swap_diagram_type_icon"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/diagramLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
