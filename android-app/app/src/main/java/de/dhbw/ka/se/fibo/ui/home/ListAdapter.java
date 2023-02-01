@@ -67,9 +67,7 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
                 .appendValue(ChronoField.YEAR)
                 .toFormatter(Locale.getDefault());
         holder.date.setText(formatter.format(cashflow.getTimestamp()));
-        holder.materialCard.setOnClickListener(view -> {
-            openDetailsPage((MaterialCardView) view, cashflow, position);
-        });
+        holder.materialCard.setOnClickListener(view -> openDetailsPage((MaterialCardView) view, cashflow, position));
 
     }
 
