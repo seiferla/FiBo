@@ -27,21 +27,15 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private RecyclerView recyclerView;
+    private FloatingActionButton actionButton;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-
         recyclerView = binding.recyclerview;
-        recyclerView.setHasFixedSize(true);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
-        Drawable verticalDivider = ContextCompat.getDrawable(requireContext(), R.drawable.card_divider);
-        dividerItemDecoration.setDrawable(Objects.requireNonNull(verticalDivider));
-        recyclerView.addItemDecoration(dividerItemDecoration);
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        recyclerView.setAdapter(new ListAdapter(getContext(), ApplicationState.getInstance(requireContext()).getCashflows()));
+        actionButton = binding.floatingButton;
 
         return view;
     }
@@ -49,14 +43,14 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        FloatingActionButton actionButton = binding.floatingButton;
-        actionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View e) {
-                Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_navigation_adding);
-            }
-        });
+        recyclerView.setHasFixedSize(true);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
+        Drawable verticalDivider = ContextCompat.getDrawable(requireContext(), R.drawable.card_divider);
+        dividerItemDecoration.setDrawable(Objects.requireNonNull(verticalDivider));
+        recyclerView.addItemDecoration(dividerItemDecoration);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        recyclerView.setAdapter(new ListAdapter(getContext(), ApplicationState.getInstance(requireContext()).getCashflows()));
+        actionButton.setOnClickListener(e -> Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_navigation_adding));
     }
 
     @Override

@@ -69,12 +69,18 @@ public class AddingFragment extends Fragment {
         cancelButton = binding.cancel;
         okayButton = binding.okayButton;
         tabLayout = binding.tabLayout;
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         setUpTabLayout();
         initializeButtons();
         initializeDropdownValues();
         createDatePicker();
         setUpDateTextField();
-        return view;
     }
 
     private void setUpTabLayout() {

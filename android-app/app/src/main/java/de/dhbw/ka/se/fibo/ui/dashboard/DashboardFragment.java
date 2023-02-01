@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.util.Pair;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -55,32 +56,37 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
     private LocalDate startDate = null;
     private LocalDate endDate = null;
     private PieChart pieChart;
-
+    private Instant startInstant;
     private static final int PIE_CHART_ANIMATION_DURATION = 750;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         // gather current instant to be able to calculate the time we spent in this (user-interaction driven) method
-        Instant instant = Instant.now();
+        startInstant = Instant.now();
 
         DashboardViewModel dashboardViewModel =
                 new ViewModelProvider(this).get(DashboardViewModel.class);
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        return root;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         initializeDateCard();
         createDatePicker();
         initializePieChart();
 
-        Duration duration = Duration.between(instant, Instant.now());
+        Duration duration = Duration.between(startInstant, Instant.now());
         long millis = duration.toMillis();
         if (1000 < millis) {
             Log.w("FiBo", "Creating dashboard view took " + millis + " ms (more than 1 s!)");
         } else {
             Log.v("FiBo", "Creating dashboard view took " + millis + " ms");
         }
-
-        return root;
     }
 
     private void initializePieChart() {
