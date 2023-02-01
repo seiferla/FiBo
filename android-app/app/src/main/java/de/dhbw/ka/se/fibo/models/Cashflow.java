@@ -63,7 +63,11 @@ public class Cashflow implements Comparable<Cashflow> {
     @Override
     public int compareTo(Cashflow other) {
         // It is a Public API that it is sorted DESC
-        return other.getTimestamp().compareTo(this.getTimestamp());
+        int result = other.getTimestamp().compareTo(this.getTimestamp());
+        if(0 == result){
+            result = -1;
+        }
+        return result;
     }
 
     @Override
@@ -71,7 +75,7 @@ public class Cashflow implements Comparable<Cashflow> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cashflow cashflow = (Cashflow) o;
-        return type == cashflow.type && overallValue.equals(cashflow.overallValue) && timestamp.equals(cashflow.timestamp) && category == cashflow.category && place.equals(cashflow.place);
+        return type == cashflow.type && overallValue.equals(cashflow.overallValue) && timestamp.equals(cashflow.timestamp) && category == cashflow.category && Objects.equals(place, cashflow.place);
     }
 
     @Override
