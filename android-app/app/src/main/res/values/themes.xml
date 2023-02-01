@@ -36,28 +36,10 @@
         <item name="strokeWidth">1dp</item>
     </style>
 
-    <style name="Theme.FiBo.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="Theme.FiBo.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.FiBo.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-    <style name="Theme.FiBo.TextView" parent="android:Widget.TextView">
-        <item name="android:textColor">?attr/colorPrimary</item>
-    </style>
 
     <style name="Theme.FiBo.TabLayout" parent="Widget.Design.TabLayout">
         <item name="tabTextColor">?attr/colorPrimary</item>
         <item name="tabIndicatorColor">?attr/colorPrimary</item>
-    </style>
-
-    <style name="Theme.FiBo.Button.Border" parent="@style/Widget.AppCompat.ImageButton">
-        <item name="strokeColor">?attr/colorPrimary</item>
-        <item name="strokeWidth">1.5dp</item>
-        <item name="cornerRadius">6dp</item>
     </style>
 
 </resources>

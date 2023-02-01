@@ -1,5 +1,6 @@
 package de.dhbw.ka.se.fibo;
 
+import android.annotation.SuppressLint;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -17,13 +18,13 @@ import java.util.Locale;
 import de.dhbw.ka.se.fibo.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding binding;
     NavController navController;
 
+    @SuppressLint("AppBundleLocaleChanges")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         Locale locale = Locale.GERMANY;

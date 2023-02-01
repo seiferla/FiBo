@@ -1,5 +1,7 @@
 package de.dhbw.ka.se.fibo.models;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Place {
 
     private int placeId;
@@ -38,6 +40,7 @@ public class Place {
     }
 
     @Override
+    @NotNull
     public String toString() {
         return "Place{" +
                 "name='" + name + '\'' +

@@ -19,7 +19,7 @@ public class ApplicationState {
     private final Context context;
     @SuppressLint("StaticFieldLeak")
     private static ApplicationState instance;
-    private SortedSet<Cashflow> cashflows;
+    private final SortedSet<Cashflow> cashflows;
 
 
     private ApplicationState(Context context) {
@@ -30,7 +30,7 @@ public class ApplicationState {
         cashflows = new TreeSet<>();
         cashflows.add(new Cashflow(Category.RESTAURANT, CashflowType.EXPENSE, BigDecimal.valueOf(8.5), LocalDateTime.now(), new Place("dm", 124, "Am dm-Platz 1")));
         cashflows.add(new Cashflow(Category.HEALTH, CashflowType.EXPENSE, BigDecimal.valueOf(10), LocalDateTime.now().minusDays(1), new Place("kaufland", 243, "Kaufplatz")));
-        cashflows.add(new Cashflow(Category.SOCIALLIFE, CashflowType.INCOME, BigDecimal.valueOf(5.5), LocalDateTime.now().minusDays(2), new Place("Fabian", 2, "In da club street")));
+        cashflows.add(new Cashflow(Category.SOCIAL_LIFE, CashflowType.INCOME, BigDecimal.valueOf(5.5), LocalDateTime.now().minusDays(2), new Place("Fabian", 2, "In da club street")));
         cashflows.add(new Cashflow(Category.CULTURE, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", 32, "Lorenzstraße 19, 76135 Karlsruhe")));
     }
 
@@ -50,5 +50,9 @@ public class ApplicationState {
     public void addCashFlow(Cashflow cashFlow) {
         cashflows.add(cashFlow);
 
+    }
+
+    public Context getContext() {
+        return context;
     }
 }

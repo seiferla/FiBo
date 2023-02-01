@@ -1,5 +1,7 @@
 package de.dhbw.ka.se.fibo.models;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDateTime;
@@ -13,9 +15,9 @@ public class Cashflow implements Comparable<Cashflow> {
     private Place place;
 
     public Cashflow(Category category, CashflowType type, BigDecimal overallValue, LocalDateTime timestamp, Place place) {
-        this.setType(type);
-        this.setOverallValue(overallValue);
-        this.setTimestamp(timestamp);
+        setType(type);
+        setOverallValue(overallValue);
+        setTimestamp(timestamp);
         this.category = category;
         this.place = place;
     }
@@ -63,7 +65,7 @@ public class Cashflow implements Comparable<Cashflow> {
     @Override
     public int compareTo(Cashflow other) {
         // It is a Public API that it is sorted DESC
-        int result = other.getTimestamp().compareTo(this.getTimestamp());
+        int result = other.getTimestamp().compareTo(getTimestamp());
         if(0 == result){
             result = -1;
         }
@@ -73,7 +75,7 @@ public class Cashflow implements Comparable<Cashflow> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (null == o || getClass() != o.getClass()) return false;
         Cashflow cashflow = (Cashflow) o;
         return type == cashflow.type && overallValue.equals(cashflow.overallValue) && timestamp.equals(cashflow.timestamp) && category == cashflow.category && Objects.equals(place, cashflow.place);
     }
@@ -84,6 +86,7 @@ public class Cashflow implements Comparable<Cashflow> {
     }
 
     @Override
+    @NotNull
     public String toString() {
         return "Cashflow{" +
                 "type=" + type +

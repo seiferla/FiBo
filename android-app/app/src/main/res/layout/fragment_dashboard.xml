@@ -41,7 +41,7 @@
           android:id="@+id/datePickerTitle"
           android:layout_width="fill_parent"
           android:layout_height="wrap_content"
-          android:text="Date picker title"
+          android:text="@string/date_picker_title_placeholder"
           android:textSize="@dimen/smallTextSize"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent" />
@@ -51,7 +51,7 @@
           android:layout_width="fill_parent"
           android:layout_height="wrap_content"
           android:layout_marginTop="12dp"
-          android:text="18 Aug - 12 Nov"
+          android:text="@string/date_picker_value_placeholder"
           android:textSize="@dimen/standardTextSize"
           app:layout_constraintStart_toStartOf="@+id/datePickerTitle"
           app:layout_constraintTop_toBottomOf="@+id/datePickerTitle" />
@@ -76,7 +76,7 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginEnd="8dp"
-                    android:contentDescription="Edit time range"
+                    android:contentDescription="@string/edit_time_range_icon_hint_placeholder"
                     app:icon="@drawable/edit_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -109,7 +109,7 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:contentDescription="change View"
+                android:contentDescription="@string/change_view_button_description"
                 app:icon="@drawable/swap_diagram_type_icon"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -121,7 +121,7 @@
         android:layout_height="match_parent">
 
       <com.github.mikephil.charting.charts.PieChart
-          android:id="@+id/dashboard_piechart"
+          android:id="@+id/dashboard_pieChart"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:layout_marginStart="16dp"

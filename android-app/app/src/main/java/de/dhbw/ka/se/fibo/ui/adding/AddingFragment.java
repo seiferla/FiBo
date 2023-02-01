@@ -115,14 +115,12 @@ public class AddingFragment extends Fragment {
     }
 
     private void initializeButtons() {
-        cancelButton.setOnClickListener(e -> {
-            navigateToHome();
-        });
+        cancelButton.setOnClickListener(e -> navigateToHome());
 
         okayButton.setOnClickListener(e -> {
             Cashflow newCashFlow = createCashFlow();
             if (null == newCashFlow) {
-                //TODO handle invalid data
+                //TODO handle invalid data / parsing errors
             } else {
                 ApplicationState.getInstance(requireContext()).addCashFlow(newCashFlow);
                 System.out.println(newCashFlow);
@@ -204,7 +202,7 @@ public class AddingFragment extends Fragment {
 
     private void initializeDropdownValues() {
         String[] items = getAllStringCategories();
-        MaterialAutoCompleteTextView categoriesDropdown = (MaterialAutoCompleteTextView) binding.categoryText;
+        MaterialAutoCompleteTextView categoriesDropdown = binding.categoryText;
         categoriesDropdown.setSimpleItems(items);
         categoriesDropdown.setThreshold(4);
     }

@@ -29,8 +29,8 @@ import de.dhbw.ka.se.fibo.models.CashflowType;
 
 public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
 
-    private List<Cashflow> cashflowArrayList;
-    private Context context;
+    private final List<Cashflow> cashflowArrayList;
+    private final Context context;
 
     public ListAdapter(Context context, SortedSet<Cashflow> cashflowArrayList) {
         setHasStableIds(true);
@@ -46,14 +46,14 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
     }
 
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
-        Cashflow cashflow = this.getItem(position);
+        Cashflow cashflow = getItem(position);
         CashflowType cashflowType = cashflow.getType();
         BigDecimal overallValue = cashflow.getOverallValue();
         holder.cardTitle.setText(cashflow.getPlace().getName());
         holder.cardTitle.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         holder.imageView.setText(String.valueOf(context.getResources().getText(cashflow.getCategory().getName())).substring(0, 1));
-        holder.cashFlowValue.setText(cashflowType.getSign() + Helpers.formatBigDecimalCurrency(overallValue));
-        holder.cashFlowValue.setTextColor(context.getResources().getColor(cashflowType.getColor()));
+        holder.cashFlowValue.setText(String.format("%s%s", cashflowType.getSign(), Helpers.formatBigDecimalCurrency(overallValue)));
+        holder.cashFlowValue.setTextColor(context.getResources().getColor(cashflowType.getColor(), context.getTheme()));
         context.getResources().getText(cashflow.getCategory().getName()).charAt(0);
         holder.cashFlowValue.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
 

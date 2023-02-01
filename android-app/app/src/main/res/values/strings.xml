@@ -21,19 +21,12 @@
     <string name="GIFT">Geschenk</string>
     <string name="OTHER">Sonstige</string>
     <string name="RESTAURANT">Restaurant</string>
-    <string name="title_activity_adding">AddingActivity</string>
     <string name="adding_expense">Ausgabe</string>
     <string name="adding_income">Einnahme</string>
-    <string name="adding_store">Erworben bei</string>
     <string name="adding_amount">Betrag (€)</string>
     <string name="adding_date">Datum</string>
     <string name="adding_category">Kategorie</string>
     <string name="adding_notes">Notizen</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
@@ -72,9 +65,6 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="add_attachments_icon">Anhänge hinzufügen Icon</string>
     <string name="add_attachments_button">Anhänge hinzufügen Button</string>
     <string name="saveButton">Speichern</string>
     <string name="cancelButton">Abbrechen</string>
@@ -83,4 +73,12 @@
     <string name="DatePickerPositiveButtonText">OK</string>
     <string name="datePickerNegativeButtonText">Abbrechen</string>
     <string name="FAB_add_cashflow">Add Cashflow</string>
+    <string name="date_picker_title_placeholder">Date picker title</string>
+    <string name="date_picker_value_placeholder">18 Aug - 12 Nov</string>
+    <string name="edit_time_range_icon_hint_placeholder">Edit time range</string>
+    <string name="change_view_button_description">change View</string>
+    <string name="recyclerview_initial_placeholder">I</string>
+    <string name="recyclerview_title_placeholder">title</string>
+    <string name="recyclerview_date_placeholder">date</string>
+    <string name="recyclerview_value_placeholder">-20.00€</string>
 </resources>

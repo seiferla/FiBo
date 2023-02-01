@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -56,8 +55,8 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/secondLine_constraintLayout"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/secondLine_linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -71,11 +70,7 @@
             android:id="@+id/amount_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:paddingEnd="6dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/value_and_date_layout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_weight="1">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/amount_text"
@@ -87,15 +82,17 @@
                 android:textColor="@color/green" />
 
         </com.google.android.material.textfield.TextInputLayout>
-
+        <Space
+            android:layout_height="0dp"
+            android:layout_width="12dp"
+            android:layout_weight="0"
+            />
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/value_and_date_layout"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/amount_layout"
-            app:layout_constraintTop_toTopOf="@id/amount_layout">
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            >
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/date_layout"
@@ -103,7 +100,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="0dp"
-                android:paddingStart="6dp"
                 android:paddingTop="0dp"
                 app:endIconDrawable="@drawable/ic_calendar_purple"
                 app:endIconMode="custom"
@@ -121,7 +117,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/thirdLine_constraintLayout"
@@ -132,7 +128,7 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/secondLine_constraintLayout">
+        app:layout_constraintTop_toBottomOf="@+id/secondLine_linearLayout">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/category_layout"
@@ -202,7 +198,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:importantForAutofill="no" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
