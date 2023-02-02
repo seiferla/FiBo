@@ -2,7 +2,7 @@
 
 ## Name of use case
 
-Manual adding of data
+show data in dashboard
 
 ## 1.1 Brief Description
 

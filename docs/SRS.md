@@ -178,7 +178,7 @@ We want to get a clear view on technologies that enable us to automatically scan
 
 In case you share your phone, have multiple accounts or just want to be cautious about your privacy you should be able to manually log out.
 
-[Logging out](./use_cases/UC_4_manual_adding_of_data/UC_4_manual_adding_of_data.md)
+[Logging out](./use_cases/UC_7_logging_out/UC_7_logging_out.md)
 
 
 
