@@ -42,7 +42,7 @@ public class SplashActivity extends AppCompatActivity {
                         e.printStackTrace();
                     } finally {
                         Intent i = new Intent(SplashActivity.this,
-                                MainActivity.class);
+                                CreateAccountActivity.class);
                         startActivity(i);
                         finish();
                     }
