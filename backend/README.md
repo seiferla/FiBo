@@ -6,12 +6,22 @@ Prerequisites:
 - Python (3.11) and pip are installed
 - Have a PostgreSQL database ready
 
-Run the following steps:
+If you are using MacOS run these Steps first:
+1. Run `brew install openssl libpq`
+2. Add the following lines to the `~/.zshrc` file
+```ini
+export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib $LDFLAGS"
+export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include $CPPFLAGS"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/libpq/lib $LDFLAGS"
+export CPPFLAGS="-I/opt/homebrew/opt/libpq/include $CPPFLAGS"
+```
+3. Open a new Terminal so the changes to `~/.zshrc` get sourced
+
+If you followed the instructions above or are using a different OS run the following steps:
 1. Set your current working directory to the directory where this `README.md` is located: `cd backend/`
 2. Run `pip install -r requirements.txt`.
-
-On macOS, a successful installation of the dependencies (`pip install`) requires the following libraries that can be installed via brew: `brew install openssl libpq` (please make sure you update the `PATH`, `CPPFLAGS` and `LDFLAGS` environment variables as indicated after each install)
-
 3. Create a `.env` file in the `backend/` **sub**folder of the current directory, it should look like this:
 ```ini
 SECRET_KEY=<see note below>
