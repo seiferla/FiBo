@@ -116,17 +116,21 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-      android:id="@+id/diagramLayout"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent">
+        android:id="@+id/diagramLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-      <ProgressBar
-        android:layout_width="112dp"
-        android:layout_height="112dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+      <com.github.mikephil.charting.charts.PieChart
+          android:id="@+id/dashboard_piechart"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginStart="16dp"
+          android:layout_marginEnd="16dp"
+          android:layout_marginBottom="8dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
   </com.google.android.material.card.MaterialCardView>

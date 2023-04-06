@@ -2,51 +2,77 @@ package de.dhbw.ka.se.fibo.models;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Date;
+import java.time.LocalDateTime;
 
-public class Cashflow {
+public class Cashflow implements Comparable<Cashflow> {
+    private CashflowType type;
+    private BigDecimal overallValue;
+    private LocalDateTime timestamp;
+    private Category category;
+    private Place place;
 
-  private CashflowType type;
-  private BigDecimal overallValue;
-  private Date timestamp;
-  private String name;
+    public Cashflow(Category category, CashflowType type, BigDecimal overallValue, LocalDateTime timestamp, Place place) {
+        this.setType(type);
+        this.setOverallValue(overallValue);
+        this.setTimestamp(timestamp);
+        this.category = category;
+        this.place = place;
+    }
 
-  public Cashflow(CashflowType type, BigDecimal overallValue, Date timestamp, String name) {
-    setType(type);
-    setOverallValue(overallValue);
-    setTimestamp(timestamp);
-    setName(name);
-  }
+    public Place getPlace() {
+        return place;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public void setPlace(Place place) {
+        this.place = place;
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public Category getCategory() {
+        return category;
+    }
 
-  public CashflowType getType() {
-    return type;
-  }
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
-  public void setType(CashflowType type) {
-    this.type = type;
-  }
+    public CashflowType getType() {
+        return type;
+    }
 
-  public BigDecimal getOverallValue() {
-    return overallValue;
-  }
+    public void setType(CashflowType type) {
+        this.type = type;
+    }
 
-  public void setOverallValue(BigDecimal overallValue) {
-    this.overallValue = overallValue.setScale(2, RoundingMode.HALF_UP);
-  }
+    public BigDecimal getOverallValue() {
+        return overallValue;
+    }
 
-  public Date getTimestamp() {
-    return timestamp;
-  }
+    public void setOverallValue(BigDecimal overallValue) {
+        this.overallValue = overallValue.setScale(2, RoundingMode.HALF_UP);
+    }
 
-  public void setTimestamp(Date timestamp) {
-    this.timestamp = timestamp;
-  }
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    @Override
+    public int compareTo(Cashflow other) {
+        // It is a Public API that it is sorted DESC
+        return other.getTimestamp().compareTo(this.getTimestamp());
+    }
+
+    @Override
+    public String toString() {
+        return "Cashflow{" +
+            "type=" + type +
+            ", overallValue=" + overallValue +
+            ", timestamp=" + timestamp +
+            ", category=" + category +
+            ", place=" + place +
+            '}';
+    }
 }

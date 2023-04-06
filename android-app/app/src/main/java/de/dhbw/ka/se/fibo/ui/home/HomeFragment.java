@@ -1,71 +1,59 @@
 package de.dhbw.ka.se.fibo.ui.home;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
+
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import de.dhbw.ka.se.fibo.adapters.CashflowAdapter;
-import de.dhbw.ka.se.fibo.databinding.FragmentHomeBinding;
-import de.dhbw.ka.se.fibo.models.Cashflow;
-import de.dhbw.ka.se.fibo.models.CashflowType;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import de.dhbw.ka.se.fibo.ApplicationState;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
+
+import de.dhbw.ka.se.fibo.R;
+import de.dhbw.ka.se.fibo.databinding.FragmentHomeBinding;
+import de.dhbw.ka.se.fibo.models.Cashflow;
+import de.dhbw.ka.se.fibo.models.CashflowType;
+import de.dhbw.ka.se.fibo.models.Category;
+import de.dhbw.ka.se.fibo.models.Place;
 
 public class HomeFragment extends Fragment {
 
-  private FragmentHomeBinding binding;
+    private FragmentHomeBinding binding;
+    private RecyclerView recyclerView;
 
-  public View onCreateView(@NonNull LayoutInflater inflater,
-      ViewGroup container, Bundle savedInstanceState) {
-    HomeViewModel homeViewModel =
-        new ViewModelProvider(this).get(HomeViewModel.class);
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
 
-    binding = FragmentHomeBinding.inflate(inflater, container, false);
-    View root = binding.getRoot();
 
-    ListView listView = binding.cashFlowList;
-    ArrayList<Cashflow> arrayList = new ArrayList<>();
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
 
-    arrayList.add(new Cashflow(CashflowType.EXPENSE, BigDecimal.valueOf(12.5), new Date(), "dm"));
-    arrayList.add(
-        new Cashflow(CashflowType.INCOME, BigDecimal.valueOf(120.5), new Date(), "Gehalt"));
-    arrayList.add(new Cashflow(CashflowType.EXPENSE, BigDecimal.valueOf(120.5), new Date(), "Bla"));
-    arrayList.add(new Cashflow(CashflowType.EXPENSE, BigDecimal.valueOf(120.5), new Date(), "Foo"));
-    arrayList.add(new Cashflow(CashflowType.EXPENSE, BigDecimal.valueOf(120.5), new Date(), "Foo"));
-    arrayList.add(new Cashflow(CashflowType.EXPENSE, BigDecimal.valueOf(120.5), new Date(), "Foo"));
-    arrayList.add(new Cashflow(CashflowType.EXPENSE, BigDecimal.valueOf(120.5), new Date(), "Foo"));
-    arrayList.add(
-        new Cashflow(CashflowType.EXPENSE, BigDecimal.valueOf(120.5), new Date(), "Fasel"));
-    arrayList.add(
-        new Cashflow(CashflowType.EXPENSE, BigDecimal.valueOf(120.5), new Date(), "Fasel"));
-    arrayList.add(
-        new Cashflow(CashflowType.EXPENSE, BigDecimal.valueOf(120.5), new Date(), "Fasel"));
-    arrayList.add(
-        new Cashflow(CashflowType.EXPENSE, BigDecimal.valueOf(120.5), new Date(), "Fasel"));
+        recyclerView = binding.recyclerview;
+        recyclerView.setHasFixedSize(true);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
+        Drawable verticalDivider = ContextCompat.getDrawable(requireContext(), R.drawable.card_divider);
+        dividerItemDecoration.setDrawable(Objects.requireNonNull(verticalDivider));
+        recyclerView.addItemDecoration(dividerItemDecoration);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        recyclerView.setAdapter(new ListAdapter(getContext(), ApplicationState.getInstance(requireContext()).getCashflows()));
 
-    ArrayAdapter<Cashflow> listAdapter = new CashflowAdapter(requireActivity(),
-        android.R.layout.simple_list_item_1, arrayList);
-    listView.setAdapter(listAdapter);
-    // TODO make onClick work
-    listView.setOnItemClickListener((parent, view, position, id) -> {
-      Cashflow clickedItem = (Cashflow) listView.getItemAtPosition(position);
-      Toast.makeText(getActivity(), clickedItem.getOverallValue().toString(), Toast.LENGTH_LONG)
-          .show();
-    });
+        return view;
+    }
 
-    return root;
-  }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
 
-  @Override
-  public void onDestroyView() {
-    super.onDestroyView();
-    binding = null;
-  }
 }

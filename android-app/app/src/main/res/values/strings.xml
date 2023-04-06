@@ -1,9 +1,23 @@
 <resources>
-  <string name="app_name">FiBo</string>
-  <string name="app_activity_main_title">Übersicht</string>
-  <string name="title_home">Home</string>
-  <string name="title_dashboard">Dashboard</string>
-  <string name="title_settings">Settings</string>
-  <string name="dateCardTitle">Ausgewählter Zeitraum</string>
-  <string name="datePickerTitle">Dashboard Zeitraum</string>
+    <string name="app_name">FiBo</string>
+    <string name="app_activity_main_title">Übersicht</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_settings">Settings</string>
+    <string name="dateCardTitle">Ausgewählter Zeitraum</string>
+    <string name="datePickerTitle">Dashboard Zeitraum</string>
+    <string name="timespanAllData">gesamter Zeitraum</string>
+    <string name="timespanStartToEnd">%s – %s</string>
+    <string name="INSURANCE">Versicherung</string>
+    <string name="HEALTH">Gesundheit</string>
+    <string name="LIVING">Wohnen</string>
+    <string name="HOUSEHOLD">Haushalt</string>
+    <string name="CULTURE">Kultur</string>
+    <string name="EDUCATION">Bildung</string>
+    <string name="SOCIALLIFE">Sozialleben</string>
+    <string name="MOBILITY">Mobilität</string>
+    <string name="CLOTHES">Kleidung</string>
+    <string name="GIFT">Geschenk</string>
+    <string name="OTHER">Sonstige</string>
+    <string name="RESTAURANT">Restaurant</string>
 </resources>

@@ -128,22 +128,32 @@ Until the end of December we plan to implement:
 
 - [3.1.1 Create Account](#311-create-account)
 - [3.1.2 Logging in](#312-logging-in)
-- [3.1.3 Logging out](#313-logging-out)
+- [3.1.3 Change added data](#313-change-added-data)
 - [3.1.4 Manual adding of data](#314-manual-adding-of-data)
 - [3.1.5 Show data in a dashboard](#315-show-data-in-a-dashboard)
 - [3.1.6 Evaluate scanning receipts](#316-evaluate-scanning-receipts)
+- [3.1.7 Logging out](#317-logging-out)
+
 
 #### 3.1.1 Create account
 
 To identify all users we need an account system. This account system enables us to build important functions such as sharing costs or a personalized overview over finances (Keeping track of your finances).
 
+[Create account](./use_cases/UC_1_create_account/UC_1_create_account.md)
+
+
 #### 3.1.2 Logging in
 
 The app will provide the possibility to register and log in. This will also make the usability easier when a user wants to manage his expenses because they don't have to enter their mail address every time.
 
-#### 3.1.3 Logging out
+[Logging in](./use_cases/UC_2_login_account/UC_2_login_account.md)
 
-In case you share your phone, have multiple accounts or just want to be cautious about your privacy you should be able to manually log out.
+
+#### 3.1.3 Change added data
+
+In case you want to change data in the cashflows, you should be able to edit the data with a simple click on the respective item.
+
+[Change added data](./use_cases/UC_3_change_added_data/UC_3_change_added_data.md)
 
 #### 3.1.4 Manual adding of data
 
@@ -155,9 +165,23 @@ This is one of the essentials of our project. The user gets the possibility to m
 
 All the different kinds of data our users feed us with should be displayed graphically. At this point in time, it must not be user-configurable, yet still showing the most important pieces of information at a breeze.
 
+[Show data in dashboard](./use_cases/UC_5_show_data_in_dashboard/UC_5_show_data_in_dashboard.md)
+
+
 #### 3.1.6 Evaluate scanning receipts
 
 We want to get a clear view on technologies that enable us to automatically scan receipts with high confidence. Until December, we should have some first pointers and have built an initial understanding on how to tackle this feature.
+
+[Evaluate scanning receipts](./use_cases/UC_6_evaluate_scanning_receipts/UC_6_evaluate_scanning_receipts.md)
+
+#### 3.1.7 Logging out
+
+In case you share your phone, have multiple accounts or just want to be cautious about your privacy you should be able to manually log out.
+
+[Logging out](./use_cases/UC_7_logging_out/UC_7_logging_out.md)
+
+
+
 
 ### 3.2 Usability
 

@@ -3,7 +3,8 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here
 class Place(models.Model):
-    address = models.CharField(max_length=55, primary_key=True)
+    place_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    address = models.CharField(max_length=55)
     name = models.CharField(max_length=55)
 
 
