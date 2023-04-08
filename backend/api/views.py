@@ -10,7 +10,7 @@ from django.contrib.auth import authenticate
 def getUser(request, pk):
     user = FiboUser.objects.get(id=pk)
     serializer = FiboUserSerializer(user, many=False)
-    return Response(serializer.data)
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['DELETE'])
