@@ -1,15 +1,9 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework import status
 from .serializers import FiboUserSerializer
 from .models import FiboUser
 from django.contrib.auth import authenticate
-
-
-@api_view(['GET'])
-def getUsers(request):
-    users = FiboUser.objects.all()
-    serializer = FiboUserSerializer(users, many=True)
-    return Response(serializer.data)
 
 
 @api_view(['GET'])
@@ -23,7 +17,7 @@ def getUser(request, pk):
 def deleteUser(request, pk):
     user = FiboUser.objects.get(id=pk)
     user.delete()
-    return Response(f'User with id {pk} was deleted')
+    return Response(f'User with id {pk} was deleted', status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])
@@ -31,7 +25,7 @@ def registerUser(request):
     # Note that username and email are the same
     user = FiboUser.objects.create_user(username=request.data['email'], email=request.data['email'],
                                         password=request.data['password'])
-    return Response(f'User with id {user.id} and email {user.email} was created')
+    return Response(f'User with id {user.id} and email {user.email} was created', status=status.HTTP_201_CREATED)
 
 
 @api_view(['POST'])
@@ -41,9 +35,9 @@ def authenticateUser(request):
     if user is not None:
         # TODO login(request,user)
         # redirect to a success page
-        return Response(f'Authenticated user {user.email}')
+        return Response(f'Authenticated user {user.email}', status=status.HTTP_200_OK)
     else:
-        return Response('Invalid login')
+        return Response('Invalid login', status=status.HTTP_401_UNAUTHORIZED)
 
 
 @api_view(['GET'])
@@ -62,18 +56,11 @@ def getRoutes(request):
             'description': 'Authenticates user with given email and password'
         },
         {
-            'Endpoint': '/users/',
-            'method': 'GET',
-            'body': None,
-            'description': 'Returns all users'
-        },
-        {
             'Endpoint': '/users/<id>/delete',
             'method': 'DELETE',
             'body': None,
             'description': 'Deletes user with given id'
         },
-
         {
             'Endpoint': '/users/<id>',
             'method': 'GET',
