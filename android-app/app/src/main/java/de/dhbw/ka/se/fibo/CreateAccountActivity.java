@@ -1,5 +1,6 @@
 package de.dhbw.ka.se.fibo;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
@@ -10,6 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.Locale;
 
@@ -19,11 +21,17 @@ import de.dhbw.ka.se.fibo.databinding.CreateAccountBinding;
 public class CreateAccountActivity extends AppCompatActivity {
     private CreateAccountBinding binding;
 
+    private MaterialButton registerButton;
+
+    private Thread buttonClickThread;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = CreateAccountBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        registerButton = binding.createAccountButton;
 
         Locale locale = Locale.GERMANY;
         Locale.setDefault(locale);
@@ -49,6 +57,31 @@ public class CreateAccountActivity extends AppCompatActivity {
 //        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 //        NavigationUI.setupWithNavController(binding.navView, navController);
 
+        initializeButton();
+    }
 
+    private void initializeButton() {
+        registerButton.setOnClickListener(e -> registerButtonClicked());
+    }
+
+    private void registerButtonClicked() {
+        if (null == buttonClickThread) {
+            buttonClickThread = new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        super.run();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    } finally {
+                        Intent i = new Intent(CreateAccountActivity.this,
+                                MainActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
+                }
+            };
+            buttonClickThread.start();
+        }
     }
 }
