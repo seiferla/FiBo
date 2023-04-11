@@ -33,7 +33,6 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import de.dhbw.ka.se.fibo.ApplicationState;
-import de.dhbw.ka.se.fibo.Helpers;
 import de.dhbw.ka.se.fibo.R;
 import de.dhbw.ka.se.fibo.databinding.FragmentAddingBinding;
 import de.dhbw.ka.se.fibo.models.Cashflow;
