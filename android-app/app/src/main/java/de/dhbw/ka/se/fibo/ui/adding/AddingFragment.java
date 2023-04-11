@@ -121,7 +121,6 @@ public class AddingFragment extends Fragment {
         okayButton.setOnClickListener(e -> {
             Cashflow newCashFlow = createCashFlow();
             if (null == newCashFlow) {
-                //TODO handle invalid data / parsing errors
                 Toast.makeText(requireContext(), "Some required inputs are empty", Toast.LENGTH_SHORT).show();
             } else {
                 ApplicationState.getInstance(requireContext()).addCashFlow(newCashFlow);
@@ -154,9 +153,8 @@ public class AddingFragment extends Fragment {
 
             value = BigDecimal.valueOf(Double.parseDouble(getFieldValue(amount)));
 
-            //TODO use unique PlaceID
             //TODO let the user enter an Address
-            place = new Place(getFieldValue(store), 220, "Adresse xy");
+            place = new Place(getFieldValue(store), null);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
 
             date = LocalDate.parse(getFieldValue(dateText), formatter).atStartOfDay();
