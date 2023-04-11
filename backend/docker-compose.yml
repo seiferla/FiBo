@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "fibo"
+    networks:
+      - pg-network
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - "8080:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "aa@bb.cc"
+      PGADMIN_DEFAULT_PASSWORD: "aa@bb.cc"
+    networks:
+      - pg-network
+  django:
+    build: .
+    command: /usr/local/bin/gunicorn backend.wsgi:application -b :8000 --reload --max-requests 1
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - DB_HOST=postgres
+    depends_on:
+      - postgres
+    networks:
+      - pg-network
+
+volumes:
+  data:
+
+networks:
+  pg-network:

@@ -47,7 +47,7 @@ def getRoutes(request):
             'Endpoint': '/users/register',
             'method': 'POST',
             'body': {'email': '', 'password': ''},
-            'description': 'Register Endpoint for a new user'
+            'description': 'Register Endpoint for a new user!'
         },
         {
             'Endpoint': '/users/authenticate',

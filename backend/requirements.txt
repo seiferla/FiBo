@@ -14,3 +14,4 @@ packaging~=21.3
 pyparsing~=3.0.9
 django-extensions==3.2.1
 django[argon2]
+gunicorn

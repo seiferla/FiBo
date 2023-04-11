@@ -21,8 +21,7 @@ export CPPFLAGS="-I/opt/homebrew/opt/libpq/include $CPPFLAGS"
 
 If you followed the instructions above or are using a different OS run the following steps:
 1. Set your current working directory to the directory where this `README.md` is located: `cd backend/`
-2. Run `pip install -r requirements.txt`.
-3. Create a `.env` file in the `backend/` **sub**folder of the current directory, it should look like this:
+2. Create a `.env` file in the `backend/` **sub**folder of the current directory, it should look like this:
 ```ini
 SECRET_KEY=<see note below>
 DB_NAME=fibo
@@ -35,7 +34,8 @@ The `SECRET_KEY` should be sufficiently random. For example, you can use the fol
 
 Update the `DB_*` variables as needed, so they use the prepared PostgreSQL installation.
 
-4. Run `python manage.py makemigrations`
-5. Run `python manage.py migrate`
+3. Run `docker compose run django python manage.py makemigrations`
+4. Run `docker compose run django python manage.py migrate`
+4. Run `docker compose run django python manage.py collectstatic`
 
-From now on, you can use the command `python manage.py runserver` to have the Django backend run.
+From now on, you can use the command `docker compose up -d --build` to have the Django backend run.
