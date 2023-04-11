@@ -13,9 +13,11 @@ import de.dhbw.ka.se.fibo.R;
 
 public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
-    MaterialCardView materialCard;
-    TextView imageView;
-    MaterialTextView cardTitle, date, cashFlowValue;
+    final MaterialCardView materialCard;
+    final TextView imageView;
+    final MaterialTextView cardTitle;
+    final MaterialTextView date;
+    final MaterialTextView cashFlowValue;
 
     public RecyclerViewHolder(@NonNull View itemView) {
         super(itemView);

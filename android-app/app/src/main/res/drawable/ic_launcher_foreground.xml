@@ -3,7 +3,7 @@
     android:height="108dp"
     android:viewportWidth="324"
     android:viewportHeight="324">
-    <!-- the group is used to center the icåon -->
+    <!-- the group is used to center the icon -->
     <group
         android:translateX="90"
         android:translateY="120">

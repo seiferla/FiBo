@@ -2,8 +2,10 @@
     <!-- Base application theme. -->
     <style name="Theme.FiBo" parent="Theme.Material3.DayNight">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#D4E3FF</item>
-        <item name="colorPrimaryVariant">#1E92EA</item>
+        <!--        <item name="colorPrimary">#D4E3FF</item>-->
+        <item name="colorPrimary">@color/hint_text_blue</item>
+        <!--        <item name="colorPrimaryVariant">#1E92EA</item>-->
+        <item name="colorPrimaryVariant">@color/light_primary</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -15,13 +17,29 @@
     </style>
 
     <style name="Style.FiBo.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="android:color">#E1E9FA</item>
+        <item name="android:color">?attr/colorPrimaryVariant</item>
+    </style>
+
+    <style name="Style.FiBo.Dropdown" parent="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxBackgroundColor">@color/application_background</item>
+    </style>
+
+    <style name="Style.FiBo.FAB.Primary" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="backgroundTint">?attr/colorPrimary</item>
+        <item name="tint">?attr/colorOnPrimary</item>
     </style>
 
     <style name="Style.FiBo.CardView.Filled" parent="Widget.Material3.CardView.Outlined">
-        <item name="cardBackgroundColor">#FFFFFF</item>
-        <item name="strokeColor">#CCCCCC</item>
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="strokeColor">@color/field_stroke_color</item>
         <item name="strokeWidth">1dp</item>
+    </style>
+
+
+    <style name="Theme.FiBo.TabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabTextColor">?attr/colorPrimary</item>
+        <item name="tabIndicatorColor">?attr/colorPrimary</item>
     </style>
 
 </resources>

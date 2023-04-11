@@ -38,18 +38,6 @@ public class Helpers {
         actionBar.setCustomView(textview);
     }
 
-    public static char signumToHumanReadableSign(int signum) {
-        if (-1 == signum) {
-            return '-';
-        } else if (0 == signum) {
-            return '+';
-        } else if (1 == signum) {
-            return '+';
-        }
-
-        throw new RuntimeException("signum must be -1, 0 or 1!");
-    }
-
     public static String formatBigDecimalCurrency(BigDecimal bd) {
         return String.format(Locale.GERMANY, "%,.2f €", bd.setScale(2, RoundingMode.HALF_UP));
     }
