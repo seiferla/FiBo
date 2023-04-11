@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
 /**
  * Example local unit test, which will execute on the development machine (host).
  *
@@ -14,5 +16,13 @@ public class ExampleUnitTest {
   @Test
   public void addition_isCorrect() {
     assertEquals(4, 2 + 2);
+  }
+
+  @Test
+  public void testFormatBigDecimalCurrency(){
+    BigDecimal input = new BigDecimal("123456.789");
+    String expectedOutput = "123.456,79 €";
+    String actualOutput = Helpers.formatBigDecimalCurrency(input);
+    assertEquals(expectedOutput,actualOutput);
   }
 }
