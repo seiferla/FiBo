@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,6 +33,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import de.dhbw.ka.se.fibo.ApplicationState;
+import de.dhbw.ka.se.fibo.Helpers;
 import de.dhbw.ka.se.fibo.R;
 import de.dhbw.ka.se.fibo.databinding.FragmentAddingBinding;
 import de.dhbw.ka.se.fibo.models.Cashflow;
@@ -121,6 +123,7 @@ public class AddingFragment extends Fragment {
             Cashflow newCashFlow = createCashFlow();
             if (null == newCashFlow) {
                 //TODO handle invalid data / parsing errors
+                Toast.makeText(requireContext(), "Some required inputs are empty", Toast.LENGTH_SHORT).show();
             } else {
                 ApplicationState.getInstance(requireContext()).addCashFlow(newCashFlow);
                 System.out.println(newCashFlow);
