@@ -65,23 +65,9 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
     private void registerButtonClicked() {
-        if (null == buttonClickThread) {
-            buttonClickThread = new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        super.run();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    } finally {
-                        Intent i = new Intent(CreateAccountActivity.this,
-                                MainActivity.class);
-                        startActivity(i);
-                        finish();
-                    }
-                }
-            };
-            buttonClickThread.start();
-        }
+        Intent i = new Intent(CreateAccountActivity.this,
+                MainActivity.class);
+        startActivity(i);
+        finish();
     }
 }
