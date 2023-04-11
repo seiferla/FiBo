@@ -32,14 +32,6 @@
 
     </LinearLayout>
 
-    <!--<TextView
-        android:id="@+id/create_account_header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/create_account_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />-->
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/create_account_email_layer"
         android:layout_width="0dp"
