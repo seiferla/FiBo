@@ -124,7 +124,7 @@ Testing:
 ### 3.1 Functionality
 
 This section will explain the different use cases, you could see in the Use Case Diagram, and their functionality.
-Until the end of December we plan to implement:
+Until the end of the fourth semester we plan to implement:
 
 - [3.1.1 Create Account](#311-create-account)
 - [3.1.2 Logging in](#312-logging-in)
@@ -203,17 +203,17 @@ The server shall be available 95% of the time. This also means we have to figure
 
 #### 3.3.2 Defect Rate
 
-Our goal is that we have no loss of any data. This is important so that the users financial data is save, even after a downtime of the server.
+Our goal is that we have no loss of any data. This is important so that the users financial data is safe, even after a downtime of the server.
 
 ### 3.4 Performance
 
 #### 3.4.1 Capacity
 
-The system should be able to manage thousands of requests. Also it should be possible to register as many users as necessary.
+The system should be able to manage thousands of requests. Also, it should be possible to register as many users as necessary.
 
 #### 3.4.2 Storage
 
-Smartphones don't provide much storage. Therefore we are aiming to keep the needed storage as small as possible.
+Smartphones don't provide much storage. Therefore, we are aiming to keep the needed storage as small as possible.
 
 #### 3.4.3 App performance / Response time
 
@@ -223,7 +223,7 @@ To provide the best App performance we aim to keep the response time as low as p
 
 #### 3.5.1 Coding Standards
 
-We are going to write the code by using all of the most common clean code standards. For example we will name our variables and methods by their functionalities. This will keep the code easy to read by everyone and make further developement much easier.
+We are going to write the code by using all the most common clean code standards. For example, we will name our variables and methods by their functionalities. This will keep the code easy to read by everyone and make further developement much easier.
 
 #### 3.5.2 Testing Strategy
 
@@ -240,7 +240,7 @@ Because we are programming an Android App we chose Java as our programming langu
 
 ### 3.7 On-line User Documentation and Help System Requirements
 
-The usage of the app should be as intuitive as possible, so it won't need any further documentation. If the user needs some help we will implement a "Help"-Button in the App which includes a FAQ and a formula to contact the development team.
+The usage of the app should be as intuitive as possible, so it won't need any further documentation.
 
 ### 3.8 Purchased Components
 

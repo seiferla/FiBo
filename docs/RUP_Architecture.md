@@ -56,7 +56,17 @@ Please also see this [introduction to the technologies](https://fibo952390745.wo
 
 ### Architectural Goals and Constraints
 
-[This section describes the software requirements and objectives that have some significant impact on the architecture, for example, safety, security, privacy, use of an off-the-shelf product, portability, distribution, and reuse. It also captures the special constraints that may apply: design and implementation strategy, development tools, team structure, schedule, legacy code, and so on.]
+#### Architectural Goals
+The architectural goals of the FiBO app are to provide users with a comprehensive platform for learning and managing personal finances. The app should be user-friendly, with an intuitive interface that enables users to easily access their personal financial information and tools. It should also be secure, with robust data encryption and authentication protocols to protect user data.
+
+#### Architectural Constraints
+The architectural constraints of FiBo include technical limitations, such as various screen sizes. There are also operational constraints such as time and budget limitations as well as a team of developers with a big variety of experiences.
+
+#### Assumptions
+The finance book app assumes that users will have varying levels of financial literacy and experience. Therefore, it should provide a range of resources, from basic data entry to allowing users to enter more data to enable a detailed analysis of their data.
+
+#### Risks and trade-offs
+The risks associated with FiBo include potential security breaches or data leaks, which could lead to loss of user data or financial information. To mitigate these risks, the app will require robust security measures and regular updates to ensure that any potential vulnerabilities are addressed promptly. The trade-offs associated with the finance book app include balancing the desire for rich functionality with ease of use and simplicity for users.
 
 ### Use-Case View
 
