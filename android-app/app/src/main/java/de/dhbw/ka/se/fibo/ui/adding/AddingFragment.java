@@ -21,12 +21,14 @@ import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.math.BigDecimal;
+import java.sql.Array;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -39,6 +41,7 @@ import de.dhbw.ka.se.fibo.databinding.FragmentAddingBinding;
 import de.dhbw.ka.se.fibo.models.Cashflow;
 import de.dhbw.ka.se.fibo.models.CashflowType;
 import de.dhbw.ka.se.fibo.models.Category;
+import de.dhbw.ka.se.fibo.models.Item;
 import de.dhbw.ka.se.fibo.models.Place;
 
 public class AddingFragment extends Fragment {
@@ -87,6 +90,14 @@ public class AddingFragment extends Fragment {
         initializeDropdownValues();
         createDatePicker();
         setUpDateTextField();
+
+        notes.setOnFocusChangeListener((view1, hasFocus) -> {
+            if (hasFocus) {
+                notes.setHint(requireContext().getString(R.string.adding_notes_format));
+            } else {
+                notes.setHint(requireContext().getString(R.string.adding_notes));
+            }
+        });
     }
 
     private void setUpTabLayout() {
@@ -126,7 +137,7 @@ public class AddingFragment extends Fragment {
         okayButton.setOnClickListener(e -> {
             Cashflow newCashFlow = createCashFlow();
             if (null == newCashFlow) {
-                Toast.makeText(requireContext(), "Some required inputs are empty", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "Some required inputs are empty or wrong formatted", Toast.LENGTH_SHORT).show();
             } else {
                 ApplicationState.getInstance(requireContext()).addCashFlow(newCashFlow);
                 System.out.println(newCashFlow);
@@ -158,13 +169,22 @@ public class AddingFragment extends Fragment {
 
             value = BigDecimal.valueOf(Double.parseDouble(getFieldValue(amount)));
 
-            //TODO let the user enter an Address
             place = new Place(getFieldValue(store), getFieldValue(address));
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
 
             date = LocalDate.parse(getFieldValue(dateText), formatter).atStartOfDay();
 
-            return new Cashflow(category, newCashFlowType, value, date, place);
+            if (notes.getText().toString().trim().isEmpty()) {
+                return new Cashflow(category, newCashFlowType, value, date, place);
+            } else {
+                try {
+                    List<Item> items = createItemsFromNotes();
+                    return new Cashflow(category, newCashFlowType, value, date, place, items);
+                } catch (IllegalArgumentException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
         }
 
 
@@ -237,6 +257,22 @@ public class AddingFragment extends Fragment {
             Format formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMANY);
             dateText.setText(formatter.format(selection));
         });
+    }
+
+    private ArrayList<Item> createItemsFromNotes() throws IllegalArgumentException {
+        String[] lines = notes.getText().toString().trim().split(";");
+        ArrayList<Item> result = new ArrayList<Item>();
+        for (String s : lines) {
+            String[] item = s.split(",");
+            if (2 == item.length) {
+                result.add(new Item(item[0], Float.parseFloat(item[1])));
+            } else if (3 == item.length) {
+                result.add(new Item(item[0], Float.parseFloat(item[1]), Float.parseFloat(item[2])));
+            } else {
+                throw new IllegalArgumentException("Incorrect input format");
+            }
+        }
+        return result;
     }
 
     @Override

@@ -218,16 +218,17 @@
 
                 <EditText
                     android:id="@+id/notes_multiLine"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="128sp"
-                    android:gravity="start|top"
-                    android:hint="@string/adding_notes"
+                    android:gravity="top"
                     android:importantForAutofill="no"
                     android:inputType="textMultiLine"
+                    android:hint="@string/adding_notes"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"/>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
