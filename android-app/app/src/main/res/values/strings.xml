@@ -27,6 +27,7 @@
     <string name="adding_date">Datum</string>
     <string name="adding_category">Kategorie</string>
     <string name="adding_notes">Notizen</string>
+    <string name="adding_address">Adresse</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris

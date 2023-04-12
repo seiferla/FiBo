@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,6 +53,8 @@ public class AddingFragment extends Fragment {
     private MaterialButton cancelButton;
     private MaterialButton okayButton;
     private TabLayout tabLayout;
+    private TextInputEditText address;
+    private EditText notes;
 
     private CashflowType newCashFlowType;
 
@@ -70,6 +73,8 @@ public class AddingFragment extends Fragment {
         cancelButton = binding.cancel;
         okayButton = binding.okayButton;
         tabLayout = binding.tabLayout;
+        address = binding.addressText;
+        notes = binding.notesMultiLine;
 
         return view;
     }
@@ -154,7 +159,7 @@ public class AddingFragment extends Fragment {
             value = BigDecimal.valueOf(Double.parseDouble(getFieldValue(amount)));
 
             //TODO let the user enter an Address
-            place = new Place(getFieldValue(store), null);
+            place = new Place(getFieldValue(store), getFieldValue(address));
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
 
             date = LocalDate.parse(getFieldValue(dateText), formatter).atStartOfDay();
@@ -184,6 +189,9 @@ public class AddingFragment extends Fragment {
         } else if (null == categoriesDropdown.getText()
                 | categoriesDropdown.getText().toString().trim().isEmpty()) {
             throw new IllegalArgumentException("Category must be set");
+        } else if (null == address.getText()
+                | address.getText().toString().trim().isEmpty()) {
+            throw new IllegalArgumentException("Address must be set");
         }
         //others are currently not stored in our database or not required
 
