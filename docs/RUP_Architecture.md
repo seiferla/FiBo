@@ -91,6 +91,10 @@ The frontend is in charge of providing a human-useable interface that provides f
 
 #### Architecturally Significant Design Packages
 
+##### Android app
+
+##### Django Backend
+
 [For each significant package, include a subsection with its name, its brief description, and a diagram with all significant classes and packages contained within the package.
 
 For each significant class in the package, include its name, brief description, and, optionally a description of some of its major responsibilities, operations and attributes.]

@@ -79,7 +79,7 @@ The following chapter provides an overview of this project with vision and Overa
 
 ### 2.1 Vision
 
-We want to build an app for managing your finances. An app to track and decrease your expenses easily, an app to plan your financial future. You will be able to scan all your receipts, with your phone and FiBo will do the rest for you. It automatically categorizes your expenses and tells you how much money you have left for the month. Fibo also integrates you bank account, so that you can directly see your balance, without changing the app. You want to save money for a big investment, no problem FiBo got your back, it tells you how long it will probably take you to reach your goal. FiBo is the all-in-one app for managing your finances. And we want to build it!
+We want to build an app for managing your finances. An app to track and decrease your expenses easily, an app to plan your financial future. You will be able to scan all your receipts, with your phone and FiBo will do the rest for you. It automatically categorizes your expenses and tells you how much money you have left for the month. FiBo also integrates you bank account, so that you can directly see your balance, without changing the app. You want to save money for a big investment, no problem FiBo got your back, it tells you how long it will probably take you to reach your goal. FiBo is the all-in-one app for managing your finances. And we want to build it!
 
 ### 2.2 Use Case Diagram
 
@@ -238,7 +238,7 @@ Because we are programming an Android App we chose Java as our programming langu
 - Android 4.4 and higher
 - Java 8 and higher
 
-### 3.7 On-line User Documentation and Help System Requirements
+### 3.7 Online User Documentation and Help System Requirements
 
 The usage of the app should be as intuitive as possible, so it won't need any further documentation.
 
