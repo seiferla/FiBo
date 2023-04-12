@@ -10,6 +10,7 @@ This document is based on the following template: https://sce.uhcl.edu/helm/Rati
 | Date (dd/mm/yy) | Version | Description | Author |
 |---|---|---|---|
 | 22/11/22 | 1.0 | Initial version | Jens |
+| 12/04/23 | 1.1 | Extended version | Jens |
 
 ## Table of Contents
 
@@ -57,7 +58,7 @@ Please also see this [introduction to the technologies](https://fibo952390745.wo
 ### Architectural Goals and Constraints
 
 #### Architectural Goals
-The architectural goals of the FiBO app are to provide users with a comprehensive platform for learning and managing personal finances. The app should be user-friendly, with an intuitive interface that enables users to easily access their personal financial information and tools. It should also be secure, with robust data encryption and authentication protocols to protect user data.
+The architectural goals of the FiBo app are to provide users with a comprehensive platform for learning and managing personal finances. The app should be user-friendly, with an intuitive interface that enables users to easily access their personal financial information and tools. It should also be secure, with robust data encryption and authentication protocols to protect user data.
 
 #### Architectural Constraints
 The architectural constraints of FiBo include technical limitations, such as various screen sizes. There are also operational constraints such as time and budget limitations as well as a team of developers with a big variety of experiences.
@@ -70,7 +71,7 @@ The risks associated with FiBo include potential security breaches or data leaks
 
 ### Use-Case View
 
-[This section lists use cases or scenarios from the use-case model if they represent some significant, central functionality of the final system, or if they have a large architectural coverage - they exercise many architectural elements, or if they stress or illustrate a specific, delicate point of the architecture.]
+See [3.1 in our SRS](SRS.md#31-functionality).
 
 #### Use-Case Realizations
 
