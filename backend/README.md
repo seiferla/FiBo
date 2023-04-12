@@ -39,3 +39,14 @@ Update the `DB_*` variables as needed, so they use the prepared PostgreSQL insta
 5. Run `python manage.py migrate`
 
 From now on, you can use the command `python manage.py runserver` to have the Django backend run.
+
+## Create Django UML Diagram
+In order to create a UML-Diagram with Django som additional steps are needed.
+The following Steps are for MacOS only and wont work on Windows!
+Open a Terminal and run the following commands:
+1. Run `brew install graphviz`
+2. Run `pip install graphviz`
+3. Run `python -m pip install --global-option=build_ext --global-option="-I$(brew --prefix graphviz)/include/" --global-option="-L$(brew --prefix graphviz)/lib/" pygraphviz`
+
+After that you should be able to create UML Diagramms with the following command:
+`python manage.py graph_models -a -g -o ../docs/ER_Model_Uml.png`

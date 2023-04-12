@@ -13,17 +13,17 @@
         android:theme="@style/Theme.FiBo"
         tools:targetApi="31">
         <activity
-            android:name="de.dhbw.ka.se.fibo.SplashActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="de.dhbw.ka.se.fibo.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

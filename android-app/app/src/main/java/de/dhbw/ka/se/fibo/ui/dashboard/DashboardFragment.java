@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.util.Pair;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -45,55 +46,59 @@ import de.dhbw.ka.se.fibo.ApplicationState;
 import de.dhbw.ka.se.fibo.R;
 import de.dhbw.ka.se.fibo.databinding.FragmentDashboardBinding;
 import de.dhbw.ka.se.fibo.models.Cashflow;
+import de.dhbw.ka.se.fibo.models.CashflowType;
 import de.dhbw.ka.se.fibo.models.Category;
 
 public class DashboardFragment extends Fragment implements OnChartValueSelectedListener {
 
     private FragmentDashboardBinding binding;
     private MaterialDatePicker<Pair<Long, Long>> picker;
-    private LocalDate startDate = null;
-    private LocalDate endDate = null;
-    private PieChart pieChart;
-
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private Instant startInstant;
     private static final int PIE_CHART_ANIMATION_DURATION = 750;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         // gather current instant to be able to calculate the time we spent in this (user-interaction driven) method
-        Instant instant = Instant.now();
+        startInstant = Instant.now();
 
         DashboardViewModel dashboardViewModel =
                 new ViewModelProvider(this).get(DashboardViewModel.class);
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         initializeDateCard();
         createDatePicker();
         initializePieChart();
 
-        Duration duration = Duration.between(instant, Instant.now());
+        Duration duration = Duration.between(startInstant, Instant.now());
         long millis = duration.toMillis();
         if (1000 < millis) {
             Log.w("FiBo", "Creating dashboard view took " + millis + " ms (more than 1 s!)");
         } else {
             Log.v("FiBo", "Creating dashboard view took " + millis + " ms");
         }
-
-        return root;
     }
 
     private void initializePieChart() {
         Context context = requireContext();
         SortedSet<Cashflow> cashflows = ApplicationState.getInstance(context).getCashflows();
 
-        Stream<Cashflow> cashflowStream = cashflows.stream();
+        Stream<Cashflow> cashflowStream = cashflows.stream().filter(x -> CashflowType.EXPENSE == x.getType());
 
-        if (this.startDate != null) {
-            cashflowStream = cashflowStream.filter(x -> this.startDate.minusDays(1).isBefore(ChronoLocalDate.from(x.getTimestamp())));
+        if (null != startDate) {
+            cashflowStream = cashflowStream.filter(x -> startDate.minusDays(1).isBefore(ChronoLocalDate.from(x.getTimestamp())));
         }
 
-        if (this.endDate != null) {
-            cashflowStream = cashflowStream.filter(x -> this.endDate.plusDays(1).isAfter(ChronoLocalDate.from(x.getTimestamp())));
+        if (null != endDate) {
+            cashflowStream = cashflowStream.filter(x -> endDate.plusDays(1).isAfter(ChronoLocalDate.from(x.getTimestamp())));
         }
 
         Map<Category, BigDecimal> expensesPerCategory = new HashMap<>();
@@ -108,7 +113,7 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
             expensesPerCategory.put(category, newValue);
         }
 
-        // TODO: Check whether we have no data in the selected timespan
+        // TODO: Check whether we have no data in the selected time-span
 
         ArrayList<PieEntry> entries = new ArrayList<>();
         int[] colors = new int[expensesPerCategory.size()];
@@ -131,7 +136,7 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
 
         PieData pieData = new PieData(dataSet);
 
-        pieChart = binding.dashboardPiechart;
+        PieChart pieChart = binding.dashboardPieChart;
         pieChart.setDrawEntryLabels(false);
         pieChart.setData(pieData);
         pieChart.getDescription().setText("");
@@ -154,9 +159,9 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
     }
 
     private void setDateCardTime() {
-        if (null == this.startDate && null == this.endDate) {
+        if (null == startDate && null == endDate) {
             binding.dateStartEndText.setText(requireContext().getText(R.string.timespanAllData));
-        } else if (null != this.startDate && null != this.endDate) {
+        } else if (null != startDate && null != endDate) {
             DateTimeFormatterBuilder builder = new DateTimeFormatterBuilder()
                     .padNext(2, '0')
                     .appendValue(ChronoField.DAY_OF_MONTH)
@@ -165,13 +170,13 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
                     .appendValue(ChronoField.MONTH_OF_YEAR)
                     .appendLiteral('.');
 
-            if (this.startDate.getYear() != this.endDate.getYear()) {
+            if (startDate.getYear() != endDate.getYear()) {
                 builder = builder.appendValue(ChronoField.YEAR);
             }
 
             DateTimeFormatter formatter = builder.toFormatter(Locale.getDefault());
 
-            binding.dateStartEndText.setText(requireContext().getString(R.string.timespanStartToEnd, formatter.format(this.startDate), formatter.format(this.endDate)));
+            binding.dateStartEndText.setText(requireContext().getString(R.string.timespanStartToEnd, formatter.format(startDate), formatter.format(endDate)));
         } else {
             Log.w("FiBo", "setDateCardTime(): startDate != endDate");
         }
@@ -184,8 +189,8 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
     private void createDatePicker() {
         SortedSet<Cashflow> cashflows = ApplicationState.getInstance(requireContext())
                 .getCashflows();
-        Cashflow newestCashflow = null;
-        Cashflow oldestCashflow = null;
+        Cashflow newestCashflow;
+        Cashflow oldestCashflow;
         CalendarConstraints.Builder builder = new CalendarConstraints.Builder();
 
         if (!cashflows.isEmpty()) {
@@ -201,19 +206,19 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
 
         picker = MaterialDatePicker.Builder
                 .dateRangePicker()
-            .setTitleText(R.string.datePickerTitle)
-            .setCalendarConstraints(builder.build())
-            .build();
+                .setTitleText(R.string.datePickerTitle)
+                .setCalendarConstraints(builder.build())
+                .build();
 
         picker.addOnPositiveButtonClickListener(e -> {
-            this.startDate = Instant.ofEpochMilli(e.first).atZone(ZoneId.systemDefault())
-                .toLocalDate();
-            this.endDate = Instant.ofEpochMilli(e.second).atZone(ZoneId.systemDefault()).toLocalDate();
+            startDate = Instant.ofEpochMilli(e.first).atZone(ZoneId.systemDefault())
+                    .toLocalDate();
+            endDate = Instant.ofEpochMilli(e.second).atZone(ZoneId.systemDefault()).toLocalDate();
 
-            this.setDateCardTime();
+            setDateCardTime();
 
-            // update pie chart to only include data in the selected timespan
-            this.initializePieChart();
+            // update pie chart to only include data in the selected time-span
+            initializePieChart();
         });
     }
 

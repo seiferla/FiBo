@@ -1,7 +1,9 @@
 package de.dhbw.ka.se.fibo;
 
+import android.annotation.SuppressLint;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -16,12 +18,13 @@ import java.util.Locale;
 import de.dhbw.ka.se.fibo.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding binding;
+    NavController navController;
 
+    @SuppressLint("AppBundleLocaleChanges")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         Locale locale = Locale.GERMANY;
@@ -44,10 +47,16 @@ public class MainActivity extends AppCompatActivity {
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_settings)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        navController.popBackStack();
+        return super.onOptionsItemSelected(item);
     }
 }
