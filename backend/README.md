@@ -38,4 +38,4 @@ Update the `DB_*` variables as needed, so they use the prepared PostgreSQL insta
 4. Run `docker compose run django python manage.py migrate`
 4. Run `docker compose run django python manage.py collectstatic`
 
-From now on, you can use the command `docker compose up -d --build` to have the Django backend run.
+From now on, you can use the command `sudo docker compose up -d --build` to have the Django backend run.
