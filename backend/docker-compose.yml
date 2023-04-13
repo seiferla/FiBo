@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres
+    ports:
+      - "8001:5432"
+    volumes:
+      - data:/var/lib/postgresql/data
+    env_file: backend/.env
+    networks:
+      - pg-network
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - "8080:80"
+    env_file: backend/.env
+    networks:
+      - pg-network
+  django:
+    build: .
+    command: /usr/local/bin/gunicorn backend.wsgi:application -b :8000 --reload --max-requests 1
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    networks:
+      - pg-network
+
+volumes:
+  data:
+
+networks:
+  pg-network:

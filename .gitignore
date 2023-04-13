@@ -85,13 +85,17 @@ fabric.properties
 # Django Backend
 backend/api/migrations
 **/.env
+backend/venv
 backend/env/**
 backend/.idea
 backend/api/__pycache__
 backend/backend/__pycache__
+backend/backend/migrations
+backend/assets
 
 # Android App
 app/build
 android-app/app/build
 android-app/.idea/workspace.xml
+android-app/.idea/deploymentTargetDropDown.xml
 android-app/.idea/shelf/
