@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#CEDBF2</color>
     <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#12213F</color>
@@ -16,7 +14,7 @@
     <color name="yellow">#ffda90</color>
     <color name="red">#e54f6e</color>
     <color name="green1">#01786f</color>
-    <color name="lightpurple">#ad92ad</color>
+    <color name="light_purple">#ad92ad</color>
 
 
     <color name="income">#59B222</color>
@@ -24,7 +22,11 @@
     <color name="lightBackground">#FFFBFE</color>
     <color name="mainTextColor">#1C1B1F</color>
     <!--    <color name="initial_background">#6750A4</color>-->
-    <color name="initial_background">#143166</color>
     <color name="iconColor">#FF000000</color>
-    <color name="FAB_color">#B6CBF2</color>
+
+    <!--  <color name="mockup_purple">#6750A4</color>-->
+    <color name="hint_text_blue">#12598F</color>
+    <color name="light_primary">#C8E4FA</color>
+    <color name="application_background">#FEFAFD</color>
+    <color name="field_stroke_color">#CCCCCC</color>
 </resources>

@@ -51,3 +51,15 @@ If the "docker compose run django python manage.py ..." commands fail due to pas
 
 1. Run `docker exec -it <container-name> psql -U postgres -d <env-database-name> -c "CREATE USER <env-username> WITH PASSWORD '<env-password>';"`
 2. Run `docker exec -it <container-name> psql -U postgres -d <env-database-name> -c "GRANT ALL PRIVILEGES ON SCHEMA public TO <env-username>;"`
+
+
+## Create Django UML Diagram
+In order to create a UML-Diagram with Django som additional steps are needed.
+The following Steps are for MacOS only and wont work on Windows!
+Open a Terminal and run the following commands:
+1. Run `brew install graphviz`
+2. Run `pip install graphviz`
+3. Run `python -m pip install --global-option=build_ext --global-option="-I$(brew --prefix graphviz)/include/" --global-option="-L$(brew --prefix graphviz)/lib/" pygraphviz`
+
+After that you should be able to create UML Diagramms with the following command:
+`python manage.py graph_models -a -g -o ../docs/ER_Model_Uml.png`
