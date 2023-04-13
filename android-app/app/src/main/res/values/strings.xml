@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">FiBo</string>
     <string name="app_activity_main_title">Übersicht</string>
+    <string name="create_account_title">Konto erstellen</string>
+    <string name="create_account_button">Registrieren</string>
+    <string name="create_account_text">Erstellen Sie ein Konto, um fortzufahren</string>
+    <string name="create_account_email_hint">E-Mail-Adresse</string>
+    <string name="create_account_password_hint">Passwort</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_settings">Settings</string>
