@@ -7,18 +7,14 @@ services:
       - "8001:5432"
     volumes:
       - data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_PASSWORD: "postgres"
-      POSTGRES_DB: "fibo"
+    env_file: backend/.env
     networks:
       - pg-network
   pgadmin:
     image: dpage/pgadmin4
     ports:
       - "8080:80"
-    environment:
-      PGADMIN_DEFAULT_EMAIL: "aa@bb.cc"
-      PGADMIN_DEFAULT_PASSWORD: "aa@bb.cc"
+    env_file: backend/.env
     networks:
       - pg-network
   django:
@@ -28,12 +24,6 @@ services:
       - .:/code
     ports:
       - "8000:8000"
-    environment:
-      - POSTGRES_NAME=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_PORT=8001
-      - DB_HOST=postgres
     depends_on:
       - postgres
     networks:

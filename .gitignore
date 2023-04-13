@@ -91,7 +91,7 @@ backend/.idea
 backend/api/__pycache__
 backend/backend/__pycache__
 backend/backend/migrations
-backend/static
+backend/assets
 
 # Android App
 app/build

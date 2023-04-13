@@ -21,14 +21,17 @@ export CPPFLAGS="-I/opt/homebrew/opt/libpq/include $CPPFLAGS"
 
 If you followed the instructions above or are using a different OS run the following steps:
 1. Set your current working directory to the directory where this `README.md` is located: `cd backend/`
-2. Create a `.env` file in the `backend/` **sub**folder of the current directory, it should look like this:
+2. Create a `.env` file in the `backend/` **sub**folder of the current directory, it should look something like this:
 ```ini
 SECRET_KEY=<see note below>
-DB_NAME=fibo
-DB_USER=fibo
-DB_PASSWORD=*snip*
-DB_HOST=127.0.0.1
+POSTGRES_DB=fibo
+POSTGRES_USER=*snip*
+POSTGRES_PASSWORD=*snip*
+DB_HOST=postgres
 DB_PORT=5432
+
+PGADMIN_DEFAULT_EMAIL=*snip*
+PGADMIN_DEFAULT_PASSWORD=*snip*
 ```
 The `SECRET_KEY` should be sufficiently random. For example, you can use the following node.js script and set the `SECRET_KEY` to the result of it: `require('crypto').randomBytes(64).toString('hex')`.
 
@@ -39,3 +42,6 @@ Update the `DB_*` variables as needed, so they use the prepared PostgreSQL insta
 4. Run `docker compose run django python manage.py collectstatic`
 
 From now on, you can use the command `docker compose up -d --build` to have the Django backend run.
+
+Troubleshooting:
+You may need to run `rm ~/.docker/config.json` in case you are seeing `ERROR [internal] load metadata for docker.io/library/python:3` when doing the steps
