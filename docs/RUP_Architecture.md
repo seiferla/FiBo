@@ -65,6 +65,7 @@ The architectural constraints of FiBo include technical limitations, such as var
 
 #### Assumptions
 The finance book app assumes that users will have varying levels of financial knowledge and experience. Therefore, it should provide a range of resources. To achieve this requirement the users may simply add their incomming finances in the app for a brief historical overview or use the the features provided by the dashboard panel for a more detailed analysis of their data.
+
 #### Risks and trade-offs
 The risks associated with FiBo include potential security breaches or data leaks, which could lead to loss of user data or financial information. To mitigate these risks, the app will require robust security measures and regular updates to ensure that any potential vulnerabilities are addressed promptly. The trade-offs associated with the finance book app include balancing the desire for rich functionality with ease of use and simplicity for users.
 

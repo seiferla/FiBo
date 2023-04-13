@@ -214,6 +214,7 @@ The system should be able to manage thousands of requests. Also, it should be po
 #### 3.4.2 Storage
 
 Smartphones don't provide much storage. Therefore, we are aiming to keep the needed storage as small as possible.
+This is something we keep in mind when modeling our database.
 
 #### 3.4.3 App performance / Response time
 
@@ -252,11 +253,14 @@ We don't have any purchased components yet. If there will be purchased component
 
 The User interfaces that will be implemented are:
 
-#### TBD
+- Home view showing a chronological list
+- Dashboard view showing detailed analysis, based on user-defined filters
+- Register view
+- Login view
 
 #### 3.9.2 Hardware Interfaces
 
-(n/a)
+(n/a, as only software is built)
 
 #### 3.9.3 Software Interfaces
 
@@ -268,13 +272,28 @@ The server and hardware will communicate using the http protocol.
 
 ### 3.10 Licensing Requirements
 
+(n/a)
+
 ### 3.11 Legal, Copyright, and Other Notices
 
 The logo is licensed to the FiBo Team and is only allowed to use for the application. We do not take responsibility for any incorrect data or errors in the application.
 
 ### 3.12 Applicable Standards
 
-The development will follow the common clean code standards and naming conventions. Also we will create a definition of done which will be added here as soon as its complete.
+The development will follow the common clean code standards and naming conventions.
+
+We are pursueing the clean code standards by embracing the mindset of a Definition of Ready as well as a Definition of Done.
+
+The Definition of Ready is when acceptance criteria is defined, every team member verifies they understood the content before estimating the time needed to spend to accomplish the ticket.
+
+Developers are self-responsible for adding documentation, unit tests as well as integration tests whenever they seem like a good fit.
+The Definiton of Done is concerned with self-responsible development in accordance with all acceptance criteria.
+At least after the implementation and tests are finished, a pull request is opened and reviews are requested.
+The developer makes clear when their work has left the draft state and is up for merging.
+
+At least one other developer reviews the added code as well as the documentation and employed tests.
+Reviewers may ask for changes, involve other developers or approve on their behalf.
+If all reviewers have approved the pull request, the pull request is merged by the reviewer who had the last outstanding review.
 
 ## 4. Supporting Information
 
