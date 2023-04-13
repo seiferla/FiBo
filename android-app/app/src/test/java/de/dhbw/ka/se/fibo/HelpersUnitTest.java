@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class ExampleUnitTest {
+public class HelpersUnitTest {
   
 
   @Test
