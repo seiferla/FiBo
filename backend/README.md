@@ -35,13 +35,19 @@ PGADMIN_DEFAULT_PASSWORD=*snip*
 ```
 The `SECRET_KEY` should be sufficiently random. For example, you can use the following node.js script and set the `SECRET_KEY` to the result of it: `require('crypto').randomBytes(64).toString('hex')`.
 
-Update the `DB_*` variables as needed, so they use the prepared PostgreSQL installation.
+Update the `POSTGRES_*`,`PGADMIN_DEFAULT_*` variables as needed, so they use the prepared PostgreSQL installation.
 
-3. Run `docker compose run django python manage.py makemigrations`
-4. Run `docker compose run django python manage.py migrate`
-4. Run `docker compose run django python manage.py collectstatic`
+3. Run `docker compose run --rm django python manage.py makemigrations`
+4. Run `docker compose run --rm django python manage.py migrate`
+5. Run `docker compose run --rm django python manage.py collectstatic`
 
-From now on, you can use the command `sudo docker compose up -d --build` to have the Django backend run.
+From now on, you can use the command `sudo docker compose up -d --build` to have the Django backend run on port 8000.
 
 Troubleshooting:
+
 You may need to run `rm ~/.docker/config.json` in case you are seeing `ERROR [internal] load metadata for docker.io/library/python:3` when doing the steps
+
+If the "docker compose run django python manage.py ..." commands fail due to password authentication you might need to create a new user:
+
+1. Run `docker exec -it <container-name> psql -U postgres -d <env-database-name> -c "CREATE USER <env-username> WITH PASSWORD '<env-password>';"`
+2. Run `docker exec -it <container-name> psql -U postgres -d <env-database-name> -c "GRANT ALL PRIVILEGES ON SCHEMA public TO <env-username>;"`
