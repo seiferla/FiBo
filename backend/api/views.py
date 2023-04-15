@@ -1,12 +1,9 @@
-import jwt
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.views import APIView
 from .serializers import FiboUserSerializer
 from .models import FiboUser
-from django.contrib.auth import authenticate
 
 class getUser(APIView):
     permission_classes = (IsAuthenticated,)
