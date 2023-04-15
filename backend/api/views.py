@@ -37,8 +37,8 @@ class registerUser(APIView):
 
 class getRoutes(APIView):
     permission_classes = (IsAuthenticated, )
-    def get(self, request):
 
+    def get(self):
         routes = [
             {
                 'Endpoint': '/users/register',
@@ -53,22 +53,22 @@ class getRoutes(APIView):
                 'description': 'Authenticates user with given email and password'
             },
             {
-                'Endpoint': '/users/<id>/delete',
+                'Endpoint': '/users/delete',
                 'method': 'DELETE',
                 'body': None,
                 'description': 'Deletes user with given id'
             },
             {
-                'Endpoint': '/users/<id>',
+                'Endpoint': '/users/get',
                 'method': 'GET',
                 'body': None,
                 'description': 'Returns user with given id'
             },
             {
-                'Endpoint': '/users/<id>/update',
+                'Endpoint': '/users/update',
                 'method': 'PUT',
                 'body': {'email': '', 'newPassword': '', 'oldPassword': ''},
-                'description': 'Not implemented yet. Updates user with data sent in put request'
+                'description': 'Not implemented yet. Updates current user with data sent in put request'
             },
         ]
         return Response(routes)
