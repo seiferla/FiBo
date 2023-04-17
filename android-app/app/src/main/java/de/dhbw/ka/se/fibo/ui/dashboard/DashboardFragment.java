@@ -37,10 +37,10 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -111,6 +111,8 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
                 .stream()
                 .filter(x -> CashflowType.EXPENSE == x.getType())
                 .map(Cashflow::getCategory)
+                .collect(Collectors.toSet()) // make sure we have only one occurrence of each category
+                .stream() // then sort by localized name of the category
                 .sorted(Comparator.comparing(o -> context.getText(o.getName()).toString()))
                 .collect(Collectors.toList());
     }
@@ -150,6 +152,7 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
                             }
                         }
 
+                        // react to changes
                         initializePieChart();
                     })
                     .setCancelable(true)
@@ -159,41 +162,23 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
 
     private void initializePieChart() {
         Context context = requireContext();
-        SortedSet<Cashflow> cashflows = ApplicationState.getInstance(context).getCashflows();
 
-        Stream<Cashflow> cashflowStream = cashflows.stream().filter(x -> CashflowType.EXPENSE == x.getType());
+        Map<Category, BigDecimal> expensesPerCategory = getFilteredExpensesPerCategory();
 
-        if (null != startDate) {
-            cashflowStream = cashflowStream.filter(x -> startDate.minusDays(1).isBefore(ChronoLocalDate.from(x.getTimestamp())));
+        // TODO: Check whether we have no data in the selected time-span and show warning if appropiate
+
+        // visual adaption in case categories were filtered out to improve UX
+        if (hiddenCategories.isEmpty()) {
+            binding.filteredCategoriesIndications.setText("");
+        } else {
+            binding.filteredCategoriesIndications.setText(context.getString(R.string.dashboard_filter_indication_categories, hiddenCategories.size()));
         }
 
-        if (null != endDate) {
-            cashflowStream = cashflowStream.filter(x -> endDate.plusDays(1).isAfter(ChronoLocalDate.from(x.getTimestamp())));
-        }
-
-        Map<Category, BigDecimal> expensesPerCategory = new HashMap<>();
-
-        for (Cashflow cashflow : cashflowStream.collect(Collectors.toList())) {
-            Category category = cashflow.getCategory();
-
-            // only show expenses from categories that were set hidden to the user
-            if (hiddenCategories.contains(category)) {
-                continue;
-            }
-
-            BigDecimal newValue = expensesPerCategory
-                    .computeIfAbsent(category, x -> BigDecimal.ZERO)
-                    .add(cashflow.getOverallValue());
-
-            expensesPerCategory.put(category, newValue);
-        }
-
-        // TODO: Check whether we have no data in the selected time-span
+        int i = 0;
 
         ArrayList<PieEntry> entries = new ArrayList<>();
         int[] colors = new int[expensesPerCategory.size()];
 
-        int i = 0;
         for (Map.Entry<Category, BigDecimal> entrySet : expensesPerCategory.entrySet()) {
             Category category = entrySet.getKey();
             PieEntry entry = new PieEntry(entrySet.getValue().floatValue());
@@ -220,6 +205,51 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
         pieChart.getLegend().setWordWrapEnabled(true);
 
         pieChart.animateY(DashboardFragment.PIE_CHART_ANIMATION_DURATION, Easing.EaseInOutQuad);
+    }
+
+    /**
+     * Loads all cashflows from the application state, extracts all expenses and applies all active filters
+     *
+     * @return the expenses per category to be displayed to the user
+     */
+    @NonNull
+    private Map<Category, BigDecimal> getFilteredExpensesPerCategory() {
+        Context context = requireContext();
+
+        SortedSet<Cashflow> cashflows = ApplicationState.getInstance(context).getCashflows();
+
+        Stream<Cashflow> cashflowStream = cashflows.stream().filter(x -> CashflowType.EXPENSE == x.getType());
+
+        // filter by start date
+        if (null != startDate) {
+            cashflowStream = cashflowStream.filter(x -> startDate.minusDays(1).isBefore(ChronoLocalDate.from(x.getTimestamp())));
+        }
+
+        // filter by end date
+        if (null != endDate) {
+            cashflowStream = cashflowStream.filter(x -> endDate.plusDays(1).isAfter(ChronoLocalDate.from(x.getTimestamp())));
+        }
+
+        Map<Category, BigDecimal> expensesPerCategory = new HashMap<>();
+
+        for (Iterator<Cashflow> it = cashflowStream.iterator(); it.hasNext(); ) {
+            Cashflow cashflow = it.next();
+
+            Category category = cashflow.getCategory();
+
+            // filter by category
+            if (hiddenCategories.contains(category)) {
+                continue;
+            }
+
+            BigDecimal newValue = expensesPerCategory
+                    .computeIfAbsent(category, x -> BigDecimal.ZERO)
+                    .add(cashflow.getOverallValue());
+
+            expensesPerCategory.put(category, newValue);
+        }
+
+        return expensesPerCategory;
     }
 
     private void initializeDateCard() {

@@ -88,5 +88,6 @@
     <string name="recyclerview_value_placeholder">-20.00€</string>
 
     <string name="dashboard_filter_dialog_title">Nach Kategorien filtern</string>
+    <string name="dashboard_filter_indication_categories">%1$o Kategorie(n) werden nicht angezeigt</string>
     <string name="apply">Übernehmen</string>
 </resources>
