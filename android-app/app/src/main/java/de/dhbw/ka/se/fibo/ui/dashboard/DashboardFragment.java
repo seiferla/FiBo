@@ -1,5 +1,6 @@
 package de.dhbw.ka.se.fibo.ui.dashboard;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,8 +38,11 @@ import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.SortedSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -56,6 +61,7 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
     private LocalDate startDate;
     private LocalDate endDate;
     private Instant startInstant;
+    private Set<Category> hiddenCategories = new HashSet<>();
     private static final int PIE_CHART_ANIMATION_DURATION = 750;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -78,6 +84,8 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
         createDatePicker();
         initializePieChart();
 
+        initializeFilter();
+
         Duration duration = Duration.between(startInstant, Instant.now());
         long millis = duration.toMillis();
         if (1000 < millis) {
@@ -85,6 +93,55 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
         } else {
             Log.v("FiBo", "Creating dashboard view took " + millis + " ms");
         }
+    }
+
+    private void initializeFilter() {
+        Button filterButton = binding.openFilterOptions;
+        filterButton.setOnClickListener(v -> {
+            Log.i("FiBo", "clicked filter button");
+
+            Context context = requireContext();
+            List<Category> categoriesWithExpenses = ApplicationState.getInstance(context)
+                    .getCashflows()
+                    .stream()
+                    .filter(x -> CashflowType.EXPENSE == x.getType())
+                    .map(Cashflow::getCategory)
+                    .collect(Collectors.toList());
+
+            boolean[] checkedItems = new boolean[categoriesWithExpenses.size()];
+
+            for (int i = 0; i < checkedItems.length; i++) {
+                Category category = categoriesWithExpenses.get(i);
+
+                checkedItems[i] = !hiddenCategories.contains(category);
+            }
+
+            AlertDialog alertDialog = new AlertDialog.Builder(context)
+                    .setTitle(getString(R.string.dashboard_filter_dialog_title))
+                    .setMultiChoiceItems(
+                            categoriesWithExpenses.stream()
+                                    .map(Category::getName)
+                                    .collect(Collectors.toSet())
+                                    .stream()
+                                    .map(context::getText).toArray(CharSequence[]::new),
+                            checkedItems,
+                            (dialog, which, isChecked) -> {
+                            })
+                    .setPositiveButton(R.string.apply, (dialog, which) -> {
+                        for (int i = 0; i < checkedItems.length; i++) {
+                            Category category = categoriesWithExpenses.get(i);
+                            if (!checkedItems[i]) {
+                                hiddenCategories.add(category);
+                            } else {
+                                hiddenCategories.remove(category);
+                            }
+                        }
+
+                        initializePieChart();
+                    })
+                    .setCancelable(true)
+                    .show();
+        });
     }
 
     private void initializePieChart() {
@@ -105,6 +162,10 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
 
         for (Cashflow cashflow : cashflowStream.collect(Collectors.toList())) {
             Category category = cashflow.getCategory();
+
+            if (hiddenCategories.contains(category)) {
+                continue;
+            }
 
             BigDecimal newValue = expensesPerCategory
                     .computeIfAbsent(category, x -> BigDecimal.ZERO)
@@ -150,10 +211,10 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
     private void initializeDateCard() {
         setDateCardTitle();
         setDateCardTime();
-        setListener();
+        setDateCardButtonListener();
     }
 
-    private void setListener() {
+    private void setDateCardButtonListener() {
         binding.button.setOnClickListener(
                 e -> picker.show(requireActivity().getSupportFragmentManager(), "date_range_picker"));
     }
