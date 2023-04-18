@@ -88,7 +88,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
     private void createUser(String email, String password) {
-        String url = "http://127.0.0.1:8000/users/register/";
+        String url = "http://10.0.2.2:8000/users/register/";
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -105,6 +105,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         System.out.println("Account created successfully");
+                        System.out.println(response.toString());
                         startActivity(i);
                         finish();
                     }
@@ -113,7 +114,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         System.out.println("Error: Account creation failed");
-                        System.out.println(error.getMessage());
+                        System.out.println(error.getMessage().toString());
                     }
                 }) {
             @Override
