@@ -40,7 +40,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -218,36 +217,33 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
 
         SortedSet<Cashflow> cashflows = ApplicationState.getInstance(context).getCashflows();
 
-        Stream<Cashflow> cashflowStream = cashflows.stream().filter(x -> CashflowType.EXPENSE == x.getType());
+        Stream<Cashflow> expensesStream = cashflows.stream().filter(x -> CashflowType.EXPENSE == x.getType());
 
         // filter by start date
         if (null != startDate) {
-            cashflowStream = cashflowStream.filter(x -> startDate.minusDays(1).isBefore(ChronoLocalDate.from(x.getTimestamp())));
+            expensesStream = expensesStream.filter(x -> startDate.minusDays(1).isBefore(ChronoLocalDate.from(x.getTimestamp())));
         }
 
         // filter by end date
         if (null != endDate) {
-            cashflowStream = cashflowStream.filter(x -> endDate.plusDays(1).isAfter(ChronoLocalDate.from(x.getTimestamp())));
+            expensesStream = expensesStream.filter(x -> endDate.plusDays(1).isAfter(ChronoLocalDate.from(x.getTimestamp())));
+        }
+
+        // filter by hidden categories
+        if (!hiddenCategories.isEmpty()) {
+            expensesStream = expensesStream.filter(x -> !hiddenCategories.contains(x.getCategory()));
         }
 
         Map<Category, BigDecimal> expensesPerCategory = new HashMap<>();
 
-        for (Iterator<Cashflow> it = cashflowStream.iterator(); it.hasNext(); ) {
-            Cashflow cashflow = it.next();
+        expensesStream.forEach(expense -> {
+            Category category = expense.getCategory();
 
-            Category category = cashflow.getCategory();
-
-            // filter by category
-            if (hiddenCategories.contains(category)) {
-                continue;
-            }
-
-            BigDecimal newValue = expensesPerCategory
+            // accumulate per category
+            expensesPerCategory.put(category, expensesPerCategory
                     .computeIfAbsent(category, x -> BigDecimal.ZERO)
-                    .add(cashflow.getOverallValue());
-
-            expensesPerCategory.put(category, newValue);
-        }
+                    .add(expense.getOverallValue()));
+        });
 
         return expensesPerCategory;
     }
