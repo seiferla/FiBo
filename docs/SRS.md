@@ -79,7 +79,7 @@ The following chapter provides an overview of this project with vision and Overa
 
 ### 2.1 Vision
 
-We want to build an app for managing your finances. An app to track and decrease your expenses easily, an app to plan your financial future. You will be able to scan all your receipts, with your phone and FiBo will do the rest for you. It automatically categorizes your expenses and tells you how much money you have left for the month. Fibo also integrates you bank account, so that you can directly see your balance, without changing the app. You want to save money for a big investment, no problem FiBo got your back, it tells you how long it will probably take you to reach your goal. FiBo is the all-in-one app for managing your finances. And we want to build it!
+We want to build an app for managing your finances. An app to track and decrease your expenses easily, an app to plan your financial future. You will be able to scan all your receipts, with your phone and FiBo will do the rest for you. It automatically categorizes your expenses and tells you how much money you have left for the month. FiBo also integrates you bank account, so that you can directly see your balance, without changing the app. You want to save money for a big investment, no problem FiBo got your back, it tells you how long it will probably take you to reach your goal. FiBo is the all-in-one app for managing your finances. And we want to build it!
 
 ### 2.2 Use Case Diagram
 
@@ -124,7 +124,7 @@ Testing:
 ### 3.1 Functionality
 
 This section will explain the different use cases, you could see in the Use Case Diagram, and their functionality.
-Until the end of December we plan to implement:
+Until the end of the fourth semester we plan to implement:
 
 - [3.1.1 Create Account](#311-create-account)
 - [3.1.2 Logging in](#312-logging-in)
@@ -203,17 +203,18 @@ The server shall be available 95% of the time. This also means we have to figure
 
 #### 3.3.2 Defect Rate
 
-Our goal is that we have no loss of any data. This is important so that the users financial data is save, even after a downtime of the server.
+Our goal is that we have no loss of any data. This is important so that the users financial data is safe, even after a downtime of the server.
 
 ### 3.4 Performance
 
 #### 3.4.1 Capacity
 
-The system should be able to manage thousands of requests. Also it should be possible to register as many users as necessary.
+The system should be able to manage thousands of requests. Also, it should be possible to register as many users as necessary.
 
 #### 3.4.2 Storage
 
-Smartphones don't provide much storage. Therefore we are aiming to keep the needed storage as small as possible.
+Smartphones don't provide much storage. Therefore, we are aiming to keep the needed storage as small as possible.
+This is something we keep in mind when modeling our database.
 
 #### 3.4.3 App performance / Response time
 
@@ -223,7 +224,7 @@ To provide the best App performance we aim to keep the response time as low as p
 
 #### 3.5.1 Coding Standards
 
-We are going to write the code by using all of the most common clean code standards. For example we will name our variables and methods by their functionalities. This will keep the code easy to read by everyone and make further developement much easier.
+We are going to write the code by using all the most common clean code standards. For example, we will name our variables and methods by their functionalities. This will keep the code easy to read by everyone and make further developement much easier.
 
 #### 3.5.2 Testing Strategy
 
@@ -238,9 +239,9 @@ Because we are programming an Android App we chose Java as our programming langu
 - Android 4.4 and higher
 - Java 8 and higher
 
-### 3.7 On-line User Documentation and Help System Requirements
+### 3.7 Online User Documentation and Help System Requirements
 
-The usage of the app should be as intuitive as possible, so it won't need any further documentation. If the user needs some help we will implement a "Help"-Button in the App which includes a FAQ and a formula to contact the development team.
+The usage of the app should be as intuitive as possible, so it won't need any further documentation.
 
 ### 3.8 Purchased Components
 
@@ -252,11 +253,14 @@ We don't have any purchased components yet. If there will be purchased component
 
 The User interfaces that will be implemented are:
 
-#### TBD
+- Home view showing a chronological list
+- Dashboard view showing detailed analysis, based on user-defined filters
+- Register view
+- Login view
 
 #### 3.9.2 Hardware Interfaces
 
-(n/a)
+(n/a, as only software is built)
 
 #### 3.9.3 Software Interfaces
 
@@ -268,13 +272,30 @@ The server and hardware will communicate using the http protocol.
 
 ### 3.10 Licensing Requirements
 
+(n/a)
+
 ### 3.11 Legal, Copyright, and Other Notices
 
 The logo is licensed to the FiBo Team and is only allowed to use for the application. We do not take responsibility for any incorrect data or errors in the application.
 
 ### 3.12 Applicable Standards
 
-The development will follow the common clean code standards and naming conventions. Also we will create a definition of done which will be added here as soon as its complete.
+The development will follow the common clean code standards and naming conventions.
+
+We are pursueing the clean code standards by embracing the mindset of a Definition of Ready as well as a Definition of Done.
+
+The Definition of Ready is when acceptance criteria is defined, every team member verifies they understood the content before estimating the time needed to spend to accomplish the ticket.
+
+Developers are self-responsible for adding documentation whenever they seem necessary.
+However, they must be added or changed in case it tackles with the implementation or addition of a use case (i.e. everything that is not a bug fix).
+Developers must add unit and integration tests, exceptions may be granted by the Product Owner.
+The Definiton of Done is concerned with self-responsible development in accordance with all acceptance criteria.
+At least after the implementation and tests are finished, a pull request is opened and reviews are requested.
+The developer makes clear when their work has left the draft state and is up for merging.
+
+At least one other developer reviews the added code as well as the documentation and employed tests.
+Reviewers may ask for changes, involve other developers or approve on their behalf.
+If all reviewers have approved the pull request, the pull request is merged by the reviewer who had the last outstanding review.
 
 ## 4. Supporting Information
 
