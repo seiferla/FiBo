@@ -24,6 +24,7 @@ If you followed the instructions above or are using a different OS run the follo
 2. Create a `.env` file in the `backend/` **sub**folder of the current directory, it should look something like this:
 ```ini
 SECRET_KEY=<see note below>
+SIGNING_KEY=<see note below>
 POSTGRES_DB=fibo
 POSTGRES_USER=*snip*
 POSTGRES_PASSWORD=*snip*
