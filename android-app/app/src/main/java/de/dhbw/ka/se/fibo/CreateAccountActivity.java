@@ -3,14 +3,18 @@ package de.dhbw.ka.se.fibo;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -37,7 +41,6 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     private MaterialButton registerButton;
 
-    private Thread buttonClickThread;
 
     private TextInputEditText create_account_email;
 
@@ -92,39 +95,30 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        JSONObject jsonBody = new JSONObject();
-        try {
-            jsonBody.put("email", email);
-            jsonBody.put("password", password);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
+            Toast.makeText(this,"Success", Toast.LENGTH_LONG).show();
+            System.out.println("Successfully");
+            startActivity(i);
+            finish();
+        }, error -> {
+            Toast.makeText(this,"Error", Toast.LENGTH_LONG).show();
+            System.out.println("Error");
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, jsonBody,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        System.out.println("Account created successfully");
-                        System.out.println(response.toString());
-                        startActivity(i);
-                        finish();
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        System.out.println("Error: Account creation failed");
-                        System.out.println(error.getMessage().toString());
-                    }
+            if (error instanceof TimeoutError) {
+                // Handle timeout error
+            } else {
+                // Handle other types of errors
+            }
                 }) {
+
             @Override
-            public Map<String, String> getHeaders() {
-                Map<String, String> headers = new HashMap<>();
-                headers.put("Content-Type", "application/json");
-                return headers;
+            protected Map<String, String> getParams() throws AuthFailureError{
+                Map<String, String> params = new HashMap<>();
+                params.put("email",email);
+                params.put("password",password);
+                return params;
             }
         };
-
         queue.add(request);
     }
 
