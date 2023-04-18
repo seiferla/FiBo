@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from .serializers import FiboUserSerializer
 from .models import FiboUser
 
-class getUser(APIView):
+class GetUser(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request):
@@ -15,7 +15,7 @@ class getUser(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-class deleteUser(APIView):
+class DeleteUser(APIView):
     permission_classes = (IsAuthenticated,)
 
     def delete(self, request):
@@ -25,7 +25,7 @@ class deleteUser(APIView):
         return Response(f'Your user account was deleted', status=status.HTTP_200_OK)
 
 
-class registerUser(APIView):
+class RegisterUser(APIView):
     permission_classes = (AllowAny, )
 
     def post(self, request):
@@ -35,7 +35,7 @@ class registerUser(APIView):
             return Response(f'User with id {user.id} and email {user.email} was created', status=status.HTTP_201_CREATED)
 
 
-class getRoutes(APIView):
+class GetRoutes(APIView):
     permission_classes = (IsAuthenticated, )
 
     def get(self):
