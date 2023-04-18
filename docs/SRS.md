@@ -286,7 +286,9 @@ We are pursueing the clean code standards by embracing the mindset of a Definiti
 
 The Definition of Ready is when acceptance criteria is defined, every team member verifies they understood the content before estimating the time needed to spend to accomplish the ticket.
 
-Developers are self-responsible for adding documentation, unit tests as well as integration tests whenever they seem like a good fit.
+Developers are self-responsible for adding documentation whenever they seem necessary.
+However, they must be added or changed in case it tackles with the implementation or addition of a use case (i.e. everything that is not a bug fix).
+Developers must add unit and integration tests, exceptions may be granted by the Product Owner.
 The Definiton of Done is concerned with self-responsible development in accordance with all acceptance criteria.
 At least after the implementation and tests are finished, a pull request is opened and reviews are requested.
 The developer makes clear when their work has left the draft state and is up for merging.
