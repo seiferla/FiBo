@@ -21,7 +21,6 @@ import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.math.BigDecimal;
-import java.sql.Array;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
