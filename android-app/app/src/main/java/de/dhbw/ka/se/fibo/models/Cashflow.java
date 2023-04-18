@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 public class Cashflow implements Comparable<Cashflow> {
@@ -13,6 +14,7 @@ public class Cashflow implements Comparable<Cashflow> {
     private LocalDateTime timestamp;
     private Category category;
     private Place place;
+    private List<Item> items;
 
     public Cashflow(Category category, CashflowType type, BigDecimal overallValue, LocalDateTime timestamp, Place place) {
         setType(type);
@@ -20,6 +22,15 @@ public class Cashflow implements Comparable<Cashflow> {
         setTimestamp(timestamp);
         this.category = category;
         this.place = place;
+    }
+
+    public Cashflow(Category category, CashflowType type, BigDecimal overallValue, LocalDateTime timestamp, Place place, List<Item> items) {
+        setType(type);
+        setOverallValue(overallValue);
+        setTimestamp(timestamp);
+        this.category = category;
+        this.place = place;
+        this.items = items;
     }
 
     public Place getPlace() {
@@ -62,6 +73,14 @@ public class Cashflow implements Comparable<Cashflow> {
         this.timestamp = timestamp;
     }
 
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
     @Override
     public int compareTo(Cashflow other) {
         // It is a Public API that it is sorted DESC
@@ -86,7 +105,6 @@ public class Cashflow implements Comparable<Cashflow> {
     }
 
     @Override
-    @NotNull
     public String toString() {
         return "Cashflow{" +
                 "type=" + type +
@@ -94,6 +112,7 @@ public class Cashflow implements Comparable<Cashflow> {
                 ", timestamp=" + timestamp +
                 ", category=" + category +
                 ", place=" + place +
+                ", items=" + items +
                 '}';
     }
 }
