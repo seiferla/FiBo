@@ -55,8 +55,8 @@ class GetRoutes(APIView):
             {
                 'Endpoint': '/users/authenticate',
                 'method': 'POST',
-                'body': {'email': '', 'password': ''},
-                'description': 'Authenticates user with given email and password'
+                'body': {'refresh': ''},
+                'description': 'To authenticate, a valid refresh token needs to be entered. The method returns an Access Token.'
             },
             {
                 'Endpoint': '/users/delete',
