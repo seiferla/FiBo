@@ -38,7 +38,7 @@ class RegisterUser(APIView):
 class GetRoutes(APIView):
     permission_classes = (IsAuthenticated, )
 
-    def get(self):
+    def get(self, _):
         routes = [
             {
                 'Endpoint': '/users/register',
