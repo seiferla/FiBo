@@ -44,7 +44,13 @@ class GetRoutes(APIView):
                 'Endpoint': '/users/register',
                 'method': 'POST',
                 'body': {'email': '', 'password': ''},
-                'description': 'Register Endpoint for a new user! To register you need to enter an email and a password (see: body). Afterwards you can login by using the entered credentials.'
+                'description': 'Registration requires an email and a password (see: body). Afterwards the entered credentials can be used to log in.'
+            },
+            {
+                'Endpoint': '/users/login',
+                'method': 'POST',
+                'body': {'email': '', 'password': ''},
+                'description': 'To log in, the email and password specified during registration must be sent along. The method returns the Refresh and Access Token.'
             },
             {
                 'Endpoint': '/users/authenticate',
