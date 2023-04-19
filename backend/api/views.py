@@ -44,7 +44,7 @@ class GetRoutes(APIView):
                 'Endpoint': '/users/register',
                 'method': 'POST',
                 'body': {'email': '', 'password': ''},
-                'description': 'Register Endpoint for a new user!'
+                'description': 'Register Endpoint for a new user! To register you need to enter an email and a password (see: body). Afterwards you can login by using the entered credentials.'
             },
             {
                 'Endpoint': '/users/authenticate',
