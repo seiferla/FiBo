@@ -69,6 +69,8 @@ The finance book app assumes that users will have varying levels of financial kn
 #### Risks and trade-offs
 The risks associated with FiBo include potential security breaches or data leaks, which could lead to loss of user data or financial information. To mitigate these risks, the app will require robust security measures and regular updates to ensure that any potential vulnerabilities are addressed promptly. The trade-offs associated with the finance book app include balancing the desire for rich functionality with ease of use and simplicity for users.
 
+For a detailed view on Risks, please see [RISKS](RISKS.md).
+
 ### Use-Case View
 
 See [3.1 in our SRS](SRS.md#31-functionality).
