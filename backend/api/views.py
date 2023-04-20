@@ -66,14 +66,14 @@ class GetRoutes(APIView):
                 'method': 'DELETE',
                 'Token needed': 'Access',
                 'body': None,
-                'description': 'Deletes user with given id'
+                'description': 'Deletes user that corresponds to the Access Token send in the header'
             },
             {
                 'Endpoint': '/users/get',
                 'method': 'GET',
                 'Token needed': 'Access',
                 'body': None,
-                'description': 'Returns user with given id'
+                'description': 'Returns user that corresponds to the Access Token send in the header'
             },
             {
                 'Endpoint': '/users/update',
