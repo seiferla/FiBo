@@ -100,39 +100,54 @@
     app:layout_constraintTop_toBottomOf="@id/materialCardView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent">
-
-            <Button
-                style="@style/Widget.Material3.Button.IconButton.Filled"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:contentDescription="@string/change_view_button_description"
-                app:icon="@drawable/swap_diagram_type_icon"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/diagramLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-      <com.github.mikephil.charting.charts.PieChart
-          android:id="@+id/dashboard_pieChart"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:layout_marginStart="16dp"
-          android:layout_marginEnd="16dp"
-          android:layout_marginBottom="8dp"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/openFilterOptions"
+            style="@style/Widget.Material3.Button.IconButton.Filled"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/change_view_button_description"
+            app:icon="@drawable/ic_baseline_filter_alt_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:id="@+id/diagramLayout"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+
+          <com.github.mikephil.charting.charts.PieChart
+              android:id="@+id/dashboard_pieChart"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_marginStart="16dp"
+              android:layout_marginTop="64dp"
+              android:layout_marginEnd="16dp"
+              android:layout_marginBottom="32dp"
+              app:layout_constraintBottom_toTopOf="@+id/filteredCategoriesIndications"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent">
+
+          </com.github.mikephil.charting.charts.PieChart>
+
+          <TextView
+              android:id="@+id/filteredCategoriesIndications"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="TextView"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toBottomOf="@+id/dashboard_pieChart" />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
   </com.google.android.material.card.MaterialCardView>
 
 

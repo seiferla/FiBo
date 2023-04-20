@@ -83,9 +83,13 @@
     <string name="date_picker_title_placeholder">Date picker title</string>
     <string name="date_picker_value_placeholder">18 Aug - 12 Nov</string>
     <string name="edit_time_range_icon_hint_placeholder">Edit time range</string>
-    <string name="change_view_button_description">change View</string>
+    <string name="change_view_button_description">Ansicht ändern</string>
     <string name="recyclerview_initial_placeholder">I</string>
     <string name="recyclerview_title_placeholder">title</string>
     <string name="recyclerview_date_placeholder">date</string>
     <string name="recyclerview_value_placeholder">-20.00€</string>
+
+    <string name="dashboard_filter_dialog_title">Nach Kategorien filtern</string>
+    <string name="dashboard_filter_indication_categories">%1$o Kategorie(n) werden nicht angezeigt</string>
+    <string name="apply">Übernehmen</string>
 </resources>
