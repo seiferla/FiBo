@@ -43,36 +43,42 @@ class GetRoutes(APIView):
             {
                 'Endpoint': '/users/register',
                 'method': 'POST',
+                'Token needed': 'false',
                 'body': {'email': '', 'password': ''},
                 'description': 'Registration requires an email and a password (see: body). Afterwards the entered credentials can be used to log in.'
             },
             {
                 'Endpoint': '/users/login',
                 'method': 'POST',
-                'body': {'email': '', 'password': ''},
-                'description': 'To log in, the email and password specified during registration must be sent along. The method returns the Refresh and Access Token.'
+                'Token needed': 'false',
+                'body': {'username': '', 'password': ''},
+                'description': 'To log in, the username (is the same as email) and password specified during registration must be sent along. The method returns the Refresh and Access Token.'
             },
             {
                 'Endpoint': '/users/authenticate',
                 'method': 'POST',
+                'Token needed': 'Refresh',
                 'body': {'refresh': ''},
                 'description': 'To authenticate, a valid refresh token needs to be entered. The method returns an Access Token.'
             },
             {
                 'Endpoint': '/users/delete',
                 'method': 'DELETE',
+                'Token needed': 'Access',
                 'body': None,
                 'description': 'Deletes user with given id'
             },
             {
                 'Endpoint': '/users/get',
                 'method': 'GET',
+                'Token needed': 'Access',
                 'body': None,
                 'description': 'Returns user with given id'
             },
             {
                 'Endpoint': '/users/update',
                 'method': 'PUT',
+                'Token needed': 'Access',
                 'body': {'email': '', 'newPassword': '', 'oldPassword': ''},
                 'description': 'Not implemented yet. Updates current user with data sent in put request'
             },
