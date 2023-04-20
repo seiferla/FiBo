@@ -119,8 +119,6 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
     private void initializeFilter() {
         Button filterButton = binding.openFilterOptions;
         filterButton.setOnClickListener(v -> {
-            Log.i("FiBo", "clicked filter button");
-
             Context context = requireContext();
 
             boolean[] checkedItems = new boolean[orderedCategoryList.size()];
