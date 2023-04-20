@@ -1,5 +1,6 @@
 package de.dhbw.ka.se.fibo.ui.dashboard;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,9 +37,13 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.SortedSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -53,9 +59,13 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
 
     private FragmentDashboardBinding binding;
     private MaterialDatePicker<Pair<Long, Long>> picker;
+    private Instant startInstant;
+
     private LocalDate startDate;
     private LocalDate endDate;
-    private Instant startInstant;
+    private Set<Category> hiddenCategories = new HashSet<>();
+    private List<Category> orderedCategoryList;
+
     private static final int PIE_CHART_ANIMATION_DURATION = 750;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -74,9 +84,14 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        populateCategories();
+
         initializeDateCard();
         createDatePicker();
         initializePieChart();
+
+        initializeFilter();
 
         Duration duration = Duration.between(startInstant, Instant.now());
         long millis = duration.toMillis();
@@ -87,38 +102,80 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
         }
     }
 
+    private void populateCategories() {
+        Context context = requireContext();
+
+        orderedCategoryList = ApplicationState.getInstance(context)
+                .getCashflows()
+                .stream()
+                .filter(x -> CashflowType.EXPENSE == x.getType())
+                .map(Cashflow::getCategory)
+                .collect(Collectors.toSet()) // make sure we have only one occurrence of each category
+                .stream() // then sort by localized name of the category
+                .sorted(Comparator.comparing(o -> context.getText(o.getName()).toString()))
+                .collect(Collectors.toList());
+    }
+
+    private void initializeFilter() {
+        Button filterButton = binding.openFilterOptions;
+        filterButton.setOnClickListener(v -> {
+            Context context = requireContext();
+
+            boolean[] checkedItems = new boolean[orderedCategoryList.size()];
+            CharSequence[] names = new CharSequence[orderedCategoryList.size()];
+
+            for (int i = 0; i < checkedItems.length; i++) {
+                Category category = orderedCategoryList.get(i);
+
+                checkedItems[i] = !hiddenCategories.contains(category);
+                names[i] = context.getText(category.getName());
+            }
+
+            new AlertDialog.Builder(context)
+                    .setTitle(getString(R.string.dashboard_filter_dialog_title))
+                    .setMultiChoiceItems(
+                            names,
+                            checkedItems,
+                            (dialog, which, isChecked) -> {
+                                // noop
+                            })
+                    .setPositiveButton(R.string.apply, (dialog, which) -> {
+                        for (int i = 0; i < checkedItems.length; i++) {
+                            Category category = orderedCategoryList.get(i);
+                            if (!checkedItems[i]) {
+                                hiddenCategories.add(category);
+                            } else {
+                                hiddenCategories.remove(category);
+                            }
+                        }
+
+                        // react to changes
+                        initializePieChart();
+                    })
+                    .setCancelable(true)
+                    .show();
+        });
+    }
+
     private void initializePieChart() {
         Context context = requireContext();
-        SortedSet<Cashflow> cashflows = ApplicationState.getInstance(context).getCashflows();
 
-        Stream<Cashflow> cashflowStream = cashflows.stream().filter(x -> CashflowType.EXPENSE == x.getType());
+        Map<Category, BigDecimal> expensesPerCategory = getFilteredExpensesPerCategory();
 
-        if (null != startDate) {
-            cashflowStream = cashflowStream.filter(x -> startDate.minusDays(1).isBefore(ChronoLocalDate.from(x.getTimestamp())));
+        // TODO: Check whether we have no data in the selected time-span and show warning if appropiate
+
+        // visual adaption in case categories were filtered out to improve UX
+        if (hiddenCategories.isEmpty()) {
+            binding.filteredCategoriesIndications.setText("");
+        } else {
+            binding.filteredCategoriesIndications.setText(context.getString(R.string.dashboard_filter_indication_categories, hiddenCategories.size()));
         }
 
-        if (null != endDate) {
-            cashflowStream = cashflowStream.filter(x -> endDate.plusDays(1).isAfter(ChronoLocalDate.from(x.getTimestamp())));
-        }
-
-        Map<Category, BigDecimal> expensesPerCategory = new HashMap<>();
-
-        for (Cashflow cashflow : cashflowStream.collect(Collectors.toList())) {
-            Category category = cashflow.getCategory();
-
-            BigDecimal newValue = expensesPerCategory
-                    .computeIfAbsent(category, x -> BigDecimal.ZERO)
-                    .add(cashflow.getOverallValue());
-
-            expensesPerCategory.put(category, newValue);
-        }
-
-        // TODO: Check whether we have no data in the selected time-span
+        int i = 0;
 
         ArrayList<PieEntry> entries = new ArrayList<>();
         int[] colors = new int[expensesPerCategory.size()];
 
-        int i = 0;
         for (Map.Entry<Category, BigDecimal> entrySet : expensesPerCategory.entrySet()) {
             Category category = entrySet.getKey();
             PieEntry entry = new PieEntry(entrySet.getValue().floatValue());
@@ -147,20 +204,64 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
         pieChart.animateY(DashboardFragment.PIE_CHART_ANIMATION_DURATION, Easing.EaseInOutQuad);
     }
 
+    /**
+     * Loads all cashflows from the application state, extracts all expenses and applies all active filters
+     *
+     * @return the expenses per category to be displayed to the user
+     */
+    @NonNull
+    private Map<Category, BigDecimal> getFilteredExpensesPerCategory() {
+        Context context = requireContext();
+
+        SortedSet<Cashflow> cashflows = ApplicationState.getInstance(context).getCashflows();
+
+        Stream<Cashflow> expensesStream = cashflows.stream().filter(x -> CashflowType.EXPENSE == x.getType());
+
+        // filter by start date
+        if (null != startDate) {
+            expensesStream = expensesStream.filter(x -> startDate.minusDays(1).isBefore(ChronoLocalDate.from(x.getTimestamp())));
+        }
+
+        // filter by end date
+        if (null != endDate) {
+            expensesStream = expensesStream.filter(x -> endDate.plusDays(1).isAfter(ChronoLocalDate.from(x.getTimestamp())));
+        }
+
+        // filter by hidden categories
+        if (!hiddenCategories.isEmpty()) {
+            expensesStream = expensesStream.filter(x -> !hiddenCategories.contains(x.getCategory()));
+        }
+
+        Map<Category, BigDecimal> expensesPerCategory = new HashMap<>();
+
+        expensesStream.forEach(expense -> {
+            Category category = expense.getCategory();
+
+            // accumulate per category
+            expensesPerCategory.put(category, expensesPerCategory
+                    .computeIfAbsent(category, x -> BigDecimal.ZERO)
+                    .add(expense.getOverallValue()));
+        });
+
+        return expensesPerCategory;
+    }
+
     private void initializeDateCard() {
         setDateCardTitle();
         setDateCardTime();
-        setListener();
+        setDateCardButtonListener();
     }
 
-    private void setListener() {
+    private void setDateCardButtonListener() {
         binding.button.setOnClickListener(
                 e -> picker.show(requireActivity().getSupportFragmentManager(), "date_range_picker"));
     }
 
     private void setDateCardTime() {
+        Context context = requireContext();
+
         if (null == startDate && null == endDate) {
-            binding.dateStartEndText.setText(requireContext().getText(R.string.timespanAllData));
+            binding.dateStartEndText.setText(context.getText(R.string.timespanAllData));
         } else if (null != startDate && null != endDate) {
             DateTimeFormatterBuilder builder = new DateTimeFormatterBuilder()
                     .padNext(2, '0')
@@ -176,7 +277,7 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
 
             DateTimeFormatter formatter = builder.toFormatter(Locale.getDefault());
 
-            binding.dateStartEndText.setText(requireContext().getString(R.string.timespanStartToEnd, formatter.format(startDate), formatter.format(endDate)));
+            binding.dateStartEndText.setText(context.getString(R.string.timespanStartToEnd, formatter.format(startDate), formatter.format(endDate)));
         } else {
             Log.w("FiBo", "setDateCardTime(): startDate != endDate");
         }
@@ -189,13 +290,11 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
     private void createDatePicker() {
         SortedSet<Cashflow> cashflows = ApplicationState.getInstance(requireContext())
                 .getCashflows();
-        Cashflow newestCashflow;
-        Cashflow oldestCashflow;
         CalendarConstraints.Builder builder = new CalendarConstraints.Builder();
 
         if (!cashflows.isEmpty()) {
-            newestCashflow = cashflows.first();
-            oldestCashflow = cashflows.last();
+            Cashflow newestCashflow = cashflows.first();
+            Cashflow oldestCashflow = cashflows.last();
 
             builder.setStart(
                     oldestCashflow.getTimestamp().atZone(ZoneId.systemDefault()).toInstant()
