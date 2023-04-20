@@ -2,7 +2,9 @@ package de.dhbw.ka.se.fibo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -29,6 +31,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 
 import org.json.JSONException;
@@ -56,6 +59,8 @@ public class CreateAccountActivity extends AppCompatActivity {
     private TextInputEditText create_account_email;
 
     private TextInputEditText create_account_password;
+
+    private TextInputLayout passwordField;
 
     private Intent i;
 
@@ -94,7 +99,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                 MainActivity.class);
         create_account_email = findViewById(R.id.create_account_email);
         String email = create_account_email.getText().toString();
-
+        passwordField = findViewById(R.id.create_account_password_layer);
         create_account_password = findViewById(R.id.create_account_password);
         String password = create_account_password.getText().toString();
         createUser(email, password);
@@ -108,8 +113,9 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         if (TextUtils.isEmpty(password)){
 
-            Toast.makeText(getApplicationContext(), "No Password", Toast.LENGTH_LONG).show();
-            System.out.println("Tesssst");
+            passwordField.setError(getString(R.string.password_field));
+            passwordField.setErrorTextColor(ColorStateList.valueOf(Color.RED));
+
         }else {
             StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
 
@@ -146,7 +152,7 @@ public class CreateAccountActivity extends AppCompatActivity {
             }) {
 
                 @Override
-                protected Map<String, String> getParams() throws AuthFailureError{
+                protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> params = new HashMap<>();
                     params.put("email",email);
                     params.put("password",password);
