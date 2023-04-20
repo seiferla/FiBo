@@ -1,8 +1,14 @@
 package de.dhbw.ka.se.fibo;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +27,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.TextInputEditText;
 
 
@@ -90,8 +97,8 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         create_account_password = findViewById(R.id.create_account_password);
         String password = create_account_password.getText().toString();
-        
         createUser(email, password);
+
     }
 
     private void createUser(String email, String password) {
@@ -99,38 +106,56 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
+        if (TextUtils.isEmpty(password)){
 
-            Toast.makeText(this,"Success", Toast.LENGTH_LONG).show();
-            System.out.println("Successfully");
-            startActivity(i);
-            finish();
-        }, error -> {
+            Toast.makeText(getApplicationContext(), "No Password", Toast.LENGTH_LONG).show();
+            System.out.println("Tesssst");
+        }else {
+            StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
 
-            if (error instanceof TimeoutError || error instanceof NoConnectionError) {
-                System.out.println("Timeout oder NoConnectionError");
-            } else if (error instanceof AuthFailureError) {
-                System.out.println("AuthFailure");
+                Toast successToast = Toast.makeText(this,"Success", Toast.LENGTH_LONG);
+                successToast.setGravity(Gravity.TOP, 0, 0);
+                successToast.show();
+                System.out.println("Successfully"+ response);
+                startActivity(i);
+                finish();
 
-            } else if (error instanceof ServerError) {
-                System.out.println("Servererror");
+            }, error -> {
 
-            } else if (error instanceof NetworkError) {
-                System.out.println("NetworkError");
-            } else if (error instanceof ParseError) {
-                System.out.println("ParseError");
-            }
-                }) {
+                System.out.println(error.networkResponse.statusCode);
+                if (error.networkResponse != null) {
+                    switch (error.networkResponse.statusCode) {
+                        case 400:
+                            System.out.println("Bad Request");
+                            break;
+                        case 401:
+                            System.out.println("Unauthorized");
+                            break;
+                        case 404:
+                            System.out.println("Not Found");
+                            break;
+                        case 500:
+                            System.out.println("Internal Server Error");
+                            break;
+                        default:
+                            // Handle other errors
+                            break;
+                    }
+                } else {
+                }
+            }) {
 
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError{
-                Map<String, String> params = new HashMap<>();
-                params.put("email",email);
-                params.put("password",password);
-                return params;
-            }
-        };
-        queue.add(request);
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError{
+                    Map<String, String> params = new HashMap<>();
+                    params.put("email",email);
+                    params.put("password",password);
+                    return params;
+                }
+            };
+            queue.add(request);
+        }
+
     }
 
 }
