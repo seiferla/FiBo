@@ -8,9 +8,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -96,18 +100,25 @@ public class CreateAccountActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
 
         StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
+
             Toast.makeText(this,"Success", Toast.LENGTH_LONG).show();
             System.out.println("Successfully");
             startActivity(i);
             finish();
         }, error -> {
-            Toast.makeText(this,"Error", Toast.LENGTH_LONG).show();
-            System.out.println("Error");
 
-            if (error instanceof TimeoutError) {
-                // Handle timeout error
-            } else {
-                // Handle other types of errors
+            if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                System.out.println("Timeout oder NoConnectionError");
+            } else if (error instanceof AuthFailureError) {
+                System.out.println("AuthFailure");
+
+            } else if (error instanceof ServerError) {
+                System.out.println("Servererror");
+
+            } else if (error instanceof NetworkError) {
+                System.out.println("NetworkError");
+            } else if (error instanceof ParseError) {
+                System.out.println("ParseError");
             }
                 }) {
 
