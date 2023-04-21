@@ -114,71 +114,86 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        System.out.println("Email: "+email);
-        System.out.println("Passwort: "+password);
+        System.out.println("Email: " + email);
+        System.out.println("Passwort: " + password);
 
 
-        if (TextUtils.isEmpty(password)&&TextUtils.isEmpty(email)){
-
-            passwordField.setError(getString(R.string.password_field));
-            passwordField.setErrorTextColor(ColorStateList.valueOf(Color.RED));
-            emailField.setError(getString(R.string.email_field));
-            emailField.setErrorTextColor(ColorStateList.valueOf(Color.RED));
-
-        } else if (TextUtils.isEmpty(password)) {
-            passwordField.setError(getString(R.string.password_field));
-            passwordField.setErrorTextColor(ColorStateList.valueOf(Color.RED));
-            emailField.setError(null);
-        } else if (TextUtils.isEmpty(email)) {
-            emailField.setError(getString(R.string.email_field));
-            emailField.setErrorTextColor(ColorStateList.valueOf(Color.RED));
-            passwordField.setError(null);
+        if (!checkValidInput(email, password)) {
+            return;
         } else {
-            StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
 
-                Toast successToast = Toast.makeText(this,"Success", Toast.LENGTH_LONG);
-                successToast.setGravity(Gravity.TOP, 0, 0);
-                successToast.show();
-                System.out.println("Successfully"+ response);
-                startActivity(i);
-                finish();
+            try {
+                StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
 
-            }, error -> {
+                    Toast successToast = Toast.makeText(this, "Success", Toast.LENGTH_LONG);
+                    successToast.setGravity(Gravity.TOP, 0, 0);
+                    successToast.show();
+                    System.out.println("Successfully" + response);
+                    startActivity(i);
+                    finish();
 
-                System.out.println(error.networkResponse.statusCode);
-                if (error.networkResponse != null) {
-                    switch (error.networkResponse.statusCode) {
-                        case 400:
-                            System.out.println("Bad Request");
-                            break;
-                        case 401:
-                            System.out.println("Unauthorized");
-                            break;
-                        case 404:
-                            System.out.println("Not Found");
-                            break;
-                        case 500:
-                            System.out.println("Internal Server Error");
-                            break;
-                        default:
-                            // Handle other errors
-                            break;
+                }, error -> {
+
+                    if (error.networkResponse != null) {
+                        switch (error.networkResponse.statusCode) {
+                            case 400:
+                                System.out.println("Bad Request");
+                                break;
+                            case 401:
+                                System.out.println("Unauthorized");
+                                break;
+                            case 404:
+                                System.out.println("Not Found");
+                                break;
+                            case 500:
+                                System.out.println("Internal Server Error");
+                                break;
+                            default:
+                                break;
+                        }
+                    } else {
+                        Toast errorToast = Toast.makeText(this, "Login currently unavailable", Toast.LENGTH_LONG);
+                        errorToast.show();
                     }
-                } else {
-                }
-            }) {
+                }) {
 
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> params = new HashMap<>();
-                    params.put("email",email);
-                    params.put("password",password);
-                    return params;
-                }
-            };
-            queue.add(request);
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("email", email);
+                        params.put("password", password);
+                        return params;
+                    }
+                };
+                queue.add(request);
+
+            } catch (Exception e) {
+                Toast errorToast = Toast.makeText(this, "Login is currently not available", Toast.LENGTH_LONG);
+                errorToast.show();
+            }
+
         }
 
     }
 
+    private boolean checkValidInput(String email, String password) {
+
+        boolean valid = true;
+
+        emailField.setError(null);
+        passwordField.setError(null);
+
+        if (TextUtils.isEmpty(email)) {
+            emailField.setError(getString(R.string.email_field));
+            emailField.setErrorTextColor(ColorStateList.valueOf(Color.RED));
+            valid = false;
+        }
+        if (TextUtils.isEmpty(password)) {
+            passwordField.setError(getString(R.string.password_field));
+            passwordField.setErrorTextColor(ColorStateList.valueOf(Color.RED));
+            valid = false;
+        }
+
+        return valid;
+    }
 }
