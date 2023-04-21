@@ -121,57 +121,49 @@ public class CreateAccountActivity extends AppCompatActivity {
         if (!checkValidInput(email, password)) {
             return;
         }
+        StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
 
-            try {
-                StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
+            Toast successToast = Toast.makeText(this, "Success", Toast.LENGTH_LONG);
+            successToast.setGravity(Gravity.TOP, 0, 0);
+            successToast.show();
+            System.out.println("Successfully" + response);
+            startActivity(i);
+            finish();
 
-                    Toast successToast = Toast.makeText(this, "Success", Toast.LENGTH_LONG);
-                    successToast.setGravity(Gravity.TOP, 0, 0);
-                    successToast.show();
-                    System.out.println("Successfully" + response);
-                    startActivity(i);
-                    finish();
+        }, error -> {
 
-                }, error -> {
-
-                    if (error.networkResponse != null) {
-                        switch (error.networkResponse.statusCode) {
-                            case 400:
-                                System.out.println("Bad Request");
-                                break;
-                            case 401:
-                                System.out.println("Unauthorized");
-                                break;
-                            case 404:
-                                System.out.println("Not Found");
-                                break;
-                            case 500:
-                                System.out.println("Internal Server Error");
-                                break;
-                            default:
-                                break;
-                        }
-                    } else {
-                        Toast errorToast = Toast.makeText(this, "Login currently unavailable", Toast.LENGTH_LONG);
-                        errorToast.show();
-                    }
-                }) {
-
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String, String> params = new HashMap<>();
-                        params.put("email", email);
-                        params.put("password", password);
-                        return params;
-                    }
-                };
-                queue.add(request);
-
-            } catch (Exception e) {
-                Toast errorToast = Toast.makeText(this, "Login is currently not available", Toast.LENGTH_LONG);
+            if (error.networkResponse != null) {
+                switch (error.networkResponse.statusCode) {
+                    case 400:
+                        System.out.println("Bad Request");
+                        break;
+                    case 401:
+                        System.out.println("Unauthorized");
+                        break;
+                    case 404:
+                        System.out.println("Not Found");
+                        break;
+                    case 500:
+                        System.out.println("Internal Server Error");
+                        break;
+                    default:
+                        break;
+                }
+            } else {
+                Toast errorToast = Toast.makeText(this, "Login currently unavailable", Toast.LENGTH_LONG);
                 errorToast.show();
             }
+        }) {
 
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("email", email);
+                params.put("password", password);
+                return params;
+            }
+        };
+        queue.add(request);
 
 
     }
