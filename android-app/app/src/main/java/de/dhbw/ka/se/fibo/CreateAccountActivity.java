@@ -1,12 +1,16 @@
 package de.dhbw.ka.se.fibo;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,6 +70,8 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     private Intent i;
 
+    private String url = "http://10.0.2.2:8000/users/register/";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,17 +116,12 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
     private void createUser(String email, String password) {
-        String url = "http://10.0.2.2:8000/users/register/";
-
-        RequestQueue queue = Volley.newRequestQueue(this);
-
-        System.out.println("Email: " + email);
-        System.out.println("Passwort: " + password);
-
 
         if (!checkValidInput(email, password)) {
             return;
         }
+
+        RequestQueue queue = Volley.newRequestQueue(this);
         StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
 
             Toast successToast = Toast.makeText(this, "Success", Toast.LENGTH_LONG);
@@ -135,16 +136,16 @@ public class CreateAccountActivity extends AppCompatActivity {
             if (error.networkResponse != null) {
                 switch (error.networkResponse.statusCode) {
                     case 400:
-                        System.out.println("Bad Request");
+                        Log.e(TAG, "Bad Request");
                         break;
                     case 401:
-                        System.out.println("Unauthorized");
+                        Log.e(TAG, "Unauthorized");
                         break;
                     case 404:
-                        System.out.println("Not Found");
+                        Log.e(TAG, "Not Found");
                         break;
                     case 500:
-                        System.out.println("Internal Server Error");
+                        Log.e(TAG, "Internal Server Error");
                         break;
                     default:
                         break;
@@ -164,9 +165,8 @@ public class CreateAccountActivity extends AppCompatActivity {
             }
         };
         queue.add(request);
-
-
     }
+
 
     private boolean checkValidInput(String email, String password) {
 
