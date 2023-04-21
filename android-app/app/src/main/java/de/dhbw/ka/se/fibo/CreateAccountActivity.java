@@ -120,7 +120,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         if (!checkValidInput(email, password)) {
             return;
-        } else {
+        }
 
             try {
                 StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
@@ -172,7 +172,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                 errorToast.show();
             }
 
-        }
+
 
     }
 
