@@ -35,6 +35,8 @@
     <string name="adding_address">Adresse</string>
     <string name="adding_notes_format">Name, Preis, (Menge);</string>
     <string name="password_field">Passwortfeld ist leer</string>
+    <string name="email_field">Emailfeld ist leer</string>
+
 
 
 

@@ -62,6 +62,8 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     private TextInputLayout passwordField;
 
+    private TextInputLayout emailField;
+
     private Intent i;
 
 
@@ -100,6 +102,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         create_account_email = findViewById(R.id.create_account_email);
         String email = create_account_email.getText().toString();
         passwordField = findViewById(R.id.create_account_password_layer);
+        emailField = findViewById(R.id.create_account_email_layer);
         create_account_password = findViewById(R.id.create_account_password);
         String password = create_account_password.getText().toString();
         createUser(email, password);
@@ -111,12 +114,26 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        if (TextUtils.isEmpty(password)){
+        System.out.println("Email: "+email);
+        System.out.println("Passwort: "+password);
+
+
+        if (TextUtils.isEmpty(password)&&TextUtils.isEmpty(email)){
 
             passwordField.setError(getString(R.string.password_field));
             passwordField.setErrorTextColor(ColorStateList.valueOf(Color.RED));
+            emailField.setError(getString(R.string.email_field));
+            emailField.setErrorTextColor(ColorStateList.valueOf(Color.RED));
 
-        }else {
+        } else if (TextUtils.isEmpty(password)) {
+            passwordField.setError(getString(R.string.password_field));
+            passwordField.setErrorTextColor(ColorStateList.valueOf(Color.RED));
+            emailField.setError(null);
+        } else if (TextUtils.isEmpty(email)) {
+            emailField.setError(getString(R.string.email_field));
+            emailField.setErrorTextColor(ColorStateList.valueOf(Color.RED));
+            passwordField.setError(null);
+        } else {
             StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
 
                 Toast successToast = Toast.makeText(this,"Success", Toast.LENGTH_LONG);
