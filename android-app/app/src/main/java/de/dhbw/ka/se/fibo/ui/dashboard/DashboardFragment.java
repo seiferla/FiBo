@@ -51,6 +51,10 @@ import java.util.stream.Stream;
 import de.dhbw.ka.se.fibo.ApplicationState;
 import de.dhbw.ka.se.fibo.R;
 import de.dhbw.ka.se.fibo.databinding.FragmentDashboardBinding;
+import de.dhbw.ka.se.fibo.filter.cashflow.CategoryFilter;
+import de.dhbw.ka.se.fibo.filter.cashflow.EndTimeFilter;
+import de.dhbw.ka.se.fibo.filter.cashflow.ExpenseFilter;
+import de.dhbw.ka.se.fibo.filter.cashflow.StartTimeFilter;
 import de.dhbw.ka.se.fibo.models.Cashflow;
 import de.dhbw.ka.se.fibo.models.CashflowType;
 import de.dhbw.ka.se.fibo.models.Category;
@@ -215,21 +219,21 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
 
         SortedSet<Cashflow> cashflows = ApplicationState.getInstance(context).getCashflows();
 
-        Stream<Cashflow> expensesStream = cashflows.stream().filter(x -> CashflowType.EXPENSE == x.getType());
+        Stream<Cashflow> expensesStream = cashflows.stream().filter(new ExpenseFilter().getPredicate());
 
         // filter by start date
         if (null != startDate) {
-            expensesStream = expensesStream.filter(x -> startDate.minusDays(1).isBefore(ChronoLocalDate.from(x.getTimestamp())));
+            expensesStream = expensesStream.filter(new StartTimeFilter(startDate).getPredicate());
         }
 
         // filter by end date
         if (null != endDate) {
-            expensesStream = expensesStream.filter(x -> endDate.plusDays(1).isAfter(ChronoLocalDate.from(x.getTimestamp())));
+            expensesStream = expensesStream.filter(new EndTimeFilter(endDate).getPredicate());
         }
 
         // filter by hidden categories
         if (!hiddenCategories.isEmpty()) {
-            expensesStream = expensesStream.filter(x -> !hiddenCategories.contains(x.getCategory()));
+            expensesStream = expensesStream.filter(new CategoryFilter(hiddenCategories).getPredicate());
         }
 
         Map<Category, BigDecimal> expensesPerCategory = new HashMap<>();
