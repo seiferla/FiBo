@@ -97,4 +97,5 @@
     <string name="dashboard_filter_dialog_title">Nach Kategorien filtern</string>
     <string name="dashboard_filter_indication_categories">%1$o Kategorie(n) werden nicht angezeigt</string>
     <string name="apply">Übernehmen</string>
+    <string name="register_user_error">Ungültige Angaben gemacht!</string>
 </resources>

@@ -1,6 +1,7 @@
 package de.dhbw.ka.se.fibo.createAccount;
 
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -13,32 +14,50 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
+import static androidx.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.hasErrorText;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
-import static com.github.tomakehurst.wiremock.client.WireMock.post;
-import static com.github.tomakehurst.wiremock.client.WireMock.postRequestedFor;
-import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
-import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
-import static com.github.tomakehurst.wiremock.client.WireMock.verify;
 import static org.hamcrest.core.IsNot.not;
 
 import android.content.Context;
+import android.util.Log;
 
-
-import com.github.tomakehurst.wiremock.junit.WireMockRule;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import de.dhbw.ka.se.fibo.CreateAccountActivity;
 import de.dhbw.ka.se.fibo.R;
+import okhttp3.mockwebserver.MockResponse;
+import okhttp3.mockwebserver.MockWebServer;
+import okhttp3.mockwebserver.RecordedRequest;
 
 
 public class CreateAccountTest {
 
-
+    /**
+     * Use {@link ActivityScenarioRule} to create and launch the activity under test, and close it
+     * after test completes.
+     */
     @Rule
-    public WireMockRule wireMockRule = new WireMockRule(8000);
+    public ActivityScenarioRule<CreateAccountActivity> activityScenarioRule
+            = new ActivityScenarioRule<>(CreateAccountActivity.class);
+
+    private MockWebServer server = new MockWebServer();
+
+    @Before
+    public void setUp() throws IOException {
+        server.start(8000);
+    }
+
+    @After
+    public void tearDown() throws IOException {
+        server.close();
+    }
+
     @Test
     public void testCreateAccountButtonClick() {
 
@@ -101,14 +120,47 @@ public class CreateAccountTest {
     }
 
 
+    @Test
+    public void testHttpRequestWithValidCredentials() throws InterruptedException, IOException {
+        server.enqueue(new MockResponse().setResponseCode(200));
 
+        onView(withId(R.id.create_account_email))
+                .perform(typeText("fibo@fibo.de"), closeSoftKeyboard());
 
-    public void testHttpRequest(){
+        onView(withId(R.id.create_account_password))
+                .perform(typeText("test"), closeSoftKeyboard());
 
+        onView(withId(R.id.create_account_button))
+                .perform(click());
 
+        // Wait for the HTTP request to complete
+        RecordedRequest request = server.takeRequest(30, TimeUnit.SECONDS);
 
+        Log.i("FiBo", "request = " + request);
+
+        onView(withId(R.id.floatingButton))
+                .check(matches(isDisplayed()));
     }
 
+    @Test
+    public void testHttpRequestWithInvalidCredentials() throws InterruptedException, IOException {
+        server.enqueue(new MockResponse().setResponseCode(500));
 
-    //wiremock
+        onView(withId(R.id.create_account_email))
+                .perform(typeText("fibo@fibo.de"), closeSoftKeyboard());
+
+        onView(withId(R.id.create_account_password))
+                .perform(typeText("test"), closeSoftKeyboard());
+
+        onView(withId(R.id.create_account_button))
+                .perform(click());
+
+        // Wait for the HTTP request to complete
+        RecordedRequest request = server.takeRequest(30, TimeUnit.SECONDS);
+
+        Log.i("FiBo", "request = " + request);
+
+        onView(withId(R.id.floatingButton))
+                .check(doesNotExist());
+    }
 }

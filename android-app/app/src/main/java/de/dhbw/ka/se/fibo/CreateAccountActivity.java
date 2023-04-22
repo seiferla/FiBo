@@ -21,9 +21,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.HashMap;
@@ -45,7 +43,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     private TextInputLayout emailField;
 
-    private String url = "http://10.0.2.2:8000/users/register/";
+    private String url = "/users/register/";
 
 
     @Override
@@ -93,18 +91,19 @@ public class CreateAccountActivity extends AppCompatActivity {
             return;
         }
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
+        Log.i(TAG, "Enqueuing request");
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, ApplicationState.getInstance(this).getApiBaseUrl() + url, response -> {
 
             Toast successToast = Toast.makeText(this, "Success", Toast.LENGTH_LONG);
             successToast.setGravity(Gravity.TOP, 0, 0);
             successToast.show();
-            System.out.println("Successfully" + response);
+            Log.i(TAG, "Successfully" + response);
             Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
             finish();
 
         }, error -> {
-
             if (error.networkResponse != null) {
                 switch (error.networkResponse.statusCode) {
                     case 400:
@@ -122,9 +121,14 @@ public class CreateAccountActivity extends AppCompatActivity {
                     default:
                         break;
                 }
+
+                Toast errorToast = Toast.makeText(this, getApplicationContext().getText(R.string.register_user_error), Toast.LENGTH_LONG);
+                errorToast.show();
+                Log.e(TAG, String.valueOf(error));
             } else {
                 Toast errorToast = Toast.makeText(this, "Login currently unavailable", Toast.LENGTH_LONG);
                 errorToast.show();
+                Log.e(TAG, String.valueOf(error));
             }
         }) {
 
@@ -136,7 +140,12 @@ public class CreateAccountActivity extends AppCompatActivity {
                 return params;
             }
         };
-        Singleton.getInstance(this).addToRequestQueue(stringRequest);
+
+        SharedVolleyRequestQueue requestQueue = SharedVolleyRequestQueue.getInstance(this);
+        requestQueue.getRequestQueue().addRequestEventListener((request, event) -> {
+            Log.i(TAG, "Registration request changed status: " + event + " " + request);
+        });
+        requestQueue.addToRequestQueue(stringRequest);
 
     }
 
@@ -162,5 +171,5 @@ public class CreateAccountActivity extends AppCompatActivity {
         return valid;
     }
 
-    
+
 }
