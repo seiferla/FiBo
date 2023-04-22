@@ -93,12 +93,13 @@ public class CreateAccountActivity extends AppCompatActivity {
             return;
         }
 
+        Log.i(TAG,"Send request");
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
 
             Toast successToast = Toast.makeText(this, "Success", Toast.LENGTH_LONG);
             successToast.setGravity(Gravity.TOP, 0, 0);
             successToast.show();
-            System.out.println("Successfully" + response);
+            Log.i(TAG,"Successfully" + response);
             Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
             finish();
