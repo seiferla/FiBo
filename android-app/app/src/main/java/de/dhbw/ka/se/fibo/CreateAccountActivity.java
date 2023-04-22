@@ -38,12 +38,12 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     private MaterialButton registerButton;
 
+    private RequestQueue requestQueue;
+
 
     private TextInputLayout passwordField;
 
     private TextInputLayout emailField;
-
-    private Intent i;
 
     private String url = "http://10.0.2.2:8000/users/register/";
 
@@ -78,8 +78,6 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
     private void registerButtonClicked() {
-        i = new Intent(CreateAccountActivity.this,
-                MainActivity.class);
         passwordField = Objects.requireNonNull(binding.createAccountPasswordLayer);
         emailField = Objects.requireNonNull(binding.createAccountEmailLayer);
         String password = Objects.requireNonNull(binding.createAccountPassword.getText()).toString();
@@ -89,19 +87,19 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
     private void createUser(String email, String password) {
-        
+
 
         if (!checkValidInput(email, password)) {
             return;
         }
 
-        RequestQueue queue = Volley.newRequestQueue(this);
-        StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
 
             Toast successToast = Toast.makeText(this, "Success", Toast.LENGTH_LONG);
             successToast.setGravity(Gravity.TOP, 0, 0);
             successToast.show();
             System.out.println("Successfully" + response);
+            Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
             finish();
 
@@ -138,7 +136,8 @@ public class CreateAccountActivity extends AppCompatActivity {
                 return params;
             }
         };
-        queue.add(request);
+        Singleton.getInstance(this).addToRequestQueue(stringRequest);
+
     }
 
 
