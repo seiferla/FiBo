@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 
 import de.dhbw.ka.se.fibo.models.Cashflow;
 
-public class EndTimeFilter implements CashflowFilter{
+public class EndTimeFilter implements CashflowFilter {
     private LocalDate endTime;
 
     public EndTimeFilter(LocalDate endTime) {
@@ -15,11 +15,6 @@ public class EndTimeFilter implements CashflowFilter{
 
     @Override
     public Predicate<Cashflow> getPredicate() {
-        return new Predicate<Cashflow>() {
-            @Override
-            public boolean test(Cashflow cashflow) {
-                return endTime.plusDays(1).isAfter(ChronoLocalDate.from(cashflow.getTimestamp()));
-            }
-        };
+        return cashflow -> endTime.plusDays(1).isAfter(ChronoLocalDate.from(cashflow.getTimestamp()));
     }
 }
