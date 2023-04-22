@@ -1,0 +1,10 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/users/register/"
+  },
+  "response": {
+    "status": 200,
+    "body": "Success"
+  }
+}
