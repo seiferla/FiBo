@@ -2,55 +2,34 @@ package de.dhbw.ka.se.fibo;
 
 import static android.content.ContentValues.TAG;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Color;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
+
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkError;
-import com.android.volley.NoConnectionError;
-import com.android.volley.ParseError;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.ServerError;
-import com.android.volley.TimeoutError;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.DataOutput;
-import java.io.DataOutputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
 import de.dhbw.ka.se.fibo.databinding.CreateAccountBinding;
 
@@ -59,10 +38,6 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     private MaterialButton registerButton;
 
-
-    private TextInputEditText create_account_email;
-
-    private TextInputEditText create_account_password;
 
     private TextInputLayout passwordField;
 
@@ -105,17 +80,16 @@ public class CreateAccountActivity extends AppCompatActivity {
     private void registerButtonClicked() {
         i = new Intent(CreateAccountActivity.this,
                 MainActivity.class);
-        create_account_email = findViewById(R.id.create_account_email);
-        String email = create_account_email.getText().toString();
-        passwordField = findViewById(R.id.create_account_password_layer);
-        emailField = findViewById(R.id.create_account_email_layer);
-        create_account_password = findViewById(R.id.create_account_password);
-        String password = create_account_password.getText().toString();
+        passwordField = Objects.requireNonNull(binding.createAccountPasswordLayer);
+        emailField = Objects.requireNonNull(binding.createAccountEmailLayer);
+        String password = Objects.requireNonNull(binding.createAccountPassword.getText()).toString();
+        String email = Objects.requireNonNull(binding.createAccountEmail.getText()).toString();
         createUser(email, password);
 
     }
 
     private void createUser(String email, String password) {
+        
 
         if (!checkValidInput(email, password)) {
             return;
