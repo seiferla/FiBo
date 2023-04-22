@@ -48,7 +48,13 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     androidTestImplementation 'androidx.test:runner:1.5.2'
     androidTestImplementation 'androidx.test:rules:1.5.0'
-    testImplementation 'com.github.tomakehurst:wiremock-jre8:2.30.1'
+    androidTestImplementation("com.github.tomakehurst:wiremock:2.18.0") {
+        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+        exclude group: 'asm', module: 'asm'
+        exclude group: 'org.json', module: 'json'
+    }
     implementation 'org.apache.httpcomponents:httpclient-android:4.3.5.1'
+    testImplementation "com.github.tomakehurst:wiremock-jre8:2.35.0"
+
 
 }

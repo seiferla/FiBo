@@ -1,14 +1,11 @@
 package de.dhbw.ka.se.fibo.createAccount;
 
 
-import org.hamcrest.Matcher;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.Description;
 
-import androidx.test.espresso.action.ViewActions;
-import androidx.test.espresso.matcher.BoundedMatcher;
+
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.platform.app.InstrumentationRegistry;
 
@@ -17,18 +14,21 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
 import static androidx.test.espresso.matcher.ViewMatchers.hasErrorText;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.post;
+import static com.github.tomakehurst.wiremock.client.WireMock.postRequestedFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.verify;
 import static org.hamcrest.core.IsNot.not;
 
 import android.content.Context;
-import android.view.View;
-import android.widget.EditText;
 
-import com.google.android.material.textfield.TextInputLayout;
+
+import com.github.tomakehurst.wiremock.junit.WireMockRule;
 
 import de.dhbw.ka.se.fibo.CreateAccountActivity;
 import de.dhbw.ka.se.fibo.R;
@@ -36,17 +36,9 @@ import de.dhbw.ka.se.fibo.R;
 
 public class CreateAccountTest {
 
-    private static final int WIREMOCK_PORT = 8080;
-
 
     @Rule
-    public ActivityScenarioRule<CreateAccountActivity> activityRule = new ActivityScenarioRule<>(CreateAccountActivity.class);
-
-    @BeforeClass
-    public static void setUpWireMockServer() {
-
-    }
-
+    public WireMockRule wireMockRule = new WireMockRule(8000);
     @Test
     public void testCreateAccountButtonClick() {
 
@@ -86,7 +78,7 @@ public class CreateAccountTest {
 
 
     @Test
-    public void testValidInput() throws InterruptedException {
+    public void testValidInput() {
 
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
@@ -109,10 +101,14 @@ public class CreateAccountTest {
     }
 
 
-    @Test
-    public void testHttpRequest() {
+
+
+    public void testHttpRequest(){
+
+
 
     }
+
 
     //wiremock
 }
