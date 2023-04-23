@@ -39,9 +39,9 @@ public class CreateAccountActivity extends AppCompatActivity {
     private RequestQueue requestQueue;
 
 
-    private TextInputLayout passwordField;
+    private TextInputLayout passwordFieldLayout;
 
-    private TextInputLayout emailField;
+    private TextInputLayout emailFieldLayout;
 
     private String url = "/users/register/";
 
@@ -76,8 +76,8 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
     private void registerButtonClicked() {
-        passwordField = Objects.requireNonNull(binding.createAccountPasswordLayer);
-        emailField = Objects.requireNonNull(binding.createAccountEmailLayer);
+        passwordFieldLayout = Objects.requireNonNull(binding.createAccountPasswordLayer);
+        emailFieldLayout = Objects.requireNonNull(binding.createAccountEmailLayer);
         String password = Objects.requireNonNull(binding.createAccountPassword.getText()).toString();
         String email = Objects.requireNonNull(binding.createAccountEmail.getText()).toString();
         createUser(email, password);
@@ -154,17 +154,17 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         boolean valid = true;
 
-        emailField.setError(null);
-        passwordField.setError(null);
+        emailFieldLayout.setError(null);
+        passwordFieldLayout.setError(null);
 
         if (TextUtils.isEmpty(email)) {
-            emailField.setError(getString(R.string.email_field));
-            emailField.setErrorTextColor(ColorStateList.valueOf(Color.RED));
+            emailFieldLayout.setError(getString(R.string.email_field));
+            emailFieldLayout.setErrorTextColor(ColorStateList.valueOf(Color.RED));
             valid = false;
         }
         if (TextUtils.isEmpty(password)) {
-            passwordField.setError(getString(R.string.password_field));
-            passwordField.setErrorTextColor(ColorStateList.valueOf(Color.RED));
+            passwordFieldLayout.setError(getString(R.string.password_field));
+            passwordFieldLayout.setErrorTextColor(ColorStateList.valueOf(Color.RED));
             valid = false;
         }
 

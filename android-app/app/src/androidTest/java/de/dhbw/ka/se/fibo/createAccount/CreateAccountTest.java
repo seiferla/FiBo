@@ -1,6 +1,8 @@
 package de.dhbw.ka.se.fibo.createAccount;
 
 
+import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeMatcher;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -16,15 +18,16 @@ import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.matcher.ViewMatchers.hasErrorText;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import static org.hamcrest.core.IsNot.not;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.View;
+
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -48,6 +51,9 @@ public class CreateAccountTest {
 
     private MockWebServer server = new MockWebServer();
 
+    private Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+
+
     @Before
     public void setUp() throws IOException {
         server.start(8000);
@@ -63,6 +69,11 @@ public class CreateAccountTest {
 
         onView(withId(R.id.create_account_button))
                 .perform(click());
+
+        onView(withId(R.id.create_account_email_layer)).check(matches(CreateAccountTest.hasTextInputLayoutErrorText(appContext.getString(R.string.email_field))));
+
+        onView(withId(R.id.create_account_password_layer)).check(matches(CreateAccountTest.hasTextInputLayoutErrorText(appContext.getString(R.string.password_field))));
+
     }
 
     @Test
@@ -73,6 +84,10 @@ public class CreateAccountTest {
 
         onView(withId(R.id.create_account_button))
                 .perform(click());
+
+        onView(withId(R.id.create_account_password_layer))
+                .check(matches(CreateAccountTest.hasTextInputLayoutErrorText(appContext.getString(R.string.password_field))));
+
     }
 
     @Test
@@ -83,6 +98,12 @@ public class CreateAccountTest {
 
         onView(withId(R.id.create_account_button))
                 .perform(click());
+
+
+        onView(withId(R.id.create_account_password_layer)).check(matches(CreateAccountTest.hasTextInputLayoutErrorText(appContext.getString(R.string.password_field))));
+
+        onView(withId(R.id.create_account_email_layer)).check(matches(CreateAccountTest.hasTextInputLayoutErrorText(appContext.getString(R.string.email_field))));
+
     }
 
     @Test
@@ -93,13 +114,13 @@ public class CreateAccountTest {
 
         onView(withId(R.id.create_account_button))
                 .perform(click());
-    }
 
+        onView(withId(R.id.create_account_email_layer)).check(matches(CreateAccountTest.hasTextInputLayoutErrorText(appContext.getString(R.string.email_field))));
+
+    }
 
     @Test
     public void testValidInput() {
-
-        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
         onView(withId(R.id.create_account_email))
                 .perform(typeText("test"), closeSoftKeyboard());
@@ -111,10 +132,10 @@ public class CreateAccountTest {
                 .perform(click());
 
         onView(withId(R.id.create_account_email_layer))
-                .check(matches(not(hasErrorText(appContext.getString(R.string.email_field)))));
+                .check(matches(not(hasTextInputLayoutErrorText(appContext.getString(R.string.email_field)))));
 
         onView(withId(R.id.create_account_password_layer))
-                .check(matches(not(hasErrorText(appContext.getString(R.string.password_field)))));
+                .check(matches(not(hasTextInputLayoutErrorText(appContext.getString(R.string.password_field)))));
 
 
     }
@@ -163,4 +184,33 @@ public class CreateAccountTest {
         onView(withId(R.id.floatingButton))
                 .check(doesNotExist());
     }
+
+    public static Matcher<View> hasTextInputLayoutErrorText(final String expectedErrorText) {
+        return new TypeSafeMatcher<View>() {
+
+            @Override
+            public void describeTo(org.hamcrest.Description description) {
+
+            }
+
+            @Override
+            public boolean matchesSafely(View view) {
+                if (!(view instanceof TextInputLayout)) {
+                    return false;
+                }
+
+                CharSequence error = ((TextInputLayout) view).getError();
+
+                if (error == null) {
+                    return false;
+                }
+
+                String hint = error.toString();
+
+                return expectedErrorText.equals(hint);
+            }
+
+        };
+    }
+
 }
