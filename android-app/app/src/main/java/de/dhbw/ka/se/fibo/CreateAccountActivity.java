@@ -18,8 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.AuthFailureError;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-
 import com.android.volley.toolbox.StringRequest;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
@@ -36,7 +34,6 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     private MaterialButton registerButton;
 
-    private RequestQueue requestQueue;
 
 
     private TextInputLayout passwordFieldLayout;
@@ -84,6 +81,11 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * send a http post request to the backend with given params
+     * @param email entered by the user
+     * @param password entered by the user
+     */
     private void createUser(String email, String password) {
 
 
@@ -150,6 +152,12 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * checks the layout if error is caused
+     * @param email has to be checked
+     * @param password has to be checked
+     * @return true if the user input is not empty
+     */
     private boolean checkValidInput(String email, String password) {
 
         boolean valid = true;
