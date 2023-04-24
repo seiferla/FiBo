@@ -31,7 +31,6 @@ public class ApplicationState {
         this.context = context;
 
         try {
-            // "android.support.test.espresso.Espresso" if you haven't migrated to androidx yet
             Class.forName("androidx.test.espresso.Espresso");
             apiBaseUrl = "http://localhost:8000";
         } catch (ClassNotFoundException e) {
