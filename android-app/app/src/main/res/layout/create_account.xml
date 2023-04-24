@@ -45,10 +45,10 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/create_account_email"
-            android:inputType="textEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/create_account_email_hint" />
+            android:hint="@string/create_account_email_hint"
+            android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
