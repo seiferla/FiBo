@@ -1,6 +1,7 @@
 package de.dhbw.ka.se.fibo.ui.adding;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -141,7 +142,6 @@ public class AddingFragment extends Fragment {
                 Toast.makeText(requireContext(), "Some required inputs are empty or wrong formatted", Toast.LENGTH_SHORT).show();
             } else {
                 ApplicationState.getInstance(requireContext()).addCashflow(newCashFlow);
-                System.out.println(JSONObject.wrap(newCashFlow));
                 navigateToHome();
             }
 
