@@ -87,16 +87,12 @@ public class CreateAccountActivity extends AppCompatActivity {
      * @param password entered by the user
      */
     private void createUser(String email, String password) {
-
-
         if (!checkValidInput(email, password)) {
             return;
         }
 
         Log.i(TAG, "Enqueuing request");
-
         StringRequest stringRequest = new StringRequest(Request.Method.POST, ApplicationState.getInstance(this).getApiBaseUrl() + url, response -> {
-
             Toast successToast = Toast.makeText(this, "Success", Toast.LENGTH_LONG);
             successToast.setGravity(Gravity.TOP, 0, 0);
             successToast.show();
@@ -104,7 +100,6 @@ public class CreateAccountActivity extends AppCompatActivity {
             Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
             finish();
-
         }, error -> {
             if (error.networkResponse != null) {
                 switch (error.networkResponse.statusCode) {
@@ -159,7 +154,6 @@ public class CreateAccountActivity extends AppCompatActivity {
      * @return true if the user input is not empty
      */
     private boolean checkValidInput(String email, String password) {
-
         boolean valid = true;
 
         emailFieldLayout.setError(null);

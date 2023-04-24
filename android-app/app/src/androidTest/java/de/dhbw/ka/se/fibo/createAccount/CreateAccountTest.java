@@ -70,9 +70,11 @@ public class CreateAccountTest {
         onView(withId(R.id.create_account_button))
                 .perform(click());
 
-        onView(withId(R.id.create_account_email_layer)).check(matches(CreateAccountTest.hasTextInputLayoutErrorText(appContext.getString(R.string.email_field))));
+        onView(withId(R.id.create_account_email_layer))
+                .check(matches(CreateAccountTest.hasTextInputLayoutErrorText(appContext.getString(R.string.email_field))));
 
-        onView(withId(R.id.create_account_password_layer)).check(matches(CreateAccountTest.hasTextInputLayoutErrorText(appContext.getString(R.string.password_field))));
+        onView(withId(R.id.create_account_password_layer))
+                .check(matches(CreateAccountTest.hasTextInputLayoutErrorText(appContext.getString(R.string.password_field))));
 
     }
 
@@ -100,9 +102,11 @@ public class CreateAccountTest {
                 .perform(click());
 
 
-        onView(withId(R.id.create_account_password_layer)).check(matches(CreateAccountTest.hasTextInputLayoutErrorText(appContext.getString(R.string.password_field))));
+        onView(withId(R.id.create_account_password_layer))
+                .check(matches(CreateAccountTest.hasTextInputLayoutErrorText(appContext.getString(R.string.password_field))));
 
-        onView(withId(R.id.create_account_email_layer)).check(matches(CreateAccountTest.hasTextInputLayoutErrorText(appContext.getString(R.string.email_field))));
+        onView(withId(R.id.create_account_email_layer))
+                .check(matches(CreateAccountTest.hasTextInputLayoutErrorText(appContext.getString(R.string.email_field))));
 
     }
 
@@ -115,7 +119,8 @@ public class CreateAccountTest {
         onView(withId(R.id.create_account_button))
                 .perform(click());
 
-        onView(withId(R.id.create_account_email_layer)).check(matches(CreateAccountTest.hasTextInputLayoutErrorText(appContext.getString(R.string.email_field))));
+        onView(withId(R.id.create_account_email_layer))
+                .check(matches(CreateAccountTest.hasTextInputLayoutErrorText(appContext.getString(R.string.email_field))));
 
     }
 
@@ -132,10 +137,10 @@ public class CreateAccountTest {
                 .perform(click());
 
         onView(withId(R.id.create_account_email_layer))
-                .check(matches(not(hasTextInputLayoutErrorText(appContext.getString(R.string.email_field)))));
+                .check(matches(not(CreateAccountTest.hasTextInputLayoutErrorText(appContext.getString(R.string.email_field)))));
 
         onView(withId(R.id.create_account_password_layer))
-                .check(matches(not(hasTextInputLayoutErrorText(appContext.getString(R.string.password_field)))));
+                .check(matches(not(CreateAccountTest.hasTextInputLayoutErrorText(appContext.getString(R.string.password_field)))));
 
 
     }
