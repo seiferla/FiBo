@@ -1,5 +1,4 @@
-package de.dhbw.ka.se.fibo.createAccount;
-
+package de.dhbw.ka.se.fibo.login;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -21,6 +20,8 @@ import androidx.test.espresso.Espresso;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.platform.app.InstrumentationRegistry;
 
+import com.google.gson.Gson;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -29,22 +30,22 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import de.dhbw.ka.se.fibo.CreateAccountActivity;
+import de.dhbw.ka.se.fibo.LoginActivity;
 import de.dhbw.ka.se.fibo.R;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
 
 
-public class CreateAccountTest {
+public class LoginActivityTest {
 
     /**
      * Use {@link ActivityScenarioRule} to create and launch the activity under test, and close it
      * after test completes.
      */
     @Rule
-    public ActivityScenarioRule<CreateAccountActivity> activityScenarioRule
-            = new ActivityScenarioRule<>(CreateAccountActivity.class);
+    public ActivityScenarioRule<LoginActivity> activityScenarioRule
+            = new ActivityScenarioRule<>(LoginActivity.class);
 
     private MockWebServer server = new MockWebServer();
 
@@ -62,15 +63,15 @@ public class CreateAccountTest {
     }
 
     @Test
-    public void testCreateAccountButtonClick() {
+    public void testLoginButtonClick() {
 
-        onView(withId(R.id.create_account_button))
+        onView(withId(R.id.login_button))
                 .perform(click());
 
-        onView(withId(R.id.create_account_email_layer))
+        onView(withId(R.id.login_email_layer))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_email_field))));
 
-        onView(withId(R.id.create_account_password_layer))
+        onView(withId(R.id.login_password_layer))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_password_field_empty))));
 
     }
@@ -78,13 +79,13 @@ public class CreateAccountTest {
     @Test
     public void testEmailInput() {
 
-        onView(withId(R.id.create_account_email))
-                .perform(typeText("test"), closeSoftKeyboard());
+        onView(withId(R.id.login_email))
+                .perform(typeText("some@Email.de"), closeSoftKeyboard());
 
-        onView(withId(R.id.create_account_button))
+        onView(withId(R.id.login_button))
                 .perform(click());
 
-        onView(withId(R.id.create_account_password_layer))
+        onView(withId(R.id.login_password_layer))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_password_field_empty))));
 
     }
@@ -92,17 +93,17 @@ public class CreateAccountTest {
     @Test
     public void testPasswordWithoutInput() {
 
-        onView(withId(R.id.create_account_password))
+        onView(withId(R.id.login_password))
                 .perform(typeText(""), closeSoftKeyboard());
 
-        onView(withId(R.id.create_account_button))
+        onView(withId(R.id.login_button))
                 .perform(click());
 
 
-        onView(withId(R.id.create_account_password_layer))
+        onView(withId(R.id.login_password_layer))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_password_field_empty))));
 
-        onView(withId(R.id.create_account_email_layer))
+        onView(withId(R.id.login_email_layer))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_email_field))));
 
     }
@@ -110,13 +111,13 @@ public class CreateAccountTest {
     @Test
     public void testPasswordWithInput() {
 
-        onView(withId(R.id.create_account_password))
+        onView(withId(R.id.login_password))
                 .perform(typeText("AsdfJklo1.2"), closeSoftKeyboard());
 
-        onView(withId(R.id.create_account_button))
+        onView(withId(R.id.login_button))
                 .perform(click());
 
-        onView(withId(R.id.create_account_email_layer))
+        onView(withId(R.id.login_email_layer))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_email_field))));
 
     }
@@ -124,19 +125,19 @@ public class CreateAccountTest {
     @Test
     public void testValidInput() {
 
-        onView(withId(R.id.create_account_email))
+        onView(withId(R.id.login_email))
                 .perform(typeText("test"), closeSoftKeyboard());
 
-        onView(withId(R.id.create_account_password))
+        onView(withId(R.id.login_password))
                 .perform(typeText("test"), closeSoftKeyboard());
 
-        onView(withId(R.id.create_account_button))
+        onView(withId(R.id.login_button))
                 .perform(click());
 
-        onView(withId(R.id.create_account_email_layer))
+        onView(withId(R.id.login_email_layer))
                 .check(matches(not(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_email_field)))));
 
-        onView(withId(R.id.create_account_password_layer))
+        onView(withId(R.id.login_password_layer))
                 .check(matches(not(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_password_field_empty)))));
 
 
@@ -145,15 +146,20 @@ public class CreateAccountTest {
 
     @Test
     public void testHttpRequestWithValidCredentials() throws InterruptedException {
-        server.enqueue(new MockResponse().setResponseCode(200));
+        LoginActivity.LoginResponse loginResponse = new LoginActivity.LoginResponse("someJWTRefreshToken", "someJWTAccessToken");
+        server.enqueue(new MockResponse()
+                .setResponseCode(200)
+                .setBody(new Gson()
+                        .toJson(loginResponse)
+                ));
 
-        onView(withId(R.id.create_account_email))
+        onView(withId(R.id.login_email))
                 .perform(typeText("fibo@fibo.de"), closeSoftKeyboard());
 
-        onView(withId(R.id.create_account_password))
+        onView(withId(R.id.login_password))
                 .perform(typeText("test"), closeSoftKeyboard());
 
-        onView(withId(R.id.create_account_button))
+        onView(withId(R.id.login_button))
                 .perform(click());
 
         // Wait for the HTTP request to complete
@@ -165,17 +171,62 @@ public class CreateAccountTest {
                 .check(matches(isDisplayed()));
     }
 
+
     @Test
     public void testHttpRequestWithInvalidCredentials() throws InterruptedException {
         server.enqueue(new MockResponse().setResponseCode(500));
 
-        onView(withId(R.id.create_account_email))
+        onView(withId(R.id.login_email))
                 .perform(typeText("fibo@fibo.de"), closeSoftKeyboard());
 
-        onView(withId(R.id.create_account_password))
+        onView(withId(R.id.login_password))
                 .perform(typeText("test"), closeSoftKeyboard());
 
-        onView(withId(R.id.create_account_button))
+        onView(withId(R.id.login_button))
+                .perform(click());
+
+        // Wait for the HTTP request to complete
+        RecordedRequest request = server.takeRequest(30, TimeUnit.SECONDS);
+
+        Log.i("FiBo", "request = " + request);
+
+        onView(withId(R.id.floatingButton))
+                .check(doesNotExist());
+    }
+
+    @Test
+    public void testHttpRequestWithInvalidCredentialsBadRequest() throws InterruptedException {
+        server.enqueue(new MockResponse().setResponseCode(400));
+
+        onView(withId(R.id.login_email))
+                .perform(typeText("fibo@fibo.de"), closeSoftKeyboard());
+
+        onView(withId(R.id.login_password))
+                .perform(typeText("test"), closeSoftKeyboard());
+
+        onView(withId(R.id.login_button))
+                .perform(click());
+
+        // Wait for the HTTP request to complete
+        RecordedRequest request = server.takeRequest(30, TimeUnit.SECONDS);
+
+        Log.i("FiBo", "request = " + request);
+
+        onView(withId(R.id.floatingButton))
+                .check(doesNotExist());
+    }
+
+    @Test
+    public void testHttpRequestWithInvalidCredentialsUnauthorized() throws InterruptedException {
+        server.enqueue(new MockResponse().setResponseCode(401));
+
+        onView(withId(R.id.login_email))
+                .perform(typeText("fibo@fibo.de"), closeSoftKeyboard());
+
+        onView(withId(R.id.login_password))
+                .perform(typeText("test"), closeSoftKeyboard());
+
+        onView(withId(R.id.login_button))
                 .perform(click());
 
         // Wait for the HTTP request to complete
@@ -189,27 +240,31 @@ public class CreateAccountTest {
 
 
     @Test
-    public void testPageSwapFromCreateAccountToLogin() {
-        onView(withId(R.id.click_here_for_login_text))
+    public void testPageSwapFromLoginToRegister() {
+        onView(withId(R.id.click_here_to_register_text))
                 .perform(click());
-        onView(withId(R.id.login_button))
+        onView(withId(R.id.create_account_button))
                 .check(matches(isDisplayed()));
-        onView(withId(R.id.login_layout))
+        onView(withId(R.id.create_account_layer))
                 .check(matches(isDisplayed()));
     }
 
     @Test
-    public void testNotAllowingBackAfterCreateAccount() throws InterruptedException {
+    public void testNotAllowingBackAfterLogin() throws InterruptedException {
+        LoginActivity.LoginResponse loginResponse = new LoginActivity.LoginResponse("someJWTRefreshToken", "someJWTAccessToken");
         server.enqueue(new MockResponse()
-                .setResponseCode(200));
+                .setResponseCode(200)
+                .setBody(new Gson()
+                        .toJson(loginResponse)
+                ));
 
-        onView(withId(R.id.create_account_email))
+        onView(withId(R.id.login_email))
                 .perform(typeText("fibo@fibo.de"), closeSoftKeyboard());
 
-        onView(withId(R.id.create_account_password))
+        onView(withId(R.id.login_password))
                 .perform(typeText("test"), closeSoftKeyboard());
 
-        onView(withId(R.id.create_account_button))
+        onView(withId(R.id.login_button))
                 .perform(click());
 
         // Wait for the HTTP request to complete
@@ -223,4 +278,5 @@ public class CreateAccountTest {
         Espresso.pressBackUnconditionally();
         assertEquals(Lifecycle.State.DESTROYED, activityScenarioRule.getScenario().getState());
     }
+
 }

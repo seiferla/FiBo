@@ -1,23 +1,20 @@
 package de.dhbw.ka.se.fibo;
 
 import static android.content.ContentValues.TAG;
+import static de.dhbw.ka.se.fibo.utils.ApiUtils.createAPIStringRequest;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
-
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.AuthFailureError;
-
 import com.android.volley.Request;
+import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
@@ -25,23 +22,21 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 
 import de.dhbw.ka.se.fibo.databinding.CreateAccountBinding;
+import de.dhbw.ka.se.fibo.utils.ActivityUtils;
 
 public class CreateAccountActivity extends AppCompatActivity {
     private CreateAccountBinding binding;
 
     private MaterialButton registerButton;
 
-
-
     private TextInputLayout passwordFieldLayout;
 
     private TextInputLayout emailFieldLayout;
 
-    private String url = "/users/register/";
-
+    private TextView clickHereForLoginText;
+    private Map<TextInputLayout, String> fieldsToBeChecked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +45,16 @@ public class CreateAccountActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         registerButton = binding.createAccountButton;
+
+        passwordFieldLayout = binding.createAccountPasswordLayer;
+        emailFieldLayout = binding.createAccountEmailLayer;
+
+        clickHereForLoginText = binding.clickHereForLoginText;
+
+        //Define which fields are mandatory for the registration
+        fieldsToBeChecked = new HashMap<>();
+        fieldsToBeChecked.put(emailFieldLayout, getString(R.string.error_message_email_field));
+        fieldsToBeChecked.put(passwordFieldLayout, getString(R.string.error_message_password_field_empty));
 
         Locale locale = Locale.GERMANY;
         Locale.setDefault(locale);
@@ -65,42 +70,34 @@ public class CreateAccountActivity extends AppCompatActivity {
                 getText(R.string.create_account_title)
         );
 
-        initializeButton();
+        initializeButtons();
     }
 
-    private void initializeButton() {
+    private void initializeButtons() {
         registerButton.setOnClickListener(e -> registerButtonClicked());
+        clickHereForLoginText.setOnClickListener(e -> ActivityUtils.swapActivity(this, LoginActivity.class, false));
     }
 
     private void registerButtonClicked() {
-        passwordFieldLayout = Objects.requireNonNull(binding.createAccountPasswordLayer);
-        emailFieldLayout = Objects.requireNonNull(binding.createAccountEmailLayer);
-        String password = Objects.requireNonNull(binding.createAccountPassword.getText()).toString();
-        String email = Objects.requireNonNull(binding.createAccountEmail.getText()).toString();
+        String password = ActivityUtils.getFieldValue(binding.createAccountPassword);
+        String email = ActivityUtils.getFieldValue(binding.createAccountEmail);
         createUser(email, password);
-
     }
 
     /**
      * send a http post request to the backend with given params
-     * @param email entered by the user
+     *
+     * @param email    entered by the user
      * @param password entered by the user
      */
     private void createUser(String email, String password) {
-        if (!checkValidInput(email, password)) {
+        if (!ActivityUtils.checkValidInput(fieldsToBeChecked)) {
             return;
         }
 
         Log.i(TAG, "Enqueuing request");
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, ApplicationState.getInstance(this).getApiBaseUrl() + url, response -> {
-            Toast successToast = Toast.makeText(this, "Success", Toast.LENGTH_LONG);
-            successToast.setGravity(Gravity.TOP, 0, 0);
-            successToast.show();
-            Log.i(TAG, "Successfully" + response);
-            Intent i = new Intent(this, MainActivity.class);
-            startActivity(i);
-            finish();
-        }, error -> {
+
+        Response.ErrorListener onError = error -> {
             if (error.networkResponse != null) {
                 switch (error.networkResponse.statusCode) {
                     case 400:
@@ -119,7 +116,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                         break;
                 }
 
-                Toast errorToast = Toast.makeText(this, getApplicationContext().getText(R.string.register_user_error), Toast.LENGTH_LONG);
+                Toast errorToast = Toast.makeText(this, getApplicationContext().getText(R.string.invalid_input_error), Toast.LENGTH_LONG);
                 errorToast.show();
                 Log.e(TAG, String.valueOf(error));
             } else {
@@ -127,16 +124,23 @@ public class CreateAccountActivity extends AppCompatActivity {
                 errorToast.show();
                 Log.e(TAG, String.valueOf(error));
             }
-        }) {
-
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("email", email);
-                params.put("password", password);
-                return params;
-            }
         };
+
+        Response.Listener<String> onSuccess = response -> {
+            Toast successToast = Toast.makeText(this, "Success", Toast.LENGTH_LONG);
+            successToast.setGravity(Gravity.TOP, 0, 0);
+            successToast.show();
+            Log.i(TAG, "Successfully" + response);
+            Intent i = new Intent(this, MainActivity.class);
+            startActivity(i);
+            finish();
+        };
+        Map<String, String> params = new HashMap<>();
+        params.put("email", email);
+        params.put("password", password);
+        String url = "/users/register/";
+        StringRequest stringRequest = createAPIStringRequest(url, Request.Method.POST, params, onSuccess, onError);
+
 
         SharedVolleyRequestQueue requestQueue = SharedVolleyRequestQueue.getInstance(this);
         requestQueue.getRequestQueue().addRequestEventListener((request, event) -> {
@@ -145,33 +149,5 @@ public class CreateAccountActivity extends AppCompatActivity {
         requestQueue.addToRequestQueue(stringRequest);
 
     }
-
-
-    /**
-     * checks the layout if error is caused
-     * @param email has to be checked
-     * @param password has to be checked
-     * @return true if the user input is not empty
-     */
-    private boolean checkValidInput(String email, String password) {
-        boolean valid = true;
-
-        emailFieldLayout.setError(null);
-        passwordFieldLayout.setError(null);
-
-        if (TextUtils.isEmpty(email)) {
-            emailFieldLayout.setError(getString(R.string.email_field));
-            emailFieldLayout.setErrorTextColor(ColorStateList.valueOf(Color.RED));
-            valid = false;
-        }
-        if (TextUtils.isEmpty(password)) {
-            passwordFieldLayout.setError(getString(R.string.password_field));
-            passwordFieldLayout.setErrorTextColor(ColorStateList.valueOf(Color.RED));
-            valid = false;
-        }
-
-        return valid;
-    }
-
 
 }

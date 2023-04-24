@@ -42,4 +42,7 @@
         <item name="tabIndicatorColor">?attr/colorPrimary</item>
     </style>
 
+    <style name="Theme.FiBo.Button.WideButton" parent="Widget.Material3.Button">
+        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.ExtraSmall</item>
+    </style>
 </resources>
