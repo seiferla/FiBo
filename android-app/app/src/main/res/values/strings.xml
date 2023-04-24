@@ -97,7 +97,7 @@
     <string name="apply">Übernehmen</string>
     <string name="invalid_input_error">Ungültige Angaben gemacht!</string>
     <string name="already_registered_question">Bereits registriert?</string>
-    <string name="click_here_for_login">Klicke hier zum einloggen</string>
+    <string name="click_here_for_login">Klicke hier zum einloggen!</string>
     <string name="no_account_yet_question">Noch kein Konto?</string>
     <string name="click_here_to_register">Jetzt Registrieren!</string>
     <string name="login_button">Login</string>
@@ -107,4 +107,5 @@
     <string name="error_message_invalid_credentials">Ungültige Angaben</string>
     <string name="error_message_server_error">Server Fehler</string>
     <string name="error_message_unknown_error_occurred">Ein unbekannter Fehler ist aufgetreten</string>
+    <string name="registration_currently_unavailable">Registration zur Zeit nicht möglich</string>
 </resources>

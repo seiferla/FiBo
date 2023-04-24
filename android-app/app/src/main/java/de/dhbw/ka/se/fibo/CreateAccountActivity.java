@@ -120,7 +120,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                 errorToast.show();
                 Log.e(TAG, String.valueOf(error));
             } else {
-                Toast errorToast = Toast.makeText(this, "Login currently unavailable", Toast.LENGTH_LONG);
+                Toast errorToast = Toast.makeText(this, R.string.registration_currently_unavailable, Toast.LENGTH_LONG);
                 errorToast.show();
                 Log.e(TAG, String.valueOf(error));
             }
