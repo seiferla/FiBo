@@ -1,7 +1,6 @@
 package de.dhbw.ka.se.fibo.ui.adding;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,6 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 
-import org.json.JSONObject;
 
 import java.math.BigDecimal;
 import java.text.Format;
