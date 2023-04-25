@@ -20,6 +20,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 
+
 import java.math.BigDecimal;
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -139,7 +140,6 @@ public class AddingFragment extends Fragment {
                 Toast.makeText(requireContext(), "Some required inputs are empty or wrong formatted", Toast.LENGTH_SHORT).show();
             } else {
                 ApplicationState.getInstance(requireContext()).addCashflow(newCashFlow);
-                System.out.println(newCashFlow);
                 navigateToHome();
             }
 
