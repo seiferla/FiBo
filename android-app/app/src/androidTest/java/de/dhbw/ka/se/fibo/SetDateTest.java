@@ -32,12 +32,35 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class SetDateTest {
 
+    DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+    String thisMonthFirstDay = df.format(getThisMonthFirstDay());
+    String nextMonthFirstDay = df.format(getNextMonthFirstDay());
+
     String dateTerm; // Set to @strings later
     String firstDate;
+
+
+    Date getThisMonthFirstDay() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.DATE, calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
+        return calendar.getTime();
+    }
+
+    Date getNextMonthFirstDay() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MONTH, 1);
+        calendar.set(Calendar.DATE, calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
+        return calendar.getTime();
+    }
 
     @Rule
     public ActivityScenarioRule<SplashActivity> mActivityScenarioRule =
