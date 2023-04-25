@@ -79,4 +79,21 @@ public class ActivityUtils {
         return valid.get();
     }
 
+    /**
+     * Checks whether the app is currently in a espresso test scenario.
+     * It does not distinguish between the emulator version or a real device so you may want to use it in combination with
+     * <strong>BuildConfig.DEBUG</strong>
+     *
+     * @return true if espresso is currently testing.
+     */
+    public static boolean isEspressoTesting() {
+        try {
+            Class.forName("androidx.test.espresso.Espresso");
+            return true;
+        } catch (ClassNotFoundException e) {
+            return false;
+        }
+    }
+
+
 }

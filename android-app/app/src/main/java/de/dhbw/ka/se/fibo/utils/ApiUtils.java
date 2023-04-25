@@ -16,11 +16,10 @@ import java.util.Map;
 public class ApiUtils {
 
     private static String getBaseURL() {
-        try {
-            Class.forName("androidx.test.espresso.Espresso");
+        if (ActivityUtils.isEspressoTesting()) {
             return "http://localhost:8000";
-        } catch (ClassNotFoundException e) {
-            return "http://10.0.2.2:8000";
+        } else {
+            return "10.0.2.2:8000";
         }
     }
 
@@ -58,7 +57,7 @@ public class ApiUtils {
      * @param responseType the Class that is represented by the JSON response
      * @param url          the desired URL
      * @param method       the integer according to the Request.Method interface
-     * @param body         The data that will be send to the backend in the body
+     * @param body         The body data that will be send to the backend
      * @param onSuccess    a custom success response
      * @param onError      a custom error response
      * @return the created StringRequest with given callbacks and parameters
@@ -67,7 +66,6 @@ public class ApiUtils {
 
         String jsonRequestBody = new Gson().toJson(body);
 
-        //BuildConfig.DEBUG = True when using espresso testing
         return new JsonRequest<>(
                 method,
                 ApiUtils.getBaseURL() + url,

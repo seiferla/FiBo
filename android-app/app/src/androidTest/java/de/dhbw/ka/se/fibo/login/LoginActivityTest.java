@@ -32,6 +32,7 @@ import java.util.concurrent.TimeUnit;
 
 import de.dhbw.ka.se.fibo.LoginActivity;
 import de.dhbw.ka.se.fibo.R;
+import de.dhbw.ka.se.fibo.strategies.LoginStrategyProduction;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
@@ -146,7 +147,7 @@ public class LoginActivityTest {
 
     @Test
     public void testHttpRequestWithValidCredentials() throws InterruptedException {
-        LoginActivity.LoginResponse loginResponse = new LoginActivity.LoginResponse("someJWTRefreshToken", "someJWTAccessToken");
+        LoginStrategyProduction.LoginResponse loginResponse = new LoginStrategyProduction.LoginResponse("someJWTRefreshToken", "someJWTAccessToken");
         server.enqueue(new MockResponse()
                 .setResponseCode(200)
                 .setBody(new Gson()
@@ -251,7 +252,7 @@ public class LoginActivityTest {
 
     @Test
     public void testNotAllowingBackAfterLogin() throws InterruptedException {
-        LoginActivity.LoginResponse loginResponse = new LoginActivity.LoginResponse("someJWTRefreshToken", "someJWTAccessToken");
+        LoginStrategyProduction.LoginResponse loginResponse = new LoginStrategyProduction.LoginResponse("someJWTRefreshToken", "someJWTAccessToken");
         server.enqueue(new MockResponse()
                 .setResponseCode(200)
                 .setBody(new Gson()
