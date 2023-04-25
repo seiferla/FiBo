@@ -12,6 +12,7 @@ urlpatterns = [
     path('users/get/', views.GetUser.as_view()),
     path('users/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('users/authenticate/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('cashflow/', views.CashflowsView.as_view()),
     path('cashflow/<int:cashflow_id>', views.CashflowsView.as_view()),
     path('place/', views.PlaceView.as_view()),
     path('category/', views.CategoryView.as_view()),
