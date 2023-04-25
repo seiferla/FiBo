@@ -25,7 +25,6 @@ public class ActivityUtils {
      * @param destination     the desired destination Activity of the Navigation as a Class object
      * @param allowBack       flag to allow the user to go back to the previous activity
      */
-
     public static void swapActivity(AppCompatActivity currentActivity, Class<? extends AppCompatActivity> destination, boolean allowBack) {
         Intent i = new Intent(currentActivity, destination);
         currentActivity.startActivity(i);
