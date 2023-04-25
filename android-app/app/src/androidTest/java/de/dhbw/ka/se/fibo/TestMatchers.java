@@ -13,7 +13,8 @@ public class TestMatchers {
 
             @Override
             public void describeTo(org.hamcrest.Description description) {
-
+                description.appendText("Testing if the TextInputLayout contains the expected error text: ")
+                        .appendText(expectedErrorText);
             }
 
             @Override
