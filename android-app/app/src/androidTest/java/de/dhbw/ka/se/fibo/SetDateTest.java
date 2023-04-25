@@ -36,6 +36,9 @@ import org.junit.runner.RunWith;
 @RunWith(AndroidJUnit4.class)
 public class SetDateTest {
 
+    String dateTerm; // Set to @strings later
+    String firstDate;
+
     @Rule
     public ActivityScenarioRule<SplashActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(SplashActivity.class);
@@ -58,7 +61,7 @@ public class SetDateTest {
                 allOf(withId(R.id.date_text), withText("Datum"),
                         withParent(withParent(withId(R.id.date_layout))),
                         isDisplayed()));
-        editText.check(matches(withText("Datum")));
+        editText.check(matches(withText(dateTerm)));
 
         // Click on date icon
         ViewInteraction checkableImageButton = onView(
@@ -94,10 +97,11 @@ public class SetDateTest {
 
         // Check if date has been entered
         ViewInteraction editText2 = onView(
-                allOf(withId(R.id.date_text), withText("01.04.2023"),
+                allOf(withId(R.id.date_text), // withText("01.04.2023"),
                         withParent(withParent(withId(R.id.date_layout))),
                         isDisplayed()));
         editText2.check(matches(withText("01.04.2023")));
+        firstDate = String.valueOf(editText2);
 
         // Click on date icon again
         ViewInteraction checkableImageButton2 = onView(
@@ -143,12 +147,12 @@ public class SetDateTest {
                         isDisplayed()));
         materialButton5.perform(click());
 
-        // Check if date field still says previous date
+        // Check if date field still says previous date (last month)
         ViewInteraction editText3 = onView(
-                allOf(withId(R.id.date_text), withText("01.04.2023"),
+                allOf(withId(R.id.date_text), // withText("01.04.2023"),
                         withParent(withParent(withId(R.id.date_layout))),
                         isDisplayed()));
-        editText3.check(matches(withText("01.04.2023")));
+        editText3.check(matches(withText(firstDate)));
     }
 
     private static Matcher<View> childAtPosition(
