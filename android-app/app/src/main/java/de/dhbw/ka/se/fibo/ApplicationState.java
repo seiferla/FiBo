@@ -22,20 +22,11 @@ public class ApplicationState {
     @SuppressLint("StaticFieldLeak")
     private static ApplicationState instance;
     private SortedSet<Cashflow> cashflows;
-    private String apiBaseUrl;
-
 
     private ApplicationState(Context context) {
         Log.i("FiBo", "ApplicationState is initializing…");
 
         this.context = context;
-
-        try {
-            Class.forName("androidx.test.espresso.Espresso");
-            apiBaseUrl = "http://localhost:8000";
-        } catch (ClassNotFoundException e) {
-            apiBaseUrl = "http://10.0.2.2:8000";
-        }
 
         cashflows = new TreeSet<>();
         populateTestData();
@@ -80,7 +71,4 @@ public class ApplicationState {
         cashflows.add(cashFlow);
     }
 
-    public String getApiBaseUrl() {
-        return apiBaseUrl;
-    }
 }

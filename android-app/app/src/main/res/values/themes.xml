@@ -42,4 +42,10 @@
         <item name="tabIndicatorColor">?attr/colorPrimary</item>
     </style>
 
+    <style name="Theme.FiBo.Button.WideButton" parent="Widget.Material3.Button">
+        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.ExtraSmall</item>
+        <item name="android:textSize">@dimen/standardTextSize</item>
+        <item name="android:paddingTop">@dimen/largeButtonVerticalPadding</item>
+        <item name="android:paddingBottom">@dimen/largeButtonVerticalPadding</item>
+    </style>
 </resources>
