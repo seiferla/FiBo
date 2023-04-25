@@ -42,7 +42,8 @@ public class SplashActivity extends AppCompatActivity {
                         e.printStackTrace();
                     } finally {
                         Intent i = new Intent(SplashActivity.this,
-                                CreateAccountActivity.class);
+//                                CreateAccountActivity.class);
+                                MainActivity.class);
                         startActivity(i);
                         finish();
                     }
