@@ -156,7 +156,7 @@ class CategoryView(APIView):
         except:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
-        return JsonResponse({'success': True, 'Category': category}, status=status.HTTP_201_CREATED)
+        return JsonResponse({'success': True, 'category_id': category.id}, status=status.HTTP_201_CREATED)
 
     def get(self, request):
         try:
