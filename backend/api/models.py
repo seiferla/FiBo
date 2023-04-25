@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 # ID is created automatically
 class Place(models.Model):
-    address = models.CharField(max_length=55)
+    address = models.CharField(max_length=55, unique=True)
     name = models.CharField(max_length=55)
 
 
@@ -24,7 +24,7 @@ class Cashflow(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
-    place = models.OneToOneField(Place, on_delete=models.DO_NOTHING, blank=True, null=True)
+    place = models.ForeignKey(Place, on_delete=models.DO_NOTHING, blank=True, null=True)
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
 
 
