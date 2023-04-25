@@ -99,7 +99,7 @@
     <string name="already_registered_question">Bereits registriert?</string>
     <string name="click_here_for_login">Klicke hier zum einloggen!</string>
     <string name="no_account_yet_question">Noch kein Konto?</string>
-    <string name="click_here_to_register">Jetzt Registrieren!</string>
+    <string name="click_here_to_register">Jetzt registrieren!</string>
     <string name="login_button">Login</string>
     <string name="login_text">Melde dich mit deinem Konto an</string>
     <string name="login_title">Anmelden</string>
