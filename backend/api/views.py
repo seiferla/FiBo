@@ -1,7 +1,3 @@
-import json
-
-import requests
-from django.core import serializers
 from django.http import JsonResponse
 from rest_framework.response import Response
 from rest_framework import status
@@ -29,8 +25,14 @@ class DeleteUser(APIView):
     def delete(self, request):
         usermail = request.user.username
         user = FiboUser.objects.get(email=usermail)
+        # All accounts assigned to the user are deleted as well
+        # if there are other users for one account, then the account is not deleted
+        accounts = Account.objects.filter(fibouser__id=user.id)
+        for account in accounts:
+            if account.fibouser_set.count() == 1:
+                account.delete()
         user.delete()
-        return JsonResponse({'success': True, 'user': user}, status=status.HTTP_200_OK)
+        return JsonResponse({'success': True, 'user': user.email}, status=status.HTTP_200_OK)
 
 
 class RegisterUser(APIView):
@@ -115,8 +117,7 @@ class PlaceView(APIView):
 
     def post(self, request):
         place = Place.objects.create(address=request.data['address'], name=request.data['name'])
-        return Response(f'Place with name {place.name} and Address {place.address} was created',
-                        status=status.HTTP_201_CREATED)
+        return JsonResponse({'success': True, 'place': place.name}, status=status.HTTP_201_CREATED)
 
     def get(self, request):
         place = Place.objects.get(request.data['address'])

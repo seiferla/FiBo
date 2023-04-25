@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 # ID is created automatically
 class Place(models.Model):
-    address = models.CharField(max_length=55, primary_key=True)
+    address = models.CharField(max_length=55)
     name = models.CharField(max_length=55)
 
 
@@ -37,8 +37,3 @@ class Item(models.Model):
 
 class FiboUser(AbstractUser):
     account = models.ManyToManyField(Account, blank=True)
-
-
-class RefreshToken(models.Model):
-    token = models.TextField(primary_key=True)  # may use JSONField instead
-    user = models.ForeignKey(FiboUser, on_delete=models.CASCADE)
