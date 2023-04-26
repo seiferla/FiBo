@@ -15,6 +15,11 @@ import de.dhbw.ka.se.fibo.models.Cashflow;
 import de.dhbw.ka.se.fibo.models.CashflowType;
 import de.dhbw.ka.se.fibo.models.Category;
 import de.dhbw.ka.se.fibo.models.Place;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwt;
+import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
 
 public class ApplicationState {
 
@@ -22,6 +27,10 @@ public class ApplicationState {
     @SuppressLint("StaticFieldLeak")
     private static ApplicationState instance;
     private SortedSet<Cashflow> cashflows;
+
+    private final String TAG = "ApplicationState";
+
+    private byte[] jwsSigningKey = BuildConfig.JWS_SIGNING_KEY.getBytes();
 
     private ApplicationState(Context context) {
         Log.i("FiBo", "ApplicationState is initializing…");
@@ -71,4 +80,61 @@ public class ApplicationState {
         cashflows.add(cashFlow);
     }
 
+    /**
+     * Determines whether the login is needed because of non-existent or expired refresh token
+     *
+     * @return true if login is unnecessary and user should be forwarded immediately
+     */
+    public boolean isAuthenticated() {
+        String refreshToken = context
+                .getSharedPreferences("authorization", 0)
+                .getString("refreshToken", null);
+
+        if (null == refreshToken) {
+            Log.i(TAG, "isAuthenticated() -> not authenticated, no refresh token persisted");
+
+            return false;
+        }
+
+        try {
+            Jwt<?, Claims> claims = Jwts.parserBuilder().setSigningKey(
+                    Keys.hmacShaKeyFor(jwsSigningKey)
+            ).build().parseClaimsJws(refreshToken);
+
+            Log.i(TAG, "claims are " + claims);
+        } catch (JwtException e) {
+            Log.i(TAG, "isAuthenticated() -> not authenticated, refresh token invalid", e);
+
+            return false;
+        }
+
+        Log.i(TAG, "isAuthenticated() -> is authenticated");
+
+        return true;
+    }
+
+    /**
+     * @param refresh given refreshtoken to save
+     * @see <a href="https://stackoverflow.com/a/10163623/8496913">here</a> why we store it inside shared preferences
+     */
+    public void storeAuthorization(String refresh) {
+        context
+                .getSharedPreferences("authorization", 0)
+                .edit()
+                .putString("refreshToken", refresh)
+                .apply();
+    }
+
+    public void clearAuthorization() {
+        context
+                .getSharedPreferences("authorization", 0)
+                .edit()
+                .remove("refreshToken")
+                .apply();
+    }
+
+    @VisibleForTesting
+    public void setJwsSigningKey(byte[] jwsSigningKey) {
+        this.jwsSigningKey = jwsSigningKey;
+    }
 }

@@ -140,9 +140,9 @@ class PlaceView(APIView):
 
     def get(self, request):
         try:
-            place = Place.objects.get(address=request.data['address'])
+            place = Place.objects.get(address=request.GET['address'])
         except:
-            return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+            return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
 
         serializer = PlaceSerializer(place, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -152,7 +152,7 @@ class CategoryView(APIView):
 
     def post(self, request):
         try:
-            category = Category.objects.create(name=request.data['name'])
+            category = Category.objects.create(name=request.POST['name'])
         except:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -160,7 +160,7 @@ class CategoryView(APIView):
 
     def get(self, request):
         try:
-            category = Category.objects.get(name=request.data['name'])
+            category = Category.objects.get(name=request.GET['name'])
         except:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
