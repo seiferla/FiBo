@@ -36,7 +36,7 @@ class TestUrls(TestCase):
 
     def test_cashflow_with_id_url_resolves(self):
         url = reverse('cashflow_with_id', args=[1])
-        self.assertEqual(resolve(url).func.view_class, PlaceView)
+        self.assertEqual(resolve(url).func.view_class, CashflowsView)
 
     def test_place_url_resolves(self):
         url = reverse('place')
