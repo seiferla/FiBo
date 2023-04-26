@@ -74,14 +74,7 @@ public class SetDateTest {
     @Test
     public void setDateTest() {
         // Click on button that allows users to create a new cashflow
-        ViewInteraction floatingActionButton = onView(
-                allOf(withId(R.id.floatingButton), withContentDescription("Add Cashflow"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_activity_main),
-                                        0),
-                                1),
-                        isDisplayed()));
+        ViewInteraction floatingActionButton = onView(withId(R.id.floatingButton));
         floatingActionButton.perform(click());
 
         // Check that no date has yet been entered
@@ -94,10 +87,7 @@ public class SetDateTest {
 
         // Select first of this month (previous date)
         DataInteraction materialTextView = onData(anything())
-                .inAdapterView(allOf(withId(com.google.android.material.R.id.month_grid),
-                        childAtPosition(
-                                withClassName(is("android.widget.LinearLayout")),
-                                1)))
+                .inAdapterView(withId(com.google.android.material.R.id.month_grid))
                 .atPosition(5);
         materialTextView.perform(click());
 
@@ -106,74 +96,34 @@ public class SetDateTest {
         // https://www.lambdatest.com/automation-testing-advisor/kotlin/methods/android.support.test.espresso.contrib.PickerActions.setDate
 
         // Click on OK
-        ViewInteraction materialButton3 = onView(
-                allOf(withId(com.google.android.material.R.id.confirm_button), withText("OK"),
-                        childAtPosition(
-                                allOf(withId(com.google.android.material.R.id.date_picker_actions),
-                                        childAtPosition(
-                                                withId(com.google.android.material.R.id.mtrl_calendar_main_pane),
-                                                1)),
-                                1),
-                        isDisplayed()));
+        ViewInteraction materialButton3 = onView(withId(com.google.android.material.R.id.confirm_button));
         materialButton3.perform(click());
 
         // Check if date has been entered
-        ViewInteraction editText2 = onView(
-                allOf(withId(R.id.date_text), withText("01.04.2023"),
-                        withParent(withParent(withId(R.id.date_layout))),
-                        isDisplayed()));
+        ViewInteraction editText2 = onView(withId(R.id.date_text));
         editText2.check(matches(withText("01.04.2023")));
         firstDate = String.valueOf(editText2);
 
         // Click on date icon again
-        ViewInteraction checkableImageButton2 = onView(
-                allOf(withId(com.google.android.material.R.id.text_input_end_icon),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("com.google.android.material.textfield.EndCompoundLayout")),
-                                        1),
-                                0),
-                        isDisplayed()));
+        ViewInteraction checkableImageButton2 = onView(withId(com.google.android.material.R.id.text_input_end_icon));
         checkableImageButton2.perform(click());
 
         // Select next month
-        ViewInteraction materialButton4 = onView(
-                allOf(withId(com.google.android.material.R.id.month_navigation_next), withContentDescription("Change to next month"),
-                        childAtPosition(
-                                allOf(withId(com.google.android.material.R.id.month_navigation_bar),
-                                        childAtPosition(
-                                                withClassName(is("android.widget.LinearLayout")),
-                                                0)),
-                                2),
-                        isDisplayed()));
+        ViewInteraction materialButton4 = onView(withId(com.google.android.material.R.id.month_navigation_next));
         materialButton4.perform(click());
 
         // Select first of next month (future date)
         DataInteraction materialTextView2 = onData(anything())
-                .inAdapterView(allOf(withId(com.google.android.material.R.id.month_grid),
-                        childAtPosition(
-                                withClassName(is("android.widget.LinearLayout")),
-                                1)))
+                .inAdapterView(withId(com.google.android.material.R.id.month_grid))
                 .atPosition(0);
         materialTextView2.perform(click());
 
         // Click on OK
-        ViewInteraction materialButton5 = onView(
-                allOf(withId(com.google.android.material.R.id.confirm_button), withText("OK"),
-                        childAtPosition(
-                                allOf(withId(com.google.android.material.R.id.date_picker_actions),
-                                        childAtPosition(
-                                                withId(com.google.android.material.R.id.mtrl_calendar_main_pane),
-                                                1)),
-                                1),
-                        isDisplayed()));
+        ViewInteraction materialButton5 = onView(withId(com.google.android.material.R.id.confirm_button));
         materialButton5.perform(click());
 
         // Check if date field still says previous date (last month)
-        ViewInteraction editText3 = onView(
-                allOf(withId(R.id.date_text), withText("01.04.2023"),
-                        withParent(withParent(withId(R.id.date_layout))),
-                        isDisplayed()));
+        ViewInteraction editText3 = onView(withId(R.id.date_text));
         editText3.check(matches(withText("01.04.2023")));
     }
 
