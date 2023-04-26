@@ -27,7 +27,7 @@ class ViewsTestCase(TestCase):
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
 
         # When
-        response = self.client.delete("/users/delete/")
+        response = client.delete("/users/delete/")
 
         # Then
         self.assertEqual(response.status_code, 200)
@@ -66,7 +66,7 @@ class ViewsTestCase(TestCase):
             }
         }
         # When
-        response = self.client.post("/cashflow/", cashflow, format='json')
+        response = client.post("/cashflow/", cashflow, format='json')
 
         # Then
         self.assertEqual(response.status_code, 201)
@@ -86,7 +86,7 @@ class ViewsTestCase(TestCase):
         user.account.add(account)
 
         # When
-        response = self.client.get(f'/cashflow/{cashflow.id}')
+        response = client.get(f'/cashflow/{cashflow.id}')
 
         # Then
 
@@ -107,7 +107,7 @@ class ViewsTestCase(TestCase):
                                            account=account)
         user.account.add(account)
         # When
-        response = self.client.delete(f'/cashflow/{cashflow.id}')
+        response = client.delete(f'/cashflow/{cashflow.id}')
 
         # Then
         self.assertEqual(response.status_code, 200)
@@ -142,7 +142,7 @@ class ViewsTestCase(TestCase):
         }
 
         # Whe
-        response = self.client.put(f'/cashflow/{id}', cashflow, format='json')
+        response = client.put(f'/cashflow/{id}', cashflow, format='json')
 
         # Then
         self.assertEqual(response.status_code, 200)
@@ -155,10 +155,13 @@ class ViewsTestCase(TestCase):
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
 
-        place = Place.objects.create(address="Test Strasse 20", name="TestQuelle")
+        place ={
+            "address": "Test Address",
+            "name": "Test name"
+        }
         # When
-        response = self.client.post(f'/place/')
+        response = client.post(f'/place/', place, format='json')
 
         # Then
         self.assertEqual(response.status_code, 201)
-        self.assertEqual(response.json(), {'success': True, 'place': place.name})
+        self.assertEqual(response.json(), {'success': True, 'place': 'Test name'})
