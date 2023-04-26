@@ -4,8 +4,8 @@
     <string name="create_account_title">Konto erstellen</string>
     <string name="create_account_button">Registrieren</string>
     <string name="create_account_text">Erstellen Sie ein Konto, um fortzufahren</string>
-    <string name="create_account_email_hint">E-Mail-Adresse</string>
-    <string name="create_account_password_hint">Passwort</string>
+    <string name="email_hint">E-Mail-Adresse</string>
+    <string name="password_hint">Passwort</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_settings">Settings</string>
@@ -34,10 +34,8 @@
     <string name="adding_notes">Notizen</string>
     <string name="adding_address">Adresse</string>
     <string name="adding_notes_format">Name, Preis, (Menge);</string>
-    <string name="password_field">Passwortfeld ist leer</string>
-    <string name="email_field">Emailfeld ist leer</string>
-
-
+    <string name="error_message_password_field_empty">Passwortfeld ist leer</string>
+    <string name="error_message_email_field">Emailfeld ist leer</string>
 
 
     <string name="lorem_ipsum">
@@ -97,5 +95,17 @@
     <string name="dashboard_filter_dialog_title">Nach Kategorien filtern</string>
     <string name="dashboard_filter_indication_categories">%1$o Kategorie(n) werden nicht angezeigt</string>
     <string name="apply">Übernehmen</string>
-    <string name="register_user_error">Ungültige Angaben gemacht!</string>
+    <string name="invalid_input_error">Ungültige Angaben gemacht!</string>
+    <string name="already_registered_question">Bereits registriert?</string>
+    <string name="click_here_for_login">Klicke hier zum einloggen!</string>
+    <string name="no_account_yet_question">Noch kein Konto?</string>
+    <string name="click_here_to_register">Jetzt registrieren!</string>
+    <string name="login_button">Login</string>
+    <string name="login_text">Melde dich mit deinem Konto an</string>
+    <string name="login_title">Anmelden</string>
+    <string name="login_currently_unavailable">Login zur Zeit nicht möglich</string>
+    <string name="error_message_invalid_credentials">Ungültige Angaben</string>
+    <string name="error_message_server_error">Server Fehler</string>
+    <string name="error_message_unknown_error_occurred">Ein unbekannter Fehler ist aufgetreten</string>
+    <string name="registration_currently_unavailable">Registrierung zur Zeit nicht möglich</string>
 </resources>
