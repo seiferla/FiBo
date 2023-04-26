@@ -78,11 +78,11 @@ class ViewsTestCase(TestCase):
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
 
-        account = Account.objects.create(id=1,name="Test Account")
+        account = Account.objects.create(id=1, name="Test Account")
         category = Category.objects.create(name="HEALTH")
         place = Place.objects.create(name="Test Place", address="Test Address")
-        cashflow = Cashflow.objects.create(id=1,is_income=True, overall_value=100.00, category=category, place=place,
-                                       account=account)
+        cashflow = Cashflow.objects.create(id=1, is_income=True, overall_value=100.00, category=category, place=place,
+                                           account=account)
         user.account.add(account)
 
         # When
@@ -92,7 +92,6 @@ class ViewsTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
 
-
     def test_cashflow_delete(self):
         # Given
         user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
@@ -100,10 +99,10 @@ class ViewsTestCase(TestCase):
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
 
-        account = Account.objects.create(id=1,name="Test Account")
+        account = Account.objects.create(id=1, name="Test Account")
         category = Category.objects.create(name="HEALTH")
         place = Place.objects.create(name="Test Place", address="Test Address")
-        cashflow = Cashflow.objects.create(id=1,is_income=True, overall_value=100.00, category=category, place=place,
+        cashflow = Cashflow.objects.create(id=1, is_income=True, overall_value=100.00, category=category, place=place,
                                            account=account)
         user.account.add(account)
         # When
@@ -111,7 +110,7 @@ class ViewsTestCase(TestCase):
 
         # Then
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), {'success':True, 'cashflow_id':cashflow.id})
+        self.assertEqual(response.json(), {'success': True, 'cashflow_id': cashflow.id})
 
     def test_cashflow_put(self):
         # Given
@@ -120,10 +119,10 @@ class ViewsTestCase(TestCase):
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
 
-        account = Account.objects.create(id=1,name="Test Account")
+        account = Account.objects.create(id=1, name="Test Account")
         category = Category.objects.create(name="HEALTH")
         place = Place.objects.create(name="Test Place", address="Test Address")
-        cashflow = Cashflow.objects.create(id=1,is_income=True, overall_value=100.00, category=category, place=place,
+        cashflow = Cashflow.objects.create(id=1, is_income=True, overall_value=100.00, category=category, place=place,
                                            account=account)
 
         id = cashflow.id
@@ -146,7 +145,7 @@ class ViewsTestCase(TestCase):
 
         # Then
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), {'success':True, 'cashflow_id':id})
+        self.assertEqual(response.json(), {'success': True, 'cashflow_id': id})
 
     def test_place_post(self):
         # Given
@@ -155,7 +154,7 @@ class ViewsTestCase(TestCase):
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
 
-        place ={
+        place = {
             "address": "Test Address",
             "name": "Test name"
         }
@@ -180,7 +179,23 @@ class ViewsTestCase(TestCase):
 
         # Then
         self.assertEqual(response.status_code, 200)
-        self.assertDictEqual(response.json(), {'id': place.id,'name': place.name, 'address': place.address})
+        self.assertDictEqual(response.json(), {'id': place.id, 'name': place.name, 'address': place.address})
 
+    def test_category_post(self):
+        # Given
+        category = {"name": "HEALTH"}
+        # When
+        response = self.client.post(f'/category/', category, format='json')
+        # Then
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual({'success': True, 'category_id': 11}, response.json())
+
+    def test_category_get(self):
+        # Given
+        category = Category.objects.create(name="HEALTH")
+        # When
+        response = self.client.get(f'/category/?name={category.name}')
+        # Then
+        self.assertEqual(response.status_code, 200)
 
 
