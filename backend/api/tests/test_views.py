@@ -165,3 +165,22 @@ class ViewsTestCase(TestCase):
         # Then
         self.assertEqual(response.status_code, 201)
         self.assertEqual(response.json(), {'success': True, 'place': 'Test name'})
+
+    def test_place_get(self):
+        # Given
+        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        refresh = RefreshToken.for_user(user)
+        client = APIClient()
+        client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
+
+        place = Place.objects.create(address="Test adress", name="Media")
+
+        # When
+        response = client.get(f'/place/?address={place.address}')
+
+        # Then
+        self.assertEqual(response.status_code, 200)
+        self.assertDictEqual(response.json(), {'id': place.id,'name': place.name, 'address': place.address})
+
+
+
