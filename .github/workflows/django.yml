@@ -13,17 +13,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Go to the backend directory
-      run: |
-        cd backend
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install Dependencies
+    - name: Go to the backend directory and setup docker
       run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        cd backend
+        docker compose up -d --build
     - name: Run Tests
       run: |
-        coverage run manage.py test
+        docker compose run --rm django coverage run manage.py test
