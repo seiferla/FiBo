@@ -2,6 +2,10 @@ plugins {
     id 'com.android.application'
 }
 
+Properties localProperties = new Properties()
+localProperties.load(project.rootProject.file("local.properties").newDataInputStream())
+
+
 android {
     namespace 'de.dhbw.ka.se.fibo'
     compileSdk 33
@@ -24,7 +28,7 @@ android {
         }
     }
     buildTypes.each {
-        it.buildConfigField 'String', 'JWS_SIGNING_KEY', jwsSigningKey
+        it.buildConfigField 'String', 'JWS_SIGNING_KEY', localProperties.getProperty("jwsSigningKey")
     }
 
     compileOptions {
