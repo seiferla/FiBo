@@ -26,11 +26,13 @@ public class ActivityUtils {
      * @param allowBack       flag to allow the user to go back to the previous activity
      */
     public static void swapActivity(AppCompatActivity currentActivity, Class<? extends AppCompatActivity> destination, boolean allowBack) {
-        Intent i = new Intent(currentActivity, destination);
-        currentActivity.startActivity(i);
+        // the order is important to make sure Espresso recognizes the right state
         if (!allowBack) {
             currentActivity.finish();
         }
+
+        Intent i = new Intent(currentActivity, destination);
+        currentActivity.startActivity(i);
     }
 
     /**

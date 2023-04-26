@@ -30,6 +30,8 @@ public class ApplicationState {
 
     private final String TAG = "ApplicationState";
 
+    private byte[] jwsSigningKey = BuildConfig.JWS_SIGNING_KEY.getBytes();
+
     private ApplicationState(Context context) {
         Log.i("FiBo", "ApplicationState is initializing…");
 
@@ -96,7 +98,7 @@ public class ApplicationState {
 
         try {
             Jwt<?, Claims> claims = Jwts.parserBuilder().setSigningKey(
-                    Keys.hmacShaKeyFor(BuildConfig.JWS_SIGNING_KEY.getBytes())
+                    Keys.hmacShaKeyFor(jwsSigningKey)
             ).build().parseClaimsJws(refreshToken);
 
             Log.i(TAG, "claims are " + claims);
@@ -121,5 +123,18 @@ public class ApplicationState {
                 .edit()
                 .putString("refreshToken", refresh)
                 .apply();
+    }
+
+    public void clearAuthorization() {
+        context
+                .getSharedPreferences("authorization", 0)
+                .edit()
+                .remove("refreshToken")
+                .apply();
+    }
+
+    @VisibleForTesting
+    public void setJwsSigningKey(byte[] jwsSigningKey) {
+        this.jwsSigningKey = jwsSigningKey;
     }
 }
