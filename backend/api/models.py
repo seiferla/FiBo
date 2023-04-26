@@ -38,6 +38,7 @@ class FiboUser(AbstractUser):
     username = None
     first_name = None
     last_name = None
+    is_staff = None
     email = models.EmailField(('email address'), unique=True)
 
     USERNAME_FIELD = 'email'
