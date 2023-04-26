@@ -15,6 +15,7 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.is;
 
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -24,14 +25,18 @@ import androidx.test.espresso.ViewInteraction;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
+import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -45,7 +50,7 @@ public class SetDateTest {
     String thisMonthFirstDay = df.format(getThisMonthFirstDay());
     String nextMonthFirstDay = df.format(getNextMonthFirstDay());
 
-    String dateTerm; // Set to @strings later
+    String dateTerm = "Datum"; // Set to @strings later
     String firstDate;
 
 
@@ -63,8 +68,8 @@ public class SetDateTest {
     }
 
     @Rule
-    public ActivityScenarioRule<SplashActivity> mActivityScenarioRule =
-            new ActivityScenarioRule<>(SplashActivity.class);
+    public ActivityScenarioRule<MainActivity> mActivityScenarioRule =
+            new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
     public void setDateTest() {
@@ -80,21 +85,11 @@ public class SetDateTest {
         floatingActionButton.perform(click());
 
         // Check that no date has yet been entered
-        ViewInteraction editText = onView(
-                allOf(withId(R.id.date_text), withText("Datum"),
-                        withParent(withParent(withId(R.id.date_layout))),
-                        isDisplayed()));
-        editText.check(matches(withText(dateTerm)));
+        ViewInteraction editText = onView(withId(R.id.date_text));
+        editText.check(matches(withText("Datum")));
 
         // Click on date icon
-        ViewInteraction checkableImageButton = onView(
-                allOf(withId(com.google.android.material.R.id.text_input_end_icon),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("com.google.android.material.textfield.EndCompoundLayout")),
-                                        1),
-                                0),
-                        isDisplayed()));
+        ViewInteraction checkableImageButton = onView(withId(com.google.android.material.R.id.text_input_end_icon));
         checkableImageButton.perform(click());
 
         // Select first of this month (previous date)
@@ -105,6 +100,10 @@ public class SetDateTest {
                                 1)))
                 .atPosition(5);
         materialTextView.perform(click());
+
+        // https://copyprogramming.com/howto/recording-an-espresso-test-with-a-datepicker
+        // https://developer.android.com/reference/androidx/test/espresso/contrib/PickerActions
+        // https://www.lambdatest.com/automation-testing-advisor/kotlin/methods/android.support.test.espresso.contrib.PickerActions.setDate
 
         // Click on OK
         ViewInteraction materialButton3 = onView(
@@ -120,7 +119,7 @@ public class SetDateTest {
 
         // Check if date has been entered
         ViewInteraction editText2 = onView(
-                allOf(withId(R.id.date_text), // withText("01.04.2023"),
+                allOf(withId(R.id.date_text), withText("01.04.2023"),
                         withParent(withParent(withId(R.id.date_layout))),
                         isDisplayed()));
         editText2.check(matches(withText("01.04.2023")));
@@ -172,10 +171,10 @@ public class SetDateTest {
 
         // Check if date field still says previous date (last month)
         ViewInteraction editText3 = onView(
-                allOf(withId(R.id.date_text), // withText("01.04.2023"),
+                allOf(withId(R.id.date_text), withText("01.04.2023"),
                         withParent(withParent(withId(R.id.date_layout))),
                         isDisplayed()));
-        editText3.check(matches(withText(firstDate)));
+        editText3.check(matches(withText("01.04.2023")));
     }
 
     private static Matcher<View> childAtPosition(
