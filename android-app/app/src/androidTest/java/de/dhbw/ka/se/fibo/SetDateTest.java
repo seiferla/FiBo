@@ -46,7 +46,7 @@ import java.util.Date;
 @RunWith(AndroidJUnit4.class)
 public class SetDateTest {
 
-    DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+    /*DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
     String thisMonthFirstDay = df.format(getThisMonthFirstDay());
     String nextMonthFirstDay = df.format(getNextMonthFirstDay());
 
@@ -65,7 +65,7 @@ public class SetDateTest {
         calendar.add(Calendar.MONTH, 1);
         calendar.set(Calendar.DATE, calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
         return calendar.getTime();
-    }
+    }*/
 
     @Rule
     public ActivityScenarioRule<MainActivity> mActivityScenarioRule =
@@ -90,7 +90,6 @@ public class SetDateTest {
                 .inAdapterView(withId(com.google.android.material.R.id.month_grid))
                 .atPosition(5);
         materialTextView.perform(click());
-
         // https://copyprogramming.com/howto/recording-an-espresso-test-with-a-datepicker
         // https://developer.android.com/reference/androidx/test/espresso/contrib/PickerActions
         // https://www.lambdatest.com/automation-testing-advisor/kotlin/methods/android.support.test.espresso.contrib.PickerActions.setDate
@@ -102,7 +101,7 @@ public class SetDateTest {
         // Check if date has been entered
         ViewInteraction editText2 = onView(withId(R.id.date_text));
         editText2.check(matches(withText("01.04.2023")));
-        firstDate = String.valueOf(editText2);
+        /*firstDate = String.valueOf(editText2);*/
 
         // Click on date icon again
         ViewInteraction checkableImageButton2 = onView(withId(com.google.android.material.R.id.text_input_end_icon));
