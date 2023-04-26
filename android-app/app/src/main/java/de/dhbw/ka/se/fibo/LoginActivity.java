@@ -26,12 +26,17 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputLayout loginPassword;
     private TextInputLayout loginEmail;
 
-    private LoginStrategy loginStrategy;
     private Map<TextInputLayout, String> fieldsToBeChecked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (ApplicationState.getInstance(getApplicationContext()).isAuthenticated()) {
+            ActivityUtils.swapActivity(this, MainActivity.class, false);
+            return;
+        }
+
         ActivityLoginBinding binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -62,7 +67,6 @@ public class LoginActivity extends AppCompatActivity {
         initializeButtons();
     }
 
-
     private void initializeButtons() {
         loginButton.setOnClickListener(e -> loginButtonClicked());
         clickHereToRegisterText.setOnClickListener(e -> ActivityUtils.swapActivity(this, CreateAccountActivity.class, false));
@@ -72,17 +76,18 @@ public class LoginActivity extends AppCompatActivity {
         if (!ActivityUtils.checkValidInput(fieldsToBeChecked)) {
             return;
         }
+
+        LoginStrategy loginStrategy;
         if (BuildConfig.DEBUG && !ActivityUtils.isEspressoTesting()) {
             loginStrategy = new LoginStrategyLocal();
         } else {
             loginStrategy = new LoginStrategyProduction();
         }
+
         String password = ActivityUtils.getTextInputLayoutFieldValue(loginPassword);
         String email = ActivityUtils.getTextInputLayoutFieldValue(loginEmail);
 
         loginStrategy.authenticate(this, password, email);
-
     }
-
 
 }
