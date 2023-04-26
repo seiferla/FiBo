@@ -1,19 +1,16 @@
 from django.urls import path
 from . import views
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
-    path('', views.GetRoutes.as_view()),
-    path('users/register/', views.RegisterUser.as_view()),
-    path('users/delete/', views.DeleteUser.as_view()),
-    path('users/get/', views.GetUser.as_view()),
-    path('users/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('users/authenticate/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('cashflow/', views.CashflowsView.as_view()),
-    path('cashflow/<int:cashflow_id>', views.CashflowsView.as_view()),
-    path('place/', views.PlaceView.as_view()),
-    path('category/', views.CategoryView.as_view()),
+    path('', views.GetRoutes.as_view(), name='routes'),
+    path('users/register/', views.RegisterUser.as_view(), name='register'),
+    path('users/delete/', views.DeleteUser.as_view(), name='delete_user'),
+    path('users/get/', views.GetUser.as_view(), name='get_user'),
+    path('users/login/', TokenObtainPairView.as_view(), name='login'),
+    path('users/authenticate/', TokenRefreshView.as_view(), name='authenticate'),
+    path('cashflow/', views.CashflowsView.as_view(), name='cashflow'),
+    path('cashflow/<int:cashflow_id>', views.CashflowsView.as_view(), name='cashflow_with_id'),
+    path('place/', views.PlaceView.as_view(), name='place'),
+    path('category/', views.CategoryView.as_view(), name='category'),
 ]
