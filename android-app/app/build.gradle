@@ -20,10 +20,15 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    jacoco {
+        version = '0.8.10'
+    }
+
     buildTypes {
         debug {
             enableUnitTestCoverage true
             enableAndroidTestCoverage true
+            testCoverageEnabled true
         }
         release {
             minifyEnabled false
