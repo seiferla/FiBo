@@ -64,16 +64,16 @@ jobs:
         with:
           api-level: ${{ matrix.api-level }}
           working-directory: ./android-app
-          script: ./gradlew connectedCheck
+          script: ./gradlew testDebugUnitTest connectedCheck
 
       - name: generate report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: report
           path: ./android-app/app/build/reports/coverage/androidTest
 
       - name: Download Test Reports Folder
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: report
           path: ./android-app/app/build/reports/coverage/androidTest
