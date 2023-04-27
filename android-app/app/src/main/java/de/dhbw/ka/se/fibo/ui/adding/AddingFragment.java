@@ -15,8 +15,6 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.datepicker.CalendarConstraints;
-import com.google.android.material.datepicker.DateValidatorPointBackward;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
@@ -250,13 +248,10 @@ public class AddingFragment extends Fragment {
     }
 
     private void createDatePicker() {
-        CalendarConstraints.DateValidator dateValidator = DateValidatorPointBackward.now();
-        CalendarConstraints.Builder constraintBuilder = new CalendarConstraints.Builder();
         datePicker = MaterialDatePicker.Builder.datePicker()
                 .setTitleText(R.string.selectDate)
                 .setNegativeButtonText(R.string.datePickerNegativeButtonText)
                 .setPositiveButtonText(R.string.DatePickerPositiveButtonText)
-                .setCalendarConstraints(constraintBuilder.setValidator(dateValidator).build())
                 .setSelection(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli())
                 .build();
         datePicker.addOnPositiveButtonClickListener(selection -> {
