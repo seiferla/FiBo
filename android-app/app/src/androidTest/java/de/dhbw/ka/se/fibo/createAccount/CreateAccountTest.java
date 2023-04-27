@@ -22,6 +22,7 @@ import androidx.test.espresso.Espresso;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.platform.app.InstrumentationRegistry;
 
+import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -30,6 +31,7 @@ import org.junit.Test;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -213,7 +215,7 @@ public class CreateAccountTest {
      * This test is known to be flaky.
      */
     @Test
-    public void testNotAllowingBackAfterCreateAccount() throws InterruptedException {
+    public void testNotAllowingBackAfterCreateAccount() throws InterruptedException, UnsupportedEncodingException {
         server.enqueue(new MockResponse()
                 .setResponseCode(200));
 
@@ -251,12 +253,12 @@ public class CreateAccountTest {
         assertEquals(Lifecycle.State.DESTROYED, activityScenarioRule.getScenario().getState());
     }
 
-    private Map<String, List<String>> getBodyString(Buffer he) {
+    private Map<String, List<String>> getBodyString(Buffer he) throws UnsupportedEncodingException {
         Map<String, List<String>> parameters = new HashMap<>();
 
         String query;
         try (InputStream body = he.getBuffer().inputStream()) {
-            query = new String(body.readAllBytes(), StandardCharsets.UTF_8);
+            query = new String(IOUtils.toByteArray(body), StandardCharsets.UTF_8);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -268,8 +270,8 @@ public class CreateAccountTest {
             String key = keyAndValue[0];
             String value = keyAndValue.length > 1 ? keyAndValue[1] : "";
 
-            key = URLDecoder.decode(key, StandardCharsets.UTF_8);
-            value = URLDecoder.decode(value, StandardCharsets.UTF_8);
+            key = URLDecoder.decode(key, "utf-8");
+            value = URLDecoder.decode(value, "utf-8");
 
             parameters.computeIfAbsent(key, k -> new ArrayList<>()).add(value);
         }
