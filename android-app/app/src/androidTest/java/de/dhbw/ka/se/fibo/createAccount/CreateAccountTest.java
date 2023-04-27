@@ -244,6 +244,9 @@ public class CreateAccountTest {
         assertEquals(bodyString.get("email"), List.of(email));
         assertEquals(bodyString.get("password"), List.of(password));
 
+        // just. let. the. other. thread. take. over.
+        Thread.yield();
+
         // The following line is flaky!
         // especially on CI… it seems that there are racing conflicts
         onView(withId(R.id.floatingButton))
