@@ -3,8 +3,7 @@ name: Django CI
 on: [pull_request, push]
 
 jobs:
-  build:
-
+  django_backend_test:
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -12,15 +11,53 @@ jobs:
         python-version: [3.11]
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Go to the backend directory and setup docker
-      run: |
-        cd backend
-        docker compose up -d --build
-    - name: Run Tests
-      run: |
-        docker compose run --rm django coverage run manage.py test
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Create .env file
+        run:  |
+          run:  |
+            touch .env
+            echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
+            echo SIGNING_KEY=${{ secrets.SIGNING_KEY }} >> .env
+            echo POSTGRES_DB=${{ secrets.POSTGRES_DB }} >> .env
+            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
+            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
+            echo DB_HOST=${{ secrets.DB_HOST }} >> .env
+            echo DB_PORT=${{ secrets.DB_PORT }} >> .env
+            cat .env
+            mv .env backend/backend
+      - name: Setup docker
+        run: |
+          cd backend
+          docker compose up -d --build
+      - name: Prepare Database
+        run: |
+          cd backend
+          docker compose run --rm django python manage.py makemigrations
+          docker compose run --rm django python manage.py migrate
+      - name: Run Tests
+        run: |
+          cd backend
+          docker compose run --rm django coverage run manage.py test
+      - name: Create Test Coverage Report
+        run: |
+          cd backend
+          touch simple_test_coverage_report
+          docker compose run --rm django coverage report > simple_test_coverage_report
+          docker compose run --rm django coverage html -d docs/html-test-coverage-report
+          mv simple_test_coverage_report docs/
+      - name: Upload Simple Test Coverage Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: simple_test_coverage_report
+          path: backend/docs/simple_test_coverage_report
+          retention-days: 90
+      - name: Upload HTML Test Coverage Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: html_test_coverage_report
+          path: backend/docs/html-test-coverage-report
+          retention-days: 90
