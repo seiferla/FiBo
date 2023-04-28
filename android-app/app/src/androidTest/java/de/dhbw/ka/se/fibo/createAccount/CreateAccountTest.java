@@ -19,16 +19,17 @@ import android.util.Log;
 
 import androidx.lifecycle.Lifecycle;
 import androidx.test.espresso.Espresso;
+import androidx.test.espresso.IdlingRegistry;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -36,13 +37,13 @@ import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import de.dhbw.ka.se.fibo.CreateAccountActivity;
 import de.dhbw.ka.se.fibo.R;
+import de.dhbw.ka.se.fibo.SharedVolleyRequestQueue;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
@@ -63,6 +64,15 @@ public class CreateAccountTest {
 
     private Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
+
+    @BeforeClass
+    public static void initResourceIdling() {
+        IdlingRegistry.getInstance().register(
+                SharedVolleyRequestQueue.getInstance(
+                        InstrumentationRegistry.getInstrumentation().getTargetContext()
+                ).getIdlingResource()
+        );
+    }
 
     @Before
     public void setUp() throws IOException {
@@ -211,9 +221,6 @@ public class CreateAccountTest {
                 .check(matches(isDisplayed()));
     }
 
-    /**
-     * This test is known to be flaky.
-     */
     @Test
     public void testNotAllowingBackAfterCreateAccount() throws InterruptedException, UnsupportedEncodingException {
         server.enqueue(new MockResponse()
@@ -244,11 +251,6 @@ public class CreateAccountTest {
         assertEquals(bodyString.get("email"), List.of(email));
         assertEquals(bodyString.get("password"), List.of(password));
 
-        // just. let. the. other. thread. take. over.
-        Thread.yield();
-
-        // The following line is flaky!
-        // especially on CI… it seems that there are racing conflicts
         onView(withId(R.id.floatingButton))
                 .check(matches(isDisplayed()));
 

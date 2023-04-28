@@ -19,6 +19,7 @@ import android.util.Log;
 import androidx.lifecycle.Lifecycle;
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.espresso.Espresso;
+import androidx.test.espresso.IdlingRegistry;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.platform.app.InstrumentationRegistry;
 
@@ -26,6 +27,7 @@ import com.google.gson.Gson;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -42,6 +44,7 @@ import de.dhbw.ka.se.fibo.ApplicationState;
 import de.dhbw.ka.se.fibo.BuildConfig;
 import de.dhbw.ka.se.fibo.LoginActivity;
 import de.dhbw.ka.se.fibo.R;
+import de.dhbw.ka.se.fibo.SharedVolleyRequestQueue;
 import de.dhbw.ka.se.fibo.strategies.LoginStrategyProduction;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -65,6 +68,16 @@ public class LoginActivityTest {
 
     private Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
+    @BeforeClass
+    public static void initResourceIdling() {
+        Log.i("FiBo", "initalizing resource idling…");
+
+        IdlingRegistry.getInstance().register(
+                SharedVolleyRequestQueue.getInstance(
+                        InstrumentationRegistry.getInstrumentation().getTargetContext()
+                ).getIdlingResource()
+        );
+    }
 
     @Before
     public void setUp() throws IOException {
