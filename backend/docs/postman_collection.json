@@ -1,0 +1,612 @@
+{
+	"info": {
+		"_postman_id": "f35065e3-e074-4f2d-84fe-1c89a57edb95",
+		"name": "FiBo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"fibo@fibo.de\",\n    \"password\": \"fibo\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/register/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"fibo@fibo.de\",\n    \"password\": \"fibo\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4MjQ5MTAwMCwiaWF0IjoxNjgyNDA0NjAwLCJqdGkiOiJmMGZmMzUwYjhiYWQ0YTBkYWM5ODRmOTMwY2FmZmJlMyIsInVzZXJfaWQiOjF9.8wqaM8bHohUniAos2ctvI3QCpIVMyZqRXkRvLMGMxmo\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/authenticate/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"authenticate",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNDM0NjcxLCJpYXQiOjE2ODI0MDQ2MDAsImp0aSI6IjE1YWZmNTBhMGU1NDQ4MDZhMWMzOWI0OWZkZmExYzQ4IiwidXNlcl9pZCI6MX0.ZJUKMOjOK6kUaSNR83cy9rYfgoWbO4QCNBwcZE61fv4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/get/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"get",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNDM0NjcxLCJpYXQiOjE2ODI0MDQ2MDAsImp0aSI6IjE1YWZmNTBhMGU1NDQ4MDZhMWMzOWI0OWZkZmExYzQ4IiwidXNlcl9pZCI6MX0.ZJUKMOjOK6kUaSNR83cy9rYfgoWbO4QCNBwcZE61fv4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/delete/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"delete",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cashflow",
+			"item": [
+				{
+					"name": "Create Cashflow",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNDU3ODQyLCJpYXQiOjE2ODI0Mjc4NDIsImp0aSI6IjJjYmVjN2Q0ZTIwOTQyY2U5NWZlNTM2OGNlYmFjNjhjIiwidXNlcl9pZCI6MX0.y96OmQXmEmaN189zlOOgIXCy1O-wRdnpFBb236vyXRE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"category\": \"MOBILITY\",\n  \"overallValue\": 20.00,\n  \"place\": {\n    \"address\": \"Test Strasse 20\",\n    \"name\": \"TestQuelle\"\n  },\n  \"timestamp\": \"2023-04-23T00:00:00\",\n  \"type\": \"INCOME\",\n  \"account\": {\n      \"id\": \"1\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/cashflow/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"cashflow",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cashflow",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNDU3ODQyLCJpYXQiOjE2ODI0Mjc4NDIsImp0aSI6IjJjYmVjN2Q0ZTIwOTQyY2U5NWZlNTM2OGNlYmFjNjhjIiwidXNlcl9pZCI6MX0.y96OmQXmEmaN189zlOOgIXCy1O-wRdnpFBb236vyXRE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/cashflow/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"cashflow",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Cashflow",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNDU3ODQyLCJpYXQiOjE2ODI0Mjc4NDIsImp0aSI6IjJjYmVjN2Q0ZTIwOTQyY2U5NWZlNTM2OGNlYmFjNjhjIiwidXNlcl9pZCI6MX0.y96OmQXmEmaN189zlOOgIXCy1O-wRdnpFBb236vyXRE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"category\": \"MOBILITY\",\n  \"overallValue\": 20.00,\n  \"place\": {\n    \"address\": \"Test Strasse 2\",\n    \"name\": \"TestQuelle\"\n  },\n  \"timestamp\": \"2023-04-23T00:00:00\",\n  \"type\": \"INCOME\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/cashflow/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"cashflow",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Cashflow",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNDU3ODQyLCJpYXQiOjE2ODI0Mjc4NDIsImp0aSI6IjJjYmVjN2Q0ZTIwOTQyY2U5NWZlNTM2OGNlYmFjNjhjIiwidXNlcl9pZCI6MX0.y96OmQXmEmaN189zlOOgIXCy1O-wRdnpFBb236vyXRE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/cashflow/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"cashflow",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Place",
+			"item": [
+				{
+					"name": "Create Place",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNDg4Mjk3LCJpYXQiOjE2ODI0NTgyOTcsImp0aSI6IjA4NGVjYzE2ZmMxZjQ1MWNhODM2ZGUyYzY2NjQ3Yjk0IiwidXNlcl9pZCI6MX0.do0YdRi-EO7jrffpYeRkiVhre7YT9I4Lp9U0BLiTguk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"address\": \"Test Strasse 51\",\n    \"name\": \"TestQuelle\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/place/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"place",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Place",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNDg4Mjk3LCJpYXQiOjE2ODI0NTgyOTcsImp0aSI6IjA4NGVjYzE2ZmMxZjQ1MWNhODM2ZGUyYzY2NjQ3Yjk0IiwidXNlcl9pZCI6MX0.do0YdRi-EO7jrffpYeRkiVhre7YT9I4Lp9U0BLiTguk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"address\": \"Test Strasse 51\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/place/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"place",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Post Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNDg4Mjk3LCJpYXQiOjE2ODI0NTgyOTcsImp0aSI6IjA4NGVjYzE2ZmMxZjQ1MWNhODM2ZGUyYzY2NjQ3Yjk0IiwidXNlcl9pZCI6MX0.do0YdRi-EO7jrffpYeRkiVhre7YT9I4Lp9U0BLiTguk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"SOZIAL\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/category/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"category",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Category",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNDg4Mjk3LCJpYXQiOjE2ODI0NTgyOTcsImp0aSI6IjA4NGVjYzE2ZmMxZjQ1MWNhODM2ZGUyYzY2NjQ3Yjk0IiwidXNlcl9pZCI6MX0.do0YdRi-EO7jrffpYeRkiVhre7YT9I4Lp9U0BLiTguk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"HEALTH\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/category/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"category",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Default",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNDM0NjcxLCJpYXQiOjE2ODI0MDQ2MDAsImp0aSI6IjE1YWZmNTBhMGU1NDQ4MDZhMWMzOWI0OWZkZmExYzQ4IiwidXNlcl9pZCI6MX0.ZJUKMOjOK6kUaSNR83cy9rYfgoWbO4QCNBwcZE61fv4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "Access Token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyNDM5MzI4LCJpYXQiOjE2ODI0MDkzMjgsImp0aSI6ImM1MWM2ZDVlNmU4YzRhNjBhOGRkMjhmMWZhMGJkZWI3IiwidXNlcl9pZCI6NX0.IezVRVXNB3btTxPEDswtO9FMZO5HrQa3e4rLwnXXHGA"
+		}
+	]
+}

@@ -64,3 +64,18 @@ Open a Terminal and run the following commands:
 
 After that you should be able to create UML Diagramms with the following command:
 `python manage.py graph_models -a -g -o ../docs/ER_Model_Uml.png`
+
+## Running Tests
+
+In order to run the Tests make sure that your Docker Containers are running. You can start the containers with the command `sudo docker compose up -d --build`
+
+To run the Tests use the command:
+`docker compose run --rm django coverage run manage.py test`
+
+For a more detailed output about what tests where run you can add an `-v 2` to the previous command. It will now look like this:
+`docker compose run --rm django coverage run manage.py test -v 2`
+
+You can output the test coverage in two different way:
+1. With `docker compose run --rm django coverage report` the test coverage is printed to the console
+2. With `docker compose run --rm django coverage html -d docs/test-coverage-report` an HTML Coverage report is created in the directory `docs/test-coverage-report`
+To look at it simply open the index.html in your preferred browser. In there you can go through the different files and see which code blocks got already tested and which can use some additional testing.
