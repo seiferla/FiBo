@@ -87,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
         String password = ActivityUtils.getTextInputLayoutFieldValue(loginPassword);
         String email = ActivityUtils.getTextInputLayoutFieldValue(loginEmail);
 
-        loginStrategy.authenticate(this, password, email);
+        loginStrategy.authenticate(this, email, password);
     }
 
 }

@@ -3,7 +3,6 @@ package de.dhbw.ka.se.fibo;
 import static android.content.ContentValues.TAG;
 import static de.dhbw.ka.se.fibo.utils.ApiUtils.createAPIStringRequest;
 
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
@@ -95,12 +94,10 @@ public class CreateAccountActivity extends AppCompatActivity {
      * @param email    entered by the user
      * @param password entered by the user
      */
-    private void createUser(final String email, final String password) {
+    private void createUser(String email, String password) {
         if (!ActivityUtils.checkValidInput(fieldsToBeChecked)) {
             return;
         }
-
-        // FIXME fix that this is run twice
 
         Log.i(TAG, "Enqueuing request");
 
