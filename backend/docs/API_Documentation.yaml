@@ -1,0 +1,257 @@
+openapi: 3.0.3
+info:
+  title: FiBo API Documentation
+  description: This is the Documentation for the API that is provided by our Django Backend
+  version: 1.0.0
+servers:
+  - url: 'http://127.0.0.1:8000'
+tags:
+  - name: default
+  - name: users
+    description: Everything that has has to do with users like registration and login
+paths:
+  /:
+    get:
+      tags:
+        - default
+      summary: Get possible routes
+      description: Returns possible routes for the URL
+      operationId: getRoutes
+      security:
+        - bearerAuth: [ ]
+      parameters:
+        - name: 'Authorization'
+          in: header
+          description: 'The Access Token to be passed as a header'
+          required: true
+          schema:
+            type: string
+            example: "Authorization: Bearer <token>"
+      responses:
+        '200':
+          $ref: '#/components/responses/getRoutes'
+        '401':
+          $ref: '#/components/responses/AccessError'
+  /users/register/:
+    post:
+      tags:
+        - users
+      summary: Creates a new user
+      description: Creates a new user in the database
+      operationId: createUser
+      requestBody:
+        $ref: '#/components/requestBodies/register'
+      responses:
+        '200':
+          description: User was successfully created
+        '500':
+          description: The User could not be created. There are multiple reasons, for this. For example there already is a user with the same email or there was something missing from the request body
+  /users/login/:
+    post:
+      tags:
+        - users
+      summary: Returns Access and Refresh Token
+      description: Awaits username and password in the request body and returns an Access and Refresh Token for the given user.
+      operationId: loginUser
+      requestBody:
+        $ref: '#/components/requestBodies/login'
+      responses:
+        '200':
+          $ref: '#/components/responses/login'
+          description: Successful operation. Returns Access and Refresh Token
+        '400':
+          description: Some fields are missing from the Request Body
+        '401':
+          description: There is no matching user in the database
+  /users/authenticate/:
+    post:
+      tags:
+        - users
+      summary: Returns an refreshed Access Token
+      description: Awaits an Refresh Token and returns an refreshed Access Token.
+      operationId: authenticateUser
+      requestBody:
+        $ref: '#/components/requestBodies/authenticate'
+      responses:
+        '200':
+          $ref: '#/components/responses/authenticate'
+        '400':
+          description: Refresh Token is missing from the Request Body
+        '401':
+          $ref: '#/components/responses/RefreshError'
+  /users/get/:
+    get:
+      tags:
+        - users
+      summary: Gets user data from database
+      description: Returns the data from the database corresponding to the user that is sending the request
+      operationId: getUser
+      security:
+        - bearerAuth: [ ]
+      parameters:
+        - name: 'Authorization'
+          in: header
+          description: 'The Access Token to be passed as a header'
+          required: true
+          schema:
+            type: string
+            example: "Authorization: Bearer <token>"
+      responses:
+        '200':
+          $ref: '#/components/responses/getUser'
+        '401':
+          $ref: '#/components/responses/AccessError'
+  /users/delete/:
+    delete:
+      tags:
+        - users
+      summary: Deletes an existing user
+      description: Deletes the user from the Database, that is sending the request
+      operationId: deleteUser
+      security:
+        - bearerAuth: [ ]
+      parameters:
+        - name: 'Authorization'
+          in: header
+          description: 'The Access Token to be passed as a header'
+          required: true
+          schema:
+            type: string
+            example: "Authorization: Bearer <token>"
+      responses:
+        '200':
+          description: The Account corresponding to the send Access Token is deleted
+        '401':
+          $ref: '#/components/responses/AccessError'
+
+
+components:
+  schemas:
+    users:
+      required:
+        - id
+        - email
+        - password
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        username:
+          type: string
+          format: email
+          example: theUser@fibo.de
+        email:
+          type: string
+          format: email
+          example: theUser@fibo.de
+        password:
+          type: string
+          example: 'password'
+        last_login:
+          type: string
+          format: date
+          example: "2023-04-20 07:56:12.809812+00"
+        is_superuser:
+          type: boolean
+          example: false
+        is_active:
+          type: boolean
+          example: true
+        date_joined:
+          type: string
+          format: date
+          example: "2023-04-15 12:23:59.602445+00"
+  responses:
+    getRoutes:
+      description: Successful operation. Returns possible routes for the API
+    login:
+      description: Successful operation. Returns Access and Refresh Token
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - refresh
+              - access
+            properties:
+              refresh:
+                type: string
+                example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4MjA4OTg4OCwiaWF0IjoxNjgyMDAzNDg4LCJqdGkiOiI3MzdhYTgyYzMzMWM0YjQ2ODlhYzg0ZDQ5Mjg1ZjVmYiIsInVzZXJfaWQiOjEyfQ.svQ9j-U-Q73lfWKt5D_J4s6PLrzrCNInm8giQ1Y_AJY
+              access:
+                type: string
+                example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyMDAzNzg4LCJpYXQiOjE2ODIwMDM0ODgsImp0aSI6ImYxZjQwOGFlMGE3NTQ4YzA5MTliMDI2ZTRlMmVmZDViIiwidXNlcl9pZCI6MTJ9.9JvhtWabcVov5W0igXBFhWPEKiuP3wFDOLr8UHyJU3w
+    authenticate:
+      description: Successful operation. Returns Access Token
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - access
+            properties:
+               access:
+                type: string
+                example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyMDA0MjU1LCJpYXQiOjE2ODIwMDM0ODgsImp0aSI6IjkyOTg3OGEyMmI5OTRmOWQ4OWQ5ZjE4MGVkOGY2OGExIiwidXNlcl9pZCI6MTJ9._ebETDmruZkTsus4tp-1_rcEwRlLcza1ABGcDXwwGnM
+    getUser:
+      description: Successful operation. The User corresponding to the send Access Token is returned
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/users'
+    AccessError:
+      description: Access token is missing or invalid
+    RefreshError:
+      description: Refresh token is missing or invalid
+  requestBodies:
+    register:
+      description: User data for registration
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - email
+              - password
+            properties:
+              email:
+                type: string
+                example: User@fibo.de
+              password:
+                type: string
+                example: password
+    login:
+      description: User data for registration
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - username
+              - password
+            properties:
+              username:
+                type: string
+                example: User@fibo.de
+              password:
+                type: string
+                example: password
+    authenticate:
+      description: Refresh Token
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - refresh
+            properties:
+              refresh:
+                type: string
+                example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4MjA4OTg4OCwiaWF0IjoxNjgyMDAzNDg4LCJqdGkiOiI3MzdhYTgyYzMzMWM0YjQ2ODlhYzg0ZDQ5Mjg1ZjVmYiIsInVzZXJfaWQiOjEyfQ.svQ9j-U-Q73lfWKt5D_J4s6PLrzrCNInm8giQ1Y_AJY
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -20,6 +20,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 
+
 import java.math.BigDecimal;
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -140,8 +141,7 @@ public class AddingFragment extends Fragment {
             if (null == newCashFlow) {
                 Toast.makeText(requireContext(), "Some required inputs are empty or wrong formatted", Toast.LENGTH_SHORT).show();
             } else {
-                ApplicationState.getInstance(requireContext()).addCashFlow(newCashFlow);
-                System.out.println(newCashFlow);
+                ApplicationState.getInstance(requireContext()).addCashflow(newCashFlow);
                 navigateToHome();
             }
 
@@ -262,7 +262,7 @@ public class AddingFragment extends Fragment {
 
     private ArrayList<Item> createItemsFromNotes() throws IllegalArgumentException {
         String[] lines = notes.getText().toString().trim().split(";");
-        ArrayList<Item> result = new ArrayList<Item>();
+        ArrayList<Item> result = new ArrayList<>();
         for (String s : lines) {
             String[] item = s.split(",");
             if (2 == item.length) {

@@ -1,29 +1,42 @@
 package de.dhbw.ka.se.fibo;
 
+import static android.content.ContentValues.TAG;
+import static de.dhbw.ka.se.fibo.utils.ApiUtils.createAPIStringRequest;
+
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.toolbox.StringRequest;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
-import de.dhbw.ka.se.fibo.databinding.ActivityMainBinding;
 import de.dhbw.ka.se.fibo.databinding.CreateAccountBinding;
+import de.dhbw.ka.se.fibo.utils.ActivityUtils;
 
 public class CreateAccountActivity extends AppCompatActivity {
     private CreateAccountBinding binding;
 
     private MaterialButton registerButton;
 
-    private Thread buttonClickThread;
+    private TextInputLayout passwordFieldLayout;
+
+    private TextInputLayout emailFieldLayout;
+
+    private TextView clickHereForLoginText;
+    private Map<TextInputLayout, String> fieldsToBeChecked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +45,16 @@ public class CreateAccountActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         registerButton = binding.createAccountButton;
+
+        passwordFieldLayout = binding.createAccountPasswordLayer;
+        emailFieldLayout = binding.createAccountEmailLayer;
+
+        clickHereForLoginText = binding.clickHereForLoginText;
+
+        //Define which fields are mandatory for the registration
+        fieldsToBeChecked = new HashMap<>();
+        fieldsToBeChecked.put(emailFieldLayout, getString(R.string.error_message_email_field));
+        fieldsToBeChecked.put(passwordFieldLayout, getString(R.string.error_message_password_field_empty));
 
         Locale locale = Locale.GERMANY;
         Locale.setDefault(locale);
@@ -47,17 +70,84 @@ public class CreateAccountActivity extends AppCompatActivity {
                 getText(R.string.create_account_title)
         );
 
-        initializeButton();
+        initializeButtons();
     }
 
-    private void initializeButton() {
+    private void initializeButtons() {
         registerButton.setOnClickListener(e -> registerButtonClicked());
+        clickHereForLoginText.setOnClickListener(e -> ActivityUtils.swapActivity(this, LoginActivity.class, false));
     }
 
     private void registerButtonClicked() {
-        Intent i = new Intent(CreateAccountActivity.this,
-                MainActivity.class);
-        startActivity(i);
-        finish();
+        String password = ActivityUtils.getFieldValue(binding.createAccountPassword);
+        String email = ActivityUtils.getFieldValue(binding.createAccountEmail);
+        createUser(email, password);
     }
+
+    /**
+     * send a http post request to the backend with given params
+     *
+     * @param email    entered by the user
+     * @param password entered by the user
+     */
+    private void createUser(String email, String password) {
+        if (!ActivityUtils.checkValidInput(fieldsToBeChecked)) {
+            return;
+        }
+
+        Log.i(TAG, "Enqueuing request");
+
+        Response.ErrorListener onError = error -> {
+            if (error.networkResponse != null) {
+                switch (error.networkResponse.statusCode) {
+                    case 400:
+                        Log.e(TAG, "Bad Request");
+                        break;
+                    case 401:
+                        Log.e(TAG, "Unauthorized");
+                        break;
+                    case 404:
+                        Log.e(TAG, "Not Found");
+                        break;
+                    case 500:
+                        Log.e(TAG, "Internal Server Error");
+                        break;
+                    default:
+                        break;
+                }
+
+                Toast errorToast = Toast.makeText(this, getApplicationContext().getText(R.string.invalid_input_error), Toast.LENGTH_LONG);
+                errorToast.show();
+                Log.e(TAG, String.valueOf(error));
+            } else {
+                Toast errorToast = Toast.makeText(this, R.string.registration_currently_unavailable, Toast.LENGTH_LONG);
+                errorToast.show();
+                Log.e(TAG, String.valueOf(error));
+            }
+        };
+
+        Response.Listener<String> onSuccess = response -> {
+            Toast successToast = Toast.makeText(this, "Success", Toast.LENGTH_LONG);
+            successToast.setGravity(Gravity.TOP, 0, 0);
+            successToast.show();
+            Log.i(TAG, "Successfully" + response);
+            Intent i = new Intent(this, MainActivity.class);
+            startActivity(i);
+            finish();
+        };
+        Map<String, String> params = new HashMap<>();
+        params.put("email", email);
+        params.put("password", password);
+        String url = "/users/register/";
+        StringRequest stringRequest = createAPIStringRequest(url, Request.Method.POST, params, onSuccess, onError);
+
+
+        SharedVolleyRequestQueue requestQueue = SharedVolleyRequestQueue.getInstance(this);
+        requestQueue.getRequestQueue().addRequestEventListener((request, event) -> {
+            Log.i(TAG, "Registration request changed status: " + event + " " + request);
+        });
+        requestQueue.addToRequestQueue(stringRequest);
+
+    }
+
 }

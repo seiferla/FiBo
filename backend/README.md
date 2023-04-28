@@ -24,6 +24,7 @@ If you followed the instructions above or are using a different OS run the follo
 2. Create a `.env` file in the `backend/` **sub**folder of the current directory, it should look something like this:
 ```ini
 SECRET_KEY=<see note below>
+SIGNING_KEY=<see note below>
 POSTGRES_DB=fibo
 POSTGRES_USER=*snip*
 POSTGRES_PASSWORD=*snip*
@@ -33,7 +34,7 @@ DB_PORT=5432
 PGADMIN_DEFAULT_EMAIL=*snip*
 PGADMIN_DEFAULT_PASSWORD=*snip*
 ```
-The `SECRET_KEY` should be sufficiently random. For example, you can use the following node.js script and set the `SECRET_KEY` to the result of it: `require('crypto').randomBytes(64).toString('hex')`.
+The `SECRET_KEY` and the `SIGNING_KEY` should be sufficiently random. For example, you can use the following node.js script and set the `SECRET_KEY` and `SIGNING_KEY` to two seperate result of it: `require('crypto').randomBytes(64).toString('hex')`.
 
 Update the `POSTGRES_*`,`PGADMIN_DEFAULT_*` variables as needed, so they use the prepared PostgreSQL installation.
 
