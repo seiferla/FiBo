@@ -108,6 +108,7 @@ public class AddingFragment extends Fragment {
                 setDataWithSelectedTab(tab);
             }
 
+            // TODO: Test that the hint changes when switching tabs
             private void setDataWithSelectedTab(TabLayout.Tab tab) {
                 if (tab == binding.tabLayout.getTabAt(0)) {
                     newCashFlowType = CashflowType.EXPENSE;
