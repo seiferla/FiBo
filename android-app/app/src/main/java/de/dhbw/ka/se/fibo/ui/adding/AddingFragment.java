@@ -250,6 +250,7 @@ public class AddingFragment extends Fragment {
     private void createDatePicker() {
         CalendarConstraints.DateValidator dateValidator = DateValidatorPointBackward.now();
         CalendarConstraints.Builder constraintBuilder = new CalendarConstraints.Builder();
+        // TODO: Test that you can't pick a date in the future
         datePicker = MaterialDatePicker.Builder.datePicker()
                 .setTitleText(R.string.selectDate)
                 .setNegativeButtonText(R.string.datePickerNegativeButtonText)
