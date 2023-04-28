@@ -1,6 +1,7 @@
 package de.dhbw.ka.se.fibo.ui.settings;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.button.MaterialButton;
 
+import de.dhbw.ka.se.fibo.ApplicationState;
+import de.dhbw.ka.se.fibo.LoginActivity;
 import de.dhbw.ka.se.fibo.R;
 import de.dhbw.ka.se.fibo.databinding.FragmentSettingsBinding;
 
@@ -48,6 +51,11 @@ public class SettingsFragment extends Fragment {
     builder.setMessage("Message");
 
     builder.setPositiveButton("Confirm",(dialog,which) -> {
+
+
+      ApplicationState.getInstance(this.getContext()).clearAuthorization();
+      Intent i = new Intent(this.getActivity(), LoginActivity.class);
+      startActivity(i);
     });
 
     builder.setNegativeButton("Cancel",(dialog,which) -> {
