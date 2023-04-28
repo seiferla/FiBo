@@ -22,8 +22,12 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Optional;
 
 import de.dhbw.ka.se.fibo.databinding.CreateAccountBinding;
+import de.dhbw.ka.se.fibo.strategies.LoginStrategy;
+import de.dhbw.ka.se.fibo.strategies.LoginStrategyLocal;
+import de.dhbw.ka.se.fibo.strategies.LoginStrategyProduction;
 import de.dhbw.ka.se.fibo.utils.ActivityUtils;
 
 public class CreateAccountActivity extends AppCompatActivity {
@@ -79,6 +83,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
     private void registerButtonClicked() {
+        registerButton.setClickable(false);
         String password = ActivityUtils.getFieldValue(binding.createAccountPassword);
         String email = ActivityUtils.getFieldValue(binding.createAccountEmail);
         createUser(email, password);
@@ -90,10 +95,12 @@ public class CreateAccountActivity extends AppCompatActivity {
      * @param email    entered by the user
      * @param password entered by the user
      */
-    private void createUser(String email, String password) {
+    private void createUser(final String email, final String password) {
         if (!ActivityUtils.checkValidInput(fieldsToBeChecked)) {
             return;
         }
+
+        // FIXME fix that this is run twice
 
         Log.i(TAG, "Enqueuing request");
 
@@ -124,30 +131,32 @@ public class CreateAccountActivity extends AppCompatActivity {
                 errorToast.show();
                 Log.e(TAG, String.valueOf(error));
             }
+            registerButton.setClickable(true);
         };
 
         Response.Listener<String> onSuccess = response -> {
             Toast successToast = Toast.makeText(this, "Success", Toast.LENGTH_LONG);
             successToast.setGravity(Gravity.TOP, 0, 0);
             successToast.show();
-            Log.i(TAG, "Successfully" + response);
-            Intent i = new Intent(this, MainActivity.class);
-            startActivity(i);
-            finish();
+
+            LoginStrategy loginStrategy;
+            if (BuildConfig.DEBUG && !ActivityUtils.isEspressoTesting()) {
+                loginStrategy = new LoginStrategyLocal();
+            } else {
+                loginStrategy = new LoginStrategyProduction();
+            }
+
+            Log.i(TAG, "lamda: "+ password + " " + email);
+            loginStrategy.authenticate(this, password, email);
         };
+
         Map<String, String> params = new HashMap<>();
         params.put("email", email);
         params.put("password", password);
         String url = "/users/register/";
-        StringRequest stringRequest = createAPIStringRequest(url, Request.Method.POST, params, onSuccess, onError);
-
+        StringRequest stringRequest = createAPIStringRequest(url, Request.Method.POST, params, onSuccess, onError, Optional.empty());
 
         SharedVolleyRequestQueue requestQueue = SharedVolleyRequestQueue.getInstance(this);
-        requestQueue.getRequestQueue().addRequestEventListener((request, event) -> {
-            Log.i(TAG, "Registration request changed status: " + event + " " + request);
-        });
         requestQueue.addToRequestQueue(stringRequest);
-
     }
-
 }

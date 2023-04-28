@@ -8,6 +8,7 @@ import androidx.annotation.VisibleForTesting;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -15,6 +16,7 @@ import de.dhbw.ka.se.fibo.models.Cashflow;
 import de.dhbw.ka.se.fibo.models.CashflowType;
 import de.dhbw.ka.se.fibo.models.Category;
 import de.dhbw.ka.se.fibo.models.Place;
+import de.dhbw.ka.se.fibo.strategies.LoginStrategyProduction;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.JwtException;
@@ -86,11 +88,9 @@ public class ApplicationState {
      * @return true if login is unnecessary and user should be forwarded immediately
      */
     public boolean isAuthenticated() {
-        String refreshToken = context
-                .getSharedPreferences("authorization", 0)
-                .getString("refreshToken", null);
+        Optional<String> refreshToken = getRefreshToken();
 
-        if (null == refreshToken) {
+        if (!refreshToken.isPresent()) {
             Log.i(TAG, "isAuthenticated() -> not authenticated, no refresh token persisted");
 
             return false;
@@ -99,7 +99,7 @@ public class ApplicationState {
         try {
             Jwt<?, Claims> claims = Jwts.parserBuilder().setSigningKey(
                     Keys.hmacShaKeyFor(jwsSigningKey)
-            ).build().parseClaimsJws(refreshToken);
+            ).build().parseClaimsJws(refreshToken.get());
 
             Log.i(TAG, "claims are " + claims);
         } catch (JwtException e) {
@@ -113,15 +113,39 @@ public class ApplicationState {
         return true;
     }
 
+    public Optional<String> getAccessToken() {
+        String accessToken = context
+                .getSharedPreferences("authorization", 0)
+                .getString("accessToken", null);
+
+        if (accessToken == null) {
+            return Optional.empty();
+        }
+
+        return Optional.of(accessToken);
+    }
+
+    public Optional<String> getRefreshToken() {
+        String refreshToken = context
+                .getSharedPreferences("authorization", 0)
+                .getString("refreshToken", null);
+
+        if (refreshToken == null) {
+            return Optional.empty();
+        }
+        return Optional.of(refreshToken);
+    }
+
     /**
-     * @param refresh given refreshtoken to save
+     * @param response given response from login with access and refresh token to save
      * @see <a href="https://stackoverflow.com/a/10163623/8496913">here</a> why we store it inside shared preferences
      */
-    public void storeAuthorization(String refresh) {
+    public void storeAuthorization(LoginStrategyProduction.LoginResponse response) {
         context
                 .getSharedPreferences("authorization", 0)
                 .edit()
-                .putString("refreshToken", refresh)
+                .putString("refreshToken", response.refresh)
+                .putString("accessToken", response.access)
                 .apply();
     }
 
@@ -130,6 +154,7 @@ public class ApplicationState {
                 .getSharedPreferences("authorization", 0)
                 .edit()
                 .remove("refreshToken")
+                .remove("accessToken")
                 .apply();
     }
 

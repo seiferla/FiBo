@@ -1,6 +1,6 @@
 package de.dhbw.ka.se.fibo.ui.dashboard;
 
-import android.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;

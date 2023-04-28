@@ -3,7 +3,7 @@ package de.dhbw.ka.se.fibo.ui.settings;
 import static android.content.ContentValues.TAG;
 import static de.dhbw.ka.se.fibo.utils.ApiUtils.createAPIStringRequest;
 
-import android.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +25,7 @@ import com.google.android.material.button.MaterialButton;
 import de.dhbw.ka.se.fibo.ApplicationState;
 import de.dhbw.ka.se.fibo.LoginActivity;
 import de.dhbw.ka.se.fibo.R;
+import de.dhbw.ka.se.fibo.SharedVolleyRequestQueue;
 import de.dhbw.ka.se.fibo.databinding.FragmentSettingsBinding;
 
 public class SettingsFragment extends Fragment {
@@ -52,48 +53,13 @@ public class SettingsFragment extends Fragment {
   }
 
   private void openDialog() {
-    AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
+    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
     builder.setCancelable(true);
     builder.setTitle("Title");
     builder.setMessage("Message");
 
-    Response.Listener<String> onSuccess = response -> {
-      Toast successToast = Toast.makeText(this.getContext(), "User deleted", Toast.LENGTH_LONG);
-      successToast.setGravity(Gravity.TOP, 0, 0);
-      successToast.show();
-      Log.i(TAG, "Successfully" + response);
-    };
-
-    Response.ErrorListener onError = error -> {
-      if (error.networkResponse != null) {
-        switch (error.networkResponse.statusCode) {
-          case 401:
-            Log.e(TAG, "Unauthorized");
-            break;
-          case 500:
-            Log.e(TAG, "Internal Server Error");
-            break;
-          default:
-            break;
-        }
-
-        Toast errorToast = Toast.makeText(this.getContext(), R.string.missing_token_error, Toast.LENGTH_LONG);
-        errorToast.show();
-        Log.e(TAG, String.valueOf(error));
-      } else {
-        Toast errorToast = Toast.makeText(this.getContext(), R.string.deleting_user_currently_unavailable, Toast.LENGTH_LONG);
-        errorToast.show();
-        Log.e(TAG, String.valueOf(error));
-      }
-    };
-
     builder.setPositiveButton("Confirm",(dialog,which) -> {
-      String url = "/users/delete/";
-      StringRequest stringRequest = createAPIStringRequest(url, Request.Method.DELETE, null, onSuccess, onError);
-
-      ApplicationState.getInstance(this.getContext()).clearAuthorization();
-      Intent i = new Intent(this.getActivity(), LoginActivity.class);
-      startActivity(i);
+      deleteUserRequest();
     });
 
     builder.setNegativeButton("Cancel",(dialog,which) -> {
@@ -101,6 +67,54 @@ public class SettingsFragment extends Fragment {
 
     AlertDialog dialog=builder.create();
     dialog.show();
+  }
+
+  private void deleteUserRequest() {
+      Response.Listener<String> onSuccess = response -> {
+          Toast successToast = Toast.makeText(getContext(), R.string.user_successfully_deleted, Toast.LENGTH_LONG);
+          successToast.setGravity(Gravity.TOP, 0, 0);
+          successToast.show();
+          ApplicationState.getInstance(getContext()).clearAuthorization();
+          Log.i(TAG, "Successfully" + response);
+
+          Intent i = new Intent(getActivity(), LoginActivity.class);
+          startActivity(i);
+      };
+
+      Response.ErrorListener onError = error -> {
+          if (error.networkResponse != null) {
+              switch (error.networkResponse.statusCode) {
+                  case 401:
+                      Log.e(TAG, "Unauthorized");
+                      Log.e(TAG, ApplicationState.getInstance(getContext()).getAccessToken().get());
+                      break;
+                  case 500:
+                      Log.e(TAG, "Internal Server Error");
+                      break;
+                  default:
+                      break;
+              }
+
+              Toast errorToast = Toast.makeText(getContext(), R.string.missing_token_error, Toast.LENGTH_LONG);
+              errorToast.show();
+              Log.e(TAG, String.valueOf(error));
+          } else {
+              Toast errorToast = Toast.makeText(getContext(), R.string.deleting_user_currently_unavailable, Toast.LENGTH_LONG);
+              errorToast.show();
+              Log.e(TAG, String.valueOf(error));
+          }
+      };
+
+      String url = "/users/delete/";
+      StringRequest stringRequest = createAPIStringRequest(url,
+              Request.Method.DELETE,
+              null,
+              onSuccess,
+              onError,
+              ApplicationState.getInstance(getContext()).getAccessToken());
+
+      SharedVolleyRequestQueue requestQueue = SharedVolleyRequestQueue.getInstance(getContext());
+      requestQueue.addToRequestQueue(stringRequest);
   }
 
   @Override

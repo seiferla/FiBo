@@ -95,13 +95,13 @@ public class LoginStrategyProduction implements LoginStrategy {
             Log.i(TAG, "access: " + response.access);
             ActivityUtils.swapActivity(activity, MainActivity.class, false);
 
-            ApplicationState.getInstance(activity.getApplicationContext()).storeAuthorization(response.refresh);
+            ApplicationState.getInstance(activity.getApplicationContext()).storeAuthorization(response);
         };
     }
 
     public static class LoginResponse {
-        String refresh;
-        String access;
+        public String refresh;
+        public String access;
 
         public LoginResponse(String refresh, String access) {
             this.refresh = refresh;

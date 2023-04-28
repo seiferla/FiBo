@@ -10,8 +10,8 @@
       android:id="@+id/deleteUser"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="User löschen"
+      android:text="@string/delete_user_button"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintStart_toStartOf="parent" />
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
