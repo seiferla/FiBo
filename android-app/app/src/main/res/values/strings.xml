@@ -108,4 +108,5 @@
     <string name="error_message_server_error">Server Fehler</string>
     <string name="error_message_unknown_error_occurred">Ein unbekannter Fehler ist aufgetreten</string>
     <string name="registration_currently_unavailable">Registrierung zur Zeit nicht möglich</string>
+    <string name="logout">Ausloggen</string>
 </resources>
