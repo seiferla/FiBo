@@ -1,5 +1,6 @@
 package de.dhbw.ka.se.fibo.ui.settings;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +38,23 @@ public class SettingsFragment extends Fragment {
   }
 
   private void initializeDeleteButton() {
+    deleteAccountButton.setOnClickListener(e -> openDialog());
+  }
 
+  private void openDialog() {
+    AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
+    builder.setCancelable(true);
+    builder.setTitle("Title");
+    builder.setMessage("Message");
+
+    builder.setPositiveButton("Confirm",(dialog,which) -> {
+    });
+
+    builder.setNegativeButton("Cancel",(dialog,which) -> {
+    });
+
+    AlertDialog dialog=builder.create();
+    dialog.show();
   }
 
   @Override
