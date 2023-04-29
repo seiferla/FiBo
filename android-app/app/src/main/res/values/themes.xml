@@ -48,4 +48,15 @@
         <item name="android:paddingTop">@dimen/largeButtonVerticalPadding</item>
         <item name="android:paddingBottom">@dimen/largeButtonVerticalPadding</item>
     </style>
+
+    <style name="Theme.FiBo.Button.DeleteUserButton" parent="Widget.Material3.Button">
+        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.ExtraSmall</item>
+        <item name="android:textSize">@dimen/standardTextSize</item>
+        <item name="android:paddingTop">@dimen/largeButtonVerticalPadding</item>
+        <item name="android:paddingBottom">@dimen/largeButtonVerticalPadding</item>
+        <item name="cornerRadius">10dp</item>
+        <item name="backgroundTint">?attr/colorButtonNormal</item>
+        <item name="android:textColor">@color/design_default_color_error</item>
+        <item name="height">48dp</item>
+    </style>
 </resources>
