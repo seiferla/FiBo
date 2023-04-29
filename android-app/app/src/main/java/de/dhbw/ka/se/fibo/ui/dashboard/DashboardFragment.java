@@ -1,6 +1,5 @@
 package de.dhbw.ka.se.fibo.ui.dashboard;
 
-import androidx.appcompat.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -26,13 +25,13 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.chrono.ChronoLocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
@@ -135,7 +134,7 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
                 names[i] = context.getText(category.getName());
             }
 
-            new AlertDialog.Builder(context)
+            new MaterialAlertDialogBuilder(context)
                     .setTitle(getString(R.string.dashboard_filter_dialog_title))
                     .setMultiChoiceItems(
                             names,
