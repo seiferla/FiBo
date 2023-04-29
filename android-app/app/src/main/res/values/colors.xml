@@ -29,4 +29,6 @@
     <color name="light_primary">#C8E4FA</color>
     <color name="application_background">#FEFAFD</color>
     <color name="field_stroke_color">#CCCCCC</color>
+
+    <color name="top_bar_placeholder">#ebedf4</color>
 </resources>
