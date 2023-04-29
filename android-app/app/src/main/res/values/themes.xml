@@ -58,5 +58,7 @@
         <!-- TODO: find right background color for delete user button -->
         <item name="backgroundTint">@color/top_bar_placeholder</item>
         <item name="android:textColor">@color/design_default_color_error</item>
+        <item name="android:textAlignment">textStart</item>
+
     </style>
 </resources>
