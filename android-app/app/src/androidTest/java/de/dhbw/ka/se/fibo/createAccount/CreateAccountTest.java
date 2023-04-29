@@ -11,7 +11,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static de.dhbw.ka.se.fibo.TestMatchers.hasTextInputLayoutErrorText;
 
 import android.content.Context;
@@ -23,7 +22,8 @@ import androidx.test.espresso.IdlingRegistry;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.platform.app.InstrumentationRegistry;
 
-import org.apache.commons.io.IOUtils;
+import com.google.gson.Gson;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -31,23 +31,26 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import javax.crypto.SecretKey;
+
+import de.dhbw.ka.se.fibo.ApplicationState;
 import de.dhbw.ka.se.fibo.CreateAccountActivity;
 import de.dhbw.ka.se.fibo.R;
 import de.dhbw.ka.se.fibo.SharedVolleyRequestQueue;
+import de.dhbw.ka.se.fibo.TestHelper;
+import de.dhbw.ka.se.fibo.strategies.LoginStrategyProduction;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
-import okio.Buffer;
 
 
 public class CreateAccountTest {
@@ -77,6 +80,7 @@ public class CreateAccountTest {
     @Before
     public void setUp() throws IOException {
         server.start(8000);
+        ApplicationState.getInstance(appContext).clearAuthorization();
     }
 
     @After
@@ -170,19 +174,46 @@ public class CreateAccountTest {
     public void testHttpRequestWithValidCredentials() throws InterruptedException {
         server.enqueue(new MockResponse().setResponseCode(200));
 
+        SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+
+        ApplicationState.getInstance(appContext).setJwsSigningKey(key.getEncoded());
+
+        String refreshToken = Jwts.builder()
+                .setClaims(Map.of(
+                        "token_type", "refresh",
+                        "user_id", 1
+                ))
+                .setExpiration(Date.from(LocalDateTime.now().plusHours(8).toInstant(ZoneOffset.UTC)))
+                .signWith(key)
+                .compact();
+
+        LoginStrategyProduction.LoginResponse loginResponse = new LoginStrategyProduction.LoginResponse(refreshToken, "someJWTAccessToken");
+        server.enqueue(new MockResponse()
+                .setResponseCode(200)
+                .setBody(new Gson()
+                        .toJson(loginResponse)
+                ));
+
+        String email = "fibo@fibo.de";
+        String password = "test";
+
         onView(withId(R.id.create_account_email))
-                .perform(typeText("fibo@fibo.de"), closeSoftKeyboard());
+                .perform(typeText(email), closeSoftKeyboard());
 
         onView(withId(R.id.create_account_password))
-                .perform(typeText("test"), closeSoftKeyboard());
+                .perform(typeText(password), closeSoftKeyboard());
 
         onView(withId(R.id.create_account_button))
                 .perform(click());
 
         // Wait for the HTTP request to complete
-        RecordedRequest request = server.takeRequest(30, TimeUnit.SECONDS);
+        RecordedRequest registerRequest = server.takeRequest(30, TimeUnit.SECONDS);
+        Log.i("FiBo", "registerRequest = " + registerRequest);
 
-        Log.i("FiBo", "request = " + request);
+        RecordedRequest loginRequest = server.takeRequest(30, TimeUnit.SECONDS);
+        Log.i("FiBo", "loginRequest = " + loginRequest);
+
+        TestHelper.checkLoginRequestResponse(loginRequest, email, password);
 
         onView(withId(R.id.floatingButton))
                 .check(matches(isDisplayed()));
@@ -192,17 +223,22 @@ public class CreateAccountTest {
     public void testHttpRequestWithInvalidCredentials() throws InterruptedException {
         server.enqueue(new MockResponse().setResponseCode(500));
 
+        String email = "fibo@fibo.de";
+        String password = "test";
+
         onView(withId(R.id.create_account_email))
-                .perform(typeText("fibo@fibo.de"), closeSoftKeyboard());
+                .perform(typeText(email), closeSoftKeyboard());
 
         onView(withId(R.id.create_account_password))
-                .perform(typeText("test"), closeSoftKeyboard());
+                .perform(typeText(password), closeSoftKeyboard());
 
         onView(withId(R.id.create_account_button))
                 .perform(click());
 
         // Wait for the HTTP request to complete
         RecordedRequest request = server.takeRequest(30, TimeUnit.SECONDS);
+
+        TestHelper.checkRegisterRequestResponse(request, email);
 
         Log.i("FiBo", "request = " + request);
 
@@ -214,6 +250,7 @@ public class CreateAccountTest {
     @Test
     public void testPageSwapFromCreateAccountToLogin() {
         onView(withId(R.id.click_here_for_login_text))
+                .check(matches(isDisplayed()))
                 .perform(click());
         onView(withId(R.id.login_button))
                 .check(matches(isDisplayed()));
@@ -222,7 +259,7 @@ public class CreateAccountTest {
     }
 
     @Test
-    public void testNotAllowingBackAfterCreateAccount() throws InterruptedException, UnsupportedEncodingException {
+    public void testNotAllowingBackAfterCreateAccount() throws InterruptedException {
         server.enqueue(new MockResponse()
                 .setResponseCode(200));
 
@@ -241,46 +278,12 @@ public class CreateAccountTest {
         // Wait for the HTTP request to complete
         RecordedRequest request = server.takeRequest(30, TimeUnit.SECONDS);
 
-        // do some checks to increase the likelihood the UI changes
-        // and we get redirected because of the successful login
-        assertNotNull(request);
-        assertNotNull(request.getRequestUrl());
-        assertEquals(request.getRequestUrl().encodedPath(), "/users/register/");
-
-        Map<String, List<String>> bodyString = getBodyString(request.getBody());
-        assertEquals(bodyString.get("email"), List.of(email));
-        assertEquals(bodyString.get("password"), List.of(password));
+        TestHelper.checkRegisterRequestResponse(request, email);
 
         onView(withId(R.id.floatingButton))
                 .check(matches(isDisplayed()));
 
         Espresso.pressBackUnconditionally();
         assertEquals(Lifecycle.State.DESTROYED, activityScenarioRule.getScenario().getState());
-    }
-
-    private Map<String, List<String>> getBodyString(Buffer he) throws UnsupportedEncodingException {
-        Map<String, List<String>> parameters = new HashMap<>();
-
-        String query;
-        try (InputStream body = he.getBuffer().inputStream()) {
-            query = new String(IOUtils.toByteArray(body), StandardCharsets.UTF_8);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        String[] keyValuePairs = query.split("&");
-        for (String keyValuePair : keyValuePairs) {
-            String[] keyAndValue = keyValuePair.split("=", 2);
-
-            String key = keyAndValue[0];
-            String value = keyAndValue.length > 1 ? keyAndValue[1] : "";
-
-            key = URLDecoder.decode(key, "utf-8");
-            value = URLDecoder.decode(value, "utf-8");
-
-            parameters.computeIfAbsent(key, k -> new ArrayList<>()).add(value);
-        }
-
-        return parameters;
     }
 }

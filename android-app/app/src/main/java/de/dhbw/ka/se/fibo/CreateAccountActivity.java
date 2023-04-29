@@ -143,8 +143,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                 loginStrategy = new LoginStrategyProduction();
             }
 
-            Log.i(TAG, "lamda: "+ password + " " + email);
-            loginStrategy.authenticate(this, password, email);
+            loginStrategy.authenticate(this, email, password);
         };
 
         Map<String, String> params = new HashMap<>();

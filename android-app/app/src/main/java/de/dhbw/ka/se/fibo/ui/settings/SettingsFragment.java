@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
@@ -50,14 +51,12 @@ public class SettingsFragment extends Fragment {
     }
 
     private void initializeDeleteButton() {
-        deleteUserButton.setOnClickListener(e -> {
-            openDialog();
-        });
+        deleteUserButton.setOnClickListener(e -> openDialog());
     }
 
     private void openDialog() {
         Context context = requireContext();
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+        AlertDialog.Builder builder = new MaterialAlertDialogBuilder(context);
         builder.setCancelable(true);
         builder.setTitle(R.string.delete_user_confirmation_title);
         builder.setMessage(R.string.delete_user_confirmation_text);
