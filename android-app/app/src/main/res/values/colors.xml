@@ -15,6 +15,7 @@
     <color name="red">#e54f6e</color>
     <color name="green1">#01786f</color>
     <color name="light_purple">#ad92ad</color>
+    <color name="delete_red">#DC143C</color>
 
 
     <color name="income">#59B222</color>
@@ -29,4 +30,6 @@
     <color name="light_primary">#C8E4FA</color>
     <color name="application_background">#FEFAFD</color>
     <color name="field_stroke_color">#CCCCCC</color>
+
+    <color name="top_bar_placeholder">#ebedf4</color>
 </resources>
