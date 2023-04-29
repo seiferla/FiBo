@@ -55,6 +55,7 @@
         <item name="android:paddingTop">@dimen/largeButtonVerticalPadding</item>
         <item name="android:paddingBottom">@dimen/largeButtonVerticalPadding</item>
         <item name="cornerRadius">10dp</item>
+        <!-- TODO: find right background color for delete user button -->
         <item name="backgroundTint">?attr/colorButtonNormal</item>
         <item name="android:textColor">@color/design_default_color_error</item>
         <item name="height">48dp</item>
