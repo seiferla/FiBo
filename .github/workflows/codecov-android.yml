@@ -1,0 +1,86 @@
+name: Android CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: macos-latest
+
+    strategy:
+      matrix:
+        api-level: [31]
+        java-version: [11]
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: Add local.properties
+        run: |
+          touch android-app/local.properties
+          echo jwsSigningKey=\"${{ secrets.SIGNING_KEY }}\" >> android-app/local.properties
+
+      - uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 11
+
+      - name: Gradle cache
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build
+          build-root-directory: android-app
+
+      - name: AVD cache
+        uses: actions/cache@v3
+        id: avd-cache
+        with:
+          path: |
+            ~/.android/avd/*
+            ~/.android/adb*
+          key: avd-${{ matrix.api-level }}
+
+      - name: create AVD and generate snapshot for caching
+        if: steps.avd-cache.outputs.cache-hit != 'true'
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api-level }}
+          arch: x86_64
+          force-avd-creation: false
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: false
+          script: echo "Generated AVD snapshot for caching."
+
+      # Execute unit tests
+      - name: Unit Test with Android Emulator Runner
+        uses: ReactiveCircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api-level }}
+          arch: x86_64
+          working-directory: ./android-app
+          script: ./gradlew testDebugUnitTest connectedCheck
+
+      - name: generate report
+        uses: actions/upload-artifact@v3
+        with:
+          name: report
+          path: ./android-app/app/build/reports/coverage/androidTest
+
+      - name: Download Test Reports Folder
+        uses: actions/download-artifact@v3
+        with:
+          name: report
+          path: ./android-app/app/build/reports/coverage/androidTest
+
+      - name: Upload Test Report
+        uses: codecov/codecov-action@v3
+        with:
+          files: "./android-app/app/build/reports/coverage/androidTest/debug/connected/report.xml"

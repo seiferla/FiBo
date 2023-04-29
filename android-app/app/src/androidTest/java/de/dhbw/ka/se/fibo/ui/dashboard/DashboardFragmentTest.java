@@ -130,7 +130,7 @@ public class DashboardFragmentTest {
                 .check(matches(isDisplayed()));
 
         // Checks that there are no entries in the Category field
-        onView(allOf(withClassName(Matchers.equalTo(AppCompatCheckedTextView.class.getName()))))
+        onView(withClassName(Matchers.equalTo(AppCompatCheckedTextView.class.getName())))
                 .check(doesNotExist());
     }
 
