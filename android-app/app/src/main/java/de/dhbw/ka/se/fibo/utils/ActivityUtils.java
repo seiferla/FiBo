@@ -89,7 +89,10 @@ public class ActivityUtils {
      */
     public static boolean isEspressoTesting() {
         try {
-            Class.forName("androidx.test.espresso.Espresso");
+            // This must be the name of any class that are inside a androidTest/ repository.
+            // Do not use "androidx.test.espresso.Espresso", as the package of it
+            // is included at runtime. This is needed to allow managing idle resources.
+            Class.forName("de.dhbw.ka.se.fibo.createAccount.CreateAccountTest");
             return true;
         } catch (ClassNotFoundException e) {
             return false;
