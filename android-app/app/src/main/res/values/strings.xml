@@ -112,5 +112,9 @@
     <string name="delete_user_button">Konto löschen</string>
     <string name="deleting_user_currently_unavailable">Löschen des Users zur Zeit nicht möglich</string>
     <string name="user_successfully_deleted">Konto erfolgreich gelöscht</string>
+    <string name="delete_user_confirmation_title">Konto löschen?</string>
+    <string name="delete_user_confirmation_text">Bist du sicher, dass du dein Konto Löschen möchtest? Alle deine Daten werden damit gelöscht und du wirst keinen Zugriff mehr auf sie haben!</string>
     <string name="logout">Ausloggen</string>
+    <string name="delete_user_confirm_button">Benutzer löschen</string>
+    <string name="cancle_button">Abbrechen</string>
 </resources>

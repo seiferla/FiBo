@@ -59,14 +59,14 @@ public class SettingsFragment extends Fragment {
         Context context = requireContext();
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
         builder.setCancelable(true);
-        builder.setTitle("Title");
-        builder.setMessage("Message");
+        builder.setTitle(R.string.delete_user_confirmation_title);
+        builder.setMessage(R.string.delete_user_confirmation_text);
 
-        builder.setPositiveButton("Confirm", (dialog, which) -> {
+        builder.setPositiveButton(R.string.delete_user_confirm_button, (dialog, which) -> {
             deleteUserRequest();
         });
 
-        builder.setNegativeButton("Cancel", (dialog, which) -> {
+        builder.setNegativeButton(R.string.cancle_button, (dialog, which) -> {
         });
 
         builder.show();
