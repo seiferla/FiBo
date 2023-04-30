@@ -20,13 +20,13 @@ Every user should be able to create a cashflow by taking a photo of the receipt
 - If the information is incorrect, the user can make manual adjustments before saving it
 
 ### 2.1.1 Activity Diagram
-![Change_added_data_Activity_Diagram](logging_out.drawio.svg)
+![Change_added_data_Activity_Diagram]()
 
 
 ### 2.1.2 Mock-up
-![settings_page](../UC_7_logging_out/settings_page.png)
+![settings_page](../)
 
-![settings_page_confirm_dialog](../UC_7_logging_out/settings_page_confirm_dialog.png)
+![settings_page_confirm_dialog](../)
 
 
 ### 2.1.3 Narrative
@@ -43,8 +43,10 @@ Feature: scanning receipt
     Scenario: successfully scan and save receipt 
       Given I am signed in with username "USER" and password "PASSWORD"
       And I am on the "dashboard" page
-      When I press the "camera" button
-      Then I am on the "scan" page
+      When I click on "New receipt" button
+      Then I can see a menu
+      And I press the "Scan receipt" button
+      Then I am on the "camera" framgent
       When I take a photo of the receipt
       Then the app automatically crops and optimizes the image
       And the app extracts relevant information
@@ -56,7 +58,7 @@ Feature: scanning receipt
       Given I am signed in with username "USER" and password "PASSWORD"
       And I am on the "dashboard" page
       When I press the "camera" button
-      Then I am on the "scan" page
+      Then I am on the "camera" fragment
       When I take a photo of the receipt
       Then the app automatically crops and optimizes the image
       And the app extracts relevant information
@@ -71,7 +73,7 @@ Feature: scanning receipt
       Given I am signed in with username "USER" and password "PASSWORD"
       And I am on the home fragment
       When I press the "camera" button
-      Then I am on the "scan" fragment
+      Then I am on the "camera" fragment
       When I take a photo of the receipt
       Then the app automatically crops and optimizes the image
       And the app extracts relevant information
@@ -91,7 +93,7 @@ Feature: scanning receipt
 
 # 3 Special Requirements
 
-(n/a)
+The application must have access to the users phone camera
 
 # 4 Preconditions
 
@@ -101,7 +103,7 @@ The user has to be logged into the system.
 
 # 5 Postconditions
 
-(n/a)
+The extracted information from the receipt is saved to the user's cashflow
 
 # 6 Extension Points
 
