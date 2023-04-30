@@ -20,8 +20,8 @@
     - [Performance](#34-performance)
     - [Supportability](#35-supportability)
     - [Design Constraints](#36-design-constraints)
-    - [Online User Documentation and Help System Requirements](#37-on-line-user-documentation-and-help-system-requirements)
-    - [Purchased Components](#purchased-components)
+    - [Online User Documentation and Help System Requirements](#37-online-user-documentation-and-help-system-requirements)
+    - [Purchased Components](#38-purchased-components)
     - [Interfaces](#39-interfaces)
     - [Licensing Requirements](#310-licensing-requirements)
     - [Legal, Copyright And Other Notices](#311-legal-copyright-and-other-notices)
@@ -133,6 +133,7 @@ Until the end of the fourth semester we plan to implement:
 - [3.1.5 Show data in a dashboard](#315-show-data-in-a-dashboard)
 - [3.1.6 Evaluate scanning receipts](#316-evaluate-scanning-receipts)
 - [3.1.7 Logging out](#317-logging-out)
+- [3.1.8 Delete User Account out](#318-delete-user-account)
 
 
 #### 3.1.1 Create account
@@ -179,6 +180,12 @@ We want to get a clear view on technologies that enable us to automatically scan
 In case you share your phone, have multiple accounts or just want to be cautious about your privacy you should be able to manually log out.
 
 [Logging out](./use_cases/UC_7_logging_out/UC_7_logging_out.md)
+
+
+#### 3.1.8 Delete user account
+
+In case if you want to delete any data that is stored in combination with your account, we give the user the possibility to delete their stored data 
+[Delete user account](./use_cases/UC_8_delete_account/UC_8_delete_account.md)
 
 
 
