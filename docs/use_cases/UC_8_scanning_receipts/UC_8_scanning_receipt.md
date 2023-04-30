@@ -16,17 +16,23 @@ Every user should be able to create a cashflow by taking a photo of the receipt
 - The app automatically crops and adjusts the image for clarity
 - The app extracts relevant information from the scanned receipt, such as the value and total amount
 - The extracted information is displayed to the user for confirmation
-- If the information ist correct , the user saves it to their cashflow
+- If the information ist correct, the user saves it to their cashflow
 - If the information is incorrect, the user can make manual adjustments before saving it
 
 ### 2.1.1 Activity Diagram
-![Change_added_data_Activity_Diagram]()
+![Change_added_data_Activity_Diagram](scanning_receipt.drawio.svg)
 
 
 ### 2.1.2 Mock-up
-![settings_page](../)
 
-![settings_page_confirm_dialog](../)
+![](../UC_6_evaluate_scanning_receipts/Slice%201.png)
+![](../UC_6_evaluate_scanning_receipts/Slice%202.png)
+![](../UC_6_evaluate_scanning_receipts/Slice%203.png)
+![](../UC_6_evaluate_scanning_receipts/Slice%204.png)
+![](../UC_6_evaluate_scanning_receipts/Slice%205.png)
+![](../UC_6_evaluate_scanning_receipts/Slice%206.png)
+![](../UC_6_evaluate_scanning_receipts/Slice%207.png)
+![](../UC_6_evaluate_scanning_receipts/Slice%208.png)
 
 
 ### 2.1.3 Narrative
@@ -38,7 +44,7 @@ Feature: scanning receipt
   I want to scan a receipt by taking a photo
   
   Background: 
-    And I have a account
+    And I am on the home page
     
     Scenario: successfully scan and save receipt 
       Given I am signed in with username "USER" and password "PASSWORD"
