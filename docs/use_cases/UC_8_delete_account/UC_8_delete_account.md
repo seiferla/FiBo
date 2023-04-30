@@ -39,12 +39,42 @@ stored in the FiBo app.
 Feature: delete user
 
   As a logged-in user
-  I want to logout my user data
+  I want to delete my user data and all my data I added to the App
 
   Background:
     And I am on the settings page
 
+  Scenario: successful account deletion
+    Given I am signed in with username "USER" and password "PASSWORD"
+    And I am on the "settings" page
+    When I press on the Button with the red title "Account löschen"
+    Then I receive a confirm dialog
+    When I confirm the deletion
+    Then All my data will be deleted from the app
+    And I am on the "login" page
+    When I try to log in with username "USER" and password "PASSWORD"
+    Then The login will not be successful
 
+  Scenario: canceled account deletion
+    Given I am signed in with username "USER" and password "PASSWORD"
+    And I am on the "settings" page
+    When I press on the Button with the red title "Account löschen"
+    Then I receive a confirm dialog
+    When I cancel the deletion process
+    Then I am still logged in with username "USER" and password "PASSWORD"
+    And on the "settings" page
+    And all my data is still existent
+
+  Scenario: successful account deletion
+    Given I am signed in with username "USER" and password "PASSWORD"
+    And I am on the "settings" page
+    When I press on the Button with the red title "Account löschen"
+    Then I receive a confirm dialog
+    When I confirm the deletion process
+    Then An error occurs during the deletion process
+    Then I am still logged in with username "USER" and password "PASSWORD"
+    And on the "settings" page
+    And all my data is still existent
 
 ```
 
