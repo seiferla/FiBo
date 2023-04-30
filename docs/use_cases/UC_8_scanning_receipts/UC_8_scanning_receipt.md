@@ -32,38 +32,53 @@ Every user should be able to create a cashflow by taking a photo of the receipt
 ### 2.1.3 Narrative
 
 ```gherkin
-Feature: logging out
+Feature: scanning receipt
 
   As a logged-in user
-  I want to logout my account
+  I want to scan a receipt by taking a photo
   
   Background: 
-    And I am on the settings page
+    And I have a account
     
-    Scenario: successfully logout 
+    Scenario: successfully scan and save receipt 
       Given I am signed in with username "USER" and password "PASSWORD"
-      And I am on the "settings" page
-      When I press on the logout button
-      Then I receive a confirm dialog
-      When I confirm the logout
-      Then I am on the "login" page
+      And I am on the "dashboard" page
+      When I press the "camera" button
+      Then I am on the "scan" page
+      When I take a photo of the receipt
+      Then the app automatically crops and optimizes the image
+      And the app extracts relevant information
+      And the extracted information is displayed for confirmation
+      When I confirm the information is correct
+      Then I save it to my cashflows
       
-    Scenario: unsuccessfully logout
+    Scenario: incorrect information extraction
       Given I am signed in with username "USER" and password "PASSWORD"
-      And I am on the "settings" page
-      When I press on the logout button
-      Then I receive a confirm dialog
-      When I cancel the logout
-      Then I am on the "settings" page
+      And I am on the "dashboard" page
+      When I press the "camera" button
+      Then I am on the "scan" page
+      When I take a photo of the receipt
+      Then the app automatically crops and optimizes the image
+      And the app extracts relevant information
+      And the extracted information is displayed for confirmation
+      When I notice a incorrect information
+      Then I make manual adjustments
+      And I save the corrected information to my cashflow
+      And I save it to my cashflows
+
       
-    Scenario: enter invalid data and save
+    Scenario: discard receipt
       Given I am signed in with username "USER" and password "PASSWORD"
-      And I am at the "manual adding of data" form
-      When I adjust "x€" in the "Store" field
-      And I adjust "store xy" in the field "Price"
-      And I press the "save" button
-      Then I am at the "manual adding of data" form
-      And I receive a "error" message
+      And I am on the home fragment
+      When I press the "camera" button
+      Then I am on the "scan" fragment
+      When I take a photo of the receipt
+      Then the app automatically crops and optimizes the image
+      And the app extracts relevant information
+      And the extracted information is displayed for confirmation
+      When I want to discard the receipt
+      Then I delete the scanned image
+      And I return to the home fragment
       
       
 
