@@ -25,7 +25,7 @@ stored in the FiBo app.
 
 ### 2.1.1 Activity Diagram
 
-[//]: # (![Change_added_data_Activity_Diagram]&#40;logging_out.drawio.svg&#41;)
+![delete_user_account_activity_diagram](./delete_user_account.drawio.svg)
 
 ### 2.1.2 Mock-up
 
