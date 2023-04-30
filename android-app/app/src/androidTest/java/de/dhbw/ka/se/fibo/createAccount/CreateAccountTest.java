@@ -79,7 +79,6 @@ public class CreateAccountTest {
 
     @Test
     public void testCreateAccountButtonClick() {
-
         onView(withId(R.id.create_account_button))
                 .perform(click());
 
@@ -88,7 +87,6 @@ public class CreateAccountTest {
 
         onView(withId(R.id.create_account_password_layer))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_password_field_empty))));
-
     }
 
     @Test
@@ -151,12 +149,12 @@ public class CreateAccountTest {
 
 
     @Test
-    public void testHttpRequestWithValidCredentials() throws InterruptedException {
+    public void testHttpRequestWithValidCredentials() throws InterruptedException, UnsupportedEncodingException {
         server.enqueue(new MockResponse().setResponseCode(200));
         server.enqueue(new MockResponse()
                 .setResponseCode(200)
                 .setBody(TestHelper
-                        .getRefreshTokenAsJsonString()
+                        .getTokensAsJsonString()
                 ));
 
         String email = "fibo@fibo.de";
@@ -178,6 +176,7 @@ public class CreateAccountTest {
         RecordedRequest loginRequest = server.takeRequest(30, TimeUnit.SECONDS);
         Log.i("FiBo", "loginRequest = " + loginRequest);
 
+        TestHelper.checkRegisterRequestResponse(registerRequest, email, password);
         TestHelper.checkLoginRequest(loginRequest, email, password);
 
         onView(withId(R.id.floatingButton))
@@ -231,7 +230,7 @@ public class CreateAccountTest {
         server.enqueue(new MockResponse()
                 .setResponseCode(200)
                 .setBody(TestHelper
-                        .getRefreshTokenAsJsonString()
+                        .getTokensAsJsonString()
                 ));
 
         String email = "fibo@fibo.de";
