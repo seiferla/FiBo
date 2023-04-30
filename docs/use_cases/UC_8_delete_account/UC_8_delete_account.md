@@ -21,7 +21,7 @@ stored in the FiBo app.
   - the users private accounts including their stored cashflows will be deleted
   - the user will be deleted from every shared account
   - the user will be prompted to the login page
-- If the user cancels the dialog, tFinally, the user is shown the login page
+- If the user cancels the dialog, nothing happens.
 
 ### 2.1.1 Activity Diagram
 
@@ -29,9 +29,9 @@ stored in the FiBo app.
 
 ### 2.1.2 Mock-up
 
-[//]: # (![settings_page]&#40;../UC_7_logging_out/settings_page.png&#41;)
+![delete_user_account_settings_page](./UC_8_delete_user_account-settings_fragment.png)
 
-[//]: # (![settings_page_confirm_dialog]&#40;../UC_7_logging_out/settings_page_confirm_dialog.png&#41;)
+![delete_user_account_confirm_dialog](./UC_8_delete_user_account-confirm_dialog.png)
 
 ### 2.1.3 Narrative
 
@@ -95,6 +95,8 @@ The user has to be logged into the system.
 # 5 Postconditions
 
 The user has to be logged out of the system
+The user is not connected to any existent cashflow anymore
+The user is not able to log in with his old credentials
 
 # 6 Extension Points
 
