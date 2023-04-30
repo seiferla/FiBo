@@ -3,6 +3,10 @@ package de.dhbw.ka.se.fibo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import android.content.Context;
+
+import androidx.test.platform.app.InstrumentationRegistry;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -13,16 +17,25 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.crypto.SecretKey;
+
+import de.dhbw.ka.se.fibo.strategies.LoginStrategyProduction;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import okhttp3.mockwebserver.RecordedRequest;
 import okio.Buffer;
 
 public class TestHelper {
-    public static void checkLoginRequestResponse(RecordedRequest actualRequest, String email, String password) {
+    public static void checkLoginRequest(RecordedRequest actualRequest, String email, String password) {
         // do some checks to increase the likelihood the UI changes
         // and we get redirected because of the successful login
         assertNotNull(actualRequest);
@@ -71,6 +84,56 @@ public class TestHelper {
         return new Gson().fromJson(query, JsonObject.class);
     }
 
-    public static void checkRegisterRequestResponse(RecordedRequest request, String email) {
+    public static void checkRegisterRequestResponse(RecordedRequest actualRequest, String email, String password) throws UnsupportedEncodingException {
+        // do some checks to increase the likelihood the UI changes
+        // and we get redirected because of the successful login
+        assertNotNull(actualRequest);
+        assertNotNull(actualRequest.getRequestUrl());
+        assertEquals("/users/register/", actualRequest.getRequestUrl().encodedPath());
+
+        Map<String, List<String>> requestBody = TestHelper.getBodyString(actualRequest.getBody());
+        assertEquals(List.of(email), requestBody.get("email"));
+        assertEquals(List.of(password), requestBody.get("password"));
+    }
+
+    public static String getRefreshTokenAsJsonString() {
+        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+
+        ApplicationState.getInstance(appContext).setJwsSigningKey(key.getEncoded());
+
+        String refreshToken = Jwts.builder()
+                .setClaims(Map.of(
+                        "token_type", "refresh",
+                        "user_id", 1
+                ))
+                .setExpiration(Date.from(LocalDateTime.now().plusHours(8).toInstant(ZoneOffset.UTC)))
+                .signWith(key)
+                .compact();
+
+        LoginStrategyProduction.LoginResponse loginResponse = new LoginStrategyProduction.LoginResponse(refreshToken, "someJWTAccessToken");
+
+        return new Gson().toJson(loginResponse);
+    }
+
+    public static String getAccessTokenAsJsonString() {
+        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+
+        SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+
+        ApplicationState.getInstance(appContext).setJwsSigningKey(key.getEncoded());
+
+        String accessToken = Jwts.builder()
+                .setClaims(Map.of(
+                        "token_type", "access",
+                        "user_id", 1
+                ))
+                .setExpiration(Date.from(LocalDateTime.now().plusHours(8).toInstant(ZoneOffset.UTC)))
+                .signWith(key)
+                .compact();
+
+        LoginStrategyProduction.LoginResponse loginResponse = new LoginStrategyProduction.LoginResponse("someJWTRefreshToken", accessToken);
+
+        return new Gson().toJson(loginResponse);
     }
 }

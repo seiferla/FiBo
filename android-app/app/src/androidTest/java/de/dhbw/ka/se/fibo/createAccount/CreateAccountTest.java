@@ -22,8 +22,6 @@ import androidx.test.espresso.IdlingRegistry;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.platform.app.InstrumentationRegistry;
 
-import com.google.gson.Gson;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -31,23 +29,14 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.util.Date;
-import java.util.Map;
+import java.io.UnsupportedEncodingException;
 import java.util.concurrent.TimeUnit;
-
-import javax.crypto.SecretKey;
 
 import de.dhbw.ka.se.fibo.ApplicationState;
 import de.dhbw.ka.se.fibo.CreateAccountActivity;
 import de.dhbw.ka.se.fibo.R;
 import de.dhbw.ka.se.fibo.SharedVolleyRequestQueue;
 import de.dhbw.ka.se.fibo.TestHelper;
-import de.dhbw.ka.se.fibo.strategies.LoginStrategyProduction;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
@@ -104,7 +93,6 @@ public class CreateAccountTest {
 
     @Test
     public void testEmailInput() {
-
         onView(withId(R.id.create_account_email))
                 .perform(typeText("test"), closeSoftKeyboard());
 
@@ -113,12 +101,10 @@ public class CreateAccountTest {
 
         onView(withId(R.id.create_account_password_layer))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_password_field_empty))));
-
     }
 
     @Test
     public void testPasswordWithoutInput() {
-
         onView(withId(R.id.create_account_password))
                 .perform(typeText(""), closeSoftKeyboard());
 
@@ -131,12 +117,10 @@ public class CreateAccountTest {
 
         onView(withId(R.id.create_account_email_layer))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_email_field))));
-
     }
 
     @Test
     public void testPasswordWithInput() {
-
         onView(withId(R.id.create_account_password))
                 .perform(typeText("AsdfJklo1.2"), closeSoftKeyboard());
 
@@ -145,12 +129,10 @@ public class CreateAccountTest {
 
         onView(withId(R.id.create_account_email_layer))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_email_field))));
-
     }
 
     @Test
     public void testValidInput() {
-
         onView(withId(R.id.create_account_email))
                 .perform(typeText("test"), closeSoftKeyboard());
 
@@ -165,33 +147,16 @@ public class CreateAccountTest {
 
         onView(withId(R.id.create_account_password_layer))
                 .check(matches(not(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_password_field_empty)))));
-
-
     }
 
 
     @Test
     public void testHttpRequestWithValidCredentials() throws InterruptedException {
         server.enqueue(new MockResponse().setResponseCode(200));
-
-        SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-
-        ApplicationState.getInstance(appContext).setJwsSigningKey(key.getEncoded());
-
-        String refreshToken = Jwts.builder()
-                .setClaims(Map.of(
-                        "token_type", "refresh",
-                        "user_id", 1
-                ))
-                .setExpiration(Date.from(LocalDateTime.now().plusHours(8).toInstant(ZoneOffset.UTC)))
-                .signWith(key)
-                .compact();
-
-        LoginStrategyProduction.LoginResponse loginResponse = new LoginStrategyProduction.LoginResponse(refreshToken, "someJWTAccessToken");
         server.enqueue(new MockResponse()
                 .setResponseCode(200)
-                .setBody(new Gson()
-                        .toJson(loginResponse)
+                .setBody(TestHelper
+                        .getRefreshTokenAsJsonString()
                 ));
 
         String email = "fibo@fibo.de";
@@ -213,14 +178,14 @@ public class CreateAccountTest {
         RecordedRequest loginRequest = server.takeRequest(30, TimeUnit.SECONDS);
         Log.i("FiBo", "loginRequest = " + loginRequest);
 
-        TestHelper.checkLoginRequestResponse(loginRequest, email, password);
+        TestHelper.checkLoginRequest(loginRequest, email, password);
 
         onView(withId(R.id.floatingButton))
                 .check(matches(isDisplayed()));
     }
 
     @Test
-    public void testHttpRequestWithInvalidCredentials() throws InterruptedException {
+    public void testHttpRequestWithInvalidCredentials() throws InterruptedException, UnsupportedEncodingException {
         server.enqueue(new MockResponse().setResponseCode(500));
 
         String email = "fibo@fibo.de";
@@ -238,7 +203,7 @@ public class CreateAccountTest {
         // Wait for the HTTP request to complete
         RecordedRequest request = server.takeRequest(30, TimeUnit.SECONDS);
 
-        TestHelper.checkRegisterRequestResponse(request, email);
+        TestHelper.checkRegisterRequestResponse(request, email, password);
 
         Log.i("FiBo", "request = " + request);
 
@@ -259,9 +224,15 @@ public class CreateAccountTest {
     }
 
     @Test
-    public void testNotAllowingBackAfterCreateAccount() throws InterruptedException {
+    public void testNotAllowingBackAfterCreateAccount() throws InterruptedException, UnsupportedEncodingException {
         server.enqueue(new MockResponse()
                 .setResponseCode(200));
+
+        server.enqueue(new MockResponse()
+                .setResponseCode(200)
+                .setBody(TestHelper
+                        .getRefreshTokenAsJsonString()
+                ));
 
         String email = "fibo@fibo.de";
         String password = "test";
@@ -275,10 +246,14 @@ public class CreateAccountTest {
         onView(withId(R.id.create_account_button))
                 .perform(click());
 
-        // Wait for the HTTP request to complete
+        // Wait for the HTTP requests to complete
         RecordedRequest request = server.takeRequest(30, TimeUnit.SECONDS);
 
-        TestHelper.checkRegisterRequestResponse(request, email);
+        RecordedRequest loginRequest = server.takeRequest(30, TimeUnit.SECONDS);
+        Log.i("FiBo", "loginRequest = " + loginRequest);
+
+        TestHelper.checkRegisterRequestResponse(request, email, password);
+        TestHelper.checkLoginRequest(loginRequest, email, password);
 
         onView(withId(R.id.floatingButton))
                 .check(matches(isDisplayed()));
