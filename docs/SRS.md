@@ -185,7 +185,7 @@ In case you share your phone, have multiple accounts or just want to be cautious
 
 Another key feature in our app allows users to capture receipts with a photo. The system automatically crops, optimizes it and extracts relevant information for confirmation before storing it in the cashflow.
 
-[Scanning receipts](./use_cases/UC_8_scanning_receipts/UC_8_scanning_receipt.md)
+[Scanning receipts](use_cases/UC_9_scanning_receipts/UC_9_scanning_receipt.md)
 
 
 
