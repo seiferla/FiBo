@@ -18,6 +18,8 @@ Every user should be able to create a cashflow by taking a photo of the receipt.
 - The extracted information is displayed to the user for confirmation
 - If the information ist correct, the user saves it to their cashflow
 - If the information is incorrect, the user can make manual adjustments before saving it
+- The Dashboard will be updated
+- Finally, the user is shown a success message
 
 ### 2.1.1 Activity Diagram
 ![Change_added_data_Activity_Diagram](scanning_receipt.drawio.svg)
