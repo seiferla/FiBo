@@ -133,6 +133,7 @@ Until the end of the fourth semester we plan to implement:
 - [3.1.5 Show data in a dashboard](#315-show-data-in-a-dashboard)
 - [3.1.6 Evaluate scanning receipts](#316-evaluate-scanning-receipts)
 - [3.1.7 Logging out](#317-logging-out)
+- [3.1.8 Scanning receipts](#318-scanning-receipts)
 
 
 #### 3.1.1 Create account
@@ -179,6 +180,12 @@ We want to get a clear view on technologies that enable us to automatically scan
 In case you share your phone, have multiple accounts or just want to be cautious about your privacy you should be able to manually log out.
 
 [Logging out](./use_cases/UC_7_logging_out/UC_7_logging_out.md)
+
+#### 3.1.8 Scanning receipts
+
+Another key feature in our app allows users to capture receipts with a photo. The system automatically crops, optimizes it and extracts relevant information for confirmation before storing it in the cashflow.
+
+[Scanning receipts](use_cases/UC_9_scanning_receipts/UC_9_scanning_receipt.md)
 
 
 
