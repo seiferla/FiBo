@@ -6,7 +6,7 @@ Scanning receipt
 
 ## 1.1 Brief Description
 
-Every user should be able to create a cashflow by taking a photo of the receipt
+Every user should be able to create a cashflow by taking a photo of the receipt.   
 
 # 2 Flow of Events
 
