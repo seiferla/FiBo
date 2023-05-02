@@ -4,7 +4,7 @@
 
 This document is based on the following template: <https://sce.uhcl.edu/helm/RationalUnifiedProcess/webtmpl/templates/a_and_d/rup_sad.htm>
 
-**Version: 1.0**
+Version: 1.2
 
 ## Revision History
 
@@ -118,7 +118,7 @@ In conclusion, these design model elements work together to verify the user's cr
 
 [This section describes the architecturally significant parts of the design model, such as its decomposition into subsystems and packages. And for each significant package, its decomposition into classes and class utilities. You should introduce architecturally significant classes and describe their responsibilities, as well as a few very important relationships, operations, and attributes.]
 
-#### Overview
+#### Overview of the Logical View
 
 We have, for now, two packages that interact with each other: the frontend and the backend.
 
