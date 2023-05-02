@@ -94,9 +94,9 @@ The user has to be logged into the system.
 
 # 5 Postconditions
 
-The user has to be logged out of the system
-The user is not connected to any existent cashflow anymore
-The user is not able to log in with his old credentials
+- The user has to be logged out of the system.
+- The user is not connected to any existent cashflow anymore.
+- The user is not able to log in with his old credentials.
 
 # 6 Extension Points
 
