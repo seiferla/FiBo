@@ -4,28 +4,29 @@
 
 - [Table of contents](#table-of-contents)
 - [Introduction](#1-introduction)
-    - [Purpose](#11-purpose)
-    - [Scope](#12-scope)
-    - [Definitions, Acronyms and Abbreviations](#13-definitions-acronyms-and-abbreviations)
-    - [References](#14-references)
-    - [Overview](#15-overview)
+  - [Purpose](#11-purpose)
+  - [Scope](#12-scope)
+  - [Definitions, Acronyms and Abbreviations](#13-definitions-acronyms-and-abbreviations)
+  - [References](#14-references)
+  - [Overview](#15-overview)
 - [Overall Description](#2-overall-description)
-    - [Vision](#21-vision)
-    - [Use Case Diagram](#22-use-case-diagram)
-    - [Technology Stack](#23-technology-stack)
+  - [Vision](#21-vision)
+  - [Use Case Diagram](#22-use-case-diagram)
+  - [Technology Stack](#23-technology-stack)
 - [Specific Requirements](#3-specific-requirements)
-    - [Functionality](#31-functionality)
-    - [Usability](#32-usability)
-    - [Reliability](#33-reliability)
-    - [Performance](#34-performance)
-    - [Supportability](#35-supportability)
-    - [Design Constraints](#36-design-constraints)
-    - [Online User Documentation and Help System Requirements](#37-online-user-documentation-and-help-system-requirements)
-    - [Purchased Components](#38-purchased-components)
-    - [Interfaces](#39-interfaces)
-    - [Licensing Requirements](#310-licensing-requirements)
-    - [Legal, Copyright And Other Notices](#311-legal-copyright-and-other-notices)
-    - [Applicable Standards](#312-applicable-standards)
+  - [Functionality](#31-functionality)
+  - [Usability](#32-usability)
+  - [Reliability](#33-reliability)
+  - [Performance](#34-performance)
+  - [Supportability](#35-supportability)
+  - [Design Constraints](#36-design-constraints)
+  - [Online User Documentation and Help System Requirements](#37-online-user-documentation-and-help-system-requirements)
+  - [Purchased Components](#38-purchased-components)
+  - [Interfaces](#39-interfaces)
+  - [Licensing Requirements](#310-licensing-requirements)
+  - [Legal, Copyright And Other Notices](#311-legal-copyright-and-other-notices)
+  - [Applicable Standards](#312-applicable-standards)
+
 - [Supporting Information](#4-supporting-information)
 
 ## 1. Introduction
@@ -41,16 +42,16 @@ The project is going to be realized as an Android App.
 
 Planned Subsystems are:
 
-* Dashboard:
+- Dashboard:
   The dashboard is the main view of our user interface. It visualizes all the data that the user enters and offers the possibility to customize the view according to the user's wishes while also allow to categorize and filter the displayed data.
-* Manage receipts and income:
+- Manage receipts and income:
   A user can manage receipts (manually creating a new one, create one by scanning a physical receipt, delete receipts) and can set their (monthly) budget. The budget is managed by entering a monthly income.
-* Share costs:
+- Share costs:
   Users can invite other users of our product to bear costs (at least partially) by category or by receipt or by whole expenses (for example, a couple might do a 70:30 cut for the whole month, while a flat-sharing community might only share expenses they use together on an individual basis)
   .
-* Data Management:
+- Data Management:
   Data is saved and can be retrieved.
-* Account Management:
+- Account Management:
   Users can register themself, log into their account, log off and delete themself. Upon deletion, all user data is deleted as well.
 
 ### 1.3 Definitions, Acronyms and Abbreviations
@@ -126,16 +127,15 @@ Testing:
 This section will explain the different use cases, you could see in the Use Case Diagram, and their functionality.
 Until the end of the fourth semester we plan to implement:
 
-- [3.1.1 Create Account](#311-create-account)
-- [3.1.2 Logging in](#312-logging-in)
+- [3.1.1 Create Account (realized)](#311-create-account)
+- [3.1.2 Logging in (realized)](#312-logging-in)
 - [3.1.3 Change added data](#313-change-added-data)
-- [3.1.4 Manual adding of data](#314-manual-adding-of-data)
+- [3.1.4 Manual adding of data (realized)](#314-manual-adding-of-data)
 - [3.1.5 Show data in a dashboard](#315-show-data-in-a-dashboard)
-- [3.1.6 Evaluate scanning receipts](#316-evaluate-scanning-receipts)
+- [3.1.6 Evaluate scanning receipts (realized)](#316-evaluate-scanning-receipts)
 - [3.1.7 Logging out](#317-logging-out)
 - [3.1.8 Delete user account](#318-delete-user-account)
 - [3.1.9 Scanning receipts](#319-scanning-receipts)
-
 
 #### 3.1.1 Create account
 
@@ -143,13 +143,11 @@ To identify all users we need an account system. This account system enables us 
 
 [Create account](./use_cases/UC_1_create_account/UC_1_create_account.md)
 
-
 #### 3.1.2 Logging in
 
 The app will provide the possibility to register and log in. This will also make the usability easier when a user wants to manage his expenses because they don't have to enter their mail address every time.
 
 [Logging in](./use_cases/UC_2_login_account/UC_2_login_account.md)
-
 
 #### 3.1.3 Change added data
 
@@ -169,7 +167,6 @@ All the different kinds of data our users feed us with should be displayed graph
 
 [Show data in dashboard](./use_cases/UC_5_show_data_in_dashboard/UC_5_show_data_in_dashboard.md)
 
-
 #### 3.1.6 Evaluate scanning receipts
 
 We want to get a clear view on technologies that enable us to automatically scan receipts with high confidence. Until December, we should have some first pointers and have built an initial understanding on how to tackle this feature.
@@ -182,21 +179,17 @@ In case you share your phone, have multiple accounts or just want to be cautious
 
 [Logging out](./use_cases/UC_7_logging_out/UC_7_logging_out.md)
 
-
 #### 3.1.8 Delete user account
 
-In case if you want to delete any data that is stored in combination with your account, we give the user the possibility to delete their stored data 
+In case if you want to delete any data that is stored in combination with your account, we give the user the possibility to delete their stored data
 
 [Delete user account](use_cases/UC_8_delete_user_account/UC_8_delete_account.md)
-
 
 #### 3.1.9 Scanning receipts
 
 Another key feature in our app allows users to capture receipts with a photo. The system automatically crops, optimizes it and extracts relevant information for confirmation before storing it in the cashflow.
 
 [Scanning receipts](use_cases/UC_9_scanning_receipts/UC_9_scanning_receipt.md)
-
-
 
 ### 3.2 Usability
 
@@ -324,5 +317,3 @@ The Team Members are:
 - Markus Götz
 
 <!-- Picture-Link definitions: -->
-
-[OUCD]: https://github.com/Cebox82/FiBo/blob/master/docs/use-case-diagram.drawio.svg "Overall Use Case Diagram"
