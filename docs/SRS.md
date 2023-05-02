@@ -134,6 +134,7 @@ Until the end of the fourth semester we plan to implement:
 - [3.1.6 Evaluate scanning receipts](#316-evaluate-scanning-receipts)
 - [3.1.7 Logging out](#317-logging-out)
 - [3.1.8 Delete User Account out](#318-delete-user-account)
+- [3.1.8 Scanning receipts](#319-scanning-receipts)
 
 
 #### 3.1.1 Create account
@@ -187,6 +188,12 @@ In case you share your phone, have multiple accounts or just want to be cautious
 In case if you want to delete any data that is stored in combination with your account, we give the user the possibility to delete their stored data 
 [Delete user account](./use_cases/UC_8_delete_account/UC_8_delete_account.md)
 
+
+#### 3.1.9 Scanning receipts
+
+Another key feature in our app allows users to capture receipts with a photo. The system automatically crops, optimizes it and extracts relevant information for confirmation before storing it in the cashflow.
+
+[Scanning receipts](use_cases/UC_9_scanning_receipts/UC_9_scanning_receipt.md)
 
 
 
