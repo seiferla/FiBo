@@ -133,8 +133,8 @@ Until the end of the fourth semester we plan to implement:
 - [3.1.5 Show data in a dashboard](#315-show-data-in-a-dashboard)
 - [3.1.6 Evaluate scanning receipts](#316-evaluate-scanning-receipts)
 - [3.1.7 Logging out](#317-logging-out)
-- [3.1.8 Delete User Account out](#318-delete-user-account)
-- [3.1.8 Scanning receipts](#319-scanning-receipts)
+- [3.1.8 Delete user account](#318-delete-user-account)
+- [3.1.9 Scanning receipts](#319-scanning-receipts)
 
 
 #### 3.1.1 Create account
@@ -186,7 +186,8 @@ In case you share your phone, have multiple accounts or just want to be cautious
 #### 3.1.8 Delete user account
 
 In case if you want to delete any data that is stored in combination with your account, we give the user the possibility to delete their stored data 
-[Delete user account](./use_cases/UC_8_delete_account/UC_8_delete_account.md)
+
+[Delete user account](use_cases/UC_8_delete_user_account/UC_8_delete_account.md)
 
 
 #### 3.1.9 Scanning receipts
