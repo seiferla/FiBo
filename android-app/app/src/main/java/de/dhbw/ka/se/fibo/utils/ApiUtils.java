@@ -1,5 +1,7 @@
 package de.dhbw.ka.se.fibo.utils;
 
+import android.util.Log;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
@@ -11,7 +13,9 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class ApiUtils {
 
@@ -34,7 +38,7 @@ public class ApiUtils {
      * @param onError   a custom error response
      * @return the created StringRequest with given callbacks and parameters
      */
-    public static StringRequest createAPIStringRequest(String url, int method, Map<String, String> params, Response.Listener<String> onSuccess, Response.ErrorListener onError) {
+    public static StringRequest createAPIStringRequest(String url, int method, Map<String, String> params, Response.Listener<String> onSuccess, Response.ErrorListener onError, Optional<String> jwt) {
 
         return new StringRequest(
                 method,
@@ -45,6 +49,15 @@ public class ApiUtils {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+
+                jwt.ifPresent(s -> headers.put("Authorization", "Bearer " + s));
+
+                return headers;
             }
         };
     }

@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FiBo"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        android:debuggable="true"
+        tools:ignore="HardcodedDebugMode">
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />

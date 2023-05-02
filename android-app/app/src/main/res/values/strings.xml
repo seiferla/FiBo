@@ -96,6 +96,7 @@
     <string name="dashboard_filter_indication_categories">%1$o Kategorie(n) werden nicht angezeigt</string>
     <string name="apply">Übernehmen</string>
     <string name="invalid_input_error">Ungültige Angaben gemacht!</string>
+    <string name="missing_token_error">Authentifizierungsfehler</string>
     <string name="already_registered_question">Bereits registriert?</string>
     <string name="click_here_for_login">Klicke hier zum einloggen!</string>
     <string name="no_account_yet_question">Noch kein Konto?</string>
@@ -108,4 +109,12 @@
     <string name="error_message_server_error">Server Fehler</string>
     <string name="error_message_unknown_error_occurred">Ein unbekannter Fehler ist aufgetreten</string>
     <string name="registration_currently_unavailable">Registrierung zur Zeit nicht möglich</string>
+    <string name="delete_user_button">Konto löschen</string>
+    <string name="deleting_user_currently_unavailable">Löschen des Users zur Zeit nicht möglich</string>
+    <string name="user_successfully_deleted">Konto erfolgreich gelöscht</string>
+    <string name="delete_user_confirmation_title">Konto löschen?</string>
+    <string name="delete_user_confirmation_text">Bist du sicher, dass du dein Konto Löschen möchtest? Alle deine Daten werden damit gelöscht und du wirst keinen Zugriff mehr auf sie haben!</string>
+    <string name="logout">Ausloggen</string>
+    <string name="delete_user_confirm_button">Benutzer löschen</string>
+    <string name="cancle_button">Abbrechen</string>
 </resources>
