@@ -87,9 +87,32 @@ Please see [section 3.1 in our SRS](SRS.md#31-functionality).
 
 As of 2nd May, eight use-cases have been realized already.
 
-We'll
+We'll focus on describing on the use-case 3.1.2 (Logging in), as it tackles all systems.
 
-[This section illustrates how the software actually works by giving a few selected use-case (or scenario) realizations, and explains how the various design model elements contribute to their functionality.]
+Scenario: Logging In
+
+1. User opens the app and is presented with a login screen.
+![Login screen showing email and password field as well as a Login button](use_cases/realization/login-screen.png)
+2. User enters their email and password and clicks the "Login" button.
+![Login screen with filled in email and password field](use_cases/realization/login-screen-2.png)
+3. The user interface process receives the login information and sends it to the authentication and authorization process.
+4. The authentication and authorization process checks the email and password against the Django backend's authentication system.
+5. If the email and password match, the authentication and authorization process sends a message to the user interface process, allowing the user to access the app's functionality.
+![Home screen with list of cashflows](use_cases/realization/login-screen-3.png)
+6. If the email and password do not match, the authentication and authorization process sends an error message to the user interface process, asking the user to enter valid credentials.
+![Rejection of entered data](use_cases/realization/login-screen-4.png)
+
+How the Design Model Elements Contribute to the Functionality:
+
+1. User Interface Design: The login screen presented to the user is a result of the user interface design. It provides an interface for the user to enter their login credentials.
+
+2. Authentication and Authorization Model: The authentication and authorization process is a part of the authentication and authorization model. It verifies the user's email and password against the Django backend's authentication system and sends a message to the user interface process allowing access to the app's functionality.
+
+3. Backend API: The Django backend's authentication system is accessed through the backend API. The authentication and authorization process sends the user's login credentials to the appropriate backend API endpoint for processing.
+
+4. Message Passing: The message passing mechanism between the user interface process and the authentication and authorization process is essential for the login functionality to work. The user interface process sends the user's login credentials to the authentication and authorization process, which then sends a message back allowing access to the app's functionality.
+
+In conclusion, these design model elements work together to verify the user's credentials and allow access to the app's functionality.
 
 ### Logical View
 
@@ -107,19 +130,57 @@ The frontend is in charge of providing a human-useable interface that provides f
 
 ##### Android app
 
+The Android app is what our users see and deal with.
+Hence, special attention is paid to guarantee a seamless user experience in their entire lifecycle.
+So, less focus is paid to deal with large chunks of data.
+
+Significant parts as well of their technical names are:
+
+- List of cashflows (HomeFragment)
+- Adding cashflows (AddingFragment)
+- Dashboard (DashboardFragment)
+- Settings (SettingsFragment)
+
 ##### Django Backend
 
-[For each significant package, include a subsection with its name, its brief description, and a diagram with all significant classes and packages contained within the package.
+The Django Backend deals with the task of managing the data.
+It is not only concerned to provide interfaces for multiple users, but also to save and retrieve big chunks of data efficiently.
 
-For each significant class in the package, include its name, brief description, and, optionally a description of some of its major responsibilities, operations and attributes.]
+Significant parts as well of their technical names are:
+
+- Registering of users (RegisterView)
+- Logging in of users (TokenObtainPairView)
+- Authenticating of users (TokenRefreshView)
+- Saving, updating as well as deleting cashflows (CashflowsView)
+- In the future, the automatic extraction of receipts' data (tbd)
 
 ### Process View
 
-[This section describes the system's decomposition into lightweight processes (single threads of control) and heavyweight processes (groupings of lightweight processes). Organize the section by groups of processes that communicate or interact. Describe the main modes of communication between processes, such as message passing, interrupts, and rendezvous.]
+The Android app and the Django backend will consist of multiple lightweight and heavyweight processes that communicate with each other to achieve the desired functionality. Here are some processes and modes of communication between them:
+
+1. User Interface Process: This is the process that handles the Android app's user interface. It receives user input and sends it to other processes to handle the appropriate action. The mode of communication between this process and other processes is through message passing through Inter-Process Communication (IPC) and managed by the Android operating system.
+
+2. Cashflow Management Process: This process manages the cashflows made by the user. It receives input from the user interface process and saves the cashflow data to the Django backend through an HTTP request. It also retrieves transaction data from the backend and sends it to the user interface process for display. The mode of communication between this process and other processes is through message passing.
+
+3. Data Storage Process: This process is responsible for storing transaction data in the Django backend. It receives input from the web worker process and stores the data in the database. The mode of communication between this process and other processes is through message passing (SQL-based queries and replies).
+
+4. Authentication and Authorization Process: This process is responsible for authenticating users and authorizing their access to the app's functionality. It receives input from the user interface process and checks the user's credentials against the Django backend's authentication system. If the user is authorized, this process sends a message back to the user interface process allowing them access to the app's functionality by issuing a JWT. The mode of communication between this process and other processes is through message passing (IPC as well as HTTP).
+
+5. Backend Integration Process: This process is responsible for integrating the Android app with the Django backend. It is capable of managing several lightweight processes (worker threads) that send the requests asynchronously. It receives input from the user interface, and sends it to the appropriate backend API endpoint for processing. Once response data is received, it sends it to the appropriate process for display or further processing. The mode of communication between this process and other processes is through message passing using IPC as well as HTTP for the external API calls.
+
+In summary, the main mode of communication between processes in this system is message passing. The user interface process, transaction management process, data storage process, authentication and authorization process, and backend integration process all communicate with each other through message passing (whether it is HTTP, IPC or SQL-based).
 
 ### Deployment View
 
-[This section describes one or more physical network (hardware) configurations on which the software is deployed and run. It is a view of the Deployment Model. At a minimum for each configuration it should indicate the physical nodes (computers, CPUs) that execute the software, and their interconnections (bus, LAN, point-to-point, and so on.) Also include a mapping of the processes of the Process View onto the physical nodes.]
+Because the software is not meant to be deployed for wide-range usage, it is only deployed for development as well as presentation purposes.
+
+There is no need to have multiple pieces of hardware.
+However, the running Android app needs to be able to connect to the backend.
+This can be achieved by layer 2 networking.
+
+From a process based view, all Android app related processes run on the (emulated) mobile phone. All other processes run inside a dockerized environment.
+
+In case that an emulated mobile phone is used, and also the backend is running on the same physical machine, it is recommended to have at least four CPU cores.
 
 ### Implementation View
 

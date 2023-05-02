@@ -33,8 +33,7 @@
 
 ### 1.1 Purpose
 
-This Software Requirements Specification (SRS) describes all specifications for the application "
-FiBo". It includes an overview about this project and its vision, detailed information about the planned features and boundary conditions of the development process.
+This Software Requirements Specification (SRS) describes all specifications for the application "FiBo". It includes an overview about this project and its vision, detailed information about the planned features and boundary conditions of the development process.
 
 ### 1.2 Scope
 
@@ -47,8 +46,7 @@ Planned Subsystems are:
 - Manage receipts and income:
   A user can manage receipts (manually creating a new one, create one by scanning a physical receipt, delete receipts) and can set their (monthly) budget. The budget is managed by entering a monthly income.
 - Share costs:
-  Users can invite other users of our product to bear costs (at least partially) by category or by receipt or by whole expenses (for example, a couple might do a 70:30 cut for the whole month, while a flat-sharing community might only share expenses they use together on an individual basis)
-  .
+  Users can invite other users of our product to bear costs (at least partially) by category or by receipt or by whole expenses (for example, a couple might do a 70:30 cut for the whole month, while a flat-sharing community might only share expenses they use together on an individual basis).
 - Data Management:
   Data is saved and can be retrieved.
 - Account Management:
@@ -113,7 +111,9 @@ Project Management:
 - Discord
 
 Deployment:
-TBD
+
+- As we don't plan to publish this app to the open, we only employ CI (continuous integration), no CD (continuous deployment)
+- Because of that, the app and backend are deployed only on developer devices.
 
 Testing:
 
@@ -124,7 +124,10 @@ Testing:
 
 ### 3.1 Functionality
 
-This section will explain the different use cases, you could see in the Use Case Diagram, and their functionality.
+This section will give a summary of the individual use cases together with a link to get more detail.
+
+Please see [the RUP Architecture document for more detail on the realized use-cases.](RUP_Architecture.md#use-case-realizations)
+
 Until the end of the fourth semester we plan to implement:
 
 - [3.1.1 Create Account (realized)](#311-create-account)
@@ -134,7 +137,7 @@ Until the end of the fourth semester we plan to implement:
 - [3.1.5 Show data in a dashboard](#315-show-data-in-a-dashboard)
 - [3.1.6 Evaluate scanning receipts (realized)](#316-evaluate-scanning-receipts)
 - [3.1.7 Logging out](#317-logging-out)
-- [3.1.8 Delete user account](#318-delete-user-account)
+- [3.1.8 Delete user account (realized)](#318-delete-user-account)
 - [3.1.9 Scanning receipts](#319-scanning-receipts)
 
 #### 3.1.1 Create account
@@ -315,5 +318,3 @@ The Team Members are:
 - Lars Seifert
 - Christopher Ewert
 - Markus Götz
-
-<!-- Picture-Link definitions: -->
