@@ -31,7 +31,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           distribution: temurin
-          java-version: 11
+          java-version: 17
 
       - name: Gradle cache
         uses: gradle/gradle-build-action@v2
@@ -66,21 +66,21 @@ jobs:
           api-level: ${{ matrix.api-level }}
           arch: x86_64
           working-directory: ./android-app
-          script: ./gradlew testDebugUnitTest connectedCheck
+          script: ./gradlew testDebugUnitTest createDebugUnitTestCoverageReport connectedCheck
 
       - name: generate report
         uses: actions/upload-artifact@v3
         with:
           name: report
-          path: ./android-app/app/build/reports/coverage/androidTest
+          path: ./android-app/app/build/reports/coverage/*
 
       - name: Download Test Reports Folder
         uses: actions/download-artifact@v3
         with:
           name: report
-          path: ./android-app/app/build/reports/coverage/androidTest
+          path: ./android-app/app/build/reports/coverage/*
 
       - name: Upload Test Report
         uses: codecov/codecov-action@v3
         with:
-          files: "./android-app/app/build/reports/coverage/androidTest/debug/connected/report.xml"
+          files: "./android-app/app/build/reports/coverage/**/report.xml"
