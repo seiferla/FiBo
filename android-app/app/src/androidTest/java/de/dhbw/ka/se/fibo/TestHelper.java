@@ -36,8 +36,6 @@ import okio.Buffer;
 
 public class TestHelper {
     public static void checkRegisterRequestResponse(RecordedRequest actualRequest, String email, String password) throws UnsupportedEncodingException {
-        // do some checks to increase the likelihood the UI changes
-        // and we get redirected because of the successful login
         assertNotNull(actualRequest);
         assertNotNull(actualRequest.getRequestUrl());
         assertEquals("/users/register/", actualRequest.getRequestUrl().encodedPath());
@@ -48,8 +46,6 @@ public class TestHelper {
     }
 
     public static void checkLoginRequest(RecordedRequest actualRequest, String email, String password) {
-        // do some checks to increase the likelihood the UI changes
-        // and we get redirected because of the successful login
         assertNotNull(actualRequest);
         assertNotNull(actualRequest.getRequestUrl());
         assertEquals("/users/login/", actualRequest.getRequestUrl().encodedPath());
@@ -60,8 +56,6 @@ public class TestHelper {
     }
 
     public static void checkDeleteUserRequest(RecordedRequest actualRequest) {
-        // do some checks to increase the likelihood the UI changes
-        // and we get redirected because of the successful login
         assertNotNull(actualRequest);
         assertNotNull(actualRequest.getRequestUrl());
         assertEquals("/users/delete/", actualRequest.getRequestUrl().encodedPath());
