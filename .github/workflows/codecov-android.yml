@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         api-level: [26]
-        java-version: [11]
+        java-version: [17]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
