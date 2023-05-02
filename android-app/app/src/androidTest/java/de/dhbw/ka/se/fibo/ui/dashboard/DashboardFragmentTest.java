@@ -78,9 +78,7 @@ public class DashboardFragmentTest {
         AtomicInteger pieEntryCount = new AtomicInteger();
 
         // Gets the context of the currently displayed activity and saves the current count of Entries in the Pie Chart
-        activityScenarioRule.getScenario().onActivity(activity -> {
-            pieEntryCount.set(((PieChart) activity.findViewById(R.id.dashboard_pieChart)).getData().getDataSet().getEntryCount());
-        });
+        activityScenarioRule.getScenario().onActivity(activity -> pieEntryCount.set(((PieChart) activity.findViewById(R.id.dashboard_pieChart)).getData().getDataSet().getEntryCount()));
 
         // Click on the Filter button
         onView(withId(R.id.openFilterOptions))
@@ -91,7 +89,7 @@ public class DashboardFragmentTest {
                 .check(matches(isDisplayed()));
 
         // Gets the entry that belongs to Health and performs a click on it gets deselected
-        onView(allOf(withClassName(Matchers.equalTo(AppCompatCheckedTextView.class.getName())), withText(R.string.LIVING)))
+        onView(allOf(withClassName(Matchers.equalTo(AppCompatCheckedTextView.class.getName())), withText(R.string.HEALTH)))
                 .perform(scrollTo())
                 .perform(click());
 
