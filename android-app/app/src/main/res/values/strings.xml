@@ -79,6 +79,7 @@
     <string name="saveButton">Speichern</string>
     <string name="cancelButton">Abbrechen</string>
     <string name="place">Geschäft</string>
+    <string name="source">Quelle</string>
     <string name="selectDate">Datum auswählen</string>
     <string name="DatePickerPositiveButtonText">OK</string>
     <string name="datePickerNegativeButtonText">Abbrechen</string>
