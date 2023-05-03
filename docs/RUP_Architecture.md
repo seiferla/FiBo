@@ -160,15 +160,15 @@ The Android app and the Django backend will consist of multiple lightweight and 
 
 1. User Interface Process: This is the process that handles the Android app's user interface. It receives user input and sends it to other processes to handle the appropriate action. The mode of communication between this process and other processes is through message passing through Inter-Process Communication (IPC) and managed by the Android operating system.
 
-2. Cashflow Management Process: This process manages the cashflows made by the user. It receives input from the user interface process and saves the cashflow data to the Django backend through an HTTP request. It also retrieves transaction data from the backend and sends it to the user interface process for display. The mode of communication between this process and other processes is through message passing.
+2. Cashflow Management Process: This process manages the cashflows made by the user. It receives input from the user interface process and saves the cashflow data to the Django backend through an HTTP request. It also retrieves cashflow data from the backend and sends it to the user interface process for display. The mode of communication between this process and other processes is through message passing.
 
-3. Data Storage Process: This process is responsible for storing transaction data in the Django backend. It receives input from the web worker process and stores the data in the database. The mode of communication between this process and other processes is through message passing (SQL-based queries and replies).
+3. Data Storage Process: This process is responsible for storing cashflow data in the Django backend. It receives input from the web worker process and stores the data in the database. The mode of communication between this process and other processes is through message passing (SQL-based queries and replies).
 
 4. Authentication and Authorization Process: This process is responsible for authenticating users and authorizing their access to the app's functionality. It receives input from the user interface process and checks the user's credentials against the Django backend's authentication system. If the user is authorized, this process sends a message back to the user interface process allowing them access to the app's functionality by issuing a JWT. The mode of communication between this process and other processes is through message passing (IPC as well as HTTP).
 
 5. Backend Integration Process: This process is responsible for integrating the Android app with the Django backend. It is capable of managing several lightweight processes (worker threads) that send the requests asynchronously. It receives input from the user interface, and sends it to the appropriate backend API endpoint for processing. Once response data is received, it sends it to the appropriate process for display or further processing. The mode of communication between this process and other processes is through message passing using IPC as well as HTTP for the external API calls.
 
-In summary, the main mode of communication between processes in this system is message passing. The user interface process, transaction management process, data storage process, authentication and authorization process, and backend integration process all communicate with each other through message passing (whether it is HTTP, IPC or SQL-based).
+In summary, the main mode of communication between processes in this system is message passing. The user interface process, cashflow management process, data storage process, authentication and authorization process, and backend integration process all communicate with each other through message passing (whether it is HTTP, IPC or SQL-based).
 
 ### Deployment View
 
@@ -198,29 +198,92 @@ The FiBo implementation model follows a layered architecture pattern, with three
 
 3. Data Access Layer:
     The data access layer is responsible for managing the app's data and communicating with the Django backend. This layer consists of the following subsystems:
-
-    - Data Storage: This subsystem is responsible for storing and retrieving transaction data from the Django backend.
     - API Integration: This subsystem communicates with the Django backend's API to retrieve and send data to the app.
+    - Data Storage: This subsystem is responsible for storing and sending data from and to the database
 
 Architecturally significant components of the FiBo implementation model include:
 
 1. Android SDK: This component provides the necessary tools and libraries to build the Android app's user interface and functionality.
 2. Django Framework: This component provides the web framework for the backend and the ORM (Object-Relational Mapping) to interface with the database.
-3. PostgreSQL: This component is the database used to store the transaction data in the Android app.
+3. PostgreSQL: This component is the database used to store the cashflow data in the Android app as well as all things that are needed to provide this basic functionality.
 
-In conclusion, the FiBo implementation model follows a layered architecture pattern, with each layer comprising of subsystems responsible for specific functionalities. The presentation layer interacts directly with the user, the application layer provides the business logic, and the data access layer manages the app's data and communicates with the Django backend. The architecturally significant components of the implementation model include the Android SDK, Django framework, and PostgreSQL database.
+In conclusion, the FiBo implementation model follows a layered architecture pattern, with each layer divided into subsystems responsible for specific functionalities. The presentation layer interacts directly with the user, the application layer provides the business logic, and the data access layer manages the app's data and communicates with the Django backend. The architecturally significant components of the implementation model include the Android SDK, Django framework, and PostgreSQL database.
 
 #### Overview of realized implementation
 
-[This subsection names and defines the various layers and their contents, the rules that govern the inclusion to a given layer, and the boundaries between layers. Include a component diagram that shows the relations between layers. ]
+The realized implementation builds upon the three layer concept described earlier.
+
+The components in each layer are governed by the Single Responsibility Principle.
+Hence, as a layer, they should be easily replacable.
+For example, as we use Django's ORM abilities, it would be easy to throw away the PostgreSQL database and go with a SQLite database instead.
+
+The diagram looks something like this:
+
+```text
+    User Interface
+            |
+Authentication/Authorization
+            |
+    Cashflow Management
+            |
+    Backend Integration
+            |
+      API Integration
+            |
+        Data Storage
+```
 
 #### Layers
 
-[For each layer, include a subsection with its name, an enumeration of the subsystems located in the layer, and a component diagram.]
+The FiBo app's realized implementation consists of three layers, namely the Presentation Layer, Application Layer, and Data Access Layer. In this section, we will provide an overview of each layer, its associated subsystems, and a component diagram illustrating the interactions between the subsystems.
 
-### Data View (optional)
+##### Presentation Layer
 
-[A description of the persistent data storage perspective of the system. This section is optional if there is little or no persistent data, or the translation between the Design Model and the Data Model is trivial.]
+The Presentation Layer is the topmost layer of the FiBo app's architecture and is responsible for handling the user interface and user input/output. It consists of two subsystems: the User Interface and the Authentication and Authorization subsystems.
+
+1. User Interface subsystem: This subsystem manages the app's user interface, such as displaying cashflows, adding cashflows, and managing user settings.
+2. Authentication and Authorization subsystem: This subsystem is responsible for authenticating users and authorizing their access to the app's functionalities.
+
+The component diagram for the Presentation Layer is as follows:
+
+```text
+User Interface
+      |
+Authentication
+```
+
+##### Application Layer
+
+The Application Layer is the middle layer of the FiBo app's architecture and contains the business logic and use cases of the app. It consists of two subsystems: the Cashflow Management and the Backend Integration subsystems.
+
+1. Cashflow Management subsystem: This subsystem manages the user's cashflows and communicates with the Data Access Layer to store and retrieve cashflow data.
+
+2. Backend Integration subsystem: This subsystem is responsible for integrating the Android app with the Django backend and communicates with the Data Access Layer to retrieve and send data to the backend.
+
+The component diagram for the Application Layer is as follows:
+
+```text
+Cashflow Management
+        |
+Backend Integration
+```
+
+##### Data Access Layer
+
+The Data Access Layer is the bottommost layer of FiBo's architecture and is responsible for managing the app's data and communicating with the Django backend. It consists of two subsystems: the Data Storage and the API Integration subsystems.
+
+1. API Integration subsystem: This subsystem communicates with the Django backend's API to retrieve and send data to the app.
+2. Data Storage subsystem: This subsystem is responsible for storing and retrieving cashflow data into and from the database.
+
+The component diagram for the Data Access Layer is as follows:
+
+```text
+API Integration
+      |
+ Data Storage
+```
+
+In conclusion, the architecutre of FiBo is organized into three layers: the Presentation Layer, Application Layer, and Data Access Layer, each of which contains two subsystems that work together to deliver the app's functionalities.
 
 ### Size and Performance
 
@@ -233,8 +296,8 @@ Immediate | 500–1000ms | Answers to simple requests must be completed within t
 Continuous | 2000–5000ms | Answers to complex questions must be completed within this time frame (e.g. a complex dashboard should be fully loaded)
 Captive | 7000–10000ms | Users will begin switching tasks at this point. If a process takes longer than this, it should be segmented.
 
-Source (adapted after): <https://design.firefox.com/photon/introduction/design-for-performance.html>
-<!-- Yes, I love Mozilla Firefox and it's thoughtful design process -->
+Source (adapted after): <https://web.archive.org/web/20220627213434/https://design.firefox.com/photon/introduction/design-for-performance.html>
+<!-- Yes, I love moz://a and it's a thoughtful design process -->
 
 We should strive for duration to be Immediate at most. In rare cases, we might be forced to have a Continous process. We should avoid Captive processes at all costs and segment these really complex tasks.
 
