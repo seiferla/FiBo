@@ -163,18 +163,23 @@ public class SettingsFragmentTest {
 
     @Test
     public void logoutTest() {
+        // Navigate to settings fragment
         onView(withId(R.id.navigation_settings))
                 .perform(click());
 
+        // Click on logout button
         onView(withId(R.id.logout))
                 .perform(click());
 
+        // Check that email login field is displayed
         onView(withId(R.id.login_email))
                 .check(matches(isDisplayed()));
 
+        // Check that password login field is displayed
         onView(withId(R.id.login_password))
                 .check(matches(isDisplayed()));
 
+        // Check that login button is displayed
         onView(withId(R.id.login_button))
                 .check(matches(isDisplayed()));
     }
