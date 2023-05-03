@@ -2,24 +2,17 @@ package de.dhbw.ka.se.fibo.ui.settings;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.hasSibling;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withChild;
-import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-
-import static org.hamcrest.Matchers.allOf;
 
 import android.content.Context;
 import android.util.Log;
 
 import androidx.test.espresso.IdlingRegistry;
-import androidx.test.espresso.ViewInteraction;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -170,43 +163,19 @@ public class SettingsFragmentTest {
 
     @Test
     public void logoutTest() {
-        ViewInteraction bottomNavigationItemView = onView(
-                allOf(withId(R.id.navigation_settings), withContentDescription("Settings"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_view),
-                                        0),
-                                2),
-                        isDisplayed()));
-        bottomNavigationItemView.perform(click());
+        onView(withId(R.id.navigation_settings))
+                .perform(click());
 
-        ViewInteraction materialButton2 = onView(
-                allOf(withId(R.id.logout), withText("Ausloggen"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment_activity_main),
-                                        0),
-                                0),
-                        isDisplayed()));
-        materialButton2.perform(click());
+        onView(withId(R.id.logout))
+                .perform(click());
 
-        ViewInteraction editText = onView(
-                allOf(withId(R.id.login_email), withText("E-Mail-Adresse"),
-                        withParent(withParent(withId(R.id.login_email_layer))),
-                        isDisplayed()));
-        editText.check(matches(isDisplayed()));
+        onView(withId(R.id.login_email))
+                .check(matches(isDisplayed()));
 
-        ViewInteraction editText2 = onView(
-                allOf(withId(R.id.login_password), withText("Passwort"),
-                        withParent(withParent(withId(R.id.login_password_layer))),
-                        isDisplayed()));
-        editText2.check(matches(isDisplayed()));
+        onView(withId(R.id.login_password))
+                .check(matches(isDisplayed()));
 
-        ViewInteraction button = onView(
-                allOf(withId(R.id.login_button), withText("Login"),
-                        withParent(allOf(withId(R.id.login_layout),
-                                withParent(withId(android.R.id.content)))),
-                        isDisplayed()));
-        button.check(matches(isDisplayed()));
+        onView(withId(R.id.login_button))
+                .check(matches(isDisplayed()));
     }
 }
