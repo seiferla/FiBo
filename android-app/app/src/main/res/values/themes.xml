@@ -62,4 +62,18 @@
         <item name="android:layout_marginStart">5dp</item>
         <item name="android:layout_marginEnd">5dp</item>
     </style>
+
+    <style name="Theme.FiBo.Button.LogoutButton" parent="Widget.Material3.Button">
+        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.ExtraSmall</item>
+        <item name="android:textSize">@dimen/standardTextSize</item>
+        <item name="android:paddingTop">18dp</item>
+        <item name="android:paddingBottom">18dp</item>
+        <item name="cornerRadius">10dp</item>
+        <!-- TODO: find right background color for delete user button -->
+        <item name="backgroundTint">@color/top_bar_placeholder</item>
+        <item name="android:textColor">@color/mainTextColor</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:layout_marginStart">5dp</item>
+        <item name="android:layout_marginEnd">5dp</item>
+    </style>
 </resources>
