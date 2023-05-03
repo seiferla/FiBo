@@ -9,6 +9,8 @@ import static androidx.test.espresso.matcher.ViewMatchers.withChild;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import android.content.Context;
 import android.util.Log;
 
@@ -25,6 +27,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.io.IOException;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 import de.dhbw.ka.se.fibo.ApplicationState;
@@ -170,6 +173,10 @@ public class SettingsFragmentTest {
         // Click on logout button
         onView(withId(R.id.logout))
                 .perform(click());
+
+        assertEquals(ApplicationState.getInstance(appContext).getAccessToken(), Optional.empty());
+        assertEquals(ApplicationState.getInstance(appContext).getRefreshToken(), Optional.empty());
+        assertFalse(ApplicationState.getInstance(appContext).isAuthenticated());
 
         // Check that email login field is displayed
         onView(withId(R.id.login_email))
