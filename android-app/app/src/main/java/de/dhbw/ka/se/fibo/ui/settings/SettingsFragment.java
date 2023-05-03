@@ -58,6 +58,9 @@ public class SettingsFragment extends Fragment {
     }
 
     private void logout() {
+        ApplicationState.getInstance(getContext()).clearAuthorization();
+        Intent i = new Intent(getActivity(), LoginActivity.class);
+        startActivity(i);
     }
 
     private void openDialog() {
