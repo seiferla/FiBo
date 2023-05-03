@@ -174,6 +174,7 @@ public class SettingsFragmentTest {
         onView(withId(R.id.logout))
                 .perform(click());
 
+        // Test that clearAuthorization() works
         assertEquals(ApplicationState.getInstance(appContext).getAccessToken(), Optional.empty());
         assertEquals(ApplicationState.getInstance(appContext).getRefreshToken(), Optional.empty());
         assertFalse(ApplicationState.getInstance(appContext).isAuthenticated());
