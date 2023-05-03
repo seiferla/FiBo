@@ -184,7 +184,31 @@ In case that an emulated mobile phone is used, and also the backend is running o
 
 ### Implementation View
 
-[This section describes the overall structure of the implementation model, the decomposition of the software into layers and subsystems in the implementation model, and any architecturally significant components.]
+The FiBo implementation model follows a layered architecture pattern, with three core layers: the presentation layer, the application layer, and the data access layer. Each layer has its own subsystems, which are responsible for specific functionalities. The layers and subsystems are described in detail below:
+
+1. Presentation Layer:
+    The presentation layer is responsible for the app's user interface and interacts directly with the user. This layer consists of the following subsystems:
+    - User Interface: This subsystem manages the Android app's user interface and handles user input and output
+    - Authentication and Authorization: This subsystem is responsible for authenticating users and authorizing their access to the app's functionality.
+
+2. Application Layer:
+    The application layer provides the business logic and implements the use cases of the FiBo app. This layer consists of the following subsystems:
+    - Cashflow Management: This subsystem manages the cashflows ("cash transactions") made by the user and communicates with the data access layer to store and retrieve transaction data.
+    - Backend Integration: This subsystem is responsible for integrating the Android app with the Django backend and communicates with the data access layer to retrieve and send data to the backend.
+
+3. Data Access Layer:
+    The data access layer is responsible for managing the app's data and communicating with the Django backend. This layer consists of the following subsystems:
+
+    - Data Storage: This subsystem is responsible for storing and retrieving transaction data from the Django backend.
+    - API Integration: This subsystem communicates with the Django backend's API to retrieve and send data to the app.
+
+Architecturally significant components of the FiBo implementation model include:
+
+1. Android SDK: This component provides the necessary tools and libraries to build the Android app's user interface and functionality.
+2. Django Framework: This component provides the web framework for the backend and the ORM (Object-Relational Mapping) to interface with the database.
+3. PostgreSQL: This component is the database used to store the transaction data in the Android app.
+
+In conclusion, the FiBo implementation model follows a layered architecture pattern, with each layer comprising of subsystems responsible for specific functionalities. The presentation layer interacts directly with the user, the application layer provides the business logic, and the data access layer manages the app's data and communicates with the Django backend. The architecturally significant components of the implementation model include the Android SDK, Django framework, and PostgreSQL database.
 
 #### Overview of realized implementation
 
