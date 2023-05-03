@@ -7,17 +7,6 @@
   tools:context=".ui.settings.SettingsFragment">
 
   <com.google.android.material.button.MaterialButton
-      android:id="@+id/deleteUser"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="@string/delete_user_button"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      style="@style/Theme.FiBo.Button.DeleteUserButton"
-      android:layout_marginTop="40dp" />
-
-  <com.google.android.material.button.MaterialButton
       android:id="@+id/logout"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -26,5 +15,16 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintStart_toStartOf="parent"
+      android:layout_marginTop="40dp" />
+
+  <com.google.android.material.button.MaterialButton
+      android:id="@+id/deleteUser"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/delete_user_button"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/logout"
+      style="@style/Theme.FiBo.Button.DeleteUserButton"
       android:layout_marginTop="40dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
