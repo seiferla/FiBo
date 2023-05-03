@@ -61,11 +61,9 @@ public class SettingsFragment extends Fragment {
         builder.setTitle(R.string.delete_user_confirmation_title);
         builder.setMessage(R.string.delete_user_confirmation_text);
 
-        builder.setPositiveButton(R.string.delete_user_confirm_button, (dialog, which) -> {
-            deleteUserRequest();
-        });
+        builder.setPositiveButton(R.string.delete_user_confirm_button, (dialog, which) -> deleteUserRequest());
 
-        builder.setNegativeButton(R.string.cancle_button, (dialog, which) -> {
+        builder.setNegativeButton(R.string.cancel_button, (dialog, which) -> {
         });
 
         builder.show();
@@ -84,7 +82,7 @@ public class SettingsFragment extends Fragment {
         };
 
         Response.ErrorListener onError = error -> {
-            if (error.networkResponse != null) {
+            if (null != error.networkResponse) {
                 switch (error.networkResponse.statusCode) {
                     case 401:
                         Log.e(TAG, "Unauthorized");
