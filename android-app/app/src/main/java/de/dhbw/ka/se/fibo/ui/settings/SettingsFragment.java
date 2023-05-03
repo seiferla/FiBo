@@ -33,6 +33,7 @@ import de.dhbw.ka.se.fibo.databinding.FragmentSettingsBinding;
 public class SettingsFragment extends Fragment {
 
     private FragmentSettingsBinding binding;
+    private MaterialButton logoutButton;
     private MaterialButton deleteUserButton;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class SettingsFragment extends Fragment {
         View root = binding.getRoot();
 
         deleteUserButton = binding.deleteUser;
+        logoutButton = binding.logout;
 
         return root;
     }
@@ -47,11 +49,15 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initializeDeleteButton();
+        initializeButtons();
     }
 
-    private void initializeDeleteButton() {
+    private void initializeButtons() {
         deleteUserButton.setOnClickListener(e -> openDialog());
+        logoutButton.setOnClickListener(e -> logout());
+    }
+
+    private void logout() {
     }
 
     private void openDialog() {
