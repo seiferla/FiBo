@@ -67,7 +67,6 @@ public class SettingsFragment extends Fragment {
     private void openDialog() {
         Context context = requireContext();
         AlertDialog.Builder builder = new MaterialAlertDialogBuilder(context);
-        builder.setCancelable(true);
         builder.setTitle(R.string.delete_user_confirmation_title);
         builder.setMessage(R.string.delete_user_confirmation_text);
 
