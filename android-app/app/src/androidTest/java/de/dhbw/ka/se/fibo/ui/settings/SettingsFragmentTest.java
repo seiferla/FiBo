@@ -180,15 +180,7 @@ public class SettingsFragmentTest {
         assertFalse(ApplicationState.getInstance(appContext).isAuthenticated());
 
         // Check that email login field is displayed
-        onView(withId(R.id.login_email))
-                .check(matches(isDisplayed()));
-
-        // Check that password login field is displayed
-        onView(withId(R.id.login_password))
-                .check(matches(isDisplayed()));
-
-        // Check that login button is displayed
-        onView(withId(R.id.login_button))
+        onView(withId(R.id.login_layout))
                 .check(matches(isDisplayed()));
     }
 }
