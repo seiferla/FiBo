@@ -100,6 +100,7 @@ public class SettingsFragment extends Fragment {
                         Log.e(TAG, "Internal Server Error");
                         break;
                     default:
+                        Log.e(TAG, "Unknown Error");
                         break;
                 }
 
