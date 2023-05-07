@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
@@ -29,6 +30,7 @@ import de.dhbw.ka.se.fibo.LoginActivity;
 import de.dhbw.ka.se.fibo.R;
 import de.dhbw.ka.se.fibo.SharedVolleyRequestQueue;
 import de.dhbw.ka.se.fibo.databinding.FragmentSettingsBinding;
+import de.dhbw.ka.se.fibo.utils.ActivityUtils;
 
 public class SettingsFragment extends Fragment {
 
@@ -59,8 +61,7 @@ public class SettingsFragment extends Fragment {
 
     private void logout() {
         ApplicationState.getInstance(getContext()).clearAuthorization();
-        Intent i = new Intent(getActivity(), LoginActivity.class);
-        startActivity(i);
+        ActivityUtils.swapActivity((AppCompatActivity) requireActivity(), LoginActivity.class, false);
     }
 
     private void openDialog() {
