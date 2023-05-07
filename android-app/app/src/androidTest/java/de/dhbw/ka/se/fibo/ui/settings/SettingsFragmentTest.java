@@ -14,6 +14,8 @@ import static org.junit.Assert.assertFalse;
 import android.content.Context;
 import android.util.Log;
 
+import androidx.lifecycle.Lifecycle;
+import androidx.test.espresso.Espresso;
 import androidx.test.espresso.IdlingRegistry;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -182,5 +184,8 @@ public class SettingsFragmentTest {
         // Check that email login field is displayed
         onView(withId(R.id.login_layout))
                 .check(matches(isDisplayed()));
+
+        Espresso.pressBackUnconditionally();
+        assertEquals(Lifecycle.State.DESTROYED, activityScenarioRule.getScenario().getState());
     }
 }
