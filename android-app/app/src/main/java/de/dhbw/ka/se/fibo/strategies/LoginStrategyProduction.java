@@ -16,6 +16,7 @@ import com.android.volley.toolbox.JsonRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.dhbw.ka.se.fibo.ApplicationState;
 import de.dhbw.ka.se.fibo.MainActivity;
 import de.dhbw.ka.se.fibo.R;
 import de.dhbw.ka.se.fibo.SharedVolleyRequestQueue;
@@ -51,14 +52,16 @@ public class LoginStrategyProduction implements LoginStrategy {
             if (null == error.networkResponse) {
                 Toast.makeText(activity, R.string.login_currently_unavailable, Toast.LENGTH_LONG)
                         .show();
-                Log.e(TAG, String.valueOf(error));
+                Log.e(TAG, String.valueOf(error), error.getCause());
                 return;
             }
 
             String errorText = handleRegisterErrorCodes(error);
 
             Toast.makeText(activity, errorText, Toast.LENGTH_LONG).show();
-            Log.e(TAG, String.valueOf(error));
+
+            Log.e(TAG, String.valueOf(error), error.getCause());
+            Log.e(TAG, "Response was " + new String(error.networkResponse.data));
         };
     }
 
@@ -91,12 +94,14 @@ public class LoginStrategyProduction implements LoginStrategy {
             Log.i(TAG, "refresh: " + response.refresh);
             Log.i(TAG, "access: " + response.access);
             ActivityUtils.swapActivity(activity, MainActivity.class, false);
+
+            ApplicationState.getInstance(activity.getApplicationContext()).storeAuthorization(response);
         };
     }
 
     public static class LoginResponse {
-        String refresh;
-        String access;
+        public String refresh;
+        public String access;
 
         public LoginResponse(String refresh, String access) {
             this.refresh = refresh;

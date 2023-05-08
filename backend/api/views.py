@@ -1,9 +1,13 @@
+from django.http import JsonResponse
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.views import APIView
-from .serializers import FiboUserSerializer
-from .models import FiboUser
+
+from .serializers import FiboUserSerializer, PlaceSerializer, CashflowSerializer, CategorySerializer
+from .models import FiboUser, Account, Place, Cashflow, Category
+from datetime import datetime
+
 
 class GetUser(APIView):
     permission_classes = (IsAuthenticated,)
@@ -21,22 +25,151 @@ class DeleteUser(APIView):
     def delete(self, request):
         usermail = request.user.username
         user = FiboUser.objects.get(email=usermail)
+        # All accounts assigned to the user are deleted as well
+        # if there are other users for one account, then the account is not deleted
+        accounts = Account.objects.filter(fibouser__id=user.id)
+        for account in accounts:
+            if account.fibouser_set.count() == 1:
+                account.delete()
         user.delete()
-        return Response(f'Your user account was deleted', status=status.HTTP_200_OK)
+        return JsonResponse({'success': True, 'user': user.email}, status=status.HTTP_200_OK)
 
 
 class RegisterUser(APIView):
-    permission_classes = (AllowAny, )
+    permission_classes = (AllowAny,)
 
     def post(self, request):
-            # Note that username and email are the same
-            user = FiboUser.objects.create_user(username=request.data['email'], email=request.data['email'],
-                                                password=request.data['password'])
-            return Response(f'User with id {user.id} and email {user.email} was created', status=status.HTTP_201_CREATED)
+        try:
+            email = request.data['email']
+            password = request.data['password']
+        except:
+            return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Note that username and email are the same
+        user = FiboUser.objects.create_user(username=email, email=email, password=password)
+        default_account = Account.objects.create(name=email)
+        user.account.add(default_account)
+
+        return JsonResponse({'success': True, 'user': user.email, 'created': user.date_joined},
+                            status=status.HTTP_201_CREATED)
+
+
+class CashflowsView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request):
+        try:
+            account = request.data['account']
+            account_id = Account.objects.get(id=account['id'])
+            cashflow_type = request.data['type']
+            overall_value = request.data['overallValue']
+            timestamp = request.data['timestamp']
+            category, _ = Category.objects.get_or_create(name=request.data['category'])
+            place = request.data['place']
+            place_address, _ = Place.objects.get_or_create(address=place['address'], name=place['name'])
+        except:
+            return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+
+        if cashflow_type == 'INCOME':
+            cashflow = Cashflow.objects.create(account=account_id,
+                                               is_income=True,
+                                               overall_value=overall_value,
+                                               created=timestamp,
+                                               category=category,
+                                               place=place_address)
+        else:
+            cashflow = Cashflow.objects.create(account=account_id,
+                                               is_income=False,
+                                               overall_value=overall_value,
+                                               created=timestamp,
+                                               category=category,
+                                               place=place_address)
+
+        return JsonResponse({'success': True, 'cashflow_id': cashflow.id, 'creation_date': cashflow.created},
+                            status=status.HTTP_201_CREATED)
+
+    def get(self, request, cashflow_id):
+        try:
+            cashflow = Cashflow.objects.get(id=cashflow_id)
+        except:
+            return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+        serializer = CashflowSerializer(cashflow, many=False)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def delete(self, _, cashflow_id):
+        try:
+            cashflow = Cashflow.objects.get(id=cashflow_id)
+        except:
+            return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+        cashflow.delete()
+        return JsonResponse({'success': True, 'cashflow_id': cashflow_id}, status=status.HTTP_200_OK)
+
+    def put(self, request, cashflow_id):
+        try:
+            cashflow = Cashflow.objects.get(id=cashflow_id)
+
+            cashflow.overall_value = request.data['overallValue']
+            cashflow.category, _ = Category.objects.get_or_create(name=request.data['category'])
+            place = request.data['place']
+            cashflow.place, _ = Place.objects.get_or_create(address=place['address'], name=place['name'])
+            cashflow.updated = datetime.now()
+            cashflow_type = request.data['type']
+        except:
+            return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+
+        if cashflow_type == 'INCOME':
+            cashflow.is_income = True
+        else:
+            cashflow.is_income = False
+
+        cashflow.save()
+
+        return JsonResponse({'success': True, 'cashflow_id': cashflow_id}, status=status.HTTP_200_OK)
+
+
+class PlaceView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request):
+        try:
+            place = Place.objects.create(address=request.data['address'], name=request.data['name'])
+        except:
+            return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+
+        return JsonResponse({'success': True, 'place': place.name}, status=status.HTTP_201_CREATED)
+
+    def get(self, request):
+        try:
+            place = Place.objects.get(address=request.GET['address'])
+        except:
+            return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = PlaceSerializer(place, many=False)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class CategoryView(APIView):
+
+    def post(self, request):
+        try:
+            category = Category.objects.create(name=request.POST['name'])
+        except:
+            return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+
+        return JsonResponse({'success': True, 'category_id': category.id}, status=status.HTTP_201_CREATED)
+
+    def get(self, request):
+        try:
+            category = Category.objects.get(name=request.GET['name'])
+        except:
+            return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+
+        serializer = CategorySerializer(category, many=False)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class GetRoutes(APIView):
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated,)
 
     def get(self, _):
         routes = [

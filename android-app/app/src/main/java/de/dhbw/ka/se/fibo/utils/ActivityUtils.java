@@ -26,11 +26,13 @@ public class ActivityUtils {
      * @param allowBack       flag to allow the user to go back to the previous activity
      */
     public static void swapActivity(AppCompatActivity currentActivity, Class<? extends AppCompatActivity> destination, boolean allowBack) {
-        Intent i = new Intent(currentActivity, destination);
-        currentActivity.startActivity(i);
+        // the order is important to make sure Espresso recognizes the right state
         if (!allowBack) {
             currentActivity.finish();
         }
+
+        Intent i = new Intent(currentActivity, destination);
+        currentActivity.startActivity(i);
     }
 
     /**
@@ -87,7 +89,10 @@ public class ActivityUtils {
      */
     public static boolean isEspressoTesting() {
         try {
-            Class.forName("androidx.test.espresso.Espresso");
+            // This must be the name of any class that are inside a androidTest/ repository.
+            // Do not use "androidx.test.espresso.Espresso", as the package of it
+            // is included at runtime. This is needed to allow managing idle resources.
+            Class.forName("de.dhbw.ka.se.fibo.createAccount.CreateAccountTest");
             return true;
         } catch (ClassNotFoundException e) {
             return false;

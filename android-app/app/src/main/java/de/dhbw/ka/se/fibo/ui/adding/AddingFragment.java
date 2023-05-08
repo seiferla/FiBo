@@ -108,13 +108,16 @@ public class AddingFragment extends Fragment {
                 setDataWithSelectedTab(tab);
             }
 
+            // TODO: Test that the hint changes when switching tabs
             private void setDataWithSelectedTab(TabLayout.Tab tab) {
                 if (tab == binding.tabLayout.getTabAt(0)) {
                     newCashFlowType = CashflowType.EXPENSE;
                     binding.amountText.setTextColor(requireActivity().getColor(CashflowType.EXPENSE.getColor()));
+                    binding.storeTextLayout.setHint(requireContext().getString(R.string.place));
                 } else if (tab == binding.tabLayout.getTabAt(1)) {
                     binding.amountText.setTextColor(requireActivity().getColor(CashflowType.INCOME.getColor()));
                     newCashFlowType = CashflowType.INCOME;
+                    binding.storeTextLayout.setHint(requireContext().getString(R.string.source));
                 }
             }
 

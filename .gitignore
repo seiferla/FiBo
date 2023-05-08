@@ -94,6 +94,7 @@ backend/api/__pycache__
 backend/backend/__pycache__
 backend/backend/migrations
 backend/assets
+backend/.coverage
 
 # Android App
 app/build
