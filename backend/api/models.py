@@ -41,6 +41,10 @@ class FiboUser(AbstractUser):
     last_name = None
     is_staff = None
     account = models.ManyToManyField(Account, blank=True)
+    email = models.EmailField(('email address'), unique=True)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
 
 
 class RefreshToken(models.Model):
