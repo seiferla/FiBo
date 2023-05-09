@@ -99,7 +99,7 @@ Scenario: Logging In
 4. The authentication and authorization process checks the email and password against Django's backend authentication system.
 5. If the email and password match, the authentication and authorization process sends a token to the application system process, allowing the user to access the app's functionality.
 ![Home screen with list of cashflows](use_cases/realization/login-screen-3.png)
-6. If the email and password do not match, the authentication and authorization process sends an error message to the user interface process, asking the user to enter valid credentials.
+6. If the email and password do not match, the authentication and authorization process sends an error message to the application system process, asking the user to enter valid credentials.
 ![Rejection of entered data](use_cases/realization/login-screen-4.png)
 
 How the Design Model Elements Contribute to the Functionality:
