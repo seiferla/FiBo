@@ -2,11 +2,11 @@
 
 ## Name of use case
 
-Log in to an account
+Log in to an useraccount
 
 ## 1.1 Brief Description
 
-Each user should be able to log in to an account using their mobile device. The data that the user must provide is as follows:
+Each user should be able to log in to an useraccount using their mobile device. The data that the user must provide is as follows:
 - email
 - password
 
@@ -37,14 +37,14 @@ Each user should be able to log in to an account using their mobile device. The 
 Feature: manual adding of data
 
   As a registered user,
-  I want to log in to my account
+  I want to log in to my useraccount
 
 
   Background:
-    And I have a account
+    And I have a useraccount
 
   Scenario: successfully login
-    Given I have an existing account
+    Given I have an existing useraccount
     When I am starting the app
     Then I am on the login page
     Then I sign in with username and password
@@ -53,7 +53,7 @@ Feature: manual adding of data
     Then I am logged in successfully
     
   Scenario: unsuccessful login
-    Given I have an existing account
+    Given I have an existing useraccount
     When I am starting the app
     Then I am on the login page
     Then I sign in with username and password
@@ -74,7 +74,7 @@ Feature: manual adding of data
 
 ## 4.1 Login
 
-The user must have an existing account
+The user must have an existing useraccount
 
 # 5 Postconditions
 

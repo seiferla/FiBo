@@ -50,8 +50,8 @@ Planned Subsystems are:
   .
 * Data Management:
   Data is saved and can be retrieved.
-* Account Management:
-  Users can register themself, log into their account, log off and delete themself. Upon deletion, all user data is deleted as well.
+* Useraccount Management:
+  Users can register themself, log into their useraccount, log off and delete themself. Upon deletion, all user data is deleted as well.
 
 ### 1.3 Definitions, Acronyms and Abbreviations
 
@@ -126,29 +126,30 @@ Testing:
 This section will explain the different use cases, you could see in the Use Case Diagram, and their functionality.
 Until the end of the fourth semester we plan to implement:
 
-- [3.1.1 Create Account](#311-create-account)
+- [3.1.1 Create Useraccount](#311-create-useraccount)
 - [3.1.2 Logging in](#312-logging-in)
 - [3.1.3 Change added data](#313-change-added-data)
 - [3.1.4 Manual adding of data](#314-manual-adding-of-data)
 - [3.1.5 Show data in a dashboard](#315-show-data-in-a-dashboard)
 - [3.1.6 Evaluate scanning receipts](#316-evaluate-scanning-receipts)
 - [3.1.7 Logging out](#317-logging-out)
-- [3.1.8 Delete user account](#318-delete-user-account)
+- [3.1.8 Delete user account](#318-delete-useraccount)
 - [3.1.9 Scanning receipts](#319-scanning-receipts)
+- [3.1.10 Account Picker](#3110-account-picker) 
 
 
-#### 3.1.1 Create account
+#### 3.1.1 Create useraccount
 
-To identify all users we need an account system. This account system enables us to build important functions such as sharing costs or a personalized overview over finances (Keeping track of your finances).
+To identify all users we need an useraccount system. This useraccount system enables us to build important functions such as sharing costs or a personalized overview over finances (Keeping track of your finances).
 
-[Create account](./use_cases/UC_1_create_account/UC_1_create_account.md)
+[Create useraccount](./use_cases/UC_1_create_useraccount/UC_1_create_useraccount.md)
 
 
 #### 3.1.2 Logging in
 
 The app will provide the possibility to register and log in. This will also make the usability easier when a user wants to manage his expenses because they don't have to enter their mail address every time.
 
-[Logging in](./use_cases/UC_2_login_account/UC_2_login_account.md)
+[Logging in](./use_cases/UC_2_login_useraccount/UC_2_login_useraccount.md)
 
 
 #### 3.1.3 Change added data
@@ -178,14 +179,14 @@ We want to get a clear view on technologies that enable us to automatically scan
 
 #### 3.1.7 Logging out
 
-In case you share your phone, have multiple accounts or just want to be cautious about your privacy you should be able to manually log out.
+In case you share your phone, have multiple useraccounts or just want to be cautious about your privacy you should be able to manually log out.
 
 [Logging out](./use_cases/UC_7_logging_out/UC_7_logging_out.md)
 
 
-#### 3.1.8 Delete user account
+#### 3.1.8 Delete Useraccount
 
-In case if you want to delete any data that is stored in combination with your account, we give the user the possibility to delete their stored data 
+In case if you want to delete any data that is stored in combination with your useraccount, we give the user the possibility to delete their stored data 
 
 [Delete user account](use_cases/UC_8_delete_user_account/UC_8_delete_account.md)
 
@@ -196,6 +197,11 @@ Another key feature in our app allows users to capture receipts with a photo. Th
 
 [Scanning receipts](use_cases/UC_9_scanning_receipts/UC_9_scanning_receipt.md)
 
+#### 3.1.10 Account Picker
+
+The User should have the possibility to use multiple accounts under the same useraccount. Therefore he should be able to pick which one he wants to use and switch between them.
+
+[Account Picker](use_cases/UC_10_account_picker/UC_10_account_picker.md)
 
 
 ### 3.2 Usability

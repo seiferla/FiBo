@@ -2,13 +2,12 @@
 
 ## Name of use case
 
-Create an account
+Create an user
 
 ## 1.1 Brief Description
 
-Each user should be able to create an account using their mobile device. The data that the user must provide is as follows:
+Each user should be able to create an useraccount using their mobile device. The data that the user must provide is as follows:
 - email
-- username
 - password
 
 # 2 Flow of Events
@@ -35,16 +34,16 @@ Each user should be able to create an account using their mobile device. The dat
 ### 2.1.3 Narrative
 
 ```gherkin
-Feature: create account
+Feature: create useraccount
 
   As a unregistered user,
-  I want to create an account
+  I want to create an useraccount
 
   Background:
-    And I haven't got an account 
+    And I haven't got an useraccount 
 
   Scenario: successful registration
-    Given I haven't got an existing account
+    Given I haven't got an existing useraccount
     When I am starting the app
     Then I am on the login page
     When I click the register button
@@ -55,7 +54,7 @@ Feature: create account
     Then I am successfully registered
     
   Scenario: unsuccessful registration
-    Given I haven't got an existing account
+    Given I haven't got an existing useraccount
     When I am starting the app
     Then I am on the login page
     When I click the register button
@@ -77,7 +76,7 @@ Feature: create account
 # 4 Preconditions
 
 ## 4.1 Registration
-The user must not have an account
+The user must not have an useraccount
 # 5 Postconditions
 
 (n/a)
