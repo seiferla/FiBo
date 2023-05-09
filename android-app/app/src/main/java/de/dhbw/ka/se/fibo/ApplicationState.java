@@ -84,6 +84,11 @@ public class ApplicationState {
         cashflows.add(cashFlow);
     }
 
+    public SortedSet<Category> getCategories() {
+        Log.v("FiBo", "ApplicationState#getCategories()");
+        return categories;
+    }
+
     /**
      * Determines whether the login is needed because of non-existent or expired refresh token
      *

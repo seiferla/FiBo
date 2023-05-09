@@ -45,7 +45,6 @@ public class ApiUtils {
      * @return the created StringRequest with given callbacks and parameters
      */
     public static StringRequest createAPIStringRequest(String url, int method, Map<String, String> params, Response.Listener<String> onSuccess, Response.ErrorListener onError, Optional<String> jwt) {
-
         return new StringRequest(
                 method,
                 ApiUtils.getBaseURL() + url,
@@ -82,7 +81,6 @@ public class ApiUtils {
      * @return the created StringRequest with given callbacks and parameters
      */
     public static <T> JsonRequest<T> createAPIJSONRequest(Class<T> responseType, String url, int method, Map<String, String> body, Response.Listener<T> onSuccess, Response.ErrorListener onError,Optional<String> jwt) {
-
         String jsonRequestBody = new Gson().toJson(body);
 
         return new JsonRequest<>(
@@ -112,6 +110,5 @@ public class ApiUtils {
                 return headers;
             }
         };
-
     }
 }

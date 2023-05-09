@@ -161,7 +161,8 @@ public class AddingFragment extends Fragment {
         if (!isRequiredDataPresent) {
             return null;
         }
-        // TODO: make this work again
+
+        Category selectedCategory = ApplicationState.getInstance(requireContext()).getCategories().stream().filter(x -> x.getName().equals(getFieldValue(categoriesDropdown))).findFirst().get();
 
         value = BigDecimal.valueOf(Double.parseDouble(getFieldValue(amount)));
 
@@ -171,11 +172,11 @@ public class AddingFragment extends Fragment {
         date = LocalDate.parse(getFieldValue(dateText), formatter).atStartOfDay();
 
         if (notes.getText().toString().trim().isEmpty()) {
-            return new Cashflow(new Category(1, "HEALTH", 1), newCashFlowType, value, date, place);
+            return new Cashflow(selectedCategory, newCashFlowType, value, date, place);
         } else {
             try {
                 List<Item> items = createItemsFromNotes();
-                return new Cashflow(new Category(1, "HEALTH", 1), newCashFlowType, value, date, place, items);
+                return new Cashflow(selectedCategory, newCashFlowType, value, date, place, items);
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();
             }
@@ -230,15 +231,7 @@ public class AddingFragment extends Fragment {
     }
 
     private String[] getAllStringCategories() {
-        /*
-        String[] categories = new String[Category.values().length];
-        Category[] values = Category.values();
-        for (int i = 0; i < values.length; i++) {
-            Category value = values[i];
-            categories[i] = requireContext().getResources().getString(value.getName());
-        }*/
-
-        return new String[]{};
+        return ApplicationState.getInstance(requireContext()).getCategories().stream().map(Category::getName).toArray(String[]::new);
     }
 
     private void createDatePicker() {
