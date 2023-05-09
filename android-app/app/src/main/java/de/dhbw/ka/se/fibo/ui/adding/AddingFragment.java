@@ -20,7 +20,6 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 
-
 import java.math.BigDecimal;
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -29,11 +28,9 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 import de.dhbw.ka.se.fibo.ApplicationState;
 import de.dhbw.ka.se.fibo.R;
@@ -164,12 +161,7 @@ public class AddingFragment extends Fragment {
         if (!isRequiredDataPresent) {
             return null;
         }
-        List<Category> collect = Arrays.stream(Category.values()).filter(currentType -> {
-            String name = requireActivity().getResources().getString(currentType.getName());
-            return name.equals(getFieldValue(categoriesDropdown));
-        }).collect(Collectors.toList());
-
-        category = collect.get(0);
+        // TODO: make this work again
 
         value = BigDecimal.valueOf(Double.parseDouble(getFieldValue(amount)));
 
@@ -179,11 +171,11 @@ public class AddingFragment extends Fragment {
         date = LocalDate.parse(getFieldValue(dateText), formatter).atStartOfDay();
 
         if (notes.getText().toString().trim().isEmpty()) {
-            return new Cashflow(category, newCashFlowType, value, date, place);
+            return new Cashflow(new Category("HEALTH"), newCashFlowType, value, date, place);
         } else {
             try {
                 List<Item> items = createItemsFromNotes();
-                return new Cashflow(category, newCashFlowType, value, date, place, items);
+                return new Cashflow(new Category("HEALTH"), newCashFlowType, value, date, place, items);
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();
             }
@@ -191,9 +183,6 @@ public class AddingFragment extends Fragment {
         }
 
 
-
-
-        return null;
     }
 
     private String getFieldValue(TextView field) {
@@ -241,14 +230,15 @@ public class AddingFragment extends Fragment {
     }
 
     private String[] getAllStringCategories() {
+        /*
         String[] categories = new String[Category.values().length];
         Category[] values = Category.values();
         for (int i = 0; i < values.length; i++) {
             Category value = values[i];
             categories[i] = requireContext().getResources().getString(value.getName());
-        }
+        }*/
 
-        return categories;
+        return new String[]{};
     }
 
     private void createDatePicker() {

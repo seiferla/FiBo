@@ -115,7 +115,7 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
                 .map(Cashflow::getCategory)
                 .collect(Collectors.toSet()) // make sure we have only one occurrence of each category
                 .stream() // then sort by localized name of the category
-                .sorted(Comparator.comparing(o -> context.getText(o.getName()).toString()))
+                .sorted(Comparator.comparing(o -> o.getName()))
                 .collect(Collectors.toList());
     }
 
@@ -131,7 +131,7 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
                 Category category = orderedCategoryList.get(i);
 
                 checkedItems[i] = !hiddenCategories.contains(category);
-                names[i] = context.getText(category.getName());
+                names[i] = category.getName();
             }
 
             new MaterialAlertDialogBuilder(context)
@@ -182,7 +182,7 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
         for (Map.Entry<Category, BigDecimal> entrySet : expensesPerCategory.entrySet()) {
             Category category = entrySet.getKey();
             PieEntry entry = new PieEntry(entrySet.getValue().floatValue());
-            entry.setLabel(context.getText(category.getName()).toString());
+            entry.setLabel(category.getName());
 
             entries.add(entry);
             colors[i++] = category.getColor();

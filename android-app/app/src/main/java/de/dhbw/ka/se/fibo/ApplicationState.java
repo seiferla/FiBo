@@ -1,14 +1,20 @@
 package de.dhbw.ka.se.fibo;
 
+import static de.dhbw.ka.se.fibo.utils.ApiUtils.createAPIJSONRequest;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.VisibleForTesting;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.toolbox.JsonRequest;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Optional;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -75,7 +81,7 @@ public class ApplicationState {
 
     public SortedSet<Cashflow> getCashflows() {
         Log.v("FiBo", "ApplicationState#getCashflows()");
-
+        syncCashflows();
         return cashflows;
     }
 
@@ -159,12 +165,44 @@ public class ApplicationState {
                 .apply();
     }
 
-    public List<Cashflow> getAllCashflows(){
 
+    private void syncCashflows() {
+        Response.Listener<CashflowListResponse[]> onSuccess = response -> {
 
+            Log.v(TAG, Arrays.toString(response));
+        };
+        Response.ErrorListener onError = error -> {
+            if (error.networkResponse != null) {
+                switch (error.networkResponse.statusCode) {
+                    case 401:
+                        Log.e(TAG, "Unauthorized");
+                        break;
+                    case 500:
+                        Log.e(TAG, "Internal Server Error");
+                        break;
+                    default:
+                        break;
+                }
 
-        return null;
+                Log.e(TAG, String.valueOf(error));
+            } else {
+                Log.e(TAG, String.valueOf(error));
+            }
+        };
+        String url = "/cashflows/";
+        JsonRequest<CashflowListResponse[]> jsonRequest = createAPIJSONRequest(CashflowListResponse[].class,url,
+                Request.Method.GET,
+                null,
+                onSuccess,
+                onError,
+                this.getAccessToken());
+
+        SharedVolleyRequestQueue requestQueue = SharedVolleyRequestQueue.getInstance(this.context);
+        requestQueue.addToRequestQueue(jsonRequest);
     }
+
+
+
 
     @VisibleForTesting
     public void setJwsSigningKey(byte[] jwsSigningKey) {

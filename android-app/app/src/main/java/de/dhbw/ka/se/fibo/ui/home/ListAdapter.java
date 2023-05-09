@@ -51,10 +51,9 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
         BigDecimal overallValue = cashflow.getOverallValue();
         holder.cardTitle.setText(cashflow.getPlace().getName());
         holder.cardTitle.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-        holder.imageView.setText(String.valueOf(context.getResources().getText(cashflow.getCategory().getName())).substring(0, 1));
+        holder.imageView.setText(String.valueOf(cashflow.getCategory().getName()).substring(0, 1));
         holder.cashFlowValue.setText(String.format("%s%s", cashflowType.getSign(), Helpers.formatBigDecimalCurrency(overallValue)));
         holder.cashFlowValue.setTextColor(context.getResources().getColor(cashflowType.getColor(), context.getTheme()));
-        context.getResources().getText(cashflow.getCategory().getName()).charAt(0);
         holder.cashFlowValue.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
 
         DateTimeFormatter formatter = new DateTimeFormatterBuilder()

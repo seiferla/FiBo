@@ -15,6 +15,7 @@ import com.android.volley.toolbox.JsonRequest;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import de.dhbw.ka.se.fibo.ApplicationState;
 import de.dhbw.ka.se.fibo.MainActivity;
@@ -44,7 +45,7 @@ public class LoginStrategyProduction implements LoginStrategy {
 
         Response.Listener<LoginResponse> onSuccess = buildLoginSuccessListener();
         Response.ErrorListener onError = buildLoginErrorListener();
-        return createAPIJSONRequest(LoginResponse.class, url, Request.Method.POST, requestBody, onSuccess, onError);
+        return createAPIJSONRequest(LoginResponse.class, url, Request.Method.POST, requestBody, onSuccess, onError, Optional.empty());
     }
 
     private Response.ErrorListener buildLoginErrorListener() {

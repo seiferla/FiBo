@@ -1,7 +1,5 @@
 package de.dhbw.ka.se.fibo.utils;
 
-import android.util.Log;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
@@ -10,9 +8,17 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 import com.google.gson.JsonSyntaxException;
 
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -75,7 +81,7 @@ public class ApiUtils {
      * @param onError      a custom error response
      * @return the created StringRequest with given callbacks and parameters
      */
-    public static <T> JsonRequest<T> createAPIJSONRequest(Class<T> responseType, String url, int method, Map<String, String> body, Response.Listener<T> onSuccess, Response.ErrorListener onError) {
+    public static <T> JsonRequest<T> createAPIJSONRequest(Class<T> responseType, String url, int method, Map<String, String> body, Response.Listener<T> onSuccess, Response.ErrorListener onError,Optional<String> jwt) {
 
         String jsonRequestBody = new Gson().toJson(body);
 
@@ -89,12 +95,31 @@ public class ApiUtils {
             protected Response<T> parseNetworkResponse(NetworkResponse response) {
                 try {
                     String json = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
-                    T parsedResponse = new Gson().fromJson(json, responseType);
+                    GsonBuilder gson = new GsonBuilder();
+                    gson.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeDeserializer());
+                    T parsedResponse = gson.create().fromJson(json, responseType);
                     return Response.success(parsedResponse, HttpHeaderParser.parseCacheHeaders(response));
                 } catch (UnsupportedEncodingException | JsonSyntaxException e) {
                     return Response.error(new ParseError(e));
                 }
             }
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+
+                jwt.ifPresent(s -> headers.put("Authorization", "Bearer " + s));
+
+                return headers;
+            }
         };
+
     }
+    class LocalDateTimeSerializer implements JsonSerializer<LocalDateTime> {
+
+        @Override
+        public JsonElement serialize(LocalDateTime localDateTime, Type srcType, JsonSerializationContext context) {
+            return new JsonPrimitive(DateTimeFormatter.ISO_DATE_TIME.format(localDateTime));
+        }
+    }
+
 }
