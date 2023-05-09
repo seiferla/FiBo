@@ -95,7 +95,7 @@ Scenario: Logging In
 ![Login screen showing email and password field as well as a Login button](use_cases/realization/login-screen.png)
 2. User enters their email and password and clicks the "Login" button.
 ![Login screen with filled in email and password field](use_cases/realization/login-screen-2.png)
-3. The user interface process receives the login information and sends it to the authentication and authorization process.
+3. The system sends the received login credentials to the authentication and authorization process.
 4. The authentication and authorization process checks the email and password against the Django backend's authentication system.
 5. If the email and password match, the authentication and authorization process sends a message to the user interface process, allowing the user to access the app's functionality.
 ![Home screen with list of cashflows](use_cases/realization/login-screen-3.png)
