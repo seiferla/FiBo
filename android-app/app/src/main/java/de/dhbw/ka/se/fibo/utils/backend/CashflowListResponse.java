@@ -1,9 +1,11 @@
-package de.dhbw.ka.se.fibo;
+package de.dhbw.ka.se.fibo.utils.backend;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+
+import de.dhbw.ka.se.fibo.models.CashflowType;
 
 public class CashflowListResponse {
 
@@ -16,7 +18,8 @@ public class CashflowListResponse {
     public LocalDateTime updated;
     @SerializedName("category")
     public int categoryID;
-    public String place;
+    @SerializedName("place")
+    public int placeID;
     @SerializedName("account")
     public int accountID;
 
@@ -29,8 +32,12 @@ public class CashflowListResponse {
                 ", created='" + created + '\'' +
                 ", updated='" + updated + '\'' +
                 ", categoryID=" + categoryID +
-                ", place='" + place + '\'' +
+                ", placeID='" + placeID + '\'' +
                 ", accountID=" + accountID +
                 '}';
+    }
+
+    public CashflowType getCashflowType() {
+        return isIncome ? CashflowType.INCOME : CashflowType.EXPENSE;
     }
 }

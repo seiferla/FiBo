@@ -164,12 +164,26 @@ class PlaceView(APIView):
         return JsonResponse({'success': True, 'place': place.name}, status=status.HTTP_201_CREATED)
 
     def get(self, request):
-        try:
-            place = Place.objects.get(address=request.GET['address'])
-        except:
-            return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
+        returned_data = None
+        returns_list = None
 
-        serializer = PlaceSerializer(place, many=False)
+        if 'address' in request.GET:
+            try:
+                returned_data = Place.objects.get(
+                    address=request.GET['address'])
+                returns_list = False
+            except Exception:
+                return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
+        else:
+            try:
+                returned_data = Place.objects.all()
+                returns_list = True
+            except Exception:
+                return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+
+        print(returned_data)
+
+        serializer = PlaceSerializer(returned_data, many=returns_list)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 

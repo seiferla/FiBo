@@ -33,7 +33,7 @@ public class SharedVolleyRequestQueue {
         return SharedVolleyRequestQueue.instance;
     }
 
-    public RequestQueue getRequestQueue() {
+    private RequestQueue getRequestQueue() {
         if (null == requestQueue) {
             requestQueue = Volley.newRequestQueue(SharedVolleyRequestQueue.context.getApplicationContext());
             requestQueue.start();

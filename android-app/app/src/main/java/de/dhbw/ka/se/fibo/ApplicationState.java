@@ -14,16 +14,22 @@ import com.android.volley.toolbox.JsonRequest;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.SortedSet;
 import java.util.TreeSet;
+import java.util.function.Consumer;
 
 import de.dhbw.ka.se.fibo.models.Cashflow;
 import de.dhbw.ka.se.fibo.models.CashflowType;
 import de.dhbw.ka.se.fibo.models.Category;
 import de.dhbw.ka.se.fibo.models.Place;
 import de.dhbw.ka.se.fibo.strategies.LoginStrategyProduction;
+import de.dhbw.ka.se.fibo.utils.backend.BackendSynchronizationFactory;
+import de.dhbw.ka.se.fibo.utils.backend.BackendSynchronizationResult;
+import de.dhbw.ka.se.fibo.utils.backend.CashflowListResponse;
+import de.dhbw.ka.se.fibo.utils.backend.CategoryListResponse;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.JwtException;
@@ -36,6 +42,8 @@ public class ApplicationState {
     @SuppressLint("StaticFieldLeak")
     private static ApplicationState instance;
     private SortedSet<Cashflow> cashflows;
+    private SortedSet<Category> categories;
+    private SortedSet<Place> places;
 
     private final String TAG = "ApplicationState";
 
@@ -53,18 +61,6 @@ public class ApplicationState {
     @VisibleForTesting
     public void populateTestData() {
         cashflows.clear();
-        cashflows.add(new Cashflow(new Category("HEALTH"), CashflowType.EXPENSE, BigDecimal.valueOf(8.5), LocalDateTime.now(), new Place("dm", "Am dm-Platz 1")));
-        cashflows.add(new Cashflow(new Category("HEALTH"), CashflowType.EXPENSE, BigDecimal.valueOf(10), LocalDateTime.now().minusDays(1), new Place("kaufland", "Kaufplatz")));
-        cashflows.add(new Cashflow(new Category("SOCIAL LIFE"), CashflowType.INCOME, BigDecimal.valueOf(5.5), LocalDateTime.now().minusDays(2), new Place("Fabian", "In da club street")));
-        cashflows.add(new Cashflow(new Category("CULTURE"), CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", "Lorenzstraße 19, 76135 Karlsruhe")));
-        cashflows.add(new Cashflow(new Category("CLOTHES"), CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", "Lorenzstraße 19, 76135 Karlsruhe")));
-        cashflows.add(new Cashflow(new Category("EDUCATION"), CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", "Lorenzstraße 19, 76135 Karlsruhe")));
-        cashflows.add(new Cashflow(new Category("GIFT"), CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", "Lorenzstraße 19, 76135 Karlsruhe")));
-        cashflows.add(new Cashflow(new Category("INSURANCE"), CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", "Lorenzstraße 19, 76135 Karlsruhe")));
-        cashflows.add(new Cashflow(new Category("LIVING"), CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", "Lorenzstraße 19, 76135 Karlsruhe")));
-        cashflows.add(new Cashflow(new Category("MOBILITY"), CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", "Lorenzstraße 19, 76135 Karlsruhe")));
-        cashflows.add(new Cashflow(new Category("OTHER"), CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", "Lorenzstraße 19, 76135 Karlsruhe")));
-        cashflows.add(new Cashflow(new Category("HOUSEHOLD"), CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", "Lorenzstraße 19, 76135 Karlsruhe")));
     }
 
     @VisibleForTesting
@@ -81,7 +77,6 @@ public class ApplicationState {
 
     public SortedSet<Cashflow> getCashflows() {
         Log.v("FiBo", "ApplicationState#getCashflows()");
-        syncCashflows();
         return cashflows;
     }
 
@@ -125,7 +120,7 @@ public class ApplicationState {
                 .getSharedPreferences("authorization", 0)
                 .getString("accessToken", null);
 
-        if (accessToken == null) {
+        if (null == accessToken) {
             return Optional.empty();
         }
 
@@ -137,9 +132,10 @@ public class ApplicationState {
                 .getSharedPreferences("authorization", 0)
                 .getString("refreshToken", null);
 
-        if (refreshToken == null) {
+        if (null == refreshToken) {
             return Optional.empty();
         }
+
         return Optional.of(refreshToken);
     }
 
@@ -166,81 +162,32 @@ public class ApplicationState {
     }
 
 
-    private void syncCashflows() {
-        Response.Listener<CashflowListResponse[]> onSuccess = response -> {
+    /**
+     * This works by first polling cashflows, then categories and then mapping the data together.
+     *
+     * @param consumer if not null, the consumer is notified whenever there is a response ready
+     */
+    public void syncCashflows(Consumer<BackendSynchronizationResult> consumer) throws IllegalStateException {
+        BackendSynchronizationFactory factory = new BackendSynchronizationFactory(context)
+                .addResultListener(result -> {
+                    if (!result.wasSuccessful()) {
+                        Log.e(TAG, "backend synchronization wasn't successful!", result.getThrowable());
+                        return;
+                    }
 
-            syncCategories(response);
+                    synchronized (this) {
+                        categories = result.getCategories();
+                        cashflows = result.getCashflows();
+                        places = result.getPlaces();
+                    }
+                });
 
-            Log.v(TAG, Arrays.toString(response));
-        };
-        Response.ErrorListener onError = error -> {
-            if (error.networkResponse != null) {
-                switch (error.networkResponse.statusCode) {
-                    case 401:
-                        Log.e(TAG, "Unauthorized");
-                        break;
-                    case 500:
-                        Log.e(TAG, "Internal Server Error");
-                        break;
-                    default:
-                        break;
-                }
+        if (null != consumer) {
+            factory.addResultListener(consumer);
+        }
 
-                Log.e(TAG, String.valueOf(error));
-            } else {
-                Log.e(TAG, String.valueOf(error));
-            }
-        };
-        String url = "/cashflows/";
-        JsonRequest<CashflowListResponse[]> jsonRequest = createAPIJSONRequest(CashflowListResponse[].class,url,
-                Request.Method.GET,
-                null,
-                onSuccess,
-                onError,
-                this.getAccessToken());
-
-        SharedVolleyRequestQueue requestQueue = SharedVolleyRequestQueue.getInstance(this.context);
-        requestQueue.addToRequestQueue(jsonRequest);
+        factory.startSynchronization();
     }
-
-    private void syncCategories(CashflowListResponse[] cashflowResponse) {
-
-        Response.Listener<CategoryListResponse[]> onSuccess = categoryResponse -> {
-
-            Log.v(TAG, Arrays.toString(categoryResponse));
-        };
-        Response.ErrorListener onError = error -> {
-            if (error.networkResponse != null) {
-                switch (error.networkResponse.statusCode) {
-                    case 401:
-                        Log.e(TAG, "Unauthorized");
-                        break;
-                    case 500:
-                        Log.e(TAG, "Internal Server Error");
-                        break;
-                    default:
-                        break;
-                }
-
-                Log.e(TAG, String.valueOf(error));
-            } else {
-                Log.e(TAG, String.valueOf(error));
-            }
-        };
-        String url = "/categories/";
-        JsonRequest<CategoryListResponse[]> jsonRequest = createAPIJSONRequest(CategoryListResponse[].class,url,
-                Request.Method.GET,
-                null,
-                onSuccess,
-                onError,
-                this.getAccessToken());
-
-        SharedVolleyRequestQueue requestQueue = SharedVolleyRequestQueue.getInstance(this.context);
-        requestQueue.addToRequestQueue(jsonRequest);
-
-
-    }
-
 
     @VisibleForTesting
     public void setJwsSigningKey(byte[] jwsSigningKey) {

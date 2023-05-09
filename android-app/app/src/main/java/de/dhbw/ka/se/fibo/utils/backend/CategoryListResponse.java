@@ -1,14 +1,24 @@
-package de.dhbw.ka.se.fibo;
+package de.dhbw.ka.se.fibo.utils.backend;
 
 import com.google.gson.annotations.SerializedName;
 
+import de.dhbw.ka.se.fibo.models.Category;
+
 public class CategoryListResponse {
 
-    private int id;
-    private String name;
+    public int id;
+    public String name;
     @SerializedName("account")
-    private int accountID;
+    public int accountID;
 
+
+    public Category toCategory() {
+        return new Category(
+                id,
+                name,
+                accountID
+        );
+    }
 
     @Override
     public String toString() {

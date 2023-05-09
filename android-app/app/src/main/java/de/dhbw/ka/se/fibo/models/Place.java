@@ -1,16 +1,21 @@
 package de.dhbw.ka.se.fibo.models;
 
-import org.jetbrains.annotations.NotNull;
+import androidx.annotation.NonNull;
 
-public class Place {
+public class Place implements Comparable<Place> {
 
+    private int id;
     private String name;
     private String address;
 
 
-    public Place(String name, String address) {
+    public Place(int id, String name, String address) {
         this.name = name;
         this.address = address;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -30,10 +35,28 @@ public class Place {
     }
 
     @Override
-    @NotNull
     public String toString() {
         return "Place{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Place o) {
+        int idCompareResult = Integer.compare(id, o.id);
+
+        if (0 != idCompareResult) {
+            return idCompareResult;
+        }
+
+        int nameCompareResult = name.compareTo(o.name);
+
+        if (0 != nameCompareResult) {
+            return nameCompareResult;
+        }
+
+        return address.compareTo(o.address);
     }
 }

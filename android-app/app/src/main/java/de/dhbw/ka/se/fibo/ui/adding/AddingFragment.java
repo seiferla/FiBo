@@ -165,17 +165,17 @@ public class AddingFragment extends Fragment {
 
         value = BigDecimal.valueOf(Double.parseDouble(getFieldValue(amount)));
 
-        place = new Place(getFieldValue(store), getFieldValue(address));
+        place = new Place(0, getFieldValue(store), getFieldValue(address));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
 
         date = LocalDate.parse(getFieldValue(dateText), formatter).atStartOfDay();
 
         if (notes.getText().toString().trim().isEmpty()) {
-            return new Cashflow(new Category("HEALTH"), newCashFlowType, value, date, place);
+            return new Cashflow(new Category(1, "HEALTH", 1), newCashFlowType, value, date, place);
         } else {
             try {
                 List<Item> items = createItemsFromNotes();
-                return new Cashflow(new Category("HEALTH"), newCashFlowType, value, date, place, items);
+                return new Cashflow(new Category(1, "HEALTH", 1), newCashFlowType, value, date, place, items);
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();
             }

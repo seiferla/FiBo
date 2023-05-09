@@ -25,7 +25,7 @@ import java.util.Optional;
 
 public class ApiUtils {
 
-    private static String getBaseURL() {
+    public static String getBaseURL() {
         if (ActivityUtils.isEspressoTesting()) {
             return "http://localhost:8000";
         } else {
@@ -114,12 +114,4 @@ public class ApiUtils {
         };
 
     }
-    class LocalDateTimeSerializer implements JsonSerializer<LocalDateTime> {
-
-        @Override
-        public JsonElement serialize(LocalDateTime localDateTime, Type srcType, JsonSerializationContext context) {
-            return new JsonPrimitive(DateTimeFormatter.ISO_DATE_TIME.format(localDateTime));
-        }
-    }
-
 }
