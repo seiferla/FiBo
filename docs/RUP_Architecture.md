@@ -158,7 +158,7 @@ Significant parts as well of their technical names are:
 
 The Android app and the Django backend will consist of multiple lightweight and heavyweight processes that communicate with each other to achieve the desired functionality. Here are some processes and modes of communication between them:
 
-1. User Interface Process: This is the process that handles the Android app's user interface. It receives user input and sends it to other processes to handle the appropriate action. The mode of communication between this process and other processes is through message passing through Inter-Process Communication (IPC) and managed by the Android operating system.
+1. Application System Process: This is the process that handles user interactions made in the Android app. It receives user input and sends it to other processes to handle the appropriate action. The communication between this process and other processes is through the Inter-Process Communication (IPC). It's a message passing mode which is managed by the Android operating system.
 
 2. Cashflow Management Process: This process manages the cashflows made by the user. It receives input from the user interface process and saves the cashflow data to the Django backend through an HTTP request. It also retrieves cashflow data from the backend and sends it to the user interface process for display. The mode of communication between this process and other processes is through message passing.
 
