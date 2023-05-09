@@ -106,7 +106,7 @@ How the Design Model Elements Contribute to the Functionality:
 
 1. User Interface Design: The login screen presented to the user is a result of the user interface design. It provides an interface for the user to enter their login credentials.
 
-2. Authentication and Authorization Model: The authentication and authorization process is a part of the authentication and authorization model. It verifies the user's email and password against the Django backend's authentication system and sends a message to the user interface process allowing access to the app's functionality.
+2. Authentication and Authorization Model: The authentication and authorization process is a part of the authentication and authorization model. It verifies the user's email and password against Django's backend authentication system and sends a message to the application system process allowing access to the app's functionality.
 
 3. Backend API: The Django backend's authentication system is accessed through the backend API. The authentication and authorization process sends the user's login credentials to the appropriate backend API endpoint for processing.
 
