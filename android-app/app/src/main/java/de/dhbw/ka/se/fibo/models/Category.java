@@ -3,41 +3,32 @@ package de.dhbw.ka.se.fibo.models;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Arrays;
+import java.util.List;
+
 import de.dhbw.ka.se.fibo.R;
 
 
-public enum Category {
+public class Category {
 
+    private List<Integer> colorList = Arrays.asList(R.color.purple_500, R.color.teal_200, R.color.teal_700, R.color.black, R.color.white, R.color.orange, R.color.purple, R.color.green, R.color.blue, R.color.pink, R.color.yellow, R.color.red, R.color.green1, R.color.light_purple, R.color.delete_red);
+    private String name;
 
-    RESTAURANT(R.color.orange, R.string.RESTAURANT), HEALTH(R.color.purple,
-            R.string.HEALTH), LIVING(R.color.green, R.string.LIVING), HOUSEHOLD(R.color.blue,
-            R.string.HOUSEHOLD), CULTURE(R.color.pink, R.string.CULTURE), EDUCATION(R.color.yellow,
-            R.string.EDUCATION), SOCIAL_LIFE(R.color.red, R.string.SOCIALLIFE), MOBILITY(R.color.green1,
-            R.string.MOBILITY), CLOTHES(R.color.expense, R.string.CLOTHES), GIFT(R.color.purple_500,
-            R.string.GIFT), OTHER(R.color.black, R.string.OTHER), INSURANCE(R.color.light_purple,
-            R.string.INSURANCE);
-
-    private int color;
-    private int name;
-
-    Category(int color, int name) {
+    public Category(String name) {
         this.name = name;
-        this.color = color;
     }
 
     public int getColor() {
-        return color;
+        String categoryName = getName();
+        int index = Math.abs(categoryName.hashCode())%colorList.size();
+        return colorList.get(index);
     }
 
-    public void setColor(int color) {
-        this.color = color;
-    }
-
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 

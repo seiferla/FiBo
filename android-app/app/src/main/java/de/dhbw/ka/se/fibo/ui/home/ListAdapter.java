@@ -89,4 +89,14 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
     public int getItemCount() {
         return cashflowArrayList.size();
     }
+    public void clear(){
+        cashflowArrayList.clear();
+        notifyDataSetChanged();
+    }
+
+    public void addAll(List<Cashflow> list){
+        cashflowArrayList.addAll(list);
+        notifyDataSetChanged();
+    }
+
 }

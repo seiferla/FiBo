@@ -161,33 +161,36 @@ public class AddingFragment extends Fragment {
             e.printStackTrace();
         }
 
-        if (isRequiredDataPresent) {
-            List<Category> collect = Arrays.stream(Category.values()).filter(currentType -> {
-                String name = requireActivity().getResources().getString(currentType.getName());
-                return name.equals(getFieldValue(categoriesDropdown));
-            }).collect(Collectors.toList());
-
-            category = collect.get(0);
-
-            value = BigDecimal.valueOf(Double.parseDouble(getFieldValue(amount)));
-
-            place = new Place(getFieldValue(store), getFieldValue(address));
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
-
-            date = LocalDate.parse(getFieldValue(dateText), formatter).atStartOfDay();
-
-            if (notes.getText().toString().trim().isEmpty()) {
-                return new Cashflow(category, newCashFlowType, value, date, place);
-            } else {
-                try {
-                    List<Item> items = createItemsFromNotes();
-                    return new Cashflow(category, newCashFlowType, value, date, place, items);
-                } catch (IllegalArgumentException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
+        if (!isRequiredDataPresent) {
+            return null;
         }
+        List<Category> collect = Arrays.stream(Category.values()).filter(currentType -> {
+            String name = requireActivity().getResources().getString(currentType.getName());
+            return name.equals(getFieldValue(categoriesDropdown));
+        }).collect(Collectors.toList());
+
+        category = collect.get(0);
+
+        value = BigDecimal.valueOf(Double.parseDouble(getFieldValue(amount)));
+
+        place = new Place(getFieldValue(store), getFieldValue(address));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
+
+        date = LocalDate.parse(getFieldValue(dateText), formatter).atStartOfDay();
+
+        if (notes.getText().toString().trim().isEmpty()) {
+            return new Cashflow(category, newCashFlowType, value, date, place);
+        } else {
+            try {
+                List<Item> items = createItemsFromNotes();
+                return new Cashflow(category, newCashFlowType, value, date, place, items);
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+
 
 
         return null;
