@@ -207,7 +207,7 @@ Architecturally significant components of the FiBo implementation model include:
 2. Django Framework: This component provides the web framework for the backend and the ORM (Object-Relational Mapping) to interface with the database.
 3. PostgreSQL: This component is the database used to store the cashflow data in the Android app as well as all things that are needed to provide this basic functionality.
 
-In conclusion, the FiBo implementation model follows a layered architecture pattern, with each layer divided into subsystems responsible for specific functionalities. The presentation layer interacts directly with the user, the application layer provides the business logic, and the data access layer manages the app's data and communicates with the Django backend. The architecturally significant components of the implementation model include the Android SDK, Django framework, and PostgreSQL database.
+In conclusion, the FiBo implementation model follows a layered architecture pattern, with each layer divided into subsystems responsible for specific functionalities. The presentation layer interacts directly with the user, the application layer provides the business logic, and the data access layer manages the app's data and communicates with the Django backend. The architecturally significant components of the implementation model include the Android SDK, Django framework, local storage and PostgreSQL database.
 
 #### Overview of realized implementation
 
