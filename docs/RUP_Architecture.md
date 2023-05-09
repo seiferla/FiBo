@@ -180,7 +180,7 @@ This can be achieved by layer 2 networking.
 
 From a process based view, all Android app related processes run on the (emulated) mobile phone. All other processes run inside a dockerized environment.
 
-In case that an emulated mobile phone is used, and also the backend is running on the same physical machine, it is recommended to have at least four CPU cores.
+In case that an emulated mobile phone is used, and also the backend is running on the same physical machine, we recommend to have at least four CPU cores.
 
 ### Implementation View
 
