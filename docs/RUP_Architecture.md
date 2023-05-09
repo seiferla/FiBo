@@ -239,7 +239,7 @@ The FiBo app's realized implementation consists of three layers, namely the Pres
 
 ##### Presentation Layer
 
-The Presentation Layer is the topmost layer of the FiBo app's architecture and is responsible for handling the user interface and user input/output. It consists of two subsystems: the User Interface and the Authentication and Authorization subsystems.
+The Presentation Layer is the topmost layer of the FiBo app's architecture and is responsible for handling the user interface and user input/output. It consists of one subsystem: the User Interface subsystem.
 
 1. User Interface subsystem: This subsystem manages the app's user interface, such as displaying cashflows, adding cashflows, and managing user settings.
 2. Authentication and Authorization subsystem: This subsystem is responsible for authenticating users and authorizing their access to the app's functionalities.
