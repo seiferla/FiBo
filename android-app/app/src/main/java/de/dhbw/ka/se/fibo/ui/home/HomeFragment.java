@@ -14,9 +14,11 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 import de.dhbw.ka.se.fibo.ApplicationState;
@@ -28,6 +30,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private RecyclerView recyclerView;
     private FloatingActionButton actionButton;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -36,6 +39,7 @@ public class HomeFragment extends Fragment {
         View view = binding.getRoot();
         recyclerView = binding.recyclerview;
         actionButton = binding.floatingButton;
+        swipeRefreshLayout = binding.swipeContainer;
 
         return view;
     }
@@ -51,6 +55,27 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(new ListAdapter(getContext(), ApplicationState.getInstance(requireContext()).getCashflows()));
         actionButton.setOnClickListener(e -> Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_navigation_adding));
+
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            ApplicationState.getInstance(requireContext()).syncCashflows(result -> {
+                swipeRefreshLayout.setRefreshing(false);
+
+                if (!result.wasSuccessful()) {
+                    return;
+                }
+
+                ListAdapter adapter = (ListAdapter) recyclerView.getAdapter();
+
+                requireActivity().runOnUiThread(() -> {
+                    if (null == adapter) {
+                        return;
+                    }
+
+                    adapter.clear();
+                    adapter.addAll(new ArrayList<>(result.getCashflows()));
+                });
+            });
+        });
     }
 
     @Override
