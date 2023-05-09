@@ -110,7 +110,7 @@ How the Design Model Elements Contribute to the Functionality:
 
 3. Backend API: Django's backend authentication system is accessed through the backend API. The authentication and authorization process sends the user's login credentials to the appropriate backend API endpoint for further processing.
 
-4. Message Passing: The message passing mechanism between the user interface process and the authentication and authorization process is essential for the login functionality to work. The user interface process sends the user's login credentials to the authentication and authorization process, which then sends a message back allowing access to the app's functionality.
+4. Message Passing: The message passing mechanism between the user interface process and the authentication and authorization process is essential for the login functionality to work. The application system process sends the user's login credentials to the authentication and authorization process, which then sends a message back allowing access to the app's functionality.
 
 In conclusion, these design model elements work together to verify the user's credentials and allow access to the app's functionality.
 
