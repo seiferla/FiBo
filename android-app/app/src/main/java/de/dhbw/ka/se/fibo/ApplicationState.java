@@ -169,6 +169,8 @@ public class ApplicationState {
     private void syncCashflows() {
         Response.Listener<CashflowListResponse[]> onSuccess = response -> {
 
+            syncCategories(response);
+
             Log.v(TAG, Arrays.toString(response));
         };
         Response.ErrorListener onError = error -> {
@@ -201,7 +203,43 @@ public class ApplicationState {
         requestQueue.addToRequestQueue(jsonRequest);
     }
 
+    private void syncCategories(CashflowListResponse[] cashflowResponse) {
 
+        Response.Listener<CategoryListResponse[]> onSuccess = categoryResponse -> {
+
+            Log.v(TAG, Arrays.toString(categoryResponse));
+        };
+        Response.ErrorListener onError = error -> {
+            if (error.networkResponse != null) {
+                switch (error.networkResponse.statusCode) {
+                    case 401:
+                        Log.e(TAG, "Unauthorized");
+                        break;
+                    case 500:
+                        Log.e(TAG, "Internal Server Error");
+                        break;
+                    default:
+                        break;
+                }
+
+                Log.e(TAG, String.valueOf(error));
+            } else {
+                Log.e(TAG, String.valueOf(error));
+            }
+        };
+        String url = "/categories/";
+        JsonRequest<CategoryListResponse[]> jsonRequest = createAPIJSONRequest(CategoryListResponse[].class,url,
+                Request.Method.GET,
+                null,
+                onSuccess,
+                onError,
+                this.getAccessToken());
+
+        SharedVolleyRequestQueue requestQueue = SharedVolleyRequestQueue.getInstance(this.context);
+        requestQueue.addToRequestQueue(jsonRequest);
+
+
+    }
 
 
     @VisibleForTesting
