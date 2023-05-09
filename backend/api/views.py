@@ -1,5 +1,6 @@
 from django.http import JsonResponse
 from rest_framework.response import Response
+from rest_framework.request import Request
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.views import APIView
@@ -46,7 +47,8 @@ class RegisterUser(APIView):
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
         # Note that username and email are the same
-        user = FiboUser.objects.create_user(username=email, email=email, password=password)
+        user = FiboUser.objects.create_user(
+            username=email, email=email, password=password)
         default_account = Account.objects.create(name=email)
         user.account.add(default_account)
 
@@ -64,9 +66,11 @@ class CashflowsView(APIView):
             cashflow_type = request.data['type']
             overall_value = request.data['overallValue']
             timestamp = request.data['timestamp']
-            category, _ = Category.objects.get_or_create(name=request.data['category'])
+            category, _ = Category.objects.get_or_create(
+                name=request.data['category'])
             place = request.data['place']
-            place_address, _ = Place.objects.get_or_create(address=place['address'], name=place['name'])
+            place_address, _ = Place.objects.get_or_create(
+                address=place['address'], name=place['name'])
         except:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -88,12 +92,30 @@ class CashflowsView(APIView):
         return JsonResponse({'success': True, 'cashflow_id': cashflow.id, 'creation_date': cashflow.created},
                             status=status.HTTP_201_CREATED)
 
-    def get(self, request, cashflow_id):
-        try:
-            cashflow = Cashflow.objects.get(id=cashflow_id)
-        except:
-            return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
-        serializer = CashflowSerializer(cashflow, many=False)
+    def get(self, request: Request, cashflow_id=None):
+        user = FiboUser.objects.get(email=request.user.email)
+
+        returned_data = None
+        returns_list = None
+
+        if cashflow_id is None:
+            try:
+                returned_data = Cashflow.objects.filter(
+                    account__in=user.account.all())
+                returns_list = True
+            except Exception as e:
+                print(e)
+                return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            try:
+                returned_data = Cashflow.objects.get(
+                    id=cashflow_id, account__in=user.account.all())
+                returns_list = False
+            except Exception as e:
+                print(e)
+                return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+
+        serializer = CashflowSerializer(returned_data, many=returns_list)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def delete(self, _, cashflow_id):
@@ -109,9 +131,11 @@ class CashflowsView(APIView):
             cashflow = Cashflow.objects.get(id=cashflow_id)
 
             cashflow.overall_value = request.data['overallValue']
-            cashflow.category, _ = Category.objects.get_or_create(name=request.data['category'])
+            cashflow.category, _ = Category.objects.get_or_create(
+                name=request.data['category'])
             place = request.data['place']
-            cashflow.place, _ = Place.objects.get_or_create(address=place['address'], name=place['name'])
+            cashflow.place, _ = Place.objects.get_or_create(
+                address=place['address'], name=place['name'])
             cashflow.updated = datetime.now()
             cashflow_type = request.data['type']
         except:
@@ -132,7 +156,8 @@ class PlaceView(APIView):
 
     def post(self, request):
         try:
-            place = Place.objects.create(address=request.data['address'], name=request.data['name'])
+            place = Place.objects.create(
+                address=request.data['address'], name=request.data['name'])
         except:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -151,20 +176,38 @@ class PlaceView(APIView):
 class CategoryView(APIView):
 
     def post(self, request):
+        user = FiboUser.objects.get(email=request.user.email)
+
         try:
-            category = Category.objects.create(name=request.POST['name'])
+            category = Category.objects.create(
+                name=request.POST['name'], account=user.account.first())
         except:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
         return JsonResponse({'success': True, 'category_id': category.id}, status=status.HTTP_201_CREATED)
 
     def get(self, request):
-        try:
-            category = Category.objects.get(name=request.GET['name'])
-        except:
-            return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+        user = FiboUser.objects.get(email=request.user.email)
 
-        serializer = CategorySerializer(category, many=False)
+        returned_data = None
+        returns_list = None
+
+        if 'name' in request.GET:
+            try:
+                returned_data = Category.objects.get(
+                    name=request.GET['name'], account__in=user.account.all())
+                returns_list = False
+            except Exception:
+                return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            try:
+                returned_data = Category.objects.filter(
+                    account__in=user.account.all())
+                returns_list = True
+            except Exception:
+                return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+
+        serializer = CategorySerializer(returned_data, many=returns_list)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
