@@ -185,6 +185,7 @@ public class SettingsFragmentTest {
         onView(withId(R.id.login_layout))
                 .check(matches(isDisplayed()));
 
+        // Check that clicking back does not navigate to settings fragment
         Espresso.pressBackUnconditionally();
         assertEquals(Lifecycle.State.DESTROYED, activityScenarioRule.getScenario().getState());
     }
