@@ -148,9 +148,9 @@ It is not only concerned to provide interfaces for multiple users, but also to s
 
 Significant parts as well of their technical names are:
 
-- Registering of users (RegisterView)
+- Registration of users (RegisterView)
 - Logging in of users (TokenObtainPairView)
-- Authenticating of users (TokenRefreshView)
+- Authentication of users (TokenRefreshView)
 - Saving, updating as well as deleting cashflows (CashflowsView)
 - In the future, the automatic extraction of receipts' data (tbd)
 
