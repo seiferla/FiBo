@@ -115,7 +115,7 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
                 .map(Cashflow::getCategory)
                 .collect(Collectors.toSet()) // make sure we have only one occurrence of each category
                 .stream() // then sort by localized name of the category
-                .sorted(Comparator.comparing(o -> o.getName()))
+                .sorted(Comparator.comparing(Category::getName))
                 .collect(Collectors.toList());
     }
 
