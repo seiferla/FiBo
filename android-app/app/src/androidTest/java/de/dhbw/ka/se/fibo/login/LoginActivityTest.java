@@ -7,14 +7,17 @@ import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static de.dhbw.ka.se.fibo.TestMatchers.hasTextInputLayoutErrorText;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.EditText;
 
 import androidx.lifecycle.Lifecycle;
 import androidx.test.core.app.ActivityScenario;
@@ -95,7 +98,6 @@ public class LoginActivityTest {
 
     @Test
     public void testLoginButtonClick() {
-
         onView(withId(R.id.login_button))
                 .perform(click());
 
@@ -104,12 +106,10 @@ public class LoginActivityTest {
 
         onView(withId(R.id.login_password_layer))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_password_field_empty))));
-
     }
 
     @Test
     public void testEmailInput() {
-
         onView(withId(R.id.login_email))
                 .perform(typeText("some@Email.de"), closeSoftKeyboard());
 
@@ -118,12 +118,10 @@ public class LoginActivityTest {
 
         onView(withId(R.id.login_password_layer))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_password_field_empty))));
-
     }
 
     @Test
     public void testPasswordWithoutInput() {
-
         onView(withId(R.id.login_password))
                 .perform(typeText(""), closeSoftKeyboard());
 
@@ -136,12 +134,10 @@ public class LoginActivityTest {
 
         onView(withId(R.id.login_email_layer))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_email_field))));
-
     }
 
     @Test
     public void testPasswordWithInput() {
-
         onView(withId(R.id.login_password))
                 .perform(typeText("AsdfJklo1.2"), closeSoftKeyboard());
 
@@ -150,12 +146,10 @@ public class LoginActivityTest {
 
         onView(withId(R.id.login_email_layer))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_email_field))));
-
     }
 
     @Test
     public void testValidInput() {
-
         onView(withId(R.id.login_email))
                 .perform(typeText("test"), closeSoftKeyboard());
 
@@ -170,10 +164,29 @@ public class LoginActivityTest {
 
         onView(withId(R.id.login_password_layer))
                 .check(matches(not(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_password_field_empty)))));
-
-
     }
 
+    @Test
+    public void testPasswordVisibilityToggle() {
+        onView(withId(R.id.login_password))
+                .perform(typeText("testPassword"), closeSoftKeyboard());
+
+        // tests that the password is not readable
+        activityScenarioRule.getScenario().onActivity(activity -> {
+            EditText passwordFieldText = activity.findViewById(R.id.login_password);
+            assertNotEquals("testPassword", passwordFieldText.getLayout().getText().toString());
+        });
+
+        // click on the visibility toggle
+        onView(withContentDescription("password_toggle"))
+                .perform(click());
+
+        // tests that the password is readable
+        activityScenarioRule.getScenario().onActivity(activity -> {
+            EditText passwordFieldText = activity.findViewById(R.id.login_password);
+            assertEquals("testPassword", passwordFieldText.getLayout().getText().toString());
+        });
+    }
 
     @Test
     public void testHttpRequestWithValidCredentials() throws InterruptedException {
