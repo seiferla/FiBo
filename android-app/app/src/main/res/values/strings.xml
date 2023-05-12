@@ -36,7 +36,12 @@
     <string name="adding_notes_format">Name, Preis, (Menge);</string>
     <string name="error_message_password_field_empty">Passwortfeld ist leer</string>
     <string name="error_message_email_field">Emailfeld ist leer</string>
-
+    <string name="error_message_store_field">Gebe ein Geschäft an</string>
+    <string name="error_message_source_field">Gebe eine Quelle an</string>
+    <string name="error_message_amount_field">Gebe einen Betrag an</string>
+    <string name="error_message_date_field">Gebe ein Datum an</string>
+    <string name="error_message_category_field">Gebe eine Kategorie an</string>
+    <string name="error_message_address_field">Gebe eine Addresse an</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris

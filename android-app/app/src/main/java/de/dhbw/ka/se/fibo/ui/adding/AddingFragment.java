@@ -19,6 +19,7 @@ import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 
 import java.math.BigDecimal;
@@ -30,8 +31,10 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -43,6 +46,7 @@ import de.dhbw.ka.se.fibo.models.CashflowType;
 import de.dhbw.ka.se.fibo.models.Category;
 import de.dhbw.ka.se.fibo.models.Item;
 import de.dhbw.ka.se.fibo.models.Place;
+import de.dhbw.ka.se.fibo.utils.ActivityUtils;
 
 public class AddingFragment extends Fragment {
 
@@ -53,6 +57,11 @@ public class AddingFragment extends Fragment {
     private TextInputEditText amount;
     private TextInputEditText dateText;
     private MaterialAutoCompleteTextView categoriesDropdown;
+    private TextInputLayout storeLayout;
+    private TextInputLayout amountLayout;
+    private TextInputLayout dateTextLayout;
+    private TextInputLayout categoriesDropdownLayout;
+    private TextInputLayout addressLayout;
     private MaterialButton cancelButton;
     private MaterialButton okayButton;
     private TabLayout tabLayout;
@@ -78,6 +87,12 @@ public class AddingFragment extends Fragment {
         tabLayout = binding.tabLayout;
         address = binding.addressText;
         notes = binding.notesMultiLine;
+
+        storeLayout = binding.storeTextLayout;
+        amountLayout = binding.amountLayout;
+        dateTextLayout = binding.dateLayout;
+        addressLayout = binding.addressTextLayout;
+        categoriesDropdownLayout = binding.categoryLayout;
 
         return view;
     }
@@ -150,16 +165,13 @@ public class AddingFragment extends Fragment {
     }
 
     private Cashflow createCashFlow() {
-        boolean isRequiredDataPresent = false;
+        boolean isRequiredDataPresent = checkForRequiredData();
         Category category;
         BigDecimal value;
         LocalDateTime date;
         Place place;
-        try {
-            isRequiredDataPresent = checkForRequiredData();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+
 
         if (isRequiredDataPresent) {
             List<Category> collect = Arrays.stream(Category.values()).filter(currentType -> {
@@ -198,26 +210,18 @@ public class AddingFragment extends Fragment {
     }
 
     private boolean checkForRequiredData() throws IllegalArgumentException {
-
-        if (null == store.getText()
-                | store.getText().toString().trim().isEmpty()) {
-            throw new IllegalArgumentException("Store must be set");
-        } else if (null == amount.getText()
-                | amount.getText().toString().trim().isEmpty()) {
-            throw new IllegalArgumentException("Amount must be set");
-        } else if (null == dateText.getText()
-                | dateText.getText().toString().trim().isEmpty()) {
-            throw new IllegalArgumentException("Date must be set");
-        } else if (null == categoriesDropdown.getText()
-                | categoriesDropdown.getText().toString().trim().isEmpty()) {
-            throw new IllegalArgumentException("Category must be set");
-        } else if (null == address.getText()
-                | address.getText().toString().trim().isEmpty()) {
-            throw new IllegalArgumentException("Address must be set");
+        Map<TextInputLayout, String>  fieldsToBeChecked = new HashMap<>();
+        if (newCashFlowType == CashflowType.EXPENSE) {
+            fieldsToBeChecked.put(storeLayout, getString(R.string.error_message_store_field));
+        } else {
+            fieldsToBeChecked.put(storeLayout, getString(R.string.error_message_source_field));
         }
-        //others are currently not stored in our database or not required
+        fieldsToBeChecked.put(amountLayout, getString(R.string.error_message_amount_field));
+        fieldsToBeChecked.put(dateTextLayout, getString(R.string.error_message_date_field));
+        fieldsToBeChecked.put(categoriesDropdownLayout, getString(R.string.error_message_category_field));
+        fieldsToBeChecked.put(addressLayout, getString(R.string.error_message_address_field));
 
-        return true;
+        return ActivityUtils.checkValidInput(fieldsToBeChecked);
     }
 
     private void navigateToHome() {
