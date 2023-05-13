@@ -24,6 +24,9 @@
 
     </com.google.android.material.tabs.TabLayout>
 
+    <!-- be careful when adding too many nested layouts. It might happen that espresso is not able
+    to detect everything correctly and stays in an idling after loading this file -->
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
