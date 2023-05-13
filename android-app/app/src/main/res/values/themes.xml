@@ -1,67 +1,4 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-<!--    &lt;!&ndash; Base application theme. &ndash;&gt;-->
-<!--    <style name="Theme.FiBo" parent="Theme.Material3.DayNight">-->
-<!--        &lt;!&ndash; Primary brand color. &ndash;&gt;-->
-<!--        &lt;!&ndash;        <item name="colorPrimary">#D4E3FF</item>&ndash;&gt;-->
-<!--        <item name="colorPrimary">@color/hint_text_blue</item>-->
-<!--        &lt;!&ndash;        <item name="colorPrimaryVariant">#1E92EA</item>&ndash;&gt;-->
-<!--        <item name="colorPrimaryVariant">@color/light_primary</item>-->
-<!--        <item name="colorOnPrimary">@color/white</item>-->
-<!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
-<!--        <item name="colorSecondary">@color/teal_200</item>-->
-<!--        <item name="colorSecondaryVariant">@color/teal_700</item>-->
-<!--        <item name="colorOnSecondary">@color/black</item>-->
-<!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
-<!--        &lt;!&ndash;        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>&ndash;&gt;-->
-<!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
-<!--    </style>-->
-
-<!--    <style name="Style.FiBo.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">-->
-<!--        <item name="android:color">?attr/colorPrimaryVariant</item>-->
-<!--    </style>-->
-
-<!--    <style name="Style.FiBo.Dropdown" parent="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">-->
-<!--        <item name="boxStrokeWidth">1dp</item>-->
-<!--        <item name="boxBackgroundColor">@color/application_background</item>-->
-<!--    </style>-->
-
-<!--    <style name="Style.FiBo.FAB.Primary" parent="Widget.Material3.FloatingActionButton.Primary">-->
-<!--        <item name="backgroundTint">?attr/colorPrimary</item>-->
-<!--        <item name="tint">?attr/colorOnPrimary</item>-->
-<!--    </style>-->
-
-    <style name="Style.FiBo.CardView.Filled" parent="Widget.Material3.CardView.Outlined">
-        <item name="strokeColor">@color/field_stroke_color</item>
-        <item name="strokeWidth">1dp</item>
-    </style>
-
-
-<!--    <style name="Theme.FiBo.TabLayout" parent="Widget.Design.TabLayout">-->
-<!--        <item name="tabTextColor">?attr/colorPrimary</item>-->
-<!--        <item name="tabIndicatorColor">?attr/colorPrimary</item>-->
-<!--    </style>-->
-
-    <style name="Theme.FiBo.Button.WideButton" parent="Widget.Material3.Button">
-        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.ExtraSmall</item>
-        <item name="android:textSize">@dimen/standardTextSize</item>
-        <item name="android:paddingTop">@dimen/largeButtonVerticalPadding</item>
-        <item name="android:paddingBottom">@dimen/largeButtonVerticalPadding</item>
-    </style>
-
-<!--    <style name="Theme.FiBo.Button.DeleteUserButton" parent="Widget.Material3.Button">-->
-<!--        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.ExtraSmall</item>-->
-<!--        <item name="android:textSize">@dimen/standardTextSize</item>-->
-<!--        <item name="android:paddingTop">18dp</item>-->
-<!--        <item name="android:paddingBottom">18dp</item>-->
-<!--        <item name="cornerRadius">10dp</item>-->
-<!--        &lt;!&ndash; TODO: find right background color for delete user button &ndash;&gt;-->
-<!--        <item name="backgroundTint">@color/top_bar_placeholder</item>-->
-<!--        <item name="android:textColor">@color/delete_red</item>-->
-<!--        <item name="android:textAlignment">textStart</item>-->
-<!--        <item name="android:layout_marginStart">5dp</item>-->
-<!--        <item name="android:layout_marginEnd">5dp</item>-->
-<!--    </style>-->
-
 
     <style name="AppTheme" parent="Theme.Material3.Light">
         <item name="colorPrimary">@color/md_theme_light_primary</item>
@@ -90,5 +27,11 @@
         <item name="colorOnSurfaceInverse">@color/md_theme_light_inverseOnSurface</item>
         <item name="colorSurfaceInverse">@color/md_theme_light_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_light_inversePrimary</item>
+    </style>
+
+
+    <style name="Style.FiBo.CardView.Filled" parent="Widget.Material3.CardView.Outlined">
+        <item name="strokeColor">@color/fibo_stroke_color</item>
+        <item name="strokeWidth">1dp</item>
     </style>
 </resources>

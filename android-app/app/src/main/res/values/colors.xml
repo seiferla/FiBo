@@ -1,46 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_500">#FF6200EE</color>
-<!--    <color name="teal_200">#FF03DAC5</color>-->
-<!--    <color name="teal_700">#FF018786</color>-->
-    <color name="black">#12213F</color>
-    <color name="white">#FFFFFFFF</color>
-
-    <color name="orange">#f56f50</color>
-    <color name="purple">#9f418e</color>
-    <color name="green">#568c5b</color>
-    <color name="blue">#5ba6a6</color>
-    <color name="pink">#ff439f</color>
-    <color name="yellow">#ffda90</color>
-    <color name="red">#e54f6e</color>
-    <color name="green1">#01786f</color>
-    <color name="light_purple">#ad92ad</color>
-<!--    <color name="delete_red">#DC143C</color>-->
-
-
-    <color name="income">#59B222</color>
-    <color name="expense">#D8315B</color>
-<!--    <color name="lightBackground">#FFFBFE</color>-->
-    <color name="mainTextColor">#1C1B1F</color>
-<!--    &lt;!&ndash;    <color name="initial_background">#6750A4</color>&ndash;&gt;-->
-<!--    <color name="iconColor">#FF000000</color>-->
-
-<!--    &lt;!&ndash;  <color name="mockup_purple">#6750A4</color>&ndash;&gt;-->
-<!--    <color name="hint_text_blue">#12598F</color>-->
-<!--    <color name="light_primary">#C8E4FA</color>-->
-<!--    <color name="application_background">#FEFAFD</color>-->
-    <color name="field_stroke_color">#CCCCCC</color>
-
-<!--    <color name="top_bar_placeholder">#ebedf4</color>-->
-
-
-
     <color name="seed">#12598F</color>
     <color name="md_theme_light_primary">#0062A0</color>
     <color name="md_theme_light_onPrimary">#FFFFFF</color>
     <color name="md_theme_light_primaryContainer">#D0E4FF</color>
     <color name="md_theme_light_onPrimaryContainer">#001D35</color>
-    <color name="md_theme_light_secondary">#526070</color>
+    <color name="md_theme_light_secondary">@color/md_theme_light_primary</color> <!-- overwritten to primary so that it works with MaterialAlertDialogBuilder Checkboxes-->
     <color name="md_theme_light_onSecondary">#FFFFFF</color>
     <color name="md_theme_light_secondaryContainer">#D6E4F7</color>
     <color name="md_theme_light_onSecondaryContainer">#0F1D2A</color>
@@ -96,4 +61,25 @@
     <color name="md_theme_dark_surfaceTint">#9CCAFF</color>
     <color name="md_theme_dark_outlineVariant">#42474E</color>
     <color name="md_theme_dark_scrim">#000000</color>
+
+
+    <!-- Categories -->
+    <color name="orange">#f56f50</color>
+    <color name="purple">#9f418e</color>
+    <color name="green">#568c5b</color>
+    <color name="blue">#5ba6a6</color>
+    <color name="pink">#ff439f</color>
+    <color name="yellow">#ffda90</color>
+    <color name="red">#e54f6e</color>
+    <color name="green1">#01786f</color>
+    <color name="light_purple">#ad92ad</color>
+    <color name="dark_purple">#FF6200EE</color>
+
+    <!-- Custom Colors -->
+    <color name="income">#0FA128</color>
+    <color name="expense">#c02030</color>
+    <color name="black">#12213F</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="mainTextColor">#1C1B1F</color>
+    <color name="fibo_stroke_color">#CCCCCC</color>
 </resources>
