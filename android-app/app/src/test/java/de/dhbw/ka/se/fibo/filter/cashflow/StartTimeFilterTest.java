@@ -20,17 +20,17 @@ public class StartTimeFilterTest {
         LocalDate startTime = LocalDate.of(2023, 3, 22);
         Predicate<Cashflow> startTimeFilter = new StartTimeFilter(startTime).getPredicate();
 
-        Cashflow expenseAfterStartTime = new Cashflow(Category.RESTAURANT,
+        Cashflow expenseAfterStartTime = new Cashflow(new Category(2, "Essen", 2),
                 CashflowType.EXPENSE,
                 BigDecimal.valueOf(10),
                 LocalDateTime.of(2023, 5, 23, 14, 23),
-                new Place("Oxford", "Adidas Straße"));
+                new Place(1, "Oxford", "Adidas Straße"));
 
-        Cashflow expenseBeforeStartTime = new Cashflow(Category.CLOTHES,
+        Cashflow expenseBeforeStartTime = new Cashflow(new Category(1, "Kleidung", 2),
                 CashflowType.EXPENSE,
                 BigDecimal.valueOf(10),
                 LocalDateTime.of(2023, 2, 21, 14, 26),
-                new Place("Adidas", "Zara Straße"));
+                new Place(2, "Adidas", "Zara Straße"));
 
         assertTrue(startTimeFilter.test(expenseAfterStartTime));
         assertFalse(startTimeFilter.test(expenseBeforeStartTime));

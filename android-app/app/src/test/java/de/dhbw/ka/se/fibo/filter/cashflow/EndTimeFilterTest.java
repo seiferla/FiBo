@@ -20,17 +20,17 @@ public class EndTimeFilterTest {
         LocalDate endTime = LocalDate.of(2023, 4, 22);
         Predicate<Cashflow> endTimeFilter = new EndTimeFilter(endTime).getPredicate();
 
-        Cashflow expenseBeforeEndTime = new Cashflow(Category.CLOTHES,
+        Cashflow expenseBeforeEndTime = new Cashflow(new Category(1, "Kleidung", 2),
                 CashflowType.EXPENSE,
                 BigDecimal.valueOf(10),
                 LocalDateTime.of(2023, 4, 21, 14, 26),
-                new Place("Adidas", "Zara Straße"));
+                new Place(1, "Adidas", "Zara Straße"));
 
-        Cashflow expenseAfterEndTime = new Cashflow(Category.RESTAURANT,
+        Cashflow expenseAfterEndTime = new Cashflow(new Category(2, "Essen", 2),
                 CashflowType.EXPENSE,
                 BigDecimal.valueOf(10),
                 LocalDateTime.of(2023, 5, 23, 14, 23),
-                new Place("Oxford", "Adidas Straße"));
+                new Place(2, "Oxford", "Adidas Straße"));
 
         assertTrue(endTimeFilter.test(expenseBeforeEndTime));
         assertFalse(endTimeFilter.test(expenseAfterEndTime));

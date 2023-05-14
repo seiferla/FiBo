@@ -69,6 +69,12 @@ public class Category implements Comparable<Category> {
 
     @Override
     public int compareTo(Category o) {
-        return getName().compareTo(o.getName());
+        int result = Integer.compare(getId(), o.getId());
+
+        if (0 == result) {
+            result = getName().compareTo(o.getName());
+        }
+
+        return result;
     }
 }

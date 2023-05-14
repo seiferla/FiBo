@@ -19,11 +19,11 @@ public class ExpenseFilterTest {
     public void acceptExpensesTest() {
         Predicate<Cashflow> expenseFilter = new ExpenseFilter().getPredicate();
 
-        Cashflow expense = new Cashflow(Category.CLOTHES,
+        Cashflow expense = new Cashflow(new Category(1, "Kleidung", 2),
                 CashflowType.EXPENSE,
                 BigDecimal.valueOf(10),
                 LocalDateTime.of(2023, 4, 22, 14, 26),
-                new Place("Adidas", "Zara Straße"));
+                new Place(1, "Adidas", "Zara Straße"));
 
         assertTrue(expenseFilter.test(expense));
     }
@@ -32,11 +32,11 @@ public class ExpenseFilterTest {
     public void rejectIncomeTest() {
         Predicate<Cashflow> expenseFilter = new ExpenseFilter().getPredicate();
 
-        Cashflow expense = new Cashflow(Category.CLOTHES,
+        Cashflow expense = new Cashflow(new Category(1, "Kleidung", 2),
                 CashflowType.INCOME,
                 BigDecimal.valueOf(10),
                 LocalDateTime.of(2023, 4, 22, 14, 26),
-                new Place("Adidas", "Zara Straße"));
+                new Place(1, "Adidas", "Zara Straße"));
 
         assertFalse(expenseFilter.test(expense));
     }

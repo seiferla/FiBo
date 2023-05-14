@@ -1,7 +1,5 @@
 package de.dhbw.ka.se.fibo.models;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDateTime;
@@ -85,9 +83,19 @@ public class Cashflow implements Comparable<Cashflow> {
     public int compareTo(Cashflow other) {
         // It is a Public API that it is sorted DESC
         int result = other.getTimestamp().compareTo(getTimestamp());
-        if(0 == result){
-            result = -1;
+
+        if (0 == result) {
+            result = other.getOverallValue().compareTo(getOverallValue());
         }
+
+        if (0 == result) {
+            result = other.getPlace().compareTo(getPlace());
+        }
+
+        if (0 == result) {
+            result = other.getCategory().compareTo(getCategory());
+        }
+
         return result;
     }
 

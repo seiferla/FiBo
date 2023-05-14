@@ -1,5 +1,7 @@
 package de.dhbw.ka.se.fibo.utils.backend;
 
+import static de.dhbw.ka.se.fibo.utils.ActivityUtils.shouldContactBackend;
+
 import android.content.Context;
 import android.util.Log;
 
@@ -16,10 +18,12 @@ import java.util.concurrent.CountDownLatch;
 import java.util.function.Consumer;
 
 import de.dhbw.ka.se.fibo.ApplicationState;
+import de.dhbw.ka.se.fibo.BuildConfig;
 import de.dhbw.ka.se.fibo.SharedVolleyRequestQueue;
 import de.dhbw.ka.se.fibo.models.Cashflow;
 import de.dhbw.ka.se.fibo.models.Category;
 import de.dhbw.ka.se.fibo.models.Place;
+import de.dhbw.ka.se.fibo.utils.ActivityUtils;
 
 /**
  * Factory that pulls all data from the backend and hands them over to interested consumers.
@@ -47,6 +51,10 @@ public class BackendSynchronizationFactory {
     }
 
     public void startSynchronization() throws IllegalStateException {
+        if (!shouldContactBackend()) {
+            throw new IllegalStateException("backend synchronization is disabled");
+        }
+
         synchronized (this) {
             if (wasSyncStarted) {
                 throw new IllegalStateException("cannot start synchronization if already running!");
@@ -81,6 +89,7 @@ public class BackendSynchronizationFactory {
                 return;
             }
 
+            // handle responses
             BackendSynchronizationResult result = mergeResponses(cashflowsRequest.getResponse(), categoriesRequest.getResponse(), placesRequest.getResponse());
 
             propagateResult(result);

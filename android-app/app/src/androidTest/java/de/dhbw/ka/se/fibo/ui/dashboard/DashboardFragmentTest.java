@@ -30,7 +30,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.math.BigDecimal;
+import java.sql.Array;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -56,7 +60,7 @@ public class DashboardFragmentTest {
 
     @Before
     public void beforeEach() {
-        ApplicationState.getInstance(appContext).populateTestData();
+        ApplicationState.getInstance(appContext).setCashflows(new TreeSet<>());
     }
 
     @Test
@@ -68,6 +72,14 @@ public class DashboardFragmentTest {
 
     @Test
     public void categoryFilterTestNotEveryCategorySelected() {
+        List<Cashflow> cashflows = new ArrayList<>();
+        cashflows.add(new Cashflow(new Category(1, "first category", 1), CashflowType.EXPENSE, BigDecimal.valueOf(10), LocalDateTime.now().minusDays(1), new Place(0, "kaufland", "Kaufplatz")));
+        cashflows.add(new Cashflow(new Category(2, "xxxxxxxx selected", 1), CashflowType.EXPENSE, BigDecimal.valueOf(5.5), LocalDateTime.now().minusDays(2), new Place(0, "Fabian", "In da club street")));
+
+        for (Cashflow cashflow : cashflows) {
+            ApplicationState.getInstance(appContext).addCashflow(cashflow);
+        }
+
         // Change to the Dashboard view
         onView(withId(R.id.navigation_dashboard))
                 .perform(click())
@@ -88,7 +100,7 @@ public class DashboardFragmentTest {
                 .check(matches(isDisplayed()));
 
         // Gets the entry that belongs to Health and performs a click on it gets deselected
-        onView(allOf(withClassName(Matchers.equalTo(AppCompatCheckedTextView.class.getName())), withText(R.string.HEALTH)))
+        onView(allOf(withClassName(Matchers.equalTo(AppCompatCheckedTextView.class.getName())), withText("first category")))
                 .perform(click());
 
         // Click on apply, to apply the deselection of Health
@@ -113,8 +125,8 @@ public class DashboardFragmentTest {
 
         // Checks that there are no entries in the PieChart
         activityScenarioRule.getScenario().onActivity(activity -> {
-            int newPieEntryCount = ((PieChart) activity.findViewById(R.id.dashboard_pieChart)).getData().getDataSet().getEntryCount();
-            assertEquals(newPieEntryCount, 0);
+            int pieChartEntries = ((PieChart) activity.findViewById(R.id.dashboard_pieChart)).getData().getDataSet().getEntryCount();
+            assertEquals(pieChartEntries, 0);
         });
 
         // Click on the Filter button
@@ -131,7 +143,7 @@ public class DashboardFragmentTest {
     }
 
     @Test
-    public void categoryFilterTestWithMultipleCashflowsForeSameCategory() {
+    public void categoryFilterTestWithMultipleCashflowsForSameCategory() {
         // Remove all Cashflows
         ApplicationState.getInstance(appContext).setCashflows(new TreeSet<>());
 
@@ -139,11 +151,11 @@ public class DashboardFragmentTest {
         Cashflow[] cashflows = new Cashflow[3];
 
         for (int i = 0; i < cashflows.length; i++) {
-            cashflows[i] = new Cashflow(Category.CLOTHES,
+            cashflows[i] = new Cashflow(new Category(1, "Kleidung", 2),
                     CashflowType.EXPENSE,
                     BigDecimal.valueOf(10 + i),
                     LocalDateTime.of(2023, 4, 22, 14, 26 + i),
-                    new Place("Adidas" + i, "Zara Straße"));
+                    new Place(i, "Adidas" + i, "Zara Straße"));
         }
 
         // Add Cashflows to the ApplicationContext
@@ -174,8 +186,8 @@ public class DashboardFragmentTest {
 
         // Checks if there is only one element in the Pie Chart
         activityScenarioRule.getScenario().onActivity(activity -> {
-            int newPieEntryCount = ((PieChart) activity.findViewById(R.id.dashboard_pieChart)).getData().getDataSet().getEntryCount();
-            assertEquals(newPieEntryCount, 1);
+            int pieChartEntries = ((PieChart) activity.findViewById(R.id.dashboard_pieChart)).getData().getDataSet().getEntryCount();
+            assertEquals(pieChartEntries, 1);
         });
     }
 

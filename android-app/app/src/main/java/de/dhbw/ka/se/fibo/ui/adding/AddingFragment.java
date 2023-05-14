@@ -135,63 +135,60 @@ public class AddingFragment extends Fragment {
         cancelButton.setOnClickListener(e -> navigateToHome());
 
         okayButton.setOnClickListener(e -> {
-            Cashflow newCashFlow = createCashFlow();
-            if (null == newCashFlow) {
-                Toast.makeText(requireContext(), "Some required inputs are empty or wrong formatted", Toast.LENGTH_SHORT).show();
-            } else {
-                ApplicationState.getInstance(requireContext()).addCashflow(newCashFlow);
-                navigateToHome();
+            Cashflow newCashflow = createCashflow();
+            if (null == newCashflow) {
+                Toast.makeText(requireContext(), R.string.invalid_input_error, Toast.LENGTH_SHORT).show();
+                return;
             }
 
+            ApplicationState.getInstance(requireContext()).addCashflow(newCashflow);
+            navigateToHome();
         });
     }
 
-    private Cashflow createCashFlow() {
-        boolean isRequiredDataPresent = false;
-        Category category;
-        BigDecimal value;
-        LocalDateTime date;
-        Place place;
+    private Cashflow createCashflow() {
         try {
-            isRequiredDataPresent = checkForRequiredData();
+            validateRequiredData();
         } catch (Exception e) {
             e.printStackTrace();
-        }
-
-        if (!isRequiredDataPresent) {
             return null;
         }
 
-        Category selectedCategory = ApplicationState.getInstance(requireContext()).getCategories().stream().filter(x -> x.getName().equals(getFieldValue(categoriesDropdown))).findFirst().get();
+        String categoryText = getFieldValue(categoriesDropdown);
 
-        value = BigDecimal.valueOf(Double.parseDouble(getFieldValue(amount)));
+        Category selectedCategory = ApplicationState.getInstance(requireContext()).getCategories()
+                .stream()
+                .filter(x -> x.getName().equals(categoryText))
+                .findFirst()
+                .orElseGet(() -> new Category(0, categoryText, 1)); // user created new category
 
-        place = new Place(0, getFieldValue(store), getFieldValue(address));
+        BigDecimal value = BigDecimal.valueOf(Double.parseDouble(getFieldValue(amount)));
+
+        Place place = new Place(0, getFieldValue(store), getFieldValue(address));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
 
-        date = LocalDate.parse(getFieldValue(dateText), formatter).atStartOfDay();
+        LocalDateTime date = LocalDate.parse(getFieldValue(dateText), formatter).atStartOfDay();
 
-        if (notes.getText().toString().trim().isEmpty()) {
+        String notesText = notes.getText().toString().trim();
+
+        if (notesText.isEmpty()) {
             return new Cashflow(selectedCategory, newCashFlowType, value, date, place);
-        } else {
-            try {
-                List<Item> items = createItemsFromNotes();
-                return new Cashflow(selectedCategory, newCashFlowType, value, date, place, items);
-            } catch (IllegalArgumentException e) {
-                e.printStackTrace();
-            }
-            return null;
         }
 
-
+        try {
+            List<Item> items = createItemsFromNotes(notesText);
+            return new Cashflow(selectedCategory, newCashFlowType, value, date, place, items);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     private String getFieldValue(TextView field) {
         return Objects.requireNonNull(field.getText()).toString();
     }
 
-    private boolean checkForRequiredData() throws IllegalArgumentException {
-
+    private void validateRequiredData() throws IllegalArgumentException {
         if (null == store.getText()
                 | store.getText().toString().trim().isEmpty()) {
             throw new IllegalArgumentException("Store must be set");
@@ -208,9 +205,8 @@ public class AddingFragment extends Fragment {
                 | address.getText().toString().trim().isEmpty()) {
             throw new IllegalArgumentException("Address must be set");
         }
-        //others are currently not stored in our database or not required
 
-        return true;
+        // others are currently not stored in our database or not required
     }
 
     private void navigateToHome() {
@@ -247,8 +243,8 @@ public class AddingFragment extends Fragment {
         });
     }
 
-    private ArrayList<Item> createItemsFromNotes() throws IllegalArgumentException {
-        String[] lines = notes.getText().toString().trim().split(";");
+    private ArrayList<Item> createItemsFromNotes(String notesText) throws IllegalArgumentException {
+        String[] lines = notesText.split(";");
         ArrayList<Item> result = new ArrayList<>();
         for (String s : lines) {
             String[] item = s.split(",");

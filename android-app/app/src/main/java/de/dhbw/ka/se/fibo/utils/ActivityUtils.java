@@ -14,6 +14,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import de.dhbw.ka.se.fibo.BuildConfig;
+
 /**
  * This class can be referenced from activities to use some shared methods
  */
@@ -99,5 +101,21 @@ public class ActivityUtils {
         }
     }
 
+    /**
+     * @return whether the app should strive to contact the backend or whether to run stand-alone
+     * @Generated
+     */
+    public static boolean shouldContactBackend() {
+        if (ActivityUtils.isEspressoTesting()) {
+            // always contact backend, as responses are mocked during UI tests
+            // and are part of the stuff that should be tested
+            return true;
+        }
+
+        // we use the debug switch to indicate whether the app should run
+        // stand-alone. This way, we don't need to have a Backend server set up during app
+        // development (i.e. debug mode enabled).
+        return !BuildConfig.DEBUG;
+    }
 
 }

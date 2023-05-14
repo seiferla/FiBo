@@ -55,12 +55,8 @@ public class ApplicationState {
         this.context = context;
 
         cashflows = new TreeSet<>();
-        populateTestData();
-    }
-
-    @VisibleForTesting
-    public void populateTestData() {
-        cashflows.clear();
+        categories = new TreeSet<>();
+        places = new TreeSet<>();
     }
 
     @VisibleForTesting
@@ -80,8 +76,10 @@ public class ApplicationState {
         return cashflows;
     }
 
-    public void addCashflow(Cashflow cashFlow) {
-        cashflows.add(cashFlow);
+    public void addCashflow(Cashflow cashflow) {
+        cashflows.add(cashflow);
+        categories.add(cashflow.getCategory());
+        places.add(cashflow.getPlace());
     }
 
     public SortedSet<Category> getCategories() {
