@@ -78,10 +78,10 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         LoginStrategy loginStrategy;
-        if (BuildConfig.DEBUG && !ActivityUtils.isEspressoTesting()) {
-            loginStrategy = new LoginStrategyLocal();
-        } else {
+        if (ActivityUtils.shouldContactBackend()) {
             loginStrategy = new LoginStrategyProduction();
+        } else {
+            loginStrategy = new LoginStrategyLocal();
         }
 
         String password = ActivityUtils.getTextInputLayoutFieldValue(loginPassword);

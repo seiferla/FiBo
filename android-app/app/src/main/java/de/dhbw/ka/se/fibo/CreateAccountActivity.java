@@ -137,10 +137,10 @@ public class CreateAccountActivity extends AppCompatActivity {
             successToast.show();
 
             LoginStrategy loginStrategy;
-            if (BuildConfig.DEBUG && !ActivityUtils.isEspressoTesting()) {
-                loginStrategy = new LoginStrategyLocal();
-            } else {
+            if (ActivityUtils.shouldContactBackend()) {
                 loginStrategy = new LoginStrategyProduction();
+            } else {
+                loginStrategy = new LoginStrategyLocal();
             }
 
             loginStrategy.authenticate(this, email, password);
