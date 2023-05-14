@@ -1,4 +1,4 @@
-# FiBo
+# FiBo ![code coverage score](https://codecov.io/gh/Cebox82/FiBo/branch/master/graph/badge.svg)
 
 ![fibo logo](/docs/fibo_logo.png)
 
