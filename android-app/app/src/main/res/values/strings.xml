@@ -117,5 +117,6 @@
     <string name="delete_user_confirmation_text">Bist du sicher, dass du dein Konto Löschen möchtest? Alle deine Daten werden damit gelöscht und du wirst keinen Zugriff mehr auf sie haben!</string>
     <string name="logout">Ausloggen</string>
     <string name="delete_user_confirm_button">Benutzer löschen</string>
-    <string name="cancle_button">Abbrechen</string>
+    <string name="cancel_button">Abbrechen</string>
+    <string name="account">Konto</string>
 </resources>
