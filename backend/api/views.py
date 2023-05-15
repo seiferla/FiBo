@@ -13,7 +13,7 @@ class GetUser(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request):
-        usermail = request.user.username
+        usermail = request.user.email
         user = FiboUser.objects.get(email=usermail)
         serializer = FiboUserSerializer(user, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -23,7 +23,7 @@ class DeleteUser(APIView):
     permission_classes = (IsAuthenticated,)
 
     def delete(self, request):
-        usermail = request.user.username
+        usermail = request.user.email
         user = FiboUser.objects.get(email=usermail)
         # All accounts assigned to the user are deleted as well
         # if there are other users for one account, then the account is not deleted
@@ -45,8 +45,7 @@ class RegisterUser(APIView):
         except:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Note that username and email are the same
-        user = FiboUser.objects.create_user(username=email, email=email, password=password)
+        user = FiboUser.objects.create_user(email=email, email=email, password=password)
         default_account = Account.objects.create(name=email)
         user.account.add(default_account)
 
@@ -184,8 +183,8 @@ class GetRoutes(APIView):
                 'Endpoint': '/users/login',
                 'method': 'POST',
                 'Token needed': 'false',
-                'body': {'username': '', 'password': ''},
-                'description': 'To log in, the username (is the same as email) and password specified during registration must be sent along. The method returns the Refresh and Access Token.'
+                'body': {'email': '', 'password': ''},
+                'description': 'To log in, the email and password specified during registration must be sent along. The method returns the Refresh and Access Token.'
             },
             {
                 'Endpoint': '/users/authenticate',
