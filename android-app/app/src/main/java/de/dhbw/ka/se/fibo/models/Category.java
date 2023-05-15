@@ -11,9 +11,7 @@ import de.dhbw.ka.se.fibo.R;
 
 
 public class Category implements Comparable<Category> {
-
     private static final List<Integer> COLOR_LIST = Arrays.asList(R.color.purple_500, R.color.teal_200, R.color.teal_700, R.color.black, R.color.white, R.color.orange, R.color.purple, R.color.green, R.color.blue, R.color.pink, R.color.yellow, R.color.red, R.color.green1, R.color.light_purple, R.color.delete_red);
-
     private int id;
     private String name;
     private int accountID;
