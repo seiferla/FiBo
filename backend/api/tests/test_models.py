@@ -67,6 +67,6 @@ class ModelsTestCase(TestCase):
 
     def test_fibo_user_creation(self):
         account = Account.objects.create(name="Test Account")
-        user = FiboUser.objects.create_user(username='test user', email='test@fibo.de', password='secure')
+        user = FiboUser.objects.create_user(email='test@fibo.de', password='secure')
         user.account.add(account)
         self.assertIsNotNone(user.account)
