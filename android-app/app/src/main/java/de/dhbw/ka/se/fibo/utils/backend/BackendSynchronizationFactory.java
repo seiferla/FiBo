@@ -5,8 +5,9 @@ import static de.dhbw.ka.se.fibo.utils.ActivityUtils.shouldContactBackend;
 import android.content.Context;
 import android.util.Log;
 
+import com.android.volley.VolleyError;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -18,12 +19,10 @@ import java.util.concurrent.CountDownLatch;
 import java.util.function.Consumer;
 
 import de.dhbw.ka.se.fibo.ApplicationState;
-import de.dhbw.ka.se.fibo.BuildConfig;
 import de.dhbw.ka.se.fibo.SharedVolleyRequestQueue;
 import de.dhbw.ka.se.fibo.models.Cashflow;
 import de.dhbw.ka.se.fibo.models.Category;
 import de.dhbw.ka.se.fibo.models.Place;
-import de.dhbw.ka.se.fibo.utils.ActivityUtils;
 
 /**
  * Factory that pulls all data from the backend and hands them over to interested consumers.
@@ -62,6 +61,8 @@ public class BackendSynchronizationFactory {
             wasSyncStarted = true;
         }
 
+        Log.i(BackendSynchronizationFactory.TAG, "Synchronization started");
+
         Optional<String> accessToken = ApplicationState.getInstance(context).getAccessToken();
         if (!accessToken.isPresent()) {
             throw new IllegalStateException("need to have an access token to sync!");
@@ -90,9 +91,12 @@ public class BackendSynchronizationFactory {
             }
 
             // handle responses
-            BackendSynchronizationResult result = mergeResponses(cashflowsRequest.getResponse(), categoriesRequest.getResponse(), placesRequest.getResponse());
-
-            propagateResult(result);
+            try {
+                BackendSynchronizationResult result = mergeResponses(cashflowsRequest.getResponse(), categoriesRequest.getResponse(), placesRequest.getResponse());
+                propagateResult(result);
+            } catch (VolleyError e) {
+                throw new RuntimeException(e);
+            }
         };
 
         // waiting for the latch is blocking, hence we run this on another thread
@@ -121,8 +125,6 @@ public class BackendSynchronizationFactory {
             newCashflowSet.add(cashflow);
         }
 
-        Log.i(TAG, "places = " + Arrays.toString(places));
-
         return buildResult(newCashflowSet, categoryLookupTable.values(), placesLookupTable.values());
     }
 
@@ -136,6 +138,8 @@ public class BackendSynchronizationFactory {
     }
 
     private void propagateResult(BackendSynchronizationResult result) {
+        Log.i(BackendSynchronizationFactory.TAG, "Synchronization finished, propagating result…");
+
         resultListeners.forEach(consumer -> consumer.accept(result));
     }
 

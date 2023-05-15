@@ -119,4 +119,7 @@
     <string name="delete_user_confirm_button">Benutzer löschen</string>
     <string name="cancel_button">Abbrechen</string>
     <string name="account">Konto</string>
+    <string name="list_refresh_in_progress">Wird aktualisiert …</string>
+    <string name="list_refresh_unsuccessful">Aktualisierung fehlgeschlagen. Versuche es später erneut!</string>
+    <string name="list_refresh_during_illegal_state">Eine Aktualisierung ist derzeit nicht möglich.</string>
 </resources>

@@ -42,7 +42,11 @@ public abstract class AbstractBackendListRequest<T> {
         return error;
     }
 
-    public T[] getResponse() {
+    public T[] getResponse() throws VolleyError {
+        if (null != error) {
+            throw error;
+        }
+
         return response;
     }
 

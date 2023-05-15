@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -57,24 +58,33 @@ public class HomeFragment extends Fragment {
         actionButton.setOnClickListener(e -> Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_navigation_adding));
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            ApplicationState.getInstance(requireContext()).syncCashflows(result -> {
-                swipeRefreshLayout.setRefreshing(false);
+            try {
+                Toast.makeText(requireContext(), R.string.list_refresh_in_progress, Toast.LENGTH_SHORT).show();
 
-                if (!result.wasSuccessful()) {
-                    return;
-                }
+                ApplicationState.getInstance(requireContext()).syncCashflows(result -> {
+                    swipeRefreshLayout.setRefreshing(false);
 
-                ListAdapter adapter = (ListAdapter) recyclerView.getAdapter();
-
-                requireActivity().runOnUiThread(() -> {
-                    if (null == adapter) {
+                    if (!result.wasSuccessful()) {
+                        Toast.makeText(requireContext(), R.string.list_refresh_unsuccessful, Toast.LENGTH_LONG).show();
                         return;
                     }
 
-                    adapter.clear();
-                    adapter.addAll(new ArrayList<>(result.getCashflows()));
+                    ListAdapter adapter = (ListAdapter) recyclerView.getAdapter();
+
+                    requireActivity().runOnUiThread(() -> {
+                        if (null == adapter) {
+                            return;
+                        }
+
+                        adapter.clear();
+                        adapter.addAll(new ArrayList<>(result.getCashflows()));
+                    });
                 });
-            });
+            } catch (IllegalStateException e) {
+                swipeRefreshLayout.setRefreshing(false);
+
+                Toast.makeText(requireContext(), R.string.list_refresh_during_illegal_state, Toast.LENGTH_LONG).show();
+            }
         });
     }
 
