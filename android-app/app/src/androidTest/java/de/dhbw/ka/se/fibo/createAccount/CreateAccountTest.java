@@ -8,13 +8,16 @@ import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static de.dhbw.ka.se.fibo.TestMatchers.hasTextInputLayoutErrorText;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.EditText;
 
 import androidx.lifecycle.Lifecycle;
 import androidx.test.espresso.Espresso;
@@ -145,6 +148,28 @@ public class CreateAccountTest {
 
         onView(withId(R.id.create_account_password_layer))
                 .check(matches(not(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_password_field_empty)))));
+    }
+
+    @Test
+    public void testPasswordVisibilityToggle() {
+        onView(withId(R.id.create_account_password))
+                .perform(typeText("testPassword"), closeSoftKeyboard());
+
+        // tests that the password is not readable
+        activityScenarioRule.getScenario().onActivity(activity -> {
+            EditText passwordFieldText = activity.findViewById(R.id.create_account_password);
+            assertNotEquals("testPassword", passwordFieldText.getLayout().getText().toString());
+        });
+
+        // click on the visibility toggle
+        onView(withContentDescription("password_toggle"))
+                .perform(click());
+
+        // tests that the password is readable
+        activityScenarioRule.getScenario().onActivity(activity -> {
+            EditText passwordFieldText = activity.findViewById(R.id.create_account_password);
+            assertEquals("testPassword", passwordFieldText.getLayout().getText().toString());
+        });
     }
 
 
