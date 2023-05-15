@@ -40,7 +40,7 @@ Feature: logging out
     And I am on the settings page
     
     Scenario: successfully logout 
-      Given I am signed in with username "USER" and password "PASSWORD"
+      Given I am signed in with email "EMAIL" and password "PASSWORD"
       And I am on the "settings" page
       When I press on the logout button
       Then I receive a confirm dialog
@@ -48,7 +48,7 @@ Feature: logging out
       Then I am on the "login" page
       
     Scenario: unsuccessfully logout
-      Given I am signed in with username "USER" and password "PASSWORD"
+      Given I am signed in with email "EMAIL" and password "PASSWORD"
       And I am on the "settings" page
       When I press on the logout button
       Then I receive a confirm dialog
@@ -56,7 +56,7 @@ Feature: logging out
       Then I am on the "settings" page
       
     Scenario: enter invalid data and save
-      Given I am signed in with username "USER" and password "PASSWORD"
+      Given I am signed in with email "EMAIL" and password "PASSWORD"
       And I am at the "manual adding of data" form
       When I adjust "x€" in the "Store" field
       And I adjust "store xy" in the field "Price"
