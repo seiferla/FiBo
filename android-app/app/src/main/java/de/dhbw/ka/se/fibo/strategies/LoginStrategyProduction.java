@@ -39,7 +39,7 @@ public class LoginStrategyProduction implements LoginStrategy {
         String url = "/users/login/";
 
         Map<String, String> requestBody = new HashMap<>();
-        requestBody.put("username", email);
+        requestBody.put("email", email);
         requestBody.put("password", password);
 
         Response.Listener<LoginResponse> onSuccess = buildLoginSuccessListener();
