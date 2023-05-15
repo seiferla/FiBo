@@ -33,7 +33,7 @@ Feature: scan receipt
     Then I can press the camera button to perform a new scan
 
   Scenario: failed scan
-    Given I am signed in with username "USER" and password "PASSWORD"
+    Given I am signed in with email "EMAIL" and password "PASSWORD"
     And I am in the camera layout
     Then I turn the focus of the camera to the receipt
     When I press the camera button
