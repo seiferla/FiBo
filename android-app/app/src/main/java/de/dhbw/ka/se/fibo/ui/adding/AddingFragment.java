@@ -20,7 +20,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.timepicker.MaterialTimePicker;
-
+import com.google.android.material.timepicker.TimeFormat;
 
 import java.math.BigDecimal;
 import java.text.Format;
@@ -31,6 +31,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -49,7 +50,6 @@ public class AddingFragment extends Fragment {
 
     private FragmentAddingBinding binding;
     private MaterialDatePicker<Long> datePicker;
-
     private MaterialTimePicker timePicker;
     private NavController navController;
     private TextInputEditText store;
@@ -61,7 +61,8 @@ public class AddingFragment extends Fragment {
     private TabLayout tabLayout;
     private TextInputEditText address;
     private EditText notes;
-
+    private int hours;
+    private int minutes;
     private CashflowType newCashFlowType;
 
     @Nullable
@@ -93,6 +94,8 @@ public class AddingFragment extends Fragment {
         initializeDropdownValues();
         createDatePicker();
         setUpDateTextField();
+        createTimePicker();
+
 
         notes.setOnFocusChangeListener((view1, hasFocus) -> {
             if (hasFocus) {
@@ -100,6 +103,24 @@ public class AddingFragment extends Fragment {
             } else {
                 notes.setHint(requireContext().getString(R.string.adding_notes));
             }
+        });
+    }
+
+    private void createTimePicker() {
+        Calendar calendar = Calendar.getInstance();
+        int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+        int currentMinutes = calendar.get(Calendar.MINUTE);
+
+        timePicker = new MaterialTimePicker.Builder()
+                .setTimeFormat(TimeFormat.CLOCK_24H)
+                .setHour(currentHour)
+                .setMinute(currentMinutes)
+                .setTitleText("Select a time")
+                .build();
+        timePicker.addOnPositiveButtonClickListener(dialog -> {
+            hours = timePicker.getHour();
+            minutes = timePicker.getMinute();
+
         });
     }
 
@@ -261,6 +282,7 @@ public class AddingFragment extends Fragment {
         datePicker.addOnPositiveButtonClickListener(selection -> {
             Format formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMANY);
             dateText.setText(formatter.format(selection));
+            timePicker.show(requireActivity().getSupportFragmentManager(), "TimePicker");
         });
     }
 
