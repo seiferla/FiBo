@@ -19,6 +19,7 @@ import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.timepicker.MaterialTimePicker;
 
 
 import java.math.BigDecimal;
@@ -48,6 +49,8 @@ public class AddingFragment extends Fragment {
 
     private FragmentAddingBinding binding;
     private MaterialDatePicker<Long> datePicker;
+
+    private MaterialTimePicker timePicker;
     private NavController navController;
     private TextInputEditText store;
     private TextInputEditText amount;
