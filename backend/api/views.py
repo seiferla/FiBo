@@ -45,7 +45,7 @@ class RegisterUser(APIView):
         except:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
-        user = FiboUser.objects.create_user(username=email, email=email, password=password)
+        user = FiboUser.objects.create_user(email=email, password=password)
         default_account = Account.objects.create(name=email)
         user.account.add(default_account)
 
