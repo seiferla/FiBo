@@ -42,5 +42,14 @@ public class AddingFragmentTest {
         onView(withId(R.id.category_text)).perform(click());
     }
 
+    @Test
+    public void testTimePicker(){
+
+        onView(withId(R.id.date_layout)).perform(click());
+
+    }
+
+
+
 
 }

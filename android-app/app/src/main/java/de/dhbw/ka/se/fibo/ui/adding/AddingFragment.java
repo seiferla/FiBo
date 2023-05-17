@@ -112,6 +112,7 @@ public class AddingFragment extends Fragment {
         int currentMinutes = calendar.get(Calendar.MINUTE);
 
         timePicker = new MaterialTimePicker.Builder()
+                .setInputMode(MaterialTimePicker.INPUT_MODE_KEYBOARD)
                 .setTimeFormat(TimeFormat.CLOCK_24H)
                 .setHour(currentHour)
                 .setMinute(currentMinutes)
@@ -120,6 +121,7 @@ public class AddingFragment extends Fragment {
         timePicker.addOnPositiveButtonClickListener(dialog -> {
             hours = timePicker.getHour();
             minutes = timePicker.getMinute();
+            dateText.append(", "+hours+":"+minutes+" Uhr");
 
         });
     }
