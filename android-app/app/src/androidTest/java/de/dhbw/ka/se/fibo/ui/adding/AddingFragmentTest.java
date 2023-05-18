@@ -4,6 +4,7 @@ import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.hasSibling;
@@ -16,7 +17,6 @@ import static de.dhbw.ka.se.fibo.TestMatchers.hasTextInputLayoutErrorText;
 import android.content.Context;
 
 import androidx.navigation.Navigation;
-import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.matcher.RootMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -58,6 +58,7 @@ public class AddingFragmentTest {
     public void testInvalidInput() {
         // click on the okay button without input, and test that every field has an error
         onView(withId(R.id.okayButton))
+                .perform(scrollTo())
                 .perform(click());
 
         onView(withId(R.id.store_text_layout))
@@ -77,7 +78,7 @@ public class AddingFragmentTest {
                 .perform(typeText("Adidas Store"), closeSoftKeyboard());
 
         onView(withId(R.id.okayButton))
-                .perform(ViewActions.scrollTo())
+                .perform(scrollTo())
                 .perform(click());
 
         onView(withId(R.id.store_text_layout))
@@ -97,7 +98,7 @@ public class AddingFragmentTest {
                 .perform(typeText("10"), closeSoftKeyboard());
 
         onView(withId(R.id.okayButton))
-                .perform(ViewActions.scrollTo())
+                .perform(scrollTo())
                 .perform(click());
 
         onView(withId(R.id.store_text_layout))
@@ -122,7 +123,7 @@ public class AddingFragmentTest {
                 .perform(click());
 
         onView(withId(R.id.okayButton))
-                .perform(ViewActions.scrollTo())
+                .perform(scrollTo())
                 .perform(click());
 
         onView(withId(R.id.store_text_layout))
@@ -147,7 +148,7 @@ public class AddingFragmentTest {
                 .perform(click());
 
         onView(withId(R.id.okayButton))
-                .perform(ViewActions.scrollTo())
+                .perform(scrollTo())
                 .perform(click());
 
         onView(withId(R.id.store_text_layout))
@@ -167,7 +168,7 @@ public class AddingFragmentTest {
                 .perform(typeText("Fibostraße 1"), closeSoftKeyboard());
 
         onView(withId(R.id.okayButton))
-                .perform(ViewActions.scrollTo())
+                .perform(scrollTo())
                 .perform(click());
 
         // Checks that the user is back at the settings tab
