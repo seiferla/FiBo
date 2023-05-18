@@ -9,9 +9,13 @@ import static androidx.test.espresso.matcher.ViewMatchers.withChild;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import android.content.Context;
 import android.util.Log;
 
+import androidx.lifecycle.Lifecycle;
+import androidx.test.espresso.Espresso;
 import androidx.test.espresso.IdlingRegistry;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -25,6 +29,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.io.IOException;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 import de.dhbw.ka.se.fibo.ApplicationState;
@@ -159,5 +164,29 @@ public class SettingsFragmentTest {
         // Checks that the user is still at the setting tab
         onView(withId((R.id.navigation_settings)))
                 .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void logoutTest() {
+        // Navigate to settings fragment
+        onView(withId(R.id.navigation_settings))
+                .perform(click());
+
+        // Click on logout button
+        onView(withId(R.id.logout))
+                .perform(click());
+
+        // Test that clearAuthorization() works
+        assertEquals(ApplicationState.getInstance(appContext).getAccessToken(), Optional.empty());
+        assertEquals(ApplicationState.getInstance(appContext).getRefreshToken(), Optional.empty());
+        assertFalse(ApplicationState.getInstance(appContext).isAuthenticated());
+
+        // Check that email login field is displayed
+        onView(withId(R.id.login_layout))
+                .check(matches(isDisplayed()));
+
+        // Check that clicking back does not navigate to settings fragment
+        Espresso.pressBackUnconditionally();
+        assertEquals(Lifecycle.State.DESTROYED, activityScenarioRule.getScenario().getState());
     }
 }

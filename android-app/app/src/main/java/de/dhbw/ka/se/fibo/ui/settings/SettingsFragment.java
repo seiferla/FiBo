@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
@@ -29,10 +30,12 @@ import de.dhbw.ka.se.fibo.LoginActivity;
 import de.dhbw.ka.se.fibo.R;
 import de.dhbw.ka.se.fibo.SharedVolleyRequestQueue;
 import de.dhbw.ka.se.fibo.databinding.FragmentSettingsBinding;
+import de.dhbw.ka.se.fibo.utils.ActivityUtils;
 
 public class SettingsFragment extends Fragment {
 
     private FragmentSettingsBinding binding;
+    private MaterialButton logoutButton;
     private MaterialButton deleteUserButton;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,6 +43,7 @@ public class SettingsFragment extends Fragment {
         View root = binding.getRoot();
 
         deleteUserButton = binding.deleteUser;
+        logoutButton = binding.logout;
 
         return root;
     }
@@ -47,25 +51,28 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initializeDeleteButton();
+        initializeButtons();
     }
 
-    private void initializeDeleteButton() {
+    private void initializeButtons() {
         deleteUserButton.setOnClickListener(e -> openDialog());
+        logoutButton.setOnClickListener(e -> logout());
+    }
+
+    private void logout() {
+        ApplicationState.getInstance(getContext()).clearAuthorization();
+        ActivityUtils.swapActivity((AppCompatActivity) requireActivity(), LoginActivity.class, false);
     }
 
     private void openDialog() {
         Context context = requireContext();
         AlertDialog.Builder builder = new MaterialAlertDialogBuilder(context);
-        builder.setCancelable(true);
         builder.setTitle(R.string.delete_user_confirmation_title);
         builder.setMessage(R.string.delete_user_confirmation_text);
 
-        builder.setPositiveButton(R.string.delete_user_confirm_button, (dialog, which) -> {
-            deleteUserRequest();
-        });
+        builder.setPositiveButton(R.string.delete_user_confirm_button, (dialog, which) -> deleteUserRequest());
 
-        builder.setNegativeButton(R.string.cancle_button, (dialog, which) -> {
+        builder.setNegativeButton(R.string.cancel_button, (dialog, which) -> {
         });
 
         builder.show();
@@ -84,7 +91,7 @@ public class SettingsFragment extends Fragment {
         };
 
         Response.ErrorListener onError = error -> {
-            if (error.networkResponse != null) {
+            if (null != error.networkResponse) {
                 switch (error.networkResponse.statusCode) {
                     case 401:
                         Log.e(TAG, "Unauthorized");
@@ -93,6 +100,7 @@ public class SettingsFragment extends Fragment {
                         Log.e(TAG, "Internal Server Error");
                         break;
                     default:
+                        Log.e(TAG, "Unknown Error");
                         break;
                 }
 

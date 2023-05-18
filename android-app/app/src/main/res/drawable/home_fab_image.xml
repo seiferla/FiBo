@@ -9,7 +9,7 @@
         <clip-path android:pathData="M0 0H14V14H0V0Z" />
 
         <path
-            android:fillColor="@color/mainTextColor"
+            android:fillColor="@color/cardview_light_background"
             android:pathData="M14 8H8V14H6V8H0V6H6V0H8V6H14V8Z" />
 
     </group>
