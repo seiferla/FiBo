@@ -18,7 +18,7 @@ public abstract class AbstractBackendListRequest<T> {
         this.latch = latch;
 
         request = populateRequest(accessToken);
-        request.setRetryPolicy(new DefaultRetryPolicy( 5000, 1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        request.setRetryPolicy(new DefaultRetryPolicy(5000, 1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
     protected abstract JsonRequest<T[]> populateRequest(String accessToken);

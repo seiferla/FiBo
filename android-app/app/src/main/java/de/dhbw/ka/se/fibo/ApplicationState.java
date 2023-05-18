@@ -1,35 +1,22 @@
 package de.dhbw.ka.se.fibo;
 
-import static de.dhbw.ka.se.fibo.utils.ApiUtils.createAPIJSONRequest;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.VisibleForTesting;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.toolbox.JsonRequest;
-
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.function.Consumer;
 
 import de.dhbw.ka.se.fibo.models.Cashflow;
-import de.dhbw.ka.se.fibo.models.CashflowType;
 import de.dhbw.ka.se.fibo.models.Category;
 import de.dhbw.ka.se.fibo.models.Place;
 import de.dhbw.ka.se.fibo.strategies.LoginStrategyProduction;
 import de.dhbw.ka.se.fibo.utils.backend.BackendSynchronizationFactory;
 import de.dhbw.ka.se.fibo.utils.backend.BackendSynchronizationResult;
-import de.dhbw.ka.se.fibo.utils.backend.CashflowListResponse;
-import de.dhbw.ka.se.fibo.utils.backend.CategoryListResponse;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.JwtException;
@@ -152,7 +139,8 @@ public class ApplicationState {
                 .edit()
                 .putString("refreshToken", response.refresh)
                 .putString("accessToken", response.access)
-                .apply();
+                .commit(); // TODO: race condition during SplashSynchronizationTest?
+        Log.i(TAG, "Authorization persisted");
     }
 
     public void clearAuthorization() {

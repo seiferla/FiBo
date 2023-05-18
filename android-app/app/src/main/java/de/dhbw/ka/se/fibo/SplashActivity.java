@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.test.espresso.idling.CountingIdlingResource;
 
 import java.util.Objects;
 
@@ -14,6 +17,7 @@ import java.util.Objects;
 // We need a custom splash screen because we want to support Android versions below 11
 public class SplashActivity extends AppCompatActivity {
 
+    private static CountingIdlingResource mIdlingResource;
     private Thread welcomeThread;
 
     private static final String TAG = "SplashActivity";
@@ -38,6 +42,17 @@ public class SplashActivity extends AppCompatActivity {
         } catch (IllegalStateException e) {
             Log.w(SplashActivity.TAG, "syncing during splash activity failed, ignoring", e);
         }
+    }
+
+    @VisibleForTesting
+    @NonNull
+    public static synchronized CountingIdlingResource getIdlingResource() {
+        if (null == SplashActivity.mIdlingResource) {
+            SplashActivity.mIdlingResource = new CountingIdlingResource("splash_activity_idling_resource_counter");
+            SplashActivity.mIdlingResource.increment();
+            Log.i(SplashActivity.TAG, "CountingIdlingResource() created");
+        }
+        return SplashActivity.mIdlingResource;
     }
 
     @Override
