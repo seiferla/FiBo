@@ -67,7 +67,7 @@ public class ActivityUtils {
         AtomicBoolean valid = new AtomicBoolean(true);
 
         fieldsToBeChecked.keySet()
-                .forEach(field -> field.setError(null));
+                .forEach(field -> field.setErrorEnabled(false));
 
         fieldsToBeChecked.forEach((field, errorMessage) -> {
             if (TextUtils.isEmpty(ActivityUtils.getTextInputLayoutFieldValue(field))) {
