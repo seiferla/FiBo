@@ -50,7 +50,7 @@ public class SplashActivity extends AppCompatActivity {
                 public void run() {
                     try {
                         super.run();
-                        Thread.sleep(2000);
+                        Thread.sleep(5000);
                     } catch (Exception e) {
                         Log.i(SplashActivity.TAG, "welcomeThread was interrupted", e);
                     } finally {

@@ -171,19 +171,19 @@ public class ApplicationState {
      * @param consumer if not null, the consumer is notified whenever there is a response ready
      */
     public void syncCashflows(Consumer<BackendSynchronizationResult> consumer) throws IllegalStateException {
-        BackendSynchronizationFactory factory = new BackendSynchronizationFactory(context)
-                .addResultListener(result -> {
-                    if (!result.wasSuccessful()) {
-                        Log.e(TAG, "backend synchronization wasn't successful!", result.getThrowable());
-                        return;
-                    }
+        BackendSynchronizationFactory factory = new BackendSynchronizationFactory(context);
+        factory.addResultListener(result -> {
+            if (!result.wasSuccessful()) {
+                Log.e(TAG, "backend synchronization wasn't successful!", result.getThrowable());
+                return;
+            }
 
-                    synchronized (this) {
-                        categories = result.getCategories();
-                        cashflows = result.getCashflows();
-                        places = result.getPlaces();
-                    }
-                });
+            synchronized (this) {
+                categories = result.getCategories();
+                cashflows = result.getCashflows();
+                places = result.getPlaces();
+            }
+        });
 
         if (null != consumer) {
             factory.addResultListener(consumer);

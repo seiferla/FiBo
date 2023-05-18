@@ -1,12 +1,9 @@
 package de.dhbw.ka.se.fibo.utils.backend;
 
-import static de.dhbw.ka.se.fibo.utils.ApiUtils.createAPIJSONRequest;
-
-import com.android.volley.Request;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonRequest;
 
-import java.util.Optional;
 import java.util.concurrent.CountDownLatch;
 
 public abstract class AbstractBackendListRequest<T> {
@@ -21,6 +18,7 @@ public abstract class AbstractBackendListRequest<T> {
         this.latch = latch;
 
         request = populateRequest(accessToken);
+        request.setRetryPolicy(new DefaultRetryPolicy( 5000, 1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
     protected abstract JsonRequest<T[]> populateRequest(String accessToken);
@@ -36,10 +34,6 @@ public abstract class AbstractBackendListRequest<T> {
         error = volleyError;
 
         latch.countDown();
-    }
-
-    public VolleyError getError() {
-        return error;
     }
 
     public T[] getResponse() throws VolleyError {

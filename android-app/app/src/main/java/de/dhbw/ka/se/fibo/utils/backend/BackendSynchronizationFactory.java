@@ -31,7 +31,7 @@ public class BackendSynchronizationFactory {
     private final Context context;
     private List<Consumer<BackendSynchronizationResult>> resultListeners = new ArrayList<>();
 
-    private boolean wasSyncStarted = false;
+    private boolean wasSyncStarted;
 
     private static final String TAG = "BackendSynchronizationFactory";
 
@@ -39,14 +39,12 @@ public class BackendSynchronizationFactory {
         this.context = context;
     }
 
-    public BackendSynchronizationFactory addResultListener(Consumer<BackendSynchronizationResult> listener) {
+    public void addResultListener(Consumer<BackendSynchronizationResult> listener) {
         if (wasSyncStarted) {
             throw new IllegalStateException("cannot add listeners if already syncing!");
         }
 
         resultListeners.add(listener);
-
-        return this;
     }
 
     public void startSynchronization() throws IllegalStateException {
@@ -63,10 +61,12 @@ public class BackendSynchronizationFactory {
 
         Log.i(BackendSynchronizationFactory.TAG, "Synchronization started");
 
-        Optional<String> accessToken = ApplicationState.getInstance(context).getAccessToken();
-        if (!accessToken.isPresent()) {
+        boolean isAuthenticated = ApplicationState.getInstance(context).isAuthenticated();
+        if (!isAuthenticated) {
             throw new IllegalStateException("need to have an access token to sync!");
         }
+
+        Optional<String> accessToken = ApplicationState.getInstance(context).getAccessToken();
 
         Runnable r = () -> {
             SharedVolleyRequestQueue requestQueue = SharedVolleyRequestQueue.getInstance(context);
@@ -95,7 +95,7 @@ public class BackendSynchronizationFactory {
                 BackendSynchronizationResult result = mergeResponses(cashflowsRequest.getResponse(), categoriesRequest.getResponse(), placesRequest.getResponse());
                 propagateResult(result);
             } catch (VolleyError e) {
-                throw new RuntimeException(e);
+                failWithThrowable(e);
             }
         };
 

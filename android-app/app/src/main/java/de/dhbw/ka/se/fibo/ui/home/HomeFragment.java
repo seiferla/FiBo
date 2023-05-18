@@ -64,15 +64,15 @@ public class HomeFragment extends Fragment {
                 ApplicationState.getInstance(requireContext()).syncCashflows(result -> {
                     swipeRefreshLayout.setRefreshing(false);
 
-                    if (!result.wasSuccessful()) {
-                        Toast.makeText(requireContext(), R.string.list_refresh_unsuccessful, Toast.LENGTH_LONG).show();
-                        return;
-                    }
-
                     ListAdapter adapter = (ListAdapter) recyclerView.getAdapter();
 
                     requireActivity().runOnUiThread(() -> {
                         if (null == adapter) {
+                            return;
+                        }
+
+                        if (!result.wasSuccessful()) {
+                            Toast.makeText(requireContext(), R.string.list_refresh_unsuccessful, Toast.LENGTH_LONG).show();
                             return;
                         }
 
