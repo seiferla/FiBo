@@ -66,8 +66,7 @@ public class ActivityUtils {
     public static boolean checkValidInput(Map<? extends TextInputLayout, String> fieldsToBeChecked) {
         AtomicBoolean valid = new AtomicBoolean(true);
 
-        fieldsToBeChecked.keySet()
-                .forEach(field -> field.setErrorEnabled(false));
+        fieldsToBeChecked.keySet().forEach(field -> field.setErrorEnabled(false));
 
         fieldsToBeChecked.forEach((field, errorMessage) -> {
             if (TextUtils.isEmpty(ActivityUtils.getTextInputLayoutFieldValue(field))) {

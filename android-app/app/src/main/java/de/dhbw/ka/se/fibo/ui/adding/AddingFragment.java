@@ -21,7 +21,6 @@ import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-
 import java.math.BigDecimal;
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -171,8 +170,6 @@ public class AddingFragment extends Fragment {
         LocalDateTime date;
         Place place;
 
-
-
         if (isRequiredDataPresent) {
             List<Category> collect = Arrays.stream(Category.values()).filter(currentType -> {
                 String name = requireActivity().getResources().getString(currentType.getName());
@@ -201,7 +198,6 @@ public class AddingFragment extends Fragment {
             }
         }
 
-
         return null;
     }
 
@@ -210,8 +206,8 @@ public class AddingFragment extends Fragment {
     }
 
     private boolean checkForRequiredData() throws IllegalArgumentException {
-        Map<TextInputLayout, String>  fieldsToBeChecked = new HashMap<>();
-        if (newCashFlowType == CashflowType.EXPENSE) {
+        Map<TextInputLayout, String> fieldsToBeChecked = new HashMap<>();
+        if (CashflowType.EXPENSE == newCashFlowType) {
             fieldsToBeChecked.put(storeLayout, getString(R.string.error_message_store_field));
         } else {
             fieldsToBeChecked.put(storeLayout, getString(R.string.error_message_source_field));
@@ -231,7 +227,7 @@ public class AddingFragment extends Fragment {
     private void setUpDateTextField() {
         dateText.setShowSoftInputOnFocus(false);
         dateText.setOnFocusChangeListener((v, hasFocus) -> {
-            if(v.isInTouchMode() && hasFocus) {
+            if (v.isInTouchMode() && hasFocus) {
                 v.performClick();
             }
         });
