@@ -13,6 +13,8 @@ import androidx.test.espresso.idling.CountingIdlingResource;
 
 import java.util.Objects;
 
+import de.dhbw.ka.se.fibo.utils.ActivityUtils;
+
 @SuppressLint("CustomSplashScreen")
 // We need a custom splash screen because we want to support Android versions below 11
 public class SplashActivity extends AppCompatActivity {
@@ -32,6 +34,14 @@ public class SplashActivity extends AppCompatActivity {
         Objects.requireNonNull(supportActionBar);
         supportActionBar.hide();
 
+        if (ActivityUtils.isEspressoTesting()) {
+            SplashActivity.getIdlingResource().registerIdleTransitionCallback(this::startSync);
+        } else {
+            startSync();
+        }
+    }
+
+    private void startSync() {
         try {
             ApplicationState.getInstance(getApplicationContext()).syncCashflows(result -> {
                 // interrupt welcome thread to immediately show next page
