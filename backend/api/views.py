@@ -188,6 +188,7 @@ class PlaceView(APIView):
 
 
 class CategoryView(APIView):
+    permission_classes = (IsAuthenticated,)
 
     def post(self, request):
         user = FiboUser.objects.get(email=request.user.email)
