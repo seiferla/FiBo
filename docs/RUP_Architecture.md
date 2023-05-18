@@ -1,34 +1,67 @@
 # FiBo: Software Architecture Document
 
-## Attribution
+## 1. <a name='Attribution'></a>Attribution
 
 This document is based on the following template: <https://sce.uhcl.edu/helm/RationalUnifiedProcess/webtmpl/templates/a_and_d/rup_sad.htm>
 
 Version: 1.2
 
-## Revision History
+## 2. <a name='RevisionHistory'></a>Revision History
 
 | Date (dd/mm/yy) | Version | Description | Author |
 |---|---|---|---|
 | 22/11/22 | 1.0 | Initial version | Jens |
 | 12/04/23 | 1.1 | Extended version | Jens |
-| 02/05/23 | 1.2 | Extended version | Jens |
+| 18/05/23 | 1.2 | Extended version | Jens |
 
-## Table of Contents
+## 3. <a name='TableofContents'></a>Table of Contents
 
-> TODO: Generate TOC
+<!-- vscode-markdown-toc -->
+* 1. [Attribution](#Attribution)
+* 2. [Revision History](#RevisionHistory)
+* 3. [Table of Contents](#TableofContents)
+* 4. [Software Architecture Document](#SoftwareArchitectureDocument)
+  * 4.1. [Purpose](#Purpose)
+  * 4.2. [Scope](#Scope)
+  * 4.3. [Definitions, Acronyms and Abbreviations](#DefinitionsAcronymsandAbbreviations)
+  * 4.4. [References](#References)
+  * 4.5. [Overview](#Overview)
+  * 4.6. [Architectural Representation](#ArchitecturalRepresentation)
+  * 4.7. [Architectural Goals and Constraints](#ArchitecturalGoalsandConstraints)
+    * 4.7.1. [Architectural Goals](#ArchitecturalGoals)
+    * 4.7.2. [Architectural Constraints](#ArchitecturalConstraints)
+    * 4.7.3. [Assumptions](#Assumptions)
+    * 4.7.4. [Risks and trade-offs](#Risksandtrade-offs)
+  * 4.8. [Use-Case View](#Use-CaseView)
+    * 4.8.1. [Use-Case Realizations](#Use-CaseRealizations)
+  * 4.9. [Logical View](#LogicalView)
+    * 4.9.1. [Overview of the Logical View](#OverviewoftheLogicalView)
+    * 4.9.2. [Architecturally Significant Design Packages](#ArchitecturallySignificantDesignPackages)
+  * 4.10. [Process View](#ProcessView)
+  * 4.11. [Deployment View](#DeploymentView)
+  * 4.12. [Implementation View](#ImplementationView)
+    * 4.12.1. [Overview of realized implementation](#Overviewofrealizedimplementation)
+    * 4.12.2. [Layers](#Layers)
+  * 4.13. [Size and Performance](#SizeandPerformance)
+  * 4.14. [Quality](#Quality)
 
-## Software Architecture Document
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
 
-### Purpose
+## 4. <a name='SoftwareArchitectureDocument'></a>Software Architecture Document
+
+### 4.1. <a name='Purpose'></a>Purpose
 
 This document provides a comprehensive architectural overview of the system, using a number of different architectural views to depict different aspects of the system. It is intended to capture and convey the significant architectural decisions which have been made on the system.
 
-### Scope
+### 4.2. <a name='Scope'></a>Scope
 
 The scope of this Software Architecture document is to show the architecture of the FiBo project. We illustrate the use cases and the overall structure.
 
-### Definitions, Acronyms and Abbreviations
+### 4.3. <a name='DefinitionsAcronymsandAbbreviations'></a>Definitions, Acronyms and Abbreviations
 
 | Abbreviation | Description |
 | --- | --- |
@@ -38,7 +71,7 @@ The scope of this Software Architecture document is to show the architecture of 
 | UC | use case |
 | CRUD | create-read-update-delete |
 
-### References
+### 4.4. <a name='References'></a>References
 
 | Name and link | Date | Publishing organization |
 | --- | --- | --- |
@@ -47,11 +80,11 @@ The scope of this Software Architecture document is to show the architecture of 
 | [SRS](https://github.com/Cebox82/FiBo/blob/master/docs/SRS.md) | 16/11/2022 | FiBo project team |
 | [UC 4 - Manual adding of data](https://github.com/Cebox82/FiBo/blob/master/docs/use_cases/UC_4_manual_adding_of_data/UC_4_manual_adding_of_data.md) | 21/11/2022 | FiBo project team |
 
-### Overview
+### 4.5. <a name='Overview'></a>Overview
 
 This document contains the Architectural Representation, Goals and Constraints as well as the Logical, Deployment, Implementation and Data Views.
 
-### Architectural Representation
+### 4.6. <a name='ArchitecturalRepresentation'></a>Architectural Representation
 
 The backend (Django based) and the frontend are both developed separted from each other and only communicate over a REST API. That said, it is hard to follow one of the known patterns (MVC, MVP, MVVM) for the whole project, as the frontend ecosystem (an Android app) can only be so much used to follow one of some known pattterns.
 
@@ -59,31 +92,31 @@ Please also see our [introduction to the technologies on our blog](https://fibo9
 
 ![Overview of the Architecture](architectural_UML_Diagram.drawio.svg "Architecture")
 
-### Architectural Goals and Constraints
+### 4.7. <a name='ArchitecturalGoalsandConstraints'></a>Architectural Goals and Constraints
 
-#### Architectural Goals
+#### 4.7.1. <a name='ArchitecturalGoals'></a>Architectural Goals
 
 The architectural goals of the FiBo app are to provide users with a comprehensive platform for learning and managing personal finances. The app should be user-friendly, with an intuitive interface that enables users to easily access their personal financial information and tools. It should also be secure, with robust data encryption and authentication protocols to protect user data.
 
-#### Architectural Constraints
+#### 4.7.2. <a name='ArchitecturalConstraints'></a>Architectural Constraints
 
 The architectural constraints of FiBo include technical limitations, such as various screen sizes. There are also operational constraints such as time and budget limitations as well as a team of developers with a big variety of experiences.
 
-#### Assumptions
+#### 4.7.3. <a name='Assumptions'></a>Assumptions
 
 The finance book app assumes that users will have varying levels of financial knowledge and experience. Therefore, it should provide a range of resources. To achieve this requirement the users may simply add their incomming finances in the app for a brief historical overview or use the features provided by the dashboard panel for a more detailed analysis of their data.
 
-#### Risks and trade-offs
+#### 4.7.4. <a name='Risksandtrade-offs'></a>Risks and trade-offs
 
 The risks associated with FiBo include potential security breaches or data leaks, which could lead to loss of user data or financial information. To mitigate these risks, the app will require robust security measures and regular updates to ensure that any potential vulnerabilities are addressed promptly. The trade-offs associated with the finance book app include balancing the desire for rich functionality with ease of use and simplicity for users.
 
 For a detailed view on risks, please see [the RISKS document](RISKS.md).
 
-### Use-Case View
+### 4.8. <a name='Use-CaseView'></a>Use-Case View
 
 Please see [section 3.1 in our SRS](SRS.md#31-functionality).
 
-#### Use-Case Realizations
+#### 4.8.1. <a name='Use-CaseRealizations'></a>Use-Case Realizations
 
 As of 2nd May, eight use-cases have been realized already.
 
@@ -106,7 +139,7 @@ How the Design Model Elements Contribute to the Functionality:
 
 1. User Interface Design: The login screen presented to the user is a result of the user interface design. It provides an interface for the user to enter their login credentials.
 
-2. Authentication and Authorization Model: The authentication and authorization process is a part of the authentication and authorization model. It verifies the user's email and password against Django's backend authentication system and sends a message to the application system process allowing access to the app's functionality.
+2. Authentication and Authorization Model: The authentication and authorization process is a part of the authentication and authorization model. It verifies the user's email and password against Django's backend authentication system and sends a message to the application system process allowing access to the app's functionality by sending a refresh and an access token. The received tokens are stored in the app and further requests are authenticated and authorized through the passing of the access token. The refresh token is used to issue a new access token.
 
 3. Backend API: Django's backend authentication system is accessed through the backend API. The authentication and authorization process sends the user's login credentials to the appropriate backend API endpoint for further processing.
 
@@ -114,11 +147,11 @@ How the Design Model Elements Contribute to the Functionality:
 
 In conclusion, these design model elements work together to verify the user's credentials and allow access to the app's functionality.
 
-### Logical View
+### 4.9. <a name='LogicalView'></a>Logical View
 
-[This section describes the architecturally significant parts of the design model, such as its decomposition into subsystems and packages. And for each significant package, its decomposition into classes and class utilities. You should introduce architecturally significant classes and describe their responsibilities, as well as a few very important relationships, operations, and attributes.]
+Based on the described architecture, one can also group it into logical, solely functioning parts.
 
-#### Overview of the Logical View
+#### 4.9.1. <a name='OverviewoftheLogicalView'></a>Overview of the Logical View
 
 We have, for now, two packages that interact with each other: the frontend and the backend.
 
@@ -126,7 +159,7 @@ The backend mainly serves requests for the frontend, which is entitled to the en
 
 The frontend is in charge of providing a human-useable interface that provides functionality to create, read, update and delete data.
 
-#### Architecturally Significant Design Packages
+#### 4.9.2. <a name='ArchitecturallySignificantDesignPackages'></a>Architecturally Significant Design Packages
 
 ##### Android app
 
@@ -136,10 +169,10 @@ So, less focus is paid to deal with large chunks of data.
 
 Significant parts as well of their technical names are:
 
-- List of cashflows (HomeFragment)
-- Adding cashflows (AddingFragment)
-- Dashboard (DashboardFragment)
-- Settings (SettingsFragment)
+* List of cashflows (HomeFragment)
+* Adding cashflows (AddingFragment)
+* Dashboard (DashboardFragment)
+* Settings (SettingsFragment)
 
 ##### Django Backend
 
@@ -148,13 +181,13 @@ It is not only concerned to provide interfaces for multiple users, but also to s
 
 Significant parts as well of their technical names are:
 
-- Registration of users (RegisterView)
-- Logging in of users (TokenObtainPairView)
-- Authentication of users (TokenRefreshView)
-- Saving, updating as well as deleting cashflows (CashflowsView)
-- In the future, the automatic extraction of receipts' data (tbd)
+* Registration of users (RegisterView)
+* Logging in of users (TokenObtainPairView)
+* Authentication of users (TokenRefreshView)
+* Saving, updating as well as deleting cashflows (CashflowsView)
+* In the future, the automatic extraction of receipts' data (tbd)
 
-### Process View
+### 4.10. <a name='ProcessView'></a>Process View
 
 The Android app and the Django backend will consist of multiple lightweight and heavyweight processes that communicate with each other to achieve the desired functionality. Here are some processes and modes of communication between them:
 
@@ -170,7 +203,7 @@ The Android app and the Django backend will consist of multiple lightweight and 
 
 In summary, the main mode of communication between processes in this system is message passing. The user interface process, cashflow management process, data storage process, authentication and authorization process, and backend integration process all communicate with each other through message passing (whether it is HTTP, IPC or SQL-based).
 
-### Deployment View
+### 4.11. <a name='DeploymentView'></a>Deployment View
 
 Because the software is not meant to be deployed for wide-range usage, it is only deployed for development as well as presentation purposes.
 
@@ -182,24 +215,25 @@ From a process based view, all Android app related processes run on the (emulate
 
 In case that an emulated mobile phone is used, and also the backend is running on the same physical machine, we recommend to have at least four CPU cores.
 
-### Implementation View
+### 4.12. <a name='ImplementationView'></a>Implementation View
 
 The FiBo implementation model follows a layered architecture pattern, with three core layers: the presentation layer, the application layer, and the data access layer. Each layer has its own subsystems, which are responsible for specific functionalities. The layers and subsystems are described in detail below:
 
 1. Presentation Layer:
     The presentation layer is responsible for the app's user interface and interacts directly with the user. This layer consists of the following subsystems:
-    - User Interface: This subsystem manages the Android app's user interface and handles user input and output
-    - Authentication and Authorization: This subsystem is responsible for authenticating users and authorizing their access to the app's functionality.
+    * User Interface: This subsystem manages the Android app's user interface and handles user input and output
 
 2. Application Layer:
     The application layer provides the business logic and implements the use cases of the FiBo app. This layer consists of the following subsystems:
-    - Cashflow Management: This subsystem manages the cashflows ("cash transactions") made by the user and communicates with the data access layer to store and retrieve transaction data.
-    - Backend Integration: This subsystem is responsible for integrating the Android app with the Django backend and communicates with the data access layer to retrieve and send data to the backend.
+    * Cashflow Management: This subsystem manages the cashflows ("cash transactions") made by the user and communicates with the data access layer to store and retrieve transaction data.
+    * Backend Integration: This subsystem is responsible for integrating the Android app with the Django backend and communicates with the data access layer to retrieve and send data to the backend.
+    * Authentication and Authorization: This subsystem is responsible for authenticating users and authorizing their access to the app's functionality by storing tokens issued by the backend which are used later on.
 
 3. Data Access Layer:
     The data access layer is responsible for managing the app's data and communicating with the Django backend. This layer consists of the following subsystems:
-    - API Integration: This subsystem communicates with the Django backend's API to retrieve and send data to the app.
-    - Data Storage: This subsystem is responsible for storing and sending data from and to the database
+    * API Integration: This subsystem communicates with the Django backend's API to retrieve and send data to the app.
+    * Data Storage: This subsystem is responsible for storing and sending data from and to the database
+    * Device Data Storage: This subsystem is responsible for storing and analyzing tokens to identify an authenticated and authorized user.
 
 Architecturally significant components of the FiBo implementation model include:
 
@@ -209,12 +243,12 @@ Architecturally significant components of the FiBo implementation model include:
 
 In conclusion, the FiBo implementation model follows a layered architecture pattern, with each layer divided into subsystems responsible for specific functionalities. The presentation layer interacts directly with the user, the application layer provides the business logic, and the data access layer manages the app's data and communicates with the Django backend. The architecturally significant components of the implementation model include the Android SDK, Django framework, local storage and PostgreSQL database.
 
-#### Overview of realized implementation
+#### 4.12.1. <a name='Overviewofrealizedimplementation'></a>Overview of realized implementation
 
 The realized implementation builds upon the three layer concept described earlier.
 
 The components in each layer are governed by the Single Responsibility Principle.
-Hence, as a layer, they should be easily replacable.
+Hence, as a layer, they should be easily replaceable.
 For example, as we use Django's ORM abilities, it would be easy to throw away the PostgreSQL database and go with a SQLite database instead.
 
 The diagram looks something like this:
@@ -233,7 +267,7 @@ Authentication/Authorization
         Data Storage
 ```
 
-#### Layers
+#### 4.12.2. <a name='Layers'></a>Layers
 
 The FiBo app's realized implementation consists of three layers, namely the Presentation Layer, Application Layer, and Data Access Layer. In this section, we will provide an overview of each layer, its associated subsystems, and a component diagram illustrating the interactions between the subsystems.
 
@@ -251,18 +285,22 @@ User Interface
 
 ##### Application Layer
 
-The Application Layer is the middle layer of the FiBo app's architecture and contains the business logic and use cases of the app. It consists of two subsystems: the Cashflow Management and the Backend Integration subsystems.
+The Application Layer is the middle layer of the FiBo app's architecture and contains the business logic and use cases of the app. It consists of three subsystems: Authentication and Authorization, the Cashflow Management and the Backend Integration subsystem.
 
-1. Cashflow Management subsystem: This subsystem manages the user's cashflows and communicates with the Data Access Layer to store and retrieve cashflow data.
+1. Authentication and Authorization subsystem: This manages the local storage of refresh and access tokens so further data can be fetched from the Data Access Layer on an authenticated basis.
 
-2. Backend Integration subsystem: This subsystem is responsible for integrating the Android app with the Django backend and communicates with the Data Access Layer to retrieve and send data to the backend. It includes the Authentication and Authorization subsystem.
+2. Cashflow Management subsystem: This subsystem manages the user's cashflows and communicates with the Data Access Layer to store and retrieve cashflow data. It uses the Authentication and Authorization subsystem to authenticate at the Data Access Layer.
+
+3. Backend Integration subsystem: This subsystem is responsible for integrating the Android app with the Django backend and communicates with the Data Access Layer to retrieve and send data to the backend. It includes the Authentication and Authorization subsystem.
 
 The component diagram for the Application Layer is as follows:
 
 ```text
-Cashflow Management
-        |
-Backend Integration
+Authentication and Authorization
+            |
+    Cashflow Management
+            |
+    Backend Integration
 ```
 
 ##### Data Access Layer
@@ -280,9 +318,9 @@ API Integration
  Data Storage
 ```
 
-In conclusion, the architecutre of FiBo is organized into three layers: the Presentation Layer, Application Layer, and Data Access Layer, each of which contains two subsystems that work together to deliver the app's functionalities.
+In conclusion, the architecture of FiBo is organized into three layers: the Presentation Layer, Application Layer, and Data Access Layer, each of which contains two subsystems that work together to deliver the app's functionalities.
 
-### Size and Performance
+### 4.13. <a name='SizeandPerformance'></a>Size and Performance
 
 REST API interaction are designed for brevity to eliminate unnecessary bytes traveling across the internet, while consuming time and other worthy resources. We will make sure to use the following terms:
 
@@ -296,9 +334,9 @@ Captive | 7000–10000ms | Users will begin switching tasks at this point. If a 
 Source (adapted after): <https://web.archive.org/web/20220627213434/https://design.firefox.com/photon/introduction/design-for-performance.html>
 <!-- Yes, I love moz://a and it's a thoughtful design process -->
 
-We should strive for duration to be Immediate at most. In rare cases, we might be forced to have a Continous process. We should avoid Captive processes at all costs and segment these really complex tasks.
+We should strive for duration to be Immediate at most. In rare cases, we might be forced to have a continuous process. We should avoid Captive processes at all costs and segment these really complex tasks.
 
-### Quality
+### 4.14. <a name='Quality'></a>Quality
 
 To make sure we are able to deliver apps of great quality with even greater confidence, we want to implement UI tests that can be run automatically. Within these, we will create scenarios that will cover each aspect (even edge cases) of all the workflows and use-cases.
 
