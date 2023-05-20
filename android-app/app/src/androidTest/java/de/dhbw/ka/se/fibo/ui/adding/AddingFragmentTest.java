@@ -95,6 +95,7 @@ public class AddingFragmentTest {
 
         // add something to the source field and test that only the source error is gone
         onView(withId(R.id.store_text))
+                .perform(scrollTo())
                 .perform(typeText("Adidas Store"), closeSoftKeyboard());
 
         onView(withId(R.id.okayButton))
@@ -135,6 +136,7 @@ public class AddingFragmentTest {
 
         // add something to the amount field and test that the the amount error is gone as well
         onView(withId(R.id.amount_text))
+                .perform(scrollTo())
                 .perform(typeText("10"), closeSoftKeyboard());
 
         onView(withId(R.id.okayButton))
@@ -155,6 +157,7 @@ public class AddingFragmentTest {
 
         // select a date and test that the the date error is gone as well
         onView(withId(R.id.date_layout))
+                .perform(scrollTo())
                 .perform(click());
         // Checks if the Date panel has opened
         onView(hasSibling(withChild(withText(R.string.selectDate))))
@@ -180,6 +183,7 @@ public class AddingFragmentTest {
 
         // select a category and test that the the category error is gone as well
         onView(withId(R.id.category_text))
+                .perform(scrollTo())
                 .perform(click());
         // select the first category from list
         onData(Matchers.anything())
@@ -205,6 +209,7 @@ public class AddingFragmentTest {
 
         // add something to the address field and test that adding fragment has closed without errors
         onView(withId(R.id.address_text))
+                .perform(scrollTo())
                 .perform(typeText("Fibostraße 1"), closeSoftKeyboard());
 
         onView(withId(R.id.okayButton))
