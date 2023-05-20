@@ -73,10 +73,50 @@ public class AddingFragmentTest {
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_address_field))));
 
 
-        // add something to the store field and test that only the store error is gone
+        // change to the income tab and check that the source error is shown
+        onView(withText(R.string.adding_income))
+                .perform(scrollTo())
+                .perform(click());
+        onView(withId(R.id.okayButton))
+                .perform(scrollTo())
+                .perform(click());
+
+        onView(withId(R.id.store_text_layout))
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_source_field))));
+        onView(withId(R.id.amount_layout))
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_amount_field))));
+        onView(withId(R.id.date_layout))
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_date_field))));
+        onView(withId(R.id.category_layout))
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_category_field))));
+        onView(withId(R.id.address_text_layout))
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_address_field))));
+
+
+        // add something to the source field and test that only the source error is gone
         onView(withId(R.id.store_text))
                 .perform(typeText("Adidas Store"), closeSoftKeyboard());
 
+        onView(withId(R.id.okayButton))
+                .perform(scrollTo())
+                .perform(click());
+
+        onView(withId(R.id.store_text_layout))
+                .check(matches(hasTextInputLayoutErrorText("")));
+        onView(withId(R.id.amount_layout))
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_amount_field))));
+        onView(withId(R.id.date_layout))
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_date_field))));
+        onView(withId(R.id.category_layout))
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_category_field))));
+        onView(withId(R.id.address_text_layout))
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_address_field))));
+
+
+        // change to the expense tab and check that the source error is gone as well
+        onView(withText(R.string.adding_expense))
+                .perform(scrollTo())
+                .perform(click());
         onView(withId(R.id.okayButton))
                 .perform(scrollTo())
                 .perform(click());
