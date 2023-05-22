@@ -4,8 +4,8 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.views import APIView
 
-from .serializers import FiboUserSerializer, PlaceSerializer, CashflowSerializer, CategorySerializer
-from .models import FiboUser, Account, Place, Cashflow, Category
+from .serializers import FiboUserSerializer, CashflowSerializer, CategorySerializer, StoreSerializer
+from .models import FiboUser, Account, Store, Cashflow, Category
 from datetime import datetime
 
 
@@ -46,7 +46,8 @@ class RegisterUser(APIView):
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
         # Note that username and email are the same
-        user = FiboUser.objects.create_user(username=email, email=email, password=password)
+        user = FiboUser.objects.create_user(
+            username=email, email=email, password=password)
         default_account = Account.objects.create(name=email)
         user.account.add(default_account)
 
@@ -64,9 +65,11 @@ class CashflowsView(APIView):
             cashflow_type = request.data['type']
             overall_value = request.data['overallValue']
             timestamp = request.data['timestamp']
-            category, _ = Category.objects.get_or_create(name=request.data['category'])
+            category, _ = Category.objects.get_or_create(
+                name=request.data['category'])
             place = request.data['place']
-            place_address, _ = Place.objects.get_or_create(address=place['address'], name=place['name'])
+            place_address, _ = Store.objects.get_or_create(
+                address=place['address'], name=place['name'])
         except:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -109,9 +112,11 @@ class CashflowsView(APIView):
             cashflow = Cashflow.objects.get(id=cashflow_id)
 
             cashflow.overall_value = request.data['overallValue']
-            cashflow.category, _ = Category.objects.get_or_create(name=request.data['category'])
+            cashflow.category, _ = Category.objects.get_or_create(
+                name=request.data['category'])
             place = request.data['place']
-            cashflow.place, _ = Place.objects.get_or_create(address=place['address'], name=place['name'])
+            cashflow.place, _ = Place.objects.get_or_create(
+                address=place['address'], name=place['name'])
             cashflow.updated = datetime.now()
             cashflow_type = request.data['type']
         except:
@@ -132,7 +137,8 @@ class PlaceView(APIView):
 
     def post(self, request):
         try:
-            place = Place.objects.create(address=request.data['address'], name=request.data['name'])
+            place = Store.objects.create(
+                address=request.data['address'], name=request.data['name'])
         except:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -140,11 +146,11 @@ class PlaceView(APIView):
 
     def get(self, request):
         try:
-            place = Place.objects.get(address=request.GET['address'])
+            place = Store.objects.get(address=request.GET['address'])
         except:
             return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
 
-        serializer = PlaceSerializer(place, many=False)
+        serializer = StoreSerializer(place, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 

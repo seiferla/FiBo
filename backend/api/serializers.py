@@ -14,9 +14,9 @@ class CashflowSerializer(ModelSerializer):
         fields = '__all__'
 
 
-class PlaceSerializer(ModelSerializer):
+class StoreSerializer(ModelSerializer):
     class Meta:
-        model = Place
+        model = Store
         fields = '__all__'
 
 
