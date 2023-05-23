@@ -8,6 +8,7 @@ import androidx.annotation.VisibleForTesting;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -15,6 +16,12 @@ import de.dhbw.ka.se.fibo.models.Cashflow;
 import de.dhbw.ka.se.fibo.models.CashflowType;
 import de.dhbw.ka.se.fibo.models.Category;
 import de.dhbw.ka.se.fibo.models.Place;
+import de.dhbw.ka.se.fibo.strategies.LoginStrategyProduction;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwt;
+import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
 
 public class ApplicationState {
 
@@ -22,20 +29,15 @@ public class ApplicationState {
     @SuppressLint("StaticFieldLeak")
     private static ApplicationState instance;
     private SortedSet<Cashflow> cashflows;
-    private String apiBaseUrl;
 
+    private final String TAG = "ApplicationState";
+
+    private byte[] jwsSigningKey = BuildConfig.JWS_SIGNING_KEY.getBytes();
 
     private ApplicationState(Context context) {
         Log.i("FiBo", "ApplicationState is initializing…");
 
         this.context = context;
-
-        try {
-            Class.forName("androidx.test.espresso.Espresso");
-            apiBaseUrl = "http://localhost:8000";
-        } catch (ClassNotFoundException e) {
-            apiBaseUrl = "http://10.0.2.2:8000";
-        }
 
         cashflows = new TreeSet<>();
         populateTestData();
@@ -80,7 +82,84 @@ public class ApplicationState {
         cashflows.add(cashFlow);
     }
 
-    public String getApiBaseUrl() {
-        return apiBaseUrl;
+    /**
+     * Determines whether the login is needed because of non-existent or expired refresh token
+     *
+     * @return true if login is unnecessary and user should be forwarded immediately
+     */
+    public boolean isAuthenticated() {
+        Optional<String> refreshToken = getRefreshToken();
+
+        if (!refreshToken.isPresent()) {
+            Log.i(TAG, "isAuthenticated() -> not authenticated, no refresh token persisted");
+
+            return false;
+        }
+
+        try {
+            Jwt<?, Claims> claims = Jwts.parserBuilder().setSigningKey(
+                    Keys.hmacShaKeyFor(jwsSigningKey)
+            ).build().parseClaimsJws(refreshToken.get());
+
+            Log.i(TAG, "claims are " + claims);
+        } catch (JwtException e) {
+            Log.i(TAG, "isAuthenticated() -> not authenticated, refresh token invalid", e);
+
+            return false;
+        }
+
+        Log.i(TAG, "isAuthenticated() -> is authenticated");
+
+        return true;
+    }
+
+    public Optional<String> getAccessToken() {
+        String accessToken = context
+                .getSharedPreferences("authorization", 0)
+                .getString("accessToken", null);
+
+        if (accessToken == null) {
+            return Optional.empty();
+        }
+
+        return Optional.of(accessToken);
+    }
+
+    public Optional<String> getRefreshToken() {
+        String refreshToken = context
+                .getSharedPreferences("authorization", 0)
+                .getString("refreshToken", null);
+
+        if (refreshToken == null) {
+            return Optional.empty();
+        }
+        return Optional.of(refreshToken);
+    }
+
+    /**
+     * @param response given response from login with access and refresh token to save
+     * @see <a href="https://stackoverflow.com/a/10163623/8496913">here</a> why we store it inside shared preferences
+     */
+    public void storeAuthorization(LoginStrategyProduction.LoginResponse response) {
+        context
+                .getSharedPreferences("authorization", 0)
+                .edit()
+                .putString("refreshToken", response.refresh)
+                .putString("accessToken", response.access)
+                .apply();
+    }
+
+    public void clearAuthorization() {
+        context
+                .getSharedPreferences("authorization", 0)
+                .edit()
+                .remove("refreshToken")
+                .remove("accessToken")
+                .apply();
+    }
+
+    @VisibleForTesting
+    public void setJwsSigningKey(byte[] jwsSigningKey) {
+        this.jwsSigningKey = jwsSigningKey;
     }
 }

@@ -1,44 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/create_account_layer"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <TextView
         android:id="@+id/logo_text_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="32dp"
+        android:drawablePadding="32dp"
         android:gravity="center"
-        android:orientation="vertical"
+        android:text="@string/create_account_text"
+        app:drawableTopCompat="@drawable/fibo_logo"
         app:layout_constraintBottom_toTopOf="@+id/create_account_email_layer"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <ImageView
-            android:id="@+id/create_account_image"
-            android:layout_width="231dp"
-            android:layout_height="157dp"
-            android:src="@drawable/fibo_logo" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="38dp"
-            android:text="@string/create_account_text"
-            android:textSize="18sp" />
-
-    </LinearLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/create_account_email_layer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginTop="28dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo_text_layout">
@@ -47,8 +34,7 @@
             android:id="@+id/create_account_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/create_account_email_hint"
-            android:inputType="textEmailAddress" />
+            android:hint="@string/email_hint" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -56,27 +42,57 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:endIconMode="password_toggle"
+        app:endIconContentDescription="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/create_account_email_layer">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/create_account_password"
-            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/create_account_password_hint" />
+            android:hint="@string/password_hint"
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/create_account_button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/create_account_button"
-        app:layout_constraintEnd_toEndOf="@id/create_account_password_layer"
+        app:layout_constraintEnd_toEndOf="@+id/create_account_password_layer"
+        app:layout_constraintStart_toStartOf="@+id/create_account_password_layer"
         app:layout_constraintTop_toBottomOf="@+id/create_account_password_layer" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/create_account_button"
+        app:layout_constraintStart_toStartOf="@id/create_account_button">
+
+        <TextView
+            android:id="@+id/already_registered_question_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/already_registered_question" />
+
+        <Space
+            android:layout_width="6dp"
+            android:layout_height="0dp" />
+
+        <TextView
+            android:id="@+id/click_here_for_login_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/click_here_for_login"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="@dimen/smallTextSize" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

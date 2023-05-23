@@ -9,58 +9,60 @@ tags:
   - name: default
   - name: users
     description: Everything that has has to do with users like registration and login
+  - name: cashflow
+    description: CRUD for Cashflows
+  - name: place
+    description: CRUD for Places
+  - name: category
+    description: CRUD for Category
+
 paths:
   /:
     get:
       tags:
         - default
       summary: Get possible routes
-      description: Returns possible routes for the URL
+      description: '`Returns` possible routes for the URL.'
       operationId: getRoutes
       security:
         - bearerAuth: [ ]
       parameters:
-        - name: 'Authorization'
-          in: header
-          description: 'The Access Token to be passed as a header'
-          required: true
-          schema:
-            type: string
-            example: "Authorization: Bearer <token>"
+        - $ref: '#/components/parameters/auth'
       responses:
         '200':
           $ref: '#/components/responses/getRoutes'
         '401':
-          $ref: '#/components/responses/AccessError'
+          $ref: '#/components/responses/accessError'
   /users/register/:
     post:
       tags:
         - users
       summary: Creates a new user
-      description: Creates a new user in the database
+      description: '`Awaits` Username and Password in the request body. `Creates` an new user in the database.'
       operationId: createUser
       requestBody:
         $ref: '#/components/requestBodies/register'
       responses:
-        '200':
+        '201':
           description: User was successfully created
+        '400':
+          $ref: '#/components/responses/400'
         '500':
-          description: The User could not be created. There are multiple reasons, for this. For example there already is a user with the same email or there was something missing from the request body
+          description: The User could not be created. There could already be a user with the same email
   /users/login/:
     post:
       tags:
         - users
       summary: Returns Access and Refresh Token
-      description: Awaits username and password in the request body and returns an Access and Refresh Token for the given user.
+      description: '`Awaits` username and password in the request body. `Returns` an Access and Refresh Token for the given user.'
       operationId: loginUser
       requestBody:
         $ref: '#/components/requestBodies/login'
       responses:
         '200':
           $ref: '#/components/responses/login'
-          description: Successful operation. Returns Access and Refresh Token
         '400':
-          description: Some fields are missing from the Request Body
+          $ref: '#/components/responses/400'
         '401':
           description: There is no matching user in the database
   /users/authenticate/:
@@ -68,7 +70,7 @@ paths:
       tags:
         - users
       summary: Returns an refreshed Access Token
-      description: Awaits an Refresh Token and returns an refreshed Access Token.
+      description: '`Awaits` an Refresh Token and returns an refreshed Access Token.'
       operationId: authenticateUser
       requestBody:
         $ref: '#/components/requestBodies/authenticate'
@@ -78,52 +80,201 @@ paths:
         '400':
           description: Refresh Token is missing from the Request Body
         '401':
-          $ref: '#/components/responses/RefreshError'
+          $ref: '#/components/responses/refreshError'
   /users/get/:
     get:
       tags:
         - users
       summary: Gets user data from database
-      description: Returns the data from the database corresponding to the user that is sending the request
+      description: '`Returns` the data from the database corresponding to the user that is sending the request.'
       operationId: getUser
       security:
         - bearerAuth: [ ]
       parameters:
-        - name: 'Authorization'
-          in: header
-          description: 'The Access Token to be passed as a header'
-          required: true
-          schema:
-            type: string
-            example: "Authorization: Bearer <token>"
+        - $ref: '#/components/parameters/auth'
       responses:
         '200':
           $ref: '#/components/responses/getUser'
         '401':
-          $ref: '#/components/responses/AccessError'
+          $ref: '#/components/responses/accessError'
   /users/delete/:
     delete:
       tags:
         - users
       summary: Deletes an existing user
-      description: Deletes the user from the Database, that is sending the request
+      description: '`Deletes` the user from the Database, that is sending the request.'
       operationId: deleteUser
       security:
         - bearerAuth: [ ]
       parameters:
-        - name: 'Authorization'
-          in: header
-          description: 'The Access Token to be passed as a header'
-          required: true
-          schema:
-            type: string
-            example: "Authorization: Bearer <token>"
+        - $ref: '#/components/parameters/auth'
       responses:
         '200':
           description: The Account corresponding to the send Access Token is deleted
         '401':
-          $ref: '#/components/responses/AccessError'
+          $ref: '#/components/responses/accessError'
+  /cashflow/:
+    post:
+      tags:
+        - cashflow
+      summary: Creates a new Cashflow
+      description: '`Awaits` all the data needed for a Cashflow in the request body. `Creates` a Cashflow with this data in the database.'
+      operationId: createCashflow
+      security:
+        - bearerAuth: [ ]
+      parameters:
+        - $ref: '#/components/parameters/auth'
+      requestBody:
+        $ref: '#/components/requestBodies/postCashflow'
+      responses:
+        '200':
+          $ref: '#/components/responses/postCashflow.200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/accessError'
+        '500':
+          description: The Cashflow could not be created. There are multiple reasons, for this. For example the account id form the request may be not in the database
+  /cashflow/<int:cashflow_id>:
+    get:
+      tags:
+        - cashflow
+      summary: Returns an Cashflow
+      description: '`Awaits` a Cashflow_ID. `Returns` the corresponding Cashflow.'
+      operationId: getCashflow
+      security:
+        - bearerAuth: [ ]
+      parameters:
+        - $ref: '#/components/parameters/auth'
+        - $ref: '#/components/parameters/cashflow_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/getCashflow.200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/accessError'
+        '500':
+          $ref: '#/components/responses/cashflows.500'
+    put:
+      tags:
+        - cashflow
+      summary: Updates an Cashflow
+      description: '`Awaits` an Cashflow_ID and all the data needed for a Cashflow. `Updates` the Cashflow with the given ID.'
+      operationId: putCashflow
+      security:
+        - bearerAuth: [ ]
+      parameters:
+        - $ref: '#/components/parameters/auth'
+        - $ref: '#/components/parameters/cashflow_id'
+      requestBody:
+        $ref: '#/components/requestBodies/putCashflow'
+      responses:
+        '200':
+          $ref: '#/components/responses/putAndDeleteCashflow.200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/accessError'
+        '500':
+          $ref: '#/components/responses/cashflows.500'
+    delete:
+      tags:
+        - cashflow
+      summary: Deletes an Cashflow
+      description: '`Awaits` an Cashflow_ID. `Deletes` the Cashflow with the given ID.'
+      operationId: deleteCashflow
+      security:
+        - bearerAuth: [ ]
+      parameters:
+        - $ref: '#/components/parameters/auth'
+        - $ref: '#/components/parameters/cashflow_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/putAndDeleteCashflow.200'
+        '401':
+          $ref: '#/components/responses/accessError'
+        '500':
+          $ref: '#/components/responses/cashflows.500'
+  /place/:
+    post:
+      tags:
+        - place
+      summary: Creates an new Place
+      description: '`Awaits` all the data needed for a Place in the request body. `Creates` a Place with this data in the database.'
+      operationId: postPlace
+      security:
+        - bearerAuth: [ ]
+      parameters:
+        - $ref: '#/components/parameters/auth'
+      requestBody:
+        $ref: '#/components/requestBodies/postPlace'
+      responses:
+        '200':
+          $ref: '#/components/responses/postPlace'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/accessError'
+    get:
+      tags:
+        - place
+      summary: Returns an Place
+      description: '`Awaits` the address of an Place in the request body. `Returns` the Place with the given address.'
+      operationId: getPlace
+      security:
+        - bearerAuth: [ ]
+      parameters:
+        - $ref: '#/components/parameters/auth'
+      requestBody:
+        $ref: '#/components/requestBodies/getPlace'
+      responses:
+        '200':
+          $ref: '#/components/responses/getPlace'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/accessError'
 
+  /category/:
+    post:
+      tags:
+        - category
+      summary: Creates an new Category
+      description: '`Awaits` a name for a Category in the request body. `Creates` a Category with this name in the database.'
+      operationId: postCategory
+      security:
+        - bearerAuth: [ ]
+      parameters:
+        - $ref: '#/components/parameters/auth'
+      requestBody:
+        $ref: '#/components/requestBodies/category'
+      responses:
+        '200':
+          $ref: '#/components/responses/postCategory'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/accessError'
+    get:
+      tags:
+        - category
+      summary: Returns a Category
+      description: '`Awaits` name of a Category. `Returns` the corresponding Category'
+      operationId: getCategory
+      security:
+        - bearerAuth: [ ]
+      parameters:
+        - $ref: '#/components/parameters/auth'
+      requestBody:
+        $ref: '#/components/requestBodies/category'
+      responses:
+        '200':
+          $ref: '#/components/responses/getCategory'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/accessError'
 
 components:
   schemas:
@@ -159,6 +310,89 @@ components:
           type: boolean
           example: true
         date_joined:
+          type: string
+          format: date
+          example: "2023-04-15 12:23:59.602445+00"
+    cashflows:
+      required:
+        - id
+        - is_income
+        - overall_value
+        - category
+        - account
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        is_income:
+          type: boolean
+          example: false
+        overall_value:
+          type: integer
+          example: 10
+        created:
+          type: string
+          format: date
+          example: "2023-04-20 07:56:12.809812+00"
+        updated:
+          type: string
+          format: date
+          example: "2023-04-15 12:23:59.602445+00"
+        category:
+          $ref: '#/components/schemas/category'
+        place:
+          $ref: '#/components/schemas/place'
+        account:
+          $ref: '#/components/schemas/account'
+    category:
+      required:
+        - id
+        - name
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: 'HEALTH'
+    place:
+      required:
+        - id
+        - address
+        - name
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        address:
+          type: string
+          example: 'Ottostraße 5'
+        name:
+          type: string
+          example: 'Kaufland'
+    account:
+      required:
+        - id
+        - name
+        - overall_value
+        - category
+        - account
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: 'Max Musterfrau'
+        created:
+          type: string
+          format: date
+          example: "2023-04-20 07:56:12.809812+00"
+        updated:
           type: string
           format: date
           example: "2023-04-15 12:23:59.602445+00"
@@ -199,10 +433,112 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/users'
-    AccessError:
+    accessError:
       description: Access token is missing or invalid
-    RefreshError:
+    refreshError:
       description: Refresh token is missing or invalid
+    postCashflow.200:
+      description: Cashflow was successfully created
+      content:
+        application/json:
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              cashflow_id:
+                type: integer
+                example: 1
+              creation_date:
+                type: string
+                format: date
+                example: "2023-04-20 07:56:12.809812+00"
+    getCashflow.200:
+      description: Successful operation. The Cashflow corresponding to the send Cashflow_ID is returned.
+      content:
+        application/json:
+          schema:
+            properties:
+              id:
+                type: integer
+                example: 1
+              is_income:
+                type: boolean
+                example: false
+              overall_value:
+                type: integer
+                example: 10
+              created:
+                type: string
+                format: date
+                example: "2023-04-20 07:56:12.809812+00"
+              updated:
+                type: string
+                format: date
+                example: "2023-04-15 12:23:59.602445+00"
+              category:
+                type: integer
+                example: 1
+              place:
+                type: integer
+                example: 1
+              account:
+                type: integer
+                example: 1
+    putAndDeleteCashflow.200:
+      description: Successful operation. The Cashflow corresponding to the send Cashflow_ID was updated.
+      content:
+        application/json:
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              cashflow_id:
+                type: integer
+                example: 1
+    cashflows.500:
+      description: 'The Cashflow could not be deleted. Probably you forgot the `cashflow_id` in the URL Path'
+    postPlace:
+      description: Place was successfully created
+      content:
+        application/json:
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              place:
+                type: string
+                example: Kaufland
+    getPlace:
+      description: Place was successfully returned
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/place'
+    postCategory:
+      description: Category was successfully created
+      content:
+        application/json:
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              category_id:
+                type: integer
+                example: 1
+    getCategory:
+      description: Category was successfully returned
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/category'
+
+    400:
+      description: Some fields are missing from the Request Body
+
   requestBodies:
     register:
       description: User data for registration
@@ -250,6 +586,123 @@ components:
               refresh:
                 type: string
                 example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4MjA4OTg4OCwiaWF0IjoxNjgyMDAzNDg4LCJqdGkiOiI3MzdhYTgyYzMzMWM0YjQ2ODlhYzg0ZDQ5Mjg1ZjVmYiIsInVzZXJfaWQiOjEyfQ.svQ9j-U-Q73lfWKt5D_J4s6PLrzrCNInm8giQ1Y_AJY
+    postCashflow:
+      description: Cashflow data
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - id
+              - is_income
+              - overall_value
+              - category
+              - account
+            properties:
+              id:
+                type: integer
+                example: 1
+              is_income:
+                type: boolean
+                example: false
+              overall_value:
+                type: integer
+                example: 10
+              category:
+                $ref: '#/components/schemas/category'
+              place:
+                $ref: '#/components/schemas/place'
+              account:
+                $ref: '#/components/schemas/account'
+    putCashflow:
+      description: Cashflow data
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - id
+              - is_income
+              - overall_value
+              - category
+              - account
+            properties:
+              id:
+                type: integer
+                example: 1
+              is_income:
+                type: boolean
+                example: false
+              overall_value:
+                type: integer
+                example: 10
+              category:
+                $ref: '#/components/schemas/category'
+              place:
+                $ref: '#/components/schemas/place'
+    postPlace:
+      description: Place data
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - address
+              - name
+            properties:
+              address:
+                type: string
+                example: 'Ottostraße 5'
+              name:
+                type: string
+                example: 'Kaufland'
+    getPlace:
+      description: Place data
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - address
+            properties:
+              address:
+                type: string
+                example: 'Ottostraße 5'
+    category:
+      description: Category data
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - name
+            properties:
+              name:
+                type: string
+                example: 'HEALTH'
+
+  parameters:
+    auth:
+      name: 'Authorization'
+      in: header
+      description: 'The `Access Token` to be passed as a header'
+      required: true
+      schema:
+        type: string
+        example: "Authorization: Bearer <token>"
+    cashflow_id:
+      name: 'cashflow_id'
+      in: path
+      description: 'The `cashflow_id` of the Cashflow that should be deleted'
+      required: true
+      schema:
+        type: integer
+        example: 1
   securitySchemes:
     bearerAuth:
       type: http

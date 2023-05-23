@@ -9,7 +9,6 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
-        style="@style/Theme.FiBo.TabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -25,14 +24,17 @@
 
     </com.google.android.material.tabs.TabLayout>
 
+    <!-- be careful when adding too many nested layouts. It might happen that espresso is not able
+    to detect everything correctly and stays in an idling after loading this file -->
+
     <ScrollView
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/firstLine_constraintLayout"
@@ -49,6 +51,7 @@
                     android:id="@+id/store_text_layout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:hint="@string/place"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -57,8 +60,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/store_text"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/place" />
+                        android:layout_height="wrap_content" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,8 +89,7 @@
                         android:layout_height="wrap_content"
                         android:digits="0123456789,.€"
                         android:hint="@string/adding_amount"
-                        android:inputType="numberDecimal"
-                        android:textColor="@color/green" />
+                        android:inputType="numberDecimal" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -97,34 +98,27 @@
                     android:layout_height="0dp"
                     android:layout_weight="0" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/value_and_date_layout"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_weight="1"
+                    android:id="@+id/date_layout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="0dp"
+                    android:paddingTop="0dp"
+                    app:endIconDrawable="@drawable/ic_calendar_purple"
+                    app:endIconMode="custom"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/date_layout"
-                        android:layout_width="0dp"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/date_text"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginTop="0dp"
-                        android:paddingTop="0dp"
-                        app:endIconDrawable="@drawable/ic_calendar_purple"
-                        app:endIconMode="custom"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        android:hint="@string/adding_date" />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/date_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/adding_date" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -141,8 +135,8 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/category_layout"
-                    style="@style/Style.FiBo.Dropdown"
                     android:layout_width="0dp"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="12dp"
                     app:layout_constraintEnd_toStartOf="@+id/document_button"
@@ -161,8 +155,8 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/document_button"
-                    style="@style/Widget.Material3.Button.IconButton.Outlined"
                     android:layout_width="0dp"
+                    style="@style/Widget.Material3.Button.IconButton.Outlined"
                     android:layout_height="0dp"
                     android:layout_marginTop="5sp"
                     android:clickable="true"
@@ -175,7 +169,7 @@
                     app:cornerRadius="6dp"
                     app:icon="@drawable/ic_document"
                     app:iconGravity="textEnd"
-                    app:iconTint="@color/hint_text_blue"
+                    app:iconTint="@color/seed"
                     app:layout_constraintBottom_toBottomOf="@id/category_layout"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -251,10 +245,10 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/cancel"
-                    style="@style/Widget.Material3.Button.TextButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
+                    style="@style/Widget.Material3.Button.TextButton"
                     android:text="@string/cancelButton"
                     app:layout_constraintEnd_toStartOf="@id/okayButton"
                     app:layout_constraintTop_toTopOf="parent" />
