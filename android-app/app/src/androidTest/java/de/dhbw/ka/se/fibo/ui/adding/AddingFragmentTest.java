@@ -72,7 +72,6 @@ public class AddingFragmentTest {
         onView(withId(R.id.address_text_layout))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_address_field))));
 
-        // The Validations of the fields need to be called in this order for them to work
         TestInvalidSourceFieldInput();
         TestInvalidAmountFieldInput();
         TestInvalidInputDateFieldInput();
@@ -187,7 +186,7 @@ public class AddingFragmentTest {
         onView(withId(R.id.amount_layout))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_amount_field))));
 
-        // add something to the amount field and test that the the amount error is gone as well
+        // add something to the amount field and test that the the amount error is gone
         onView(withId(R.id.amount_text))
                 .perform(scrollTo())
                 .perform(typeText("10"), closeSoftKeyboard());
@@ -236,7 +235,7 @@ public class AddingFragmentTest {
         onView(withId(R.id.category_layout))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_category_field))));
 
-        // select a category and test that the the category error is gone as well
+        // select a category and test that the category error is gone
         onView(withId(R.id.category_text))
                 .perform(scrollTo())
                 .perform(click());
@@ -263,7 +262,7 @@ public class AddingFragmentTest {
         onView(withId(R.id.address_text_layout))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_address_field))));
 
-        // add something to the address field and test that adding fragment has closed without errors
+        // add something to the address field and test that the address error is gone
         onView(withId(R.id.address_text))
                 .perform(scrollTo())
                 .perform(typeText("Fibostraße 1"), closeSoftKeyboard());
