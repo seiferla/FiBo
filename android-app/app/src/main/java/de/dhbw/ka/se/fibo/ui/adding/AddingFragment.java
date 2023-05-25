@@ -205,7 +205,7 @@ public class AddingFragment extends Fragment {
         return Objects.requireNonNull(field.getText()).toString();
     }
 
-    private boolean checkForRequiredData() throws IllegalArgumentException {
+    private boolean checkForRequiredData() {
         Map<TextInputLayout, String> fieldsToBeChecked = new HashMap<>();
         if (CashflowType.EXPENSE == newCashFlowType) {
             fieldsToBeChecked.put(storeLayout, getString(R.string.error_message_store_field));
