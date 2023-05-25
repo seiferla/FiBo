@@ -164,13 +164,12 @@ public class AddingFragment extends Fragment {
     }
 
     private Cashflow createCashFlow() {
-        boolean isRequiredDataPresent = checkForRequiredData();
         Category category;
         BigDecimal value;
         LocalDateTime date;
         Place place;
 
-        if (isRequiredDataPresent) {
+        if (checkForRequiredData()) {
             List<Category> collect = Arrays.stream(Category.values()).filter(currentType -> {
                 String name = requireActivity().getResources().getString(currentType.getName());
                 return name.equals(getFieldValue(categoriesDropdown));
