@@ -55,7 +55,7 @@ public class AddingFragmentTest {
     }
 
     @Test
-    public void testInvalidInput() {
+    public void testInvalidExpenseInput() {
         // click on the okay button without input, and test that every field has an error
         onView(withId(R.id.okayButton))
                 .perform(scrollTo())
@@ -72,8 +72,28 @@ public class AddingFragmentTest {
         onView(withId(R.id.address_text_layout))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_address_field))));
 
+        // The Validations of the fields need to be called in this order for them to work
+        TestInvalidSourceFieldInput();
+        TestInvalidAmountFieldInput();
+        TestInvalidInputDateFieldInput();
+        TestInvalidCategoryFieldInput();
 
-        // change to the income tab and check that the source error is shown
+        // add something to the address field and test that adding fragment has closed without errors
+        onView(withId(R.id.address_text))
+                .perform(scrollTo())
+                .perform(typeText("Fibostraße 1"), closeSoftKeyboard());
+
+        onView(withId(R.id.okayButton))
+                .perform(scrollTo())
+                .perform(click());
+        // Checks that the user is back at the home tab
+        onView(withId((R.id.navigation_home)))
+                .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testInvalidIncomeInput() {
+        // change to the income tab and check that the errors are shown
         onView(withText(R.string.adding_income))
                 .perform(scrollTo())
                 .perform(click());
@@ -92,8 +112,35 @@ public class AddingFragmentTest {
         onView(withId(R.id.address_text_layout))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_address_field))));
 
+        TestInvalidSourceFieldInput();
+        TestInvalidAmountFieldInput();
+        TestInvalidInputDateFieldInput();
+        TestInvalidCategoryFieldInput();
 
-        // add something to the source field and test that only the source error is gone
+        // add something to the address field and test that adding fragment has closed without errors
+        onView(withId(R.id.address_text))
+                .perform(scrollTo())
+                .perform(typeText("Fibostraße 1"), closeSoftKeyboard());
+
+        onView(withId(R.id.okayButton))
+                .perform(scrollTo())
+                .perform(click());
+
+        // Checks that the user is back at the home tab
+        onView(withId((R.id.navigation_home)))
+                .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void TestInvalidStoreFieldInput() {
+        onView(withId(R.id.okayButton))
+                .perform(scrollTo())
+                .perform(click());
+
+        onView(withId(R.id.store_text_layout))
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_store_field))));
+
+        // add something to the source field and test that the source error is gone
         onView(withId(R.id.store_text))
                 .perform(scrollTo())
                 .perform(typeText("Adidas Store"), closeSoftKeyboard());
@@ -104,18 +151,11 @@ public class AddingFragmentTest {
 
         onView(withId(R.id.store_text_layout))
                 .check(matches(hasTextInputLayoutErrorText("")));
-        onView(withId(R.id.amount_layout))
-                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_amount_field))));
-        onView(withId(R.id.date_layout))
-                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_date_field))));
-        onView(withId(R.id.category_layout))
-                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_category_field))));
-        onView(withId(R.id.address_text_layout))
-                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_address_field))));
+    }
 
-
-        // change to the expense tab and check that the source error is gone as well
-        onView(withText(R.string.adding_expense))
+    @Test
+    public void TestInvalidSourceFieldInput() {
+        onView(withText(R.string.adding_income))
                 .perform(scrollTo())
                 .perform(click());
         onView(withId(R.id.okayButton))
@@ -123,16 +163,29 @@ public class AddingFragmentTest {
                 .perform(click());
 
         onView(withId(R.id.store_text_layout))
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_source_field))));
+
+        // add something to the source field and test that the source error is gone
+        onView(withId(R.id.store_text))
+                .perform(scrollTo())
+                .perform(typeText("Adidas Store"), closeSoftKeyboard());
+
+        onView(withId(R.id.okayButton))
+                .perform(scrollTo())
+                .perform(click());
+
+        onView(withId(R.id.store_text_layout))
                 .check(matches(hasTextInputLayoutErrorText("")));
+    }
+
+    @Test
+    public void TestInvalidAmountFieldInput() {
+        onView(withId(R.id.okayButton))
+                .perform(scrollTo())
+                .perform(click());
+
         onView(withId(R.id.amount_layout))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_amount_field))));
-        onView(withId(R.id.date_layout))
-                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_date_field))));
-        onView(withId(R.id.category_layout))
-                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_category_field))));
-        onView(withId(R.id.address_text_layout))
-                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_address_field))));
-
 
         // add something to the amount field and test that the the amount error is gone as well
         onView(withId(R.id.amount_text))
@@ -143,19 +196,20 @@ public class AddingFragmentTest {
                 .perform(scrollTo())
                 .perform(click());
 
-        onView(withId(R.id.store_text_layout))
-                .check(matches(hasTextInputLayoutErrorText("")));
         onView(withId(R.id.amount_layout))
                 .check(matches(hasTextInputLayoutErrorText("")));
+    }
+
+    @Test
+    public void TestInvalidInputDateFieldInput() {
+        onView(withId(R.id.okayButton))
+                .perform(scrollTo())
+                .perform(click());
+
         onView(withId(R.id.date_layout))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_date_field))));
-        onView(withId(R.id.category_layout))
-                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_category_field))));
-        onView(withId(R.id.address_text_layout))
-                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_address_field))));
 
-
-        // select a date and test that the the date error is gone as well
+        // select a date and test that the the date error is gone
         onView(withId(R.id.date_layout))
                 .perform(scrollTo())
                 .perform(click());
@@ -169,17 +223,18 @@ public class AddingFragmentTest {
                 .perform(scrollTo())
                 .perform(click());
 
-        onView(withId(R.id.store_text_layout))
-                .check(matches(hasTextInputLayoutErrorText("")));
-        onView(withId(R.id.amount_layout))
-                .check(matches(hasTextInputLayoutErrorText("")));
         onView(withId(R.id.date_layout))
                 .check(matches(hasTextInputLayoutErrorText("")));
+    }
+
+    @Test
+    public void TestInvalidCategoryFieldInput() {
+        onView(withId(R.id.okayButton))
+                .perform(scrollTo())
+                .perform(click());
+
         onView(withId(R.id.category_layout))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_category_field))));
-        onView(withId(R.id.address_text_layout))
-                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_address_field))));
-
 
         // select a category and test that the the category error is gone as well
         onView(withId(R.id.category_text))
@@ -195,17 +250,18 @@ public class AddingFragmentTest {
                 .perform(scrollTo())
                 .perform(click());
 
-        onView(withId(R.id.store_text_layout))
-                .check(matches(hasTextInputLayoutErrorText("")));
-        onView(withId(R.id.amount_layout))
-                .check(matches(hasTextInputLayoutErrorText("")));
-        onView(withId(R.id.date_layout))
-                .check(matches(hasTextInputLayoutErrorText("")));
         onView(withId(R.id.category_layout))
                 .check(matches(hasTextInputLayoutErrorText("")));
+    }
+
+    @Test
+    public void TestInvalidAddressFieldInput() {
+        onView(withId(R.id.okayButton))
+                .perform(scrollTo())
+                .perform(click());
+
         onView(withId(R.id.address_text_layout))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_address_field))));
-
 
         // add something to the address field and test that adding fragment has closed without errors
         onView(withId(R.id.address_text))
@@ -216,8 +272,7 @@ public class AddingFragmentTest {
                 .perform(scrollTo())
                 .perform(click());
 
-        // Checks that the user is back at the settings tab
-        onView(withId((R.id.navigation_home)))
-                .check(matches(isDisplayed()));
+        onView(withId(R.id.address_text_layout))
+                .check(matches(hasTextInputLayoutErrorText("")));
     }
 }
