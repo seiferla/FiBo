@@ -48,4 +48,4 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           working-directory: ./android-app
-        run: ./gradlew  build sonarqube --info
+          script: ./gradlew  build sonarqube --info
