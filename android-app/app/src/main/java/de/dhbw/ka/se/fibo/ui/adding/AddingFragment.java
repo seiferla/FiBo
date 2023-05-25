@@ -225,18 +225,13 @@ public class AddingFragment extends Fragment {
     }
 
     private void setUpDateTextField() {
-        dateText.setShowSoftInputOnFocus(false);
-        dateText.setOnFocusChangeListener((v, hasFocus) -> {
-            if (v.isInTouchMode() && hasFocus) {
-                v.performClick();
-            }
-        });
+        dateText.setFocusable(View.NOT_FOCUSABLE);
+        dateText.setOnClickListener(showDatePicker());
+        binding.dateLayout.setEndIconOnClickListener(showDatePicker());
+    }
 
-        dateText.setOnClickListener(v ->
-                datePicker.show(requireActivity().getSupportFragmentManager(), "datePick"));
-
-        dateText.setTextColor(requireContext().getColor(R.color.mainTextColor));
-        binding.dateLayout.setEndIconOnClickListener(v -> datePicker.show(requireActivity().getSupportFragmentManager(), "datePick"));
+    private View.OnClickListener showDatePicker() {
+        return (view) -> datePicker.show(requireActivity().getSupportFragmentManager(), "datePick");
     }
 
     private void initializeDropdownValues() {
