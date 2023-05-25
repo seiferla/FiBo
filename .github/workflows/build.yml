@@ -2,7 +2,9 @@ name: SonarCloud
 
 on:
   push:
-    branches: [master]
+    branches:
+      - [master]
+      - FiBo-*
   pull_request:
     branches: [master]
 
