@@ -5,7 +5,7 @@ on:
     branches:
       - master
   pull_request:
-    branches: [master]
+    branches: [ master ]
 
 jobs:
   build:
@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        java-version: [17]
+        java-version: [ 17 ]
         python-version: [ 3.11 ]
 
     steps:
@@ -83,8 +83,9 @@ jobs:
           docker compose run --rm django python manage.py migrate
 
       - name: Analyze backend with SonarCloud
+        uses: sonarsource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        working-directory: ./backend
-        run: sonar-scanner
+        with:
+          working-directory: ./backend
