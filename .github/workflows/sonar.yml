@@ -1,4 +1,4 @@
-name: Sonar Frontend
+name: Sonar Full Stack
 
 on:
   push:
@@ -41,14 +41,32 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('*/.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
 
-      - name: Add local.properties
+      - name: Add local.properties for Android
         run: |
           touch android-app/local.properties
           echo jwsSigningKey=\"${{ secrets.SIGNING_KEY }}\" >> android-app/local.properties
 
-      - name: Build and analyze
+      - name: Build and analyze frontend
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         working-directory: ./android-app
         run: ./gradlew build sonarqube --info
+
+      - name: Setup docker
+        run: |
+          cd backend
+          docker compose up -d --build
+
+      - name: Prepare Database
+        run: |
+          cd backend
+          docker compose run --rm django python manage.py makemigrations
+          docker compose run --rm django python manage.py migrate
+
+      - name: Analyze backend with SonarCloud
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        working-directory: ./backend
+        run: sonar-scanner
