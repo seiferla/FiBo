@@ -89,3 +89,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           projectBaseDir: ./backend
+          args: >
+            -Dsonar.organization=Lars
+            -Dsonar.projectKey=fibo-dhbw
