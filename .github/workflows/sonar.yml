@@ -90,5 +90,5 @@ jobs:
         with:
           projectBaseDir: ./backend
           args: >
-            -Dsonar.organization=Lars
-            -Dsonar.projectKey=fibo-dhbw
+            -Dsonar.organization=fibo-dhbw
+            -Dsonar.projectKey=Cebox82_FiBo
