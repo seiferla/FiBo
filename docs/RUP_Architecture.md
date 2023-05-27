@@ -8,11 +8,12 @@ Version: 1.2
 
 ## 2. <a name='RevisionHistory'></a>Revision History
 
-| Date (dd/mm/yy) | Version | Description | Author |
-|---|---|---|---|
-| 22/11/22 | 1.0 | Initial version | Jens |
-| 12/04/23 | 1.1 | Extended version | Jens |
-| 18/05/23 | 1.2 | Extended version | Jens |
+| Date (dd/mm/yy) | Version | Description      | Author |
+|-----------------|---------|------------------|--------|
+| 22/11/22        | 1.0     | Initial version  | Jens   |
+| 12/04/23        | 1.1     | Extended version | Jens   |
+| 18/05/23        | 1.2     | Extended version | Jens   |
+| 27/05/23        | 1.3     | Extended version | Jonas  |
 
 ## 3. <a name='TableofContents'></a>Table of Contents
 
