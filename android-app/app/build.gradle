@@ -1,10 +1,19 @@
 plugins {
     id 'com.android.application'
+    id "org.sonarqube" version "3.5.0.2730"
 }
 
 Properties localProperties = new Properties()
 localProperties.load(project.rootProject.file("local.properties").newDataInputStream())
 
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "Cebox82_FiBo"
+        property "sonar.organization", "fibo-dhbw"
+        property "sonar.host.url", "https://sonarcloud.io/"
+    }
+}
 
 android {
     namespace 'de.dhbw.ka.se.fibo'
