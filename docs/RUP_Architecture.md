@@ -347,7 +347,7 @@ implemented use-cases.
 For the backend, we also have implemented continuous code testing that run on each code change. During these tests we
 try to cover every code line of our backend REST API so that the edge cases are also tested continuously.
 
-Another aspect of Quality is not only the just introduced code coverage. We also raise other metrics during our pipeline
+Another aspect of quality is not only the just introduced code coverage. We also raise other metrics during our pipeline
 analysis. They are grouped into following sections:
 
 <details>
