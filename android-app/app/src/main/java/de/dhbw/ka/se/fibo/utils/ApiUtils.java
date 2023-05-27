@@ -25,7 +25,7 @@ import java.util.Optional;
 
 public class ApiUtils {
 
-    public static String getBaseURL() {
+    private static String getBaseURL() {
         if (ActivityUtils.isEspressoTesting()) {
             return "http://localhost:8000";
         } else {

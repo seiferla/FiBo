@@ -35,7 +35,6 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         recyclerView = binding.recyclerview;
@@ -48,6 +47,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         recyclerView.setHasFixedSize(true);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
         Drawable verticalDivider = ContextCompat.getDrawable(requireContext(), R.drawable.card_divider);
@@ -57,7 +57,12 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(new ListAdapter(getContext(), ApplicationState.getInstance(requireContext()).getCashflows()));
         actionButton.setOnClickListener(e -> Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_navigation_adding));
 
-        swipeRefreshLayout.setOnRefreshListener(() -> {
+        swipeRefreshLayout.setOnRefreshListener(onRefreshListener());
+    }
+
+    @NonNull
+    private SwipeRefreshLayout.OnRefreshListener onRefreshListener() {
+        return () -> {
             try {
                 Toast.makeText(requireContext(), R.string.list_refresh_in_progress, Toast.LENGTH_SHORT).show();
 
@@ -85,7 +90,7 @@ public class HomeFragment extends Fragment {
 
                 Toast.makeText(requireContext(), R.string.list_refresh_during_illegal_state, Toast.LENGTH_LONG).show();
             }
-        });
+        };
     }
 
     @Override
