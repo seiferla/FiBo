@@ -69,6 +69,15 @@ public class LoginActivityTest {
 
     private MockWebServer server = new MockWebServer();
 
+    private static final String testPassword = "testPassword";
+
+    private static final String someJWTAccessToken = "someJWTAccessToken";
+
+    private static final String someJWTRefreshToken = "someJWTRefreshToken";
+
+    private static final String testEmail = "fibo@fibo.de";
+
+
     private Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
     @BeforeClass
@@ -111,7 +120,7 @@ public class LoginActivityTest {
     @Test
     public void testEmailInput() {
         onView(withId(R.id.login_email))
-                .perform(typeText("some@Email.de"), closeSoftKeyboard());
+                .perform(typeText(testEmail), closeSoftKeyboard());
 
         onView(withId(R.id.login_button))
                 .perform(click());
@@ -139,7 +148,7 @@ public class LoginActivityTest {
     @Test
     public void testPasswordWithInput() {
         onView(withId(R.id.login_password))
-                .perform(typeText("AsdfJklo1.2"), closeSoftKeyboard());
+                .perform(typeText(testPassword), closeSoftKeyboard());
 
         onView(withId(R.id.login_button))
                 .perform(click());
@@ -151,10 +160,10 @@ public class LoginActivityTest {
     @Test
     public void testValidInput() {
         onView(withId(R.id.login_email))
-                .perform(typeText("test"), closeSoftKeyboard());
+                .perform(typeText(testEmail), closeSoftKeyboard());
 
         onView(withId(R.id.login_password))
-                .perform(typeText("test"), closeSoftKeyboard());
+                .perform(typeText(testPassword), closeSoftKeyboard());
 
         onView(withId(R.id.login_button))
                 .perform(click());
@@ -169,12 +178,12 @@ public class LoginActivityTest {
     @Test
     public void testPasswordVisibilityToggle() {
         onView(withId(R.id.login_password))
-                .perform(typeText("testPassword"), closeSoftKeyboard());
+                .perform(typeText(testPassword), closeSoftKeyboard());
 
         // tests that the password is not readable
         activityScenarioRule.getScenario().onActivity(activity -> {
             EditText passwordFieldText = activity.findViewById(R.id.login_password);
-            assertNotEquals("testPassword", passwordFieldText.getLayout().getText().toString());
+            assertNotEquals(testPassword, passwordFieldText.getLayout().getText().toString());
         });
 
         // click on the visibility toggle
@@ -184,13 +193,13 @@ public class LoginActivityTest {
         // tests that the password is readable
         activityScenarioRule.getScenario().onActivity(activity -> {
             EditText passwordFieldText = activity.findViewById(R.id.login_password);
-            assertEquals("testPassword", passwordFieldText.getLayout().getText().toString());
+            assertEquals(testPassword, passwordFieldText.getLayout().getText().toString());
         });
     }
 
     @Test
     public void testHttpRequestWithValidCredentials() throws InterruptedException {
-        LoginStrategyProduction.LoginResponse loginResponse = new LoginStrategyProduction.LoginResponse("someJWTRefreshToken", "someJWTAccessToken");
+        LoginStrategyProduction.LoginResponse loginResponse = new LoginStrategyProduction.LoginResponse(someJWTRefreshToken, someJWTAccessToken);
         server.enqueue(new MockResponse()
                 .setResponseCode(200)
                 .setBody(new Gson()
@@ -198,10 +207,10 @@ public class LoginActivityTest {
                 ));
 
         onView(withId(R.id.login_email))
-                .perform(typeText("fibo@fibo.de"), closeSoftKeyboard());
+                .perform(typeText(testEmail), closeSoftKeyboard());
 
         onView(withId(R.id.login_password))
-                .perform(typeText("test"), closeSoftKeyboard());
+                .perform(typeText(testPassword), closeSoftKeyboard());
 
         onView(withId(R.id.login_button))
                 .perform(click());
@@ -221,10 +230,10 @@ public class LoginActivityTest {
         server.enqueue(new MockResponse().setResponseCode(500));
 
         onView(withId(R.id.login_email))
-                .perform(typeText("fibo@fibo.de"), closeSoftKeyboard());
+                .perform(typeText(testEmail), closeSoftKeyboard());
 
         onView(withId(R.id.login_password))
-                .perform(typeText("test"), closeSoftKeyboard());
+                .perform(typeText(testPassword), closeSoftKeyboard());
 
         onView(withId(R.id.login_button))
                 .perform(click());
@@ -243,10 +252,10 @@ public class LoginActivityTest {
         server.enqueue(new MockResponse().setResponseCode(400));
 
         onView(withId(R.id.login_email))
-                .perform(typeText("fibo@fibo.de"), closeSoftKeyboard());
+                .perform(typeText(testEmail), closeSoftKeyboard());
 
         onView(withId(R.id.login_password))
-                .perform(typeText("test"), closeSoftKeyboard());
+                .perform(typeText(testPassword), closeSoftKeyboard());
 
         onView(withId(R.id.login_button))
                 .perform(click());
@@ -265,10 +274,10 @@ public class LoginActivityTest {
         server.enqueue(new MockResponse().setResponseCode(401));
 
         onView(withId(R.id.login_email))
-                .perform(typeText("fibo@fibo.de"), closeSoftKeyboard());
+                .perform(typeText(testEmail), closeSoftKeyboard());
 
         onView(withId(R.id.login_password))
-                .perform(typeText("test"), closeSoftKeyboard());
+                .perform(typeText(testPassword), closeSoftKeyboard());
 
         onView(withId(R.id.login_button))
                 .perform(click());
@@ -295,7 +304,7 @@ public class LoginActivityTest {
 
     @Test
     public void testNotAllowingBackAfterLogin() throws InterruptedException {
-        LoginStrategyProduction.LoginResponse loginResponse = new LoginStrategyProduction.LoginResponse("someJWTRefreshToken", "someJWTAccessToken");
+        LoginStrategyProduction.LoginResponse loginResponse = new LoginStrategyProduction.LoginResponse(someJWTRefreshToken, someJWTAccessToken);
         server.enqueue(new MockResponse()
                 .setResponseCode(200)
                 .setBody(new Gson()
@@ -303,10 +312,10 @@ public class LoginActivityTest {
                 ));
 
         onView(withId(R.id.login_email))
-                .perform(typeText("fibo@fibo.de"), closeSoftKeyboard());
+                .perform(typeText(testEmail), closeSoftKeyboard());
 
         onView(withId(R.id.login_password))
-                .perform(typeText("test"), closeSoftKeyboard());
+                .perform(typeText(testPassword), closeSoftKeyboard());
 
         onView(withId(R.id.login_button))
                 .perform(click());
@@ -339,7 +348,7 @@ public class LoginActivityTest {
                 .signWith(key)
                 .compact();
 
-        LoginStrategyProduction.LoginResponse loginResponse = new LoginStrategyProduction.LoginResponse(refreshToken, "someJWTAccessToken");
+        LoginStrategyProduction.LoginResponse loginResponse = new LoginStrategyProduction.LoginResponse(refreshToken, someJWTAccessToken);
         server.enqueue(new MockResponse()
                 .setResponseCode(200)
                 .setBody(new Gson()
@@ -347,10 +356,10 @@ public class LoginActivityTest {
                 ));
 
         onView(withId(R.id.login_email))
-                .perform(typeText("fibo@fibo.de"), closeSoftKeyboard());
+                .perform(typeText(testEmail), closeSoftKeyboard());
 
         onView(withId(R.id.login_password))
-                .perform(typeText("test"), closeSoftKeyboard());
+                .perform(typeText(testPassword), closeSoftKeyboard());
 
         onView(withId(R.id.login_button))
                 .perform(click());
