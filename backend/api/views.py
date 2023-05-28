@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.views import APIView
 
 from .serializers import FiboUserSerializer, CashflowSerializer, CategorySerializer, StoreSerializer
-from .models import FiboUser, Account, Store, Cashflow, Category, ZipCity
+from .models import FiboUser, Account, Store, Cashflow, Category, ZipCity, Private
 from datetime import datetime
 
 
@@ -126,16 +126,19 @@ class CashflowsView(APIView):
                     street=request.data['store']['street'],
                     zip=ZipCity.objects.get(zip=request.data['store']['zip']),
                     house_number=request.data['store']['house_number'],
-                    defaults={"account": cashflow.account}
+                    account=cashflow.account
                 )
             elif source_type == 'private':
-                raise Exception("todo")
+                source, _ = Private.objects.get_or_create(
+                    first_name=request.data['private']['first_name'],
+                    last_name=request.data['private']['last_name'],
+                    account=cashflow.account
+                )
 
             cashflow.source = source
             cashflow.updated = datetime.now()
             cashflow_type = request.data['type']
-        except Exception as e:
-            print(e)
+        except:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
         if cashflow_type == 'INCOME':

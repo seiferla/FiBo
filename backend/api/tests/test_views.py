@@ -401,13 +401,30 @@ class ViewsTestCase(TestCase):
         self.assertEqual(response.json(), {
                          'success': True, 'cashflow_id': cashflow_id})
 
-        # Given (Expense
-        cashflow2 = {
+    def test_cashflow_put_expense(self):
+        # Given
+        user = FiboUser.objects.create_user(
+            username='test@fibo.de', email='test@fibo.de', password='test')
+        refresh = RefreshToken.for_user(user)
+        client = APIClient()
+        client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
+
+        account = Account.objects.create(id=1, name="Test Account")
+        category = Category.objects.create(name="Health", account=account)
+        zip = ZipCity.objects.create(zip=76131, city="Karlsruhe")
+        store = Store.objects.create(
+            name="Test Place", street="Test Street", zip=zip, house_number=1, account=account)
+        cashflow = Cashflow.objects.create(id=1, is_income=True, overall_value=100.00, category=category, source=store,
+                                           account=account)
+        user.account.add(account)
+
+        updated_cashflow = {
             "category": "MOBILITY",
             "overallValue": 26.00,
-            "place": {
-                "address": "Test Strasse 20",
-                "name": "Media"
+            "source_type": "private",
+            "private": {
+                "first_name": "Max",
+                "last_name": "Mustermann"
             },
             "timestamp": "2023-04-23T00:00:00",
             "type": "EXPENSE",
@@ -417,11 +434,13 @@ class ViewsTestCase(TestCase):
         }
 
         # When
-        response = client.put(f'/cashflow/{cashflow_id}', cashflow2, format='json')
+        response = client.put(
+            f'/cashflow/{cashflow.id}', updated_cashflow, format='json')
 
         # Then
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), {'success': True, 'cashflow_id': cashflow_id})
+        self.assertEqual(response.json(), {
+                         'success': True, 'cashflow_id': cashflow.id})
 
     # Try to update a not existing Cashflow
     def test_cashflow_put_bad_parameter(self):
