@@ -289,9 +289,9 @@ class ViewsTestCase(TestCase):
             "id": 1,
             "is_income": True,
             "overall_value": "100.00",
-            "category": 1,
-            "source": 1,
-            "account": 1,
+            "category": category.id,
+            "source": store.id,
+            "account": account.id,
         }, json_response)
 
     # Try to get a not existing Cashflow
