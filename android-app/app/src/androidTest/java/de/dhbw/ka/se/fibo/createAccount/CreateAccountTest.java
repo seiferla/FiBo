@@ -57,6 +57,7 @@ public class CreateAccountTest {
 
     private MockWebServer server = new MockWebServer();
 
+    private static final String testPassword="testPassword";
     private Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
 
@@ -152,13 +153,14 @@ public class CreateAccountTest {
 
     @Test
     public void testPasswordVisibilityToggle() {
+
         onView(withId(R.id.create_account_password))
-                .perform(typeText("testPassword"), closeSoftKeyboard());
+                .perform(typeText(testPassword), closeSoftKeyboard());
 
         // tests that the password is not readable
         activityScenarioRule.getScenario().onActivity(activity -> {
             EditText passwordFieldText = activity.findViewById(R.id.create_account_password);
-            assertNotEquals("testPassword", passwordFieldText.getLayout().getText().toString());
+            assertNotEquals(testPassword, passwordFieldText.getLayout().getText().toString());
         });
 
         // click on the visibility toggle
@@ -168,7 +170,7 @@ public class CreateAccountTest {
         // tests that the password is readable
         activityScenarioRule.getScenario().onActivity(activity -> {
             EditText passwordFieldText = activity.findViewById(R.id.create_account_password);
-            assertEquals("testPassword", passwordFieldText.getLayout().getText().toString());
+            assertEquals(testPassword, passwordFieldText.getLayout().getText().toString());
         });
     }
 
