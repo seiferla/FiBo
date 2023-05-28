@@ -313,23 +313,31 @@ class ViewsTestCase(TestCase):
 
     def test_cashflow_delete(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = FiboUser.objects.create_user(
+            username='test@fibo.de', email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
 
         account = Account.objects.create(id=1, name="Test Account")
-        category = Category.objects.create(name="HEALTH")
-        place = Place.objects.create(name="Test Place", address="Test Address")
-        cashflow = Cashflow.objects.create(id=1, is_income=True, overall_value=100.00, category=category, place=place,
+
+        category = Category.objects.create(name="Health", account=account)
+        zip = ZipCity.objects.create(zip=76131, city="Karlsruhe")
+        store = Store.objects.create(
+            name="Test Place", street="Test Street", zip=zip, house_number=1, account=account)
+        cashflow = Cashflow.objects.create(id=1, is_income=True, overall_value=100.00, category=category, source=store,
                                            account=account)
         user.account.add(account)
+
         # When
         response = client.delete(f'/cashflow/{cashflow.id}')
 
         # Then
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), {'success': True, 'cashflow_id': cashflow.id})
+        self.assertEqual(response.json(), {
+                         'success': True, 'cashflow_id': cashflow.id})
+        with self.assertRaises(Cashflow.DoesNotExist):
+            cashflow.refresh_from_db()
 
     # Try to delete a not existing Cashflow
     def test_cashflow_delete_bad_parameter(self):
