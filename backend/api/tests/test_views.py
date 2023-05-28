@@ -1,7 +1,8 @@
 from django.test import TestCase
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.test import APIClient
-from ..models import FiboUser, Account, Cashflow, Category, Place
+from ..models import FiboUser, Account, Cashflow, Category, Store, ZipCity
+import json
 
 
 class ViewsTestCase(TestCase):
@@ -259,15 +260,19 @@ class ViewsTestCase(TestCase):
 
     def test_cashflow_get(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = FiboUser.objects.create_user(
+            username='test@fibo.de', email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
 
         account = Account.objects.create(id=1, name="Test Account")
-        category = Category.objects.create(name="HEALTH")
-        place = Place.objects.create(name="Test Place", address="Test Address")
-        cashflow = Cashflow.objects.create(id=1, is_income=True, overall_value=100.00, category=category, place=place,
+
+        category = Category.objects.create(name="Health", account=account)
+        zip = ZipCity.objects.create(zip=76131, city="Karlsruhe")
+        store = Store.objects.create(
+            name="Test Place", street="Test Street", zip=zip, house_number=1, account=account)
+        cashflow = Cashflow.objects.create(id=1, is_income=True, overall_value=100.00, category=category, source=store,
                                            account=account)
         user.account.add(account)
 
@@ -276,6 +281,18 @@ class ViewsTestCase(TestCase):
 
         # Then
         self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.headers['Content-Type'], "application/json")
+
+        json_response = json.loads(response.content)
+
+        self.assertDictContainsSubset({
+            "id": 1,
+            "is_income": True,
+            "overall_value": "100.00",
+            "category": 1,
+            "source": 1,
+            "account": 1,
+        }, json_response)
 
     # Try to get a not existing Cashflow
     def test_cashflow_get_bad_parameter(self):

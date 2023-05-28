@@ -132,21 +132,22 @@ class CashflowsView(APIView):
         return JsonResponse({'success': True, 'cashflow_id': cashflow_id}, status=status.HTTP_200_OK)
 
 
-class PlaceView(APIView):
+class StoreSourcesView(APIView):
     permission_classes = (IsAuthenticated,)
 
     def post(self, request):
         try:
             place = Store.objects.create(
-                address=request.data['address'], name=request.data['name'])
+                name=request.data['name'], street=request.data['street'],
+                zip=request.data['zip'], house_number=request.data['house_number'])
         except:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
-        return JsonResponse({'success': True, 'place': place.name}, status=status.HTTP_201_CREATED)
+        return JsonResponse({'success': True, 'place': place.id}, status=status.HTTP_201_CREATED)
 
-    def get(self, request):
+    def get(self, request, store_id):
         try:
-            place = Store.objects.get(address=request.GET['address'])
+            place = Store.objects.get(id=store_id)
         except:
             return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
 
