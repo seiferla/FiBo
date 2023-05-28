@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.views import APIView
 
 from .serializers import FiboUserSerializer, CashflowSerializer, CategorySerializer, StoreSerializer
-from .models import FiboUser, Account, Store, Cashflow, Category
+from .models import FiboUser, Account, Store, Cashflow, Category, ZipCity
 from datetime import datetime
 
 
@@ -56,6 +56,8 @@ class RegisterUser(APIView):
 
 
 class CashflowsView(APIView):
+    # todo: check authorization (check if user has permission to manage the said account id)
+
     permission_classes = (IsAuthenticated,)
 
     def post(self, request):
@@ -95,7 +97,7 @@ class CashflowsView(APIView):
         try:
             cashflow = Cashflow.objects.get(id=cashflow_id)
         except:
-            return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+            return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
         serializer = CashflowSerializer(cashflow, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -113,13 +115,27 @@ class CashflowsView(APIView):
 
             cashflow.overall_value = request.data['overallValue']
             cashflow.category, _ = Category.objects.get_or_create(
-                name=request.data['category'])
-            place = request.data['place']
-            cashflow.place, _ = Place.objects.get_or_create(
-                address=place['address'], name=place['name'])
+                name=request.data['category'], defaults={"account": cashflow.account})
+            source_type = request.data['source_type']
+
+            source = None
+
+            if source_type == 'store':
+                source, _ = Store.objects.get_or_create(
+                    name=request.data['store']['name'],
+                    street=request.data['store']['street'],
+                    zip=ZipCity.objects.get(zip=request.data['store']['zip']),
+                    house_number=request.data['store']['house_number'],
+                    defaults={"account": cashflow.account}
+                )
+            elif source_type == 'private':
+                raise Exception("todo")
+
+            cashflow.source = source
             cashflow.updated = datetime.now()
             cashflow_type = request.data['type']
-        except:
+        except Exception as e:
+            print(e)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
         if cashflow_type == 'INCOME':

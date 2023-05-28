@@ -356,26 +356,34 @@ class ViewsTestCase(TestCase):
         self.assertEqual(response.status_code, 400)
         self.assertEqual(response.json(), {'success': False})
 
-    def test_cashflow_put(self):
+    def test_cashflow_put_income(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = FiboUser.objects.create_user(
+            username='test@fibo.de', email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
 
         account = Account.objects.create(id=1, name="Test Account")
-        category = Category.objects.create(name="HEALTH")
-        place = Place.objects.create(name="Test Place", address="Test Address")
-        cashflow = Cashflow.objects.create(id=1, is_income=True, overall_value=100.00, category=category, place=place,
+
+        category = Category.objects.create(name="Health", account=account)
+        zip = ZipCity.objects.create(zip=76131, city="Karlsruhe")
+        store = Store.objects.create(
+            name="Test Place", street="Test Street", zip=zip, house_number=1, account=account)
+        cashflow = Cashflow.objects.create(id=1, is_income=True, overall_value=100.00, category=category, source=store,
                                            account=account)
+        user.account.add(account)
 
         cashflow_id = cashflow.id
         cashflow = {
             "category": "HEALTH",
             "overallValue": 26.00,
-            "place": {
-                "address": "Test Strasse 20",
-                "name": "Media"
+            "source_type": "store",
+            "store": {
+                "name": "Media",
+                "street": "Test Strasse 20",
+                "zip": 76131,
+                "house_number": 10
             },
             "timestamp": "2023-04-23T00:00:00",
             "type": "INCOME",
@@ -385,11 +393,13 @@ class ViewsTestCase(TestCase):
         }
 
         # When
-        response = client.put(f'/cashflow/{cashflow_id}', cashflow, format='json')
+        response = client.put(
+            f'/cashflow/{cashflow_id}', cashflow, format='json')
 
         # Then
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), {'success': True, 'cashflow_id': cashflow_id})
+        self.assertEqual(response.json(), {
+                         'success': True, 'cashflow_id': cashflow_id})
 
         # Given (Expense
         cashflow2 = {
