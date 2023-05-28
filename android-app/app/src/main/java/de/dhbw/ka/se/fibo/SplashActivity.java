@@ -38,8 +38,8 @@ public class SplashActivity extends AppCompatActivity {
                     try {
                         super.run();
                         Thread.sleep(2000);
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    } catch (InterruptedException ie) {
+                        ie.printStackTrace();
                     } finally {
                         Intent i = new Intent(SplashActivity.this,
                                 LoginActivity.class);
