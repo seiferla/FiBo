@@ -43,7 +43,7 @@ class Cashflow(models.Model):
     updated = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     source = models.ForeignKey(
-        Source, on_delete=models.SET_NULL, blank=True, null=True)
+        Source, on_delete=models.PROTECT)
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
 
 

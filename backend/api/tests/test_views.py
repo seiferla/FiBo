@@ -336,8 +336,15 @@ class ViewsTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {
                          'success': True, 'cashflow_id': cashflow.id})
+
+        # The Cashflow should actually be deleted from the database
         with self.assertRaises(Cashflow.DoesNotExist):
             cashflow.refresh_from_db()
+
+        # Ensure the current source still exists
+        # in case this throws an error, the source was deleted also when the cashflow got deleted
+        # (yet it is expected to survive)
+        store.refresh_from_db()
 
     # Try to delete a not existing Cashflow
     def test_cashflow_delete_bad_parameter(self):
