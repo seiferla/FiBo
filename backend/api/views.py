@@ -134,6 +134,8 @@ class CashflowsView(APIView):
                     last_name=request.data['private']['last_name'],
                     account=cashflow.account
                 )
+            else:
+                raise Exception("invalid source_type")
 
             cashflow.source = source
             cashflow.updated = datetime.now()
