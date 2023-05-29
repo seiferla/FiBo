@@ -56,7 +56,7 @@ class RegisterUser(APIView):
 
 
 class CashflowsView(APIView):
-    # todo: check authorization (check if user has permission to manage the said account id)
+    # FIXME: check authorization (check if user has permission to manage the said account id)
 
     permission_classes = (IsAuthenticated,)
 
@@ -64,6 +64,7 @@ class CashflowsView(APIView):
         try:
             account = request.data['account']
             account_id = Account.objects.get(id=account['id'])
+            # FIXME: Verify the user may access this account
             cashflow_type = request.data['type']
             overall_value = request.data['overallValue']
             timestamp = request.data['timestamp']
@@ -95,6 +96,7 @@ class CashflowsView(APIView):
 
     def get(self, request, cashflow_id):
         try:
+            # FIXME: Verify the user may access this cashflow (i.e. manages the account of this cashflow)
             cashflow = Cashflow.objects.get(id=cashflow_id)
         except:
             return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
@@ -103,6 +105,7 @@ class CashflowsView(APIView):
 
     def delete(self, _, cashflow_id):
         try:
+            # FIXME: Verify the user may access this cashflow (i.e. manages the account of this cashflow)
             cashflow = Cashflow.objects.get(id=cashflow_id)
         except:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
@@ -111,6 +114,7 @@ class CashflowsView(APIView):
 
     def put(self, request, cashflow_id):
         try:
+            # FIXME: Verify the user may access this cashflow (i.e. manages the account of this cashflow)
             cashflow = Cashflow.objects.get(id=cashflow_id)
 
             cashflow.overall_value = request.data['overallValue']
@@ -157,6 +161,7 @@ class StoreSourcesView(APIView):
     permission_classes = (IsAuthenticated,)
 
     def post(self, request):
+        # TODO: Add association to account id
         try:
             place = Store.objects.create(
                 name=request.data['name'], street=request.data['street'],
@@ -177,8 +182,10 @@ class StoreSourcesView(APIView):
 
 
 class CategoryView(APIView):
+    permission_classes = (IsAuthenticated,)
 
     def post(self, request):
+        # TODO: Add association to account id
         try:
             category = Category.objects.create(name=request.POST['name'])
         except:
@@ -187,6 +194,7 @@ class CategoryView(APIView):
         return JsonResponse({'success': True, 'category_id': category.id}, status=status.HTTP_201_CREATED)
 
     def get(self, request):
+        # FIXME: Verify the user may access this category (i.e. manages the account of this cashflow)
         try:
             category = Category.objects.get(name=request.GET['name'])
         except:
@@ -200,6 +208,7 @@ class GetRoutes(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, _):
+        # FIXME: Update this
         routes = [
             {
                 'Endpoint': '/users/register',
