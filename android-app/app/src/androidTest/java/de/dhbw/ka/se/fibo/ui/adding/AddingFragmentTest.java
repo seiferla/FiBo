@@ -296,26 +296,34 @@ public class AddingFragmentTest {
         String today_full = full.format(now);
         String today_shortened = shortened.format(now);
 
+        // Click on date icon
         onView(withId(R.id.date_layout))
                 .perform(AddingFragmentTest.clickIcon(true));
 
+        // Click on confirm button -> select current day
         onView(withId(com.google.android.material.R.id.confirm_button))
                 .perform(click());
 
+        // Check that current day was actually selected
         onView(withId(R.id.date_text)).check(matches(withText(today_full)));
 
+        // Click on date icon again
         onView(withId(R.id.date_layout))
                 .perform(AddingFragmentTest.clickIcon(true));
 
+        // Click on edit icon to enter new date
         onView(withId(com.google.android.material.R.id.mtrl_picker_header_toggle))
                 .perform(click());
 
+        // Replace current date with 31.12.2999
         onView(withText(today_shortened))
                 .perform(replaceText("31.12.2999"));
 
+        // Close Keyboard
         onView(withText("31.12.2999"))
                 .perform(closeSoftKeyboard());
 
+        // Check that you can no longer click the confirm button
         onView(withId(com.google.android.material.R.id.confirm_button))
                 .check(matches(isNotEnabled()));
     }
