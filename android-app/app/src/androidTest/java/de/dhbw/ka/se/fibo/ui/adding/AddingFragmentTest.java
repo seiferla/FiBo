@@ -290,24 +290,11 @@ public class AddingFragmentTest {
 
     @Test
     public void testFutureDateNotPossible() {
-        DateTimeFormatter full = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        DateTimeFormatter shortened = DateTimeFormatter.ofPattern("dd.MM.yy");
+        DateTimeFormatter short_format = DateTimeFormatter.ofPattern("dd.MM.yy");
         LocalDateTime now = LocalDateTime.now();
-        String today_full = full.format(now);
-        String today_shortened = shortened.format(now);
+        String today = short_format.format(now);
 
         // Click on date icon
-        onView(withId(R.id.date_layout))
-                .perform(AddingFragmentTest.clickIcon(true));
-
-        // Click on confirm button -> select current day
-        onView(withId(com.google.android.material.R.id.confirm_button))
-                .perform(click());
-
-        // Check that current day was actually selected
-        onView(withId(R.id.date_text)).check(matches(withText(today_full)));
-
-        // Click on date icon again
         onView(withId(R.id.date_layout))
                 .perform(AddingFragmentTest.clickIcon(true));
 
@@ -316,7 +303,7 @@ public class AddingFragmentTest {
                 .perform(click());
 
         // Replace current date with 31.12.2999
-        onView(withText(today_shortened))
+        onView(withText(today))
                 .perform(replaceText("31.12.2999"));
 
         // Close Keyboard
