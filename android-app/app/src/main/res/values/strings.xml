@@ -42,8 +42,6 @@
     <string name="error_message_date_field">Gib ein bitte Datum an</string>
     <string name="error_message_category_field">Gib bitte eine Kategorie an</string>
     <string name="error_message_address_field">Gib bitte eine Addresse an</string>
-    <string name="time_message_date_picker">Uhrzeit auswählen</string>
-
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
