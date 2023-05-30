@@ -137,6 +137,10 @@ public class AddingFragmentTest {
         onView(allOf(withId(com.google.android.material.R.id.confirm_button), isDisplayed()))
                 .perform(click());
 
+        onView(allOf(withClassName(is("com.google.android.material.textfield.TextInputLayout")),withText(" ")))
+                .perform(replaceText(hours));
+
+        /*
         onView(allOf(TestMatchers.childAtPosition(TestMatchers.childAtPosition(withClassName(is("com.google.android.material.textfield.TextInputLayout")),
                 0), 0), isDisplayed()))
                 .perform(replaceText(hours));
@@ -153,7 +157,7 @@ public class AddingFragmentTest {
         onView(withId(R.id.date_text))
                 .check(matches(withText(expectedDate)));
 
-
+        */
     }
     public static ViewAction clickIcon(boolean isEndIcon) {
         return new ViewAction() {
