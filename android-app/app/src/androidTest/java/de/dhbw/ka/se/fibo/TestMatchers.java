@@ -19,17 +19,17 @@ public class TestMatchers {
 
             @Override
             public boolean matchesSafely(View view) {
+                String hint = "";
+
                 if (!(view instanceof TextInputLayout)) {
                     return false;
                 }
 
                 CharSequence error = ((TextInputLayout) view).getError();
 
-                if (null == error) {
-                    return false;
+                if (null != error) {
+                    hint = error.toString();
                 }
-
-                String hint = error.toString();
 
                 return expectedErrorText.equals(hint);
             }
