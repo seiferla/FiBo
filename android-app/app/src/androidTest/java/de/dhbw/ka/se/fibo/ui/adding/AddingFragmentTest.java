@@ -291,8 +291,8 @@ public class AddingFragmentTest {
     @Test
     public void testFutureDateNotPossible() {
         DateTimeFormatter shortFormat = DateTimeFormatter.ofPattern("dd.MM.yy");
-        LocalDateTime now = LocalDateTime.now();
-        String today = shortFormat.format(now);
+        String today = shortFormat.format(LocalDateTime.now());
+        String tomorrow = shortFormat.format(LocalDateTime.now().plusDays(1));
 
         // Click on date icon
         onView(withId(R.id.date_layout))
@@ -302,13 +302,12 @@ public class AddingFragmentTest {
         onView(withId(com.google.android.material.R.id.mtrl_picker_header_toggle))
                 .perform(click());
 
-        // Replace current date with 31.12.2999
+        // Replace current date with the next day
         onView(withText(today))
-                .perform(replaceText("31.12.2999"));
+                .perform(replaceText(tomorrow));
 
         // Close Keyboard
-        onView(withText("31.12.2999"))
-                .perform(closeSoftKeyboard());
+        closeSoftKeyboard();
 
         // Check that you can no longer click the confirm button
         onView(withId(com.google.android.material.R.id.confirm_button))
