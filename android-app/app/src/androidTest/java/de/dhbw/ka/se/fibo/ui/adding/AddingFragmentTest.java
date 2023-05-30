@@ -9,13 +9,12 @@ import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.hasSibling;
+import static androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withChild;
-import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.is;
 import static de.dhbw.ka.se.fibo.TestMatchers.hasTextInputLayoutErrorText;
 
 import android.content.Context;
@@ -24,9 +23,7 @@ import android.view.View;
 import androidx.navigation.Navigation;
 import androidx.test.espresso.UiController;
 import androidx.test.espresso.ViewAction;
-import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.matcher.RootMatchers;
-import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -41,26 +38,39 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import de.dhbw.ka.se.fibo.MainActivity;
 import de.dhbw.ka.se.fibo.R;
-import de.dhbw.ka.se.fibo.TestMatchers;
 
 @RunWith(AndroidJUnit4.class)
 public class AddingFragmentTest {
     private final Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-    private static final String expectedDate = "24.05.2023, 16:50 Uhr";
+    private String date;
 
-    private static final String date = "24.05.2023";
 
-    private static final String hours = "16";
+    private static DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yy");
 
-    private static final String minutes = "50";
+    private static DateTimeFormatter hoursFormat = DateTimeFormatter.ofPattern("HH");
+
+    private static DateTimeFormatter minutesFormat = DateTimeFormatter.ofPattern("mm");
+
+    private String currentHours;
+    private String currentMinutes;
+    private String currentDate;
+
+
     @Rule
     public ActivityScenarioRule<MainActivity> mActivityScenarioRule = new ActivityScenarioRule<>(MainActivity.class);
 
     @Before
     public void setUp() {
+        date = "24.05.2023";
+        currentHours = hoursFormat.format(LocalDateTime.now());
+        currentMinutes = minutesFormat.format(LocalDateTime.now());
+        currentDate = dateFormat.format(LocalDateTime.now());
         mActivityScenarioRule.getScenario()
                 .onActivity(activity -> Navigation.findNavController(activity, R.id.floatingButton)
                         .navigate(R.id.action_navigation_home_to_navigation_adding));
@@ -104,9 +114,11 @@ public class AddingFragmentTest {
         onView(withId(com.google.android.material.R.id.mtrl_picker_header_toggle))
                 .perform(click());
 
-        onView(allOf(TestMatchers.childAtPosition(TestMatchers.childAtPosition(withId(com.google.android.material.R.id.mtrl_picker_text_input_date),
-                0), 0), isDisplayed()))
-                .perform(replaceText(date), closeSoftKeyboard());
+        onView(withText(currentDate))
+                .perform(replaceText(date));
+
+        onView(withText(date)).perform(closeSoftKeyboard());
+
 
         onView(allOf(withId(com.google.android.material.R.id.confirm_button), isDisplayed()))
                 .perform(click());
@@ -130,41 +142,34 @@ public class AddingFragmentTest {
         onView(withId(com.google.android.material.R.id.mtrl_picker_header_toggle))
                 .perform(click());
 
-        onView(allOf(TestMatchers.childAtPosition(TestMatchers.childAtPosition(withId(com.google.android.material.R.id.mtrl_picker_text_input_date),
-                0), 0), isDisplayed()))
-                .perform(replaceText(expectedDate), ViewActions.closeSoftKeyboard());
+        onView(withText(currentDate))
+                .perform(replaceText(date));
 
-        onView(allOf(withId(com.google.android.material.R.id.confirm_button), isDisplayed()))
+        onView(withText(date))
+                .perform(closeSoftKeyboard());
+
+
+        onView(withId(com.google.android.material.R.id.confirm_button))
                 .perform(click());
 
-        onView(allOf(withClassName(is("com.google.android.material.textfield.TextInputLayout")),withText(" ")))
-                .perform(replaceText(hours));
-
-        /*
-        onView(allOf(TestMatchers.childAtPosition(TestMatchers.childAtPosition(withClassName(is("com.google.android.material.textfield.TextInputLayout")),
-                0), 0), isDisplayed()))
-                .perform(replaceText(hours));
-
-        onView(withId(com.google.android.material.R.id.material_minute_text_input)).perform(click());
-
-        onView(allOf(TestMatchers.childAtPosition(TestMatchers.childAtPosition(withClassName(is("com.google.android.material.textfield.TextInputLayout")),
-                0), 0), isDisplayed()))
-                .perform(replaceText(minutes), closeSoftKeyboard());
-
-        onView(allOf(withId(com.google.android.material.R.id.material_timepicker_ok_button)))
+        onView(withId(com.google.android.material.R.id.material_timepicker_ok_button))
                 .perform(click());
 
-        onView(withId(R.id.date_text))
-                .check(matches(withText(expectedDate)));
+        StringBuilder builder = new StringBuilder();
+        builder.append(date + ", " + currentHours + ":" + currentMinutes + " Uhr");
 
-        */
+        onView(withId(R.id.date_text)).check(matches(withText(builder.toString())));
+
+
     }
+
+
     public static ViewAction clickIcon(boolean isEndIcon) {
         return new ViewAction() {
 
             @Override
             public Matcher<View> getConstraints() {
-                return ViewMatchers.isAssignableFrom(TextInputLayout.class);
+                return isAssignableFrom(TextInputLayout.class);
             }
 
             @Override
