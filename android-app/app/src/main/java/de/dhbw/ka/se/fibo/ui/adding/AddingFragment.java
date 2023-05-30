@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +28,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
@@ -43,7 +41,6 @@ import de.dhbw.ka.se.fibo.databinding.FragmentAddingBinding;
 import de.dhbw.ka.se.fibo.models.Cashflow;
 import de.dhbw.ka.se.fibo.models.CashflowType;
 import de.dhbw.ka.se.fibo.models.Category;
-import de.dhbw.ka.se.fibo.models.Item;
 import de.dhbw.ka.se.fibo.models.Place;
 
 public class AddingFragment extends Fragment {
@@ -60,7 +57,6 @@ public class AddingFragment extends Fragment {
     private MaterialButton okayButton;
     private TabLayout tabLayout;
     private TextInputEditText address;
-    private EditText notes;
     private int hours;
     private int minutes;
     private CashflowType newCashFlowType;
@@ -81,8 +77,6 @@ public class AddingFragment extends Fragment {
         okayButton = binding.okayButton;
         tabLayout = binding.tabLayout;
         address = binding.addressText;
-        notes = binding.notesMultiLine;
-
         return view;
     }
 
@@ -97,13 +91,6 @@ public class AddingFragment extends Fragment {
         createTimePicker();
 
 
-        notes.setOnFocusChangeListener((view1, hasFocus) -> {
-            if (hasFocus) {
-                notes.setHint(requireContext().getString(R.string.adding_notes_format));
-            } else {
-                notes.setHint(requireContext().getString(R.string.adding_notes));
-            }
-        });
     }
 
     private void createTimePicker() {
@@ -202,17 +189,6 @@ public class AddingFragment extends Fragment {
 
             date = LocalDate.parse(getFieldValue(dateText), formatter).atStartOfDay();
 
-            if (notes.getText().toString().trim().isEmpty()) {
-                return new Cashflow(category, newCashFlowType, value, date, place);
-            } else {
-                try {
-                    List<Item> items = createItemsFromNotes();
-                    return new Cashflow(category, newCashFlowType, value, date, place, items);
-                } catch (IllegalArgumentException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
         }
 
 
@@ -286,22 +262,6 @@ public class AddingFragment extends Fragment {
             dateText.setText(formatter.format(selection));
             timePicker.show(requireActivity().getSupportFragmentManager(), "TimePicker");
         });
-    }
-
-    private ArrayList<Item> createItemsFromNotes() throws IllegalArgumentException {
-        String[] lines = notes.getText().toString().trim().split(";");
-        ArrayList<Item> result = new ArrayList<>();
-        for (String s : lines) {
-            String[] item = s.split(",");
-            if (2 == item.length) {
-                result.add(new Item(item[0], Float.parseFloat(item[1])));
-            } else if (3 == item.length) {
-                result.add(new Item(item[0], Float.parseFloat(item[1]), Float.parseFloat(item[2])));
-            } else {
-                throw new IllegalArgumentException("Incorrect input format");
-            }
-        }
-        return result;
     }
 
     @Override

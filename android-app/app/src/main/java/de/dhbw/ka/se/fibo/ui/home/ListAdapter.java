@@ -41,7 +41,7 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_row, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_cashflow_row, parent, false);
         return new RecyclerViewHolder(view);
     }
 
