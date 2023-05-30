@@ -291,8 +291,10 @@ public class AddingFragmentTest {
     @Test
     public void testFutureDateNotPossible() {
         DateTimeFormatter full = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        DateTimeFormatter shortened = DateTimeFormatter.ofPattern("dd.MM.yy");
         LocalDateTime now = LocalDateTime.now();
         String today_full = full.format(now);
+        String today_shortened = shortened.format(now);
 
         onView(withId(R.id.date_layout))
                 .perform(AddingFragmentTest.clickIcon(true));
@@ -308,7 +310,7 @@ public class AddingFragmentTest {
         onView(withId(com.google.android.material.R.id.mtrl_picker_header_toggle))
                 .perform(click());
 
-        onView(withText("30.05.23"))
+        onView(withText(today_shortened))
                 .perform(replaceText("31.12.2999"));
 
         onView(withText("31.12.2999"))
