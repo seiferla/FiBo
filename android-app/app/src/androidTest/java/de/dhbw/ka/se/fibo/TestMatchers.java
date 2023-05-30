@@ -13,9 +13,9 @@ import org.hamcrest.TypeSafeMatcher;
 public class TestMatchers {
 
     public static Matcher<View> childAtPosition(
-            final Matcher<View> parentMatcher, final int position) {
+             Matcher<View> parentMatcher, int position) {
 
-        return new TypeSafeMatcher<View>() {
+        return new TypeSafeMatcher<>() {
             @Override
             public void describeTo(Description description) {
                 description.appendText("Child at position " + position + " in parent ");

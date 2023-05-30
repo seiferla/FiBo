@@ -131,7 +131,7 @@ public class AddingFragment extends Fragment {
                 .setTimeFormat(TimeFormat.CLOCK_24H)
                 .setHour(currentHour)
                 .setMinute(currentMinutes)
-                .setTitleText("Select a time")
+                .setTitleText(R.string.time_message_date_picker)
                 .build();
         timePicker.addOnPositiveButtonClickListener(dialog -> {
             hours = timePicker.getHour();
@@ -288,6 +288,7 @@ public class AddingFragment extends Fragment {
         datePicker.addOnPositiveButtonClickListener(selection -> {
             Format formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMANY);
             dateText.setText(formatter.format(selection));
+            timePicker.show(requireActivity().getSupportFragmentManager(), "TimePicker");
         });
     }
 
