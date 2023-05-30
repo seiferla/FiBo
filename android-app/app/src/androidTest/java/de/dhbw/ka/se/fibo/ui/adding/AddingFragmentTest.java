@@ -290,9 +290,9 @@ public class AddingFragmentTest {
 
     @Test
     public void testFutureDateNotPossible() {
-        DateTimeFormatter short_format = DateTimeFormatter.ofPattern("dd.MM.yy");
+        DateTimeFormatter shortFormat = DateTimeFormatter.ofPattern("dd.MM.yy");
         LocalDateTime now = LocalDateTime.now();
-        String today = short_format.format(now);
+        String today = shortFormat.format(now);
 
         // Click on date icon
         onView(withId(R.id.date_layout))
