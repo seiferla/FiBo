@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/adding_fragment_container"
     android:layout_marginBottom="92dp"> <!-- 80dp (navbar) + 12dp -->
 
     <com.google.android.material.tabs.TabLayout

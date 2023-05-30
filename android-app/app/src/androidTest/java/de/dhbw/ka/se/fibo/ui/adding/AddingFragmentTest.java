@@ -11,6 +11,7 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.hasSibling;
 import static androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.isNotEnabled;
 import static androidx.test.espresso.matcher.ViewMatchers.withChild;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -24,6 +25,7 @@ import androidx.navigation.Navigation;
 import androidx.test.espresso.UiController;
 import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.matcher.RootMatchers;
+import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -407,5 +409,56 @@ public class AddingFragmentTest {
 
         onView(withId(R.id.address_text_layout))
                 .check(matches(hasTextInputLayoutErrorText("")));
+    }
+
+    @Test
+    public void testFutureDateNotPossible() {
+        DateTimeFormatter shortFormat = DateTimeFormatter.ofPattern("dd.MM.yy");
+        String today = shortFormat.format(LocalDateTime.now());
+        String tomorrow = shortFormat.format(LocalDateTime.now().plusDays(1));
+
+        // Click on date icon
+        onView(withId(R.id.date_layout))
+                .perform(AddingFragmentTest.clickIcon(true));
+
+        // Click on edit icon to enter new date
+        onView(withId(com.google.android.material.R.id.mtrl_picker_header_toggle))
+                .perform(click());
+
+        // Replace current date with the next day
+        onView(withText(today))
+                .perform(replaceText(tomorrow));
+
+        // Close Keyboard
+        closeSoftKeyboard();
+
+        // Check that you can no longer click the confirm button
+        onView(withId(com.google.android.material.R.id.confirm_button))
+                .check(matches(isNotEnabled()));
+    }
+
+
+    public static ViewAction clickIcon(boolean isEndIcon) {
+        return new ViewAction() {
+
+            @Override
+            public Matcher<View> getConstraints() {
+                return ViewMatchers.isAssignableFrom(TextInputLayout.class);
+            }
+
+            @Override
+            public String getDescription() {
+                return "Clicks the end or start icon";
+            }
+
+            @Override
+            public void perform(UiController uiController, View view) {
+                TextInputLayout item = (TextInputLayout) view;
+                // Reach in and find the icon view since we don't have a public API to get a reference to it
+                CheckableImageButton iconView =
+                        item.findViewById(isEndIcon ? com.google.android.material.R.id.text_input_end_icon : com.google.android.material.R.id.text_input_start_icon);
+                iconView.performClick();
+            }
+        };
     }
 }
