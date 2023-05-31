@@ -9,22 +9,19 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.card.MaterialCardView;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.SortedSet;
 
 import de.dhbw.ka.se.fibo.Helpers;
 import de.dhbw.ka.se.fibo.R;
 import de.dhbw.ka.se.fibo.models.Item;
 
 public class AddingItemsListAdapter extends RecyclerView.Adapter<AddingItemsRecyclerViewHolder> {
-    private final List<Item> itemArrayList;
+    private final List<Item> itemList;
     private final Context context;
 
-    public AddingItemsListAdapter(Context context, SortedSet<Item> itemArrayList) {
-        this.itemArrayList = new ArrayList<>(itemArrayList);
+    public AddingItemsListAdapter(Context context, List<Item> itemList) {
+        this.itemList = new ArrayList<>(itemList);
         this.context = context;
     }
 
@@ -55,11 +52,20 @@ public class AddingItemsListAdapter extends RecyclerView.Adapter<AddingItemsRecy
     }
 
     private Item getItem(int position) {
-        return itemArrayList.get(position);
+        return itemList.get(position);
+    }
+
+    public void addItem(Item newItem) {
+        itemList.add(newItem);
+        notifyItemInserted(itemList.size());
+    }
+
+    public Item deleteItem(int position) {
+        return itemList.remove(position);
     }
 
     @Override
     public int getItemCount() {
-        return itemArrayList.size();
+        return itemList.size();
     }
 }

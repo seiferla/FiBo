@@ -77,7 +77,7 @@ public class AddingFragmentTest {
         onView(withId(R.id.store_text_layout))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_store_field))));
         onView(withId(R.id.amount_layout))
-                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_amount_field))));
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_price_field))));
         onView(withId(R.id.date_layout))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_date_field))));
         onView(withId(R.id.category_layout))
@@ -116,7 +116,7 @@ public class AddingFragmentTest {
         onView(withId(R.id.store_text_layout))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_source_field))));
         onView(withId(R.id.amount_layout))
-                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_amount_field))));
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_price_field))));
         onView(withId(R.id.date_layout))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_date_field))));
         onView(withId(R.id.category_layout))
@@ -197,7 +197,7 @@ public class AddingFragmentTest {
                 .perform(click());
 
         onView(withId(R.id.amount_layout))
-                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_amount_field))));
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_price_field))));
 
         // add something to the amount field and test that the the amount error is gone
         onView(withId(R.id.amount_text))

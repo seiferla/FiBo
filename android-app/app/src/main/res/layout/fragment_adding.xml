@@ -196,6 +196,7 @@
                     app:layout_constraintBottom_toBottomOf="parent" />
 
                 <com.google.android.material.button.MaterialButton
+                    android:contentDescription="@string/add_item_button_description"
                     style="@style/Widget.Material3.Button.IconButton.Filled"
                     app:icon="@drawable/plus_icon"
                     android:id="@+id/add_item_button"
@@ -252,6 +253,7 @@
                     android:id="@+id/cancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
                     android:layout_marginEnd="16dp"
                     style="@style/Widget.Material3.Button.TextButton"
                     android:text="@string/cancelButton"

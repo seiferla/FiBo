@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.datepicker.CalendarConstraints;
@@ -29,6 +31,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -43,6 +46,7 @@ import de.dhbw.ka.se.fibo.databinding.FragmentAddingBinding;
 import de.dhbw.ka.se.fibo.models.Cashflow;
 import de.dhbw.ka.se.fibo.models.CashflowType;
 import de.dhbw.ka.se.fibo.models.Category;
+import de.dhbw.ka.se.fibo.models.Item;
 import de.dhbw.ka.se.fibo.models.Place;
 import de.dhbw.ka.se.fibo.utils.ActivityUtils;
 
@@ -65,6 +69,13 @@ public class AddingFragment extends Fragment {
     private TabLayout tabLayout;
     private TextInputEditText address;
     private CashflowType newCashFlowType;
+
+    private MaterialButton addItemButton;
+
+    private RecyclerView addingItemsRecyclerView;
+    private ArrayList<Item> addedItems;
+    private AddingItemsListAdapter addingItemsListAdapter;
+    private AddingDialog addingDialog;
 
     @Nullable
     @Override
@@ -89,6 +100,10 @@ public class AddingFragment extends Fragment {
         addressLayout = binding.addressTextLayout;
         categoriesDropdownLayout = binding.categoryLayout;
 
+        addItemButton = binding.addItemButton;
+        addingItemsRecyclerView = binding.addingFragmentRecyclerview;
+        addedItems = new ArrayList<>();
+
         return view;
     }
 
@@ -100,7 +115,19 @@ public class AddingFragment extends Fragment {
         initializeDropdownValues();
         createDatePicker();
         setUpDateTextField();
+        setUpItems(view);
+        setUpDialog();
+    }
 
+    private void setUpDialog() {
+        addingDialog = new AddingDialog(requireContext());
+        addingDialog.setAdapter(addingItemsListAdapter);
+    }
+
+    private void setUpItems(View view) {
+        addingItemsListAdapter = new AddingItemsListAdapter(getContext(), addedItems);
+        addingItemsRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        addingItemsRecyclerView.setAdapter(addingItemsListAdapter);
     }
 
     private void setUpTabLayout() {
@@ -150,6 +177,14 @@ public class AddingFragment extends Fragment {
             }
 
         });
+
+        addItemButton.setOnClickListener(e -> openItemAddingDialog());
+
+    }
+
+    private void openItemAddingDialog() {
+        System.out.println("Clicked addItemButton");
+        addingDialog.show();
     }
 
     private Cashflow createCashFlow() {
@@ -190,7 +225,7 @@ public class AddingFragment extends Fragment {
         } else {
             fieldsToBeChecked.put(storeLayout, getString(R.string.error_message_source_field));
         }
-        fieldsToBeChecked.put(amountLayout, getString(R.string.error_message_amount_field));
+        fieldsToBeChecked.put(amountLayout, getString(R.string.error_message_price_field));
         fieldsToBeChecked.put(dateTextLayout, getString(R.string.error_message_date_field));
         fieldsToBeChecked.put(categoriesDropdownLayout, getString(R.string.error_message_category_field));
         fieldsToBeChecked.put(addressLayout, getString(R.string.error_message_address_field));
