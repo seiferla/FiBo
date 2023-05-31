@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/adding_items_row_layout_wrapper"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -53,7 +52,7 @@
 
                 <TextView
 
-                    android:id="@+id/adding_items_row_itemname"
+                    android:id="@+id/adding_items_row_item_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -63,15 +62,15 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/adding_items_row_price"
+                    android:id="@+id/adding_items_row_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:text="@string/recyclerview_date_placeholder"
                     android:textSize="@dimen/smallTextSize"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/adding_items_row_itemname"
-                    app:layout_constraintTop_toBottomOf="@id/adding_items_row_itemname" />
+                    app:layout_constraintStart_toStartOf="@id/adding_items_row_item_name"
+                    app:layout_constraintTop_toBottomOf="@id/adding_items_row_item_name" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -87,7 +86,7 @@
                 app:layout_constraintVertical_bias="0.0">
 
                 <TextView
-                    android:id="@+id/adding_items_row_cashFlowValue"
+                    android:id="@+id/adding_items_row_item_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
