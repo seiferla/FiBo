@@ -127,4 +127,5 @@
     <string name="delete_user_confirm_button">Benutzer löschen</string>
     <string name="cancel_button">Abbrechen</string>
     <string name="account">Konto</string>
+    <string name="edit_item_description">Aritkel bearbeiten</string>
 </resources>
