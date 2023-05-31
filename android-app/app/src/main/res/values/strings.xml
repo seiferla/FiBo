@@ -29,13 +29,19 @@
     <string name="adding_expense">Ausgabe</string>
     <string name="adding_income">Einnahme</string>
     <string name="adding_amount">Betrag (€)</string>
-    <string name="adding_date">Zeitstempel</string>
+    <string name="adding_date">Datum</string>
     <string name="adding_category">Kategorie</string>
     <string name="adding_notes">Notizen</string>
     <string name="adding_address">Adresse</string>
     <string name="adding_notes_format">Name, Preis, (Menge);</string>
     <string name="error_message_password_field_empty">Passwortfeld ist leer</string>
     <string name="error_message_email_field">Emailfeld ist leer</string>
+    <string name="error_message_store_field">Gib bitte ein Geschäft an</string>
+    <string name="error_message_source_field">Gib bitte eine Quelle an</string>
+    <string name="error_message_amount_field">Gib bitte einen Betrag an</string>
+    <string name="error_message_date_field">Gib ein bitte Datum an</string>
+    <string name="error_message_category_field">Gib bitte eine Kategorie an</string>
+    <string name="error_message_address_field">Gib bitte eine Addresse an</string>
     <string name="headline_itemlist_view">Artikelübersicht</string>
 
 
