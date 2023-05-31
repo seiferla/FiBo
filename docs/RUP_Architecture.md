@@ -361,7 +361,7 @@ analysis. They are grouped into following sections:
 <details>
   <summary>security</summary>
 
--vulnerabilities
+- vulnerabilities
 </details>
 
 <details>
