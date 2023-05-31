@@ -27,12 +27,12 @@ import de.dhbw.ka.se.fibo.R;
 import de.dhbw.ka.se.fibo.models.Cashflow;
 import de.dhbw.ka.se.fibo.models.CashflowType;
 
-public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
+public class CashflowListAdapter extends RecyclerView.Adapter<CashflowViewHolder> {
 
     private final List<Cashflow> cashflowArrayList;
     private final Context context;
 
-    public ListAdapter(Context context, SortedSet<Cashflow> cashflowArrayList) {
+    public CashflowListAdapter(Context context, SortedSet<Cashflow> cashflowArrayList) {
         setHasStableIds(true);
         this.cashflowArrayList = new ArrayList<>(cashflowArrayList);
         this.context = context;
@@ -40,12 +40,12 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
 
     @NonNull
     @Override
-    public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CashflowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_cashflow_row, parent, false);
-        return new RecyclerViewHolder(view);
+        return new CashflowViewHolder(view);
     }
 
-    public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CashflowViewHolder holder, int position) {
         Cashflow cashflow = getItem(position);
         CashflowType cashflowType = cashflow.getType();
         BigDecimal overallValue = cashflow.getOverallValue();
