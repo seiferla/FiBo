@@ -21,96 +21,59 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/adding_items_row_constraintLayout3"
+            android:id="@+id/adding_items_row_constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/adding_items_row_constraintLayout"
+            <LinearLayout
+                android:id="@+id/adding_items_row_name_and_price_layout"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/adding_items_row_constraintLayout4"
-                app:layout_constraintHorizontal_bias="0.52"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0">
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/adding_items_row_constraintLayout4"
-                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/adding_items_row_constraintLayout"
+                android:layout_marginStart="16dp"
+                android:orientation="vertical"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-
                     android:id="@+id/adding_items_row_item_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="item name"
+                    android:text="@string/recyclerview_item_name_placeholder"
                     android:textSize="@dimen/standardTextSize"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/adding_items_row_date"
+                    android:id="@+id/adding_items_row_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:text="@string/recyclerview_date_placeholder"
-                    android:textSize="@dimen/smallTextSize"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/adding_items_row_item_name"
-                    app:layout_constraintTop_toBottomOf="@id/adding_items_row_item_name" />
+                    android:text="@string/recyclerview_price_placeholder"
+                    android:textSize="@dimen/smallTextSize" />
 
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/adding_items_row_constraintLayout2"
+            <TextView
+                android:id="@+id/adding_items_row_item_amount"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginEnd="156dp"
+                android:layout_height="wrap_content"
+                android:text="2 Stk."
+                android:textSize="@dimen/smallTextSize"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0">
-
-                <TextView
-                    android:id="@+id/adding_items_row_item_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:text="2 Stk."
-                    android:textSize="@dimen/smallTextSize"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_constraintEnd_toStartOf="@+id/adding_items_row_imageViewDrawable"
+                app:layout_constraintStart_toEndOf="@id/adding_items_row_name_and_price_layout"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/adding_items_row_imageViewDrawable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="32dp"
+                android:contentDescription="@string/edit_item_description"
                 android:scaleType="center"
                 android:src="@drawable/baseline_arrow_forward_ios_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@string/edit_item_description" />
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
