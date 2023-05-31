@@ -89,7 +89,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right">
+            android:layout_gravity="end">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/adding_fragment_dialog_cancel_button"
