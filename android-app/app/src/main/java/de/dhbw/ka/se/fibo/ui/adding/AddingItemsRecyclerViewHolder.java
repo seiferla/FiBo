@@ -1,7 +1,6 @@
 package de.dhbw.ka.se.fibo.ui.adding;
 
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,17 +13,15 @@ import de.dhbw.ka.se.fibo.R;
 public class AddingItemsRecyclerViewHolder extends RecyclerView.ViewHolder {
 
     final MaterialCardView materialCard;
-    final TextView detailsButton;
     final MaterialTextView itemName;
-    final MaterialTextView itemDate;
-    final MaterialTextView itemValue;
+    final MaterialTextView itemPrice;
+    final MaterialTextView itemAmount;
 
     public AddingItemsRecyclerViewHolder(@NonNull View itemView) {
         super(itemView);
         materialCard = itemView.findViewById(R.id.adding_items_row_material_card_view_container);
-        detailsButton = itemView.findViewById(R.id.adding_items_row_imageViewDrawable);
         itemName = itemView.findViewById(R.id.adding_items_row_item_name);
-        itemDate = itemView.findViewById(R.id.adding_items_row_date);
-        itemValue = itemView.findViewById(R.id.adding_items_row_item_value);
+        itemPrice = itemView.findViewById(R.id.adding_items_row_price);
+        itemAmount = itemView.findViewById(R.id.adding_items_row_item_amount);
     }
 }
