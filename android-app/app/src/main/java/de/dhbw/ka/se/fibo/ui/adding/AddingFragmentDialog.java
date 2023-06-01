@@ -3,8 +3,10 @@ package de.dhbw.ka.se.fibo.ui.adding;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -19,25 +21,35 @@ import java.util.Optional;
 
 import de.dhbw.ka.se.fibo.R;
 import de.dhbw.ka.se.fibo.databinding.AddingFragmentDialogBinding;
-import de.dhbw.ka.se.fibo.models.Item;
 import de.dhbw.ka.se.fibo.utils.ActivityUtils;
 
-public class AddingDialog extends Dialog {
+public class AddingFragmentDialog extends Dialog {
 
-    private boolean isEditingMode;
     private final Context context;
 
     private AddingFragmentDialogBinding binding;
-    private MaterialButton saveButton;
-    private MaterialButton cancelButton;
-    private TextInputEditText addingFragmentDialogItemName;
-    private TextInputEditText addingFragmentDialogItemPrice;
-    private TextInputEditText addingFragmentDialogItemAmount;
     private AddingItemsListAdapter adapter;
+
+    MaterialButton saveButton;
+    MaterialButton cancelButton;
+    MaterialButton deleteButton;
+    TextInputEditText addingFragmentDialogItemName;
+    TextInputEditText addingFragmentDialogItemPrice;
+    TextInputEditText addingFragmentDialogItemAmount;
+    TextView addingFragmentDialogHeadingText;
     private TextInputLayout addingFragmentDialogItemAmountLayout;
     private TextInputLayout addingFragmentDialogItemPriceLayout;
     private TextInputLayout addingFragmentDialogItemNameLayout;
     private Map<TextInputLayout, String> fieldsToBeChecked;
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        addingFragmentDialogItemName.setText("");
+        addingFragmentDialogItemAmount.setText("");
+        addingFragmentDialogItemPrice.setText("");
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,18 +59,20 @@ public class AddingDialog extends Dialog {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(binding.getRoot());
+        setCanceledOnTouchOutside(false);
 
+        addingFragmentDialogHeadingText = binding.addingFragmentDialogHeadingText;
         addingFragmentDialogItemName = binding.addingFragmentDialogItemName;
         addingFragmentDialogItemNameLayout = binding.addingFragmentDialogItemNameLayout;
         addingFragmentDialogItemPrice = binding.addingFragmentDialogItemPrice;
         addingFragmentDialogItemPriceLayout = binding.addingFragmentDialogItemPriceLayout;
         addingFragmentDialogItemAmount = binding.addingFragmentDialogItemAmount;
         addingFragmentDialogItemAmountLayout = binding.addingFragmentDialogItemAmountLayout;
+        deleteButton = binding.addingFragmentDialogHeadingDeleteButton;
+        deleteButton.setVisibility(View.INVISIBLE);
 
         saveButton = binding.addingFragmentDialogSaveButton;
-        setOnPositiveButtonListener();
         cancelButton = binding.addingFragmentDialogCancelButton;
-        setOnNegativeButtonListener();
 
         setRequiredFields();
         getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -77,11 +91,19 @@ public class AddingDialog extends Dialog {
 
     }
 
-    private String getName() {
+    String getName() {
         return ActivityUtils.getFieldValue(addingFragmentDialogItemName);
     }
 
-    private Optional<BigDecimal> getValue() {
+    public Map<TextInputLayout, String> getFieldsToBeChecked() {
+        return fieldsToBeChecked;
+    }
+
+    public AddingItemsListAdapter getAdapter() {
+        return adapter;
+    }
+
+    Optional<BigDecimal> getValue() {
         try {
             return Optional.of(new BigDecimal(ActivityUtils.getFieldValue(addingFragmentDialogItemPrice)));
         } catch (NumberFormatException e) {
@@ -90,7 +112,7 @@ public class AddingDialog extends Dialog {
         return Optional.empty();
     }
 
-    private Optional<Float> getAmount() {
+    Optional<Float> getAmount() {
         try {
             return Optional.of(Float.parseFloat(ActivityUtils.getFieldValue(addingFragmentDialogItemAmount)));
         } catch (NumberFormatException e) {
@@ -99,23 +121,8 @@ public class AddingDialog extends Dialog {
         return Optional.empty();
     }
 
-    public void setOnPositiveButtonListener() {
-        saveButton.setOnClickListener(v -> {
-            if (!ActivityUtils.checkValidInput(fieldsToBeChecked)) {
-                return;
-            }
-            if (getValue().isPresent() && getAmount().isPresent()) {
-                adapter.addItem(new Item(getName(), getValue().get(), getAmount().get()));
-                dismiss();
-            }
-        });
-    }
 
-    public void setOnNegativeButtonListener() {
-        cancelButton.setOnClickListener(v -> dismiss());
-    }
-
-    public AddingDialog(@NonNull Context context) {
+    public AddingFragmentDialog(@NonNull Context context) {
         super(context);
         this.context = context;
     }

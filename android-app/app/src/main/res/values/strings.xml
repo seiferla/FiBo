@@ -136,5 +136,7 @@
     <string name="item_price_hint">Preis</string>
     <string name="item_amount_hint">Anzahl</string>
     <string name="delete_item_button_description">Artikel entfernen</string>
+    <string name="add_article_dialog_heading">Artikel hinzufügen</string>
+    <string name="edit_article_dialog_heading">Artikel bearbeiten</string>
 
 </resources>

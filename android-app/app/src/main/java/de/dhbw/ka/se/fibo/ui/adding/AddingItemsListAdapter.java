@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,10 +18,14 @@ import de.dhbw.ka.se.fibo.models.Item;
 public class AddingItemsListAdapter extends RecyclerView.Adapter<AddingItemsRecyclerViewHolder> {
     private final List<Item> itemList;
     private final Context context;
+    private AddingFragmentFragmentDialogEdit editDialog;
+
 
     public AddingItemsListAdapter(Context context, List<Item> itemList) {
         this.itemList = new ArrayList<>(itemList);
         this.context = context;
+        editDialog = new AddingFragmentFragmentDialogEdit(context);
+        editDialog.setAdapter(this);
     }
 
     @NonNull
@@ -41,9 +44,10 @@ public class AddingItemsListAdapter extends RecyclerView.Adapter<AddingItemsRecy
         holder.materialCard.setOnClickListener(view -> openEditDialog(currentItem, position));
     }
 
-    //Todo implement method
     private void openEditDialog(Item item, int position) {
-        Toast.makeText(context, position + ". " + item.getName() + " " + Helpers.formatBigDecimalCurrency(item.getValue()), Toast.LENGTH_SHORT).show();
+        editDialog.setCurrentItem(item);
+        editDialog.setPosition(position);
+        editDialog.show();
     }
 
     @Override
@@ -60,12 +64,20 @@ public class AddingItemsListAdapter extends RecyclerView.Adapter<AddingItemsRecy
         notifyItemInserted(itemList.size());
     }
 
-    public Item deleteItem(int position) {
-        return itemList.remove(position);
+    public void deleteItem(int position) {
+        itemList.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, itemList.size());
     }
 
     @Override
     public int getItemCount() {
         return itemList.size();
+    }
+
+    public void updateItem(int position, Item item) {
+        itemList.remove(position);
+        itemList.add(position, item);
+        notifyItemChanged(position);
     }
 }
