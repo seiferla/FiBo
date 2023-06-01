@@ -46,7 +46,7 @@ import de.dhbw.ka.se.fibo.R;
 
 @RunWith(AndroidJUnit4.class)
 public class AddingFragmentTest {
-    private final Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+    final Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
     @Rule
     public ActivityScenarioRule<MainActivity> mActivityScenarioRule = new ActivityScenarioRule<>(MainActivity.class);
