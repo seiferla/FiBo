@@ -1,4 +1,4 @@
-# FiBo ![code coverage score](https://codecov.io/gh/Cebox82/FiBo/branch/master/graph/badge.svg)
+# FiBo ![code coverage score](https://codecov.io/gh/Cebox82/FiBo/branch/master/graph/badge.svg) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Cebox82_FiBo&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Cebox82_FiBo)
 
 ![fibo logo](/docs/fibo_logo.png)
 
