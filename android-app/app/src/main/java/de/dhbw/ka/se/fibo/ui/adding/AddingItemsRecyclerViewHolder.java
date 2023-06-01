@@ -21,7 +21,7 @@ public class AddingItemsRecyclerViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         layoutWrapper = itemView.findViewById(R.id.adding_items_row_layout_wrapper);
         itemName = itemView.findViewById(R.id.adding_items_row_item_name);
-        itemPrice = itemView.findViewById(R.id.adding_items_row_price);
+        itemPrice = itemView.findViewById(R.id.adding_items_row_item_price);
         itemAmount = itemView.findViewById(R.id.adding_items_row_item_amount);
     }
 }

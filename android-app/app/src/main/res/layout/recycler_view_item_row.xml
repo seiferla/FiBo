@@ -28,7 +28,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/adding_items_row_price"
+            android:id="@+id/adding_items_row_item_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/recyclerview_price_placeholder"
