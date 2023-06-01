@@ -1,10 +1,9 @@
 from django.test import TestCase
 from ..models import Place, Category, Account, Cashflow, Item, FiboUser
 
+testPassword = 'secure'
 
 class ModelsTestCase(TestCase):
-
-    testPassword = 'secure'
 
     def test_place_creation(self):
         place = Place.objects.create(address="Kaiserstraße 12", name="Postgalerie")
