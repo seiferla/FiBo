@@ -25,7 +25,6 @@ import androidx.navigation.Navigation;
 import androidx.test.espresso.UiController;
 import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.matcher.RootMatchers;
-import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -109,7 +108,6 @@ public class AddingFragmentTest {
     @Test
     public void testSetDatePickerCancelTimePicker() {
 
-
         onView(withId(R.id.date_layout))
                 .perform(AddingFragmentTest.clickIcon(true));
 
@@ -120,7 +118,6 @@ public class AddingFragmentTest {
                 .perform(replaceText(date));
 
         onView(withText(date)).perform(closeSoftKeyboard());
-
 
         onView(allOf(withId(com.google.android.material.R.id.confirm_button), isDisplayed()))
                 .perform(click());
@@ -149,7 +146,6 @@ public class AddingFragmentTest {
 
         onView(withText(date))
                 .perform(closeSoftKeyboard());
-
 
         onView(withId(com.google.android.material.R.id.confirm_button))
                 .perform(click());
@@ -437,28 +433,4 @@ public class AddingFragmentTest {
                 .check(matches(isNotEnabled()));
     }
 
-
-    public static ViewAction clickIcon(boolean isEndIcon) {
-        return new ViewAction() {
-
-            @Override
-            public Matcher<View> getConstraints() {
-                return ViewMatchers.isAssignableFrom(TextInputLayout.class);
-            }
-
-            @Override
-            public String getDescription() {
-                return "Clicks the end or start icon";
-            }
-
-            @Override
-            public void perform(UiController uiController, View view) {
-                TextInputLayout item = (TextInputLayout) view;
-                // Reach in and find the icon view since we don't have a public API to get a reference to it
-                CheckableImageButton iconView =
-                        item.findViewById(isEndIcon ? com.google.android.material.R.id.text_input_end_icon : com.google.android.material.R.id.text_input_start_icon);
-                iconView.performClick();
-            }
-        };
-    }
 }
