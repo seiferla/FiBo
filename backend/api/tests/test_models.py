@@ -4,6 +4,8 @@ from ..models import Place, Category, Account, Cashflow, Item, FiboUser
 
 class ModelsTestCase(TestCase):
 
+    testPassword = 'secure'
+
     def test_place_creation(self):
         place = Place.objects.create(address="Kaiserstraße 12", name="Postgalerie")
         self.assertEqual(place.name, 'Postgalerie')
@@ -67,17 +69,17 @@ class ModelsTestCase(TestCase):
 
     def test_fibo_user_creation(self):
         account = Account.objects.create(name="Test Account")
-        user = FiboUser.objects.create_user(email='test@fibo.de', password='secure')
+        user = FiboUser.objects.create_user(email='test@fibo.de', password=self.testPassword)
         user.account.add(account)
         self.assertIsNotNone(user.account)
 
     def test_fibo_user_creation_no_email(self):
         with self.assertRaises(ValueError):
-            user = FiboUser.objects._create_user(email=None, password='secure')
+            user = FiboUser.objects._create_user(email=None, password=self.testPassword)
 
     def test_fibo_superuser_creation(self):
-        user = FiboUser.objects.create_superuser(email='test@fibo.de', password='secure')
+        user = FiboUser.objects.create_superuser(email='test@fibo.de', password=self.testPassword)
         self.assertEquals(user.is_superuser, True)
     def test_fibo_superuser_is_false_creation(self):
         with self.assertRaises(ValueError):
-            user = FiboUser.objects.create_superuser(email='test@fibo.de', password='secure', is_superuser=False)
+            user = FiboUser.objects.create_superuser(email='test@fibo.de', password=self.testPassword, is_superuser=False)
