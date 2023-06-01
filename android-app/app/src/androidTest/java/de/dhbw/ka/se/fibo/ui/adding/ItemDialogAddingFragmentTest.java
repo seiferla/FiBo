@@ -37,6 +37,7 @@ public class ItemDialogAddingFragmentTest extends AddingFragmentTest {
         onView(withId(R.id.add_item_button)).perform(scrollTo(), click());
 
         //interact with dialog
+        onView(withId(R.id.adding_fragment_dialog_container)).check(matches(isDisplayed()));
         onView(withId(R.id.adding_fragment_dialog_item_price)).perform(typeText(firstItemPrice));
         onView(withId(R.id.adding_fragment_dialog_item_amount)).perform(typeText(firstItemAmount));
         onView(withId(R.id.adding_fragment_dialog_item_name)).perform(typeText(firstItemName));
@@ -83,6 +84,7 @@ public class ItemDialogAddingFragmentTest extends AddingFragmentTest {
         onView(withId(R.id.adding_items_row_layout_wrapper)).perform(click());
 
         //saving edited item
+        onView(withId(R.id.adding_fragment_dialog_container)).check(matches(isDisplayed()));
         onView(withId(R.id.adding_fragment_dialog_item_price)).perform(replaceText(editedFirstItemPrice));
         onView(withId(R.id.adding_fragment_dialog_item_amount)).perform(replaceText(editedFirstItemAmount));
         onView(withId(R.id.adding_fragment_dialog_item_name)).perform(replaceText(editedFirstItemName));
@@ -106,6 +108,7 @@ public class ItemDialogAddingFragmentTest extends AddingFragmentTest {
         onView(withId(R.id.adding_items_row_layout_wrapper)).perform(click());
 
         //Test saving edited item
+        onView(withId(R.id.adding_fragment_dialog_container)).check(matches(isDisplayed()));
         onView(withId(R.id.adding_fragment_dialog_item_price)).perform(replaceText(editedFirstItemPrice));
         onView(withId(R.id.adding_fragment_dialog_item_amount)).perform(replaceText(editedFirstItemAmount));
         onView(withId(R.id.adding_fragment_dialog_item_name)).perform(replaceText(editedFirstItemName));
@@ -117,6 +120,7 @@ public class ItemDialogAddingFragmentTest extends AddingFragmentTest {
         onView(withId(R.id.adding_items_row_item_amount)).check(matches(withText(expectedFirstItemAmount)));
     }
 
+    //still sometimes flaky
     @Test
     public void testCorrectInitialPrefilledData() {
         //first add an Item
@@ -126,11 +130,13 @@ public class ItemDialogAddingFragmentTest extends AddingFragmentTest {
         onView(allOf(withId(R.id.adding_items_row_layout_wrapper), withChild(withText(expectedFirstItemAmount))))
                 .perform(click());
 
+        onView(withId(R.id.adding_fragment_dialog_container)).check(matches(isDisplayed()));
         onView(withId(R.id.adding_fragment_dialog_item_name)).check(matches(withText(firstItemName)));
         onView(withId(R.id.adding_fragment_dialog_item_price)).check(matches(withText(firstItemPrice)));
         onView(withId(R.id.adding_fragment_dialog_item_amount)).check(matches(withText(firstItemAmount)));
     }
 
+    //still sometimes flaky
     @Test
     public void testCorrectEditedPrefilledData() {
         //first add an item and successfully edit it
@@ -140,6 +146,7 @@ public class ItemDialogAddingFragmentTest extends AddingFragmentTest {
         onView(allOf(withId(R.id.adding_items_row_layout_wrapper), withChild(withText(expectedEditedFirstItemAmount))))
                 .perform(click());
 
+        onView(withId(R.id.adding_fragment_dialog_container)).check(matches(isDisplayed()));
         onView(withId(R.id.adding_fragment_dialog_item_name)).check(matches(withText(editedFirstItemName)));
         onView(withId(R.id.adding_fragment_dialog_item_price)).check(matches(withText(editedFirstItemPrice)));
         onView(withId(R.id.adding_fragment_dialog_item_amount)).check(matches(withText(editedFirstItemAmount)));
@@ -152,6 +159,7 @@ public class ItemDialogAddingFragmentTest extends AddingFragmentTest {
         onView(withId(R.id.add_item_button)).perform(scrollTo(), click());
 
         //interact with dialog
+        onView(withId(R.id.adding_fragment_dialog_container)).check(matches(isDisplayed()));
         onView(withId(R.id.adding_fragment_dialog_item_name)).perform(typeText(invalidNameInput));
         onView(withId(R.id.adding_fragment_dialog_save_button)).perform(click());
 
