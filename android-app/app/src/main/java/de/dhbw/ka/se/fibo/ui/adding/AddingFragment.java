@@ -21,14 +21,13 @@ import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.android.material.timepicker.TimeFormat;
-import com.google.android.material.textfield.TextInputLayout;
 
 import java.math.BigDecimal;
 import java.text.Format;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -209,9 +208,12 @@ public class AddingFragment extends Fragment {
             value = BigDecimal.valueOf(Double.parseDouble(getFieldValue(amount)));
 
             place = new Place(getFieldValue(store), getFieldValue(address));
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
 
-            date = LocalDate.parse(getFieldValue(dateText), formatter).atStartOfDay();
+            String substring_date = getFieldValue(dateText).substring(0,getFieldValue(dateText).lastIndexOf(" "));
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy, HH:mm");
+
+            date = LocalDateTime.parse(substring_date, formatter);
 
             if (notes.getText().toString().trim().isEmpty()) {
                 return new Cashflow(category, newCashFlowType, value, date, place);
