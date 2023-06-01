@@ -1,6 +1,7 @@
 package de.dhbw.ka.se.fibo.ui.adding;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,7 +74,6 @@ public class AddingFragment extends Fragment {
     private MaterialButton addItemButton;
 
     private RecyclerView addingItemsRecyclerView;
-    private ArrayList<Item> addedItems;
     private AddingItemsListAdapter addingItemsListAdapter;
     private AddingFragmentDialog addingFragmentDialog;
 
@@ -103,7 +103,6 @@ public class AddingFragment extends Fragment {
 
         addItemButton = binding.addItemButton;
         addingItemsRecyclerView = binding.addingFragmentRecyclerview;
-        addedItems = new ArrayList<>();
 
         return view;
     }
@@ -127,7 +126,7 @@ public class AddingFragment extends Fragment {
     }
 
     private void setUpItems(View view) {
-        addingItemsListAdapter = new AddingItemsListAdapter(getContext(), addedItems);
+        addingItemsListAdapter = new AddingItemsListAdapter(getContext(), List.of());
         addingItemsRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         addingItemsRecyclerView.setAdapter(addingItemsListAdapter);
     }
@@ -175,6 +174,7 @@ public class AddingFragment extends Fragment {
                 Toast.makeText(requireContext(), "Some required inputs are empty or wrong formatted", Toast.LENGTH_SHORT).show();
             } else {
                 ApplicationState.getInstance(requireContext()).addCashflow(newCashFlow);
+                Log.i("AddingFragment", ApplicationState.getInstance(requireContext()).getCashflows().toString());
                 navigateToHome();
             }
 
@@ -210,10 +210,14 @@ public class AddingFragment extends Fragment {
 
             date = LocalDate.parse(getFieldValue(dateText), formatter).atStartOfDay();
 
-            return new Cashflow(category, newCashFlowType, value, date, place, addedItems);
+            return new Cashflow(category, newCashFlowType, value, date, place, getAddedItems());
         }
 
         return null;
+    }
+
+    private List<Item> getAddedItems() {
+        return addingItemsListAdapter.getItemList();
     }
 
     private String getFieldValue(TextView field) {
@@ -290,3 +294,17 @@ public class AddingFragment extends Fragment {
     }
 
 }
+//[
+// Cashflow{type=Expense, overallValue=8.50, timestamp=2023-06-01T00:50:14.464422, category=Category{name=2131820556}, place=Place{name='dm'}, items=null},
+// Cashflow{type=Expense, overallValue=20.00, timestamp=2023-06-01T00:00, category=Category{name=2131820554}, place=Place{name='TestGeschaeft'}, items=[Item{amount=30.0, name='BeispielArtikel', value=20}]},
+// Cashflow{type=Expense, overallValue=10.00, timestamp=2023-05-31T00:50:14.464604, category=Category{name=2131820550}, place=Place{name='kaufland'}, items=null},
+// Cashflow{type=Income, overallValue=5.50, timestamp=2023-05-30T00:50:14.464669, category=Category{name=2131820557}, place=Place{name='Fabian'}, items=null},
+// Cashflow{type=Expense, overallValue=13.50, timestamp=2023-05-27T00:50:14.465158, category=Category{name=2131820551}, place=Place{name='ZKM'}, items=null},
+// Cashflow{type=Expense, overallValue=13.50, timestamp=2023-05-27T00:50:14.465074, category=Category{name=2131820555}, place=Place{name='ZKM'}, items=null},
+// Cashflow{type=Expense, overallValue=13.50, timestamp=2023-05-27T00:50:14.465037, category=Category{name=2131820554}, place=Place{name='ZKM'}, items=null},
+// Cashflow{type=Expense, overallValue=13.50, timestamp=2023-05-27T00:50:14.465001, category=Category{name=2131820553}, place=Place{name='ZKM'}, items=null},
+// Cashflow{type=Expense, overallValue=13.50, timestamp=2023-05-27T00:50:14.464962, category=Category{name=2131820552}, place=Place{name='ZKM'}, items=null},
+// Cashflow{type=Expense, overallValue=13.50, timestamp=2023-05-27T00:50:14.464923, category=Category{name=2131820549}, place=Place{name='ZKM'}, items=null},
+// Cashflow{type=Expense, overallValue=13.50, timestamp=2023-05-27T00:50:14.464891, category=Category{name=2131820547}, place=Place{name='ZKM'}, items=null},
+// Cashflow{type=Expense, overallValue=13.50, timestamp=2023-05-27T00:50:14.464857, category=Category{name=2131820544}, place=Place{name='ZKM'}, items=null},
+// Cashflow{type=Expense, overallValue=13.50, timestamp=2023-05-27T00:50:14.464812, category=Category{name=2131820545}, place=Place{name='ZKM'}, items=null}]

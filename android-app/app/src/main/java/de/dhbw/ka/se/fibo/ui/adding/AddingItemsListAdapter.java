@@ -70,6 +70,10 @@ public class AddingItemsListAdapter extends RecyclerView.Adapter<AddingItemsRecy
         notifyItemRangeChanged(position, itemList.size());
     }
 
+    public List<Item> getItemList() {
+        return itemList;
+    }
+
     @Override
     public int getItemCount() {
         return itemList.size();
