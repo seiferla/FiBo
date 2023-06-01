@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/adding_fragment_dialog_container"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-<!--TODO: Update to correct Design-->
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_background_shape">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/adding_fragment_dialog_heading_layout"
         android:layout_width="match_parent"
@@ -15,8 +16,8 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            style="@style/MaterialAlertDialog.Material3.Title.Text"
             android:id="@+id/adding_fragment_dialog_heading_text"
+            style="@style/MaterialAlertDialog.Material3.Title.Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/adding_fragment_dialog_heading_placeholder"
@@ -79,10 +80,10 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/adding_fragment_dialog_item_price"
-                    android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/item_price_hint" />
+                    android:hint="@string/item_price_hint"
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Space
@@ -97,10 +98,10 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/adding_fragment_dialog_item_amount"
-                    android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/item_amount_hint" />
+                    android:hint="@string/item_amount_hint"
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 

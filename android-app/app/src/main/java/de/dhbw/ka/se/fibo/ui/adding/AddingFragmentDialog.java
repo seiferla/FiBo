@@ -78,8 +78,8 @@ public class AddingFragmentDialog extends Dialog {
         cancelButton = binding.addingFragmentDialogCancelButton;
 
         setRequiredFields();
+        getWindow().setBackgroundDrawableResource(R.drawable.dialog_background_shape);
         getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
     }
 
     public void setAdapter(AddingItemsListAdapter addingItemsListAdapter) {
