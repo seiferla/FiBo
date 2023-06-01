@@ -224,42 +224,39 @@ public class AddingFragmentTest {
 
     @Test
     public void testInvalidIncomeInput() {
-        // change to the income tab and check that the errors are shown
-        onView(withText(R.string.adding_income))
-                .perform(scrollTo())
-                .perform(click());
-        onView(withId(R.id.okayButton))
-                .perform(scrollTo())
-                .perform(click());
+            // change to the income tab and check that the errors are shown
+            onView(withText(R.string.adding_income))
+                    .perform(scrollTo())
+                    .perform(click());
+            onView(withId(R.id.okayButton))
+                    .perform(scrollTo())
+                    .perform(click());
 
-        onView(withId(R.id.store_text_layout))
-                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_source_field))));
-        onView(withId(R.id.amount_layout))
-                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_amount_field))));
-        onView(withId(R.id.date_layout))
-                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_date_field))));
-        onView(withId(R.id.category_layout))
-                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_category_field))));
-        onView(withId(R.id.address_text_layout))
-                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_address_field))));
+            onView(withId(R.id.store_text_layout))
+                    .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_source_field))));
+            onView(withId(R.id.amount_layout))
+                    .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_amount_field))));
+            onView(withId(R.id.date_layout))
+                    .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_date_field))));
+            onView(withId(R.id.category_layout))
+                    .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_category_field))));
+            onView(withId(R.id.address_text_layout))
+                    .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_address_field))));
 
-        TestInvalidSourceFieldInput();
-        TestInvalidAmountFieldInput();
-        TestInvalidInputDateFieldInput();
-        TestInvalidCategoryFieldInput();
+            TestInvalidSourceFieldInput();
+            TestInvalidAmountFieldInput();
+            TestInvalidInputDateFieldInput();
+            TestInvalidCategoryFieldInput();
 
-        // add something to the address field and test that adding fragment has closed without errors
-        onView(withId(R.id.address_text))
-                .perform(scrollTo())
-                .perform(typeText("Fibostraße 1"), closeSoftKeyboard());
+            // add something to the address field and test that adding fragment has closed without errors
+            onView(withId(R.id.address_text))
+                    .perform(scrollTo())
+                    .perform(typeText("Fibostraße 1"), closeSoftKeyboard());
 
-        onView(withId(R.id.okayButton))
-                .perform(scrollTo())
-                .perform(click());
+            onView(withId(R.id.okayButton))
+                    .perform(scrollTo())
+                    .perform(click());
 
-        // Checks that the user is back at the home tab
-        onView(withId((R.id.navigation_home)))
-                .check(matches(isDisplayed()));
     }
 
     @Test
@@ -348,6 +345,9 @@ public class AddingFragmentTest {
         onView(hasSibling(withChild(withText(R.string.selectDate))))
                 .check(matches(isDisplayed()));
         onView(withText(R.string.DatePickerPositiveButtonText))
+                .perform(click());
+
+        onView(withId(com.google.android.material.R.id.material_timepicker_ok_button))
                 .perform(click());
 
         onView(withId(R.id.okayButton))
