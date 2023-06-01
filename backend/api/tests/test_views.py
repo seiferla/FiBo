@@ -262,7 +262,7 @@ class ViewsTestCase(TestCase):
         response = client.get(f'/cashflow/{cashflow_id}')
 
         # Then
-        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.status_code, 404)
         self.assertEqual(response.json(), {'success': False})
 
     def test_cashflow_delete(self):
