@@ -1,7 +1,5 @@
 package de.dhbw.ka.se.fibo.utils;
 
-import android.util.Log;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
@@ -23,7 +21,7 @@ public class ApiUtils {
         if (ActivityUtils.isEspressoTesting()) {
             return "http://localhost:8000";
         } else {
-            return "http://10.0.2.2:8000";
+            return "https://fibo.gtzcloud.de";
         }
     }
 
