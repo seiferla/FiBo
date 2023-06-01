@@ -218,7 +218,7 @@ public class AddingFragment extends Fragment {
     }
 
     private void openItemAddingDialog() {
-        binding.getRoot().clearFocus(); //prevents the keyboard from opening again unnecessarily
+        binding.getRoot().clearFocus(); // prevents the keyboard from opening again unnecessarily
         addingFragmentDialog.show();
     }
 
