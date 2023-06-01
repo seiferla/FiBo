@@ -2,6 +2,6 @@
 <resources>
     <dimen name="smallTextSize">14sp</dimen>
     <dimen name="standardTextSize">18sp</dimen>
-    <dimen name="largeTextSize">22sp</dimen>
+    <dimen name="largeTextSize">20sp</dimen>
     <dimen name="largeButtonVerticalPadding">12dp</dimen>
 </resources>
