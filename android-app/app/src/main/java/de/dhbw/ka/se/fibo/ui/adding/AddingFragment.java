@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -101,6 +102,7 @@ public class AddingFragment extends Fragment {
 
         addItemButton = binding.addItemButton;
         addingItemsRecyclerView = binding.addingFragmentRecyclerview;
+        addingItemsRecyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
 
         return view;
     }
@@ -113,7 +115,7 @@ public class AddingFragment extends Fragment {
         initializeDropdownValues();
         createDatePicker();
         setUpDateTextField();
-        setUpItems(view);
+        setUpRecyclerView(view);
         setUpDialog();
     }
 
@@ -123,10 +125,44 @@ public class AddingFragment extends Fragment {
 
     }
 
-    private void setUpItems(View view) {
+    private void setUpRecyclerView(View view) {
         addingItemsListAdapter = new AddingItemsListAdapter(getContext(), List.of());
+        addingItemsRecyclerView.setVisibility(View.GONE); //initially no items to display
+        addingItemsListAdapter.registerAdapterDataObserver(getRecyclerViewVisibilityObserver());
         addingItemsRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         addingItemsRecyclerView.setAdapter(addingItemsListAdapter);
+    }
+
+    /**
+     * The recyclerView visibility needs to be changed whenever 0 Items are in the Listview.
+     * This is needed because the Recyclerview has a border which is not displayed correctly if there are no elements to display
+     *
+     * @return Observer that changes the visibility of the recyclerview
+     */
+    @NonNull
+    private RecyclerView.AdapterDataObserver getRecyclerViewVisibilityObserver() {
+        return new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                super.onItemRangeInserted(positionStart, itemCount);
+                setCorrectRecyclerViewVisibility();
+            }
+
+            @Override
+            public void onItemRangeRemoved(int positionStart, int itemCount) {
+                super.onItemRangeRemoved(positionStart, itemCount);
+                setCorrectRecyclerViewVisibility();
+            }
+
+            private void setCorrectRecyclerViewVisibility() {
+                if (0 == addingItemsListAdapter.getItemCount()) {
+                    addingItemsRecyclerView.setVisibility(View.GONE);
+                } else {
+                    addingItemsRecyclerView.setVisibility(View.VISIBLE);
+                }
+            }
+
+        };
     }
 
     private void setUpTabLayout() {

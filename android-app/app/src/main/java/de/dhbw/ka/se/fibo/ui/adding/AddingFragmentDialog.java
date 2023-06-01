@@ -72,7 +72,7 @@ public class AddingFragmentDialog extends Dialog {
         addingFragmentDialogItemAmount = binding.addingFragmentDialogItemAmount;
         addingFragmentDialogItemAmountLayout = binding.addingFragmentDialogItemAmountLayout;
         deleteButton = binding.addingFragmentDialogHeadingDeleteButton;
-        deleteButton.setVisibility(View.INVISIBLE);
+        deleteButton.setVisibility(View.GONE);
 
         saveButton = binding.addingFragmentDialogSaveButton;
         cancelButton = binding.addingFragmentDialogCancelButton;
@@ -91,7 +91,6 @@ public class AddingFragmentDialog extends Dialog {
         fieldsToBeChecked.put(addingFragmentDialogItemAmountLayout, context.getString(R.string.error_message_amount_field));
         fieldsToBeChecked.put(addingFragmentDialogItemNameLayout, context.getString(R.string.error_message_name_field));
         fieldsToBeChecked.put(addingFragmentDialogItemPriceLayout, context.getString(R.string.error_message_price_field));
-
     }
 
     String getName() {
