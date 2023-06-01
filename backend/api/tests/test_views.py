@@ -269,7 +269,7 @@ class ViewsTestCase(TestCase):
         # Given
         user = LiteUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test',
                                             show_premium_ad=True)
-        
+
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -315,7 +315,7 @@ class ViewsTestCase(TestCase):
         response = client.delete(f'/cashflow/{cashflow_id}')
 
         # Then
-        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.status_code, 404)
         self.assertEqual(response.json(), {'success': False})
 
     def test_cashflow_put_income(self):

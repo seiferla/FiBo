@@ -96,7 +96,7 @@ class CashflowsView(APIView):
             # FIXME: Verify the user may access this cashflow (i.e. manages the account of this cashflow)
             cashflow = Cashflow.objects.get(id=cashflow_id)
         except:
-            return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+            return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
         cashflow.delete()
         return JsonResponse({'success': True, 'cashflow_id': cashflow_id}, status=status.HTTP_200_OK)
 
