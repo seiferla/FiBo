@@ -46,8 +46,11 @@ public class AddingFragmentDialog extends Dialog {
     protected void onStop() {
         super.onStop();
         addingFragmentDialogItemName.setText("");
+        addingFragmentDialogItemName.clearFocus();
         addingFragmentDialogItemAmount.setText("");
+        addingFragmentDialogItemAmount.clearFocus();
         addingFragmentDialogItemPrice.setText("");
+        addingFragmentDialogItemPrice.clearFocus();
     }
 
 
