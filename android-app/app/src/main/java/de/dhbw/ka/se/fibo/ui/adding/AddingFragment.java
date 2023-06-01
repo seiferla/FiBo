@@ -75,7 +75,8 @@ public class AddingFragment extends Fragment {
     private RecyclerView addingItemsRecyclerView;
     private ArrayList<Item> addedItems;
     private AddingItemsListAdapter addingItemsListAdapter;
-    private AddingDialog addingDialog;
+    private AddingFragmentDialog addingFragmentDialog;
+
 
     @Nullable
     @Override
@@ -120,8 +121,9 @@ public class AddingFragment extends Fragment {
     }
 
     private void setUpDialog() {
-        addingDialog = new AddingDialog(requireContext());
-        addingDialog.setAdapter(addingItemsListAdapter);
+        addingFragmentDialog = new AddingFragmentFragmentDialogAdd(requireContext());
+        addingFragmentDialog.setAdapter(addingItemsListAdapter);
+
     }
 
     private void setUpItems(View view) {
@@ -183,8 +185,7 @@ public class AddingFragment extends Fragment {
     }
 
     private void openItemAddingDialog() {
-        System.out.println("Clicked addItemButton");
-        addingDialog.show();
+        addingFragmentDialog.show();
     }
 
     private Cashflow createCashFlow() {
@@ -208,7 +209,7 @@ public class AddingFragment extends Fragment {
 
             date = LocalDate.parse(getFieldValue(dateText), formatter).atStartOfDay();
 
-            return new Cashflow(category, newCashFlowType, value, date, place);
+            return new Cashflow(category, newCashFlowType, value, date, place, addedItems);
         }
 
         return null;

@@ -6,8 +6,8 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/adding_fragment_dialog_heading"
-        android:layout_width="wrap_content"
+        android:id="@+id/adding_fragment_dialog_heading_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -15,12 +15,29 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/adding_fragment_dialog_heading_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Artikel überschrift"
-            android:textStyle="bold"
             android:textSize="@dimen/largeTextSize"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/adding_fragment_dialog_heading_delete_button"
+            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:backgroundTint="@color/md_theme_light_errorContainer"
+            android:contentDescription="@string/delete_item_button_description"
+            app:icon="@drawable/delete_icon"
+            app:iconTint="@color/md_theme_light_error"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/adding_fragment_dialog_heading_text"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -29,14 +46,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
         android:divider="@drawable/adding_fragment_dialog_divider"
         android:orientation="vertical"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
         android:showDividers="middle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/adding_fragment_dialog_heading">
+        app:layout_constraintTop_toBottomOf="@id/adding_fragment_dialog_heading_layout">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/adding_fragment_dialog_item_name_layout"

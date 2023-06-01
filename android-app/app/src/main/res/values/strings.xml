@@ -135,5 +135,6 @@
     <string name="item_name_hint">Artikelname</string>
     <string name="item_price_hint">Preis</string>
     <string name="item_amount_hint">Anzahl</string>
+    <string name="delete_item_button_description">Artikel entfernen</string>
 
 </resources>
