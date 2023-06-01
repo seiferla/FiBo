@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from ..models import Store, Category, Account, Cashflow, Item, FiboUser, ZipCity
+from ..models import Store, Category, Account, Cashflow, Item, FiboUser, ZipCity, LiteUser
 
 
 class ModelsTestCase(TestCase):
@@ -40,50 +40,57 @@ class ModelsTestCase(TestCase):
         self.assertIsNotNone(item.cashflow)
         self.assertNotEquals(item.value, "5.6")
 
+    def test_create_cashflow(self):
+        account = Account.objects.create(name="Test Account")
+        category = Category.objects.create(name="HEALTH", account=account)
+        zip = ZipCity.objects.create(zip="12345", city="Karlsruhe")
+        store = Store.objects.create(account=account, street="Kaiserstraße", zip=zip, house_number="12",
+                                     name="Postgalerie")
+        cashflow = Cashflow.objects.create(is_income=True, overall_value=100.00, category=category, source=store,
+                                           account=account)
+        self.assertGreater(cashflow.id, 0)
+        self.assertIsNotNone(cashflow.category)
+        self.assertIsNotNone(cashflow.account)
+        self.assertIsNotNone(cashflow.source)
+        self.assertEqual(cashflow.overall_value, 100)
+        self.assertEqual(cashflow.is_income, True)
 
-def test_create_cashflow(self):
-    account = Account.objects.create(name="Test Account")
-    category = Category.objects.create(name="HEALTH")
-    place = Place.objects.create(name="Test Place", address="Test Address")
-    cashflow = Cashflow.objects.create(is_income=True, overall_value=100.00, category=category, place=place,
-                                       account=account)
-    self.assertGreater(cashflow.id, 0)
-    self.assertIsNotNone(cashflow.category)
-    self.assertIsNotNone(cashflow.account)
-    self.assertIsNotNone(cashflow.place)
-    self.assertEqual(cashflow.overall_value, 100)
-    self.assertEqual(cashflow.is_income, True)
+    def test_save_cashflow(self):
+        account = Account.objects.create(name="Test Account")
+        category = Category.objects.create(name="HEALTH", account=account)
+        zip = ZipCity.objects.create(zip="12345", city="Karlsruhe")
+        store = Store.objects.create(account=account, street="Kaiserstraße", zip=zip, house_number="12",
+                                     name="Postgalerie")
+        cashflow = Cashflow.objects.create(is_income=True, overall_value=100.00, category=category, source=store,
+                                           account=account)
+        cashflow.overall_value = 200.00
+        cashflow.save()
+        self.assertIsNotNone(cashflow.updated)
+        self.assertGreater(cashflow.id, 0)
+        self.assertIsNotNone(cashflow.category)
+        self.assertIsNotNone(cashflow.account)
+        self.assertIsNotNone(cashflow.source)
+        self.assertEqual(cashflow.overall_value, 200)
+        self.assertEqual(cashflow.is_income, True)
 
+    def test_delete_cashflow(self):
+        account = Account.objects.create(name="Test Account")
+        category = Category.objects.create(name="HEALTH", account=account)
+        zip = ZipCity.objects.create(zip="12345", city="Karlsruhe")
+        store = Store.objects.create(account=account, street="Kaiserstraße", zip=zip, house_number="12",
+                                     name="Postgalerie")
+        cashflow = Cashflow.objects.create(is_income=True, overall_value=100.00, category=category, source=store,
+                                           account=account)
 
-def test_save_cashflow(self):
-    account = Account.objects.create(name="Test Account")
-    category = Category.objects.create(name="HEALTH")
-    place = Place.objects.create(name="Test Place", address="Test Address")
-    cashflow = Cashflow.objects.create(is_income=True, overall_value=100.00, category=category, place=place,
-                                       account=account)
-    cashflow.overall_value = 200.00
-    cashflow.save()
-    self.assertIsNotNone(cashflow.updated)
-    self.assertGreater(cashflow.id, 0)
-    self.assertIsNotNone(cashflow.category)
-    self.assertIsNotNone(cashflow.account)
-    self.assertIsNotNone(cashflow.place)
-    self.assertEqual(cashflow.overall_value, 200)
-    self.assertEqual(cashflow.is_income, True)
+        cashflow.delete()
+        # The Cashflow should actually be deleted from the database
+        with self.assertRaises(Cashflow.DoesNotExist):
+            cashflow.refresh_from_db()
 
+    def test_fibo_user_creation(self):
+        account = Account.objects.create(name="Test Account")
 
-def test_delete_cashflow(self):
-    account = Account.objects.create(name="Test Account")
-    category = Category.objects.create(name="Test Category")
-    place = Place.objects.create(name="Test Place", address="Test Address")
-    cashflow = Cashflow.objects.create(is_income=True, overall_value=100.00, category=category, place=place,
-                                       account=account)
-    cashflow.delete()
-    self.assertEqual(Cashflow.objects.filter(id=cashflow.id).count(), 0)
-
-
-def test_fibo_user_creation(self):
-    account = Account.objects.create(name="Test Account")
-    user = FiboUser.objects.create_user(username='test user', email='test@fibo.de', password='secure')
-    user.account.add(account)
-    self.assertIsNotNone(user.account)
+        user = LiteUser.objects.create_user(username='test user', email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
+        user.account.add(account)
+        self.assertIsNotNone(user.account)
