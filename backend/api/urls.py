@@ -12,7 +12,7 @@ urlpatterns = [
     path('cashflow/<int:cashflow_id>',
          views.CashflowsView.as_view(), name='cashflow_with_id'),
     path('sources/stores/', views.StoreSourcesView.as_view(), name='sources_store'),
-    path('sources/store/<int:store_id>',
+    path('sources/stores/<int:store_id>',
          views.CashflowsView.as_view(), name='cashflow_with_id'),
     path('category/', views.CategoryView.as_view(), name='category'),
 ]

@@ -149,14 +149,15 @@ class CashflowsView(APIView):
 
 class StoreSourcesView(APIView):
     permission_classes = (IsAuthenticated,)
-
     def post(self, request):
-        # TODO: Add association to account id
         try:
-            place = Store.objects.create(
-                name=request.data['name'], street=request.data['street'],
-                zip=request.data['zip'], house_number=request.data['house_number'])
-        except:
+            account = Account.objects.get(id=request.data['account'])
+            zip = ZipCity.objects.get(zip=request.data['store']['zip'])
+            place = Store.objects.create(account=account,
+                                         name=request.data['store']['name'], street=request.data['store']['street'],
+                                         zip=zip, house_number=request.data['store']['house_number'])
+        except Exception as e:
+            print(e)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
         return JsonResponse({'success': True, 'place': place.id}, status=status.HTTP_201_CREATED)
@@ -192,4 +193,3 @@ class CategoryView(APIView):
 
         serializer = CategorySerializer(category, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
-

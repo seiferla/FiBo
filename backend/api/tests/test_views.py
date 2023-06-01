@@ -474,23 +474,55 @@ class ViewsTestCase(TestCase):
         self.assertEqual(response.status_code, 400)
         self.assertEqual(response.json(), {'success': False})
 
-    def test_place_post(self):
+    def test_private_post(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(show_premium_ad=False, username='test@fibo.de', email='test@fibo.de',
+                                            password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
 
-        place = {
-            "address": "Test Address",
-            "name": "Test name"
-        }
+        private = {
+                      "first_name": "Max",
+                      "last_name": "Mustermann"
+                  },
+
         # When
-        response = client.post(f'/place/', place, format='json')
+        response = client.post(f'sources/privates/', private, format='json')
 
         # Then
         self.assertEqual(response.status_code, 201)
-        self.assertEqual(response.json(), {'success': True, 'place': 'Test name'})
+        self.assertEqual(response.json(), {'success': True, 'store': 'Test name'})
+
+    def test_store_post(self):
+        # Given
+        account = Account.objects.create(name="Test Account")
+
+        user = LiteUser.objects.create_user(show_premium_ad=False, username='test@fibo.de', email='test@fibo.de',
+                                            password='test')
+        zip = ZipCity.objects.create(zip=76131, city="someCity")
+
+        refresh = RefreshToken.for_user(user)
+        client = APIClient()
+        client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
+
+        data = {
+            "store": {
+                "name": "Media",
+                "street": "Test Strasse 20",
+                "zip": 76131,
+                "house_number": 10
+            },
+            "account": account.id}
+
+        # When
+        response = client.post(f'/sources/stores/', data, format='json')
+
+        store = Store.objects.get(name="Media", zip=76131, house_number=10, street="Test Strasse 20")
+
+        # Then
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.json(), {'success': True, 'place': store.id})
 
     # Try to create a Place with missing address
     def test_place_post_bad_request(self):
