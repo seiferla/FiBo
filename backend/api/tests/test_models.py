@@ -1,13 +1,19 @@
 from django.test import TestCase
-from ..models import Place, Category, Account, Cashflow, Item, FiboUser
+
+from ..models import Store, Category, Account, Cashflow, Item, FiboUser, ZipCity
 
 
 class ModelsTestCase(TestCase):
 
     def test_place_creation(self):
-        place = Place.objects.create(address="Kaiserstraße 12", name="Postgalerie")
-        self.assertEqual(place.name, 'Postgalerie')
-        self.assertEqual(place.address, "Kaiserstraße 12")
+        zip = ZipCity.objects.create(zip="12345", city="Karlsruhe")
+        account = Account.objects.create(name="TestAccount")
+        place = Store.objects.create(account=account,street="Kaiserstraße", zip=zip, house_number="12", name="Postgalerie")
+        self.assertEqual(place.street, 'Kaiserstraße')
+        self.assertEqual(place.house_number, '12')
+        self.assertEqual(place.zip.zip, "12345")
+        self.assertEqual(place.zip.city, "Karlsruhe")
+        self.assertEqual(place.name, "Postgalerie")
 
     def test_category_creation(self):
         category = Category.objects.create(name="HEALTH")
@@ -21,10 +27,11 @@ class ModelsTestCase(TestCase):
         account = Account.objects.create(name="Test Account")
         category = Category.objects.create(name="HEALTH")
         place = Place.objects.create(name="Test Place", address="Test Address")
-        cashflow = Cashflow.objects.create(is_income=True, overall_value=100.00, category=category, place=place, account=account)
+        cashflow = Cashflow.objects.create(is_income=True, overall_value=100.00, category=category, place=place,
+                                           account=account)
         item = Item.objects.create(name="Shampoo", amount="3", cashflow=cashflow, value="4.5")
-        self.assertEqual(item.name,"Shampoo")
-        self.assertEqual(item.amount,"3")
+        self.assertEqual(item.name, "Shampoo")
+        self.assertEqual(item.amount, "3")
         self.assertIsNotNone(item.cashflow)
         self.assertNotEquals(item.value, "5.6")
 
@@ -61,7 +68,8 @@ class ModelsTestCase(TestCase):
         account = Account.objects.create(name="Test Account")
         category = Category.objects.create(name="Test Category")
         place = Place.objects.create(name="Test Place", address="Test Address")
-        cashflow = Cashflow.objects.create(is_income=True, overall_value=100.00, category=category, place=place, account=account)
+        cashflow = Cashflow.objects.create(is_income=True, overall_value=100.00, category=category, place=place,
+                                           account=account)
         cashflow.delete()
         self.assertEqual(Cashflow.objects.filter(id=cashflow.id).count(), 0)
 
