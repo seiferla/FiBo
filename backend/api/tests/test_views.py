@@ -180,19 +180,24 @@ class ViewsTestCase(TestCase):
 
     def test_cashflow_post_bad_request(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        account = Account.objects.create(name="Test Account")
+        zip = ZipCity.objects.create(city="SomeCity", zip=76131)
+        user = LiteUser.objects.create_user(username='test user', email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
+        user.account.add(account)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
 
-        account = Account.objects.create(id=1, name="Test Account")
-        user.account.add(account)
-
-        cashflow = {
-            "overallValue": 20.00,
-            "place": {
-                "address": "Test Strasse 20",
-                "name": "TestQuelle"
+        invalid_cashflow = {
+            # "category": "HEALTH",
+            "overallValue": 26.00,
+            "source_type": "store",
+            "store": {
+                "name": "Media",
+                "street": "Test Strasse 20",
+                "zip": 76131,
+                "house_number": 10
             },
             "timestamp": "2023-04-23T00:00:00",
             "type": "EXPENSE",
@@ -201,7 +206,7 @@ class ViewsTestCase(TestCase):
             }
         }
         # When
-        response = client.post("/cashflow/", cashflow, format='json')
+        response = client.post("/cashflow/", invalid_cashflow, format='json')
 
         # Then
         self.assertEqual(response.status_code, 400)
@@ -397,37 +402,30 @@ class ViewsTestCase(TestCase):
         self.assertEqual(response.json(), {
                          'success': True, 'cashflow_id': cashflow.id})
 
-    # Try to update a not existing Cashflow
-    def test_cashflow_put_bad_parameter(self):
+    def test_update_not_existing_cashflow(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(show_premium_ad=True,username='test@fibo.de', email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
 
-        account = Account.objects.create(id=1, name="Test Account")
-        category = Category.objects.create(name="HEALTH")
-        place = Place.objects.create(name="Test Place", address="Test Address")
-        cashflow = Cashflow.objects.create(id=1, is_income=True, overall_value=100.00, category=category, place=place,
-                                           account=account)
-
-        cashflow_id = '0'
         cashflow = {
-            "category": "HEALTH",
+            "category": "MOBILITY",
             "overallValue": 26.00,
-            "place": {
-                "address": "Test Strasse 20",
-                "name": "Media"
+            "source_type": "private",
+            "private": {
+                "first_name": "Max",
+                "last_name": "Mustermann"
             },
             "timestamp": "2023-04-23T00:00:00",
-            "type": "INCOME",
+            "type": "EXPENSE",
             "account": {
                 "id": 1
             }
         }
 
         # Whe
-        response = client.put(f'/cashflow/{cashflow_id}', cashflow, format='json')
+        response = client.put(f'/cashflow/1337', cashflow, format='json')
 
         # Then
         self.assertEqual(response.status_code, 400)
