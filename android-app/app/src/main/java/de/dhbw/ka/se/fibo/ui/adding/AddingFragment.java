@@ -101,8 +101,6 @@ public class AddingFragment extends Fragment {
         categoriesDropdownLayout = binding.categoryLayout;
 
         addItemButton = binding.addItemButton;
-        addingItemsRecyclerView = binding.addingFragmentRecyclerview;
-        addingItemsRecyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
 
         return view;
     }
@@ -126,6 +124,8 @@ public class AddingFragment extends Fragment {
     }
 
     private void setUpRecyclerView(View view) {
+        addingItemsRecyclerView = binding.addingFragmentRecyclerview;
+        addingItemsRecyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
         addingItemsListAdapter = new AddingItemsListAdapter(getContext(), List.of());
         addingItemsRecyclerView.setVisibility(View.GONE); //initially no items to display
         addingItemsListAdapter.registerAdapterDataObserver(getRecyclerViewVisibilityObserver());
