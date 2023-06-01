@@ -1,7 +1,7 @@
 from django.test import TestCase
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.test import APIClient
-from ..models import FiboUser, Account, Cashflow, Category, Store, ZipCity
+from ..models import FiboUser, Account, Cashflow, Category, Store, ZipCity, LiteUser
 import json
 
 
@@ -109,49 +109,68 @@ class ViewsTestCase(TestCase):
         # Then
         self.assertEqual(response.status_code, 400)
 
-    def test_cashflow_post(self):
+    def test_income_cashflow_post(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        account = Account.objects.create(name="Test Account")
+        zip = ZipCity.objects.create(city="SomeCity", zip=76131)
+        user = LiteUser.objects.create_user(username='test user', email='test@fibo.de', password='secure',
+                                        show_premium_ad=True)
+        user.account.add(account)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
 
-        account = Account.objects.create(id=1, name="Test Account")
-        user.account.add(account)
-
         cashflow_income = {
-            "category": "MOBILITY",
-            "overallValue": 20.00,
-            "place": {
-                "address": "Test Strasse 20",
-                "name": "TestQuelle"
+            "category": "HEALTH",
+            "overallValue": 26.00,
+            "source_type": "store",
+            "store": {
+                "name": "Media",
+                "street": "Test Strasse 20",
+                "zip": 76131,
+                "house_number": 10
             },
             "timestamp": "2023-04-23T00:00:00",
             "type": "INCOME",
             "account": {
-                "id": "1"
+                "id": 1
             }
         }
 
-        cashflow_expense = {
-            "category": "MOBILITY",
-            "overallValue": 35.00,
-            "place": {
-                "address": "Test Strasse 15",
-                "name": "TestQuelle"
-            },
-            "timestamp": "2023-06-05T00:00:00",
-            "type": "EXPENSE",
-            "account": {
-                "id": "1"
-            }
-        }
 
         # When
         response = client.post("/cashflow/", cashflow_income, format='json')
 
         # Then
         self.assertEqual(response.status_code, 201)
+
+    def test_expense_cashflow_post(self):
+        # Given
+        account = Account.objects.create(name="Test Account")
+        zip = ZipCity.objects.create(city="SomeCity", zip=76131)
+        user = LiteUser.objects.create_user(username='test user', email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
+        user.account.add(account)
+        refresh = RefreshToken.for_user(user)
+        client = APIClient()
+        client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
+
+        cashflow_expense = {
+            "category": "HEALTH",
+            "overallValue": 26.00,
+            "source_type": "store",
+            "store": {
+                "name": "Media",
+                "street": "Test Strasse 20",
+                "zip": 76131,
+                "house_number": 10
+            },
+            "timestamp": "2023-04-23T00:00:00",
+            "type": "EXPENSE",
+            "account": {
+                "id": 1
+            }
+        }
 
         # When
         response = client.post("/cashflow/", cashflow_expense, format='json')

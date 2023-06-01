@@ -62,34 +62,22 @@ class CashflowsView(APIView):
 
     def post(self, request):
         try:
-            account = request.data['account']
-            account_id = Account.objects.get(id=account['id'])
+            account = Account.objects.get(id=request.data['account']['id'])
             # FIXME: Verify the user may access this account
             cashflow_type = request.data['type']
             overall_value = request.data['overallValue']
             timestamp = request.data['timestamp']
-            category, _ = Category.objects.get_or_create(
-                name=request.data['category'])
-            place = request.data['place']
-            place_address, _ = Store.objects.get_or_create(
-                address=place['address'], name=place['name'])
+            category, _ = Category.objects.get_or_create(name=request.data['category'], account=account)
+            source = self.get_source_from_request(account, request)
         except:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
-        if cashflow_type == 'INCOME':
-            cashflow = Cashflow.objects.create(account=account_id,
-                                               is_income=True,
-                                               overall_value=overall_value,
-                                               created=timestamp,
-                                               category=category,
-                                               place=place_address)
-        else:
-            cashflow = Cashflow.objects.create(account=account_id,
-                                               is_income=False,
-                                               overall_value=overall_value,
-                                               created=timestamp,
-                                               category=category,
-                                               place=place_address)
+        cashflow = Cashflow.objects.create(account=account,
+                                           is_income=cashflow_type == 'INCOME',
+                                           overall_value=overall_value,
+                                           created=timestamp,
+                                           category=category,
+                                           source=source)
 
         return JsonResponse({'success': True, 'cashflow_id': cashflow.id, 'creation_date': cashflow.created},
                             status=status.HTTP_201_CREATED)
@@ -120,26 +108,7 @@ class CashflowsView(APIView):
             cashflow.overall_value = request.data['overallValue']
             cashflow.category, _ = Category.objects.get_or_create(
                 name=request.data['category'], defaults={"account": cashflow.account})
-            source_type = request.data['source_type']
-
-            source = None
-
-            if source_type == 'store':
-                source, _ = Store.objects.get_or_create(
-                    name=request.data['store']['name'],
-                    street=request.data['store']['street'],
-                    zip=ZipCity.objects.get(zip=request.data['store']['zip']),
-                    house_number=request.data['store']['house_number'],
-                    account=cashflow.account
-                )
-            elif source_type == 'private':
-                source, _ = Private.objects.get_or_create(
-                    first_name=request.data['private']['first_name'],
-                    last_name=request.data['private']['last_name'],
-                    account=cashflow.account
-                )
-            else:
-                raise Exception("invalid source_type")
+            source = self.get_source_from_request(cashflow.account, request)
 
             cashflow.source = source
             cashflow.updated = datetime.now()
@@ -155,6 +124,27 @@ class CashflowsView(APIView):
         cashflow.save()
 
         return JsonResponse({'success': True, 'cashflow_id': cashflow_id}, status=status.HTTP_200_OK)
+
+    def get_source_from_request(self, account, request):
+        source_type = request.data['source_type']
+        source = None
+        if source_type == 'store':
+            source, _ = Store.objects.get_or_create(
+                name=request.data['store']['name'],
+                street=request.data['store']['street'],
+                zip=ZipCity.objects.get(zip=request.data['store']['zip']),
+                house_number=request.data['store']['house_number'],
+                account=account
+            )
+        elif source_type == 'private':
+            source, _ = Private.objects.get_or_create(
+                first_name=request.data['private']['first_name'],
+                last_name=request.data['private']['last_name'],
+                account=account
+            )
+        else:
+            raise Exception("invalid source_type")
+        return source
 
 
 class StoreSourcesView(APIView):
