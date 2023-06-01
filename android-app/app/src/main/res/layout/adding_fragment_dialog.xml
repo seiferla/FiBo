@@ -80,6 +80,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/adding_fragment_dialog_item_price"
+                    android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/item_price_hint" />
@@ -97,6 +98,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/adding_fragment_dialog_item_amount"
+                    android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/item_amount_hint" />
