@@ -70,3 +70,9 @@ class ModelsTestCase(TestCase):
         user = FiboUser.objects.create_user(email='test@fibo.de', password='secure')
         user.account.add(account)
         self.assertIsNotNone(user.account)
+
+    def test_fibo_superuser_creation(self):
+        account = Account.objects.create(name="Test Account")
+        user = FiboUser.objects.create_superuser(email='test@fibo.de', password='secure')
+        user.account.add(account)
+        self.assertIsNotNone(user.account)
