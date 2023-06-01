@@ -267,8 +267,9 @@ class ViewsTestCase(TestCase):
 
     def test_cashflow_delete(self):
         # Given
-        user = FiboUser.objects.create_user(
-            username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test',
+                                            show_premium_ad=True)
+        
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
