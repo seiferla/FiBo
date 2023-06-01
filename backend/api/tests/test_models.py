@@ -73,7 +73,7 @@ class ModelsTestCase(TestCase):
 
     def test_fibo_user_creation_no_email(self):
         with self.assertRaises(ValueError):
-            user = FiboUser.objects._create_user(password='secure')
+            user = FiboUser.objects._create_user(email='test@fibo.de', password='secure')
 
     def test_fibo_superuser_creation(self):
         user = FiboUser.objects.create_superuser(email='test@fibo.de', password='secure')
