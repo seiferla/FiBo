@@ -31,9 +31,7 @@
     <string name="adding_amount">Betrag (€)</string>
     <string name="adding_date">Datum</string>
     <string name="adding_category">Kategorie</string>
-    <string name="adding_notes">Notizen</string>
     <string name="adding_address">Adresse</string>
-    <string name="adding_notes_format">Name, Preis, (Menge);</string>
     <string name="error_message_password_field_empty">Passwortfeld ist leer</string>
     <string name="error_message_email_field">Emailfeld ist leer</string>
     <string name="error_message_store_field">Gib bitte ein Geschäft an</string>
@@ -133,7 +131,7 @@
     <string name="recyclerview_item_name_placeholder">item name</string>
     <string name="add_item_button_description">Artikel hinzufügen</string>
     <string name="item_name_hint">Artikelname</string>
-    <string name="item_price_hint">Preis</string>
+    <string name="item_price_hint">Preis (€)</string>
     <string name="item_amount_hint">Anzahl</string>
     <string name="delete_item_button_description">Artikel entfernen</string>
     <string name="add_article_dialog_heading">Artikel hinzufügen</string>
