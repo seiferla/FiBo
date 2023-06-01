@@ -42,6 +42,10 @@ public class AddingFragmentDialog extends Dialog {
     private TextInputLayout addingFragmentDialogItemNameLayout;
     private Map<TextInputLayout, String> fieldsToBeChecked;
 
+    /**
+     * Will be called on each .dismiss(). <br>
+     * Resets the previously entered data and the focus so that on every .show() the focus is not preselected.
+     */
     @Override
     protected void onStop() {
         super.onStop();
@@ -78,8 +82,8 @@ public class AddingFragmentDialog extends Dialog {
         cancelButton = binding.addingFragmentDialogCancelButton;
 
         setRequiredFields();
-        getWindow().setBackgroundDrawableResource(R.drawable.dialog_background_shape);
-        getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        getWindow().setBackgroundDrawableResource(R.drawable.dialog_background_shape); //round dialog shape
+        getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT); //use available space
     }
 
     public void setAdapter(AddingItemsListAdapter addingItemsListAdapter) {
