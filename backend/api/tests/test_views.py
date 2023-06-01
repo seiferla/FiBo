@@ -1,8 +1,10 @@
-from django.test import TestCase
-from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework.test import APIClient
-from ..models import FiboUser, Account, Cashflow, Category, Store, ZipCity, LiteUser
 import json
+
+from django.test import TestCase
+from rest_framework.test import APIClient
+from rest_framework_simplejwt.tokens import RefreshToken
+
+from ..models import FiboUser, Account, Cashflow, Category, Store, ZipCity, LiteUser
 
 
 class ViewsTestCase(TestCase):
@@ -114,7 +116,7 @@ class ViewsTestCase(TestCase):
         account = Account.objects.create(name="Test Account")
         zip = ZipCity.objects.create(city="SomeCity", zip=76131)
         user = LiteUser.objects.create_user(username='test user', email='test@fibo.de', password='secure',
-                                        show_premium_ad=True)
+                                            show_premium_ad=True)
         user.account.add(account)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
@@ -136,7 +138,6 @@ class ViewsTestCase(TestCase):
                 "id": 1
             }
         }
-
 
         # When
         response = client.post("/cashflow/", cashflow_income, format='json')
@@ -213,8 +214,8 @@ class ViewsTestCase(TestCase):
 
     def test_cashflow_get(self):
         # Given
-        user = LiteUser.objects.create_user(show_premium_ad=True,
-            username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(show_premium_ad=True, username='test@fibo.de', email='test@fibo.de',
+                                            password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -238,14 +239,14 @@ class ViewsTestCase(TestCase):
 
         json_response = json.loads(response.content)
 
-        self.assertDictContainsSubset({
+        self.assertTrue(json_response.items() >= {
             "id": 1,
             "is_income": True,
             "overall_value": "100.00",
             "category": category.id,
             "source": store.id,
             "account": account.id,
-        }, json_response)
+        }.items())
 
     # Try to get a not existing Cashflow
     def test_cashflow_get_bad_parameter(self):
@@ -288,7 +289,7 @@ class ViewsTestCase(TestCase):
         # Then
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {
-                         'success': True, 'cashflow_id': cashflow.id})
+            'success': True, 'cashflow_id': cashflow.id})
 
         # The Cashflow should actually be deleted from the database
         with self.assertRaises(Cashflow.DoesNotExist):
@@ -359,7 +360,7 @@ class ViewsTestCase(TestCase):
         # Then
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {
-                         'success': True, 'cashflow_id': cashflow_id})
+            'success': True, 'cashflow_id': cashflow_id})
 
     def test_cashflow_put_expense(self):
         # Given
@@ -400,11 +401,12 @@ class ViewsTestCase(TestCase):
         # Then
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {
-                         'success': True, 'cashflow_id': cashflow.id})
+            'success': True, 'cashflow_id': cashflow.id})
 
     def test_update_not_existing_cashflow(self):
         # Given
-        user = LiteUser.objects.create_user(show_premium_ad=True,username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(show_premium_ad=True, username='test@fibo.de', email='test@fibo.de',
+                                            password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -546,7 +548,7 @@ class ViewsTestCase(TestCase):
     # Try to create a Category without name
     def test_category_post_bad_request(self):
         # Given
-        category = { }
+        category = {}
         # When
         response = self.client.post(f'/category/', category, format='json')
         # Then
@@ -569,5 +571,3 @@ class ViewsTestCase(TestCase):
         response = self.client.get(f'/category/?name={category_name}')
         # Then
         self.assertEqual(response.status_code, 400)
-
-
