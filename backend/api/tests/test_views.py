@@ -437,33 +437,38 @@ class ViewsTestCase(TestCase):
     # Try to update a Cashflow with insufficient data
     def test_cashflow_put_bad_request(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = FiboUser.objects.create_user(
+            username='test@fibo.de', email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
 
         account = Account.objects.create(id=1, name="Test Account")
-        category = Category.objects.create(name="HEALTH")
-        place = Place.objects.create(name="Test Place", address="Test Address")
-        cashflow = Cashflow.objects.create(id=1, is_income=True, overall_value=100.00, category=category, place=place,
+        category = Category.objects.create(name="Health", account=account)
+        zip = ZipCity.objects.create(zip=76131, city="Karlsruhe")
+        store = Store.objects.create(
+            name="Test Place", street="Test Street", zip=zip, house_number=1, account=account)
+
+        cashflow = Cashflow.objects.create(id=1, is_income=True, overall_value=100.00, category=category, source=store,
                                            account=account)
 
-        cashflow_id = cashflow.id
-        cashflow = {
+        new_cashflow = {
+            # "category": "MOBILITY",
             "overallValue": 26.00,
-            "place": {
-                "address": "Test Strasse 20",
-                "name": "Media"
+            "source_type": "private",
+            "private": {
+                "first_name": "Max",
+                "last_name": "Mustermann"
             },
             "timestamp": "2023-04-23T00:00:00",
-            "type": "INCOME",
+            "type": "EXPENSE",
             "account": {
                 "id": 1
             }
         }
 
         # Whe
-        response = client.put(f'/cashflow/{cashflow_id}', cashflow, format='json')
+        response = client.put(f'/cashflow/{cashflow.id}', new_cashflow, format='json')
 
         # Then
         self.assertEqual(response.status_code, 400)
