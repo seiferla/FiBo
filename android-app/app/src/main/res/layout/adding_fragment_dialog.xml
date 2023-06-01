@@ -15,12 +15,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            style="@style/MaterialAlertDialog.Material3.Title.Text"
             android:id="@+id/adding_fragment_dialog_heading_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Artikel überschrift"
-            android:textSize="@dimen/largeTextSize"
-            android:textStyle="bold"
+            android:text="@string/adding_fragment_dialog_heading_placeholder"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
