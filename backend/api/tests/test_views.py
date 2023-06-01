@@ -213,7 +213,7 @@ class ViewsTestCase(TestCase):
 
     def test_cashflow_get(self):
         # Given
-        user = FiboUser.objects.create_user(
+        user = LiteUser.objects.create_user(show_premium_ad=True,
             username='test@fibo.de', email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
