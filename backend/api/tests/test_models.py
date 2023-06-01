@@ -14,9 +14,11 @@ class ModelsTestCase(TestCase):
         self.assertEqual(place.zip.zip, "12345")
         self.assertEqual(place.zip.city, "Karlsruhe")
         self.assertEqual(place.name, "Postgalerie")
+        self.assertEqual(place.account.name, "TestAccount")
 
     def test_category_creation(self):
-        category = Category.objects.create(name="HEALTH")
+        account = Account.objects.create(name="TestAccount")
+        category = Category.objects.create(name="HEALTH",account=account)
         self.assertEqual(category.name, "HEALTH")
 
     def test_account_creation(self):
