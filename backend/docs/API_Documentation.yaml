@@ -6,7 +6,6 @@ info:
 servers:
   - url: 'http://127.0.0.1:8000'
 tags:
-  - name: default
   - name: users
     description: Everything that has has to do with users like registration and login
   - name: cashflow
@@ -17,22 +16,6 @@ tags:
     description: CRUD for Category
 
 paths:
-  /:
-    get:
-      tags:
-        - default
-      summary: Get possible routes
-      description: '`Returns` possible routes for the URL.'
-      operationId: getRoutes
-      security:
-        - bearerAuth: [ ]
-      parameters:
-        - $ref: '#/components/parameters/auth'
-      responses:
-        '200':
-          $ref: '#/components/responses/getRoutes'
-        '401':
-          $ref: '#/components/responses/accessError'
   /users/register/:
     post:
       tags:
@@ -397,8 +380,6 @@ components:
           format: date
           example: "2023-04-15 12:23:59.602445+00"
   responses:
-    getRoutes:
-      description: Successful operation. Returns possible routes for the API
     login:
       description: Successful operation. Returns Access and Refresh Token
       content:

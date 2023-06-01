@@ -2,13 +2,11 @@ from django.test import TestCase
 from django.urls import resolve,reverse
 from rest_framework_simplejwt.views import TokenRefreshView, TokenObtainPairView
 
-from ..views import GetRoutes, RegisterUser, DeleteUser, GetUser, CashflowsView, PlaceView, CategoryView
+from ..views import RegisterUser, DeleteUser, GetUser, CashflowsView, PlaceView, CategoryView
 
 
 class TestUrls(TestCase):
-    def test_routes_url_resolves(self):
-        url = reverse('routes')
-        self.assertEqual(resolve(url).func.view_class, GetRoutes)
+
 
     def test_register_url_resolves(self):
         url = reverse('register')
