@@ -284,14 +284,12 @@ public class AddingFragment extends Fragment {
     }
 
     private View.OnClickListener showDatePicker() {
-        return (view) -> datePicker.show(requireActivity().getSupportFragmentManager(), "datePick");
+        return view -> datePicker.show(requireActivity().getSupportFragmentManager(), "datePick");
     }
 
     private void initializeDropdownValues() {
         String[] items = getAllStringCategories();
-        MaterialAutoCompleteTextView categoriesDropdown = binding.categoryText;
         categoriesDropdown.setSimpleItems(items);
-        categoriesDropdown.setThreshold(4);
     }
 
     private String[] getAllStringCategories() {
