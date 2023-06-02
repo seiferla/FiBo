@@ -26,10 +26,7 @@ import de.dhbw.ka.se.fibo.utils.ActivityUtils;
 public class AddingFragmentDialog extends Dialog {
 
     private final Context context;
-
-    private AddingFragmentDialogBinding binding;
     private AddingItemsListAdapter adapter;
-
     MaterialButton saveButton;
     MaterialButton cancelButton;
     MaterialButton deleteButton;
@@ -60,6 +57,7 @@ public class AddingFragmentDialog extends Dialog {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AddingFragmentDialogBinding binding;
         super.onCreate(savedInstanceState);
 
         binding = AddingFragmentDialogBinding.inflate(getLayoutInflater());

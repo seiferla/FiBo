@@ -18,13 +18,11 @@ import de.dhbw.ka.se.fibo.models.Item;
 
 public class AddingItemsListAdapter extends RecyclerView.Adapter<AddingItemsRecyclerViewHolder> {
     private final List<Item> itemList;
-    private final Context context;
     private AddingFragmentFragmentDialogEdit editDialog;
 
 
     public AddingItemsListAdapter(Context context, List<Item> itemList) {
         this.itemList = new ArrayList<>(itemList);
-        this.context = context;
         editDialog = new AddingFragmentFragmentDialogEdit(context);
         editDialog.setAdapter(this);
     }
