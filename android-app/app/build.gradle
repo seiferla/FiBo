@@ -25,7 +25,7 @@ android {
         targetSdk 33
         versionCode 1
         versionName "1.0"
-
+        buildConfigField("String", "TIME_ZONE", "\"Europe/Berlin\"")
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -38,7 +38,7 @@ android {
             enableUnitTestCoverage true
             enableAndroidTestCoverage true
             testCoverageEnabled true
-            buildConfigField("String", "TIME_ZONE", "\"Europe/Berlin\"")        }
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
