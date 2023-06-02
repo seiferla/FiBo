@@ -125,6 +125,7 @@ public class AddingFragment extends Fragment {
 
     private void setUpRecyclerView(View view) {
         addingItemsRecyclerView = binding.addingFragmentRecyclerview;
+        addingItemsRecyclerView.setOverScrollMode(View.OVER_SCROLL_NEVER); //disable overscroll indicators
         addingItemsRecyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
         addingItemsListAdapter = new AddingItemsListAdapter(getContext(), List.of());
         addingItemsRecyclerView.setVisibility(View.GONE); //initially no items to display

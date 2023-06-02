@@ -27,7 +27,7 @@
     <!-- be careful when adding too many nested layouts. It might happen that espresso is not able
     to detect everything correctly and stays in an idling after loading this file -->
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -211,6 +211,7 @@
                     android:id="@+id/recyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:nestedScrollingEnabled="false"
                     android:clipToPadding="false"
                     android:paddingLeft="16dp"
                     android:paddingTop="12dp"
@@ -269,7 +270,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:nestedScrollingEnabled="false"
                     android:text="@string/cancelButton"
                     app:layout_constraintEnd_toStartOf="@id/okayButton"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -278,7 +278,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>
 
