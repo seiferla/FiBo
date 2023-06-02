@@ -1,6 +1,7 @@
 package de.dhbw.ka.se.fibo.ui.adding;
 
 import android.os.Bundle;
+import android.os.Parcel;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,6 @@ import androidx.navigation.Navigation;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.datepicker.CalendarConstraints;
-import com.google.android.material.datepicker.DateValidatorPointBackward;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
@@ -26,8 +26,10 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.math.BigDecimal;
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -40,6 +42,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import de.dhbw.ka.se.fibo.ApplicationState;
+import de.dhbw.ka.se.fibo.BuildConfig;
 import de.dhbw.ka.se.fibo.R;
 import de.dhbw.ka.se.fibo.databinding.FragmentAddingBinding;
 import de.dhbw.ka.se.fibo.models.Cashflow;
@@ -68,7 +71,6 @@ public class AddingFragment extends Fragment {
     private TabLayout tabLayout;
     private TextInputEditText address;
     private EditText notes;
-
     private CashflowType newCashFlowType;
 
     @Nullable
@@ -254,14 +256,35 @@ public class AddingFragment extends Fragment {
     }
 
     private void createDatePicker() {
-        CalendarConstraints.DateValidator dateValidator = DateValidatorPointBackward.now();
+
+        LocalDateTime currentDateTime = LocalDateTime.now(ZoneId.of(BuildConfig.TIME_ZONE));
+        LocalTime lowerBound = LocalTime.of(0, 0);
+        LocalTime upperBound = LocalTime.of(2, 0);
+        boolean isWithinTimeRange = currentDateTime.toLocalTime().isAfter(lowerBound) && currentDateTime.toLocalTime().isBefore(upperBound);
+        CalendarConstraints.DateValidator dateValidator = new CalendarConstraints.DateValidator() {
+            @Override
+            public boolean isValid(long date) {
+                LocalDateTime selectedDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(date), ZoneId.of(BuildConfig.TIME_ZONE));
+
+                return selectedDateTime.toLocalDate().isBefore(currentDateTime.toLocalDate()) || !isWithinTimeRange;            }
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            @Override
+            public void writeToParcel(@NonNull Parcel dest, int flags) {
+
+            }
+        };
         CalendarConstraints.Builder constraintBuilder = new CalendarConstraints.Builder();
         datePicker = MaterialDatePicker.Builder.datePicker()
                 .setTitleText(R.string.selectDate)
                 .setNegativeButtonText(R.string.datePickerNegativeButtonText)
                 .setPositiveButtonText(R.string.DatePickerPositiveButtonText)
                 .setCalendarConstraints(constraintBuilder.setValidator(dateValidator).build())
-                .setSelection(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli())
+                .setSelection(LocalDateTime.now().atZone(ZoneId.of(BuildConfig.TIME_ZONE)).toInstant().toEpochMilli())
                 .build();
         datePicker.addOnPositiveButtonClickListener(selection -> {
             Format formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMANY);
