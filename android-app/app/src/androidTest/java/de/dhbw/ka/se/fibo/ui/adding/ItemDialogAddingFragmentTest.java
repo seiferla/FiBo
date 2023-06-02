@@ -120,7 +120,7 @@ public class ItemDialogAddingFragmentTest extends AddingFragmentTest {
         onView(withId(R.id.adding_items_row_item_amount)).check(matches(withText(expectedFirstItemAmount)));
     }
 
-    //still sometimes flaky
+    //hopefully not flaky anymore
     @Test
     public void testCorrectInitialPrefilledData() {
         //first add an Item
@@ -136,7 +136,7 @@ public class ItemDialogAddingFragmentTest extends AddingFragmentTest {
         onView(withId(R.id.adding_fragment_dialog_item_amount)).check(matches(withText(firstItemAmount)));
     }
 
-    //still sometimes flaky
+    //hopefully not flaky anymore
     @Test
     public void testCorrectEditedPrefilledData() {
         //first add an item and successfully edit it
