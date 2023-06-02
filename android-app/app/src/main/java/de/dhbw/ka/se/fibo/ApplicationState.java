@@ -119,7 +119,7 @@ public class ApplicationState {
 
     public Optional<String> getAccessToken() {
         String accessToken = context
-                .getSharedPreferences(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_NAME, 0)
+                .getSharedPreferences(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_NAME, Context.MODE_PRIVATE)
                 .getString(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_ACCESS_TOKEN, null);
 
         if (null == accessToken) {
@@ -131,7 +131,7 @@ public class ApplicationState {
 
     public Optional<String> getRefreshToken() {
         String refreshToken = context
-                .getSharedPreferences(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_NAME, 0)
+                .getSharedPreferences(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_NAME, Context.MODE_PRIVATE)
                 .getString(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_REFRESH_TOKEN, null);
 
         if (null == refreshToken) {
@@ -146,7 +146,7 @@ public class ApplicationState {
      */
     public void storeAuthorization(LoginStrategyProduction.LoginResponse response) {
         context
-                .getSharedPreferences(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_NAME, 0)
+                .getSharedPreferences(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_NAME, Context.MODE_PRIVATE)
                 .edit()
                 .putString(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_REFRESH_TOKEN, response.refresh)
                 .putString(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_ACCESS_TOKEN, response.access)
@@ -155,7 +155,7 @@ public class ApplicationState {
 
     public void clearAuthorization() {
         context
-                .getSharedPreferences(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_NAME, 0)
+                .getSharedPreferences(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_NAME, Context.MODE_PRIVATE)
                 .edit()
                 .remove(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_REFRESH_TOKEN)
                 .remove(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_ACCESS_TOKEN)
