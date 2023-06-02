@@ -21,16 +21,16 @@ import de.dhbw.ka.se.fibo.R;
 public class ItemDialogAddingFragmentTest extends AddingFragmentTest {
     //Item Tests
 
-    private static final String firstItemAmount = "1.0";
-    private static final String expectedFirstItemAmount = "1.0 Stk.";
-    private static final String firstItemPrice = "1";
-    private static final String expectedFirstItemPrice = "1,00 €";
-    private static final String firstItemName = "Erster Beispielartikel";
-    private static final String editedFirstItemAmount = "1.5";
-    private static final String expectedEditedFirstItemAmount = "1.5 Stk.";
-    private static final String editedFirstItemPrice = "2.3123123";
-    private static final String expectedEditedFirstItemPrice = "2,31 €";
-    private static final String editedFirstItemName = "Bearbeiteter Beispielartikel";
+    private static final String FIRST_ITEM_AMOUNT = "1.0";
+    private static final String EXPECTED_FIRST_ITEM_AMOUNT = "1.0 Stk.";
+    private static final String FIRST_ITEM_PRICE = "1";
+    private static final String EXPECTED_FIRST_ITEM_PRICE = "1,00 €";
+    private static final String FIRST_ITEM_NAME = "Erster Beispielartikel";
+    private static final String EDITED_FIRST_ITEM_AMOUNT = "1.5";
+    private static final String EXPECTED_EDITED_FIRST_ITEM_AMOUNT = "1.5 Stk.";
+    private static final String EDITED_FIRST_ITEM_PRICE = "2.3123123";
+    private static final String EXPECTED_EDITED_FIRST_ITEM_PRICE = "2,31 €";
+    private static final String EDITED_FIRST_ITEM_NAME = "Bearbeiteter Beispielartikel";
 
     @Test
     public void testSuccessfulItemAdding() {
@@ -41,21 +41,21 @@ public class ItemDialogAddingFragmentTest extends AddingFragmentTest {
         onView(withId(R.id.adding_fragment_dialog_container))
                 .check(matches(isDisplayed()));
         onView(withId(R.id.adding_fragment_dialog_item_price))
-                .perform(typeText(firstItemPrice));
+                .perform(typeText(FIRST_ITEM_PRICE));
         onView(withId(R.id.adding_fragment_dialog_item_amount))
-                .perform(typeText(firstItemAmount));
+                .perform(typeText(FIRST_ITEM_AMOUNT));
         onView(withId(R.id.adding_fragment_dialog_item_name))
-                .perform(typeText(firstItemName));
+                .perform(typeText(FIRST_ITEM_NAME));
         onView(withId(R.id.adding_fragment_dialog_save_button))
                 .perform(click());
 
         //check for item in recyclerview
         onView(withId(R.id.adding_items_row_item_name))
-                .check(matches(withText(firstItemName)));
+                .check(matches(withText(FIRST_ITEM_NAME)));
         onView(withId(R.id.adding_items_row_item_price))
-                .check(matches(withText(expectedFirstItemPrice)));
+                .check(matches(withText(EXPECTED_FIRST_ITEM_PRICE)));
         onView(withId(R.id.adding_items_row_item_amount))
-                .check(matches(withText(expectedFirstItemAmount)));
+                .check(matches(withText(EXPECTED_FIRST_ITEM_AMOUNT)));
     }
 
     @Test
@@ -104,21 +104,21 @@ public class ItemDialogAddingFragmentTest extends AddingFragmentTest {
         onView(withId(R.id.adding_fragment_dialog_container))
                 .check(matches(isDisplayed()));
         onView(withId(R.id.adding_fragment_dialog_item_price))
-                .perform(replaceText(editedFirstItemPrice));
+                .perform(replaceText(EDITED_FIRST_ITEM_PRICE));
         onView(withId(R.id.adding_fragment_dialog_item_amount))
-                .perform(replaceText(editedFirstItemAmount));
+                .perform(replaceText(EDITED_FIRST_ITEM_AMOUNT));
         onView(withId(R.id.adding_fragment_dialog_item_name))
-                .perform(replaceText(editedFirstItemName));
+                .perform(replaceText(EDITED_FIRST_ITEM_NAME));
         onView(withId(R.id.adding_fragment_dialog_save_button))
                 .perform(click());
 
         //avoiding flaky test results
         //during the refresh process, there might exists two views with the same id
-        onView(allOf(withId(R.id.adding_items_row_item_name), withText(editedFirstItemName)))
+        onView(allOf(withId(R.id.adding_items_row_item_name), withText(EDITED_FIRST_ITEM_NAME)))
                 .check(matches(isDisplayed()));
-        onView(allOf(withId(R.id.adding_items_row_item_price), withText(expectedEditedFirstItemPrice)))
+        onView(allOf(withId(R.id.adding_items_row_item_price), withText(EXPECTED_EDITED_FIRST_ITEM_PRICE)))
                 .check(matches(isDisplayed()));
-        onView(allOf(withId(R.id.adding_items_row_item_amount), withText(expectedEditedFirstItemAmount)))
+        onView(allOf(withId(R.id.adding_items_row_item_amount), withText(EXPECTED_EDITED_FIRST_ITEM_AMOUNT)))
                 .check(matches(isDisplayed()));
     }
 
@@ -136,21 +136,21 @@ public class ItemDialogAddingFragmentTest extends AddingFragmentTest {
         onView(withId(R.id.adding_fragment_dialog_container))
                 .check(matches(isDisplayed()));
         onView(withId(R.id.adding_fragment_dialog_item_price))
-                .perform(replaceText(editedFirstItemPrice));
+                .perform(replaceText(EDITED_FIRST_ITEM_PRICE));
         onView(withId(R.id.adding_fragment_dialog_item_amount))
-                .perform(replaceText(editedFirstItemAmount));
+                .perform(replaceText(EDITED_FIRST_ITEM_AMOUNT));
         onView(withId(R.id.adding_fragment_dialog_item_name))
-                .perform(replaceText(editedFirstItemName));
+                .perform(replaceText(EDITED_FIRST_ITEM_NAME));
         onView(withId(R.id.adding_fragment_dialog_cancel_button))
                 .perform(click());
 
 
         onView(withId(R.id.adding_items_row_item_name))
-                .check(matches(withText(firstItemName)));
+                .check(matches(withText(FIRST_ITEM_NAME)));
         onView(withId(R.id.adding_items_row_item_price))
-                .check(matches(withText(expectedFirstItemPrice)));
+                .check(matches(withText(EXPECTED_FIRST_ITEM_PRICE)));
         onView(withId(R.id.adding_items_row_item_amount))
-                .check(matches(withText(expectedFirstItemAmount)));
+                .check(matches(withText(EXPECTED_FIRST_ITEM_AMOUNT)));
     }
 
     @Test
@@ -159,17 +159,17 @@ public class ItemDialogAddingFragmentTest extends AddingFragmentTest {
         testSuccessfulItemAdding();
 
         //open edit panel with just edited list entry
-        onView(allOf(withId(R.id.adding_items_row_layout_wrapper), withChild(withText(expectedFirstItemAmount))))
+        onView(allOf(withId(R.id.adding_items_row_layout_wrapper), withChild(withText(EXPECTED_FIRST_ITEM_AMOUNT))))
                 .perform(click());
 
         onView(withId(R.id.adding_fragment_dialog_container))
                 .check(matches(isDisplayed()));
         onView(withId(R.id.adding_fragment_dialog_item_name))
-                .check(matches(withText(firstItemName)));
+                .check(matches(withText(FIRST_ITEM_NAME)));
         onView(withId(R.id.adding_fragment_dialog_item_price))
-                .check(matches(withText(firstItemPrice)));
+                .check(matches(withText(FIRST_ITEM_PRICE)));
         onView(withId(R.id.adding_fragment_dialog_item_amount))
-                .check(matches(withText(firstItemAmount)));
+                .check(matches(withText(FIRST_ITEM_AMOUNT)));
     }
 
     @Test
@@ -178,17 +178,17 @@ public class ItemDialogAddingFragmentTest extends AddingFragmentTest {
         testSuccessfulItemEditing();
 
         //open edit panel with just edited list entry
-        onView(allOf(withId(R.id.adding_items_row_layout_wrapper), withChild(withText(expectedEditedFirstItemAmount))))
+        onView(allOf(withId(R.id.adding_items_row_layout_wrapper), withChild(withText(EXPECTED_EDITED_FIRST_ITEM_AMOUNT))))
                 .perform(click());
 
         onView(withId(R.id.adding_fragment_dialog_container))
                 .check(matches(isDisplayed()));
         onView(withId(R.id.adding_fragment_dialog_item_name))
-                .check(matches(withText(editedFirstItemName)));
+                .check(matches(withText(EDITED_FIRST_ITEM_NAME)));
         onView(withId(R.id.adding_fragment_dialog_item_price))
-                .check(matches(withText(editedFirstItemPrice)));
+                .check(matches(withText(EDITED_FIRST_ITEM_PRICE)));
         onView(withId(R.id.adding_fragment_dialog_item_amount))
-                .check(matches(withText(editedFirstItemAmount)));
+                .check(matches(withText(EDITED_FIRST_ITEM_AMOUNT)));
     }
 
     @Test
