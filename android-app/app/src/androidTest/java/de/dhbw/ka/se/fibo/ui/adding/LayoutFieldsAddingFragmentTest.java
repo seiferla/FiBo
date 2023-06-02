@@ -22,6 +22,9 @@ import org.junit.Test;
 import de.dhbw.ka.se.fibo.R;
 
 public class LayoutFieldsAddingFragmentTest extends AddingFragmentTest {
+
+    private final String testAddressString = "Fibostraße 1";
+
     @Test
     public void testInvalidExpenseInput() {
         // click on the okay button without input, and test that every field has an error
@@ -48,7 +51,7 @@ public class LayoutFieldsAddingFragmentTest extends AddingFragmentTest {
         // add something to the address field and test that adding fragment has closed without errors
         onView(withId(R.id.address_text))
                 .perform(scrollTo())
-                .perform(typeText("Fibostraße 1"), closeSoftKeyboard());
+                .perform(typeText(testAddressString), closeSoftKeyboard());
 
         onView(withId(R.id.okayButton))
                 .perform(scrollTo())
@@ -87,7 +90,7 @@ public class LayoutFieldsAddingFragmentTest extends AddingFragmentTest {
         // add something to the address field and test that adding fragment has closed without errors
         onView(withId(R.id.address_text))
                 .perform(scrollTo())
-                .perform(typeText("Fibostraße 1"), closeSoftKeyboard());
+                .perform(typeText(testAddressString), closeSoftKeyboard());
 
         onView(withId(R.id.okayButton))
                 .perform(scrollTo())
@@ -233,7 +236,7 @@ public class LayoutFieldsAddingFragmentTest extends AddingFragmentTest {
         // add something to the address field and test that the address error is gone
         onView(withId(R.id.address_text))
                 .perform(scrollTo())
-                .perform(typeText("Fibostraße 1"), closeSoftKeyboard());
+                .perform(typeText(testAddressString), closeSoftKeyboard());
 
         onView(withId(R.id.okayButton))
                 .perform(scrollTo())
