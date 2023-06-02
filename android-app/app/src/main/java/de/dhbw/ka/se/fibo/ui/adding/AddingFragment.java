@@ -174,6 +174,11 @@ public class AddingFragment extends Fragment {
                 setDataWithSelectedTab(tab);
             }
 
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                // Not needed as this will be handled in onTabSelected
+            }
+
             // TODO: Test that the hint changes when switching tabs
             private void setDataWithSelectedTab(TabLayout.Tab tab) {
                 if (tab == binding.tabLayout.getTabAt(0)) {
@@ -185,11 +190,6 @@ public class AddingFragment extends Fragment {
                     newCashFlowType = CashflowType.INCOME;
                     binding.storeTextLayout.setHint(requireContext().getString(R.string.source));
                 }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
             }
 
             @Override
