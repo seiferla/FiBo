@@ -6,11 +6,14 @@
     android:layout_height="wrap_content"
     android:background="@drawable/dialog_background_shape">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:id="@+id/adding_fragment_dialog_heading_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -20,26 +23,24 @@
             style="@style/MaterialAlertDialog.Material3.Title.Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/adding_fragment_dialog_heading_delete_button"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:text="@string/adding_fragment_dialog_heading_placeholder"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textAlignment="center" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/adding_fragment_dialog_heading_delete_button"
             style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="16dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
             android:backgroundTint="@color/md_theme_light_errorContainer"
             android:contentDescription="@string/delete_item_button_description"
             app:icon="@drawable/delete_icon"
-            app:iconTint="@color/md_theme_light_error"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/adding_fragment_dialog_heading_text"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:iconTint="@color/md_theme_light_error" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
