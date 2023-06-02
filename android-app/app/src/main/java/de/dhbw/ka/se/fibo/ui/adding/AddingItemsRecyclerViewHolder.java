@@ -1,9 +1,9 @@
 package de.dhbw.ka.se.fibo.ui.adding;
 
 import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textview.MaterialTextView;
@@ -12,7 +12,7 @@ import de.dhbw.ka.se.fibo.R;
 
 public class AddingItemsRecyclerViewHolder extends RecyclerView.ViewHolder {
 
-    final ConstraintLayout layoutWrapper;
+    final ViewGroup layoutWrapper;
     final MaterialTextView itemName;
     final MaterialTextView itemPrice;
     final MaterialTextView itemAmount;
