@@ -23,7 +23,7 @@
             android:id="@+id/adding_items_row_item_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxLength="20"
+            android:maxLength="60"
             android:text="@string/recyclerview_item_name_placeholder"
             android:textSize="@dimen/standardTextSize"
             android:textStyle="bold" />

@@ -40,7 +40,7 @@ public class AddingItemsListAdapter extends RecyclerView.Adapter<AddingItemsRecy
         Item currentItem = getItem(position);
 
         holder.itemName.setText(currentItem.getName());
-        holder.itemAmount.setText(String.format(Locale.GERMANY, "%.9f Stk.", currentItem.getAmount()));
+        holder.itemAmount.setText(String.format("%s Stk.", currentItem.getAmount()));
         holder.itemPrice.setText(String.format("%s", Helpers.formatBigDecimalCurrency(currentItem.getValue())));
         holder.layoutWrapper.setOnClickListener(view -> openEditDialog(currentItem, position));
     }

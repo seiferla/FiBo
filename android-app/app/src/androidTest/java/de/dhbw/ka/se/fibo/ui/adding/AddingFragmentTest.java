@@ -1,5 +1,9 @@
 package de.dhbw.ka.se.fibo.ui.adding;
 
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.swipeUp;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+
 import android.content.Context;
 import android.view.View;
 
@@ -34,6 +38,7 @@ public abstract class AddingFragmentTest {
         mActivityScenarioRule.getScenario()
                 .onActivity(activity -> Navigation.findNavController(activity, R.id.floatingButton)
                         .navigate(R.id.action_navigation_home_to_navigation_adding));
+        onView(withId(R.id.adding_fragment_scroll_view)).perform(swipeUp()); //load the complete fragment (initially some Views are invisible)
     }
 
     public static ViewAction clickIcon(boolean isEndIcon) {

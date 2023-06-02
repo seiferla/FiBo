@@ -4,8 +4,7 @@
     android:id="@+id/adding_fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_marginBottom="92dp"> <!-- 80dp (navbar) + 12dp -->
+    android:orientation="vertical">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
@@ -29,12 +28,14 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
+        android:id="@+id/adding_fragment_scroll_view"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingBottom="12dp">
+        android:layout_marginBottom="80dp"> <!-- 80dp (navbar) -->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:paddingBottom="12dp"
             android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
