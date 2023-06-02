@@ -40,10 +40,7 @@
         android:layout_centerInParent="true"
         android:maxLength="13"
         android:text="2 Stk."
-        android:textSize="@dimen/smallTextSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/adding_items_row_imageViewDrawable"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="@dimen/smallTextSize" />
 
     <ImageView
         android:id="@+id/adding_items_row_imageViewDrawable"
@@ -53,10 +50,7 @@
         android:layout_centerVertical="true"
         android:contentDescription="@string/edit_item_description"
         android:scaleType="center"
-        android:src="@drawable/baseline_arrow_forward_ios_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:src="@drawable/baseline_arrow_forward_ios_24" />
 
 
 </RelativeLayout>
