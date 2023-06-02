@@ -92,7 +92,8 @@ jobs:
           args: >
             -Dsonar.organization=fibo-dhbw
             -Dsonar.projectKey=Cebox82_FiBo
-            -Dsonar.sources=android-app/app/src/main,backend
+            -Dsonar.sources=android-app,backend
+            -Dsonar.exclude=android-app/app/src/androidTest,android-app/app/src/test,backend/api/tests
             -Dsonar.tests=android-app/app/src/androidTest,android-app/app/src/test,backend/api/tests
             -Dsonar.java.binaries=android-app/app/build/intermediates/classes
             -Dsonar.projectName=FiBo
