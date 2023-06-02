@@ -91,8 +91,7 @@ public class ItemDialogAddingFragmentTest extends AddingFragmentTest {
         onView(withId(R.id.adding_fragment_dialog_save_button)).perform(click());
 
         //avoiding flaky test results
-        //during the refresh process, there are exists two with the same id
-        //hence we have to specify it even more with the correct text value
+        //during the refresh process, there might exists two views with the same id
         onView(allOf(withId(R.id.adding_items_row_item_name), withText(editedFirstItemName))).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.adding_items_row_item_price), withText(expectedEditedFirstItemPrice))).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.adding_items_row_item_amount), withText(expectedEditedFirstItemAmount))).check(matches(isDisplayed()));
@@ -120,7 +119,6 @@ public class ItemDialogAddingFragmentTest extends AddingFragmentTest {
         onView(withId(R.id.adding_items_row_item_amount)).check(matches(withText(expectedFirstItemAmount)));
     }
 
-    //hopefully not flaky anymore
     @Test
     public void testCorrectInitialPrefilledData() {
         //first add an Item
@@ -136,7 +134,6 @@ public class ItemDialogAddingFragmentTest extends AddingFragmentTest {
         onView(withId(R.id.adding_fragment_dialog_item_amount)).check(matches(withText(firstItemAmount)));
     }
 
-    //hopefully not flaky anymore
     @Test
     public void testCorrectEditedPrefilledData() {
         //first add an item and successfully edit it
