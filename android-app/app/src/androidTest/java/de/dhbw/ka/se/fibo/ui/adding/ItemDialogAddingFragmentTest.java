@@ -21,16 +21,16 @@ import de.dhbw.ka.se.fibo.R;
 public class ItemDialogAddingFragmentTest extends AddingFragmentTest {
     //Item Tests
 
-    private final String firstItemAmount = "1.0";
-    private final String expectedFirstItemAmount = "1.0 Stk.";
-    private final String firstItemPrice = "1";
-    private final String expectedFirstItemPrice = "1,00 €";
-    private final String firstItemName = "Erster Beispielartikel";
-    private final String editedFirstItemAmount = "1.5";
-    private final String expectedEditedFirstItemAmount = "1.5 Stk.";
-    private final String editedFirstItemPrice = "2.3123123";
-    private final String expectedEditedFirstItemPrice = "2,31 €";
-    private final String editedFirstItemName = "Bearbeiteter Beispielartikel";
+    private static final String firstItemAmount = "1.0";
+    private static final String expectedFirstItemAmount = "1.0 Stk.";
+    private static final String firstItemPrice = "1";
+    private static final String expectedFirstItemPrice = "1,00 €";
+    private static final String firstItemName = "Erster Beispielartikel";
+    private static final String editedFirstItemAmount = "1.5";
+    private static final String expectedEditedFirstItemAmount = "1.5 Stk.";
+    private static final String editedFirstItemPrice = "2.3123123";
+    private static final String expectedEditedFirstItemPrice = "2,31 €";
+    private static final String editedFirstItemName = "Bearbeiteter Beispielartikel";
 
     @Test
     public void testSuccessfulItemAdding() {
