@@ -1,61 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/adding_items_row_layout_wrapper"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="false"
+    android:paddingStart="16dp"
     android:paddingTop="8dp"
+    android:paddingEnd="16dp"
     android:paddingBottom="8dp"
     android:textAlignment="center">
 
-    <LinearLayout
-        android:id="@+id/adding_items_row_name_and_price_layout"
+    <TextView
+        android:id="@+id/adding_items_row_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:maxLength="60"
+        android:text="@string/recyclerview_item_name_placeholder"
+        android:textSize="@dimen/standardTextSize"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/adding_items_row_item_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLength="60"
-            android:text="@string/recyclerview_item_name_placeholder"
-            android:textSize="@dimen/standardTextSize"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/adding_items_row_item_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/adding_items_row_item_name"
+        android:layout_alignParentStart="true"
+        android:maxLength="15"
+        android:text="@string/recyclerview_price_placeholder"
+        android:textSize="@dimen/smallTextSize" />
 
-        <TextView
-            android:id="@+id/adding_items_row_item_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLength="15"
-            android:text="@string/recyclerview_price_placeholder"
-            android:textSize="@dimen/smallTextSize" />
-
-
-    </LinearLayout>
 
     <TextView
         android:id="@+id/adding_items_row_item_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:maxLength="13"
         android:text="2 Stk."
         android:textSize="@dimen/smallTextSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/adding_items_row_imageViewDrawable"
-        app:layout_constraintStart_toEndOf="@+id/adding_items_row_name_and_price_layout"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/adding_items_row_imageViewDrawable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
         android:contentDescription="@string/edit_item_description"
         android:scaleType="center"
         android:src="@drawable/baseline_arrow_forward_ios_24"
@@ -64,4 +59,4 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
