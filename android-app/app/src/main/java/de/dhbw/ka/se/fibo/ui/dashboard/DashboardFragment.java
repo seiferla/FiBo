@@ -1,5 +1,7 @@
 package de.dhbw.ka.se.fibo.ui.dashboard;
 
+import static de.dhbw.ka.se.fibo.BuildConfig.TIME_ZONE;
+
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -300,9 +302,9 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
             Cashflow oldestCashflow = cashflows.last();
 
             builder.setStart(
-                    oldestCashflow.getTimestamp().atZone(ZoneId.systemDefault()).toInstant()
+                    oldestCashflow.getTimestamp().atZone(ZoneId.of(TIME_ZONE)).toInstant()
                             .toEpochMilli());
-            builder.setEnd(newestCashflow.getTimestamp().atZone(ZoneId.systemDefault()).toInstant()
+            builder.setEnd(newestCashflow.getTimestamp().atZone(ZoneId.of(TIME_ZONE)).toInstant()
                     .toEpochMilli());
         }
 
@@ -313,9 +315,9 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
                 .build();
 
         picker.addOnPositiveButtonClickListener(e -> {
-            startDate = Instant.ofEpochMilli(e.first).atZone(ZoneId.systemDefault())
+            startDate = Instant.ofEpochMilli(e.first).atZone(ZoneId.of(TIME_ZONE))
                     .toLocalDate();
-            endDate = Instant.ofEpochMilli(e.second).atZone(ZoneId.systemDefault()).toLocalDate();
+            endDate = Instant.ofEpochMilli(e.second).atZone(ZoneId.of(TIME_ZONE)).toLocalDate();
 
             setDateCardTime();
 
