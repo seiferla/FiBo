@@ -95,6 +95,6 @@ jobs:
             -Dsonar.sources=android-app/app/src,backend
             -Dsonar.exclude=android-app/**/androidTest/**/*,android-app/**/test/**/*,backend/**/tests/**/*
             -Dsonar.tests=android-app/app/src,backend
-            -Dsonar.test.inclusion=android-app/**/androidTest/**/*,android-app/**/test/**/*,backend/**/tests/**/*
+            -Dsonar.test.inclusions=android-app/**/androidTest/**/*,android-app/**/test/**/*,backend/**/tests/**/*
             -Dsonar.java.binaries=android-app/app/build/intermediates/classes
             -Dsonar.projectName=FiBo
