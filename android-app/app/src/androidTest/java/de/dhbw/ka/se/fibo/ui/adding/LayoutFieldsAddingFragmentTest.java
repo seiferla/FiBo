@@ -40,10 +40,10 @@ public class LayoutFieldsAddingFragmentTest extends AddingFragmentTest {
         onView(withId(R.id.address_text_layout))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_address_field))));
 
-        TestInvalidSourceFieldInput();
-        TestInvalidAmountFieldInput();
-        TestInvalidInputDateFieldInput();
-        TestInvalidCategoryFieldInput();
+        testInvalidSourceFieldInput();
+        testInvalidAmountFieldInput();
+        testInvalidInputDateFieldInput();
+        testInvalidCategoryFieldInput();
 
         // add something to the address field and test that adding fragment has closed without errors
         onView(withId(R.id.address_text))
@@ -79,10 +79,10 @@ public class LayoutFieldsAddingFragmentTest extends AddingFragmentTest {
         onView(withId(R.id.address_text_layout))
                 .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_address_field))));
 
-        TestInvalidSourceFieldInput();
-        TestInvalidAmountFieldInput();
-        TestInvalidInputDateFieldInput();
-        TestInvalidCategoryFieldInput();
+        testInvalidSourceFieldInput();
+        testInvalidAmountFieldInput();
+        testInvalidInputDateFieldInput();
+        testInvalidCategoryFieldInput();
 
         // add something to the address field and test that adding fragment has closed without errors
         onView(withId(R.id.address_text))
@@ -99,7 +99,7 @@ public class LayoutFieldsAddingFragmentTest extends AddingFragmentTest {
     }
 
     @Test
-    public void TestInvalidStoreFieldInput() {
+    public void testInvalidStoreFieldInput() {
         onView(withId(R.id.okayButton))
                 .perform(scrollTo())
                 .perform(click());
@@ -121,7 +121,7 @@ public class LayoutFieldsAddingFragmentTest extends AddingFragmentTest {
     }
 
     @Test
-    public void TestInvalidSourceFieldInput() {
+    public void testInvalidSourceFieldInput() {
         onView(withText(R.string.adding_income))
                 .perform(scrollTo())
                 .perform(click());
@@ -146,7 +146,7 @@ public class LayoutFieldsAddingFragmentTest extends AddingFragmentTest {
     }
 
     @Test
-    public void TestInvalidAmountFieldInput() {
+    public void testInvalidAmountFieldInput() {
         onView(withId(R.id.okayButton))
                 .perform(scrollTo())
                 .perform(click());
@@ -168,7 +168,7 @@ public class LayoutFieldsAddingFragmentTest extends AddingFragmentTest {
     }
 
     @Test
-    public void TestInvalidInputDateFieldInput() {
+    public void testInvalidInputDateFieldInput() {
         onView(withId(R.id.okayButton))
                 .perform(scrollTo())
                 .perform(click());
@@ -195,7 +195,7 @@ public class LayoutFieldsAddingFragmentTest extends AddingFragmentTest {
     }
 
     @Test
-    public void TestInvalidCategoryFieldInput() {
+    public void testInvalidCategoryFieldInput() {
         onView(withId(R.id.okayButton))
                 .perform(scrollTo())
                 .perform(click());
@@ -222,7 +222,7 @@ public class LayoutFieldsAddingFragmentTest extends AddingFragmentTest {
     }
 
     @Test
-    public void TestInvalidAddressFieldInput() {
+    public void testInvalidAddressFieldInput() {
         onView(withId(R.id.okayButton))
                 .perform(scrollTo())
                 .perform(click());
