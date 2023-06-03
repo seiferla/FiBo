@@ -8,11 +8,12 @@ Version: 1.2
 
 ## 2. <a name='RevisionHistory'></a>Revision History
 
-| Date (dd/mm/yy) | Version | Description | Author |
-|---|---|---|---|
-| 22/11/22 | 1.0 | Initial version | Jens |
-| 12/04/23 | 1.1 | Extended version | Jens |
-| 18/05/23 | 1.2 | Extended version | Jens |
+| Date (dd/mm/yy) | Version | Description      | Author |
+|-----------------|---------|------------------|--------|
+| 22/11/22        | 1.0     | Initial version  | Jens   |
+| 12/04/23        | 1.1     | Extended version | Jens   |
+| 18/05/23        | 1.2     | Extended version | Jens   |
+| 27/05/23        | 1.3     | Extended version | Jonas  |
 
 ## 3. <a name='TableofContents'></a>Table of Contents
 
@@ -331,13 +332,115 @@ Immediate | 500–1000ms | Answers to simple requests must be completed within t
 Continuous | 2000–5000ms | Answers to complex questions must be completed within this time frame (e.g. a complex dashboard should be fully loaded)
 Captive | 7000–10000ms | Users will begin switching tasks at this point. If a process takes longer than this, it should be segmented.
 
-Source (adapted after): <https://web.archive.org/web/20220627213434/https://design.firefox.com/photon/introduction/design-for-performance.html>
+Source (adapted
+after): <https://web.archive.org/web/20220627213434/https://design.firefox.com/photon/introduction/design-for-performance.html>
 <!-- Yes, I love moz://a and it's a thoughtful design process -->
 
-We should strive for duration to be Immediate at most. In rare cases, we might be forced to have a continuous process. We should avoid Captive processes at all costs and segment these really complex tasks.
+We should strive for duration to be Immediate at most. In rare cases, we might be forced to have a continuous process.
+We should avoid Captive processes at all costs and segment these really complex tasks.
 
 ### 4.14. <a name='Quality'></a>Quality
 
-To make sure we are able to deliver apps of great quality with even greater confidence, we want to implement UI tests that can be run automatically. Within these, we will create scenarios that will cover each aspect (even edge cases) of all the workflows and use-cases.
+To make sure we are able to deliver apps of great quality with even greater confidence, we implement UI tests that run
+continuously on each code change. Within these, we create scenarios that cover each aspect (even edge cases) of all the
+implemented use-cases.
 
-For the backend, first considerations are that we use an automated tool that tests the published REST API. This can also be automated.
+For the backend, we also have implemented continuous code testing that run on each code change. During these tests we
+try to cover every code line of our backend REST API so that the edge cases are also tested continuously.
+
+Another aspect of quality is not only the just introduced code coverage. We also raise other metrics during our pipeline
+analysis. They are grouped into following sections:
+
+<details>
+  <summary>reliability</summary>
+
+- bugs
+
+</details>
+
+<details>
+  <summary>security</summary>
+
+- vulnerabilities
+</details>
+
+<details>
+  <summary>security review</summary>
+
+- security hotspots
+
+</details>
+
+<details>
+  <summary>maintainability</summary>
+
+- code smells
+- dept
+
+</details>
+
+<details>
+  <summary>coverage</summary>
+
+- uncovered lines
+- lines to cover
+- line coverage (calculated with above values)
+
+</details>
+
+<details>
+  <summary>duplications</summary>
+
+- density
+- duplicated lines
+- duplicated blocks
+- duplicated files
+
+</details>
+
+<details>
+  <summary>size</summary>
+
+- lines of code
+- lines
+- statements
+- functions
+- classes
+- files
+- comment Lines
+- comments (%)
+
+</details>
+
+<details>
+  <summary>complexity</summary>
+
+- cyclomatic complexity
+- cognitive complexity
+
+</details>
+
+<details>
+  <summary>issues</summary>
+
+- issues
+- open issues
+- reopened issues
+- confirmed issues
+- false positive issues
+- won't fix issues
+
+</details>
+
+We strive to achieve good values for each of the before mentioned categories. Our initial step towards achieving good
+metrics is to prioritize the code coverage. Additionally, we emphasize two other specific metrics:
+
+#### Reliability
+
+Our goal is to ensure a high reliability score to erase any instances of unexpected app behavior. Otherwise, we will
+lose users as a financial app has to always act in favor of the user's interaction.
+
+#### Security
+
+Given that FiBo is an application that handles sensitive information, our main priority must be the elimination of every
+vulnerability and thus any security risk associated with the app's usage.
