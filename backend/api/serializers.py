@@ -20,6 +20,12 @@ class StoreSerializer(ModelSerializer):
         fields = '__all__'
 
 
+class PrivateSerializer(ModelSerializer):
+    class Meta:
+        model = Store
+        fields = '__all__'
+
+
 class ItemSerializer(ModelSerializer):
     class Meta:
         model = Item

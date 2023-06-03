@@ -114,7 +114,7 @@ class ViewsTestCase(TestCase):
     def test_income_cashflow_post(self):
         # Given
         account = Account.objects.create(name="Test Account")
-        zip = ZipCity.objects.create(city="SomeCity", zip=76131)
+        zip = ZipCity.objects.create(city="SomeCity", zip='76131')
         user = LiteUser.objects.create_user(username='test user', email='test@fibo.de', password='secure',
                                             show_premium_ad=True)
         user.account.add(account)
@@ -129,8 +129,8 @@ class ViewsTestCase(TestCase):
             "store": {
                 "name": "Media",
                 "street": "Test Strasse 20",
-                "zip": 76131,
-                "house_number": 10
+                "zip": "76131",
+                "house_number": "10"
             },
             "timestamp": "2023-04-23T00:00:00",
             "type": "INCOME",
@@ -148,7 +148,7 @@ class ViewsTestCase(TestCase):
     def test_expense_cashflow_post(self):
         # Given
         account = Account.objects.create(name="Test Account")
-        zip = ZipCity.objects.create(city="SomeCity", zip=76131)
+        zip = ZipCity.objects.create(city="SomeCity", zip='76131')
         user = LiteUser.objects.create_user(username='test user', email='test@fibo.de', password='secure',
                                             show_premium_ad=True)
         user.account.add(account)
@@ -163,8 +163,8 @@ class ViewsTestCase(TestCase):
             "store": {
                 "name": "Media",
                 "street": "Test Strasse 20",
-                "zip": 76131,
-                "house_number": 10
+                "zip": "76131",
+                "house_number": "10"
             },
             "timestamp": "2023-04-23T00:00:00",
             "type": "EXPENSE",
@@ -182,7 +182,7 @@ class ViewsTestCase(TestCase):
     def test_cashflow_post_bad_request(self):
         # Given
         account = Account.objects.create(name="Test Account")
-        zip = ZipCity.objects.create(city="SomeCity", zip=76131)
+        zip = ZipCity.objects.create(city="SomeCity", zip='76131')
         user = LiteUser.objects.create_user(username='test user', email='test@fibo.de', password='secure',
                                             show_premium_ad=True)
         user.account.add(account)
@@ -223,15 +223,15 @@ class ViewsTestCase(TestCase):
         account = Account.objects.create(id=1, name="Test Account")
 
         category = Category.objects.create(name="Health", account=account)
-        zip = ZipCity.objects.create(zip=76131, city="Karlsruhe")
+        zip = ZipCity.objects.create(zip='76131', city="Karlsruhe")
         store = Store.objects.create(
-            name="Test Place", street="Test Street", zip=zip, house_number=1, account=account)
+            name="Test Place", street="Test Street", zip=zip, house_number="1", account=account)
         cashflow = Cashflow.objects.create(id=1, is_income=True, overall_value=100.00, category=category, source=store,
                                            account=account)
         user.account.add(account)
 
         # When
-        response = client.get(f'/cashflow/{cashflow.id}')
+        response = client.get(f'/cashflow/{cashflow.id}/')
 
         # Then
         self.assertEqual(response.status_code, 200)
@@ -259,7 +259,7 @@ class ViewsTestCase(TestCase):
         cashflow_id = '0'
 
         # When
-        response = client.get(f'/cashflow/{cashflow_id}')
+        response = client.get(f'/cashflow/{cashflow_id}/')
 
         # Then
         self.assertEqual(response.status_code, 404)
@@ -277,15 +277,15 @@ class ViewsTestCase(TestCase):
         account = Account.objects.create(id=1, name="Test Account")
 
         category = Category.objects.create(name="Health", account=account)
-        zip = ZipCity.objects.create(zip=76131, city="Karlsruhe")
+        zip = ZipCity.objects.create(zip='76131', city="Karlsruhe")
         store = Store.objects.create(
-            name="Test Place", street="Test Street", zip=zip, house_number=1, account=account)
+            name="Test Place", street="Test Street", zip=zip, house_number="1", account=account)
         cashflow = Cashflow.objects.create(id=1, is_income=True, overall_value=100.00, category=category, source=store,
                                            account=account)
         user.account.add(account)
 
         # When
-        response = client.delete(f'/cashflow/{cashflow.id}')
+        response = client.delete(f'/cashflow/{cashflow.id}/')
 
         # Then
         self.assertEqual(response.status_code, 200)
@@ -312,7 +312,7 @@ class ViewsTestCase(TestCase):
         cashflow_id = '0'
 
         # When
-        response = client.delete(f'/cashflow/{cashflow_id}')
+        response = client.delete(f'/cashflow/{cashflow_id}/')
 
         # Then
         self.assertEqual(response.status_code, 404)
@@ -329,9 +329,9 @@ class ViewsTestCase(TestCase):
         account = Account.objects.create(id=1, name="Test Account")
 
         category = Category.objects.create(name="Health", account=account)
-        zip = ZipCity.objects.create(zip=76131, city="Karlsruhe")
+        zip = ZipCity.objects.create(zip='76131', city="Karlsruhe")
         store = Store.objects.create(
-            name="Test Place", street="Test Street", zip=zip, house_number=1, account=account)
+            name="Test Place", street="Test Street", zip=zip, house_number="1", account=account)
         cashflow = Cashflow.objects.create(id=1, is_income=True, overall_value=100.00, category=category, source=store,
                                            account=account)
         user.account.add(account)
@@ -373,9 +373,9 @@ class ViewsTestCase(TestCase):
 
         account = Account.objects.create(id=1, name="Test Account")
         category = Category.objects.create(name="Health", account=account)
-        zip = ZipCity.objects.create(zip=76131, city="Karlsruhe")
+        zip = ZipCity.objects.create(zip='76131', city="Karlsruhe")
         store = Store.objects.create(
-            name="Test Place", street="Test Street", zip=zip, house_number=1, account=account)
+            name="Test Place", street="Test Street", zip=zip, house_number="1", account=account)
         cashflow = Cashflow.objects.create(id=1, is_income=True, overall_value=100.00, category=category, source=store,
                                            account=account)
         user.account.add(account)
@@ -428,7 +428,7 @@ class ViewsTestCase(TestCase):
         }
 
         # Whe
-        response = client.put(f'/cashflow/1337', cashflow, format='json')
+        response = client.put(f'/cashflow/1337/', cashflow, format='json')
 
         # Then
         self.assertEqual(response.status_code, 400)
@@ -445,9 +445,9 @@ class ViewsTestCase(TestCase):
 
         account = Account.objects.create(id=1, name="Test Account")
         category = Category.objects.create(name="Health", account=account)
-        zip = ZipCity.objects.create(zip=76131, city="Karlsruhe")
+        zip = ZipCity.objects.create(zip='76131', city="Karlsruhe")
         store = Store.objects.create(
-            name="Test Place", street="Test Street", zip=zip, house_number=1, account=account)
+            name="Test Place", street="Test Street", zip=zip, house_number="1", account=account)
 
         cashflow = Cashflow.objects.create(id=1, is_income=True, overall_value=100.00, category=category, source=store,
                                            account=account)
@@ -507,7 +507,7 @@ class ViewsTestCase(TestCase):
 
         user = LiteUser.objects.create_user(show_premium_ad=False, username='test@fibo.de', email='test@fibo.de',
                                             password='test')
-        zip = ZipCity.objects.create(zip=76131, city="someCity")
+        zip = ZipCity.objects.create(zip='76131', city="someCity")
 
         refresh = RefreshToken.for_user(user)
         client = APIClient()
@@ -526,45 +526,56 @@ class ViewsTestCase(TestCase):
         # When
         response = client.post(f'/sources/stores/', data, format='json')
 
-        store = Store.objects.get(name="Media", zip=76131, house_number=10, street="Test Strasse 20")
+        store = Store.objects.get(name="Media", zip='76131', house_number="10", street="Test Strasse 20")
 
         # Then
         self.assertEqual(response.status_code, 201)
         self.assertEqual(response.json(), {'success': True, 'place': store.id})
 
     # Try to create a Place with missing address
-    def test_place_post_bad_request(self):
+    def test_store_post_invalid_format(self):
         # Given
+        account = Account.objects.create(name="Test Account")
         user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
 
-        place = {
-            "name": "Test name"
-        }
+        data = {
+            "store": {
+                "name": "invalid store"
+            },
+            "account": account.id}
         # When
-        response = client.post(f'/place/', place, format='json')
+        response = client.post(f'/sources/stores/', data, format='json')
 
         # Then
         self.assertEqual(response.status_code, 400)
         self.assertEqual(response.json(), {'success': False})
 
-    def test_place_get(self):
+    def test_store_get(self):
         # Given
+        account = Account.objects.create(name="Test Account")
         user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
-
-        # place = Place.objects.create(address="Test address", name="Media")
+        zip = ZipCity.objects.create(zip='12345', city="Karlsruhe")
+        store = Store.objects.create(
+            name="Test Place", street="Test Street", zip=zip, house_number="1", account=account)
 
         # When
-        # response = client.get(f'/place/?address={place.address}')
+        response = client.get(f'/sources/stores/{store.id}/')
+        json_response = json.loads(response.content)
 
         # Then
-        # self.assertEqual(response.status_code, 200)
-        # self.assertDictEqual(response.json(), {'id': place.id, 'name': place.name, 'address': place.address})
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(json_response.items() >= {'id': store.id,
+                                                  'name': store.name,
+                                                  'street': store.street,
+                                                  'house_number': store.house_number,
+                                                  'account': account.id,
+                                                  'zip': zip.zip}.items())
 
     # Try to get a not existing Place
     def test_place_get_bad_request(self):
@@ -576,7 +587,7 @@ class ViewsTestCase(TestCase):
 
         address = 'unknown address'
         # When
-        response = client.get(f'/place/?address={address}')
+        response = client.get(f'/place/?address={address}/')
 
         # Then
         self.assertEqual(response.status_code, 404)
@@ -605,7 +616,7 @@ class ViewsTestCase(TestCase):
         # Given
         category = Category.objects.create(name="HEALTH")
         # When
-        response = self.client.get(f'/category/?name={category.name}')
+        response = self.client.get(f'/category/?name={category.name}/')
         # Then
         self.assertEqual(response.status_code, 200)
 
@@ -614,6 +625,6 @@ class ViewsTestCase(TestCase):
         # Given
         category_name = 'imaginary'
         # When
-        response = self.client.get(f'/category/?name={category_name}')
+        response = self.client.get(f'/category/?name={category_name}/')
         # Then
         self.assertEqual(response.status_code, 400)

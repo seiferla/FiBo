@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import FiboUser, Account, Store, Cashflow, Category, ZipCity, Private
-from .serializers import FiboUserSerializer, CashflowSerializer, CategorySerializer, StoreSerializer
+from .serializers import FiboUserSerializer, CashflowSerializer, CategorySerializer, StoreSerializer, PrivateSerializer
 
 
 class GetUser(APIView):
@@ -166,11 +166,11 @@ class StoreSourcesView(APIView):
 
     def get(self, request, store_id):
         try:
-            place = Store.objects.get(id=store_id)
+            store = Store.objects.get(id=store_id)
         except:
             return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
 
-        serializer = StoreSerializer(place, many=False)
+        serializer = StoreSerializer(store, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
@@ -212,10 +212,14 @@ class PrivateSourcesView(APIView):
         return JsonResponse({'success': True, 'private': private.id}, status=status.HTTP_201_CREATED)
 
     def get(self, request, private_id):
+        print(private_id)
+        print(private_id)
+        print(private_id)
+        print(private_id)
         try:
-            place = Store.objects.get(id=private_id)
+            private = Private.objects.get(id=private_id)
         except:
             return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
 
-        serializer = StoreSerializer(place, many=False)
+        serializer = PrivateSerializer(private, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
