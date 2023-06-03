@@ -1,12 +1,13 @@
+from datetime import datetime
+
 from django.http import JsonResponse
-from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .serializers import FiboUserSerializer, CashflowSerializer, CategorySerializer, StoreSerializer
 from .models import FiboUser, Account, Store, Cashflow, Category, ZipCity, Private
-from datetime import datetime
+from .serializers import FiboUserSerializer, CashflowSerializer, CategorySerializer, StoreSerializer
 
 
 class GetUser(APIView):
@@ -149,6 +150,7 @@ class CashflowsView(APIView):
 
 class StoreSourcesView(APIView):
     permission_classes = (IsAuthenticated,)
+
     def post(self, request):
         try:
             account = Account.objects.get(id=request.data['account'])
@@ -192,4 +194,28 @@ class CategoryView(APIView):
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
         serializer = CategorySerializer(category, many=False)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class PrivateSourcesView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request):
+        try:
+            account = Account.objects.get(id=request.data['account'])
+            private = Private.objects.create(account=account, first_name=request.data['private']['first_name'],
+                                             last_name=request.data['private']['last_name'])
+        except Exception as e:
+            print(e.__cause__)
+            return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+
+        return JsonResponse({'success': True, 'private': private.id}, status=status.HTTP_201_CREATED)
+
+    def get(self, request, private_id):
+        try:
+            place = Store.objects.get(id=private_id)
+        except:
+            return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = StoreSerializer(place, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
