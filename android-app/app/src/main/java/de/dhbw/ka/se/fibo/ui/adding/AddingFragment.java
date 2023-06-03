@@ -1,10 +1,8 @@
 package de.dhbw.ka.se.fibo.ui.adding;
 
-import static android.content.ContentValues.TAG;
 import static de.dhbw.ka.se.fibo.BuildConfig.TIME_ZONE;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,7 +70,6 @@ public class AddingFragment extends Fragment {
     private MaterialButton okayButton;
     private TabLayout tabLayout;
     private TextInputEditText address;
-    private EditText notes;
     private CashflowType newCashFlowType;
 
     private MaterialButton addItemButton;
