@@ -1,6 +1,10 @@
 package de.dhbw.ka.se.fibo.ui.adding;
 
+import static android.content.ContentValues.TAG;
+import static de.dhbw.ka.se.fibo.BuildConfig.TIME_ZONE;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,6 +72,7 @@ public class AddingFragment extends Fragment {
     private MaterialButton okayButton;
     private TabLayout tabLayout;
     private TextInputEditText address;
+    private EditText notes;
     private CashflowType newCashFlowType;
 
     private MaterialButton addItemButton;
@@ -180,6 +185,7 @@ public class AddingFragment extends Fragment {
             }
 
             // TODO: Test that the hint changes when switching tabs
+
             private void setDataWithSelectedTab(TabLayout.Tab tab) {
                 if (tab == binding.tabLayout.getTabAt(0)) {
                     newCashFlowType = CashflowType.EXPENSE;
@@ -311,7 +317,7 @@ public class AddingFragment extends Fragment {
                 .setNegativeButtonText(R.string.datePickerNegativeButtonText)
                 .setPositiveButtonText(R.string.DatePickerPositiveButtonText)
                 .setCalendarConstraints(constraintBuilder.setValidator(dateValidator).build())
-                .setSelection(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli())
+                .setSelection(LocalDateTime.now().atZone(ZoneId.of(TIME_ZONE)).toInstant().toEpochMilli())
                 .build();
         datePicker.addOnPositiveButtonClickListener(selection -> {
             Format formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMANY);
