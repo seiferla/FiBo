@@ -474,28 +474,45 @@ class ViewsTestCase(TestCase):
         self.assertEqual(response.status_code, 400)
         self.assertEqual(response.json(), {'success': False})
 
-    def test_invalid_source_type(self):
-        account = Account.objects.create(name="Test Account")
-
-        user = LiteUser.objects.create_user(show_premium_ad=False, username='test@fibo.de', email='test@fibo.de',
-                                            password='test')
+    # Try to update a Cashflow with insufficient data
+    def test_cashflow_put_invalid_source_type_request(self):
+        # Given
+        user = FiboUser.objects.create_user(
+            username='test@fibo.de', email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
 
-        data = {
+        account = Account.objects.create(id=1, name="Test Account")
+        category = Category.objects.create(name="Health", account=account)
+        zip = ZipCity.objects.create(zip='76131', city="Karlsruhe")
+        store = Store.objects.create(
+            name="Test Place", street="Test Street", zip=zip, house_number="1", account=account)
+
+        cashflow = Cashflow.objects.create(id=1, is_income=True, overall_value=100.00, category=category, source=store,
+                                           account=account)
+
+        new_cashflow = {
+            # "category": "MOBILITY",
+            "overallValue": 26.00,
+            "source_type": "private",
             "invalid": {
-                "first_name": "Max",
-                "last_name": "Mustermann"
+                "first_name": "invalid",
+                "last_name": "invalid"
             },
-            "account": account.id
+            "timestamp": "2023-04-23T00:00:00",
+            "type": "EXPENSE",
+            "account": {
+                "id": 1
+            }
         }
 
-        # When
-        response = client.post(f'/sources/privates/', data, format='json')
+        # Whe
+        response = client.put(f'/cashflows/{cashflow.id}/', new_cashflow, format='json')
 
         # Then
         self.assertRaises(Exception)
+        self.assertEqual(response.json(), {'success': False})
 
     def test_private_post(self):
         # Given
