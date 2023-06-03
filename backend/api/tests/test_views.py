@@ -1,6 +1,7 @@
 import json
 
 from django.test import TestCase
+from rest_framework import status
 from rest_framework.test import APIClient
 from rest_framework_simplejwt.tokens import RefreshToken
 
@@ -483,27 +484,27 @@ class ViewsTestCase(TestCase):
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
 
-        account = Account.objects.create(id=1, name="Test Account")
+        account = Account.objects.create( name="Test Account")
         category = Category.objects.create(name="Health", account=account)
         zip_city = ZipCity.objects.create(zip='76131', city="Karlsruhe")
         store = Store.objects.create(
             name="Test Place", street="Test Street", zip=zip_city, house_number="1", account=account)
 
-        cashflow = Cashflow.objects.create(id=1, is_income=True, overall_value=100.00, category=category, source=store,
+        cashflow = Cashflow.objects.create(is_income=True, overall_value=100.00, category=category, source=store,
                                            account=account)
 
         new_cashflow = {
-            # "category": "MOBILITY",
+            "category": "MOBILITY",
             "overallValue": 26.00,
-            "source_type": "private",
-            "invalid": {
+            "source_type": "invalid",
+            "private": {
                 "first_name": "invalid",
                 "last_name": "invalid"
             },
             "timestamp": "2023-04-23T00:00:00",
             "type": "EXPENSE",
             "account": {
-                "id": 1
+                "id": account.id
             }
         }
 
@@ -511,8 +512,41 @@ class ViewsTestCase(TestCase):
         response = client.put(f'/cashflows/{cashflow.id}/', new_cashflow, format='json')
 
         # Then
-        self.assertRaises(Exception)
-        self.assertEqual(response.json(), {'success': False})
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(response.json(), {'success': False, 'message': 'Invalid source type'})
+
+    # Try to create a Cashflow with wrong source type
+    def test_cashflow_post_invalid_source_type_request(self):
+        # Given
+        user = FiboUser.objects.create_user(
+            username='test@fibo.de', email='test@fibo.de', password='test')
+        refresh = RefreshToken.for_user(user)
+        client = APIClient()
+        client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
+
+        account = Account.objects.create( name="Test Account")
+
+        new_cashflow = {
+            "category": "MOBILITY",
+            "overallValue": 26.00,
+            "source_type": "invalid",
+            "private": {
+                "first_name": "invalid",
+                "last_name": "invalid"
+            },
+            "timestamp": "2023-04-23T00:00:00",
+            "type": "EXPENSE",
+            "account": {
+                "id": account.id
+            }
+        }
+
+        # Whe
+        response = client.post(f'/cashflows/', new_cashflow, format='json')
+
+        # Then
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(response.json(), {'success': False, 'message': 'Invalid source type'})
 
     def test_private_post(self):
         # Given

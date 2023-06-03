@@ -73,6 +73,10 @@ class CashflowsView(APIView):
             timestamp = request.data['timestamp']
             category, _ = Category.objects.get_or_create(name=request.data['category'], account=account)
             source = self.get_source_from_request(account, request)
+        except AttributeError as e:
+            print(e.__cause__)
+            return JsonResponse({'success': False, 'message': 'Invalid source type'},
+                                status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             # Fixme differentiate between other exception types
             print(e.__cause__)
@@ -123,6 +127,10 @@ class CashflowsView(APIView):
             cashflow.source = source
             cashflow.updated = datetime.now()
             cashflow_type = request.data['type']
+        except AttributeError as e:
+            print(e.__cause__)
+            return JsonResponse({'success': False, 'message': 'Invalid source type'},
+                                status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             # Fixme differentiate between other exception types
             print(e.__cause__)
@@ -155,7 +163,7 @@ class CashflowsView(APIView):
                 account=account
             )
         else:
-            raise Exception("invalid source_type")
+            raise AttributeError("invalid source_type")
         return source
 
 
