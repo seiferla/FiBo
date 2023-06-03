@@ -474,6 +474,29 @@ class ViewsTestCase(TestCase):
         self.assertEqual(response.status_code, 400)
         self.assertEqual(response.json(), {'success': False})
 
+    def test_invalid_source_type(self):
+        account = Account.objects.create(name="Test Account")
+
+        user = LiteUser.objects.create_user(show_premium_ad=False, username='test@fibo.de', email='test@fibo.de',
+                                            password='test')
+        refresh = RefreshToken.for_user(user)
+        client = APIClient()
+        client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
+
+        data = {
+            "invalid": {
+                "first_name": "Max",
+                "last_name": "Mustermann"
+            },
+            "account": account.id
+        }
+
+        # When
+        response = client.post(f'/sources/privates/', data, format='json')
+
+        # Then
+        self.assertRaises(Exception)
+
     def test_private_post(self):
         # Given
         account = Account.objects.create(name="Test Account")
