@@ -1,12 +1,11 @@
 from django.test import TestCase
-from django.urls import resolve,reverse
+from django.urls import resolve, reverse
 from rest_framework_simplejwt.views import TokenRefreshView, TokenObtainPairView
 
-from ..views import RegisterUser, DeleteUser, GetUser, CashflowsView, PlaceView, CategoryView
+from ..views import RegisterUser, DeleteUser, GetUser, CashflowsView, CategoryView, StoreSourcesView, PrivateSourcesView
 
 
 class TestUrls(TestCase):
-
 
     def test_register_url_resolves(self):
         url = reverse('register')
@@ -36,9 +35,13 @@ class TestUrls(TestCase):
         url = reverse('cashflow_with_id', args=[1])
         self.assertEqual(resolve(url).func.view_class, CashflowsView)
 
-    def test_place_url_resolves(self):
-        url = reverse('place')
-        self.assertEqual(resolve(url).func.view_class, PlaceView)
+    def test_store_url_resolves(self):
+        url = reverse('sources_store')
+        self.assertEqual(resolve(url).func.view_class, StoreSourcesView)
+
+    def test_private_url_resolves(self):
+        url = reverse('sources_private')
+        self.assertEqual(resolve(url).func.view_class, PrivateSourcesView)
 
     def test_category_url_resolves(self):
         url = reverse('category')
