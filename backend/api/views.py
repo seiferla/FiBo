@@ -44,7 +44,7 @@ class RegisterUser(APIView):
             password = request.data['password']
         except BaseException as e:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST) 
-            raise e
+            raise e     # This code is unreachable but otherwise it would count as a critical code smell
 
         user = FiboUser.objects.create_user(email=email, password=password)
         default_account = Account.objects.create(name=email)
@@ -94,7 +94,7 @@ class CashflowsView(APIView):
             cashflow = Cashflow.objects.get(id=cashflow_id)
         except BaseException as e:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
-            raise e
+            raise e     # This code is unreachable but otherwise it would count as a critical code smell
         serializer = CashflowSerializer(cashflow, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -103,7 +103,7 @@ class CashflowsView(APIView):
             cashflow = Cashflow.objects.get(id=cashflow_id)
         except BaseException as e:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
-            raise e
+            raise e     # This code is unreachable but otherwise it would count as a critical code smell
         cashflow.delete()
         return JsonResponse({'success': True, 'cashflow_id': cashflow_id}, status=status.HTTP_200_OK)
 
@@ -119,7 +119,7 @@ class CashflowsView(APIView):
             cashflow_type = request.data['type']
         except BaseException as e:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
-            raise e
+            raise e     # This code is unreachable but otherwise it would count as a critical code smell
 
         if cashflow_type == 'INCOME':
             cashflow.is_income = True
@@ -139,7 +139,7 @@ class PlaceView(APIView):
             place = Place.objects.create(address=request.data['address'], name=request.data['name'])
         except BaseException as e:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
-            raise e
+            raise e     # This code is unreachable but otherwise it would count as a critical code smell
 
         return JsonResponse({'success': True, 'place': place.name}, status=status.HTTP_201_CREATED)
 
@@ -148,7 +148,7 @@ class PlaceView(APIView):
             place = Place.objects.get(address=request.GET['address'])
         except BaseException as e:
             return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
-            raise e
+            raise e     # This code is unreachable but otherwise it would count as a critical code smell
 
         serializer = PlaceSerializer(place, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -161,7 +161,7 @@ class CategoryView(APIView):
             category = Category.objects.create(name=request.POST['name'])
         except BaseException as e:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
-            raise e
+            raise e     # This code is unreachable but otherwise it would count as a critical code smell
 
         return JsonResponse({'success': True, 'category_id': category.id}, status=status.HTTP_201_CREATED)
 
@@ -170,7 +170,7 @@ class CategoryView(APIView):
             category = Category.objects.get(name=request.GET['name'])
         except BaseException as e:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
-            raise e
+            raise e     # This code is unreachable but otherwise it would count as a critical code smell
 
         serializer = CategorySerializer(category, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -178,48 +178,49 @@ class CategoryView(APIView):
 
 class GetRoutes(APIView):
     permission_classes = (IsAuthenticated,)
+    tokenNeeded = 'Token needed'
 
     def get(self, _):
         routes = [
             {
                 'Endpoint': '/users/register',
                 'method': 'POST',
-                'Token needed': 'false',
+                self.tokenNeeded: 'false',
                 'body': {'email': '', 'password': ''},
                 'description': 'Registration requires an email and a password (see: body). Afterwards the entered credentials can be used to log in.'
             },
             {
                 'Endpoint': '/users/login',
                 'method': 'POST',
-                'Token needed': 'false',
+                self.tokenNeeded: 'false',
                 'body': {'email': '', 'password': ''},
                 'description': 'To log in, the email and password specified during registration must be sent along. The method returns the Refresh and Access Token.'
             },
             {
                 'Endpoint': '/users/authenticate',
                 'method': 'POST',
-                'Token needed': 'Refresh',
+                self.tokenNeeded: 'Refresh',
                 'body': {'refresh': ''},
                 'description': 'To authenticate, a valid refresh token needs to be entered. The method returns an Access Token.'
             },
             {
                 'Endpoint': '/users/delete',
                 'method': 'DELETE',
-                'Token needed': 'Access',
+                self.tokenNeeded: 'Access',
                 'body': None,
                 'description': 'Deletes user that corresponds to the Access Token send in the header'
             },
             {
                 'Endpoint': '/users/get',
                 'method': 'GET',
-                'Token needed': 'Access',
+                self.tokenNeeded: 'Access',
                 'body': None,
                 'description': 'Returns user that corresponds to the Access Token send in the header'
             },
             {
                 'Endpoint': '/users/update',
                 'method': 'PUT',
-                'Token needed': 'Access',
+                self.tokenNeeded: 'Access',
                 'body': {'email': '', 'newPassword': '', 'oldPassword': ''},
                 'description': 'Not implemented yet. Updates current user with data sent in put request'
             },
