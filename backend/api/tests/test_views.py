@@ -615,11 +615,19 @@ class ViewsTestCase(TestCase):
 
 
     # Try to create a Category without name
-    def test_category_post_bad_request(self):
+    def test_category_post_invalid_format(self):
         # Given
-        category = {}
+        account = Account.objects.create(name="Test Account")
+        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user.account.add(account)
+        refresh = RefreshToken.for_user(user)
+        client = APIClient()
+        client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
+
+        data = {"category": {"invalid": "HEALTH"}, "account": account.id}
+
         # When
-        response = self.client.post(f'/category/', category, format='json')
+        response = client.post(f'/category/', data, format='json')
         # Then
         self.assertEqual(response.status_code, 400)
         self.assertEqual({'success': False}, response.json())
