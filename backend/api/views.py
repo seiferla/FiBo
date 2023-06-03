@@ -6,8 +6,9 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import FiboUser, Account, Store, Cashflow, Category, ZipCity, Private
-from .serializers import FiboUserSerializer, CashflowSerializer, CategorySerializer, StoreSerializer, PrivateSerializer
+from .models import FiboUser, Account, Store, Cashflow, Category, ZipCity, Private, Item
+from .serializers import FiboUserSerializer, CashflowSerializer, CategorySerializer, StoreSerializer, PrivateSerializer, \
+    ItemSerializer
 
 
 class GetUser(APIView):
@@ -222,4 +223,29 @@ class PrivateSourcesView(APIView):
             return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
 
         serializer = PrivateSerializer(private, many=False)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class ItemView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request):
+        try:
+            cashflow = Cashflow.objects.get(id=request.data['cashflow'])
+            item = Item.objects.create(name=request.data['item']['name'], amount=request.data['item']['amount'],
+                                       value=request.data['item']['value'],
+                                       cashflow=cashflow)
+        except Exception as e:
+            print(e.__cause__)
+            return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+
+        return JsonResponse({'success': True, 'item': item.id}, status=status.HTTP_201_CREATED)
+
+    def get(self, request, item_id):
+        try:
+            item = Item.objects.get(id=item_id)
+        except:
+            return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = ItemSerializer(item, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)

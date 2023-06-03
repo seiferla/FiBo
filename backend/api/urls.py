@@ -17,5 +17,7 @@ urlpatterns = [
     path('sources/stores/<int:store_id>/',
          views.StoreSourcesView.as_view(), name='sources_store_with_id'),
     path('categories/', views.CategoryView.as_view(), name='category'),
-    path('categories/<int:category_id>/', views.CategoryView.as_view(), name='category_with_id')
+    path('categories/<int:category_id>/', views.CategoryView.as_view(), name='category_with_id'),
+    path('items/', views.ItemView.as_view(), name='item'),
+    path('items/<int:item_id>/', views.ItemView.as_view(), name='item_with_id')
 ]

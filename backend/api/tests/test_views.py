@@ -4,7 +4,7 @@ from django.test import TestCase
 from rest_framework.test import APIClient
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from ..models import FiboUser, Account, Cashflow, Category, Store, ZipCity, LiteUser, Private
+from ..models import FiboUser, Account, Cashflow, Category, Store, ZipCity, LiteUser, Private, Item
 
 
 class ViewsTestCase(TestCase):
@@ -659,3 +659,111 @@ class ViewsTestCase(TestCase):
         # Then
         self.assertEqual(response.status_code, 400)
 
+    def test_item_successful_post(self):
+        # Given
+        account = Account.objects.create(name="Test Account")
+        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user.account.add(account)
+        category = Category.objects.create(name="HEALTH", account=account)
+        private = Private.objects.create(first_name="Max", last_name="Mustermann", account=account)
+        cashflow = Cashflow.objects.create(is_income=False, overall_value=20.0, category=category, source=private,
+                                           account=account)
+
+        refresh = RefreshToken.for_user(user)
+        client = APIClient()
+        client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
+        item_name = "someItem"
+        item_value = 20.2
+        item_amount = 3
+        data = {
+            "item":
+                {
+                    "name": item_name,
+                    "value": item_value,
+                    "amount": item_amount
+                },
+            "cashflow": cashflow.id
+        }
+
+        # When
+        response = client.post(f'/items/', data, format='json')
+
+        item = Item.objects.get(name=item_name, value=item_value, amount=item_amount)
+        # Then
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual({'success': True, 'item': item.id}, response.json())
+
+    def test_item_post_invalid_format(self):
+        # Given
+        account = Account.objects.create(name="Test Account")
+        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user.account.add(account)
+        category = Category.objects.create(name="HEALTH", account=account)
+        private = Private.objects.create(first_name="Max", last_name="Mustermann", account=account)
+        cashflow = Cashflow.objects.create(is_income=False, overall_value=20.0, category=category, source=private,
+                                           account=account)
+
+        refresh = RefreshToken.for_user(user)
+        client = APIClient()
+        client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
+        item_name = "someItem"
+        item_value = "12.34"
+        item_amount = 3
+        data = {
+            "item":
+                {
+                    "invalid": item_name,
+                    "value": item_value,
+                    "amount": item_amount
+                },
+            "cashflow": cashflow.id
+        }
+
+        # When
+        response = client.post(f'/items/', data, format='json')
+
+        # Then
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual({'success': False}, response.json())
+
+    def test_item_get(self):
+        # Given
+        account = Account.objects.create(name="Test Account")
+        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user.account.add(account)
+        category = Category.objects.create(name="HEALTH", account=account)
+        private = Private.objects.create(first_name="Max", last_name="Mustermann", account=account)
+        cashflow = Cashflow.objects.create(is_income=False, overall_value=20.0, category=category, source=private,
+                                           account=account)
+        item_name = "someItem"
+        item_value = "12.34"
+        item_amount = 3
+
+        item = Item.objects.create(name=item_name, amount=item_amount,
+                                   value=item_value,
+                                   cashflow=cashflow)
+        refresh = RefreshToken.for_user(user)
+        client = APIClient()
+        client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
+
+        # When
+        response = client.get(f'/items/{item.id}/', format='json')
+        json_response = json.loads(response.content)
+        print(json_response.items())
+        print({
+                  "id": item.id,
+                  "name": item_name,
+                  "amount": item_amount,
+                  "value": item_value,
+                  "cashflow": cashflow.id,
+              }.items())
+
+        # Then
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(json_response.items() >= {
+            "id": item.id,
+            "name": item_name,
+            "amount": item_amount,
+            "value": item_value,
+            "cashflow": cashflow.id,
+        }.items())

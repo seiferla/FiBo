@@ -2,7 +2,8 @@ from django.test import TestCase
 from django.urls import resolve, reverse
 from rest_framework_simplejwt.views import TokenRefreshView, TokenObtainPairView
 
-from ..views import RegisterUser, DeleteUser, GetUser, CashflowsView, CategoryView, StoreSourcesView, PrivateSourcesView
+from ..views import RegisterUser, DeleteUser, GetUser, CashflowsView, CategoryView, StoreSourcesView, \
+    PrivateSourcesView, ItemView
 
 
 class TestUrls(TestCase):
@@ -46,3 +47,11 @@ class TestUrls(TestCase):
     def test_category_url_resolves(self):
         url = reverse('category')
         self.assertEqual(resolve(url).func.view_class, CategoryView)
+
+    def test_item_url_resolves(self):
+        url = reverse('item')
+        self.assertEqual(resolve(url).func.view_class, ItemView)
+
+    def test_item_with_id_url_resolves(self):
+        url = reverse('item_with_id', args=[1])
+        self.assertEqual(resolve(url).func.view_class, ItemView)
