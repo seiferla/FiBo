@@ -143,7 +143,7 @@ public class AddingFragment extends Fragment {
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                throw new UnsupportedOperationException();
+                // Not needed as this will be handled in onTabSelected
             }
 
             @Override
