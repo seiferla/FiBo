@@ -1,6 +1,10 @@
 package de.dhbw.ka.se.fibo.ui.adding;
 
+import static android.content.ContentValues.TAG;
+import static de.dhbw.ka.se.fibo.BuildConfig.TIME_ZONE;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +19,13 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.datepicker.CalendarConstraints;
+import com.google.android.material.datepicker.DateValidatorPointBackward;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
-
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.math.BigDecimal;
 import java.text.Format;
@@ -30,8 +36,10 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -43,6 +51,7 @@ import de.dhbw.ka.se.fibo.models.CashflowType;
 import de.dhbw.ka.se.fibo.models.Category;
 import de.dhbw.ka.se.fibo.models.Item;
 import de.dhbw.ka.se.fibo.models.Place;
+import de.dhbw.ka.se.fibo.utils.ActivityUtils;
 
 public class AddingFragment extends Fragment {
 
@@ -53,12 +62,16 @@ public class AddingFragment extends Fragment {
     private TextInputEditText amount;
     private TextInputEditText dateText;
     private MaterialAutoCompleteTextView categoriesDropdown;
+    private TextInputLayout storeLayout;
+    private TextInputLayout amountLayout;
+    private TextInputLayout dateTextLayout;
+    private TextInputLayout categoriesDropdownLayout;
+    private TextInputLayout addressLayout;
     private MaterialButton cancelButton;
     private MaterialButton okayButton;
     private TabLayout tabLayout;
     private TextInputEditText address;
     private EditText notes;
-
     private CashflowType newCashFlowType;
 
     @Nullable
@@ -78,6 +91,12 @@ public class AddingFragment extends Fragment {
         tabLayout = binding.tabLayout;
         address = binding.addressText;
         notes = binding.notesMultiLine;
+
+        storeLayout = binding.storeTextLayout;
+        amountLayout = binding.amountLayout;
+        dateTextLayout = binding.dateLayout;
+        addressLayout = binding.addressTextLayout;
+        categoriesDropdownLayout = binding.categoryLayout;
 
         return view;
     }
@@ -109,6 +128,7 @@ public class AddingFragment extends Fragment {
             }
 
             // TODO: Test that the hint changes when switching tabs
+
             private void setDataWithSelectedTab(TabLayout.Tab tab) {
                 if (tab == binding.tabLayout.getTabAt(0)) {
                     newCashFlowType = CashflowType.EXPENSE;
@@ -123,7 +143,7 @@ public class AddingFragment extends Fragment {
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
+                throw new UnsupportedOperationException();
             }
 
             @Override
@@ -150,18 +170,12 @@ public class AddingFragment extends Fragment {
     }
 
     private Cashflow createCashFlow() {
-        boolean isRequiredDataPresent = false;
         Category category;
         BigDecimal value;
         LocalDateTime date;
         Place place;
-        try {
-            isRequiredDataPresent = checkForRequiredData();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
-        if (isRequiredDataPresent) {
+        if (checkForRequiredData()) {
             List<Category> collect = Arrays.stream(Category.values()).filter(currentType -> {
                 String name = requireActivity().getResources().getString(currentType.getName());
                 return name.equals(getFieldValue(categoriesDropdown));
@@ -183,12 +197,11 @@ public class AddingFragment extends Fragment {
                     List<Item> items = createItemsFromNotes();
                     return new Cashflow(category, newCashFlowType, value, date, place, items);
                 } catch (IllegalArgumentException e) {
-                    e.printStackTrace();
+                    Log.i(TAG, e.getMessage());
                 }
                 return null;
             }
         }
-
 
         return null;
     }
@@ -197,27 +210,19 @@ public class AddingFragment extends Fragment {
         return Objects.requireNonNull(field.getText()).toString();
     }
 
-    private boolean checkForRequiredData() throws IllegalArgumentException {
-
-        if (null == store.getText()
-                | store.getText().toString().trim().isEmpty()) {
-            throw new IllegalArgumentException("Store must be set");
-        } else if (null == amount.getText()
-                | amount.getText().toString().trim().isEmpty()) {
-            throw new IllegalArgumentException("Amount must be set");
-        } else if (null == dateText.getText()
-                | dateText.getText().toString().trim().isEmpty()) {
-            throw new IllegalArgumentException("Date must be set");
-        } else if (null == categoriesDropdown.getText()
-                | categoriesDropdown.getText().toString().trim().isEmpty()) {
-            throw new IllegalArgumentException("Category must be set");
-        } else if (null == address.getText()
-                | address.getText().toString().trim().isEmpty()) {
-            throw new IllegalArgumentException("Address must be set");
+    private boolean checkForRequiredData() {
+        Map<TextInputLayout, String> fieldsToBeChecked = new HashMap<>();
+        if (CashflowType.EXPENSE == newCashFlowType) {
+            fieldsToBeChecked.put(storeLayout, getString(R.string.error_message_store_field));
+        } else {
+            fieldsToBeChecked.put(storeLayout, getString(R.string.error_message_source_field));
         }
-        //others are currently not stored in our database or not required
+        fieldsToBeChecked.put(amountLayout, getString(R.string.error_message_amount_field));
+        fieldsToBeChecked.put(dateTextLayout, getString(R.string.error_message_date_field));
+        fieldsToBeChecked.put(categoriesDropdownLayout, getString(R.string.error_message_category_field));
+        fieldsToBeChecked.put(addressLayout, getString(R.string.error_message_address_field));
 
-        return true;
+        return ActivityUtils.checkValidInput(fieldsToBeChecked);
     }
 
     private void navigateToHome() {
@@ -225,16 +230,20 @@ public class AddingFragment extends Fragment {
     }
 
     private void setUpDateTextField() {
-        dateText.setEnabled(false);
-        dateText.setTextColor(requireContext().getColor(R.color.mainTextColor));
-        binding.dateLayout.setEndIconOnClickListener(v -> datePicker.show(requireActivity().getSupportFragmentManager(), "datePick"));
+        dateText.setFocusable(View.NOT_FOCUSABLE);
+        dateText.setOnClickListener(showDatePicker());
+        binding.dateLayout.setEndIconOnClickListener(showDatePicker());
+    }
+
+    private View.OnClickListener showDatePicker() {
+        return view -> datePicker.show(requireActivity().getSupportFragmentManager(), "datePick");
     }
 
     private void initializeDropdownValues() {
         String[] items = getAllStringCategories();
-        MaterialAutoCompleteTextView categoriesDropdown = binding.categoryText;
-        categoriesDropdown.setSimpleItems(items);
-        categoriesDropdown.setThreshold(4);
+        MaterialAutoCompleteTextView initCategoriesDropdown = binding.categoryText;
+        initCategoriesDropdown.setSimpleItems(items);
+        initCategoriesDropdown.setThreshold(4);
     }
 
     private String[] getAllStringCategories() {
@@ -249,11 +258,14 @@ public class AddingFragment extends Fragment {
     }
 
     private void createDatePicker() {
+        CalendarConstraints.DateValidator dateValidator = DateValidatorPointBackward.now();
+        CalendarConstraints.Builder constraintBuilder = new CalendarConstraints.Builder();
         datePicker = MaterialDatePicker.Builder.datePicker()
                 .setTitleText(R.string.selectDate)
                 .setNegativeButtonText(R.string.datePickerNegativeButtonText)
                 .setPositiveButtonText(R.string.DatePickerPositiveButtonText)
-                .setSelection(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli())
+                .setCalendarConstraints(constraintBuilder.setValidator(dateValidator).build())
+                .setSelection(LocalDateTime.now().atZone(ZoneId.of(TIME_ZONE)).toInstant().toEpochMilli())
                 .build();
         datePicker.addOnPositiveButtonClickListener(selection -> {
             Format formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMANY);
