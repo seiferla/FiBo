@@ -580,14 +580,18 @@ class ViewsTestCase(TestCase):
     # Try to get a not existing Place
     def test_place_get_bad_request(self):
         # Given
+        account = Account.objects.create(name="Test Account")
         user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
+        zip = ZipCity.objects.create(zip='12345', city="Karlsruhe")
+        store = Store.objects.create(
+           name="Test Place", street="Test Street", zip=zip, house_number="1", account=account)
 
-        address = 'unknown address'
+
         # When
-        response = client.get(f'/place/?address={address}/')
+        response = client.get(f'/sources/stores/{1337}/')
 
         # Then
         self.assertEqual(response.status_code, 404)
