@@ -44,7 +44,9 @@ class RegisterUser(APIView):
         try:
             email = request.data['email']
             password = request.data['password']
-        except:
+        except Exception as e:
+            # Fixme differentiate between other exception types
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
         # Note that username and email are the same
@@ -71,7 +73,9 @@ class CashflowsView(APIView):
             timestamp = request.data['timestamp']
             category, _ = Category.objects.get_or_create(name=request.data['category'], account=account)
             source = self.get_source_from_request(account, request)
-        except:
+        except Exception as e:
+            # Fixme differentiate between other exception types
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
         cashflow = Cashflow.objects.create(account=account,
@@ -88,7 +92,9 @@ class CashflowsView(APIView):
         try:
             # FIXME: Verify the user may access this cashflow (i.e. manages the account of this cashflow)
             cashflow = Cashflow.objects.get(id=cashflow_id)
-        except:
+        except Exception as e:
+            # FIXME: Differentiate between ObjectDoesNotExist and a broad Exception
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
         serializer = CashflowSerializer(cashflow, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -97,7 +103,9 @@ class CashflowsView(APIView):
         try:
             # FIXME: Verify the user may access this cashflow (i.e. manages the account of this cashflow)
             cashflow = Cashflow.objects.get(id=cashflow_id)
-        except:
+        except Exception as e:
+            # FIXME: Differentiate between ObjectDoesNotExist and a broad Exception
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
         cashflow.delete()
         return JsonResponse({'success': True, 'cashflow_id': cashflow_id}, status=status.HTTP_200_OK)
@@ -115,7 +123,9 @@ class CashflowsView(APIView):
             cashflow.source = source
             cashflow.updated = datetime.now()
             cashflow_type = request.data['type']
-        except:
+        except Exception as e:
+            # Fixme differentiate between other exception types
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
         if cashflow_type == 'INCOME':
@@ -160,6 +170,7 @@ class StoreSourcesView(APIView):
                                          name=request.data['store']['name'], street=request.data['store']['street'],
                                          zip=zip, house_number=request.data['store']['house_number'])
         except Exception as e:
+            # Fixme differentiate between other exception types
             print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -168,7 +179,9 @@ class StoreSourcesView(APIView):
     def get(self, request, store_id):
         try:
             store = Store.objects.get(id=store_id)
-        except:
+        except Exception as e:
+            # FIXME: Differentiate between ObjectDoesNotExist and a broad Exception
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
 
         serializer = StoreSerializer(store, many=False)
@@ -182,7 +195,9 @@ class CategoryView(APIView):
         try:
             account = Account.objects.get(id=request.data['account'])
             category = Category.objects.create(name=request.data['category']['name'], account=account)
-        except:
+        except Exception as e:
+            # Fixme differentiate between other exception types
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
         return JsonResponse({'success': True, 'category_id': category.id}, status=status.HTTP_201_CREATED)
@@ -191,7 +206,9 @@ class CategoryView(APIView):
         # FIXME: Verify the user may access this category (i.e. manages the account of this cashflow)
         try:
             category = Category.objects.get(id=category_id)
-        except:
+        except Exception as e:
+            # FIXME: Differentiate between ObjectDoesNotExist and a broad Exception
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
         serializer = CategorySerializer(category, many=False)
@@ -207,6 +224,7 @@ class PrivateSourcesView(APIView):
             private = Private.objects.create(account=account, first_name=request.data['private']['first_name'],
                                              last_name=request.data['private']['last_name'])
         except Exception as e:
+            # Fixme differentiate between other exception types
             print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -215,7 +233,9 @@ class PrivateSourcesView(APIView):
     def get(self, request, private_id):
         try:
             private = Private.objects.get(id=private_id)
-        except:
+        except Exception as e:
+            # Fixme differentiate between other exception types
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
 
         serializer = PrivateSerializer(private, many=False)
@@ -232,6 +252,7 @@ class ItemView(APIView):
                                        value=request.data['item']['value'],
                                        cashflow=cashflow)
         except Exception as e:
+            # Fixme differentiate between other exception types
             print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -240,7 +261,9 @@ class ItemView(APIView):
     def get(self, request, item_id):
         try:
             item = Item.objects.get(id=item_id)
-        except:
+        except Exception as e:
+            # FIXME: Differentiate between ObjectDoesNotExist and a broad Exception
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
 
         serializer = ItemSerializer(item, many=False)
