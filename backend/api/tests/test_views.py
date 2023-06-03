@@ -634,9 +634,15 @@ class ViewsTestCase(TestCase):
 
     def test_category_get(self):
         # Given
-        category = Category.objects.create(name="HEALTH")
+        account = Account.objects.create(name="Test Account")
+        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user.account.add(account)
+        refresh = RefreshToken.for_user(user)
+        client = APIClient()
+        client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
+        category = Category.objects.create(name="HEALTH", account=account)
         # When
-        response = self.client.get(f'/category/?name={category.name}/')
+        response = client.get(f'/category/{category.id}/')
         # Then
         self.assertEqual(response.status_code, 200)
 

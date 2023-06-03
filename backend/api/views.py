@@ -186,10 +186,10 @@ class CategoryView(APIView):
 
         return JsonResponse({'success': True, 'category_id': category.id}, status=status.HTTP_201_CREATED)
 
-    def get(self, request):
+    def get(self, request, category_id):
         # FIXME: Verify the user may access this category (i.e. manages the account of this cashflow)
         try:
-            category = Category.objects.get(name=request.GET['name'])
+            category = Category.objects.get(id=category_id)
         except:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
