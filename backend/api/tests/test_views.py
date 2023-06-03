@@ -749,14 +749,6 @@ class ViewsTestCase(TestCase):
         # When
         response = client.get(f'/items/{item.id}/', format='json')
         json_response = json.loads(response.content)
-        print(json_response.items())
-        print({
-                  "id": item.id,
-                  "name": item_name,
-                  "amount": item_amount,
-                  "value": item_value,
-                  "cashflow": cashflow.id,
-              }.items())
 
         # Then
         self.assertEqual(response.status_code, 200)

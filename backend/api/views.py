@@ -160,7 +160,7 @@ class StoreSourcesView(APIView):
                                          name=request.data['store']['name'], street=request.data['store']['street'],
                                          zip=zip, house_number=request.data['store']['house_number'])
         except Exception as e:
-            print(e)
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
         return JsonResponse({'success': True, 'place': place.id}, status=status.HTTP_201_CREATED)
@@ -213,10 +213,6 @@ class PrivateSourcesView(APIView):
         return JsonResponse({'success': True, 'private': private.id}, status=status.HTTP_201_CREATED)
 
     def get(self, request, private_id):
-        print(private_id)
-        print(private_id)
-        print(private_id)
-        print(private_id)
         try:
             private = Private.objects.get(id=private_id)
         except:
