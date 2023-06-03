@@ -22,7 +22,7 @@ class StoreSerializer(ModelSerializer):
 
 class PrivateSerializer(ModelSerializer):
     class Meta:
-        model = Store
+        model = Private
         fields = '__all__'
 
 

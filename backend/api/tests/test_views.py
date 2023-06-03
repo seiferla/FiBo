@@ -553,10 +553,33 @@ class ViewsTestCase(TestCase):
         self.assertEqual(response.status_code, 400)
         self.assertEqual(response.json(), {'success': False})
 
+    # Try to create a Place with missing address
+    def test_private_post_invalid_format(self):
+        # Given
+        account = Account.objects.create(name="Test Account")
+        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user.account.add(account)
+        refresh = RefreshToken.for_user(user)
+        client = APIClient()
+        client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
+
+        data = {
+            "private": {
+                "first_name": "invalid format"
+            },
+            "account": account.id}
+        # When
+        response = client.post(f'/sources/privates/', data, format='json')
+
+        # Then
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.json(), {'success': False})
+
     def test_store_get(self):
         # Given
         account = Account.objects.create(name="Test Account")
         user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user.account.add(account)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -577,11 +600,33 @@ class ViewsTestCase(TestCase):
                                                   'account': account.id,
                                                   'zip': zip.zip}.items())
 
-    # Try to get a not existing Place
-    def test_place_get_bad_request(self):
+    def test_private_get(self):
         # Given
         account = Account.objects.create(name="Test Account")
         user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user.account.add(account)
+        refresh = RefreshToken.for_user(user)
+        client = APIClient()
+        client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
+        private = Private.objects.create(first_name="First name", last_name="Last name", account=account)
+
+        # When
+        response = client.get(f'/sources/privates/{private.id}/')
+        # json_response = json.loads(response.content)
+
+        # Then
+        self.assertEqual(response.status_code, 200)
+        # self.assertTrue(json_response.items() >= {'id': private.id,
+        #                                           'first_name': private.first_name,
+        #                                           'last_name': private.last_name,
+        #                                           'account': account.id}.items())
+
+    # Try to get a not existing Place
+    def test_store_get_bad_request(self):
+        # Given
+        account = Account.objects.create(name="Test Account")
+        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user.account.add(account)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -591,6 +636,23 @@ class ViewsTestCase(TestCase):
 
         # When
         response = client.get(f'/sources/stores/{1337}/')
+
+        # Then
+        self.assertEqual(response.status_code, 404)
+        self.assertDictEqual(response.json(), {'success': False})
+
+    # Try to get a not existing Place
+    def test_private_get_bad_request(self):
+        # Given
+        account = Account.objects.create(name="Test Account")
+        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user.account.add(account)
+        refresh = RefreshToken.for_user(user)
+        client = APIClient()
+        client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
+
+        # When
+        response = client.get(f'/sources/privates/{1337}/')
 
         # Then
         self.assertEqual(response.status_code, 404)
@@ -759,3 +821,21 @@ class ViewsTestCase(TestCase):
             "value": item_value,
             "cashflow": cashflow.id,
         }.items())
+
+    def test_item_invalid_get(self):
+        # Given
+        account = Account.objects.create(name="Test Account")
+        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user.account.add(account)
+
+        refresh = RefreshToken.for_user(user)
+        client = APIClient()
+        client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
+
+        # When
+        response = client.get(f'/items/{1337}/', format='json')
+        json_response = json.loads(response.content)
+
+        # Then
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.json(), {'success': False})
