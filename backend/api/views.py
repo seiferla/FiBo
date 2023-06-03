@@ -44,6 +44,7 @@ class RegisterUser(APIView):
             password = request.data['password']
         except BaseException as e:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST) 
+            raise e
 
         user = FiboUser.objects.create_user(email=email, password=password)
         default_account = Account.objects.create(name=email)
@@ -66,8 +67,9 @@ class CashflowsView(APIView):
             category, _ = Category.objects.get_or_create(name=request.data['category'])
             place = request.data['place']
             place_address, _ = Place.objects.get_or_create(address=place['address'], name=place['name'])
-        except:
+        except BaseException as e:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+            raise e
 
         if cashflow_type == 'INCOME':
             cashflow = Cashflow.objects.create(account=account_id,
@@ -90,16 +92,18 @@ class CashflowsView(APIView):
     def get(self, request, cashflow_id):
         try:
             cashflow = Cashflow.objects.get(id=cashflow_id)
-        except:
+        except BaseException as e:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+            raise e
         serializer = CashflowSerializer(cashflow, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def delete(self, _, cashflow_id):
         try:
             cashflow = Cashflow.objects.get(id=cashflow_id)
-        except:
+        except BaseException as e:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+            raise e
         cashflow.delete()
         return JsonResponse({'success': True, 'cashflow_id': cashflow_id}, status=status.HTTP_200_OK)
 
@@ -113,8 +117,9 @@ class CashflowsView(APIView):
             cashflow.place, _ = Place.objects.get_or_create(address=place['address'], name=place['name'])
             cashflow.updated = datetime.now()
             cashflow_type = request.data['type']
-        except:
+        except BaseException as e:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+            raise e
 
         if cashflow_type == 'INCOME':
             cashflow.is_income = True
@@ -132,16 +137,18 @@ class PlaceView(APIView):
     def post(self, request):
         try:
             place = Place.objects.create(address=request.data['address'], name=request.data['name'])
-        except:
+        except BaseException as e:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+            raise e
 
         return JsonResponse({'success': True, 'place': place.name}, status=status.HTTP_201_CREATED)
 
     def get(self, request):
         try:
             place = Place.objects.get(address=request.GET['address'])
-        except:
+        except BaseException as e:
             return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
+            raise e
 
         serializer = PlaceSerializer(place, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -152,16 +159,18 @@ class CategoryView(APIView):
     def post(self, request):
         try:
             category = Category.objects.create(name=request.POST['name'])
-        except:
+        except BaseException as e:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+            raise e
 
         return JsonResponse({'success': True, 'category_id': category.id}, status=status.HTTP_201_CREATED)
 
     def get(self, request):
         try:
             category = Category.objects.get(name=request.GET['name'])
-        except:
+        except BaseException as e:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+            raise e
 
         serializer = CategorySerializer(category, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
