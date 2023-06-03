@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.util.Pair;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -39,7 +38,7 @@ import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -78,8 +77,6 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
         // gather current instant to be able to calculate the time we spent in this (user-interaction driven) method
         startInstant = Instant.now();
 
-        DashboardViewModel dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
 
@@ -237,7 +234,7 @@ public class DashboardFragment extends Fragment implements OnChartValueSelectedL
             expensesStream = expensesStream.filter(new CategoryFilter(hiddenCategories).getPredicate());
         }
 
-        Map<Category, BigDecimal> expensesPerCategory = new HashMap<>();
+        Map<Category, BigDecimal> expensesPerCategory = new EnumMap<>(Category.class);
 
         expensesStream.forEach(expense -> {
             Category category = expense.getCategory();
