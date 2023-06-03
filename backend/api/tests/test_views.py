@@ -135,7 +135,7 @@ class ViewsTestCase(TestCase):
             "timestamp": "2023-04-23T00:00:00",
             "type": "INCOME",
             "account": {
-                "id": 1
+                "id": account.id
             }
         }
 
@@ -169,7 +169,7 @@ class ViewsTestCase(TestCase):
             "timestamp": "2023-04-23T00:00:00",
             "type": "EXPENSE",
             "account": {
-                "id": 1
+                "id": account.id
             }
         }
 
@@ -613,7 +613,6 @@ class ViewsTestCase(TestCase):
         self.assertEqual(response.status_code, 201)
         self.assertEqual({'success': True, 'category_id': category.id}, response.json())
 
-
     # Try to create a Category without name
     def test_category_post_invalid_format(self):
         # Given
@@ -647,10 +646,16 @@ class ViewsTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
 
     # Try to get not existing Category
-    def test_category_get_bad_parameter(self):
+    def test_category_get_invalid_parameters(self):
         # Given
-        category_name = 'imaginary'
+        account = Account.objects.create(name="Test Account")
+        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user.account.add(account)
+        refresh = RefreshToken.for_user(user)
+        client = APIClient()
+        client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
         # When
-        response = self.client.get(f'/category/?name={category_name}/')
+        response = client.get(f'/category/{1337}/')
         # Then
         self.assertEqual(response.status_code, 400)
+
