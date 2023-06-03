@@ -178,9 +178,9 @@ class CategoryView(APIView):
     permission_classes = (IsAuthenticated,)
 
     def post(self, request):
-        # TODO: Add association to account id
         try:
-            category = Category.objects.create(name=request.POST['name'])
+            account = Account.objects.get(id=request.data['account'])
+            category = Category.objects.create(name=request.data['category']['name'], account=account)
         except:
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
