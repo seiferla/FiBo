@@ -140,7 +140,7 @@ class ViewsTestCase(TestCase):
         }
 
         # When
-        response = client.post("/cashflow/", cashflow_income, format='json')
+        response = client.post("/cashflows/", cashflow_income, format='json')
 
         # Then
         self.assertEqual(response.status_code, 201)
@@ -174,7 +174,7 @@ class ViewsTestCase(TestCase):
         }
 
         # When
-        response = client.post("/cashflow/", cashflow_expense, format='json')
+        response = client.post("/cashflows/", cashflow_expense, format='json')
 
         # Then
         self.assertEqual(response.status_code, 201)
@@ -207,7 +207,7 @@ class ViewsTestCase(TestCase):
             }
         }
         # When
-        response = client.post("/cashflow/", invalid_cashflow, format='json')
+        response = client.post("/cashflows/", invalid_cashflow, format='json')
 
         # Then
         self.assertEqual(response.status_code, 400)
@@ -231,7 +231,7 @@ class ViewsTestCase(TestCase):
         user.account.add(account)
 
         # When
-        response = client.get(f'/cashflow/{cashflow.id}/')
+        response = client.get(f'/cashflows/{cashflow.id}/')
 
         # Then
         self.assertEqual(response.status_code, 200)
@@ -259,7 +259,7 @@ class ViewsTestCase(TestCase):
         cashflow_id = '0'
 
         # When
-        response = client.get(f'/cashflow/{cashflow_id}/')
+        response = client.get(f'/cashflows/{cashflow_id}/')
 
         # Then
         self.assertEqual(response.status_code, 404)
@@ -285,7 +285,7 @@ class ViewsTestCase(TestCase):
         user.account.add(account)
 
         # When
-        response = client.delete(f'/cashflow/{cashflow.id}/')
+        response = client.delete(f'/cashflows/{cashflow.id}/')
 
         # Then
         self.assertEqual(response.status_code, 200)
@@ -312,7 +312,7 @@ class ViewsTestCase(TestCase):
         cashflow_id = '0'
 
         # When
-        response = client.delete(f'/cashflow/{cashflow_id}/')
+        response = client.delete(f'/cashflows/{cashflow_id}/')
 
         # Then
         self.assertEqual(response.status_code, 404)
@@ -356,7 +356,7 @@ class ViewsTestCase(TestCase):
 
         # When
         response = client.put(
-            f'/cashflow/{cashflow_id}/', cashflow, format='json')
+            f'/cashflows/{cashflow_id}/', cashflow, format='json')
 
         # Then
         self.assertEqual(response.status_code, 200)
@@ -397,7 +397,7 @@ class ViewsTestCase(TestCase):
 
         # When
         response = client.put(
-            f'/cashflow/{cashflow.id}/', updated_cashflow, format='json')
+            f'/cashflows/{cashflow.id}/', updated_cashflow, format='json')
 
         # Then
         self.assertEqual(response.status_code, 200)
@@ -428,7 +428,7 @@ class ViewsTestCase(TestCase):
         }
 
         # Whe
-        response = client.put(f'/cashflow/1337/', cashflow, format='json')
+        response = client.put(f'/cashflows/1337/', cashflow, format='json')
 
         # Then
         self.assertEqual(response.status_code, 400)
@@ -468,7 +468,7 @@ class ViewsTestCase(TestCase):
         }
 
         # Whe
-        response = client.put(f'/cashflow/{cashflow.id}/', new_cashflow, format='json')
+        response = client.put(f'/cashflows/{cashflow.id}/', new_cashflow, format='json')
 
         # Then
         self.assertEqual(response.status_code, 400)
@@ -607,7 +607,7 @@ class ViewsTestCase(TestCase):
 
         data = {"category": {"name": "HEALTH"}, "account": account.id}
         # When
-        response = client.post(f'/category/', data, format='json')
+        response = client.post(f'/categories/', data, format='json')
         category = Category.objects.get(name="HEALTH", account=account.id)
         # Then
         self.assertEqual(response.status_code, 201)
@@ -626,7 +626,7 @@ class ViewsTestCase(TestCase):
         data = {"category": {"invalid": "HEALTH"}, "account": account.id}
 
         # When
-        response = client.post(f'/category/', data, format='json')
+        response = client.post(f'/categories/', data, format='json')
         # Then
         self.assertEqual(response.status_code, 400)
         self.assertEqual({'success': False}, response.json())
@@ -641,7 +641,7 @@ class ViewsTestCase(TestCase):
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
         category = Category.objects.create(name="HEALTH", account=account)
         # When
-        response = client.get(f'/category/{category.id}/')
+        response = client.get(f'/categories/{category.id}/')
         # Then
         self.assertEqual(response.status_code, 200)
 
@@ -655,7 +655,7 @@ class ViewsTestCase(TestCase):
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
         # When
-        response = client.get(f'/category/{1337}/')
+        response = client.get(f'/categories/{1337}/')
         # Then
         self.assertEqual(response.status_code, 400)
 

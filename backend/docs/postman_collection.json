@@ -226,7 +226,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/cashflow/",
+							"raw": "http://127.0.0.1:8000/cashflows/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -271,7 +271,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/cashflow/1",
+							"raw": "http://127.0.0.1:8000/cashflows/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -313,7 +313,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/cashflow/1",
+							"raw": "http://127.0.0.1:8000/cashflows/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -355,7 +355,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/cashflow/1",
+							"raw": "http://127.0.0.1:8000/cashflows/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -494,7 +494,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/category/",
+							"raw": "http://127.0.0.1:8000/categories/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -539,7 +539,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/category/",
+							"raw": "http://127.0.0.1:8000/categories/",
 							"protocol": "http",
 							"host": [
 								"127",

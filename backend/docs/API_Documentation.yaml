@@ -96,7 +96,7 @@ paths:
           description: The Account corresponding to the send Access Token is deleted
         '401':
           $ref: '#/components/responses/accessError'
-  /cashflow/:
+  /cashflows/:
     post:
       tags:
         - cashflow
@@ -118,7 +118,7 @@ paths:
           $ref: '#/components/responses/accessError'
         '500':
           description: The Cashflow could not be created. There are multiple reasons, for this. For example the account id form the request may be not in the database
-  /cashflow/<int:cashflow_id>:
+  /cashflows/<int:cashflow_id>:
     get:
       tags:
         - cashflow
@@ -219,7 +219,7 @@ paths:
         '401':
           $ref: '#/components/responses/accessError'
 
-  /category/:
+  /categories/:
     post:
       tags:
         - category
