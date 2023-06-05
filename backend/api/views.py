@@ -42,7 +42,7 @@ class RegisterUser(APIView):
         try:
             email = request.data['email']
             password = request.data['password']
-        except BaseException as e:
+        except RuntimeError as e:
             print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST) 
 
@@ -67,7 +67,7 @@ class CashflowsView(APIView):
             category, _ = Category.objects.get_or_create(name=request.data['category'])
             place = request.data['place']
             place_address, _ = Place.objects.get_or_create(address=place['address'], name=place['name'])
-        except BaseException as e:
+        except RuntimeError as e:
             print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -92,7 +92,7 @@ class CashflowsView(APIView):
     def get(self, request, cashflow_id):
         try:
             cashflow = Cashflow.objects.get(id=cashflow_id)
-        except BaseException as e:
+        except RuntimeError as e:
             print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
         serializer = CashflowSerializer(cashflow, many=False)
@@ -101,7 +101,7 @@ class CashflowsView(APIView):
     def delete(self, _, cashflow_id):
         try:
             cashflow = Cashflow.objects.get(id=cashflow_id)
-        except BaseException as e:
+        except RuntimeError as e:
             print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
         cashflow.delete()
@@ -117,7 +117,7 @@ class CashflowsView(APIView):
             cashflow.place, _ = Place.objects.get_or_create(address=place['address'], name=place['name'])
             cashflow.updated = datetime.now()
             cashflow_type = request.data['type']
-        except BaseException as e:
+        except RuntimeError as e:
             print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -137,7 +137,7 @@ class PlaceView(APIView):
     def post(self, request):
         try:
             place = Place.objects.create(address=request.data['address'], name=request.data['name'])
-        except BaseException as e:
+        except RuntimeError as e:
             print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -146,7 +146,7 @@ class PlaceView(APIView):
     def get(self, request):
         try:
             place = Place.objects.get(address=request.GET['address'])
-        except BaseException as e:
+        except RuntimeError as e:
             print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
 
@@ -159,7 +159,7 @@ class CategoryView(APIView):
     def post(self, request):
         try:
             category = Category.objects.create(name=request.POST['name'])
-        except BaseException as e:
+        except RuntimeError as e:
             print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -168,7 +168,7 @@ class CategoryView(APIView):
     def get(self, request):
         try:
             category = Category.objects.get(name=request.GET['name'])
-        except BaseException as e:
+        except RuntimeError as e:
             print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
