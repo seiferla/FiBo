@@ -1,6 +1,10 @@
 package de.dhbw.ka.se.fibo.ui.adding;
 
+import static android.content.ContentValues.TAG;
+import static de.dhbw.ka.se.fibo.BuildConfig.TIME_ZONE;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -165,7 +169,7 @@ public class AddingFragment extends Fragment {
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
+                // Not needed as this will be handled in onTabSelected
             }
 
             @Override
@@ -222,7 +226,7 @@ public class AddingFragment extends Fragment {
                     List<Item> items = createItemsFromNotes();
                     return new Cashflow(category, newCashFlowType, value, date, place, items);
                 } catch (IllegalArgumentException e) {
-                    e.printStackTrace();
+                    Log.i(TAG, e.getMessage());
                 }
                 return null;
             }
@@ -261,14 +265,14 @@ public class AddingFragment extends Fragment {
     }
 
     private View.OnClickListener showDatePicker() {
-        return (view) -> datePicker.show(requireActivity().getSupportFragmentManager(), "datePick");
+        return view -> datePicker.show(requireActivity().getSupportFragmentManager(), "datePick");
     }
 
     private void initializeDropdownValues() {
         String[] items = getAllStringCategories();
-        MaterialAutoCompleteTextView categoriesDropdown = binding.categoryText;
-        categoriesDropdown.setSimpleItems(items);
-        categoriesDropdown.setThreshold(4);
+        MaterialAutoCompleteTextView initCategoriesDropdown = binding.categoryText;
+        initCategoriesDropdown.setSimpleItems(items);
+        initCategoriesDropdown.setThreshold(4);
     }
 
     private String[] getAllStringCategories() {
@@ -290,7 +294,7 @@ public class AddingFragment extends Fragment {
                 .setNegativeButtonText(R.string.datePickerNegativeButtonText)
                 .setPositiveButtonText(R.string.DatePickerPositiveButtonText)
                 .setCalendarConstraints(constraintBuilder.setValidator(dateValidator).build())
-                .setSelection(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli())
+                .setSelection(LocalDateTime.now().atZone(ZoneId.of(TIME_ZONE)).toInstant().toEpochMilli())
                 .build();
         datePicker.addOnPositiveButtonClickListener(selection -> {
             Format formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMANY);
