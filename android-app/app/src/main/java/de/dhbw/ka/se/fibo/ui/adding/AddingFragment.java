@@ -208,18 +208,27 @@ public class AddingFragment extends Fragment {
     }
 
     private void resetErrorMessages() {
-        Map<TextInputLayout, String> fieldsToBeChecked = new HashMap<>();
-        if (CashflowType.EXPENSE == newCashFlowType) {
-            fieldsToBeChecked.put(storeLayout, getString(R.string.error_message_store_field));
-        } else {
-            fieldsToBeChecked.put(storeLayout, getString(R.string.error_message_source_field));
-        }
-        fieldsToBeChecked.put(amountLayout, getString(R.string.error_message_amount_field));
-        fieldsToBeChecked.put(dateTextLayout, getString(R.string.error_message_date_field));
-        fieldsToBeChecked.put(categoriesDropdownLayout, getString(R.string.error_message_category_field));
-        fieldsToBeChecked.put(addressLayout, getString(R.string.error_message_address_field));
+        List<TextInputLayout> textfields = new ArrayList<>();
+        textfields.add(storeLayout);
+        textfields.add(amountLayout);
+        textfields.add(dateTextLayout);
+        textfields.add(categoriesDropdownLayout);
+        textfields.add(addressLayout);
 
-        fieldsToBeChecked.keySet().forEach(field -> field.setErrorEnabled(false));
+        textfields.forEach(field -> field.setErrorEnabled(false));
+
+//        Map<TextInputLayout, String> fieldsToBeChecked = new HashMap<>();
+//        if (CashflowType.EXPENSE == newCashFlowType) {
+//            fieldsToBeChecked.put(storeLayout, getString(R.string.error_message_store_field));
+//        } else {
+//            fieldsToBeChecked.put(storeLayout, getString(R.string.error_message_source_field));
+//        }
+//        fieldsToBeChecked.put(amountLayout, getString(R.string.error_message_amount_field));
+//        fieldsToBeChecked.put(dateTextLayout, getString(R.string.error_message_date_field));
+//        fieldsToBeChecked.put(categoriesDropdownLayout, getString(R.string.error_message_category_field));
+//        fieldsToBeChecked.put(addressLayout, getString(R.string.error_message_address_field));
+//
+//        fieldsToBeChecked.keySet().forEach(field -> field.setErrorEnabled(false));
     }
 
     private String getFieldValue(TextView field) {
