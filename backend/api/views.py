@@ -43,8 +43,8 @@ class RegisterUser(APIView):
             email = request.data['email']
             password = request.data['password']
         except BaseException as e:
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST) 
-            raise e     # This code is unreachable but otherwise it would count as a critical code smell
 
         user = FiboUser.objects.create_user(email=email, password=password)
         default_account = Account.objects.create(name=email)
@@ -68,8 +68,8 @@ class CashflowsView(APIView):
             place = request.data['place']
             place_address, _ = Place.objects.get_or_create(address=place['address'], name=place['name'])
         except BaseException as e:
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
-            raise e
 
         if cashflow_type == 'INCOME':
             cashflow = Cashflow.objects.create(account=account_id,
@@ -93,8 +93,8 @@ class CashflowsView(APIView):
         try:
             cashflow = Cashflow.objects.get(id=cashflow_id)
         except BaseException as e:
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
-            raise e     # This code is unreachable but otherwise it would count as a critical code smell
         serializer = CashflowSerializer(cashflow, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -102,8 +102,8 @@ class CashflowsView(APIView):
         try:
             cashflow = Cashflow.objects.get(id=cashflow_id)
         except BaseException as e:
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
-            raise e     # This code is unreachable but otherwise it would count as a critical code smell
         cashflow.delete()
         return JsonResponse({'success': True, 'cashflow_id': cashflow_id}, status=status.HTTP_200_OK)
 
@@ -118,8 +118,8 @@ class CashflowsView(APIView):
             cashflow.updated = datetime.now()
             cashflow_type = request.data['type']
         except BaseException as e:
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
-            raise e     # This code is unreachable but otherwise it would count as a critical code smell
 
         if cashflow_type == 'INCOME':
             cashflow.is_income = True
@@ -138,8 +138,8 @@ class PlaceView(APIView):
         try:
             place = Place.objects.create(address=request.data['address'], name=request.data['name'])
         except BaseException as e:
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
-            raise e     # This code is unreachable but otherwise it would count as a critical code smell
 
         return JsonResponse({'success': True, 'place': place.name}, status=status.HTTP_201_CREATED)
 
@@ -147,8 +147,8 @@ class PlaceView(APIView):
         try:
             place = Place.objects.get(address=request.GET['address'])
         except BaseException as e:
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
-            raise e     # This code is unreachable but otherwise it would count as a critical code smell
 
         serializer = PlaceSerializer(place, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -160,8 +160,8 @@ class CategoryView(APIView):
         try:
             category = Category.objects.create(name=request.POST['name'])
         except BaseException as e:
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
-            raise e     # This code is unreachable but otherwise it would count as a critical code smell
 
         return JsonResponse({'success': True, 'category_id': category.id}, status=status.HTTP_201_CREATED)
 
@@ -169,8 +169,8 @@ class CategoryView(APIView):
         try:
             category = Category.objects.get(name=request.GET['name'])
         except BaseException as e:
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
-            raise e     # This code is unreachable but otherwise it would count as a critical code smell
 
         serializer = CategorySerializer(category, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
