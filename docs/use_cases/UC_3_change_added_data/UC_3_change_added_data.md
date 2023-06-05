@@ -50,13 +50,13 @@ Feature: change added data
     And I am on the homepage
     
     Scenario: open new "manual adding of data" form
-      Given I am signed in with username "USER" and password "PASSWORD"
+      Given I am signed in with email "EMAIL" and password "PASSWORD"
       And I am on the "home" page
       When I press on a specific item in the list
       Then I am on the "manual adding of data" form
       
     Scenario: adjust and save valid data
-      Given I am signed in with username "USER" and password "PASSWORD"
+      Given I am signed in with email "EMAIL" and password "PASSWORD"
       And I am at the "manual adding of data" form
       When I enter "store xy" in the field "Store"
       And I enter "x€" in the field "Price"
@@ -69,7 +69,7 @@ Feature: change added data
       And I receive a "success" message
       
     Scenario: enter invalid data and save
-      Given I am signed in with username "USER" and password "PASSWORD"
+      Given I am signed in with email "EMAIL" and password "PASSWORD"
       And I am at the "manual adding of data" form
       When I adjust "x€" in the "Store" field
       And I adjust "store xy" in the field "Price"

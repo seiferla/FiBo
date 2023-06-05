@@ -58,7 +58,7 @@ Feature: manual adding of data
     And I am on the homepage
 
   Scenario: open new "manual adding of data" form
-    Given I am signed in with username "USER" and password "PASSWORD"
+    Given I am signed in with email "EMAIL" and password "PASSWORD"
     And I am on the "home" page
     When I press the "New receipt" button
     Then I see two additional buttons "Add manually" and "Scan receipt" fade in
@@ -66,7 +66,7 @@ Feature: manual adding of data
     Then I am on the "manual adding of data" form
 
   Scenario: enter valid data and save it
-    Given I am signed in with username "USER" and password "PASSWORD"
+    Given I am signed in with email "EMAIL" and password "PASSWORD"
     And I am at the "manual adding of data" form
     When I enter "store xy" in the field "Store"
     And I enter "x€" in the field "Price"
@@ -79,7 +79,7 @@ Feature: manual adding of data
     And I receive a "success" message
 
   Scenario: enter invalid data and save the operation
-    Given I am signed in with username "USER" and password "PASSWORD"
+    Given I am signed in with email "EMAIL" and password "PASSWORD"
     And I am at the "manual adding of data" form
     When I enter "x€" in the field "Store"
     And I enter "store xy" in the field "Price"

@@ -3,12 +3,11 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.test import APIClient
 from ..models import FiboUser, Account, Cashflow, Category, Place
 
-
 class ViewsTestCase(TestCase):
 
     def test_get_routes(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = FiboUser.objects.create_user(email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -29,10 +28,10 @@ class ViewsTestCase(TestCase):
                 "method": "POST",
                 "Token needed": "false",
                 "body": {
-                    "username": "",
+                    "email": "",
                     "password": ""
                 },
-                "description": "To log in, the username (is the same as email) and password specified during registration must be sent along. The method returns the Refresh and Access Token."
+                "description": "To log in, the email and password specified during registration must be sent along. The method returns the Refresh and Access Token."
             },
             {
                 "Endpoint": "/users/authenticate",
@@ -79,7 +78,7 @@ class ViewsTestCase(TestCase):
 
     def test_user_get(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = FiboUser.objects.create_user(email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -92,7 +91,7 @@ class ViewsTestCase(TestCase):
 
     def test_user_delete(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = FiboUser.objects.create_user(email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -106,7 +105,7 @@ class ViewsTestCase(TestCase):
     # If there is only one User with the same Account, the Account will be deleted too if the User gets deleted
     def test_user_delete_account_delete(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = FiboUser.objects.create_user(email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -129,8 +128,8 @@ class ViewsTestCase(TestCase):
     # If there are multiple Users with the same Account, the account wont be deleted if one user gets deleted
     def test_user_delete_account_stays(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
-        user2 = FiboUser.objects.create_user(username='test2@fibo.de', email='test2@fibo.de', password='test2')
+        user = FiboUser.objects.create_user(email='test@fibo.de', password='test')
+        user2 = FiboUser.objects.create_user(email='test2@fibo.de', password='test2')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -156,7 +155,7 @@ class ViewsTestCase(TestCase):
 
         # When
         response = self.client.post("/users/register/",
-                                    {"email": "test@fibo.de", "password": "test"})
+                                    {"email": "test@fibo.de", "password": 'test'})
 
         # Then
         self.assertEqual(response.status_code, 201)
@@ -174,14 +173,14 @@ class ViewsTestCase(TestCase):
 
         # When (email missing)
         response = self.client.post("/users/register/",
-                                    {"password": "test"})
+                                    {"password": 'test'})
 
         # Then
         self.assertEqual(response.status_code, 400)
 
     def test_cashflow_post(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = FiboUser.objects.create_user(email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -231,7 +230,7 @@ class ViewsTestCase(TestCase):
 
     def test_cashflow_post_bad_request(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = FiboUser.objects.create_user(email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -259,7 +258,7 @@ class ViewsTestCase(TestCase):
 
     def test_cashflow_get(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = FiboUser.objects.create_user(email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -280,7 +279,7 @@ class ViewsTestCase(TestCase):
     # Try to get a not existing Cashflow
     def test_cashflow_get_bad_parameter(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = FiboUser.objects.create_user(email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -296,7 +295,7 @@ class ViewsTestCase(TestCase):
 
     def test_cashflow_delete(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = FiboUser.objects.create_user(email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -317,7 +316,7 @@ class ViewsTestCase(TestCase):
     # Try to delete a not existing Cashflow
     def test_cashflow_delete_bad_parameter(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = FiboUser.objects.create_user(email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -333,7 +332,7 @@ class ViewsTestCase(TestCase):
 
     def test_cashflow_put(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = FiboUser.objects.create_user(email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -391,7 +390,7 @@ class ViewsTestCase(TestCase):
     # Try to update a not existing Cashflow
     def test_cashflow_put_bad_parameter(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = FiboUser.objects.create_user(email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -427,7 +426,7 @@ class ViewsTestCase(TestCase):
     # Try to update a Cashflow with insufficient data
     def test_cashflow_put_bad_request(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = FiboUser.objects.create_user(email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -461,7 +460,7 @@ class ViewsTestCase(TestCase):
 
     def test_place_post(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = FiboUser.objects.create_user(email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -480,7 +479,7 @@ class ViewsTestCase(TestCase):
     # Try to create a Place with missing address
     def test_place_post_bad_request(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = FiboUser.objects.create_user(email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -497,7 +496,7 @@ class ViewsTestCase(TestCase):
 
     def test_place_get(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = FiboUser.objects.create_user(email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -514,7 +513,7 @@ class ViewsTestCase(TestCase):
     # Try to get a not existing Place
     def test_place_get_bad_request(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = FiboUser.objects.create_user(email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')

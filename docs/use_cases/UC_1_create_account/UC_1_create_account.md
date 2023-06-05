@@ -8,16 +8,15 @@ Create an account
 
 Each user should be able to create an account using their mobile device. The data that the user must provide is as follows:
 - email
-- username
 - password
 
 # 2 Flow of Events
 
 - User starts the app. The login page opens
 - User clicks register button and register page opens
-- User fills in the mail, username and password
+- User fills in the mail and password
 - Login-data gets checked for validity
-- If the data is invalid, the user receives the error messages "mail already exists" or "username already exists"and will be returned to the register page
+- If the data is invalid, the user receives the error messages "mail already exists" and will be returned to the register page
 - After successful registration the splash activity appears
 
 
@@ -49,7 +48,7 @@ Feature: create account
     Then I am on the login page
     When I click the register button
     Then I am on the register page
-    Then I register with email, username and password
+    Then I register with email and password
     Then I click the register button again
     When I see the splash screen
     Then I am successfully registered
@@ -60,10 +59,10 @@ Feature: create account
     Then I am on the login page
     When I click the register button
     Then I am on the register page
-    Then I register with email, username and password
+    Then I register with email and password
     Then I click the register button again
     When I get a error message
-    Then I entered an existing username or email
+    Then I entered an existing email
 ```
 
 ## 2.2 Alternative Flows

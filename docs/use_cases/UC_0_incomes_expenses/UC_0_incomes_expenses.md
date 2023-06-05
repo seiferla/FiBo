@@ -41,7 +41,7 @@ Feature: Show incomes and expenses in a list
     And I am on the homepage and logged-in
     
     Scenario: see cash flows
-      Given I am signed in with username "USER" and password "PASSWORD"
+      Given I am signed in with email "EMAIL" and password "PASSWORD"
       And I am on the "home" page
       Then I can see the different cash flows income and expenses
 
