@@ -16,6 +16,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withChild;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.not;
 import static de.dhbw.ka.se.fibo.TestMatchers.hasTextInputLayoutErrorText;
 
 import android.content.Context;
@@ -77,25 +78,12 @@ public class AddingFragmentTest {
                         .navigate(R.id.action_navigation_home_to_navigation_adding));
     }
 
-    @Test
-    public void testBothPickers() {
-
-        onView(withId(R.id.date_layout))
-                .perform(AddingFragmentTest.clickIcon(true));
-
-        onView(withId(com.google.android.material.R.id.confirm_button))
-                .perform(click());
-
-        onView(withId(com.google.android.material.R.id.material_timepicker_ok_button))
-                .perform(click());
-
-    }
 
     @Test
     public void testDatePickerCancelTimePicker() {
 
         onView(withId(R.id.date_layout))
-                .perform(AddingFragmentTest.clickIcon(true));
+                .perform(AddingFragmentTest.clickTextInputLayoutIcon(true));
 
         onView(withId(com.google.android.material.R.id.confirm_button))
                 .perform(click());
@@ -103,13 +91,15 @@ public class AddingFragmentTest {
         onView(withId(com.google.android.material.R.id.material_timepicker_cancel_button))
                 .perform(click());
 
+        onView(withId(R.id.date_text)).check(matches(not(withText(date))));
+
     }
 
     @Test
     public void testSetDatePickerCancelTimePicker() {
 
         onView(withId(R.id.date_layout))
-                .perform(AddingFragmentTest.clickIcon(true));
+                .perform(AddingFragmentTest.clickTextInputLayoutIcon(true));
 
         onView(withId(com.google.android.material.R.id.mtrl_picker_header_toggle))
                 .perform(click());
@@ -136,7 +126,7 @@ public class AddingFragmentTest {
 
 
         onView(withId(R.id.date_layout))
-                .perform(AddingFragmentTest.clickIcon(true));
+                .perform(AddingFragmentTest.clickTextInputLayoutIcon(true));
 
         onView(withId(com.google.android.material.R.id.mtrl_picker_header_toggle))
                 .perform(click());
@@ -162,7 +152,7 @@ public class AddingFragmentTest {
     }
 
 
-    public static ViewAction clickIcon(boolean isEndIcon) {
+    public static ViewAction clickTextInputLayoutIcon(boolean isEndIcon) {
         return new ViewAction() {
 
             @Override
@@ -415,7 +405,7 @@ public class AddingFragmentTest {
 
         // Click on date icon
         onView(withId(R.id.date_layout))
-                .perform(AddingFragmentTest.clickIcon(true));
+                .perform(AddingFragmentTest.clickTextInputLayoutIcon(true));
 
         // Click on edit icon to enter new date
         onView(withId(com.google.android.material.R.id.mtrl_picker_header_toggle))
