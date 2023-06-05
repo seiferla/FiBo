@@ -207,12 +207,7 @@ public class AddingFragment extends Fragment {
     }
 
     private void resetErrorMessages() {
-        List<TextInputLayout> textfields = new ArrayList<>();
-        textfields.add(storeLayout);
-        textfields.add(amountLayout);
-        textfields.add(dateTextLayout);
-        textfields.add(categoriesDropdownLayout);
-        textfields.add(addressLayout);
+        List<TextInputLayout> textfields = List.of(storeLayout, amountLayout, dateTextLayout, categoriesDropdownLayout, addressLayout);
 
         textfields.forEach(field -> field.setErrorEnabled(false));
     }
