@@ -9,8 +9,9 @@ We will upload a weekly update of the project. We would be happy if you visit ou
 
 ## Introduction
 
-We are a group of five CS students from DHBW Karlsruhe working on the project FiBo with the goal to get a better overview of your financial expenses. 
-Our project FiBo has nothing to do with the fitness fair, but is the abbreviation for **financial book**.
+We are a group of five CS students from DHBW Karlsruhe working on the project FiBo with the goal to get a better
+overview of your financial expenses. Our project FiBo has nothing to do with the fitness fair, but is the abbreviation
+for **finance book**.
 
 ## Product vision
 We want to build an app for managing your finances. An app to track and decrease your expenses easily, an app to plan your financial future.

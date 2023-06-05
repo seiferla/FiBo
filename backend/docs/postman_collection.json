@@ -48,7 +48,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"fibo@fibo.de\",\n    \"password\": \"fibo\"\n}",
+							"raw": "{\n    \"email\": \"fibo@fibo.de\",\n    \"password\": \"fibo\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"

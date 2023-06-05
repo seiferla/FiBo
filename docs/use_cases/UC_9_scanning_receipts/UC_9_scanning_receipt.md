@@ -49,7 +49,7 @@ Feature: scanning receipt
     And I am on the home page
     
     Scenario: successfully scan and save receipt 
-      Given I am signed in with username "USER" and password "PASSWORD"
+      Given I am signed in with email "EMAIL" and password "PASSWORD"
       And I am on the "dashboard" page
       When I click on "New receipt" button
       Then I can see a menu
@@ -63,7 +63,7 @@ Feature: scanning receipt
       Then I save it to my cashflows
       
     Scenario: incorrect information extraction
-      Given I am signed in with username "USER" and password "PASSWORD"
+      Given I am signed in with email "EMAIL" and password "PASSWORD"
       And I am on the "dashboard" page
       When I press the "camera" button
       Then I am on the "camera" fragment
@@ -78,7 +78,7 @@ Feature: scanning receipt
 
       
     Scenario: discard receipt
-      Given I am signed in with username "USER" and password "PASSWORD"
+      Given I am signed in with email "EMAIL" and password "PASSWORD"
       And I am on the home fragment
       When I press the "camera" button
       Then I am on the "camera" fragment
