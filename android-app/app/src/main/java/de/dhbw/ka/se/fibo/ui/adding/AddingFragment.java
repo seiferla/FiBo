@@ -139,12 +139,12 @@ public class AddingFragment extends Fragment {
                     newCashFlowType = CashflowType.INCOME;
                     binding.storeTextLayout.setHint(requireContext().getString(R.string.source));
                 }
-                resetErrorMessages();
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
                 // Not needed as this will be handled in onTabSelected
+                resetErrorMessages();
             }
 
             @Override
