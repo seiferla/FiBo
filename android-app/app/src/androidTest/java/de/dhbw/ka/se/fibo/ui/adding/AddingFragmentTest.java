@@ -1,6 +1,7 @@
 package de.dhbw.ka.se.fibo.ui.adding;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.swipeUp;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 import android.content.Context;
@@ -21,7 +22,7 @@ import org.hamcrest.Matcher;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.runner.RunWith;
-import static androidx.test.espresso.action.ViewActions.swipeUp;
+
 import de.dhbw.ka.se.fibo.MainActivity;
 import de.dhbw.ka.se.fibo.R;
 
