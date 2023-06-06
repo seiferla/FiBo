@@ -84,7 +84,7 @@ To look at it simply open the index.html in your preferred browser. In there you
 
 ## Install backend on server with continuous deployment
 To install the latest version of the backend continuously you have to create a cron job on your server. To do this run the command
-`crontab -e`. Now you have to chose which text editor you want to use. Select your preferred one and add the following line at the bottom of the file:
+`crontab -e`. Now you have to choose which text editor you want to use. Select your preferred one and add the following line at the bottom of the file:
 ```ini
 0 0 * * * chmod +x $HOME/fibo/backend/server_deployment.sh && $HOME/fibo/backend/server_deployment.sh
 ```
