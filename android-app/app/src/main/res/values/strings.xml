@@ -126,7 +126,7 @@
     <string name="delete_user_confirm_button">Benutzer löschen</string>
     <string name="cancel_button">Abbrechen</string>
     <string name="account">Konto</string>
-    <string name="edit_item_description">Aritkel bearbeiten</string>
+    <string name="edit_item_description">Artikel bearbeiten</string>
     <string name="recyclerview_price_placeholder">2,50 €</string>
     <string name="recyclerview_item_name_placeholder">item name</string>
     <string name="add_item_button_description">Artikel hinzufügen</string>
