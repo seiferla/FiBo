@@ -38,5 +38,5 @@ else
     rm -v "$local_dir/backend/api/migrations/0*"
     docker compose run --rm django python manage.py makemigrations
     docker compose run --rm django python manage.py migrate
-    docker compose run --rm django python manage.py collectstatic
+    docker compose run --rm django python manage.py collectstatic --noinput
 fi
