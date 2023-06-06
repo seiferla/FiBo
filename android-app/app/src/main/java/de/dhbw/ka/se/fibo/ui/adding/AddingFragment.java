@@ -176,11 +176,6 @@ public class AddingFragment extends Fragment {
                 setDataWithSelectedTab(tab);
             }
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-                // Not needed as this will be handled in onTabSelected
-            }
-
             // TODO: Test that the hint changes when switching tabs
 
             private void setDataWithSelectedTab(TabLayout.Tab tab) {
@@ -196,11 +191,21 @@ public class AddingFragment extends Fragment {
             }
 
             @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                resetErrorMessages();
+            }
+
+            @Override
             public void onTabReselected(TabLayout.Tab tab) {
                 setDataWithSelectedTab(tab);
             }
         });
         tabLayout.selectTab(tabLayout.getTabAt(0));
+    }
+    private void resetErrorMessages() {
+        List<TextInputLayout> textfields = List.of(storeLayout, amountLayout, dateTextLayout, categoriesDropdownLayout, addressLayout);
+
+        textfields.forEach(field -> field.setErrorEnabled(false));
     }
 
     private void initializeButtons() {

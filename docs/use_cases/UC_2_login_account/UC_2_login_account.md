@@ -47,7 +47,7 @@ Feature: manual adding of data
     Given I have an existing account
     When I am starting the app
     Then I am on the login page
-    Then I sign in with username and password
+    Then I sign in with email and password
     Then I click the login button
     When I see the splash screen
     Then I am logged in successfully
@@ -56,7 +56,7 @@ Feature: manual adding of data
     Given I have an existing account
     When I am starting the app
     Then I am on the login page
-    Then I sign in with username and password
+    Then I sign in with email and password
     When I get a error message
     Then I have entered the wrong data
 

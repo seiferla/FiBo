@@ -55,7 +55,7 @@ Feature: automatic scanning
     And I am on the homepage
 
   Scenario: open new "Scan receipt" form
-    Given I am signed in with username "USER" and password "PASSWORD"
+    Given I am signed in with email "EMAIL" and password "PASSWORD"
     And I am on the "home" page
     When I press the "New receipt" button
     Then I see two additional buttons "Add manually" and "Scan receipt" fade in
@@ -63,7 +63,7 @@ Feature: automatic scanning
     Then I am on the "scanning receipt" form
 
   Scenario: scan valid data and save it
-    Given I am signed in with username "USER" and password "PASSWORD"
+    Given I am signed in with email "EMAIL" and password "PASSWORD"
     And I am at the "scanning receipt" form
     When I take a picture of a receipt
     And I get a overview of the detected data

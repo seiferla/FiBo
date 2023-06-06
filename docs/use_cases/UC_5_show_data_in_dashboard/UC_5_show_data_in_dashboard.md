@@ -48,7 +48,7 @@ Feature: show data in dashboard
     And I am on the dashboard
 
   Scenario: show cash flow data depending on time slot
-    Given I am signed in with username "USER" and password "PASSWORD"
+    Given I am signed in with email "EMAIL" and password "PASSWORD"
     And I am on the "dashboard" page
     When I select a specific time slot
     Then I click the save button
@@ -56,7 +56,7 @@ Feature: show data in dashboard
 
 
   Scenario: show cash flow data without selecting a time slot
-    Given I am signed in with username "USER" and password "PASSWORD"
+    Given I am signed in with email "EMAIL" and password "PASSWORD"
     And I am on the "dashboard" page
     When I don't select any specific time slot
     Then I see a updated pie chart where the data is collected over the complete time

@@ -44,6 +44,8 @@ Update the `POSTGRES_*`,`PGADMIN_DEFAULT_*` variables as needed, so they use the
 
 From now on, you can use the command `sudo docker compose up -d --build` to have the Django backend run on port 8000.
 
+To stop the backend, run the command `sudo docker compose stop`.
+
 Troubleshooting:
 
 You may need to run `rm ~/.docker/config.json` in case you are seeing `ERROR [internal] load metadata for docker.io/library/python:3` when doing the steps
