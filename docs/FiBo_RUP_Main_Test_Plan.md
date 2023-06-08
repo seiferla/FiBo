@@ -358,7 +358,7 @@ In general all testable code should be tested. Due to time constraint this is of
 
 ### 8. Testing Workflow
 
-There are currently 2 ways to test our product:
+There are currently 3 ways to test our product:
 First approach (CI):
 
 1. Clone the [code](https://github.com/Cebox82/FiBo) to your GitHub repository
@@ -375,6 +375,26 @@ Second approach (Emulator):
 6. Do a Gradle sync
 7. Right click on the test folders located in the /src subfolder
 8. Click "Run All Tests" (The results should be the same as "Android CI" results)
+
+If you want to test everything by hand, be sure to set the Build Variants as whished. Ideally you should use "release" if you want to interact with the backend.
+![](https://pad.medialepfade.net/uploads/5de5f463-686c-4525-bc40-8ebdb519a7cc.png)
+
+After that, you can run the emulator. Just click on "app" to select the correct run configuration.
+
+Third approach (Real Android Device):
+
+1. Clone the [code](https://github.com/Cebox82/FiBo) to your local development machine
+2. Start the Project in Android Studio
+3. Click on the menu option `Build` at the top
+4. Select the submenu `BuildBundle(s) / APK`
+5. Select `Build APK(s)`
+6. go to `FiBo\android-app\app\build\outputs\apk\debug` and save the `app-debug.apk` from your development machine to your android device with (USB / Bluetooth /...)
+7. Install FiBo
+    - If the installation is possible you can feel free to test the FiBo app
+    - If the Installation is not possible you might need to adjust some settings
+        9.1. Check if you've allowed the setting allow [installation from unkown sources](https://www.maketecheasier.com/install-apps-from-unknown-sources-android/) in your android device
+        9.2 Click "See details" and then "Install anyways" if google play protect prevents an easy installation
+8. If asked, please grant FiBo any permissions it needs
 
 If you want to test everything by hand, be sure to set the Build Variants as whished. Ideally you should use "release" if you want to interact with the backend.
 
@@ -396,7 +416,7 @@ The following table sets forth the system resources for the test effort presente
 | CI/CD server | 1 | Github Actions |
 | Docker | 1 | Containerized backend environment |
 | local test and build machine | 1 | Computer |
-| Android test device | 1 | Android mobile phone |
+| Android test device (at least Android 8.0) | 1 | Android mobile phone |
 
 #### 9.2 Base Software Elements in the Test Environment
 
@@ -404,7 +424,7 @@ The following base software elements are required in the test environment for th
 
 | Software Element Name | Type |
 | -------- | -------- |
-| Android Studio | Test Runner / IDE |
+| Android Studio (at least Flamingo v. 2022.2.1) | Test Runner / IDE |
 | IntelliJ | Test Runner / IDE |
 | Docker     | Containerized backend environment |
 
