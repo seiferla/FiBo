@@ -171,7 +171,7 @@ The listing below identifies those test items software, hardware, and supporting
 <!--
 > Separately outline test areas you suspect might be useful to investigate and evaluate, but that have not been sufficiently researched to know if they are important to pursue.
 -->
-Not applicable because we think that we cover everything necessary with our current tests so far.
+(n/a, because we think that we cover everything necessary with our current tests so far.)
 
 #### 4.3 Outline of Test Exclusions
 <!--
@@ -181,7 +181,8 @@ Not applicable because we think that we cover everything necessary with our curr
 > - "These tests are unnecessary due to the testing conducted by xxxx."
 As a heuristic, if you think it would be reasonable for one of your audience members to expect a certain aspect of testing to be included that you will not or cannot address, you should note its exclusion. If the team agrees the exclusion is obvious, you probably don't need to list it.
 -->
-Not applicable because we consider our current tests sufficient, covering all the necessary aspects.
+
+(n/a, because we consider our current tests sufficient, covering all the necessary aspects.)
 
 ### 5. Test Approach
 
@@ -441,7 +442,7 @@ The following will be employed to support the test process for this Test Plan.
 
 #### 9.4 Test Environment Configurations
 
-not applicable because the configurations are stored in the workflow files (for CI) and the README
+(n/a, because the configurations are stored in the workflow files (for CI) and the README)
 
 ### 10. Responsibilities, Staffing, and Training Needs
 
