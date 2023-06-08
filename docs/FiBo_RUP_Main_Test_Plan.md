@@ -1,12 +1,12 @@
-#  FiBo Main Test Plan
+# FiBo Main Test Plan
+
 Version: 1.0
 
 > Note: The following template is provided for use with the Rational Unified Process. Text displayed like this is included to provide guidance to the author and should be deleted before publishing the document.
 
-Adapted according to: https://sceweb.uhcl.edu/helm/RationalUnifiedProcess/webtmpl/templates/test/rup_tstpln.htm
+Adapted according to: <https://sceweb.uhcl.edu/helm/RationalUnifiedProcess/webtmpl/templates/test/rup_tstpln.htm>
 
 ## Revision History
-
 
 | Date     | Version     | Description | Author |
 | -------- | --------    | -------- | -------- |
@@ -17,7 +17,9 @@ Adapted according to: https://sceweb.uhcl.edu/helm/RationalUnifiedProcess/webtmp
 [TOC]
 
 ## Main Test Plan
-### 1. Introduction (Chris)
+
+### 1. Introduction
+
 #### 1.1 Purpose
 
 The purpose of the Iteration Test Plan is to gather all the information necessary to plan and control the test effort for the given iteration. It describes the approach to the testing of the software and is the top-level plan generated and used by the managers to direct the test effort
@@ -66,12 +68,11 @@ Additionally, the document will be referenced on our blog to make interested par
 | Acronym | Spelled out |
 | --- | --- |
 | FiBo  | Finance book |
-| UI     | User interface     | 
+| UI     | User interface     |
 | CI | Continuous integration |
 | CD | Continuous deployment |
 | API | Application programming interface |
 | n/a | Not applicable |
-
 
 #### 1.5 References
 <!--
@@ -87,13 +88,12 @@ Additionally, the document will be referenced on our blog to make interested par
 | Backend README | [GitHub](https://github.com/Cebox82/FiBo/blob/master/backend/README.md) |
 | CI/CD | [GitHub](https://github.com/Cebox82/FiBo/actions) |
 
-
 <!--
 #### 1.6 Document Structure
 > This subsection outlines what the rest of the Test Plan contains and gives an introduction to how the rest of the document is organized. This section may be eliminated if a Table of Contents is used.
 > -->
 
-### 2. Evaluation Mission and Test Motivation (Chris)
+### 2. Evaluation Mission and Test Motivation
 <!--
 > Provide an overview of the mission and motivation for the testing that will be conducted in this iteration.
 -->
@@ -105,8 +105,8 @@ That is why we want our code to be tested regularly and whenever we make a chang
 <!--
 > Provide a brief description of the background surrounding why the test effort defined by this Test Plan will be undertaken. Include information such as the key problem being solved, the major benefits of the solution, the planned architecture of the solution, and a brief history of the project. Where this information is defined in other documents, you can include references to those other more detailed documents if appropriate. This section should only be about three to five paragraphs in length.
 -->
-Regularly testing our app ensures a smooth performance. By conducting consistent testing, we are able to identify and address any issues or bugs that may affect the user experience. This helps in providing an enjoyable app usage, which leads to higher user satisfaction. 
-It also allows us to optimize our app's performance, responsiveness, and resource usage, resulting in better overall efficiency. 
+Regularly testing our app ensures a smooth performance. By conducting consistent testing, we are able to identify and address any issues or bugs that may affect the user experience. This helps in providing an enjoyable app usage, which leads to higher user satisfaction.
+It also allows us to optimize our app's performance, responsiveness, and resource usage, resulting in better overall efficiency.
 
 #### 2.2 Evaluation Mission
 <!--
@@ -125,7 +125,7 @@ It also allows us to optimize our app's performance, responsiveness, and resourc
 
 > Each mission provides a different context to the test effort and alters the way in which testing should be approached.
 -->
-Our most important goal is to achieve excellent results through regular and complete testing of our code. 
+Our most important goal is to achieve excellent results through regular and complete testing of our code.
 By detecting as many errors as possible, fixing critical issues, enabling a high quality standard, and ensuring customer satisfaction, we strive to deliver excellent and reliable software.
 
 #### 2.3 Test Motivators
@@ -133,15 +133,16 @@ By detecting as many errors as possible, fixing critical issues, enabling a high
 > Provide an outline of the key elements that will motivate the testing effort in this iteration. Testing will be motivated by many things¾quality risks, technical risks, project risks, use cases, functional requirements, nonfunctional requirements, design elements, suspected failures or faults, change requests, and so forth.
 -->
 - Quality Assurance
-    - Thorough testing improves our app reliability and the user experience by identifying and fixing bugs and issues
+  - Thorough testing improves our app reliability and the user experience by identifying and fixing bugs and issues
 - User Satisfaction
-    - Testing ensures a smooth, error-free experience, leading to happier users who are more likely to recommend our app
+  - Testing ensures a smooth, error-free experience, leading to happier users who are more likely to recommend our app
 - Functional Validation
-    - Testing confirms that our app's features and functionalities work correctly
+  - Testing confirms that our app's features and functionalities work correctly
 - Security and Reliability
-    - Testing helps identify and address vulnerabilities and protects user data, allowing us to keep users' trust
+  - Testing helps identify and address vulnerabilities and protects user data, allowing us to keep users' trust
 
-### 3. Target Test Items (Chris)
+### 3. Target Test Items
+
 The listing below identifies those test items software, hardware, and supporting product elements that have been identified as targets for testing. This list represents what items will be tested.
 
 <!--
@@ -153,7 +154,7 @@ The listing below identifies those test items software, hardware, and supporting
 - Features of our app
 - Constraints set by us
 
-### 4. Outline of Planned Tests (Chris)
+### 4. Outline of Planned Tests
 <!--
 > This section presents the recommended resources for FiBo, their main responsibilities, and their knowledge or skill set.
 -->
@@ -182,14 +183,17 @@ As a heuristic, if you think it would be reasonable for one of your audience mem
 -->
 Not applicable because we consider our current tests sufficient, covering all the necessary aspects.
 
-### 5. Test Approach (Markus)
+### 5. Test Approach
+
 #### 5.1 Initial Test-Idea Catalogs and Other Reference Sources
-- https://www.ibm.com/topics/software-testing
-- https://www.atlassian.com/continuous-delivery/software-testing/types-of-software-testing
+
+- <https://www.ibm.com/topics/software-testing>
+- <https://www.atlassian.com/continuous-delivery/software-testing/types-of-software-testing>
 
 #### 5.2 Testing Techniques and Types
 
 ##### 5.2.1 Data and Database Integrity Testing
+
 | What? | How? |
 | -------- | -------- |
 | Technique Objective: | Exercise database access and observe behaviour    |
@@ -200,6 +204,7 @@ Not applicable because we consider our current tests sufficient, covering all th
 | Special Considerations: | - |
 
 ##### 5.2.2 Function Testing
+
 | What? | How? |
 | -------- | -------- |
 | Technique Objective: | Assert correct behavior of each functionality of the project |
@@ -209,11 +214,12 @@ Not applicable because we consider our current tests sufficient, covering all th
 | Success Criteria: | All tests pass and the required code coverage is given. |
 | Special Considerations: | - |
 
-
 ##### 5.2.3 Business Cycle Testing
+
 (n/a because we have no external dependencies or other business to support)
 
 ##### 5.2.4 User Interface Testing
+
 | What? | How? |
 | -------- | -------- |
 | Technique Objective: | Simulating UI interactions by a user |
@@ -224,18 +230,23 @@ Not applicable because we consider our current tests sufficient, covering all th
 | Special Considerations: | Make sure the UI doesn't "hang" and all is fast enough |
 
 ##### 5.2.5 Performance Profiling
+
 (n/a because already included in 5.2.4)
 
 ##### 5.2.6 Load Testing
+
 (n/a because at this stage, we don't want load to be simulated)
 
 ##### 5.2.7 Stress Testing
+
 (n/a because at this stage, we aren't production-ready and hence don't need numbers on how many instances are needed to ensure smooth operations)
 
 ##### 5.2.8 Volume Testing
+
 (n/a at this stage, see 5.2.7)
 
 ##### 5.2.9 Security and Access Control Testing
+
 | What? | How? |
 | -------- | -------- |
 | Technique Objective: | Assert that use case might only be performed by a given logged in user and the user can only access their own data. |
@@ -246,12 +257,15 @@ Not applicable because we consider our current tests sufficient, covering all th
 | Special Considerations: | - |
 
 ##### 5.2.10 Failover and Recovery Testing
+
 (n/a because we don't strive for high availabilty at this time)
 
 ##### 5.2.11 Configuration Testing
+
 (n/a because there are no settings to test)
 
 ##### 5.2.12 Installation Testing
+
 | What? | How? |
 | -------- | -------- |
 | Technique Objective: | Exercise the installation of the target-of-test onto each required hardware configuration under the following conditions to observe and log installation behavior and configuration state changes |
@@ -261,95 +275,118 @@ Not applicable because we consider our current tests sufficient, covering all th
 | Success Criteria: | installation successful |
 | Special Considerations: | - |
 
-### 6. Entry and Exit Criteria (Markus)
-### 6.1     Test Plan (Markus)
-#### 6.1.1     Test Plan Entry Criteria
+### 6. Entry and Exit Criteria
+
+### 6.1 Test Plan
+
+#### 6.1.1 Test Plan Entry Criteria
+
 Building a new version of the software will execute the test process.
 
-#### 6.1.2     Test Plan Exit Criteria
+#### 6.1.2 Test Plan Exit Criteria
+
 When all tests pass without throwing an exception.
 
-#### 6.1.3     Suspension and Resumption Criteria
+#### 6.1.3 Suspension and Resumption Criteria
+
 The test plan is not supposed to be suspended. Therefore, there are no suspension and resumption criteria.
 
-### 6.2      Test Cycles (Markus)
-#### 6.2.1     Test Cycle Entry Criteria
+### 6.2 Test Cycles
+
+#### 6.2.1 Test Cycle Entry Criteria
+
 A test cycle begins when the build of a new version is initiated.
 
-#### 6.2.2     Test Cycle Exit Criteria
+#### 6.2.2 Test Cycle Exit Criteria
+
 The test effort of a cycle is deemed sufficient when a build has been completed without failures and all unit tests are run successfully.
 
-#### 6.2.3     Test Cycle Abnormal Termination
-Occurring errors during the build terminate the test cycle.
-  
-### 7.     Deliverables (Markus)
+#### 6.2.3 Test Cycle Abnormal Termination
 
-#### 7.1     Test Evaluation Summaries
+Occurring errors during the build terminate the test cycle.
+
+### 7. Deliverables
+
+#### 7.1 Test Evaluation Summaries
+
 Test evaluation will be available online every time a Pull Request is merged into the main branch. The report is generated with the help of [CodeCov](https://codecov.io/gh/Cebox82/FiBo).
-#### 7.2     Reporting on Test Coverage
+
+#### 7.2 Reporting on Test Coverage
+
 After building and testing the master branch the resulting coverage is uploaded to [CodeCov](https://codecov.io/gh/Cebox82/FiBo).
 [![code coverage score](https://codecov.io/gh/Cebox82/FiBo/branch/master/graph/badge.svg)](https://codecov.io/gh/Cebox82/FiBo)
-#### 7.3     Perceived Quality Reports
+
+#### 7.3 Perceived Quality Reports
+
 Code quality will be measured with SonarCloud. It will create a report for every pull request. The quality report status is showed by the following badge:
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Cebox82_FiBo&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Cebox82_FiBo)
 
+#### 7.4 Incident Logs and Change Requests
 
-#### 7.4     Incident Logs and Change Requests
-(n/a) `weglassen?`
-#### 7.5     Smoke Test Suite and Supporting Test Scripts
-(n/a) `weglassen?`
+(n/a, we are happy to have them communicated to us directly)
 
+#### 7.5 Smoke Test Suite and Supporting Test Scripts
 
-#### 7.6      Additional Work Products
-##### 7.6.1     Detailed Test Results
+(n/a, because there is no smoke testing)
+
+#### 7.6 Additional Work Products
+
+##### 7.6.1 Detailed Test Results
+
 The following screenshot shows the unit test results after running with Android Studio:
-![](https://pad.medialepfade.net/uploads/d646ea36-b2de-461d-9b81-cff2241c02cb.png)
+
+![](test_plan_images/unit-tests-frontend.png)
 
 This screenshot shows the results of running the UI tests:
-![](https://pad.medialepfade.net/uploads/f20c290a-a21d-48ef-84c2-a561de453ac5.png)
+![](test_plan_images/integration-tests-frontend.png)
 
 This screenshot shows the results of running the Backend Django tests:
-![](https://pad.medialepfade.net/uploads/24f957c4-7f43-4cae-998e-08c653645b38.png)
 
+![](test_plan_images/unit-tests-backend.png)
 
-##### 7.6.2     Additional Automated Functional Test Scripts
+##### 7.6.2 Additional Automated Functional Test Scripts
+
 (n/a because when running the UI tests, you already have everything scripted)
 
-##### 7.6.3     Test Guidelines
-In general all testable code should be tested. Due to time constraint this is of course not always possible. Therefore we set a bound of 70% for coverage.
+##### 7.6.3 Test Guidelines
 
-##### 7.6.4     Traceability Matrices
-(n/a) `weglassen?`
+In general all testable code should be tested. Due to time constraint this is of course not always possible. Therefore, we set a bound of 70% for coverage.
 
-### 8. Testing Workflow (Jonas)
+##### 7.6.4 Traceability Matrices
+
+(n/a, because there is no predecessor nor successor to trace changes of)
+
+### 8. Testing Workflow
 
 There are currently 2 ways to test our product:
 First approach (CI):
+
 1. Clone the [code](https://github.com/Cebox82/FiBo) to your GitHub repository
-2. Add every secret as seen in the [backend README](https://github.com/Cebox82/FiBo/blob/master/backend/README.md) to the GitHub repository as described [here](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) 
+2. Add every secret as seen in the [backend README](https://github.com/Cebox82/FiBo/blob/master/backend/README.md) to the GitHub repository as described [here](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository)
 3. Commit to a branch of your choice and check if the following jobs are successfull: Android CI (for android UI and Unit tests), Django CI (for backend tests)
-    
 
 Second approach (Emulator):
+
 1. Clone the [code](https://github.com/Cebox82/FiBo) to your local development machine
-2. Set up an android device emulator in android-studio as decribed [here](https://developer.android.com/studio/run/managing-avds)  
-3. Follow the instructions in the [backend README](https://github.com/Cebox82/FiBo/blob/master/backend/README.md) 
-4. Start the newly created docker container 
+2. Set up an android device emulator in android-studio as decribed [here](https://developer.android.com/studio/run/managing-avds)
+3. Follow the instructions in the [backend README](https://github.com/Cebox82/FiBo/blob/master/backend/README.md)
+4. Start the newly created docker container
 5. Open the android app in Android Studio with the /android-app subfolder as root source
 6. Do a Gradle sync
 7. Right click on the test folders located in the /src subfolder
 8. Click "Run All Tests" (The results should be the same as "Android CI" results)
 
 If you want to test everything by hand, be sure to set the Build Variants as whished. Ideally you should use "release" if you want to interact with the backend.
-![](https://pad.medialepfade.net/uploads/5de5f463-686c-4525-bc40-8ebdb519a7cc.png)
 
-After that, you can run the emulator. Just click on "app" to select the correct run configuration. 
+![](test_plan_images/build-variant-selection-frontend.png)
 
-### 9. Environmental Needs (Jonas)
+After that, you can run the emulator. Just click on "app" to select the correct run configuration.
+
+### 9. Environmental Needs
 
 This section presents the non-human resources required for the Test Plan.
 
-#### 9.1     Base System Hardware
+#### 9.1 Base System Hardware
 
 The following table sets forth the system resources for the test effort presented in this Test Plan.
 
@@ -361,12 +398,9 @@ The following table sets forth the system resources for the test effort presente
 | local test and build machine | 1 | Computer |
 | Android test device | 1 | Android mobile phone |
 
- 
-#### 9.2     Base Software Elements in the Test Environment
+#### 9.2 Base Software Elements in the Test Environment
 
 The following base software elements are required in the test environment for this Test Plan.
-
-
 
 | Software Element Name | Type |
 | -------- | -------- |
@@ -374,33 +408,30 @@ The following base software elements are required in the test environment for th
 | IntelliJ | Test Runner / IDE |
 | Docker     | Containerized backend environment |
 
- 
 #### 9.3 Productivity and Support Tools
 
 The following will be employed to support the test process for this Test Plan.
-
 
 | Tool Category or Type | Tool Brand Name |
 | -------- | -------- |
 | Repository     | [github.com](https://github.com/Cebox82/FiBo)|
 | Test Coverage Monitor     | [codecov.io](https://app.codecov.io/gh/Cebox82/FiBo)|
 | CI/CD     | [github actions](https://github.com/Cebox82/FiBo/actions)|
-| Metrics Tool     | [sonarcloud](https://sonarcloud.io/project/overview?id=Cebox82_FiBo)|	 
+| Metrics Tool     | [sonarcloud](https://sonarcloud.io/project/overview?id=Cebox82_FiBo)|
 
-#### 9.4     Test Environment Configurations (Jonas)
+#### 9.4 Test Environment Configurations
 
 not applicable because the configurations are stored in the workflow files (for CI) and the README
- 
-### 10.     Responsibilities, Staffing, and Training Needs (Jonas)
+
+### 10. Responsibilities, Staffing, and Training Needs
 
 This section presents the required resourses to address the test effort in the Test Plan; the main responsibilities, and the knowledge or skill sets required of those resources.
 
-#### 10.1     People and Roles
+#### 10.1 People and Roles
 
 This table shows the staffing assumptions for the test effort.
 
 ##### Human Resources
-
 
 | Role | Minimum Resources Recommended (number of full-time roles allocated) | Specific Responsbilities or Comments |
 | -------- | -------- | -------- |
@@ -413,13 +444,12 @@ This table shows the staffing assumptions for the test effort.
 | Designer | n/a | Identifies and defines the operations, attributes, and associations of the test classes. Responsibilities include: defines the test classes required to support testability requirements as defined by the test team |
 | Implementer     | Chris, Jens, Jonas, Lars, Markus| Implements and unit tests the test classes and test packages. Responsibilities include: creates the test components required to support testability requirements as defined by the designer |
 
-#### 10.2     Staffing and Training Needs (Lars)
+#### 10.2 Staffing and Training Needs
 
 By rotating roles and tasks often during implementation and trying to be as flexible as possible, we don't have any specific training that is required. Everyone learns from their peers, so by the end of the project everyone is at the same level. In general it is a kind of Just-In-Time approach as we learn things whenever it is needed.
 Hence, there is no specific training need for executing this testing plan.
 
-
-### 11.     Iteration Milestones (Lars)
+### 11. Iteration Milestones
 
 > Identify the key schedule milestones that set the context for the Testing effort. Avoid repeating too much detail that is documented elsewhere in plans that address the entire project.
 
@@ -430,8 +460,7 @@ Hence, there is no specific training need for executing this testing plan.
 | Having CI in GitHub     | 24.04.2023     | 24.04.2023     | 30.06.2023     | -     |
 | 50 % Test Coverage     | 25.04.2023     | 28.04.2023     | 30.06.2023     | -     |
 
-### 12.     Risks, Dependencies, Assumptions, and Constraints (Lars)
-
+### 12. Risks, Dependencies, Assumptions, and Constraints
 
 | Risk | Mitigation Strategy | Contingency (Risk is realized) |
 | -------- | -------- | -------- |
@@ -439,38 +468,26 @@ Hence, there is no specific training need for executing this testing plan.
 | Insufficient time planning     | Setting realistic milestones and deadlines. Monitoring of progress and early identification of delays.     | High     |
 | Communication problems     | Regular meetings and status updates     | Middle     |
 
-
 ---
-
-
 
 | Dependency between | Potential Impact of Dependency | Owners |
 | -------- | -------- | -------- |
 | Tickets     | Delay in completion of tasks due to dependent tickets     | Development team, project manager     |
 | Merging of branches     | Delay in continuing work on a ticket until the corresponding branch is merged into the main branch     | Development team, project manager     |
-  	  	 
-
 
 ---
-  	
 
 | Constraint on | Impact Constraint has on test effort | Owners |
 | -------- | -------- | -------- |
 | Time     | Limited time available for testing leads to compromises in test coverage and potentially undetected errors     | Project manager, tester     |
 |Changes in the project scope|Frequent changes in project scope require constant adjustments to the test plan and can affect test coverage|Project manager, tester|
 
-  	  	 
+### 13. Management Process and Procedures
 
-### 13.     Management Process and Procedures
-
-
-#### 13.1     Measuring and Assessing the Extent of Testing
+#### 13.1 Measuring and Assessing the Extent of Testing
 
 To track the scope of the tests, the tools Codecov and SonarCloud are used, integrated through GitHub Actions. These tools provide metrics and measurements to evaluate test coverage and track the progress of the test scope. Regular evaluations and reports are generated to measure and assess the current test scope.
 
-
-#### 13.2     Problem Reporting, Escalation, and Issue Resolution
-
+#### 13.2 Problem Reporting, Escalation, and Issue Resolution
 
 - Jens (Product Owner)
-  
