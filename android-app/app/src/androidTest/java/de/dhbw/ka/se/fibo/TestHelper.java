@@ -51,7 +51,7 @@ public class TestHelper {
         assertEquals("/users/login/", actualRequest.getRequestUrl().encodedPath());
 
         JsonObject requestBody = TestHelper.getJsonString(actualRequest.getBody());
-        assertEquals(email, requestBody.get("username").getAsString());
+        assertEquals(email, requestBody.get("email").getAsString());
         assertEquals(password, requestBody.get("password").getAsString());
     }
 

@@ -14,6 +14,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.isNotEnabled;
 import static androidx.test.espresso.matcher.ViewMatchers.withChild;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.CoreMatchers.not;
 import static de.dhbw.ka.se.fibo.TestMatchers.hasTextInputLayoutErrorText;
 
 import android.content.Context;
@@ -329,4 +330,82 @@ public class AddingFragmentTest {
                 .check(matches(isNotEnabled()));
     }
 
+    @Test
+    public void testExpenseErrorsDisappearOnIncomeTabClick() {
+        // click on the okay button without input
+        onView(withId(R.id.okayButton))
+                .perform(scrollTo())
+                .perform(click());
+
+        // check that error messages of text layouts are displayed
+        onView(withId(R.id.store_text_layout))
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_store_field))));
+        onView(withId(R.id.amount_layout))
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_amount_field))));
+        onView(withId(R.id.date_layout))
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_date_field))));
+        onView(withId(R.id.category_layout))
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_category_field))));
+        onView(withId(R.id.address_text_layout))
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_address_field))));
+
+        // click on income tab
+        onView(withText(R.string.adding_income))
+                .perform(scrollTo())
+                .perform(click());
+
+        // check that text layouts no longer have the error message
+        onView(withId(R.id.store_text_layout))
+                .check(matches(not(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_store_field)))));
+        onView(withId(R.id.amount_layout))
+                .check(matches(not(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_amount_field)))));
+        onView(withId(R.id.date_layout))
+                .check(matches(not(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_date_field)))));
+        onView(withId(R.id.category_layout))
+                .check(matches(not(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_category_field)))));
+        onView(withId(R.id.address_text_layout))
+                .check(matches(not(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_address_field)))));
+    }
+
+    @Test
+    public void testIncomeErrorsDisappearOnExpenseTabClick() {
+        // click on income tab
+        onView(withText(R.string.adding_income))
+                .perform(scrollTo())
+                .perform(click());
+
+        // click on the okay button without input
+        onView(withId(R.id.okayButton))
+                .perform(scrollTo())
+                .perform(click());
+
+        // check that error messages of text layouts are displayed
+        onView(withId(R.id.store_text_layout))
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_source_field))));
+        onView(withId(R.id.amount_layout))
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_amount_field))));
+        onView(withId(R.id.date_layout))
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_date_field))));
+        onView(withId(R.id.category_layout))
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_category_field))));
+        onView(withId(R.id.address_text_layout))
+                .check(matches(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_address_field))));
+
+        // click on expense tab
+        onView(withText(R.string.adding_expense))
+                .perform(scrollTo())
+                .perform(click());
+
+        // check that text layouts no longer have the error message
+        onView(withId(R.id.store_text_layout))
+                .check(matches(not(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_source_field)))));
+        onView(withId(R.id.amount_layout))
+                .check(matches(not(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_amount_field)))));
+        onView(withId(R.id.date_layout))
+                .check(matches(not(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_date_field)))));
+        onView(withId(R.id.category_layout))
+                .check(matches(not(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_category_field)))));
+        onView(withId(R.id.address_text_layout))
+                .check(matches(not(hasTextInputLayoutErrorText(appContext.getString(R.string.error_message_address_field)))));
+    }
 }

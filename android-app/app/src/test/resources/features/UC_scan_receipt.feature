@@ -4,7 +4,7 @@ Feature: scan receipt
     And I am on the homepage
 
   Scenario: open camera to scan receipt
-    Given I am signed in with username "USER" and password "PASSWORD"
+    Given I am signed in with email "EMAIL" and password "PASSWORD"
     And I am on the "home" page
     When I press the "New receipt" button
     Then I see two additional buttons "Add manually" and "Scan receipt" fade in
@@ -12,7 +12,7 @@ Feature: scan receipt
     Then I am in the camera layout
 
   Scenario: successfully scan and save it
-    Given I am signed in with username "USER" and password "PASSWORD"
+    Given I am signed in with email "EMAIL" and password "PASSWORD"
     And I am in the camera layout
     Then I turn the focus of the camera to the receipt
     When I press the camera button
@@ -23,7 +23,7 @@ Feature: scan receipt
     And I receive a "success" message
 
   Scenario: incomplete scan and save the operation by rescanning
-    Given I am signed in with username "USER" and password "PASSWORD"
+    Given I am signed in with email "EMAIL" and password "PASSWORD"
     And I am in the camera layout
     Then I turn the focus of the camera to the receipt
     When I press the camera button
@@ -33,7 +33,7 @@ Feature: scan receipt
     Then I can press the camera button to perform a new scan
 
   Scenario: failed scan
-    Given I am signed in with username "USER" and password "PASSWORD"
+    Given I am signed in with email "EMAIL" and password "PASSWORD"
     And I am in the camera layout
     Then I turn the focus of the camera to the receipt
     When I press the camera button
