@@ -132,7 +132,7 @@ public class AddingFragment extends Fragment {
         int currentMinutes = calendar.get(Calendar.MINUTE);
 
         timePicker = new MaterialTimePicker.Builder()
-                .setInputMode(MaterialTimePicker.INPUT_MODE_KEYBOARD)
+                .setInputMode(MaterialTimePicker.INPUT_MODE_CLOCK)
                 .setTimeFormat(TimeFormat.CLOCK_24H)
                 .setHour(currentHour)
                 .setMinute(currentMinutes)
@@ -215,7 +215,7 @@ public class AddingFragment extends Fragment {
 
             String substring_date = getFieldValue(dateText).substring(0,getFieldValue(dateText).lastIndexOf(" "));
 
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy, HH:mm");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yy, HH:mm");
 
             date = LocalDateTime.parse(substring_date, formatter);
 
