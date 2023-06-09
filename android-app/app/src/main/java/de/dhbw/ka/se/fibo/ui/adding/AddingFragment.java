@@ -169,7 +169,7 @@ public class AddingFragment extends Fragment {
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                // Not needed as this will be handled in onTabSelected
+                resetErrorMessages();
             }
 
             @Override
@@ -233,6 +233,12 @@ public class AddingFragment extends Fragment {
         }
 
         return null;
+    }
+
+    private void resetErrorMessages() {
+        List<TextInputLayout> textfields = List.of(storeLayout, amountLayout, dateTextLayout, categoriesDropdownLayout, addressLayout);
+
+        textfields.forEach(field -> field.setErrorEnabled(false));
     }
 
     private String getFieldValue(TextView field) {

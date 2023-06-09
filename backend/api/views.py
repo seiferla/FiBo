@@ -13,7 +13,7 @@ class GetUser(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request):
-        usermail = request.user.username
+        usermail = request.user.email
         user = FiboUser.objects.get(email=usermail)
         serializer = FiboUserSerializer(user, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -23,7 +23,7 @@ class DeleteUser(APIView):
     permission_classes = (IsAuthenticated,)
 
     def delete(self, request):
-        usermail = request.user.username
+        usermail = request.user.email
         user = FiboUser.objects.get(email=usermail)
         # All accounts assigned to the user are deleted as well
         # if there are other users for one account, then the account is not deleted
@@ -42,11 +42,11 @@ class RegisterUser(APIView):
         try:
             email = request.data['email']
             password = request.data['password']
-        except:
-            return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+        except BaseException as e:
+            print(e.__cause__)
+            return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST) 
 
-        # Note that username and email are the same
-        user = FiboUser.objects.create_user(username=email, email=email, password=password)
+        user = FiboUser.objects.create_user(email=email, password=password)
         default_account = Account.objects.create(name=email)
         user.account.add(default_account)
 
@@ -67,7 +67,8 @@ class CashflowsView(APIView):
             category, _ = Category.objects.get_or_create(name=request.data['category'])
             place = request.data['place']
             place_address, _ = Place.objects.get_or_create(address=place['address'], name=place['name'])
-        except:
+        except BaseException as e:
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
         if cashflow_type == 'INCOME':
@@ -91,7 +92,8 @@ class CashflowsView(APIView):
     def get(self, request, cashflow_id):
         try:
             cashflow = Cashflow.objects.get(id=cashflow_id)
-        except:
+        except BaseException as e:
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
         serializer = CashflowSerializer(cashflow, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -99,7 +101,8 @@ class CashflowsView(APIView):
     def delete(self, _, cashflow_id):
         try:
             cashflow = Cashflow.objects.get(id=cashflow_id)
-        except:
+        except BaseException as e:
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
         cashflow.delete()
         return JsonResponse({'success': True, 'cashflow_id': cashflow_id}, status=status.HTTP_200_OK)
@@ -114,7 +117,8 @@ class CashflowsView(APIView):
             cashflow.place, _ = Place.objects.get_or_create(address=place['address'], name=place['name'])
             cashflow.updated = datetime.now()
             cashflow_type = request.data['type']
-        except:
+        except BaseException as e:
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
         if cashflow_type == 'INCOME':
@@ -133,7 +137,8 @@ class PlaceView(APIView):
     def post(self, request):
         try:
             place = Place.objects.create(address=request.data['address'], name=request.data['name'])
-        except:
+        except BaseException as e:
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
         return JsonResponse({'success': True, 'place': place.name}, status=status.HTTP_201_CREATED)
@@ -141,7 +146,8 @@ class PlaceView(APIView):
     def get(self, request):
         try:
             place = Place.objects.get(address=request.GET['address'])
-        except:
+        except BaseException as e:
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
 
         serializer = PlaceSerializer(place, many=False)
@@ -153,7 +159,8 @@ class CategoryView(APIView):
     def post(self, request):
         try:
             category = Category.objects.create(name=request.POST['name'])
-        except:
+        except BaseException as e:
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
         return JsonResponse({'success': True, 'category_id': category.id}, status=status.HTTP_201_CREATED)
@@ -161,7 +168,8 @@ class CategoryView(APIView):
     def get(self, request):
         try:
             category = Category.objects.get(name=request.GET['name'])
-        except:
+        except BaseException as e:
+            print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
         serializer = CategorySerializer(category, many=False)
@@ -170,48 +178,49 @@ class CategoryView(APIView):
 
 class GetRoutes(APIView):
     permission_classes = (IsAuthenticated,)
+    tokenNeeded = 'Token needed'
 
     def get(self, _):
         routes = [
             {
                 'Endpoint': '/users/register',
                 'method': 'POST',
-                'Token needed': 'false',
+                self.tokenNeeded: 'false',
                 'body': {'email': '', 'password': ''},
                 'description': 'Registration requires an email and a password (see: body). Afterwards the entered credentials can be used to log in.'
             },
             {
                 'Endpoint': '/users/login',
                 'method': 'POST',
-                'Token needed': 'false',
-                'body': {'username': '', 'password': ''},
-                'description': 'To log in, the username (is the same as email) and password specified during registration must be sent along. The method returns the Refresh and Access Token.'
+                self.tokenNeeded: 'false',
+                'body': {'email': '', 'password': ''},
+                'description': 'To log in, the email and password specified during registration must be sent along. The method returns the Refresh and Access Token.'
             },
             {
                 'Endpoint': '/users/authenticate',
                 'method': 'POST',
-                'Token needed': 'Refresh',
+                self.tokenNeeded: 'Refresh',
                 'body': {'refresh': ''},
                 'description': 'To authenticate, a valid refresh token needs to be entered. The method returns an Access Token.'
             },
             {
                 'Endpoint': '/users/delete',
                 'method': 'DELETE',
-                'Token needed': 'Access',
+                self.tokenNeeded: 'Access',
                 'body': None,
                 'description': 'Deletes user that corresponds to the Access Token send in the header'
             },
             {
                 'Endpoint': '/users/get',
                 'method': 'GET',
-                'Token needed': 'Access',
+                self.tokenNeeded: 'Access',
                 'body': None,
                 'description': 'Returns user that corresponds to the Access Token send in the header'
             },
             {
                 'Endpoint': '/users/update',
                 'method': 'PUT',
-                'Token needed': 'Access',
+                self.tokenNeeded: 'Access',
                 'body': {'email': '', 'newPassword': '', 'oldPassword': ''},
                 'description': 'Not implemented yet. Updates current user with data sent in put request'
             },
