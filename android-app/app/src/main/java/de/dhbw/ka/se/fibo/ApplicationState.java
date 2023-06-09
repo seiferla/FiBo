@@ -30,7 +30,7 @@ public class ApplicationState {
     private static ApplicationState instance;
     private SortedSet<Cashflow> cashflows;
 
-    private final String TAG = "ApplicationState";
+    private static final String TAG = "ApplicationState";
 
     private byte[] jwsSigningKey = BuildConfig.JWS_SIGNING_KEY.getBytes();
 
