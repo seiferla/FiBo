@@ -215,7 +215,7 @@ public class AddingFragment extends Fragment {
 
             String substring_date = getFieldValue(dateText).substring(0,getFieldValue(dateText).lastIndexOf(" "));
 
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yy, HH:mm");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy, HH:mm");
 
             date = LocalDateTime.parse(substring_date, formatter);
 
