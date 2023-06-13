@@ -34,7 +34,7 @@
         android:clickable="true"
         android:contentDescription="@string/FAB_add_cashflow"
         android:focusable="true"
-        android:src="@drawable/home_fab_image"
+        android:src="@drawable/plus_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

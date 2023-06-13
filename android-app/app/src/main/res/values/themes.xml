@@ -34,4 +34,8 @@
         <item name="strokeColor">@color/fibo_stroke_color</item>
         <item name="strokeWidth">1dp</item>
     </style>
+
+    <style name="Style.FiBo.CardView.Filled.CornerRadiusSharp" parent="Style.FiBo.CardView.Filled">
+        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Small</item>
+    </style>
 </resources>

@@ -49,7 +49,7 @@ public class HomeFragment extends Fragment {
         dividerItemDecoration.setDrawable(Objects.requireNonNull(verticalDivider));
         recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        recyclerView.setAdapter(new ListAdapter(getContext(), ApplicationState.getInstance(requireContext()).getCashflows()));
+        recyclerView.setAdapter(new CashflowListAdapter(getContext(), ApplicationState.getInstance(requireContext()).getCashflows()));
         actionButton.setOnClickListener(e -> Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_navigation_adding));
     }
 

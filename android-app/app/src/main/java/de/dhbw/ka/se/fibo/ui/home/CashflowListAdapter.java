@@ -11,8 +11,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.card.MaterialCardView;
-
 import java.math.BigDecimal;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
@@ -27,12 +25,12 @@ import de.dhbw.ka.se.fibo.R;
 import de.dhbw.ka.se.fibo.models.Cashflow;
 import de.dhbw.ka.se.fibo.models.CashflowType;
 
-public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
+public class CashflowListAdapter extends RecyclerView.Adapter<CashflowViewHolder> {
 
     private final List<Cashflow> cashflowArrayList;
     private final Context context;
 
-    public ListAdapter(Context context, SortedSet<Cashflow> cashflowArrayList) {
+    public CashflowListAdapter(Context context, SortedSet<Cashflow> cashflowArrayList) {
         setHasStableIds(true);
         this.cashflowArrayList = new ArrayList<>(cashflowArrayList);
         this.context = context;
@@ -40,12 +38,12 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
 
     @NonNull
     @Override
-    public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_row, parent, false);
-        return new RecyclerViewHolder(view);
+    public CashflowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_cashflow_row, parent, false);
+        return new CashflowViewHolder(view);
     }
 
-    public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CashflowViewHolder holder, int position) {
         Cashflow cashflow = getItem(position);
         CashflowType cashflowType = cashflow.getType();
         BigDecimal overallValue = cashflow.getOverallValue();
@@ -67,12 +65,12 @@ public class ListAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
                 .appendValue(ChronoField.YEAR)
                 .toFormatter(Locale.getDefault());
         holder.date.setText(formatter.format(cashflow.getTimestamp()));
-        holder.materialCard.setOnClickListener(view -> openDetailsPage((MaterialCardView) view, cashflow, position));
+        holder.materialCard.setOnClickListener(view -> openDetailsPage(cashflow, position));
 
     }
 
     //Todo implement method
-    private void openDetailsPage(MaterialCardView materialCardView, Cashflow cashflow, int position) {
+    private void openDetailsPage(Cashflow cashflow, int position) {
         Toast.makeText(context, position + ". " + cashflow.getPlace().getName() + " " + cashflow.getType().getSign() + Helpers.formatBigDecimalCurrency(cashflow.getOverallValue()), Toast.LENGTH_SHORT).show();
     }
 
