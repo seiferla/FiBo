@@ -1,0 +1,8195 @@
+note
+53881 Euskirchen
+75339 Höfen an der Enz
+63869 Heigenbrücken
+63856 Bessenbach
+63874 Dammbach
+63826 Geiselbach
+63864 Glattbach
+63773 Goldbach
+63762 Großostheim
+63808 Haibach
+63872 Heimbuchenthal
+76698 Ubstadt-Weiher
+76187 Karlsruhe
+76771 Hördt
+76669 Bad Schönborn
+76149 Karlsruhe
+76863 Herxheim
+76761 Rülzheim
+76332 Bad Herrenalb
+76744 Wörth
+76131 Karlsruhe
+76829 Landau in der Pfalz
+76287 Rheinstetten
+76703 Kraichtal
+76228 Karlsruhe
+76887 Bad Bergzabern u.a.
+76597 Loffenau
+76694 Forst
+76877 Offenbach an der Queich
+76185 Karlsruhe
+76770 Hatzenbühl
+76661 Philippsburg
+76139 Karlsruhe
+"76857 Albersweiler, Silz u.a."
+76532 Baden-Baden
+76846 Hauenstein
+76327 Pfinztal
+76726 Germersheim
+76227 Karlsruhe
+76879 Hochstadt
+76689 Karlsdorf-Neuthard
+76359 Marxzell
+76872 Steinweiler
+76768 Berg
+76534 Baden-Baden
+76646 Bruchsal
+76137 Karlsruhe
+76855 Annweiler am Trifels
+76530 Baden-Baden
+76835 Rhodt u.a.
+76316 Malsch
+76709 Kronau
+76777 Neupotz
+76199 Karlsruhe
+76774 Leimersheim
+76684 Östringen
+76356 Weingarten
+76870 Kandel
+76767 Hagenbach
+76344 Eggenstein-Leopoldshafen
+76756 Bellheim
+76135 Karlsruhe
+76848 Wilgartswiesen
+76833 Frankweiler
+76307 Karlsbad
+76707 Hambrücken
+76275 Ettlingen
+76891 Bruchweiler-Bärenbach u.a.
+76776 Neuburg am Rhein
+76189 Karlsruhe
+76773 Kuhardt
+76676 Graben-Neudorf
+76351 Linkenheim-Hochstetten
+76865 Insheim
+76764 Rheinzabern
+76337 Waldbronn
+76751 Jockgrim
+76133 Karlsruhe
+"76831 Billigheim-Ingenheim, Birkweiler"
+76297 Stutensee
+76706 Dettenheim
+76229 Karlsruhe
+76889 Klingenmünster u.a.
+33449 Langenberg
+33106 Paderborn
+33442 Herzebrock-Clarholz
+33775 Versmold
+33154 Salzkotten
+33647 Bielefeld
+33397 Rietberg
+33699 Bielefeld
+33649 Bielefeld
+33189 Schlangen
+33330 Gütersloh
+33161 Hövelhof
+33014 Bad Driburg
+33739 Bielefeld
+33818 Leopoldshöhe
+33813 Oerlinghausen
+33184 Altenbeken
+33729 Bielefeld
+33604 Bielefeld
+33034 Brakel
+33332 Gütersloh
+33415 Verl
+33142 Büren
+33165 Lichtenau
+33428 Harsewinkel
+33615 Bielefeld
+33659 Bielefeld
+33602 Bielefeld
+33689 Bielefeld
+33378 Rheda-Wiedenbrück
+33335 Gütersloh
+33334 Gütersloh
+33824 Werther (Westf.)
+33803 Steinhagen
+33613 Bielefeld
+33619 Bielefeld
+33617 Bielefeld
+33611 Bielefeld
+33609 Bielefeld
+33829 Borgholzhausen
+33102 Paderborn
+33039 Nieheim
+33178 Borchen
+33790 Halle (Westfalen)
+33098 Paderborn
+33129 Delbrück
+33181 Wünnenberg
+33104 Paderborn
+33758 Schloß Holte-Stukenbrock
+33719 Bielefeld
+33100 Paderborn
+33607 Bielefeld
+33605 Bielefeld
+21149 Hamburg
+21147 Hamburg
+23758 Oldenburg in Holstein
+91097 Oberreichenbach
+12307 Berlin
+86551 Aichach
+86573 Obergriesbach
+86554 Pöttmes
+86556 Kühbach
+86570 Inchenhofen
+86574 Petersdorf
+86674 Baar
+86508 Rehling
+86568 Hollenbach
+86444 Affing
+86576 Schiltberg
+86447 Aindling
+32052 Herford
+32049 Herford
+32051 Herford
+49328 Melle
+49326 Melle
+49324 Melle
+87437 Kempten (Allgäu)
+87439 Kempten (Allgäu)
+87435 Kempten (Allgäu)
+06868 Coswig (Anhalt)
+06869 Coswig (Anhalt)
+"18107 Elmenhorst/Lichtenhagen, Rostock"
+"18211 Retschow, Admannshagen-Bargeshagen u.a."
+"18209 Bad Doberan, Bartenshagen-Parkentin u.a."
+"18198 Stäbelow, Kritzmow"
+44369 Dortmund
+44149 Dortmund
+44145 Dortmund
+44225 Dortmund
+44227 Dortmund
+44137 Dortmund
+44289 Dortmund
+44141 Dortmund
+44339 Dortmund
+44265 Dortmund
+44359 Dortmund
+44287 Dortmund
+44319 Dortmund
+44135 Dortmund
+44143 Dortmund
+44388 Dortmund
+44379 Dortmund
+44357 Dortmund (Westerfilde Bodelschwingh Oestrich)
+44263 Dortmund
+44147 Dortmund
+44328 Dortmund
+44309 Dortmund
+44329 Dortmund
+"44269 Dortmund (Schüren, Benninghofen"
+"44267 Dortmund (Holzen, Höchsten, Loh)"
+44229 Dortmund
+44139 Dortmund
+"18069 Rostock, Lambrechtshagen"
+18106 Rostock
+57612 Birnbach
+57635 Weyerbusch
+57636 Mammelzen
+57644 Hattert
+57614 Steimel
+57645 Nister
+57627 Hachenburg
+57638 Neitersen
+57639 Oberdreis
+"57647 Nistertal, Enspel"
+"57629 Malberg, Norken, Höchstenbach u.a."
+57648 Unnau
+57632 Flammersfeld
+57641 Oberlahr
+57610 Altenkirchen (Westerwald)
+57642 Alpenrod
+"28237 Bremen, Gröpelingen und Lindenhof (Häfen, I d Wischen)"
+28307 Bremen
+28357 Bremen (Borgfeld und Lehesterdeich)
+28195 Bremen Altstadt und Bahnhofsvorstadt
+28279 Bremen
+28355 Bremen
+28325 Bremen
+28717 Bremen
+"28779 Bremen, das ist Blumenthal und Lüssum-Bockhorn"
+28199 Bremen
+28211 Bremen
+28309 Bremen
+28359 Bremen
+"28777 Bremen, das ist Rönnebeck, Farge und Rekum"
+28197 Bremen
+28209 Bremen
+28329 Bremen
+"28755 Bremen d. i. Aumund, Hammersbeck, Fähr und Lobbendorf"
+28203 Bremen
+28215 Bremen
+28327 Bremen
+"28719 Bremen, das ist Burg-Grambke und Burgdamm (Ostteil) Mittelsbüren gehört auch dazu"
+28201 Bremen
+"28213 Bremen, Neu-Schwachhausen und Riensberg"
+"28759 Bremen, d. i. Grohn und St. Magnus"
+28207 Bremen
+28219 Bremen Walle
+"28757 Bremen, d. i. Vegesack und Schönebeck"
+28205 Bremen
+"28217 Bremen Westend, Utbremen, Steffensweg, Überseehafen"
+28277 Bremen
+28239 Bremen Oslebshausen und Ohlenhof
+28259 Bremen
+20148 Hamburg
+20146 Hamburg
+86511 Schmiechen
+86415 Mering
+86577 Sielenbach
+86504 Merching
+86510 Ried
+86559 Adelzhausen
+86438 Kissing
+82297 Steindorf
+86495 Eurasburg
+86316 Friedberg
+"18230 Rerik, Bastorf, Biendorf"
+18236 Kröpelin
+12309 Berlin
+12305 Berlin
+18119 Rostock
+"18059 Rostock, Papendorf u.a."
+18057 Rostock
+18055 Rostock
+18109 Rostock
+12249 Berlin Lankwitz
+12279 Berlin
+12277 Berlin
+12107 Berlin Mariendorf
+57562 Herdorf
+57580 Gebhardshain
+57584 Scheuerfeld
+57539 Fürthen
+57548 Kirchen (Sieg)
+57577 Hamm (Sieg)
+"57520 Emmerzhausen, Niederdreisbach, Steinebach"
+57589 Pracht
+"57537 Wissen, Hövels u.a."
+57567 Daaden
+57572 Niederfischbach
+57583 Nauroth
+57518 Betzdorf
+57555 Mudersbach
+21129 Hamburg
+18147 Rostock
+"18184 Roggentin, Broderstorf u.a."
+"18181 Rostock, Graal-Müritz"
+18146 Rostock
+"18182 Rostock, Gelbensande, Rövershagen u.a."
+"18195 Tessin, Grammow u.a."
+20149 Hamburg
+87488 Betzigau
+87527 Sonthofen
+06844 Dessau-Roßlau
+87538 Fischen im Allgäu
+06862 Dessau-Roßlau
+06861 Dessau-Roßlau
+06846 Dessau-Roßlau
+06849 Dessau-Roßlau
+06847 Dessau-Roßlau
+85777 Fahrenzhausen
+85419 Mauern
+85414 Kirchdorf a.d. Amper
+85408 Gammelsdorf
+85368 Moosburg a.d. Isar
+85386 Eching
+85395 Attenkirchen
+85413 Hörgertshausen
+85376 Neufahrn b. Freising
+85375 Neufahrn b. Freising
+85391 Allershausen
+85402 Kranzberg
+85307 Paunzhausen
+85411 Hohenkammer
+85399 Hallbergmoos
+85416 Langenbach
+85356 Freising
+85410 Haag a.d. Amper
+85417 Marzling
+85406 Zolling
+85405 Nandlstadt
+85354 Freising
+85077 Manching
+85290 Geisenfeld
+85088 Vohburg a.d. Donau
+85276 Pfaffenhofen a.d. Ilm
+85301 Schweitenkirchen
+85309 Pörnbach
+85296 Rohrbach
+85107 Baar-Ebenhausen
+85305 Jetzendorf
+85126 Münchsmünster
+85084 Reichertshofen
+85298 Scheyern
+85304 Ilmmünster
+85302 Gerolsbach
+85283 Wolnzach
+85293 Reichertshausen
+85119 Ernsgaden
+"21640 Horneburg, Bliedersdorf, Neuenkirchen, Nottensdorf"
+21614 Buxtehude
+12209 Berlin Lichterfelde
+12207 Berlin Lichterfelde
+12247 Berlin Lankwitz
+85253 Erdweg
+85229 Markt Indersdorf
+85256 Vierkirchen
+85258 Weichs
+85247 Schwabhausen
+85238 Petershausen
+85244 Röhrmoos
+85778 Haimhausen
+85235 Odelzhausen
+85250 Altomünster
+85259 Sulzemoos
+85241 Hebertshausen
+85221 Dachau
+85757 Karlsfeld
+85232 Bergkirchen
+85254 Sulzemoos
+73529 Stadt Schwäbisch Gmünd
+73525 Stadt Schwäbisch Gmünd
+"73527 Schwäbisch Gmünd, Täferrot"
+85053 Ingolstadt
+85101 Lenting
+85131 Pollenfeld
+85051 Ingolstadt
+85110 Kipfenberg
+85129 Oberdolling
+85092 Kösching
+85057 Ingolstadt
+85120 Hepberg
+85134 Stammham
+85125 Kinding
+85098 Großmehring
+85049 Ingolstadt
+85114 Buxheim
+85128 Nassenfels
+85080 Gaimersheim
+85139 Wettstetten
+85117 Eitensheim
+85122 Hitzhofen
+85055 Ingolstadt
+85113 Böhmfeld
+85132 Schernfeld
+85111 Adelschlag
+85137 Walting
+85095 Denkendorf
+85072 Eichstätt
+85116 Egweil
+85135 Titting
+85104 Pförring
+73033 Göppingen
+73037 Göppingen
+21075 Hamburg
+73035 Göppingen
+85540 Haar
+85662 Hohenbrunn
+85551 Kirchheim b. München
+85764 Oberschleißheim
+85630 Grasbrunn
+85635 Höhenkirchen-Siegertsbrunn
+85653 Aying
+85622 Feldkirchen
+85737 Ismaning
+85716 Unterschleißheim
+85649 Brunnthal
+85640 Putzbrunn
+85521 Ottobrunn/Riemerling
+85579 Neubiberg
+85774 Unterföhring
+85609 Aschheim
+85748 Garching b. München
+85464 Finsing
+85456 Wartenberg
+85452 Moosinning
+85469 Walpertskirchen
+85467 Neuching
+85656 Buch a. Buchrain
+85459 Berglern
+85669 Pastetten
+85457 Wörth
+85435 Erding
+85659 Forstern
+85462 Eitting
+85461 Bockhorn
+85447 Fraunberg
+85465 Langenpreising
+85445 Oberding
+85570 Markt Schwaben
+73728 Esslingen am Neckar
+85625 Glonn
+85667 Oberpframmern
+85604 Zorneding
+85567 Grafing b. München
+85665 Moosach
+85658 Egmating
+85614 Kirchseeon
+85586 Poing
+85646 Anzing
+85661 Forstinning
+85598 Baldham
+85643 Steinhöring
+85617 Aßling
+85591 Vaterstetten
+85652 Pliening
+85560 Ebersberg
+85664 Hohenlinden
+85599 Parsdorf/Hergolding
+85123 Karlskron
+25492 Heist
+25436 Uetersen
+25489 Haseldorf
+20144 Hamburg
+80335 München
+80935 München
+80689 München
+80333 München
+80802 München
+80639 München
+80995 München
+80798 München
+80469 München
+80993 München
+80799 München
+80336 München
+80807 München
+80796 München
+80337 München
+80803 München
+80636 München
+80997 München
+80804 München
+80538 München
+80937 München
+80999 München
+80801 München
+80539 München
+80809 München
+80686 München
+80339 München
+80933 München
+80637 München
+80331 München
+80805 München
+80638 München
+80939 München
+80797 München
+80634 München
+80992 München
+80687 München
+12167 Berlin Steglitz
+90482 Nürnberg
+12205 Berlin Lichterfelde
+90480 Nürnberg
+12203 Berlin Lichterfelde
+90491 Nürnberg
+18258 Schwaan u.a.
+"18233 Altbukow, Am Salzhaff, Carinerland, Neubukow"
+12165 Berlin Steglitz
+12169 Berlin Steglitz
+90411 Nürnberg
+90409 Nürnberg
+90489 Nürnberg
+90402 Nürnberg
+"18279 Lalendorf, Langhagen"
+"18292 Krakow, Dobbin-Linstow u.a."
+"17168 Jördenstorf, Prebberede u.a."
+"18276 Reimershagen, Lohmen, Zehna, Hägerfelde u.a."
+17179 Gnoien u.a.
+"17166 Dahmen, Groß Wokern, Teterow"
+"18299 Laage, Wardow u.a."
+73430 Aalen
+73072 Donzdorf
+73431 Aalen
+73434 Aalen
+73433 Aalen
+73345 Hohenstadt/Drackenstein
+73432 Aalen
+18249 Bernitt Boitin Buchenhof Dreetz Eickelberg Eickhof Klein Raden Lübzin-Rosenow Penzin Schlemmin Schlockow Tarnow Viezen Warnow Zernin
+18246 Bützow Baumgarten Friedrichshof Glambeck Groß Belitz Göllin Jabelitz Jürgenshagen Klein Belitz Krugland Kurzen Trechow Käterhagen Langen Trechow Moisall Neu Käterhagen Neuendorf Neukirchen Oettelin Reinstorf Rühn Selow Steinhagen Zepelin
+79098 Freiburg im Breisgau
+71540 Murrhardt
+74427 Fichtenberg
+32108 Bad Salzuflen
+32107 Bad Salzuflen
+32105 Bad Salzuflen
+21629 Neu Wulmstorf
+21077 Hamburg
+21073 Hamburg
+21079 Hamburg
+52070 Aachen
+52062 Aachen
+87616 Marktoberdorf
+87637 Seeg
+87634 Obergünzburg
+87647 Unterthingau
+87648 Aitrang
+87675 Stötten am Auerberg
+87662 Kaltental
+87742 Apfeltrach
+87749 Hawangen
+87781 Ungerhausen
+21218 Seevetal
+07389 Ranis u.a.
+07381 Pößneck
+07387 Krölpa
+25491 Hetlingen
+25488 Holm
+25482 Appen
+81479 München
+81827 München
+81243 München
+81679 München
+81371 München
+81673 München
+81547 München
+81541 München
+81475 München
+81737 München
+81375 München
+81925 München
+81247 München
+81667 München
+81825 München
+81241 München
+81677 München
+81477 München
+81671 München
+81545 München
+81929 München
+81369 München
+81539 München
+81829 München
+81379 München
+81735 München
+81373 München
+81675 München
+81245 München
+81549 München
+81739 München
+81543 München
+81476 München
+81669 München
+81377 München
+81927 München
+81249 München
+79100 Freiburg im Breisgau
+79102 Freiburg im Breisgau
+79117 Freiburg im Breisgau
+32756 Detmold
+32758 Detmold
+32760 Detmold
+"21720 Grünendeich, Guderhandviertel, Mittelnkirchen, Steinkirchen"
+21635 Jork
+21723 Hollern-Twielenfleth
+20099 Hamburg
+20095 Hamburg
+"24217 Schönberg, Wisch, Fiefbergen, Barsbek, Stakendorf, Krummbek, Bendfeld und Rögen"
+"24257 Hohenfelde, Schwartbuck, Köhn, Pülsen (mit Köhnerbrücke, Gde. Giekau)"
+24321 Lütjenburg
+"24327 Blekendorf, Kaköhl, Futterkamp, Högsdorf und Kletkamp"
+24329 Grebin
+"24326 Ascheberg, Dersau, Kalübbe, Stocksee, Nehmten, Dörnick und Stadtbek"
+24223 Schwentinetal
+24306 Plön
+"24256 Fargau-Pratjau, Schlesen und Stoltenberg"
+24253 Probsteierhagen
+24211 Preetz
+24248 Mönkeberg
+24638 Schmalensee
+24235 Laboe
+24232 Schönkirchen und Dobersdorf
+24226 Heikendorf
+12163 Berlin Steglitz
+12157 Berlin Schöneberg
+24601 Wankendorf
+24245 Kirchbarkau
+24250 Nettelsee
+24619 Börnhöved
+24610 Trappenkamp
+12161 Berlin Friedenau
+12159 Berlin Friedenau
+14197 Berlin Wilmersdorf
+24220 Flintbek
+24635 Rickling
+24637 Schillsdorf
+10715 Berlin Wilmersdorf
+32547 Bad Oeynhausen
+32549 Bad Oeynhausen
+32545 Bad Oeynhausen
+32423 Minden
+32427 Minden
+32429 Minden
+32425 Minden
+82343 Pöcking
+82205 Gilching
+82279 Eching a. Ammersee
+82349 Pentenried
+82335 Berg
+82211 Herrsching a. Ammersee
+82234 Weßling
+82229 Seefeld
+82131 Gauting
+82266 Inning a. Ammersee
+82327 Tutzing
+82346 Andechs
+82319 Starnberg
+82152 Planegg/Krailling
+82340 Feldafing
+82237 Wörthsee
+82290 Landsberied
+82285 Hattenhofen
+82223 Eichenau
+82293 Mittelstetten
+82194 Gröbenzell
+82288 Kottgeisering
+82278 Althegnenberg
+82140 Olching
+82272 Moorenweis
+82256 Fürstenfeldbruck
+82284 Grafrath
+82216 Maisach
+82281 Egenhofen
+82166 Gräfelfing
+82296 Schöngeising
+82276 Adelshofen
+82291 Mammendorf
+82178 Puchheim
+82287 Jesenwang
+82110 Germering
+82269 Geltendorf
+82299 Türkenfeld
+82239 Alling
+82294 Oberschweinbach
+82275 Emmering
+14195 Berlin Dahlem
+10827 Berlin
+10825 Berlin
+10829 Berlin Schöneberg
+12099 Berlin Tempelhof
+12103 Berlin Tempelhof
+12105 Berlin Mariendorf
+07819 Triptis
+07927 Hirschberg
+07922 Tanna
+07366 Rosenthal am Rennsteig
+07356 Lobenstein
+07924 Ziegenrück
+07926 Gefell
+"07806 Neustadt an der Orla, Weira, u.a"
+07929 Saalburg-Ebersdorf
+07368 Remptendorf
+07343 Wurzbach
+"07919 Kirschkau, Pausa-Mühltroff"
+07907 Schleiz
+12109 Berlin Mariendorf
+12349 Berlin Buckow
+73734 Esslingen am Neckar
+73730 Esslingen am Neckar
+73732 Esslingen am Neckar
+73773 Aichwald
+73733 Esslingen am Neckar
+90408 Nürnberg
+90419 Nürnberg
+90429 Nürnberg
+90439 Nürnberg
+90441 Nürnberg
+90431 Nürnberg
+90449 Nürnberg
+90403 Nürnberg
+06886 Wittenberg
+90427 Nürnberg
+90425 Nürnberg
+90475 Nürnberg
+82362 Weilheim i. OB
+82387 Antdorf
+82389 Böbing
+82405 Wessobrunn
+82396 Pähl
+82407 Wielenbach
+82377 Penzberg
+82398 Polling
+82380 Peißenberg
+82390 Eberfing
+82401 Rottenbuch
+82392 Habach
+82409 Wildsteig
+82399 Raisting
+82436 Eglfing
+82383 Hohenpeißenberg
+82386 Huglfing
+82402 Seeshaupt
+82393 Iffeldorf
+82404 Sindelsdorf
+82347 Bernried am Starnberger See
+82395 Obersöchering
+79104 Freiburg im Breisgau
+24576 Bad Bramstedt
+24643 Struvenhütten
+"24568 Kaltenkirchen, Nützen, Oersdorf, Kattendorf und Winsen"
+24558 Henstedt-Ulzburg
+24598 Boostedt
+24623 Großenaspe
+24641 Sievershütten
+24238 Selent
+24649 Wiemersdorf
+24640 Schmalfeld
+24632 Lentföhrden
+24629 Kisdorf
+24628 Hartenholm
+79115 Freiburg im Breisgau
+79106 Freiburg im Breisgau
+24622 Gnutz
+24634 Padenstedt
+24594 Hohenwestedt
+24647 Wasbek
+24582 Bordesholm
+"24613 Aukrug, Wiedenborstel"
+24644 Timmaspe
+24616 Brokstedt
+24625 Großharrie
+24808 Jevenstedt und Plirup
+"24816 Hamweddel, Brinjahe, Stafstedt, Luhnvie, Luhnstedt und Freudenberg"
+"24819 Todenbüttel, Nienborstel, Embühren, Haale und Grotenknöll"
+24259 Westensee
+"24793 Bargstedt, Brammer, Oldenbüttel"
+24783 Osterrönfeld
+24589 Nortorf
+24784 Westerrönfeld
+24241 Blumenthal
+24797 Breiholz u.a.
+24813 Schülp bei Rendsburg
+24247 Mielkendorf
+24646 Warder
+24254 Rumohr
+24242 Felde
+24802 Emkendorf
+24239 Achterwehr
+24631 Langwedel
+24805 Hamdorf und Prinzenmoor
+24363 Holtsee
+"24794 Borgstedt, Neu Duvenstedt und Bünsdorf"
+24806 Hohn
+24161 Altenholz
+24251 Osdorf
+24809 Nübbel
+24814 Sehestedt
+"24796 Bredenbek, Bovenau, und Krummwisch"
+24244 Felm
+24790 Schacht-Audorf
+24800 Elsdorf-Westermühlen
+24787 Fockbek
+"24782 Büdelsdorf, Rickert"
+24229 Dänischenhagen
+24768 Rendsburg
+"24214 Gettorf, Lindau, Tüttendorf, Neuwittenbek, Neudorf-Bornstein, Schinkel, Noer, Altwittenbek, Großkönigsförde u.a."
+24791 Alt Duvenstedt
+"24358 Ascheffel, Ahlefeld-Bistensee und Hütten"
+"24811 Owschlag, Brekendorf und Stenten"
+"24361 Groß Wittensee, Haby, Damendorf. Holzbunge, Klein , ittensee, Lehmsiek, Profit und Sande"
+41460 Neuss
+56077 Koblenz
+56073 Koblenz
+56076 Koblenz
+56072 Koblenz
+56075 Koblenz
+56070 Koblenz
+56068 Koblenz
+82499 Wallgau
+82433 Bad Kohlgrub
+82490 Farchant
+82442 Saulgrub
+82444 Schlehdorf
+82493 Krün
+82494 Krün
+82435 Bayersoien
+82481 Mittenwald
+82418 Murnau a. Staffelsee
+82438 Eschenlohe
+82431 Kochel a. See
+82445 Schwaigen
+82447 Spatzenhausen
+82496 Oberau
+82487 Oberammergau
+82497 Unterammergau
+82439 Großweil
+82488 Ettal
+82432 Walchensee
+82441 Ohlstadt
+82449 Uffing a. Staffelsee
+82467 Garmisch-Partenkirchen
+82061 Neuried
+82538 Geretsried
+82057 Icking
+82024 Taufkirchen
+82069 Schäftlarn
+82008 Unterhaching
+82549 Königsdorf
+82067 Schäftlarn
+82547 Eurasburg
+82054 Sauerlach
+82065 Baierbrunn
+82544 Egling
+82064 Straßlach-Dingharting
+82541 Münsing
+82041 Oberhaching
+82031 Grünwald
+82515 Wolfratshausen
+17449 Karlshagen
+17438 Wolgast
+"17429 Benz, Heringsdorf u.a."
+"17440 Kröslin, Krummin, Lassan u.a."
+17419 Seebad Ahlbeck
+17424 Ostseebad Heringsdorf
+17454 Zinnowitz
+17406 Usedom u.a.
+17459 Koserow
+24369 Waabs
+24357 Fleckeby u.a.
+24351 Damp
+"24398 Dörphof, Brodersby, Karby und Winnemark"
+"24354 Rieseby, Kosel, Bösby, Bösbyfeld und Pukholt"
+24360 Barkelsby
+24366 Loose
+24364 Holzdorf
+24340 Eckernförde
+52068 Aachen
+52080 Aachen
+"23701 Eutin, Süsel"
+23738 Lensahn
+23730 Neustadt
+"23714 Malente, Kirchnüchel"
+52222 Stolberg (Rhld.)
+23813 Nehms
+23824 Tensfeld
+23827 Wensin
+23623 Ahrensbök
+23826 Bark
+23795 Bad Segeberg
+"23845 Itzstedt, Seth, Oering, Grabau, Wakendorf I, Bühnsdorf, Bahrenhof, Dreggers und Borstel"
+23829 Wittenborn
+"23815 Geschendorf, Westerrade und Strukdorf"
+23812 Wahlstedt
+41462 Neuss
+23863 Bargfeld-Stegen
+23858 Reinfeld (Holstein)
+23619 Zarpen
+23843 Bad Oldesloe
+90478 Nürnberg
+"52066 Aachen (Beverau, Teile von Forst und Kalverbenden)"
+52074 Aachen
+90471 Nürnberg
+52064 Aachen
+52072 Aachen
+52078 Aachen
+"52076 Aachen-Süd (Walheim, Kornelimünster, Oberforstbach,und Schleckheim)"
+63452 Hanau
+63065 Offenbach am Main
+63456 Hanau
+63628 Bad Soden-Salmünster
+63075 Offenbach am Main
+63454 Hanau
+63069 Offenbach am Main
+"63924 Kleinheubach, Rüdenau"
+63457 Hanau
+63820 Elsenfeld
+"63825 Schöllkrippen, Blankenbach"
+63846 Laufach
+63067 Offenbach am Main
+63450 Hanau
+63073 Offenbach am Main
+63743 Aschaffenburg
+63739 Aschaffenburg
+63071 Offenbach am Main
+63849 Leidersbach
+63741 Aschaffenburg
+88459 Tannheim
+88448 Attenweiler
+88361 Altshausen
+88271 Wilhelmsdorf
+88142 Wasserburg (Bodensee)
+88515 Langenenslingen
+88489 Wain
+88377 Riedhausen
+88319 Aitrach
+88299 Leutkirch im Allgäu
+88167 Röthenbach (Allgäu)
+88069 Tettnang
+88147 Achberg
+88521 Ertingen
+88451 Dettingen an der Iller
+88447 Warthausen
+88368 Bergatreute
+88339 Bad Waldsee
+88250 Weingarten
+88138 Sigmarszell
+88487 Mietingen
+88376 Königseggwald
+88371 Ebersbach-Musbach
+88289 Waldburg
+88178 Heimenkirch
+88709 Meersburg
+88145 Hergatz
+88527 Unlingen
+88450 Berkheim
+88433 Schemmerhofen
+88239 Wangen im Allgäu
+88212 Ravensburg
+88682 Salem
+88633 Heiligenberg
+88480 Achstetten
+88400 Biberach an der Riß
+88370 Ebenweiler
+88279 Amtzell
+88175 Scheidegg
+88079 Kressbronn am Bodensee
+88699 Frickingen
+88161 Lindenberg im Allgäu
+88525 Dürmentingen
+88430 Rot an der Rot
+88416 Ochsenhausen
+88353 Kißlegg
+88260 Argenbühl
+88179 Oberreute
+"88637 Leibertingen, Buchheim"
+88477 Schwendi
+88457 Kirchdorf an der Iller
+88379 Unterwaldhausen
+88374 Hoßkirch
+88276 Berg
+88267 Vogt
+88074 Meckenbeuren
+88719 Stetten
+88149 Nonnenhorn
+88046 Friedrichshafen
+88690 Uhldingen-Mühlhofen
+88453 Erolzheim
+88437 Maselheim
+88410 Bad Wurzach
+88317 Aichstetten
+88255 Baienfurt
+88214 Ravensburg
+88085 Langenargen
+88483 Burgrieden
+88456 Ingoldingen
+88444 Ummendorf
+88373 Fleischwangen
+88284 Wolpertswende
+88718 Daisendorf
+88486 Kirchberg an der Iller
+88436 Eberhardzell
+88427 Bad Schussenried
+88316 Isny im Allgäu
+88287 Grünkraut
+88213 Ravensburg
+88097 Eriskirch
+88481 Balzheim
+88471 Laupheim
+88441 Mittelbiberach
+88364 Wolfegg
+88281 Schlier
+88273 Fronreute
+88099 Neukirch
+88696 Owingen
+88484 Gutenzell-Hürbel
+88422 Bad Buchau
+88326 Aulendorf
+88285 Bodnegg
+88171 Weiler-Simmerberg
+88529 Zwiefalten
+88524 Uttenweiler
+"56132 Becheln, Dausenau, Frücht, Kemmenau, Miellen, Nievern, Schöne Aussicht und Waldfrieden-Schweizertal"
+56179 Vallendar
+41464 Neuss
+"56130 Bad Ems, Altes Forsthaus, Buchenberg, Grenzloch, Heinrichshof, Lindenbach, Schleuse Dausenau, Schleuse Ems"
+90473 Nürnberg
+83671 Benediktbeuern
+83677 Reichersbeuern
+83661 Lenggries
+83674 Gaißach
+83673 Bichl
+83623 Dietramszell
+83679 Sachsenkam
+83670 Bad Heilbrunn
+83676 Jachenau
+"83646 Bad Tölz, Wackersberg"
+90469 Nürnberg
+90455 Nürnberg
+83708 Kreuth
+83666 Waakirchen
+83730 Fischbachau
+83703 Gmund a. Tegernsee
+83627 Warngau
+83607 Holzkirchen
+83737 Irschenberg
+83714 Miesbach
+83684 Tegernsee
+83734 Hausham
+83707 Bad Wiessee
+83629 Weyarn
+83624 Otterfing
+83727 Schliersee
+83700 Rottach-Egern
+83626 Valley
+83735 Bayrischzell
+90451 Nürnberg
+90453 Nürnberg
+79108 Freiburg im Breisgau
+79110 Freiburg im Breisgau
+86179 Augsburg
+86199 Augsburg
+86157 Augsburg
+86159 Augsburg
+86161 Augsburg
+86165 Augsburg
+86163 Augsburg
+86152 Augsburg
+86150 Augsburg
+06842 Dessau-Roßlau
+06772 Gräfenhainichen
+06785 Oranienbaum-Wörlitz
+"39264 Güterglück, Lindau, Deetz u.a."
+39261 Zerbst/Anhalt
+57080 Siegen
+57078 Siegen
+57074 Siegen
+57076 Siegen
+57072 Siegen
+84085 Langquaid
+84104 Rudelzhausen
+84091 Attenhofen
+84072 Au in der Hallertau
+84097 Herrngiersdorf
+84089 Aiglsbach
+84106 Volkenschwand
+84048 Mainburg
+84094 Elsendorf
+90443 Nürnberg
+90459 Nürnberg
+84101 Obersüßbach
+84061 Ergoldsbach
+84186 Vilsheim
+84056 Rottenburg a.d. Laaber
+84169 Altfraunhofen
+84095 Furth
+84181 Neufraunhofen
+84034 Landshut
+84155 Bodenkirchen
+84174 Eching
+84092 Bayerbach bei Ergoldsbach
+84028 Landshut
+84137 Vilsbiburg
+84079 Bruckberg
+84103 Postau
+84187 Weng
+84066 Mallersdorf-Pfaffenberg
+84171 Baierbach
+84098 Hohenthann
+84036 Landshut
+84166 Adlkofen
+84175 Gerzen
+84144 Geisenhausen
+84082 Laberweinting
+84107 Weihmichl
+84189 Wurmsham
+84069 Schierling
+84172 Buch a. Erlbach
+84100 Niederaichbach
+84184 Tiefenbach
+84051 Essenbach
+84168 Aham
+84178 Kröning
+"84032 Landshut, Altdorf"
+84149 Velden
+84088 Neufahrn i. NB
+84109 Wörth a.d. Isar
+84076 Pfeffenhausen
+84434 Kirchberg
+84416 Taufkirchen (Vils)
+84435 Lengdorf
+84424 Isen
+84439 Steinkirchen
+84427 Sankt Wolfgang
+84432 Hohenpolding
+84405 Dorfen
+84565 Oberneukirchen
+84428 Buchbach
+84549 Engelsberg
+84574 Taufkirchen
+84453 Mühldorf a. Inn
+84562 Mettenheim
+84544 Aschau a. Inn
+84494 Neumarkt-Sankt Veit
+84570 Polling
+84431 Heldenstein
+84555 Jettenbach
+84513 Töging a. Inn
+84478 Waldkraiburg
+84564 Oberbergkirchen
+84419 Schwindegg
+84546 Egglkofen
+84573 Schönberg
+84437 Reichertsheim
+84559 Kraiburg a. Inn
+84539 Ampfing
+84130 Dingolfing
+84177 Gottfrieding
+84160 Frontenhausen
+84183 Niederviehbach
+84164 Moosthenning
+84152 Mengkofen
+84180 Loiching
+84163 Marklkofen
+84140 Gangkofen
+84384 Wittibreut
+84332 Hebertsfelden
+84347 Pfarrkirchen
+84375 Kirchdorf a. Inn
+84323 Massing
+84387 Julbach
+84335 Mitterskirchen
+84364 Bad Birnbach
+84381 Johanniskirchen
+84329 Wurmannsquick
+84552 Geratskirchen
+84339 Unterdietfurt
+84371 Triftern
+84307 Eggenfelden
+84385 Egglham
+84333 Malgersdorf
+84359 Simbach a. Inn
+84378 Dietersburg
+84326 Falkenberg
+84389 Postmünster
+84337 Schönau
+84367 Tann
+83052 Bruckmühl
+83546 Gars am Inn
+83135 Schechen
+83229 Aschau i. Chiemgau
+83024 Rosenheim
+83561 Ramerberg
+83539 Pfaffing
+83129 Höslwang
+83088 Kiefersfelden
+83556 Griesstätt
+83125 Eggstätt
+83075 Bad Feilnbach
+83257 Gstadt a. Chiemsee
+83115 Neubeuern
+83059 Kolbermoor
+83567 Unterreit
+83547 Babensham
+83137 Schonstett
+83233 Bernau a. Chiemsee
+83104 Tuntenhausen
+83026 Rosenheim
+83562 Rechtmehring
+83543 Rott a. Inn
+83131 Nußdorf a. Inn
+83139 Söchtenau
+83093 Bad Endorf
+83558 Maitenbeth
+83533 Edling
+83126 Flintsbach a. Inn
+83080 Oberaudorf
+83553 Frauenneuharting
+83512 Wasserburg a. Inn
+83122 Samerberg
+83064 Raubling
+83569 Vogtareuth
+83549 Eiselfing
+83253 Rimsting
+83109 Großkarolinenfeld
+83043 Bad Aibling
+83564 Soyen
+83544 Albaching
+83134 Prutting
+"83209 Prien a. Chiemsee, Herrenchiemssee"
+83098 Brannenburg
+83022 Rosenheim
+83559 Gars a. Inn
+83536 Gars a. Inn
+83128 Halfing
+83083 Riedering
+83555 Gars a. Inn
+83527 Haag i. OB
+83123 Amerang
+83071 Stephanskirchen
+83620 Feldkirchen-Westerham
+83550 Emmering
+83254 Breitbrunn a. Chiemsee
+83112 Frasdorf
+83454 Anger
+83404 Ainring
+83471 Berchtesgaden & Schönau
+83435 Bad Reichenhall
+83364 Neukirchen am Teisenberg
+83487 Marktschellenberg
+83457 Bayerisch Gmain
+83410 Laufen
+83317 Teisendorf
+83483 Bischofswiesen
+83451 Piding
+83395 Freilassing
+83458 Schneizlreuth
+83416 Saaldorf
+83486 Ramsau b. Berchtesgaden
+83361 Kienberg
+83256 Chiemsee
+83413 Fridolfing
+83349 Palling
+83224 Grassau
+83373 Taching a. See
+83329 Waging a. See
+83365 Nußdorf
+83301 Traunreut
+83358 Seeon-Seebruck
+83530 Schnaitsee
+83246 Unterwössen
+83377 Vachendorf
+83342 Tacherting
+83119 Obing
+83370 Seeon-Seebruck
+83362 Surberg
+83259 Schleching
+83417 Kirchanschöring
+83352 Altenmarkt a.d. Alz
+83236 Übersee
+83374 Traunreut
+83334 Inzell
+83367 Petting
+83308 Trostberg
+83250 Marquartstein
+83379 Wonneberg
+83346 Bergen
+83132 Pittenhart
+83371 Stein a.d. Traun
+83324 Ruhpolding
+83278 Traunstein
+83355 Grabenstätt
+83242 Reit im Winkl
+83376 Seeon-Seebruck
+83339 Chieming
+83368 St. Georgen
+83313 Siegsdorf
+86153 Augsburg
+86154 Augsburg
+86156 Augsburg
+86169 Augsburg
+86167 Augsburg
+86567 Hilgertshausen-Tandern
+86482 Aystetten
+86356 Neusäß
+86368 Gersthofen
+86477 Adelsried
+86391 Stadtbergen
+86565 Gachenbach
+86529 Schrobenhausen
+86561 Aresing
+86571 Langenmosen
+86579 Waidhofen
+86558 Hohenwart
+86564 Brunnen
+86343 Königsbrunn
+86399 Bobingen
+86381 Krumbach (Schwaben)
+86863 Langenneufnach
+86862 Lamerdingen
+86492 Egling a.d. Paar
+86450 Altenmünster
+86465 Welden
+86441 Zusmarshausen
+86494 Emersacker
+86456 Gablingen
+86485 Biberbach
+86405 Meitingen
+86462 Langweid a. Lech
+56206 Hilgert
+56281 Emmelshausen
+56276 Großmaischeid
+56237 Nauort
+56235 Ransbach-Baumbach
+56288 Kastellaun
+"56244 Freilingen, Freirachdorf u.a."
+56291 Leiningen
+"56283 Wildenbungert, Gondershausen, Nörtershausen u.a."
+56242 Selters (Westerwald)
+56295 Lonnig
+56290 Beltheim
+56271 Kleinmaischeid
+56253 Treis-Karden
+56294 Münstermaifeld
+56220 Urmitz
+56269 Dierdorf
+84543 Winhöring
+84568 Pleiskirchen
+84508 Burgkirchen an der Alz
+84576 Teising
+84553 Halsbach
+84503 Altötting
+84571 Reischach
+84524 Neuötting
+84579 Unterneukirchen
+84550 Feichten a.d. Alz
+84558 Kirchweidach
+84518 Garching a.d. Alz
+84577 Tüßling
+84533 Marktl
+84556 Kastl
+84567 Erlbach
+84529 Tittmoning
+84489 Burghausen
+79112 Freiburg im Breisgau
+79114 Freiburg im Breisgau
+86424 Dinkelscherben
+86486 Bonstetten
+86514 Ustersbach
+86497 Horgau
+86420 Diedorf
+86459 Gessertshausen
+94559 Niederwinkling
+94353 Haibach
+94374 Schwarzach
+94345 Aholfing
+94366 Perasdorf
+94333 Geiselhöring
+94359 Loitzendorf
+94357 Konzell
+94379 Sankt Englmar
+94350 Falkenfels
+94371 Rattenberg
+94342 Straßkirchen
+94363 Oberschneiding
+94327 Bogen
+94315 Straubing
+94354 Haselbach
+94375 Stallwang
+94347 Ascha
+94368 Perkam
+94336 Hunderdorf
+94360 Mitterfels
+94553 Mariaposching
+94351 Feldkirchen
+94372 Rattiszell
+94344 Wiesenfelden
+94365 Parkstetten
+94330 Aiterhofen
+94356 Kirchroth
+94377 Steinach
+94348 Atting
+94369 Rain
+94339 Leiblfing
+94362 Neukirchen
+86489 Deisenhausen
+86491 Ebershausen
+86488 Breitenthal
+86480 Aletshausen
+86498 Kettershausen
+86479 Aichen
+86476 Neuburg a.d. Kammel
+86470 Thannhausen
+86473 Ziemetshausen
+86483 Balzhausen
+86513 Ursberg
+86502 Laugna
+86519 Wiesenbach
+86562 Berg im Gau
+86505 Münsterhausen
+86517 Wehringen
+86500 Kutzenhausen
+86507 Oberottmarshausen
+94419 Reisbach
+94437 Mamming
+94428 Eichendorf
+94405 Landau a.d. Isar
+94431 Pilsting
+94522 Wallersdorf
+94436 Simbach
+94544 Hofkirchen
+94116 Hutthurm
+94474 Vilshofen an der Donau
+94136 Thyrnau
+94161 Ruderting
+94099 Ruhstorf a.d. Rott
+94139 Breitenberg
+94051 Hauzenberg
+94529 Aicha vorm Wald
+94104 Tittling
+94060 Pocking
+94535 Eging a. See
+94121 Salzweg
+94149 Kößlarn
+94575 Windorf
+94124 Büchlberg
+94164 Sonnen
+94081 Fürstenzell
+94148 Kirchham
+94032 Passau
+94167 Tettenweis
+94107 Untergriesbach
+94072 Bad Füssing
+94538 Fürstenstein
+94110 Wegscheid
+94152 Neuhaus a. Inn
+94542 Haarbach
+94127 Neuburg a. Inn
+94154 Neukirchen vorm Wald
+94086 Griesbach i. Rottal
+94130 Obernzell
+94034 Passau
+94496 Ortenburg
+94094 Rotthalmünster
+94036 Passau
+94501 Aldersbach
+94113 Tiefenbach
+94533 Buchhofen
+94577 Winzer
+94569 Stephansposching
+94505 Bernried
+94560 Offenberg
+94539 Grafling
+94508 Schöllnach
+94562 Oberpöring
+94486 Osterhofen
+94554 Moos
+94532 Außernzell
+94574 Wallerfing
+94491 Hengersberg
+94557 Niederalteich
+94447 Plattling
+94550 Künzing
+94527 Aholming
+94571 Schaufling
+94469 Deggendorf
+94551 Lalling
+94541 Grattersdorf
+94526 Metten
+94563 Otzing
+94547 Iggensbach
+94078 Freyung
+94481 Grafenau
+94556 Neuschönau
+94169 Thurmansbang
+94513 Schönberg
+94536 Eppenschlag
+94566 Riedlhütte
+94518 Spiegelau
+94579 Zenting
+94572 Schöfweg
+94568 Sankt Oswald
+94163 Saldenburg
+94548 Innernzell
+94142 Fürsteneck
+94157 Perlesreut
+94545 Hohenau
+94261 Kirchdorf i. Wald
+94250 Achslach
+94255 Böbrach
+94259 Kirchberg
+94264 Langdorf
+94227 Zwiesel
+94253 Bischofsmais
+94262 Kollnburg
+94209 Regen
+94267 Prackenbach
+94239 Zachenberg
+94256 Drachselsried
+94265 Patersdorf
+94234 Viechtach
+94249 Bodenmais
+94258 Frauenau
+94269 Rinchnach
+94244 Teisnach
+94252 Bayerisch Eisenstein
+79111 Freiburg im Breisgau
+94140 Ering
+94166 Stubenberg
+94137 Bayerbach
+94439 Roßbach
+94424 Arnstorf
+91238 Engelthal/Offenhausen
+94133 Röhrnbach
+94118 Jandelsbrunn
+94146 Hinterschmiding
+94145 Haidmühle
+94089 Neureichenau
+94151 Mauth
+94065 Waldkirchen
+94158 Philippsreut
+91235 Velden/Hartenstein
+91227 Leinburg
+91207 Lauf an der Pegnitz
+93309 Kelheim
+93356 Teugn
+93345 Hausen
+93339 Riedenburg
+93326 Abensberg
+93358 Train
+93077 Bad Abbach
+93352 Rohr i. NB
+93342 Saal a.d. Donau
+93354 Siegenburg
+93349 Mindelstetten
+93336 Altmannstein
+93351 Painten
+93346 Ihrlerstein
+93333 Neustadt a.d. Donau
+93359 Wildenberg
+93348 Kirchdorf
+93343 Essing
+93142 Maxhütte-Haidhof
+93105 Tegernheim
+93092 Barbing
+93080 Pentling
+93195 Wolfsegg
+93180 Deuerling
+93053 Regensburg
+93155 Hemau
+93133 Burglengenfeld
+93102 Pfatter
+93089 Aufhausen
+93059 Regensburg
+93188 Pielenhofen
+93177 Altenthann
+93049 Regensburg
+93149 Nittenau
+93107 Thalmassing
+93099 Mötzing
+93197 Zeitlarn
+93086 Wörth an der Donau
+93055 Regensburg
+93183 Kallmünz
+93173 Wenzenbach
+93138 Lappersdorf
+93104 Sünching
+93096 Köfering
+93179 Brennberg
+93051 Regensburg
+"93164 Laaber, Brunn"
+93128 Regenstauf
+93101 Pfakofen
+93093 Donaustauf
+93083 Obertraubling
+93186 Pettendorf
+93176 Beratzhausen
+93047 Regensburg
+93158 Teublitz
+93098 Mintraching
+93090 Bach an der Donau
+93073 Neutraubling
+93182 Duggendorf
+93170 Bernhardswald
+93152 Nittendorf
+93109 Wiesent
+93095 Hagelstadt
+93087 Alteglofsheim
+93057 Regensburg
+93161 Sinzing
+35689 Dillenburg
+35683 Dillenburg
+35685 Dillenburg
+35688 Dillenburg
+35684 Dillenburg
+35686 Dillenburg
+35690 Dillenburg
+35687 Dillenburg
+93483 Pösing
+93449 Waldmünchen
+93479 Grafenwiesen
+93192 Wald
+93468 Miltach
+93491 Stamsried
+93453 Neukirchen b. Hl. Blut
+93480 Hohenwarth
+93437 Furth i. Wald
+93476 Blaibach
+93497 Willmering
+93189 Reichenbach
+93466 Chamerau
+93488 Schönthal
+93444 Kötzting
+93477 Gleißenberg
+93499 Zandt
+93413 Cham
+93473 Arnschwang
+93494 Waffenbrunn
+93489 Schorndorf
+93185 Michelsneukirchen
+93462 Lam
+93485 Rimbach
+93426 Roding
+93474 Arrach
+93495 Weiding
+93194 Walderbach
+93470 Lohberg
+93464 Tiefenbach
+93486 Runding
+93455 Traitsching
+93482 Pemfling
+93199 Zell
+93471 Arnbruck
+93492 Treffelstein
+93191 Rettenbach
+93167 Falkenstein
+93458 Eschlkam
+35584 Wetzlar
+35576 Wetzlar
+35581 Wetzlar
+35582 Wetzlar
+35583 Wetzlar Garbeinheim
+35585 Wetzlar
+35580 Wetzlar
+35579 Wetzlar
+35578 Wetzlar
+35586 Wetzlar
+92358 Seubersdorf i.d. OPf.
+92367 Pilsach
+92355 Velburg
+92366 Hohenfels
+92339 Beilngries
+92334 Berching
+92363 Breitenbrunn
+92353 Postbauer-Heng
+92364 Deining
+92348 Berg b.Neumarkt i.d.OPf.
+92283 Lauterhofen
+92331 Parsberg
+92361 Berngau
+92318 Neumarkt i.d. OPf.
+92360 Mühlhausen
+92369 Sengenthal
+92345 Dietfurt a.d. Altmühl
+92342 Freystadt
+92262 Birgland
+92272 Freudenberg
+92237 Sulzbach-Rosenberg
+92277 Hohenburg
+92249 Vilseck
+92289 Ursensollen
+92265 Edelsfeld
+92275 Hirschbach
+92245 Kümmersbruck
+92280 Kastl
+92256 Hahnbach
+92266 Ensdorf
+92278 Illschwang
+92253 Schnaittenbach
+92284 Poppenricht
+92260 Ammerthal
+92271 Freihung
+92224 Amberg
+92281 Königstein
+92259 Neukirchen b. Sulzbach-Rosenberg
+92287 Schmidmühlen
+92263 Ebermannsdorf
+92268 Etzelwang
+92274 Gebenbach
+92242 Hirschau
+92286 Rieden
+92421 Schwandorf
+92539 Schönsee
+92526 Oberviechtach
+92555 Trausnitz
+92444 Rötz
+92546 Schmidgaden
+92533 Wernberg-Köblitz
+92557 Weiding
+92507 Nabburg
+92552 Teunz
+92548 Schwarzach b. Nabburg
+92439 Bodenwöhr
+92543 Guteneck
+92521 Schwarzenfeld
+92554 Thanstein
+92447 Schwarzhofen
+92442 Wackersdorf
+92545 Niedermurach
+92431 Neunburg vorm Wald
+92540 Altendorf
+92449 Steinberg
+92551 Stulln
+92436 Bruck i.d. OPf.
+92542 Dieterskirchen
+92269 Fensterbach
+92536 Pfreimd
+92559 Winklarn
+92445 Neukirchen-Balbini
+92549 Stadlern
+90768 Fürth
+90766 Fürth
+90762 Fürth
+90763 Fürth
+94143 Grainet
+94530 Auerbach
+95692 Konnersreuth
+95676 Wiesau
+95506 Kastl
+95643 Tirschenreuth
+95700 Neusorg
+95682 Brand
+95505 Immenreuth
+95695 Mähring
+95698 Neualbenreuth
+95703 Plößberg
+95685 Falkenberg
+95508 Kulmain
+95652 Waldsassen
+95701 Pechbrunn
+95671 Bärnau
+95683 Ebnath
+95689 Fuchsmühl
+95666 Mitterteich
+95704 Pullenreuth
+95679 Waldershof
+95688 Friedenfels
+95478 Kemnath
+35041 Marburg
+35398 Gießen
+35390 Gießen
+35039 Marburg
+35394 Gießen
+35043 Marburg
+35396 Gießen
+35392 Gießen
+35037 Marburg
+95168 Marktleuthen
+95709 Tröstau
+95691 Hohenberg a.d. Eger
+95199 Thierstein
+95163 Weißenstadt
+95707 Thiersheim
+95186 Höchstädt
+95195 Röslau
+95680 Bad Alexandersbad
+95158 Kirchenlamitz
+95706 Schirnding
+95632 Wunsiedel
+95100 Selb
+95659 Arzberg
+95173 Schönwald
+95615 Marktredwitz
+79539 Lörrach
+79677 Schönau im Schwarzwald
+79540 Lörrach
+79541 Lörrach
+92665 Altenstadt a.d. Waldnaab
+92699 Bechtsried
+92718 Schirmitz
+92670 Windischeschenbach
+92708 Mantel
+92700 Kaltenbrunn
+92726 Waidhaus
+92693 Eslarn
+92709 Moosbach
+92727 Waldthurn
+92717 Reuth b. Erbendorf
+92694 Etzenricht
+92720 Schwarzenbach
+92676 Eschenbach i.d. OPf.
+92648 Vohenstrauß
+92702 Kohlberg
+92721 Störnstein
+92681 Erbendorf
+92711 Parkstein
+92703 Krummennaab
+92729 Weiherhammer
+92712 Pirk
+92696 Flossenbürg
+92660 Neustadt a.d. Waldnaab
+92655 Grafenwöhr
+92697 Georgenberg
+92723 Tännesberg
+92685 Floß
+92706 Luhe-Wildenau
+92705 Leuchtenberg
+92724 Trabitz
+92690 Pressath
+92714 Pleystein
+92715 Püchersreuth
+56379 Singhofen
+56317 Urbach
+56368 Katzenelnbogen
+56305 Puderbach
+56340 Osterspai
+56370 Schönborn
+56307 Dürrholz
+56355 Nastätten u.a.
+56337 Eitelborn
+"56332 Lehmen, Niederfell, Oberfell, Wolken u.a."
+56357 Miehlen u.a.
+"56348 Bornich, Patersberg"
+56333 Winningen
+56321 Rhens
+56349 Kaub
+56341 Kamp-Bornhofen-Filsen
+56329 Sankt Goar
+56377 Nassau
+56316 Raubach
+56346 Sankt Goarshausen u.a.
+95189 Köditz
+95032 Hof
+95234 Sparneck
+95131 Schwarzenbach a. Wald
+95188 Issigau
+95239 Zell
+95152 Selbitz
+95197 Schauenstein
+95192 Lichtenberg
+95237 Weißdorf
+95145 Oberkotzau
+95182 Döhlau
+95194 Regnitzlosau
+95191 Leupoldsgrün
+95179 Geroldsgrün
+95180 Berg
+95030 Hof
+95233 Helmbrechts
+95126 Schwarzenbach a.d. Saale
+95176 Konradsreuth
+95185 Gattendorf
+95028 Hof
+95213 Münchberg
+95119 Naila
+95183 Feilitzsch
+95111 Rehau
+95236 Stammbach
+95138 Bad Steben
+95352 Marktleugast
+95502 Himmelkron
+95367 Trebgast
+95361 Ködnitz
+95346 Stadtsteinach
+95339 Neuenmarkt
+95369 Untersteinach
+95364 Ludwigschorgast
+95358 Guttenberg
+95326 Kulmbach
+95365 Rugendorf
+95359 Kasendorf
+95355 Presseck
+95512 Neudrossenfeld
+95336 Mainleus
+95509 Marktschorgast
+95362 Kupferberg
+95356 Grafengehaig
+95349 Thurnau
+96197 Wonsees
+95499 Harsdorf
+95493 Bischofsgrün
+95445 Bayreuth
+95503 Hummeltal
+95447 Bayreuth
+95491 Ahorntal
+95517 Emtmannsberg
+95515 Plankenfels
+"95466 Weidenberg, Kirchenpingarten"
+95497 Goldkronach
+95444 Bayreuth
+95500 Heinersreuth
+95463 Bindlach
+95490 Mistelgau
+95488 Eckersdorf
+95514 Neustadt a. Kulm
+95482 Gefrees
+95496 Glashütten
+95460 Bad Berneck im Fichtelgebirge
+95694 Mehlmeisel
+95494 Gesees
+95448 Bayreuth
+95485 Warmensteinach
+95686 Fichtelberg
+95519 Vorbach
+95473 Creußen
+95511 Mistelbach
+95469 Speichersdorf
+91056 Erlangen
+91058 Erlangen
+91052 Erlangen
+91054 Erlangen
+65549 Limburg
+65553 Limburg
+65555 Limburg
+65551 Limburg
+65554 Limburg
+65556 Limburg
+65552 Limburg
+65550 Limburg
+96465 Neustadt b. Coburg
+96482 Ahorn
+96166 Kirchlauter
+96515 Sonneberg
+96242 Sonnefeld
+96274 Itzgrund
+96106 Ebern
+96486 Lautertal
+96184 Rentweinsdorf
+96524 Föritztal
+96253 Untersiemau
+96450 Coburg
+96479 Weitramsdorf
+96145 Seßlach
+96489 Niederfüllbach
+96237 Ebersdorf b. Coburg
+96271 Grub a. Forst
+96472 Rödental
+96484 Meeder
+96176 Pfarrweisach
+96523 Steinach
+96279 Weidhausen b. Coburg
+96476 Rodach b. Coburg
+96126 Maroldsweisach
+96487 Dörfles-Esbach
+96190 Untermerzbach
+"96528 Frankenblick, Schalkau, Bachfeld"
+96269 Großheirath
+96365 Nordhalben
+96352 Wilhelmsthal
+96332 Pressig
+96361 Steinbach a. Wald
+96346 Wallenfels
+96317 Kronach
+96367 Tschirn
+96355 Tettau
+96337 Ludwigsstadt
+96268 Mitwitz
+96364 Marktrodach
+96349 Steinwiesen
+96328 Küps
+96369 Weißenbrunn
+96358 Teuschnitz
+96342 Stockheim
+96277 Schneckenlohe
+96250 Ebensfeld
+96275 Marktzeuln
+96224 Burgkunstadt
+96260 Weismain
+96247 Michelau i. OFr.
+96272 Hochstadt a. Main
+96215 Lichtenfels
+96257 Redwitz a.d. Rodach
+96231 Staffelstein
+96264 Altenkunstadt
+96110 Scheßlitz
+96187 Stadelhofen
+96146 Altendorf
+96050 Bamberg
+96182 Reckendorf
+96161 Gerach
+96135 Stegaurach
+96199 Zapfendorf
+96178 Pommersfelden
+96157 Ebrach
+96123 Litzendorf
+96194 Walsdorf
+96172 Mühlhausen
+96152 Burghaslach
+96114 Hirschaid
+96188 Stettfeld
+96167 Königsfeld
+96148 Baunach
+96052 Bamberg
+96163 Gundelsheim
+96138 Burgebrach
+96047 Bamberg
+96179 Rattelsdorf
+96158 Frensdorf
+96129 Strullendorf
+96196 Wattendorf
+96173 Oberhaid
+96154 Burgwindheim
+96117 Memmelsdorf
+96191 Viereth-Trunstadt
+96169 Lauter
+96149 Breitengüßbach
+96103 Hallstadt
+96185 Schönbrunn i. Steigerwald
+96164 Kemmern
+96142 Hollfeld
+96049 Bamberg
+96181 Rauhenebrach
+96160 Geiselwind
+96132 Schlüsselfeld
+96175 Pettstadt
+96155 Buttenheim
+96120 Bischberg
+96193 Wachenroth
+96170 Lisberg
+96151 Breitbrunn
+"07429 Döschnitz, Sitzendorf, Rohrbach"
+07330 Probstzella
+07333 Unterwellenborn
+07427 Schwarzburg
+07338 Kaulsdorf
+07422 Bad Blankenburg
+07349 Lehesten
+07407 Rudolstadt
+07318 Saalfeld/Saale
+07426 Königsee-Rottenbach u.a.
+07774 Dornburg-Camburg u.a.
+07778 Neuengönna u.a.
+"07613 Crossen, Heideland u.a."
+07768 Kahla
+07639 Bad Klosterlausnitz
+07619 Schkölen
+07616 Bürgel u.a.
+07646 Stadtroda u.a.
+"07607 Eisenberg, Gösen, Hainspitz"
+07629 Hermsdorf
+36041 Fulda
+36043 Fulda
+36037 Fulda
+36039 Fulda
+"07937 Zeulenroda-Triebes, Langenwolschendorf"
+07985 Elsterberg
+07958 Hohenleuben
+"07557 Gera, Zedlitz u.a."
+07980 Berga/Elster u.a.
+"07950 Zeulenroda-Triebes, Weißendorf"
+07987 Mohlsdorf-Teichwolframsdorf
+07973 Greiz
+07586 Bad Köstritz
+"07589 Münchenbernsdorf, Schwarzbach, Bocka"
+07952 Pausa-Mühltroff
+"07570 Weida, Harth-Pöllnitz, Wünschendorf"
+07554 Brahmenau
+07957 Langenwetzendorf
+"07580 Ronneburg, Braunichswalde, Großenstein u.a."
+90562 Heroldsberg
+"91080 Uttenreuth, Marloffstein"
+91096 Möhrendorf/Mark
+91475 Lonnerstadt
+98693 Ilmenau
+"98724 Neuhaus am Rennweg, Lauscha"
+98744 Oberweißbach u.a.
+98559 Oberhof
+98743 Gräfenthal
+98701 Großbreitenbach
+98746 Katzhütte
+98716 Elgersburg
+90587 Veitsbronn
+90556 Cadolzburg
+48163 Münster
+91183 Abenberg
+91189 Rohr
+90530 Wendelstein
+91186 Büchenbach
+90596 Schwanstetten
+98529 Suhl
+98528 Suhl
+98527 Suhl
+"98530 Marisfeld, Rohr u.a."
+98663 Bad Colberg-Heldburg
+98553 Schleusingen u.a.
+98587 Steinbach-Hallenberg
+98660 Themar
+98544 Zella-Mehlis
+98639 Rippershausen
+98617 Meiningen u.a.
+98590 Schwallungen
+98631 Grabfeld
+"98666 Biberau, Masserberg"
+98646 Hildburghausen
+"98673 Eisfeld, Auengrund"
+98667 Schleusegrund
+98574 Schmalkalden
+98547 Schwarza u.a.
+98669 Veilsdorf
+98634 Wasungen
+91126 Schwabach
+"36466 Dermbach, Wiesenthal"
+"36404 Vacha, Oechsen"
+36452 Kaltennordheim
+36433 Bad Salzungen
+36414 Unterbreizbach
+36469 Bad Salzungen
+36448 Bad Liebenstein
+36457 Weilar
+"36460 Krayenberggemeinde, Frauensee"
+89438 Holzheim
+89415 Lauingen (Donau)
+89423 Gundelfingen a.d. Donau
+89443 Schwenningen
+89429 Bachhagel
+89435 Finningen
+89440 Lutzingen
+89420 Höchstädt a.d. Donau
+89446 Ziertheim
+89426 Wittislingen
+89431 Bächingen a.d. Brenz
+89407 Dillingen a.d. Donau
+89437 Haunsheim
+89441 Medlingen
+89447 Zöschingen
+89344 Aislingen
+89428 Syrgenstein
+89353 Glött
+89434 Blindheim
+89356 Haldenwang
+89352 Ellzee
+89367 Waldstetten
+89347 Bubesheim
+89364 Rettenbach
+89340 Leipheim
+89359 Kötz
+89343 Jettingen-Scheppach
+89312 Günzburg
+89355 Gundremmingen
+89350 Dürrlauingen
+89346 Bibertal
+89362 Offingen
+89335 Ichenhausen
+89358 Kammeltal
+89368 Winterbach
+89365 Röfingen
+89349 Burtenbach
+89361 Landensberg
+89331 Burgau
+89231 Neu-Ulm
+89278 Nersingen
+89294 Oberroth
+89257 Illertissen
+89299 Unterroth
+89293 Kellmünz a.d. Iller
+89287 Bellenberg
+89297 Roggenburg
+89275 Elchingen
+89291 Holzheim
+89250 Senden
+89284 Pfaffenhofen a.d. Roth
+89296 Osterberg
+89269 Vöhringen
+89290 Buch
+89233 Neu-Ulm
+89281 Altenstadt
+89264 Weißenhorn
+27570 Bremerhaven
+27574 Bremerhaven
+27578 Bremerhaven
+27568 Bremerhaven
+27572 Bremerhaven (Wulsdorf und Fischereihafen)
+27576 Bremerhaven
+27580 Bremerhaven
+89191 Nellingen
+89165 Dietenheim
+89597 Munderkingen
+89617 Untermarchtal
+89182 Bernstadt
+89608 Griesingen
+89177 Ballendorf
+89077 Ulm
+89604 Allmendingen
+89185 Hüttisheim
+89143 Blaubeuren
+89611 Obermarchtal
+89195 Staig
+89176 Asselfingen
+89192 Rammingen
+89601 Schelklingen
+89619 Unterstadion
+89171 Illerkirchberg
+89155 Erbach
+89179 Beimerstetten
+89079 Ulm
+89605 Altheim
+89186 Illerrieden
+89150 Laichingen
+89613 Oberstadion
+89197 Weidenstetten
+89194 Schnürpflingen
+89129 Langenau
+89173 Lonsee
+89189 Neenstetten
+89160 Dornstadt
+"89584 Ehingen (Donau), Lauterach"
+89616 Rottenacker
+89180 Berghülen
+89081 Ulm
+89607 Emerkingen
+89188 Merklingen
+89075 Ulm
+89614 Öpfingen
+89198 Westerstetten
+"89183 Breitingen, Holzkirch"
+89134 Blaustein
+89610 Oberdischingen
+89174 Altheim (Alb)
+89073 Ulm
+89568 Hermaringen
+89520 Heidenheim an der Brenz
+89558 Böhmenkirch
+89551 Königsbronn
+89537 Giengen an der Brenz
+89168 Niederstotzingen
+89522 Heidenheim an der Brenz
+89561 Dischingen
+89542 Herbrechtingen
+89567 Sontheim an der Brenz
+89564 Nattheim
+89518 Heidenheim an der Brenz
+89555 Steinheim am Albuch
+89547 Gerstetten
+25938 Föhr
+25946 Amrum
+86753 Möttingen
+86736 Auhausen
+86756 Reimlingen
+86733 Alerheim
+86751 Mönchsdeggingen
+86703 Rögling
+86741 Ehingen a. Ries
+86754 Munningen
+86706 Weichering
+86744 Hainsfarth
+86701 Rohrenfels
+86739 Ederheim
+86759 Wechingen
+86704 Tagmersheim
+86742 Fremdingen
+86757 Wallerstein
+86709 Wolferstadt
+86747 Maihingen
+86732 Oettingen i. Bay.
+86750 Megesheim
+"86707 Westendorf, Kühlenthal"
+86745 Hohenaltheim
+86720 Nördlingen
+86748 Marktoffingen
+86700 Otting
+86738 Deiningen
+86735 Amerdingen
+86681 Fünfstetten
+86650 Wemding
+86685 Huisheim
+86653 Monheim
+86637 Wertingen
+86660 Tapfheim
+86657 Bissingen
+86663 Asbach-Bäumenheim
+86690 Mertingen
+86655 Harburg
+86647 Buttenwiesen
+86609 Donauwörth
+86692 Münster
+86678 Ehingen
+86669 Königsmoos
+86672 Thierhaupten
+86668 Karlshuld
+86676 Ehekirchen
+86684 Holzheim
+86695 Nordendorf
+86697 Oberhausen
+86673 Bergheim
+86679 Ellgau
+86633 Neuburg an der Donau
+86666 Burgheim
+86643 Rennertshofen
+86641 Rain
+86687 Kaisheim
+86688 Marxheim
+86694 Niederschönenfeld
+86675 Buchdorf
+86947 Weil
+86932 Pürgen
+86877 Walkertshofen
+86928 Hofstetten
+86860 Jengen
+86857 Hurlach
+86984 Prem
+86836 Untermeitingen
+86949 Windach
+86879 Wiedergeltingen
+86935 Rott
+86987 Schwabsoien
+86868 Mittelneufnach
+86919 Utting a. Ammersee
+86842 Türkheim
+86975 Bernbeuren
+86971 Peiting
+86937 Scheuring
+86911 Dießen a. Ammersee
+86926 Greifenberg
+86871 Rammingen
+86856 Hiltenfingen
+86922 Eresing
+86850 Fischach
+86978 Hohenfurch
+86807 Buchloe
+86943 Thaining
+86940 Schwifting
+86872 Scherstetten
+86929 Penzing
+86859 Igling
+86980 Ingenried
+86825 Bad Wörishofen
+86956 Schongau
+86899 Landsberg a. Lech
+86946 Vilgertshofen
+86931 Prittriching
+86875 Waal
+86920 Denklingen
+86865 Markt Wald
+86845 Großaitingen
+86983 Lechbruck
+86833 Ettringen
+86972 Altenstadt
+86938 Schondorf a. Ammersee
+86916 Kaufering
+86934 Reichling
+86986 Schwabbruck
+86866 Mickhausen
+86923 Finning
+86853 Langerringen
+86974 Apfeldorf
+86944 Unterdießen
+86941 Eresing
+86874 Tussenhausen
+86925 Fuchstal
+86989 Steingaden
+86869 Oberostendorf
+86854 Amberg
+86981 Kinsau
+86830 Schwabmünchen
+86977 Burggen
+86682 Genderkingen
+86698 Oberndorf a.Lech
+91757 Treuchtlingen
+91720 Absberg
+91799 Langenaltheim
+91710 Gunzenhausen
+91809 Wellheim
+91747 Westheim
+91804 Mörnsheim
+91790 Nennslingen
+91805 Polsingen
+91781 Weißenburg i. Bay.
+91801 Markt Berolzheim
+91785 Pleinfeld
+91723 Dittenheim
+91719 Heidenheim
+91792 Ellingen
+91728 Gnotzheim
+91738 Pfofeld
+91807 Solnhofen
+91793 Alesheim
+91729 Haundorf
+91796 Ettenstatt
+91788 Pappenheim
+91735 Muhr a. See
+91802 Meinheim
+91795 Dollnstein
+91741 Theilenhofen
+91798 Höttingen
+91187 Röttenbach bei Schwabach
+91174 Spalt
+91166 Georgensgmünd
+91180 Heideck
+91161 Hilpoltstein
+91177 Thalmässing
+91171 Greding
+91154 Roth
+91604 Flachslanden
+91620 Ohrenbach
+91722 Arberg
+91599 Dentlein a. Forst
+91629 Weihenzell
+91614 Mönchsroth
+91725 Ehingen
+91587 Adelshofen
+91625 Schnelldorf
+91737 Ornbau
+91575 Windsbach
+91746 Weidenbach
+91580 Petersaurach
+91626 Schopfloch
+91732 Merkendorf
+91541 Rothenburg ob der Tauber
+91607 Gebsattel
+91583 Schillingsfürst
+91622 Rügland
+91734 Mitteleschenbach
+91595 Burgoberbach
+91631 Wettringen
+91608 Geslau
+91726 Gerolfingen
+91589 Aurach
+91632 Wieseth
+91740 Röckingen
+91564 Neuendettelsau
+91635 Windelsbach
+91749 Wittelshofen
+91590 Bruckberg
+91628 Steinsfeld
+91743 Unterschwaningen
+91550 Dinkelsbühl
+91601 Dombühl
+91586 Lichtenau
+91616 Neusitz
+91555 Feuchtwangen
+91596 Burk
+91610 Insingen
+91717 Wassertrüdingen
+91522 Ansbach
+91598 Colmberg
+91634 Wilburgstetten
+91611 Lehrberg
+91567 Herrieden
+91637 Wörnitz
+91592 Buch a. Wald
+91623 Sachsen b. Ansbach
+91744 Weiltingen
+91572 Bechhofen
+91639 Wolframs-Eschenbach
+91602 Dürrwangen
+91578 Leutershausen
+91617 Oberdachstetten
+91731 Langfurth
+91560 Heilsbronn
+91443 Scheinfeld
+91486 Uehlfeld
+91483 Oberscheinfeld
+91452 Wilhermsdorf
+91472 Ipsheim
+91605 Gallmersgarten
+91460 Baudenbach
+91471 Illesheim
+91489 Wilhelmsdorf
+91474 Langenfeld
+91613 Marktbergel
+91459 Markt Erlbach
+91463 Dietersheim
+91593 Burgbernheim
+91478 Markt Nordheim
+91438 Bad Windsheim
+91462 Dachsbach
+91481 Münchsteinach
+91477 Markt Bibart
+91413 Neustadt a.d.Aisch
+91466 Gerhardshofen
+91480 Markt Taschendorf
+91619 Obernzenn
+91469 Hagenbüchach
+91448 Emskirchen
+91465 Ergersheim
+91484 Sugenheim
+91456 Diespeck
+91468 Gutenstetten
+90616 Neuhof a.d.Zenn
+90619 Trautskirchen
+90599 Dietenhofen
+91230 Happurg
+91224 Pommelsbrunn
+91358 Kunreuth
+91320 Ebermannstadt
+91090 Effeltrich
+91361 Pinzberg
+91287 Plech
+91347 Aufseß
+91094 Langensendelbach
+91365 Weilersbach
+91322 Gräfenberg
+91286 Obertrubach
+91349 Egloffstein
+91369 Wiesenthau
+91346 Wiesenttal
+91364 Unterleinleiter
+91330 Eggolsheim
+91275 Auerbach i.d. OPf.
+91353 Hausen
+91367 Weißenohe
+91356 Kirchehrenbach
+91327 Gößweinstein
+91257 Pegnitz
+91352 Hallerndorf
+91332 Heiligenstadt i. OFr.
+91355 Hiltpoltstein
+91301 Forchheim
+91077 Neunkirchen a. Brand
+91281 Kirchenthumbach
+91099 Poxdorf
+91338 Igensdorf
+91359 Leutenbach
+91289 Schnabelwaid
+91344 Waischenfeld
+91278 Pottenstein
+91362 Pretzfeld
+91336 Heroldsbach
+91282 Betzenstein
+58453 Witten
+97076 Würzburg
+97078 Würzburg
+97080 Würzburg
+97082 Würzburg
+97084 Würzburg
+73340 Amstetten
+56479 Oberrod u.a.
+"56459 Bellingen, Kölbingen, Gemünden u.a."
+"56412 Nentershausen, Hübingen, Niederelbert u.a."
+"56414 Meudt, Molsberg, Hundsangen, Niederahr u.a."
+56457 Westerburg
+56472 Nisterau u.a.
+"56477 Rennerod, Zehnhausen, Nister-Möhrendorf, Waigandshain"
+"56424 Mogendorf, Ebernhahn, Staudt u.a."
+99610 Sömmerda
+99636 Rastenberg
+"99628 Buttstädt, Großbrembach, Kleinbrembach"
+"99195 Großrudestedt, Schloßvippach u.a."
+99634 Straußfurt
+99625 Kölleda
+99638 Kindelbrück
+99631 Weißensee
+99084 Erfurt
+99091 Erfurt
+99098 Erfurt
+99094 Erfurt
+99097 Erfurt
+99089 Erfurt
+99085 Erfurt
+"99192 Nesse-Apfelstädt, Nottleben"
+99099 Erfurt
+99092 Erfurt
+99087 Erfurt
+99096 Erfurt
+"99326 Stadtilm, Ilmtal"
+99330 Geratal
+"99334 Elleben, Wachsenburg"
+"99338 Plaue, Martinroda"
+99310 Arnstadt
+"99510 Apolda, Ilmtal-Weinstraße, Kapellendorf, Obertrebra, Wiegendorf"
+99438 Bad Berka u.a.
+99425 Weimar
+99444 Blankenhain
+99518 Bad Sulza
+99439 Berlstedt
+99427 Weimar
+99448 Kranichfeld u.a.
+99423 Weimar
+99441 Lehnstedt u.a.
+"99428 Grammetal, Weimar"
+"99958 Großvargula, Tonna"
+99887 Georgenthal/ Thür. Wald
+99869 Drei Gleichen
+"99885 Ohrdruf, Luisenthal"
+99867 Gotha
+99897 Tambach-Dietharz/ Thür.
+"99100 Großfahner, Dachwig u.a."
+99894 Friedrichroda
+99891 Tabarz/ Thür. Wald
+99880 Waltershausen
+99955 Bad Tennstedt
+99996 Unstruttal
+"99986 Vogtei, Kammerforst u.a."
+99947 Bad Langensalza
+"99994 Marolterode, Nottertal-Heilinger Höhen"
+"99976 Rodeberg, Anrode, Dünwald, Faulungen, Hildebrandshausen und  Lengenfeld.
+Anrode und Dünwald sind zum1.1.2023 aufgelöst, die Adressen sind aber weiterhin gültig, die Post hat da (i.e Hüpfeld, Zella, Bickenriede, Beberstedt) noch kein Update gemacht."
+99991 Unstrut-Hainich
+99974 Mühlhausen
+"99998 Körner, Weinbergen"
+99988 Südeichsfeld
+99846 Seebach
+99820 Hörselberg-Hainich
+99831 Creuzburg
+99842 Ruhla
+99848 Wutha-Farnroda
+99826 Mihla u.a.
+99834 Gerstungen
+99817 Eisenach
+99830 Treffurt/Ifta
+99837 Berka/ Werra
+31683 Obernkirchen
+"31553 Auhagen, Sachsenhagen"
+31542 Bad Nenndorf
+31556 Wölpinghausen
+31558 Hagenburg
+31698 Lindhorst
+31715 Meerbeck
+31702 Lüdersfeld
+"31691 Helpsen, Seggebruch"
+31717 Nordsehl
+"31867 Pohle, Lauenau, Messenkamp, Hülsede etc"
+31688 Nienstädt
+31699 Beckedorf
+31718 Pollhagen
+31714 Lauenhagen
+31700 Heuerßen
+31693 Hespe
+"31552 Apelern, Rodenberg"
+31719 Wiedensahl
+"31559 Haste, Hohnhorst"
+31555 Suthfeld
+31737 Rinteln
+"31707 Heeßen, Bad Eilsen"
+31710 Buchholz
+31708 Ahnsen
+31749 Auetal
+31675 Bückeburg
+27616 Beverstedt
+31249 Hohenhameln
+31234 Edemissen
+31224 Peine
+31228 Peine
+31241 Ilsede
+31226 Peine
+31622 Heemsen
+31606 Warmsen
+31632 Husum
+31604 Raddestorf
+31638 Stöckse
+31618 Liebenau
+31637 Rodewald
+"27324 Eystrup, Hassel u.a."
+31629 Estorf
+31621 Pennigsehl
+31623 Drakenburg
+31628 Landesbergen
+31603 Diepenau
+31627 Rohrsen
+31633 Leese
+31600 Uchte
+31613 Wietzen
+31582 Nienburg/Weser
+31636 Linsburg
+31634 Steimbke
+31595 Steyerberg
+31547 Rehburg-Loccum
+"27333 Schweringen, Warpe, Bücken"
+31592 Stolzenau
+31608 Marklohe
+31619 Binnen
+31626 Haßbergen
+31609 Balge
+31515 Wunstorf
+31848 Bad Münder am Deister
+31855 Aerzen
+31812 Bad Pyrmont
+31860 Emmerthal
+31020 Salzhemmendorf
+31863 Coppenbrügge
+31789 Hameln
+31868 Ottenstein
+31185 Söhlde
+31171 Nordstemmen
+"31135 Hildesheim (Oststadt, Achtum, Bavenstedt, Drispenstedt, Einum, Uppen)"
+31174 Schellerten
+31008 Elze
+31162 Bad Salzdetfurth
+31141 Hildesheim
+31167 Bockenem
+31036 Eime
+31079 Sibbesse
+31028 Gronau (Leine)
+31177 Harsum
+"31073 Grünenplan, Delligsen"
+"31137 Hildesheim (Nordstadt, Himmelsthür, Bockfeld)"
+31157 Sarstedt
+31199 Diekholzen
+31061 Alfeld (Leine)
+31180 Giesen
+31134 Hildesheim
+31089 Duingen
+31188 Holle
+31191 Algermissen
+31139 Hildesheim
+31319 Sehnde
+31275 Lehrte
+31311 Uetze
+31303 Burgdorf
+"27624 Geestland
+Alfstedt
+Ankelohe
+Bad Bederkesa
+Drangstedt
+Elmlohe
+Fickmühlen
+Flögeln
+Großenhain
+Hainmühlen
+Köhlen
+Kührstedt
+Lintig
+Meckelstedt
+Ringstedt"
+27446 Selsingen
+27432 Bremervörde
+"27404 Zeven, Elsdorf"
+27478 Cuxhaven
+27476 Cuxhaven
+27472 Cuxhaven
+27474 Cuxhaven
+31712 Niederwöhren
+56587 Straßenhaus
+56564 Neuwied
+56598 Rheinbrohl
+56566 Neuwied
+56589 Niederbreitbach
+56567 Neuwied
+56581 Melsbach
+56593 Horhausen (Westerwald)
+56584 Anhausen
+56579 Rengsdorf
+56651 Niederzissen
+56653 Wehr
+21698 Harsefeld
+"21279 Hollenstedt, Drestedt u.a."
+21709 Himmelpforten
+21726 Oldendorf
+21717 Fredenbeck
+99189 Gebesee
+97789 Oberleichtersbach
+97762 Hammelburg
+97720 Nüdlingen
+97799 Zeitlofs
+97705 Burkardroth
+97779 Geroda
+97727 Fuchsstadt
+97714 Oerlenbach
+97795 Schondra
+97791 Obersinn
+97688 Bad Kissingen
+97769 Bad Brückenau
+97723 Oberthulba
+97517 Rannungen
+97708 Bad Bocklet
+97786 Motten
+97729 Ramsthal
+97717 Euerdorf
+97797 Wartmannsroth
+97792 Riedenberg
+97702 Münnerstadt
+97772 Wildflecken
+97725 Elfershausen
+97711 Maßbach
+97526 Sennfeld
+97464 Niederwerrn
+97516 Oberschwarzach
+97440 Werneck
+97506 Grafenrheinfeld
+97534 Waigolshausen
+97490 Poppenhausen
+97523 Schwanfeld
+97453 Schonungen
+97511 Lülsfeld
+97422 Schweinfurt
+97499 Donnersdorf
+97529 Sulzheim
+97469 Gochsheim
+97447 Gerolzhofen
+97508 Grettstadt
+97535 Wasserlosen
+97493 Bergrheinfeld
+97525 Schwebheim
+97456 Dittelbrunn
+"97513 Michelau i. Steigerwald, Hundelshausen"
+97424 Schweinfurt
+97505 Geldersheim
+97502 Euerbach
+97532 Üchtelhausen
+97488 Stadtlauringen
+97520 Röthlein
+97509 Kolitzheim
+97537 Wipfeld
+97421 Schweinfurt
+97497 Dingolshausen
+31655 Stadthagen
+97342 Obernbreit
+97355 Kleinlangheim
+97318 Kitzingen
+97320 Albertshofen
+97350 Mainbernheim
+97215 Uffenheim
+97337 Dettelbach
+97346 Iphofen
+97357 Prichsenstadt
+97332 Volkach
+97340 Marktbreit
+97353 Wiesentheid
+97258 Ippesheim
+97359 Schwarzach a. Main
+97348 Rödelsee
+97334 Sommerach
+97785 Mittelsinn
+97855 Triefenstein
+97839 Esselbach
+97289 Thüngen
+97776 Eußenheim
+97909 Stadtprozelten
+97828 Marktheidenfeld
+97773 Aura i. Sinngrund
+97901 Altenbuch
+97848 Rechtenbach
+97892 Kreuzwertheim
+97906 Faulbach
+"97840 Hafenlohr, Rothenbuch"
+97783 Karsbach
+97854 Steinfeld
+97450 Arnstein
+97837 Erlenbach b. Marktheidenfeld
+97845 Neustadt a. Main
+97775 Burgsinn
+97907 Hasloch
+97816 Lohr a. Main
+97753 Karlstadt
+97780 Gössenheim
+97846 Partenstein
+97267 Himmelstadt
+97851 Rothenfels
+97782 Gräfendorf
+97852 Schollbrunn
+97836 Bischbrunn
+97843 Neuhütten
+97788 Neuendorf
+97857 Urspringen
+97794 Rieneck
+97737 Gemünden a. Main
+97778 Fellen
+97833 Frammersbach
+97225 Zellingen
+97859 Wiesthal
+97849 Roden
+97282 Retzstadt
+"97896 Freudenberg, Collenberg"
+97834 Birkenfeld
+97842 Karbach
+21763 Neuenkirchen
+21762 Otterndorf
+97496 Burgpreppach
+97478 Knetzgau
+97500 Ebelsbach
+97475 Zeil a. Main
+97539 Wonfurt
+97514 Oberaurach
+97486 Königsberg i. Bay.
+97483 Eltmann
+97503 Gädheim
+97494 Bundorf
+97522 Sand a. Main
+97437 Haßfurt
+97519 Riedbach
+97491 Aidhausen
+97461 Hofheim i. UFr.
+97531 Theres
+97631 Bad Königshofen i. Grabfeld
+97528 Sulzdorf a.d. Lederhecke
+21775 Ihlienworth
+97650 Fladungen
+97724 Burglauer
+97640 Oberstreu
+97657 Sandberg
+97633 Sulzfeld
+97645 Ostheim v.d. Rhön
+97656 Oberelsbach
+97618 Hohenroth
+97638 Mellrichstadt
+97653 Bischofsheim i.d. Rhön
+97654 Bastheim
+97659 Schönau a.d. Brend
+97616 Bad Neustadt an der Saale
+97647 Nordheim v.d. Rhön
+21769 Lamstedt
+21785 Neuhaus (Oste)
+97291 Thüngershem
+97199 Ochsenfurt
+97252 Frickenhausen
+65468 Trebur
+65428 Rüsselsheim
+65474 Bischofsheim
+65462 Ginsheim-Gustavsburg
+65451 Kelsterbach
+65479 Raunheim
+56751 Polch
+56727 Mayen
+56759 Kaisersesch
+56745 Bell
+56767 Uersfeld
+"56753 Mertloch, Welling u.a."
+56729 Ettringen
+56761 Düngenheim
+56746 Kempenich
+56769 Retterath
+56754 Binningen
+56743 Mendig
+56766 Ulmen
+65812 Bad Soden am Taunus
+65843 Sulzbach (Taunus)
+65795 Hattersheim
+65936 Frankfurt am Main
+65824 Schwalbach am Taunus
+65931 Frankfurt am Main
+65439 Flörsheim am Main
+65835 Liederbach am Taunus
+65934 Frankfurt am Main
+65817 Eppstein
+65929 Frankfurt am Main
+65239 Hochheim am Main
+65719 Hofheim am Taunus
+65760 Eschborn
+65830 Kriftel
+65933 Frankfurt am Main
+65779 Kelkheim
+"27321 Thedinghausen, Emtinghausen"
+65329 Hohenstein
+65529 Waldems
+65347 Eltville am Rhein
+65391 Lorch
+65344 Eltville am Rhein
+65375 Oestrich-Winkel
+65399 Kiedrich
+65326 Aarbergen
+65527 Niedernhausen
+65346 Eltville am Rhein
+65232 Taunusstein
+65343 Eltville am Rhein
+65366 Geisenheim
+65396 Walluf
+65321 Heidenrod
+"65510 Hünstetten, Idstein"
+65345 Eltville am Rhein
+65385 Rüdesheim am Rhein
+65520 Bad Camberg
+65629 Niederneisen
+65623 Hahnstätten u.a.
+65624 Altendiez
+65558 Burgschwalbach
+65626 Birlenbach
+68305 Mannheim
+68753 Waghäusel
+68161 Mannheim
+68519 Viernheim
+68782 Brühl
+68167 Mannheim
+68542 Heddesheim
+68799 Reilingen
+68219 Mannheim
+68642 Bürstadt
+68259 Mannheim
+68723 Schwetzingen
+68159 Mannheim
+68309 Mannheim
+68775 Ketsch
+68165 Mannheim
+68535 Edingen-Neckarhausen
+68794 Oberhausen-Rheinhausen
+68199 Mannheim
+68623 Lampertheim
+68809 Neulußheim
+68239 Mannheim
+68649 Groß-Rohrheim
+68307 Mannheim
+68766 Hockenheim
+68163 Mannheim Lindenhof Neuostheim und Neuhermsheim
+68526 Ladenburg
+68789 Sankt Leon-Rot
+68169 Mannheim
+68549 Ilvesheim
+68804 Altlußheim
+68229 Mannheim
+68647 Biblis
+27751 Delmenhorst
+27755 Delmenhorst
+27749 Delmenhorst
+27753 Delmenhorst
+66679 Losheim
+66701 Beckingen
+66663 Merzig
+66359 Bous
+26133 Oldenburg (Oldenburg)
+37620 Halle
+37635 Lüerdissen
+37640 Golmbach
+37643 Negenborn
+37642 Holenberg
+"37691 Boffzen, Derental"
+37603 Holzminden
+37697 Lauenförde
+37699 Fürstenberg
+26135 Oldenburg (Oldenburg)
+26131 Oldenburg (Oldenburg)
+"26129 Oldenburg (Oldenburg)
+(Bloherfelde, Wechloy und Haarentor)"
+66578 Schiffweiler
+66564 Ottweiler
+66538 Neunkirchen
+66583 Spiesen-Elversberg
+66539 Neunkirchen
+66589 Merchweiler
+66540 Neunkirchen
+66571 Eppelborn
+66557 Illingen
+"26127 Oldenburg (Oldenburg) Bürgerfelde (Nord/West), außerhalb der A293, plus Alexandersfeld"
+"26125 Oldenburg (Oldenburg), Stadtteile Ohmstede, Ofenerdiek, Etzhorn."
+66111 Saarbrücken
+66271 Kleinblittersdorf
+66121 Saarbrücken
+66123 Saarbrücken
+66129 Saarbrücken
+66132 Saarbrücken
+66115 Saarbrücken
+66126 Saarbrücken
+66131 Saarbrücken
+66119 Saarbrücken
+66299 Friedrichsthal
+66128 Saarbrücken
+66113 Saarbrücken
+66125 Saarbrücken
+66130 Saarbrücken
+66133 Saarbrücken
+66117 Saarbrücken
+66127 Saarbrücken
+26123 Oldenburg (Oldenburg)
+"26122 Oldenburg (Stadtzentrum und Eversten bis zur A28), entspricht Innenstadt, Bahnhofviertel und Dobben)"
+"26121 Oldenburg (Oldenburg)
+Bürgerfelde (Süd/Ost), bis zur A 293 plus ein Teil der Innenstadt
+(entspricht ungefähr Haarenesch, Ziegelhof und Ehnern + Heiliggeistviertel/Johannisviertel)"
+66953 Pirmasens
+66482 Zweibrücken
+66976 Rodalben
+66503 Dellfeld
+"66989 Höheinöd, Petersberg,Höheischweiler, Höhfröschen, Nünschweiler, Dusenbrücken und Huberhof"
+66509 Rieschweiler-Mühlbach
+66955 Pirmasens
+66497 Contwig
+66981 Münchweiler an der Rodalb
+66506 Maßweiler
+"66996 Fischbach, Erfweiler u.a."
+"66919 Hermersberg, Obernheim-Kirchenarnbach u.a."
+66969 Lemberg
+66501 Kleinbundenbach
+66507 Reifenberg
+66954 Pirmasens
+66484 Battweiler u.a.
+66978 Clausen
+66504 Bottenbach
+66994 Dahn
+66917 Wallhalben u.a.
+"66957 Vinningen, Trulben, Ruppertsweiler u.a."
+66500 Hornbach
+66987 Thaleischweiler-Fröschen
+66999 Hinterweidenthal
+66869 Kusel
+66887 Rammelsbach u.a.
+66909 Herschweiler-Pettersheim
+66882 Hütschenhausen
+66903 Altenkirchen
+66871 Pfeffelbach
+66892 Bruchmühlbach-Miesau
+66914 Waldmohr
+66885 Altenglan
+66904 Brücken (Pfalz)
+66877 Ramstein-Miesenbach
+66894 Bechhofen
+66862 Kindsbach
+66916 Breitenbach
+66907 Glan-Münchweiler
+66879 Steinwenden u.a.
+66901 Schönenberg-Kübelberg
+69251 Gaiberg
+69214 Eppelheim
+69514 Laudenbach
+69117 Heidelberg
+69469 Weinheim
+69198 Schriesheim
+69221 Dossenheim
+69517 Gorxheimertal
+69256 Mauer
+69412 Eberbach
+69123 Heidelberg Wieblingen und Pfaffengrund
+69502 Hemsbach
+69257 Wiesenbach
+69234 Dielheim
+69253 Heiligkreuzsteinach
+69239 Neckarsteinach
+69118 Heidelberg
+69436 Schönbrunn
+69168 Wiesloch
+69226 Nußloch
+69518 Abtsteinach
+69120 Heidelberg
+69427 Mudau
+69124 Heidelberg
+69483 Wald-Michelbach
+69115 Heidelberg
+69259 Wilhelmsfeld
+69429 Waldbrunn
+69126 Heidelberg
+69245 Bammental
+69437 Neckargerach
+69181 Leimen
+69207 Sandhausen
+69509 Mörlenbach
+69121 Heidelberg
+69439 Zwingenberg
+69190 Walldorf
+69488 Birkenau
+"69434 Hirschhorn, Brombach, Heddesbach"
+69151 Neckargemünd
+69493 Hirschberg an der Bergstraße
+69250 Schönau
+67681 Sembach
+67705 Trippstadt u.a.
+67655 Kaiserslautern
+67688 Rodenbach
+67685 Weilerbach u.a.
+67678 Mehlingen
+67657 Kaiserslautern
+67731 Otterbach
+67715 Geiselberg
+67663 Kaiserslautern
+67716 Heltersberg
+67699 Schneckenhausen
+67737 Olsbrücken
+67714 Waldfischbach-Burgalben
+67661 Kaiserslautern
+67659 Kaiserslautern
+"67693 Waldleiningen, Fischbach"
+67732 Hirschhorn
+67728 Münchweiler an der Alsenz
+67757 Kreimbach-Kaulbach
+67749 Offenbach-Hundheim
+67304 Eisenberg (Pfalz)
+67819 Kriegsfeld
+67745 Grumbach
+67729 Sippersfeld
+67759 Nußbach
+67725 Börrstadt
+67827 Becherbach
+67305 Ramsen
+67826 Hallgarten
+67746 Langweiler
+67295 Bolanden
+"67816 Dreisen, Standenbühl"
+67814 Dannenfels
+67727 Lohnsfeld
+67756 Hinzweiler
+67722 Winnweiler
+67754 Eßweiler
+67297 Marnheim
+"67823 Obermoschel, Schiersfeld"
+"67744 Medard, Rathskirchen u.a."
+67292 Kirchheimbolanden
+67811 Dielkirchen
+"67724 Gundersweiler, Gonbach u.a."
+67824 Feilbingert
+67752 Wolfstein
+67294 Bischheim u.a.
+67821 Alsenz
+"67813 Schwarzengraben, St. Alban, Gerbach"
+67742 Lauterecken u.a.
+"67806 Rockenhausen, Bisterschied u.a."
+67308 Albisheim (Pfrimm)
+67829 Callbach
+67753 Rothselberg u.a.
+67307 Göllheim
+67748 Odenbach
+67817 Imsbach
+67310 Hettenleidelheim
+67269 Grünstadt
+67147 Forst an der Weinstraße
+67149 Meckenheim
+67283 Obrigheim (Pfalz)
+67167 Erpolzheim
+67316 Carlsberg
+67169 Kallstadt
+67466 Lambrecht (Pfalz)
+67273 Weisenheim am Berg
+67472 Esthal
+67152 Ruppertsberg
+67311 Tiefenthal
+67246 Dirmstein
+67471 Elmstein
+67150 Niederkirchen bei Deidesheim
+67278 Bockenheim an der Weinstraße
+67158 Ellerstadt
+67317 Altleiningen
+67229 Gerolsheim
+67319 Wattenheim
+67256 Weisenheim am Sand
+67473 Lindenberg
+67146 Deidesheim
+67475 Weidenthal
+67157 Wachenheim an der Weinstraße
+67281 Kirchheim an der Weinstraße
+67161 Gönnheim
+67251 Freinsheim
+67098 Bad Dürkheim
+67271 Kindenheim
+67280 Ebertsheim
+67159 Friedelsheim
+26757 Borkum
+67378 Zeiskam
+67480 Edenkoben
+67360 Lingenfeld
+67487 Maikammer
+67483 Edesheim
+67435 Neustadt an der Weinstraße
+67434 Neustadt an der Weinstraße
+67363 Lustadt
+67365 Schwegenheim
+67361 Freisbach
+67368 Westheim (Pfalz)
+67489 Kirrweiler (Pfalz)
+67482 Venningen
+67433 Neustadt an der Weinstraße
+67377 Gommersheim
+67366 Weingarten (Pfalz)
+26384 Wilhelmshaven
+26382 Wilhelmshaven
+26389 Wilhelmshaven
+26386 Wilhelmshaven
+26388 Wilhelmshaven
+61267 Neu-Anspach
+61203 Reichelsheim (Wetterau)
+61184 Karben
+61206 Wöllstadt
+61462 Königstein im Taunus
+61440 Oberursel (Taunus)
+61231 Bad Nauheim
+61389 Schmitten im Taunus
+61138 Niederdorfelden
+61130 Nidderau
+61352 Bad Homburg v.d. Höhe
+61118 Bad Vilbel
+61476 Kronberg im Taunus
+61197 Florstadt
+61194 Niddatal
+61200 Wölfersheim
+61209 Echzell
+61169 Friedberg (Hessen)
+61279 Grävenwiesbach
+61273 Wehrheim
+61239 Ober-Mörlen
+61350 Bad Homburg v.d. Höhe
+61348 Bad Homburg v.d. Höhe
+61449 Steinbach (Taunus)
+61381 Friedrichsdorf
+61191 Rosbach v.d. Höhe
+61479 Glashütten
+61137 Schöneck
+61276 Weilrod
+60549 Frankfurt am Main
+60488 Frankfurt am Main
+60323 Frankfurt am Main
+60598 Frankfurt am Main
+60437 Frankfurt am Main
+60316 Frankfurt am Main
+60435 Frankfurt am Main
+60308 Frankfurt am Main
+60322 Frankfurt am Main
+60431 Frankfurt am Main
+60489 Frankfurt am Main
+60325 Frankfurt am Main
+60329 Frankfurt am Main
+60594 Frankfurt am Main
+60313 Frankfurt am Main
+60311 Frankfurt am Main
+60386 Frankfurt am Main
+60439 Frankfurt am Main
+60318 Frankfurt am Main
+60388 Frankfurt am Main
+60326 Frankfurt am Main
+60385 Frankfurt am Main
+60433 Frankfurt am Main
+60528 Frankfurt am Main
+60529 Frankfurt am Main
+60487 Frankfurt am Main
+60486 Frankfurt am Main
+60596 Frankfurt am Main
+60389 Frankfurt am Main
+60314 Frankfurt am Main
+60599 Frankfurt am Main
+60327 Frankfurt am Main
+60320 Frankfurt am Main
+64319 Pfungstadt
+64289 Darmstadt
+64367 Mühltal
+64859 Eppertshausen
+64283 Darmstadt
+64569 Nauheim
+64293 Darmstadt
+64521 Groß-Gerau
+64665 Alsbach-Hähnlein
+64397 Modautal
+64846 Groß-Zimmern
+64380 Roßdorf
+64342 Seeheim-Jugenheim
+64579 Gernsheim
+64584 Biebesheim am Rhein
+64297 Darmstadt
+64287 Darmstadt
+64404 Bickenbach
+64853 Otzberg
+64560 Riedstadt
+64823 Groß-Umstadt
+64354 Reinheim
+64409 Messel
+64291 Darmstadt
+64372 Ober-Ramstadt
+64331 Weiterstadt
+64572 Büttelborn
+64839 Münster
+64295 Darmstadt
+64546 Mörfelden-Walldorf
+64285 Darmstadt
+64401 Groß-Bieberau
+64850 Schaafheim
+64390 Erzhausen
+64807 Dieburg
+64347 Griesheim
+64405 Fischbachtal
+64589 Stockstadt am Rhein
+64658 Fürth
+64673 Zwingenberg
+64625 Bensheim
+64747 Breuberg
+64711 Erbach
+64732 Bad König
+64407 Fränkisch-Crumbach
+64753 Brombachtal
+64678 Lindenfels
+64646 Heppenheim (Bergstraße)
+64720 Michelstadt
+64739 Höchst i. Odw.
+64686 Lautertal (Odenwald)
+64754 Badisch Schöllenbach
+64385 Reichelsheim (Odenwald)
+64757 Unter-Hainbrunn
+64683 Einhausen
+64653 Lorsch
+64668 Rimbach
+64689 Grasellenbach
+64756 Mossautal
+64395 Brensbach
+64750 Lützelbach
+65185 Wiesbaden
+65189 Wiesbaden
+65191 Wiesbaden
+65195 Wiesbaden
+65201 Wiesbaden
+65183 Wiesbaden
+65205 Wiesbaden
+65187 Wiesbaden
+65207 Wiesbaden
+65193 Wiesbaden
+65199 Wiesbaden
+65197 Wiesbaden
+65203 Wiesbaden
+34369 Hofgeismar
+34123 Kassel
+34121 Kassel
+"34233 Kassel, Fuldatal"
+34125 Kassel
+34128 Kassel
+34131 Kassel
+34132 Kassel
+34119 Kassel
+34130 Kassel
+34134 Kassel
+34117 Kassel
+34127 Kassel
+56865 Blankenrath u.a.
+56825 Gevenich
+56843 Irmenach
+56861 Reil
+56820 Senheim
+56869 Mastershausen
+56828 Alflen
+56856 Zell (Mosel)
+56812 Cochem
+56864 Bad Bertrich
+56823 Büchel
+56841 Traben-Trarbach
+"56859 Bullay, Alf, Zell"
+56818 Klotten
+56867 Briedel
+56826 Lutzerath
+56850 Enkirch u.a.
+56862 Pünderich
+56821 Ellenz-Poltersdorf
+56829 Pommern
+56858 Peterswald-Löffelscheid u.a.
+56814 Ediger-Eller
+26603 Aurich
+26607 Aurich
+26605 Aurich
+"26487 Blomberg, Neuschoo"
+"26556 Westerholt, Schweindorf u.a."
+37218 Witzenhausen
+37215 Witzenhausen
+37217 Witzenhausen
+"37216 Witzenhausen, Gutsbezirk"
+37213 Witzenhausen
+34355 Staufenberg
+37214 Witzenhausen
+26723 Emden
+26721 Emden
+26725 Emden
+26937 Stadland
+26936 Stadland
+26935 Stadland
+24116 Kiel
+24105 Kiel
+24118 Kiel
+24159 Kiel
+24119 Kronshagen
+24539 Neumünster
+24537 Neumünster
+24620 Bönebüttel
+24626 Groß Kummerfeld
+24536 Neumünster
+24107 Kiel
+24106 Kiel
+71034 Böblingen
+71032 Böblingen
+24534 Neumünster
+24149 Kiel
+24103 Kiel
+"88605 Meßkirch, Sauldorf"
+60438 Frankfurt am Main
+"79837 St. Blasien, Ibach"
+71065 Sindelfingen
+71067 Sindelfingen
+71063 Sindelfingen
+71069 Sindelfingen
+74395 Mundelsheim
+74245 Löwenstein
+74177 Bad Friedrichshall
+74211 Leingarten
+74372 Sersheim
+74385 Pleidelsheim
+74072 Heilbronn
+74321 Bietigheim-Bissingen
+74074 Heilbronn
+74243 Langenbrettach
+74394 Hessigheim
+74249 Jagsthausen
+74206 Bad Wimpfen
+74226 Nordheim
+74379 Ingersheim
+74382 Neckarwestheim
+74348 Lauffen am Neckar
+74080 Heilbronn
+74239 Hardthausen am Kocher
+74936 Siegelsbach
+74363 Güglingen
+74248 Ellhofen
+74219 Möckmühl
+74223 Flein
+74376 Gemmrigheim
+74389 Cleebronn
+74343 Sachsenheim
+74078 Heilbronn
+74193 Schwaigern
+74360 Ilsfeld
+74252 Massenbachhausen
+74232 Abstatt
+74906 Bad Rappenau
+74388 Talheim
+74357 Bönnigheim
+74172 Neckarsulm
+74189 Weinsberg
+74861 Neudenau
+74369 Löchgau
+74251 Lehrensteinsfeld
+74259 Widdern
+74229 Oedheim
+74930 Ittlingen
+74392 Freudental
+74354 Besigheim
+74081 Heilbronn
+74199 Untergruppenbach
+74399 Walheim
+74366 Kirchheim am Neckar
+74255 Roigheim
+74257 Untereisesheim
+74912 Kirchardt
+74391 Erligheim
+74246 Eberstadt
+74182 Obersulm
+74196 Neuenstadt am Kocher
+74831 Gundelsheim
+74397 Pfaffenhofen
+74374 Zaberfeld
+74254 Offenau
+74336 Brackenheim
+74076 Heilbronn
+74235 Erlenbach
+75438 Knittlingen
+75449 Wurmberg
+75031 Eppingen
+75334 Straubenhardt
+75433 Maulbronn
+75223 Niefern-Öschelbronn
+75181 Pforzheim
+75015 Bretten
+75057 Kürnbach
+75173 Pforzheim
+75228 Ispringen
+75179 Pforzheim
+75249 Kieselbronn
+75196 Remchingen
+75038 Oberderdingen
+75337 Enzklösterle
+75056 Sulzfeld
+75446 Wiernsheim
+75417 Mühlacker
+75387 Neubulach
+75248 Ölbronn-Dürrn
+75180 Pforzheim
+75045 Walzbachtal
+75233 Tiefenbronn
+75428 Illingen
+75245 Neulingen
+75053 Gondelsheim
+75447 Sternenfels
+75239 Eisingen
+75050 Gemmingen
+75172 Pforzheim
+75059 Zaisenhausen
+75391 Gechingen
+75177 Pforzheim
+75175 Pforzheim
+75305 Neuenbürg
+75443 Ötisheim
+75210 Keltern
+75331 Engelsbrand
+75217 Birkenfeld
+70599 Stuttgart
+70619 Stuttgart
+70435 Stuttgart
+70186 Stuttgart
+70563 Stuttgart
+70327 Stuttgart
+70329 Stuttgart
+70184 Stuttgart
+70499 Stuttgart
+70192 Stuttgart
+70173 Stuttgart
+70174 Stuttgart
+70771 Leinfelden-Echterdingen
+70191 Stuttgart
+70597 Stuttgart
+70736 Fellbach
+70378 Stuttgart
+70839 Gerlingen
+70569 Stuttgart
+70199 Stuttgart
+70376 Stuttgart
+70182 Stuttgart
+70469 Stuttgart
+70197 Stuttgart
+70180 Stuttgart
+70825 Korntal-Münchingen
+70190 Stuttgart
+70734 Fellbach
+70439 Stuttgart
+70567 Stuttgart
+70629 Stuttgart/Leinfelden-Echterdingen
+70374 Stuttgart
+70188 Stuttgart
+70565 Stuttgart
+70195 Stuttgart
+70372 Stuttgart
+70178 Stuttgart
+70806 Kornwestheim
+70193 Stuttgart
+70176 Stuttgart
+70794 Filderstadt
+70437 Stuttgart
+74939 Zuzenhausen
+74934 Reichartshausen
+74925 Epfenbach
+74933 Neidenstein
+74915 Waibstadt
+74924 Neckarbischofsheim
+74927 Eschelbronn
+74921 Helmstadt-Bargen
+74937 Spechbach
+74889 Sinsheim
+74909 Meckesheim
+74931 Lobbach
+74918 Angelbachtal
+67166 Otterstadt
+67354 Römerberg
+67580 Hamm
+67136 Fußgönheim
+67574 Osthofen
+67599 Gundheim
+67133 Maxdorf
+67141 Neuhofen
+67549 Worms
+67071 Ludwigshafen am Rhein
+67105 Schifferstadt
+67459 Böhl-Iggelheim
+67586 Hillesheim
+67550 Worms
+67596 Dittelsheim-Heßloch
+67227 Frankenthal (Pfalz)
+67258 Heßheim
+67582 Mettenheim
+67240 Bobenheim-Roxheim
+67575 Eich
+67583 Guntersblum
+67125 Dannstadt-Schauernheim
+67165 Waldsee
+67577 Alsheim
+67065 Ludwigshafen am Rhein
+67112 Mutterstadt
+67373 Dudenhofen
+67587 Wintersheim
+67551 Worms
+67592 Flörsheim-Dalsheim
+67059 Ludwigshafen am Rhein
+67117 Limburgerhof
+67259 Beindersheim
+67590 Monsheim
+67061 Ludwigshafen am Rhein
+67245 Lambsheim
+67346 Speyer
+67585 Dorn-Dürkheim
+67126 Hochdorf-Assenheim
+67134 Birkenheide
+67578 Gimbsheim
+67598 Gundersheim
+67067 Ludwigshafen am Rhein
+67127 Rödersheim-Gronau
+67374 Hanhofen
+67547 Worms
+"67593 Westhofen, Bermersheim"
+67069 Ludwigshafen am Rhein
+67122 Altrip
+67376 Harthausen
+67591 Offstein
+67595 Bechtheim
+67063 Ludwigshafen am Rhein
+"78564 Wehingen, Reichenbach"
+46286 Dorsten
+78467 Konstanz
+78462 Konstanz
+78465 Konstanz
+78464 Konstanz
+"65582 Diez, Hambach, Aull"
+55252 Mainz-Kastel
+55120 Mainz
+55118 Mainz
+55124 Mainz
+55122 Mainz
+55127 Mainz
+55129 Mainz
+55246 Wiesbaden
+55126 Mainz
+55131 Mainz
+55116 Mainz
+55128 Mainz
+55130 Mainz
+55424 Münster-Sarmsheim
+55286 Wörrstadt
+55257 Budenheim
+55296 Harxheim
+55435 Gau-Algesheim
+55218 Ingelheim am Rhein
+55291 Saulheim
+55263 Ingelheim am Rhein
+"55459 Aspisheim, Grolsheim"
+55411 Bingen am Rhein
+55276 Oppenheim
+55234 Albig
+55239 Gau-Odernheim
+55270 Ober-Olm
+55578 Wallertheim
+"55422 Bacharach, Breitscheid"
+55283 Nierstein
+55437 Ockenheim
+55599 Gau-Bickelheim
+55425 Waldalgesheim
+55288 Armsheim
+55262 Ingelheim am Rhein
+55457 Gensingen
+55299 Nackenheim
+55271 Stadecken-Elsheim
+55232 Alzey
+55294 Bodenheim
+55268 Nieder-Olm
+55576 Sprendlingen
+55413 Weiler bei Bingen
+55278 Mommenheim
+55237 Flonheim
+55597 Wöllstein
+"45665 Recklinghausen-Ost, Hillen, Suderwich"
+"45657 Recklinghausen-Zentrum, Westviertel, Nordviertel"
+"45659 Recklinghausen-West, Hochlar, Hillerheide, Speckhorn"
+45663 Recklinghausen
+45661 Recklinghausen
+71336 Waiblingen
+71332 Waiblingen
+71334 Waiblingen
+67454 Haßloch
+55777 Berschweiler bei Baumholder
+55606 Kirn
+55491 Büchenbeuren
+55626 Bundenbach
+55608 Bergen
+55545 Bad Kreuznach
+55494 Rheinböllen
+55765 Birkenfeld u.a.
+55430 Oberwesel
+55627 Merxheim
+55546 Hackenheim
+55450 Langenlonsheim
+"55767 Brücken, Oberbrombach u.a."
+55432 Niederburg
+55595 Hargesheim
+55583 Bad Kreuznach
+55481 Kirchberg u.a.
+55452 Guldental
+55779 Heimbach
+55596 Waldböckelheim
+55483 Dickenschied u.a.
+55619 Hennweiler
+55618 Simmertal
+"55497 Ellern (Hunsrück), Schnorbach"
+55496 Argenthal
+55629 Seesbach
+55569 Monzingen
+55559 Bretzenheim
+55768 Hoppstädten-Weiersbach
+55743 Idar-Oberstein
+55585 Norheim u.a.
+"55566 Sobernheim, Meddersheim u.a."
+55774 Baumholder
+55590 Meisenheim
+55487 Sohren
+55621 Hundsbach
+55499 Riesweiler
+55490 Gemünden
+55624 Rhaunen
+55571 Odernheim am Glan
+55543 Bad Kreuznach
+55442 Stromberg
+55758 Niederwörresbach u.a.
+55756 Herrstein
+55568 Staudernheim
+55444 Seibersbach
+"55776 Berglangenbach, Ruschberg u.a."
+55593 Rüdesheim
+55592 Rehborn
+55471 Tiefenbach u.a.
+55469 Simmern/Hunsrück u.a.
+48161 Münster
+48165 Münster
+48153 Münster
+48159 Münster
+48143 Münster
+48167 Münster
+48157 Münster
+48155 Münster
+48145 Münster
+48151 Münster
+48149 Münster
+46284 Dorsten
+46282 Dorsten
+44532 Lünen
+44534 Lünen
+44536 Lünen
+78144 Schramberg
+78713 Schramberg
+59227 Ahlen
+59229 Ahlen
+48147 Münster
+59075 Hamm
+59065 Hamm
+59063 Hamm
+59071 Hamm
+59069 Hamm
+59077 Hamm
+59067 Hamm
+59073 Hamm
+29643 Neuenkirchen
+46399 Bocholt
+46395 Bocholt
+46397 Bocholt
+"25849 Süderoog, Pellworm"
+29582 Hanstedt
+29574 Ebstorf
+"21385 Oldendorf (Luhe), Amelinghausen, Rehlingen"
+71638 Ludwigsburg
+71642 Ludwigsburg
+71640 Ludwigsburg
+71636 Ludwigsburg
+71634 Ludwigsburg
+72074 Tübingen
+72070 Tübingen
+72076 Tübingen
+72072 Tübingen
+"66851 Mittelbrunn, Queidersbach u.a."
+"67468 Frankenstein, Neidenfels, Frankeneck"
+72766 Reutlingen
+72762 Reutlingen
+72764 Reutlingen
+72770 Reutlingen
+72760 Reutlingen
+72768 Reutlingen
+72461 Albstadt
+72458 Albstadt
+72459 Albstadt
+29578 Eimke
+29581 Gerdau
+29556 Suderburg
+48431 Rheine
+45772 Marl
+45770 Marl
+45768 Marl
+59558 Lippstadt
+59555 Lippstadt
+59556 Lippstadt
+59557 Lippstadt
+77656 Offenburg
+77654 Offenburg
+77652 Offenburg
+25924 Rodenäs
+"25927 Neukirchen, Aventoft"
+"25920 Risum-Lindholm, Stedesand"
+25863 Langeneß
+25899 Niebüll
+25917 Leck
+"25923 Süderlügum, Braderup u.a."
+66849 Landstuhl
+67734 Katzweiler
+49477 Ibbenbüren
+49479 Ibbenbüren
+54316 Pluwig
+54439 Saarburg
+54329 Konz
+54451 Irsch
+54309 Newel
+54422 Neuhütten
+54292 Trier
+54450 Freudenburg
+54413 Gusenburg
+54332 Wasserliesch
+54455 Serrig
+54311 Trierweiler
+54294 Trier
+54344 Kenn
+54340 Leiwen u.a.
+54457 Wincheringen
+54314 Zerf
+54429 Schillingen
+54296 Trier
+54320 Waldrach
+54308 Langsur
+"54317 Osburg, Gusterath, Farschweiler, Kasel u.a."
+54290 Trier
+"54441 Ayl, Trassem u.a."
+54306 Kordel
+"54411 Deuselbach, Hermeskeil, Rorodt"
+54331 Pellingen
+54453 Nittel
+54293 Trier
+54343 Föhren
+54421 Reinsfeld
+54338 Schweich
+54456 Tawern
+54313 Zemmer
+54427 Kell am See
+54295 Trier
+54346 Mehring
+54318 Mertesdorf
+54341 Fell
+54459 Wiltingen
+59823 Arnsberg
+59759 Arnsberg
+59821 Arnsberg
+59755 Arnsberg
+59757 Arnsberg
+59199 Bönen
+"54518 Niersbach, Sehlem, Plein u.a."
+54424 Thalfang
+"77716 Fischerbach, Haslach, Hofstetten"
+54470 Bernkastel-Kues u.a.
+54526 Landscheid
+54484 Maring-Noviand
+54531 Manderscheid
+"54492 Zeltingen-Rachtig, Erden, Lösnich u.a."
+54536 Kröv
+54516 Wittlich
+54349 Trittenheim
+54524 Klausen
+54483 Kleinich
+54487 Wintrich
+54534 Großlittgen
+54498 Piesport
+54539 Ürzig
+54347 Neumagen-Dhron
+"54523 Hetzerath, Dierscheid, Heckenmünster"
+54426 Malborn
+"54472 Monzelfeld, Hochscheid u.a."
+54528 Salmtal
+54486 Mülheim (Mosel)
+"54533 Bettenfeld, Niederöfflingen u.a."
+54497 Morbach
+54538 Bausendorf
+78052 Villingen-Schwenningen
+78056 Villingen-Schwenningen
+78050 Villingen-Schwenningen
+78054 Villingen-Schwenningen
+78048 Villingen-Schwenningen
+54574 Birresborn
+54584 Jünkerath
+54579 Üxheim
+54611 Hallschlag
+54586 Schüller
+54585 Esch
+54634 Bitburg
+54619 Üttfeld
+54576 Hillesheim
+54608 Bleialf
+54614 Schönecken
+54612 Lasel
+"54298 Welschbillig, Igel, Aach"
+54617 Lützkampen
+54616 Winterspelt
+"54570 Pelm, Neroth u.a."
+54568 Gerolstein
+54610 Büdesheim
+54666 Irrel
+54550 Daun
+54310 Ralingen
+54558 Gillenfeld
+54552 Mehren u.a.
+54597 Pronsfeld
+54595 Prüm
+54669 Bollendorf
+54668 Ferschweiler
+54647 Dudeldorf
+54675 Körperich u.a.
+54673 Neuerburg u.a.
+"54689 Daleiden, Preischeid u.a."
+54687 Arzfeld
+54664 Preist
+54636 Rittersdorf u.a.
+54655 Kyllburg
+54649 Waxweiler
+"54578 Walsdorf, Nohn u.a."
+54662 Speicher
+"54657 Badem, Gindorf, Neidenbach"
+54589 Stadtkyll
+54587 Lissendorf
+54646 Bettingen
+67691 Hochspeyer
+54529 Spangdahlem
+46244 Bottrop
+46537 Dinslaken
+46539 Dinslaken
+46535 Dinslaken
+04610 Meuselwitz
+"04626 Schmölln, Altkirchen, Nöbdenitz u.a."
+"04603 Nobitz, Göhren, Windischleuba"
+04618 Langenleuba-Niederhain
+04600 Altenburg
+"04617 Rositz, Starkenberg, Treben"
+04639 Gößnitz
+04613 Lucka
+"37318 Arenshausen, Uder u.a."
+37345 Am Ohmberg und Sonnenstein
+37359 Küllstedt
+37339 Worbis
+"37327 Leinefelde-Worbis, Wingerode"
+37355 Niederorschel u.a.
+37351 Dingelstädt
+37308 Heiligenstadt
+56254 Müden
+51643 Gummersbach
+51647 Gummersbach
+51645 Gummersbach
+53879 Euskirchen
+58513 Lüdenscheid
+58509 Lüdenscheid
+58507 Lüdenscheid
+58511 Lüdenscheid
+"58515 Lüdenscheid-Land incl. Brügge, Hellersen und Bierbaum"
+36419 Geisa
+98597 Breitungen/Werra
+42697 Solingen
+40764 Langenfeld
+"24884 Selk, Geltdorf, Hahnekrug"
+59423 Unna
+59427 Unna
+59425 Unna
+"48480 Lünne, Schapen, Spelle"
+48527 Nordhorn
+48529 Nordhorn
+48531 Nordhorn
+91236 Alfeld
+71672 Marbach am Neckar
+07743 Jena
+07749 Jena
+"07751 Jena, Bucha, Großpürschütz u.a."
+07747 Jena
+07745 Jena
+58119 Hagen
+58638 Iserlohn
+58640 Iserlohn
+58706 Menden
+58097 Hagen
+58093 Hagen
+58089 Hagen
+58135 Hagen
+58710 Menden
+58644 Iserlohn
+58708 Menden
+58099 Hagen
+58642 Iserlohn
+58095 Hagen
+58091 Hagen
+42699 Solingen
+42657 Solingen
+"39291 Möckern, Schermen, Nedlitz u.a."
+"39279 Loburg, Leitzkau"
+"39175 Biederitz, Gerwisch, Menz u.a."
+39317 Elbe-Parey
+"39245 Gommern, Dannigkow"
+39319 Jerichow
+"39307 Genthin, Hohenseeden, Zabakuck u.a."
+"39615 Seehausen, Werben, Leppin u.a."
+39590 Tangermünde
+"39606 Osterburg, Altmärkische Höhe"
+"39596 Goldbeck, Arneburg u.a."
+39579 Rochau
+39517 Tangerhütte u.a.
+39524 Sandau
+39638 Gardelegen
+39624 Kalbe
+"29413 Dähre, Diesdorf, Wallstawe"
+29410 Salzwedel
+"38489 Beetzendorf, Rohrberg, Jübar"
+"38486 Klötze, Apenburg-Winterfeld"
+39576 Stendal
+42655 Solingen
+07546 Gera
+07548 Gera
+07549 Gera
+07551 Gera
+07545 Gera
+07552 Gera
+39646 Oebisfelde
+"39343 Erxleben, Nordgermersleben u.a."
+"39365 Harbke, Sommersdorf, Wefensleben, Ummendorf, Eilsleben"
+39340 Haldensleben
+"39167 Eichenbarleben, Irxleben, Niederndodeleben u.a."
+39326 Wolmirstedt u.a.
+"39356 Weferlingen, Behnsdorf, Belsdorf u.a."
+39164 Wanzleben-Börde
+"39397 Schwanebeck, Gröningen, Kroppenstedt"
+"39345 Haldensleben, Flechtingen, Bülstringen u.a."
+39387 Oschersleben (Bode)
+39179 Barleben
+39649 Gardelegen
+"39359 Rätzlingen, Wegenstedt, Calvörde, Böddensell u.a."
+"39393 Hötensleben, Völpke, Ottleben u.a."
+08393 Meerane
+08115 Lichtentanne
+08147 Crinitzberg
+08371 Glauchau
+08112 Wilkau-Haßlau
+08058 Zwickau
+08451 Crimmitschau
+08060 Zwickau
+08062 Zwickau
+08428 Langenbernsdorf
+08144 Hirschfeld
+08373 Remse
+09212 Limbach-Oberfrohna
+08056 Zwickau
+08118 Hartenstein
+08396 Waldenburg
+08427 Fraureuth
+08107 Kirchberg
+"08134 Langenweißbach, Wildenfels"
+08412 Werdau
+08141 Reinsdorf
+08459 Neukirchen/Pleiße
+08132 Mülsen
+08066 Zwickau
+08541 Neuensalz
+08543 Pöhl
+08468 Reichenbach im Vogtand
+08529 Plauen
+08267 Klingenthal
+08262 Muldenhammer
+08209 Auerbach/Vogtl.
+08496 Neumark
+08547 Jößnitz
+08248 Klingenthal/Sa.
+08523 Plauen
+"08491 Netzschkau, Limbach"
+08228 Rodewisch
+08548 Rosenbach
+08236 Ellefeld
+08223 Falkenstein/Vogtl.
+08606 Oelsnitz
+08499 Mylau
+08645 Bad Elster
+08233 Treuen
+08538 Weischlitz u.a.
+08626 Adorf
+"08527 Plauen, Rößnitz"
+08648 Bad Brambach
+08525 Plauen
+08539 Rosenbach
+08237 Steinberg
+08258 Markneukirchen
+08239 Bergen
+08261 Schöneck/Vogtl.
+08485 Lengenfeld
+42719 Solingen
+19309 Lenzen
+"16928 Pritzwalk, Groß Pankow"
+"19348 Perleberg, Berge u.a."
+"16949 Triglitz, Putlitz"
+"16945 Meyenburg, Kümmernitztal u.a."
+"19336 Legde/Quitzöbel, Bad Wilsnack"
+"19322 Wittenberge, Rühstädt"
+09114 Chemnitz
+09228 Chemnitz
+09123 Chemnitz
+09247 Röhrsdorf
+09120 Chemnitz
+09112 Chemnitz
+09117 Chemnitz
+09128 Chemnitz
+09126 Chemnitz
+09113 Chemnitz
+09119 Chemnitz
+09111 Chemnitz
+09127 Chemnitz
+09131 Chemnitz
+09122 Chemnitz
+09125 Chemnitz
+09116 Chemnitz
+09130 Chemnitz
+09224 Chemnitz
+"09573 Leubsdorf, Gornau, Augustusburg"
+09603 Großschirma
+"09600 Weißenborn, Oberschöna"
+09326 Geringswalde
+09633 Halsbrücke
+09629 Reinsberg
+"09661 Hainichen, Rossau, Striegistal"
+09249 Taura b. Burgstädt
+"09618 Brand-Erbisdorf, Großhartmannsdorf"
+09575 Eppendorf
+"09619 Dorfchemnitz, Mulda, Sayda"
+09577 Niederwiesa
+09544 Neuhausen/Erzgeb.
+09328 Lunzenau
+09217 Burgstädt
+09306 Rochlitz
+09599 Freiberg
+09236 Claußnitz
+09669 Frankenberg
+09557 Flöha
+09638 Lichtenberg/Erzgeb.
+09627 Bobritzsch
+09623 Frauenstein
+09322 Penig
+09569 Oederan
+09244 Lichtenau
+"09648 Mittweida, Kriebstein"
+09432 Großolbersdorf
+"09337 Callenberg, Hohenstein-Ernstthal, Bernsdorf"
+09356 St. Egidien
+09487 Schlettau
+09387 Jahnsdorf
+09390 Gornsdorf
+09429 Wolkenstein
+09481 Scheibenberg
+09484 Oberwiesenthal
+09385 Lugau/Erzgeb.
+"09456 Annaberg-Buchholz, Mildenau"
+09548 Seiffen/Erzgeb.
+09434 Zschopau
+09477 Jöhstadt
+09496 Marienberg
+09394 Hohndorf
+09439 Amtsberg
+09366 Stollberg/Erzgeb.
+09488 Wiesa
+09399 Niederwürschnitz
+09235 Burkhardtsdorf
+09468 Geyer
+"09437 Börnichen, Gornau"
+09514 Pockau-Lengefeld (Lengefeld)
+09427 Ehrenfriedersdorf
+09465 Sehma
+09579 Grünhainichen
+09380 Thalheim/Erzgebirge
+09509 Pockau-Lengefeld (Pockau)
+09419 Thum
+09423 Gelenau/Erzgeb.
+09474 Crottendorf
+09376 Oelsnitz/Erzgebirge
+09392 Auerbach
+09221 Neukirchen/Erzgeb.
+09518 Großrückerswalde
+"09526 Olbernhau, Pfaffroda, Heidersdorf"
+"09405 Zschopau, Gornau"
+09471 Bärenstein
+08321 Zschorlau
+08297 Zwönitz
+08359 Breitenbrunn/Erzgeb.
+08294 Lößnitz
+08352 Raschau
+08304 Schönheide
+08340 Schwarzenberg/Erzgeb.
+08349 Johanngeorgenstadt
+08301 Schlema
+08328 Stützengrün
+08344 Grünhain-Beierfeld
+08315 Lauter-Bernsbach
+08289 Schneeberg
+08309 Eibenstock
+08324 Bockau
+08280 Aue
+04643 Geithain
+04821 Brandis
+04552 Borna
+04451 Borsdorf
+04808 Wurzen
+04539 Groitzsch
+04571 Rötha
+04687 Trebsen/Mulde
+04654 Frohburg
+04827 Machern
+04420 Markranstädt
+04565 Regis-Breitingen
+04567 Kitzscher
+04651 Bad Lausick
+04680 Colditz
+04824 Brandis
+04564 Böhlen
+"04575 Neukieritzsch, Deutzen"
+04668 Grimma
+04463 Großpösna
+"04523 Pegau, Elstertrebnitz"
+04828 Bennewitz
+04442 Zwenkau
+04416 Markkleeberg
+04683 Naunhof
+08064 Zwickau
+04205 Leipzig
+04229 Leipzig
+04318 Leipzig
+04109 Leipzig
+04209 Leipzig
+04157 Leipzig
+04107 Leipzig
+04356 Leipzig
+04316 Leipzig
+04129 Leipzig
+04519 Rackwitz
+04159 Leipzig
+04288 Leipzig
+04357 Leipzig
+04103 Leipzig
+04179 Leipzig
+04317 Leipzig
+04319 Leipzig
+04329 Leipzig
+04249 Leipzig
+04328 Leipzig
+04349 Leipzig
+04277 Leipzig
+04347 Leipzig
+04299 Leipzig
+04275 Leipzig
+04289 Leipzig
+04155 Leipzig
+04177 Leipzig
+04279 Leipzig
+04207 Leipzig
+04315 Leipzig
+04105 Leipzig
+16833 Fehrbellin
+16831 Rheinsberg
+16845 Neustadt (Dosse) u.a.
+16835 Lindow u.a.
+"16909 Wittstock/Dosse, Heiligengrabe"
+"16818 Albertinenhof, Altfriesack, Basdorf, Braunsberg, Dabergotz, Darsikow, Deutschhof, Gnewikow, Karwe, Katerbow, Kuhhorst, Langen, Lichtenberg, Märkisch Linden, Netzeband, Neu Glienicke,
+Pfalzheim, Radensleben, Rägelin, Ribbeckshorst u.a."
+"16827 Alt Ruppin, Krangen, Molchow, Zermützel, Zippelsförde"
+16837 Rheinsberg
+"16866 Gumtow, Kyritz u.a."
+04880 Dommitzsch
+04774 Dahlen
+04758 Oschatz u.a.
+"04860 Torgau, Dreiheide"
+04849 Bad Düben
+04425 Taucha
+04889 Belgern-Schildau
+"04509 Delitzsch, Krostitz u.a."
+04838 Eilenburg u.a.
+"04886 Arzberg, Beilrode"
+04779 Wermsdorf
+04178 Leipzig
+"04769 Mügeln, Naundorf"
+04874 Belgern-Schildau
+04435 Schkeuditz
+04934 Hohenleipisch
+"04928 Plessa, Schraden"
+04936 Schlieben
+"04931 Mühlberg, Bad Liebenwerda"
+04938 Uebigau-Wahrenbrück
+"04932 Röderland, Großthiemig u.a."
+04895 Falkenberg/ Elster
+04916 Herzberg/ Elster
+04910 Elsterwerda
+04924 Bad Liebenwerda
+"01609 Gröditz, Wülknitz, Röderaue"
+"01561 Großenhain, Ebersbach u.a."
+01589 Riesa
+01445 Radebeul
+"01665 Käbschütztal, Klipphausen, Diera-Zehren"
+01616 Strehla
+01689 Weinböhla
+01587 Riesa
+01591 Riesa
+01683 Nossen
+01619 Zeithain
+01640 Coswig
+01468 Moritzburg
+"01594 Riesa, Stauchitz, Hirschstein"
+01558 Großenhain
+01623 Lommatzsch
+01662 Meißen
+"01612 Nünchritz, Glaubitz"
+01471 Radeburg
+01067 Dresden
+01217 Dresden
+01108 Dresden
+01069 Dresden
+01129 Dresden
+01328 Dresden
+01279 Dresden
+01127 Dresden
+01277 Dresden
+01326 Dresden
+01189 Dresden
+01259 Dresden
+01324 Dresden
+01187 Dresden
+01239 Dresden
+01465 Dresden
+01109 Dresden
+01257 Dresden
+01309 Dresden
+01169 Dresden
+01237 Dresden
+01099 Dresden
+01157 Dresden
+01307 Dresden
+01159 Dresden
+01219 Dresden
+01097 Dresden
+01139 Dresden
+01156 Dresden
+01774 Klingenberg
+01738 Dorfhain
+01825 Liebstadt
+01737 Tharandt u.a.
+01848 Hohnstein
+01824 Königstein/Sächs.Schw.
+01844 Neustadt i. Sa.
+01847 Lohmen
+01819 Bahretal
+"01833 Stolpen, Dürrröhrsdorf-Dittersbach"
+01814 Bad Schandau
+01734 Rabenau
+01816 Bad Gottleuba-Berggießhübel
+01829 Wehlen
+01773 Altenberg
+01809 Heidenau
+01731 Kreischa
+01762 Hartmannsdorf-Reichenau
+01768 Glashütte
+"01796 Pirna, Struppen, Dohma"
+01728 Bannewitz
+01744 Dippoldiswalde
+01705 Freital
+01778 Altenberg
+01723 Wilsdruff
+01855 Sebnitz
+01906 Burkau
+01458 Ottendorf-Okrilla
+01936 Königsbrück u.a.
+01904 Neukirch/Lausitz
+01477 Arnsdorf b. Dresden
+01896 Pulsnitz
+"01454 Radeberg, Wachau"
+"01920 Elstra, Oßling u.a."
+"01900 Großröhrsdorf, Bretnig-Hauswalde"
+01877 Bischofswerda u.a.
+"01909 Großharthau, Frankenthal"
+01917 Kamenz
+39539 Havelberg
+16868 Wusterhausen
+"16816 Neuruppin, Buskow und Nietwerder"
+39629 Bismark
+"02692 Doberschau-Gaußig, Großpostwitz, Obergurig"
+02999 Lohsa
+02977 Hoyerswerda
+"02627 Weißenberg, Hochkirch u.a."
+02997 Wittichenau
+"02694 Großdubrau, Malschwitz"
+02991 Lauta
+02689 Sohland a. d. Spree
+02733 Cunewalde
+02633 Göda
+"02979 Spreetal, Elsterheide"
+02681 Wilthen
+02625 Bautzen
+02699 Königswartha
+02994 Bernsdorf
+"16775 Gransee, Löwenberg"
+16562 Hohen Neuendorf OT Bergfelde
+16556 Borgsdorf
+16540 Hohen Neuendorf
+02797 Oybin
+02727 Ebersbach-Neugersdorf
+"02943 Weißwasser, Boxberg"
+02747 Herrnhut
+02799 Großschönau
+02788 Zittau
+"02906 Niesky, Hohendubrau u.a."
+02748 Bernstadt a. d. Eigen
+"02736 Beiersdorf, Oppach"
+"02794 Leutersdorf, Spitzkunnersdorf"
+02791 Oderwitz
+"02923 Hähnichen, Horka, Kodersdorf"
+02828 Görlitz
+02739 Kottmar
+02796 Jonsdorf
+02782 Seifhennersdorf
+"02894 Reichenbach, Vierkirchen"
+"02829 Markersdorf, Neißeaue u.a."
+02730 Ebersbach-Neugersdorf
+"02953 Bad Muskau, Groß Düben, Gablenz"
+02785 Olbersdorf
+"02899 Ostritz, Schönau-Berzdorf"
+02826 Görlitz
+"02957 Krauschwitz, Weißkeißel"
+02956 Rietschen
+02763 Zittau u.a.
+02827 Görlitz
+"02708 Löbau, Kottmar u.a."
+02959 Schleife
+02929 Rothenburg/O.L.
+02779 Großschönau
+02742 Neusalza-Spremberg
+01968 Senftenberg
+01987 Schwarzheide N.L.
+01945 Ruhland
+01983 Großräschen
+01998 Schipkau
+01994 Schipkau
+01996 Senftenberg
+01993 Schipkau
+01979 Lauchhammer
+01990 Ortrand
+16225 Eberswalde
+"16230 Melchow, Chorin u.a."
+16348 Wandlitz
+16248 Oderberg u.a.
+16227 Eberswalde
+16356 Werneuchen
+16321 Bernau
+16247 Joachimsthal u.a.
+"16727 Velten, Oberkrämer"
+03044 Cottbus
+03246 Crinitz
+03197 Jänschwalde
+03116 Drebkau
+03222 Lübbenau/ Spreewald
+03249 Sonnewalde
+"03229 Altdöbern, Luckaitztal"
+03055 Cottbus
+03099 Kolkwitz
+03050 Cottbus
+"03130 Spremberg, Tschernitz u.a."
+"03205 Calau, Bronkow"
+03185 Peitz
+03048 Cottbus
+03042 Cottbus
+03149 Forst/ Lausitz
+"03172 Guben, Schenkendöbern"
+03054 Cottbus
+03096 Burg/Spreewald u.a.
+03238 Finsterwalde
+03046 Cottbus
+03159 Döbern
+03226 Vetschau
+"03103 Neu-Seeland, Neupetershain"
+03119 Welzow
+03053 Cottbus
+03253 Doberlug-Kirchhain
+06917 Jessen (Elster)
+06925 Annaburg
+06895 Zahna-Elster
+06905 Bad Schmiedeberg
+06369 Südliches Anhalt u.a.
+06780 Zörbig
+06385 Aken (Elbe)
+"06809 Roitzsch, Petersroda"
+06366 Köthen
+06779 Raguhn-Jeßnitz
+06749 Bitterfeld-Wolfen
+06808 Bitterfeld-Wolfen
+06800 Raguhn-Jeßnitz
+06766 Bitterfeld-Wolfen
+06386 Osternienburger Land
+06803 Bitterfeld-Wolfen
+06794 Sandersdorf-Brehna
+"06388 Südliches Anhalt, Köthen"
+06124 Halle/ Saale
+06122 Halle/ Saale
+06110 Halle/ Saale
+06130 Halle/ Saale
+06132 Halle/ Saale
+06120 Halle/ Saale
+06118 Halle/ Saale
+06128 Halle/ Saale
+06116 Halle/ Saale
+06126 Halle/ Saale
+06114 Halle/ Saale
+"06502 Thale, Blankenburg"
+06484 Quedlinburg
+"06493 Ballenstedt, Harzgerode"
+06463 Falkenstein
+"06485 Quedlinburg, Ballenstedt"
+06458 Hedersleben
+06466 Seeland
+06406 Bernburg (Saale)
+06467 Seeland
+06456 Arnstein
+06420 Könnern
+06408 Ilberstedt
+06449 Aschersleben
+"06425 Alsleben/Saale, Plötzkau"
+06429 Nienburg (Saale)
+06469 Seeland
+"15377 Oberbarnim, Märkische Höhe u.a."
+15562 Rüdersdorf
+"15370 Fredersdorf-Vogelsdorf, Petershagen"
+"15366 Neuenhagen, Hoppegarten"
+16269 Wriezen
+16259 Bad Freienwalde u.a.
+"15328 Golzow, Zechin u.a."
+"15345 Lichtenow, Altlandsberg u.a."
+"15306 Seelow, Lietzen u.a."
+"15320 Neutrebbin, Neuhardenberg"
+15378 Rüdersdorf
+"17268 Templin, Boitzenburg u.a."
+16307 Gartz (Oder)
+16278 Angermünde
+16306 Biesendahlshof
+"17291 Prenzlau, Nordwestuckermark u.a."
+24114 Kiel
+15831 Blankenfelde-Mahlow
+15834 Rangsdorf
+15936 Dahme u.a.
+15837 Baruth
+15827 Blankenfelde-Mahlow
+15806 Zossen
+15749 Mittenwalde
+15838 Am Mellensee
+15569 Woltersdorf
+15566 Schöneiche bei Berlin
+15745 Wildau
+15713 Königs Wusterhausen
+15738 Zeuthen
+15711 Königs Wusterhausen
+15732 Schulzendorf b. Eichenwade
+15712 Königs Wusterhausen
+15748 Märkisch Buchholz
+15741 Bestensee
+15746 Groß Köris
+15755 Teupitz
+15754 Heidesee
+15757 Halbe
+"38889 Blankenburg, Oberharz am Brocken"
+38838 Huy
+38875 Oberharz am Brocken
+38899 Oberharz am Brocken
+38836 Badersleben u.a.
+"38855 Wernigerode, Nordharz"
+"38871 Ilsenburg, Nordharz"
+38820 Halberstadt
+38877 Oberharz am Brocken
+38835 Osterwieck
+38879 Wernigerode
+"38822 Halberstadt, Groß Quenstedt"
+15913 Straupitz
+15907 Lübben (Spreewald)
+"15926 Luckau, Waldrehna, Heideblick, Fürstlich Drehna"
+15938 Golßen
+15910 Schönwalde
+15868 Lieberose
+"39240 Calbe, Rosenburg u.a."
+39439 Güsten
+39418 Staßfurt
+39444 Hecklingen
+39443 Staßfurt
+"39221 Welsleben, Biere, Eickendorf u.a."
+"39435 Egeln, Borne, Wolmirsleben u.a."
+"38895 Langenstein, Derenburg"
+21107 Hamburg
+21109 Hamburg
+21244 Buchholz in der Nordheide
+"21255 Tostedt, Kakenstorf, Dohren, Drestedt-Valzik Siedlung, Königsmoor, Riepshof und Wistedt"
+21037 Hamburg
+21684 Stade
+21680 Stade
+21228 Harmstorf
+21227 Bendestorf
+21031 Hamburg
+21033 Hamburg
+21272 Egestorf
+21376 Salzhausen
+21035 Hamburg
+21682 Stade
+21683 Stade
+21354 Bleckede
+21368 Dahlenburg
+21259 Otter
+"21271 Hanstedt, Asendorf"
+21220 Seevetal
+21217 Seevetal
+21039 Hamburg
+21423 Winsen
+21029 Hamburg
+15848 Beeskow
+15295 Brieskow-Finkenheerd
+"15518 Briesen, Rauen u.a."
+15526 Bad Saarow-Pieskow
+15528 Spreenhagen
+15898 Neuzelle
+15864 Wendisch Rietz
+15859 Storkow
+15517 Fürstenwalde/ Spree
+15537 Erkner
+15890 Eisenhüttenstadt
+15299 Müllrose
+"21406 Melbeck, Barnstedt"
+21335 Lüneburg
+"21397 Barendorf, Vastorf"
+21521 Aumühle
+21502 Geesthacht
+21481 Lauenburg/Elbe
+21527 Kollow
+21483 Gülzow
+"21514 Büchen, Güster u.a."
+"21516 Woltersdorf, Müssen u.a."
+21493 Schwarzenbek u.a.
+"21522 Hohnstorf (Elbe), Hittbergen"
+"21379 Scharnebeck, Echem, Lüdersburg, Rullstorf und Neumühlen (Neumühlen = 3 Exklaven der Gde. Neetze)"
+21339 Lüneburg
+12529 Schönefeld
+21465 Reinbek
+"21394 Kirchgellersen, Westergellersen, Südergellersen"
+21337 Lüneburg
+"21357 Bardowick, Wittorf, Barum"
+20459 Hamburg
+20539 Hamburg
+20097 Hamburg
+15230 Frankfurt (Oder)
+15234 Frankfurt (Oder)
+"15236 Treplin, Jacobsdorf, Frankfurt (Oder)"
+15232 Frankfurt (Oder)
+"14913 Jüterbog, Niederer Fläming, Niedergörsdorf"
+14959 Trebbin
+14947 Nuthe-Urstromtal
+14974 Ludwigsfelde
+14943 Luckenwalde
+14979 Großbeeren
+14827 Wiesenburg
+14552 Michendorf
+14542 Werder/ Havel
+14806 Belzig
+14547 Beelitz
+14828 Görzke
+14554 Seddiner See
+14793 Ziesar
+14929 Treuenbrietzen
+"14822 Brück, Borkheide u.a."
+14548 Schwielowswee
+14513 Teltow
+14797 Lehnin
+14532 Kleinmachnow
+14823 Niemegk
+"14778 Beetzsee, Wollin, Wenzlow, Golzow u.a."
+14550 Groß Kreutz
+"14715 Milower Land, Schollene, Nennhausen u.a."
+14656 Brieselang
+14662 Friesack
+14727 Premnitz
+14621 Schönwalde
+14798 Havelsee
+14712 Rathenow
+14641 Nauen
+14669 Ketzin
+14728 Rhinow
+14612 Falkensee
+20359 Hamburg
+14772 Brandenburg/ Havel
+14776 Brandenburg/Havel
+14770 Brandenburg/ Havel
+14774 Brandenburg/ Havel
+39249 Barby
+39446 Staßfurt
+14482 Potsdam
+14473 Potsdam
+14476 Potsdam
+14469 Potsdam
+14467 Potsdam
+14471 Potsdam
+14478 Potsdam
+14480 Potsdam
+20457 Hamburg
+46049 Oberhausen
+46119 Oberhausen
+46117 Oberhausen
+46047 Oberhausen
+46147 Oberhausen
+46149 Oberhausen
+46045 Oberhausen
+46145 Oberhausen
+14050 Berlin Westend
+14052 Berlin Westend
+14055 Berlin Westend
+14109 Berlin Wannsee
+14199 Berlin Schmargendorf
+14057 Berlin Charlottenburg
+14129 Berlin Nikolassee
+14089 Berlin Gatow
+14059 Berlin Charlottenburg
+14053 Berlin Westend
+14169 Berlin Zehlendorf
+14193 Berlin Grunewald
+14165 Berlin Zehlendorf
+14163 Berlin Zehlendorf
+14167 Berlin Zehlendorf
+20354 Hamburg
+20355 Hamburg
+12557 Berlin
+12559 Berlin Köpenick
+12524 Berlin Altglienicke
+12527 Berlin Schmöckwitz
+12587 Berlin Wiesengrund
+12526 Berlin Bohnsdorf
+12555 Berlin Köpenick
+12589 Berlin Rahnsdorf
+12489 Berlin Teltowkanal III
+12623 Berlin Mahlsdorf
+12683 Berlin Biesdorf
+12621 Berlin Kaulsdorf
+37586 Dassel
+37194 Bodenfelde
+12619 Berlin
+12629 Berlin
+12627 Berlin Hellersdorf
+12689 Berlin
+12681 Berlin
+12685 Berlin
+12687 Berlin
+12679 Berlin
+12459 Berlin Oberschöneweide
+12439 Berlin Niederschöneweide
+12355 Berlin Rudow
+20537 Hamburg
+12487 Berlin
+12357 Berlin Rudow
+12101 Berlin Tempelhof
+12353 Berlin Gropiusstadt
+12435 Berlin Alt-Treptow
+12437 Berlin Baumschulenweg
+12351 Berlin Buckow
+12359 Berlin Britz
+12347 Berlin Britz
+12057 Berlin Neukölln
+12045 Berlin Neukölln
+12051 Berlin Neukölln
+12053 Berlin Neukölln
+12059 Berlin Neukölln
+12047 Berlin Kreuzberg
+12049 Berlin Neukölln
+12055 Berlin Neukölln
+12043 Berlin Neukölln
+37085 Göttingen
+37077 Göttingen
+37075 Göttingen
+37081 Göttingen
+37073 Göttingen
+37079 Göttingen
+37083 Göttingen
+37124 Rosdorf
+37249 Neu-Eichenberg
+10709 Berlin Wilmersdorf
+10711 Berlin Halensee
+10713 Berlin Wilmersdorf
+10318 Berlin Karlshorst
+10319 Berlin
+10315 Berlin Friedrichsfelde
+10317 Berlin Rummelsburg
+10365 Berlin Lichtenberg
+10367 Berlin Lichtenberg
+10823 Berlin-West
+10369 Berlin Lichtenberg
+10247 Berlin Friedrichshain
+10243 Berlin Friedrichshain
+10249 Berlin Friedrichshain
+10245 Berlin Friedrichshain
+10407 Berlin Prenzlauer Berg
+10409 Berlin Prenzlauer Berg
+10405 Berlin Prenzlauer Berg
+10437 Berlin Prenzlauer Berg
+10439 Berlin Prenzlauer Berg
+10435 Berlin Prenzlauer Berg
+10999 Berlin Kreuzberg
+10967 Berlin Kreuzberg
+10961 Berlin Kreuzberg
+10965 Berlin Kreuzberg
+10969 Berlin Kreuzberg
+10997 Berlin Kreuzberg
+10963 Berlin Kreuzberg
+10178 Berlin Mitte
+10179 Berlin Mitte
+10115 Berlin Mitte
+10119 Berlin Mitte
+10117 Berlin Mitte
+10551 Berlin Moabit
+10553 Berlin Moabit
+10555 Berlin Moabit
+10557 Berlin Moabit
+10559 Berlin Moabit
+10629 Berlin Charlottenburg
+10627 Berlin Charlottenburg
+10623 Berlin Charlottenburg
+10587 Berlin Charlottenburg
+10625 Berlin Charlottenburg
+10589 Berlin Charlottenburg
+10585 Berlin Charlottenburg
+10707 Berlin Wilmersdorf
+10719 Berlin Wilmersdorf
+10717 Berlin Wilmersdorf
+10779 Berlin Schöneberg
+10777 Berlin Wilmersdorf
+10785 Berlin Tiergarten
+10783 Berlin Schöneberg
+10781 Berlin Schöneberg
+10789 Berlin Schöneberg
+10787 Berlin Tiergarten
+04158 Leipzig
+13086 Berlin Weißensee
+13055 Berlin Alt-Hohenschönhausen
+13089 Berlin Heinelsdorf
+13053 Berlin Alt-Hohenschönhausen
+13088 Berlin Weißensee
+13059 Berlin Wartenberg
+13057 Berlin Falkenberg
+13051 Berlin Neu-Schönhausen
+13158 Berlin Rosenthal
+13127 Berlin Französisch Buchholz
+13189 Berlin Pankow
+13156 Berlin Niederschönhausen
+13125 Berlin Buch
+13187 Berlin Pankow
+13129 Berlin Blankenburg
+13159 Berlin Blankenfelde
+13359 Berlin Gesundbrunnen
+13349 Berlin Wedding
+13353 Berlin Wedding
+13351 Berlin Wedding
+13347 Berlin Wedding
+13357 Berlin Gesundbrunnen
+13355 Berlin Wedding
+13627 Berlin Charlottenburg-Nord
+13629 Berlin Siemensstadt
+13469 Berlin Lübars
+13465 Berlin-Frohnau
+13467 Berlin Hermsdorf
+13435 Berlin Märkisches Viertel
+13405 Berlin Wedding
+13407 Berlin-West
+13409 Berlin-West
+13403 Berlin Reinickendorf
+13439 Berlin Märkisches Viertel
+13437 Berlin Reinickendorf
+13587 Berlin Hakenfelde
+13583 Berlin Spandau
+13585 Berlin Spandau
+13581 Berlin Spandau
+13507 Berlin Tegel
+13509 Berlin Reinickendorf
+13593 Berlin Wilhelmstadt
+13591 Berlin Staaken
+13503 Berlin Tegel
+13589 Berlin Falkenhagener Feld
+13597 Berlin Spandau
+13595 Berlin Wlhelmstadt
+13505 Berlin Tegel
+13599 Berlin Haselhorst
+17279 Lychen
+17358 Torgelow
+"17329 Krackow, Nadrensee, Lebehn"
+17373 Ueckermünde
+"17321 Löcknitz, Rothenklempenow"
+17335 Strasburg
+"17375 Vogelsang-Warsin, Meiersberg, Mönkebude u.a."
+"17322 Löcknitz-Land
+Blankensee
+Boock
+Glasow
+Grambow
+Rossow"
+17379 Ferdinandshof u.a.
+17367 Eggesin
+17309 Pasewalk u.a.
+"17337 Uckerland, Groß Luckow, Schönhausen"
+"37412 Herzberg, Elbingerode, Hörden"
+"37539 Bad Grund, Gittelde, Windhausen, Eisdorf, Badenhausen, Willensen, Teichhütte"
+37431 Bad Lauterberg
+52224 Stolberg
+52223 Stolberg (Rhld.)
+49536 Lienen
+17258 Feldberger Seenlandschaft
+17033 Neubrandenburg
+17348 Woldegk
+17255 Wesenberg
+17252 Mirow
+"17099 Friedland, Galenbeck, Datzetal"
+"17039 Sponholz, Neunkirchen u.a."
+17235 Neustrelitz
+17349 Groß Miltzow
+17098 Friedland
+17094 Cölpin
+"17237 Neustrelitz-Land
+Blankensee
+Blumenholz
+Carpin
+Godendorf
+Grünow
+Hohenzieritz
+Klein Vielen
+Kratzeburg
+Möllenbeck
+Userin
+Wokuhl-Dabelow"
+17036 Neubrandenburg
+17034 Neubrandenburg
+39218 Schönebeck
+38640 Goslar
+37520 Osterode am Harz
+38700 Braunlage
+38644 Goslar
+38707 Clausthal-Zellerfeld
+37444 St. Andreasberg
+38642 Goslar
+17192 Waren/ Müritz
+17209 Wredenhagen
+17207 Röbel/Müritz
+17248 Rechlin
+17219 Möllenhagen
+"17194 Grabowhöfe, Moltzow u.a."
+17217 Penzlin
+17214 Nossentiner Hütte
+17213 Malchow u.a.
+46483 Wesel
+46485 Wesel
+46487 Wesel
+42653 Solingen
+17109 Demmin
+17159 Dargun
+17126 Jarmen
+17154 Neukalen
+17121 Loitz
+17153 Stavenhagen u.a.
+17091 Rosenow
+17139 Malchin
+17089 Burow
+17129 Bentzin
+17087 Altentreptow
+17111 Demmin u.a.
+23816 Leezen
+24992 Jörl
+"24799 Meggerdorf, Friedrichsholm, Friedrichsgraben, Christiansholm, Königshügel"
+"24852 Eggebek, Langstedt, Sollerup, Süderhackstedt"
+"24980 Schafflund, Meyn u.a."
+24803 Erfde
+"24969 Großenwiehe, Lindewitt"
+24994 Medelby
+"24864 Brodersby, Goltoft"
+"24850 Schuby, Lürschau und
+Hüsby"
+24963 Tarp
+24991 Großsolt
+24975 Husby
+17389 Anklam
+17489 Greifswald
+17390 Klein Bünzow
+17391 Krien u.a.
+17398 Ducherow
+17491 Greifswald
+17493 Greifswald
+17495 Karlsburg
+17392 Spantekow
+17498 Neuenkirchen
+17506 Gützkow
+17509 Lubmin
+38302 Wolfenbüttel
+38300 Wolfenbüttel
+38304 Wolfenbüttel
+38170 Schöppenstedt
+18556 Dranske
+18586 Sellin u.a.
+18528 Bergen/ Rügen
+18609 Binz
+18581 Putbus
+18546 Sassnitz
+18574 Garz/ Rügen
+18569 Gingst
+18573 Samtens
+18551 Sagard
+53177 Bonn
+53125 Bonn
+53179 Bonn
+53173 Bonn
+53175 Bonn
+53227 Bonn
+53229 Bonn
+53225 Bonn
+53117 Bonn
+53119 Bonn
+53111 Bonn
+53129 Bonn
+53115 Bonn
+53113 Bonn
+53121 Bonn
+53127 Bonn
+53123 Bonn
+53844 Troisdorf
+53842 Troisdorf
+53840 Troisdorf
+52355 Düren
+52349 Düren
+52351 Düren
+52353 Düren
+50171 Kerpen
+50170 Kerpen
+50169 Kerpen
+50129 Bergheim
+50127 Bergheim
+50126 Bergheim
+50931 Köln
+50674 Köln
+50733 Köln
+50769 Köln
+50935 Köln
+50765 Köln
+50829 Köln
+50969 Köln
+50668 Köln
+50735 Köln
+50823 Köln
+50676 Köln
+50767 Köln
+50858 Köln
+50937 Köln
+50670 Köln
+50678 Köln
+50996 Köln
+50677 Köln
+50737 Köln
+50825 Köln
+50939 Köln
+50679 Köln
+50859 Köln
+50672 Köln
+50739 Köln
+50827 Köln
+50999 Köln
+50933 Köln
+50667 Köln
+51063 Köln
+51105 Köln
+51109 Köln
+51103 Köln
+51061 Köln
+51149 Köln
+51147 Köln
+51069 Köln
+51067 Köln
+51145 Köln
+51107 Köln
+51143 Köln
+51065 Köln
+18437 Stralsund
+"18320 Ahrenshagen-Daskow, Trinwillershagen u.a."
+18314 Löbnitz
+18435 Stralsund
+18311 Ribnitz-Damgarten
+18513 Glewitz
+18465 Tribsees
+18356 Barth
+18334 Bad Sülze
+18337 Marlow
+18439 Stralsund
+18516 Rakow
+18347 Dierhagen
+"18442 Niepars , Groß Kordshagen,Jakobsdorf, Lüssow, Pantelitz, Steinhagen, Wendorf"
+18445 Prohn
+18469 Velgast
+18510 Wittenhagen
+18519 Miltzow u.a.
+18374 Zingst a. Darß
+18507 Grimmen
+"18461 Franzburg, Richtenberg, u.a."
+18375 Prerow a. Darß
+18317 Saal
+24857 Fahrdorf
+24872 Groß Rheide
+"24878 Jagel, Lottorf"
+"24848 Kropp, ALt Bennebek, Klein Bennebek, Klein Rheide und Boklund"
+24986 Mittelangeln
+24888 Steinfeld und Loit
+"24891 Schnarup-Thumby, Struxdorf, Hollmühle, Ekebergkrug, Eslingholz, Rabenholzlück, Dingwatt und Lüttholm"
+"24860 Böklund, Uelsby und Klappholz"
+24890 Stolk
+"24405 Mohrkirch, Rügge"
+24894 Tolk und Twedt
+24879 Idstedt
+"24392 Süderbrarup, Boren, Norderbrarup, Scheggerott, Wagersrott, Saustrup, Nottfeld"
+24407 Rabenkirchen-Faulück und Oersberg
+"24855 Bollingstedt, Jübek"
+"24376 Kappeln, Hasselberg, Rabel, Grödersby, Wormshöft und Hauheck"
+"24395 Gelting, Niesgrau, Rabenholz, Kronsgaard, Stangheck, Pommerby und Nieby"
+24996 Sterup
+"24972 Steinberg, Steinbergkirche"
+19395 Plau am See
+19370 Parchim
+"19079 Banzkow, Sukow"
+19086 Plate
+"19376 Marnitz, Siggelkow"
+19067 Leezen
+"19406 Sternberg, Dabel u.a."
+19065 Pinnow
+"19374 Domsühl, Mestlin, Obere Warnow u.a."
+19372 Spornitz
+19399 Goldberg
+"19386 Lübz, Passow"
+"19089 Crivitz, Friedrichsruhe u.a."
+19412 Brüel
+19061 Schwerin
+19053 Schwerin
+19063 Schwerin
+19057 Schwerin
+19055 Schwerin
+19059 Schwerin
+"24960 Glücksburg, Munkbrarup"
+24977 Langballig
+24983 Handewitt
+25926 Ladelund
+"25842 Langenhorn, Ockholm u.a."
+25852 Bordelum
+25872 Ostenfeld
+25873 Rantrum
+25884 Viöl
+25887 Winnert
+"25850 Behrendorf, Bondelum"
+25860 Horstedt
+25885 Wester-Ohrstedt
+25853 Ahrenshöft
+25862 Joldelund
+"25840 Friedrichstadt, Koldenbüttel,  Feddersdeich, Hakenhof, Mildterhof, Peterskoogsdeich. Rantrumdeich und Ziegelhof"
+25870 Oldenswort
+25882 Tetenbüll
+25876 Schwabstedt
+25832 Tönning
+"25881 Tating, Westerhever, Tümlauer Koog"
+"25836 Garding, Osterhever, Poppenbüll u.a."
+25795 Weddingstedt und Stelle-Wittenwurth
+25779 Hennstedt
+25788 Delve
+"25878 Drage, Seeth"
+"25774 Lunden, Groven, Hemme, Karolinenkoog, Krempel und Lehe"
+25792 Neuenkirchen und Strübbel
+25764 Wesselburen
+"25791 Linden, Barkenholm"
+"19217 Rehna, Carlow u.a."
+19205 Gadebusch u.a.
+19069 Lübstorf
+19209 Lützow
+19071 Brüsewitz
+19417 Warin
+25767 Albersdorf
+"25693 Sankt Michaelisdonn, Gudendorf, Volsemenhusen, Trennewurth"
+"25746 Heide, Lohe-Rickelshof, Norderwöhrden, Ostrohe und Wesseln"
+"25715 Eddelak, Averlak, Dingen, Ramhusen"
+25704 Meldorf
+25782 Tellingstedt
+25761 Büsum
+25785 Nordhastedt
+"25794 Pahlen, Dörpling und Tielenhemme"
+"25724 Neufeld, Schmedeswurth"
+25727 Süderhastedt
+25712 Burg (Dithmarschen)
+"25709 Kronprinzenkoog, Marne, Helse, Diekhusen-Fahrstedt, Marnerdeich und Kaiser-Wilhelm-Koog"
+25770 Hemmingstedt
+25719 Barlt und Busenwurth
+25588 Oldendorf
+25582 Hohenaspe
+25579 Fitzbek
+25581 Hennstedt
+25593 Reher
+25596 Wacken
+"25560 Schenefeld, Puls, Warringholz, Pöschendorf, Agethorst. Bokhorst, Aasbüttel, Hadenfeld. Oldenborstel und Kaisborstel"
+25551 Hohenlockstedt
+"25594 Vaale, Nutteln und Vaalermoor"
+25554 Wilster
+25572 Sankt Margarethen
+25548 Kellinghusen
+25584 Holstenniendorf
+25597 Westermoor
+"25578 Dägeling, Neuenbrook"
+"25361 Krempe, Grevenkop, Süderau, Muchelndorf"
+25376 Borsfleth
+25563 Wrist
+25358 Horst
+25569 Kremperheide
+25524 Itzehoe
+25566 Lägerdorf
+25348 Glückstadt
+38350 Helmstedt
+"38373 Süpplingen, Frellstedt"
+38154 Königslutter am Elm
+"38368 Rennau, Querenhorst, Mariental, Grasleben"
+19294 Neu Kaliß
+19288 Ludwigslust
+19243 Wittenburg und Wittendörp
+19246 Zarrentin
+"19273 Amt Neuhaus, Stapel"
+19230 Hagenow u.a.
+19260 Vellahn
+19077 Rastow
+19306 Neustadt-Glewe
+19300 Grabow u.a.
+"19258 Boizenburg, Gresse, Greven u.a."
+19075 Pampow
+19249 Lübtheen
+19303 Dömitz
+"19073 Stralendorf, Wittenförden, Dümmer (incl. Parum), Klein Rogahn, Schossin, Wodenhof	und Zülow"
+"19357 Karstädt, Dambeck, Klüß"
+25355 Barmstedt
+25485 Hemdingen
+25364 Brande-Hörnerkirchen
+25336 Elmshorn
+"25474 Ellerbek, Bönningstedt und Hasloh"
+25337 Elmshorn
+24113 Kiel
+24111 Kiel
+20357 Hamburg
+"25557 Hanerau-Hademarschen, Seefeld u.a."
+24109 Melsdorf
+24145 Kiel
+24146 Kiel
+24147 Kiel
+51377 Leverkusen
+51373 Leverkusen
+51375 Leverkusen
+51429 Bergisch Gladbach
+51379 Leverkusen
+51371 Leverkusen
+51469 Bergisch Gladbach
+51381 Leverkusen
+51465 Bergisch Gladbach
+51427 Bergisch Gladbach
+51467 Bergisch Gladbach
+38470 Parsau
+29379 Wittingen
+29378 Wittingen
+"29386 Hankensbüttel, Obernholz, Dedelstorf"
+38110 Braunschweig
+38122 Braunschweig
+38120 Braunschweig
+38100 Braunschweig
+38116 Braunschweig
+38228 Salzgitter
+38118 Braunschweig
+38102 Braunschweig
+38259 Salzgitter
+38104 Braunschweig
+38226 Salzgitter
+38114 Braunschweig
+38124 Braunschweig
+38126 Braunschweig
+38229 Salzgitter
+38239 Salzgitter
+38112 Braunschweig
+38108 Braunschweig
+25335 Elmshorn
+"27251 Neuenkirchen, Scholen"
+"27249 Maasen, Mellinghausen"
+38106 Braunschweig
+38375 Räbke
+47627 Kevelaer-Kervenheim
+47625 Kevelaer-Wetten
+47626 Kevelaer-Winnekendonk
+47623 Kevelaer-Mitte
+47624 Kevelaer-Twisteden
+24143 Kiel
+24148 Kiel (Wellingdorf und Ellerbek)
+"26892 Dörpen, Lehe, u.a."
+23847 Lasbek
+23898 Sandesneben u.a.
+23883 Sterley
+"23911 Ziethen, Schmilau, Pogeez"
+23896 Nusse
+23909 Ratzeburg
+23899 Gudow
+"23881 Breitenfelde, Lankau"
+23919 Berkenthin
+"23628 Krummesse, Klempau"
+23627 Groß Grönau
+23879 Mölln
+23860 Klein Wesenberg
+"22929 Hamfelde, Kasseburg, Köthel, Rausdorf, Schönberg"
+22946 Trittau
+"22941 Bargteheide, Delingsdorf u.a."
+22967 Tremsbüttel
+22397 Hamburg
+22359 Hamburg
+23942 Dassow
+"23936 Grevesmühlen, Stepenitztal, Upahl u.a."
+23923 Schönberg
+23948 Klütz
+23992 Neukloster
+"23972 Dorf Mecklenburg, Lübow u.a."
+"23974 Neuburg-Steinhausen, Hornstorf"
+58636 Iserlohn
+"25813 Husum, Schwesing, Simonsberg, Südermarsch und Spaltenhof"
+25856 Hattstedt u.a.
+25855 Haselund
+03051 Cottbus
+03058 Neuhausen/Spree
+03052 Cottbus
+48485 Neuenkirchen
+06108 Halle (Saale)
+06112 Halle/ Saale
+"25889 Uelvesbüll, Witzwort"
+44892 Bochum
+31785 Hameln
+31787 Hameln
+31840 Hessisch Oldendorf
+"22113 Hamburg, Oststeinbek"
+20535 Hamburg
+20249 Hamburg
+20253 Hamburg
+49811 Lingen
+49809 Lingen
+49835 Wietmarschen
+48432 Rheine
+49090 Osnabrück
+49080 Osnabrück
+49084 Osnabrück
+49078 Osnabrück
+49088 Osnabrück
+49082 Osnabrück
+49074 Osnabrück
+49086 Osnabrück
+49076 Osnabrück
+48429 Rheine
+49808 Lingen
+29491 Prezelle
+39619 Arendsee
+"25821 Bredstedt, Breklum u.a."
+23996 Bad Kleinen u.a.
+41515 Grevenbroich
+41516 Grevenbroich
+41517 Grevenbroich
+41747 Viersen
+41748 Viersen
+41749 Viersen
+41751 Viersen
+47798 Krefeld
+47799 Krefeld
+47800 Krefeld
+47802 Krefeld
+47803 Krefeld
+47804 Krefeld
+47805 Krefeld
+47807 Krefeld
+47809 Krefeld
+47829 Krefeld
+47839 Krefeld
+44575 Castrop-Rauxel
+44579 Castrop-Rauxel
+"44577 Castrop-Rauxel (Ost) = Frohlinde, Merklinde, Schwerin, Deininghausen, Bovinghausen)"
+"44581 Castrop-Rauxel (Norden, Ickern und Henrichenburg)"
+40667 Meerbusch
+40668 Meerbusch
+40670 Meerbusch
+41539 Dormagen
+41540 Dormagen
+41541 Dormagen
+41542 Dormagen
+47198 Duisburg
+41466 Neuss
+41468 Neuss
+41469 Neuss
+41470 Neuss
+41472 Neuss
+47199 Duisburg
+47226 Duisburg
+47228 Duisburg
+47229 Duisburg
+47239 Duisburg
+47441 Moers
+47443 Moers
+47445 Moers
+47447 Moers
+40545 Düsseldorf
+40547 Düsseldorf  Niederkassel und Lörick
+40549 Düsseldorf
+32479 Hille
+"29303 Bergen, Lohheide u.a."
+29348 Eschede
+"27336 Rethem (Aller), Häuslingen, Frankenfeld"
+"29693 Hodenhagen, Ahlden, Böhme,  Eickeloh und Hademstorf"
+29690 Schwarmstedt u.a.
+"29664 Walsrode, Ostenholz"
+29221 Celle
+29225 Celle
+29227 Celle
+"29229 Celle, Wittbeck"
+29223 Celle
+45881 Gelsenkirchen
+47178 Duisburg
+40489 Düsseldorf
+45896 Gelsenkirchen
+45879 Gelsenkirchen
+45892 Gelsenkirchen
+40629 Düsseldorf
+40595 Düsseldorf
+40589 Düsseldorf
+44894 Bochum
+45699 Herten
+45701 Herten
+45894 Gelsenkirchen
+45964 Gladbeck
+45966 Gladbeck
+45968 Gladbeck
+45883 Gelsenkirchen
+40723 Hilden
+"40721 Hilden, Düsseldorf"
+40724 Hilden
+58454 Witten
+40593 Düsseldorf
+42853 Remscheid
+42855 Remscheid
+42857 Remscheid
+42859 Remscheid
+42897 Remscheid
+42899 Remscheid
+42651 Solingen
+42659 Solingen
+42103 Wuppertal
+42115 Wuppertal
+42105 Wuppertal
+42107 Wuppertal
+42117 Wuppertal
+42119 Wuppertal
+42109 Wuppertal
+"42111 Wuppertal (Dönberg, Elberfeld nördl. ab Westfalenweg)"
+42113 Wuppertal
+42275 Wuppertal
+42277 Wuppertal
+42279 Wuppertal (Schraberg und Nächstebreck)
+"42281 Wuppertal (Sedansberg, Barmen-Nord)"
+42283 Wuppertal
+42285 Wuppertal
+"42287 Wuppertal (Barmen-Süd, Lichtenplatz u.a.)
+Laaken bis Linde"
+42289 Wuppertal
+42349 Wuppertal
+42369 Wuppertal
+42389 Wuppertal
+"42399 Wuppertal-Beyenburg (dazu gehört u.a. Frielinghausen, Herbringhausen, Spiekern) sowie Dahlhausen, Weuste und Kemna (gehören ganz oder teilweise zur Stadt Schwelm)"
+47179 Duisburg
+42549 Velbert
+27252 Schwaförden
+44623 Herne
+44627 Herne
+44628 Herne
+44629 Herne
+44625 Herne
+40597 Düsseldorf
+40599 Düsseldorf
+47259 Duisburg
+40627 Düsseldorf
+40625 Düsseldorf
+95697 Nagel
+42327 Wuppertal
+42329 Wuppertal
+44653 Herne
+44649 Herne
+44651 Herne
+44652 Herne
+40878 Ratingen
+40880 Ratingen
+40882 Ratingen
+40883 Ratingen
+40885 Ratingen
+47269 Duisburg
+47279 Duisburg
+45219 Essen
+47249 Duisburg
+47055 Duisburg
+47053 Duisburg
+47051 Duisburg
+47057 Duisburg
+47059 Duisburg
+47058 Duisburg
+47169 Duisburg
+47167 Duisburg
+45476 Mülheim an der Ruhr
+45475 Mülheim an der Ruhr
+47119 Duisburg
+47139 Duisburg
+47166 Duisburg
+47137 Duisburg
+47138 Duisburg
+45478 Mülheim an der Ruhr
+42551 Velbert
+42555 Velbert
+42553 Velbert
+45525 Hattingen
+45527 Hattingen
+45529 Hattingen
+58452 Witten
+58455 Witten
+58456 Witten
+45897 Gelsenkirchen
+45899 Gelsenkirchen
+44805 Bochum
+45473 Mülheim an der Ruhr
+50968 Köln
+50997 Köln
+90607 Rückersdorf
+44879 Bochum
+44807 Bochum
+44809 Bochum
+44791 Bochum
+44787 Bochum
+45472 Mülheim an der Ruhr
+45257 Essen
+45259 Essen
+45239 Essen
+45289 Essen
+45468 Mülheim an der Ruhr
+45479 Mülheim an der Ruhr
+45481 Mülheim an der Ruhr
+45277 Essen
+"92637 Weiden in der OPf., Theisseil"
+45470 Mülheim an der Ruhr
+45134 Essen
+45359 Essen
+45133 Essen
+46242 Bottrop
+45149 Essen
+45136 Essen
+46240 Bottrop
+46236 Bottrop
+46238 Bottrop
+22880 Wedel
+45131 Essen
+45357 Essen
+45130 Essen
+45355 Essen
+45147 Essen
+45138 Essen
+45128 Essen
+45145 Essen
+45144 Essen
+45127 Essen
+45139 Essen
+45327 Essen
+45279 Essen
+45276 Essen
+45143 Essen
+29473 Göhrde
+44866 Bochum
+45329 Essen
+45356 Essen
+44793 Bochum
+45326 Essen
+45141 Essen
+44789 Bochum
+44795 Bochum
+44797 Bochum
+44799 Bochum
+44801 Bochum
+44803 Bochum (Stadtteile Altenbochum und Laer)
+44867 Bochum
+44869 Bochum
+45307 Essen
+45309 Essen
+40470 Düsseldorf
+82049 Pullach i. Isartal
+83101 Rohrdorf
+84547 Emmerting
+84561 Mehring
+91242 Ottensoos
+91244 Reichenschwand
+91233 Neunkirchen am Sand
+90552 Röthenbach an der Pegnitz
+30165 Hannover
+23683 Scharbeutz
+23626 Ratekau
+23669 Timmendorfer Strand mit Neuhof und Oeverdiek
+"23684 Scharbeutz, Süsel"
+"23689 Pansdorf, Hobbersdorf, Luschendorf, Luschendorferhof, Rohlsdorf, Rohlsdorfer Beek und Techau"
+23611 Bad Schwartau
+23568 Lübeck Schlutup/St. Gertrud
+23554 Lübeck St. Lorenz Nord
+23556 Lübeck
+23566 Lübeck
+23558 Lübeck St. Lorenz-Süd und Buntekuh-Süd
+23560 Lübeck
+23562 Lübeck
+23564 Lübeck
+"23966 Wismar, Groß Krankow u.a."
+"23968 Barnekow, Gägelow u.a."
+23970 Wismar
+24937 Flensburg
+24939 Flensburg
+24941 Flensburg
+"24943 Flensburg, Tastrup"
+24944 Flensburg
+"06571 Roßleben-Wiehe, Gehofen"
+06464 Seeland
+06556 Artern/Unstrut u.a.
+"06577 An der Schmücke, Etzleben, Oberheldrungen"
+06567 Bad Frankenhausen/Kyffhäuser
+99718 Greußen Clingen Großenehrich
+99706 Sondershausen
+99713 Ebeleben
+06638 Karsdorf
+"06268 Querfurt, Obhausen, Mücheln u.a."
+06542 Allstedt
+06537 Kelbra (Kyffhäuser)
+"06536 Südharz, Berga"
+06526 Sangerhausen
+"06528 Wallhausen, Blankenheim"
+"99765 Heringen, Auleben, Görsbach, Hamma, Urbach, Uthleben, Windehausen"
+99768 Harztor
+99755 Ellrich
+99734 Nordhausen
+99735 Kleinfurra und Werther
+99752 Bleicherode
+"99759 Sollstedt, Niedergebra, Großlohra"
+"06642 Nebra, Kaiserpfalz"
+06648 Eckartsberga
+06636 Laucha an der Unstrut
+"06647 Bad Bibra, Finne u.a."
+"06628 Bad Kösen (jetzt Stadtteil von Naumburg), Lanitz-Hassel-Tal"
+06618 Naumburg
+"06721 Meineweh, Osterfeld"
+"06722 Droyßig, Wetterzeube"
+06711 Zeitz
+"06712 Zeitz, Gutenborn u.a."
+06729 Elsteraue
+06682 Teuchern
+06679 Hohenmölsen
+06686 Lützen
+"06667 Weißenfels, Stößen"
+06688 Weißenfels
+"06632 Freyburg, Balgstädt"
+06231 Bad Dürrenberg
+06237 Leuna
+06242 Braunsbedra
+06249 Mücheln/ Geiseltal
+06259 Frankleben
+06217 Merseburg
+06258 Schkopau
+06184 Kabelsketal
+06246 Bad Lauchstädt
+06255 Mücheln
+"06279 Schraplau, Farnstädt"
+06179 Teutschenthal
+06188 Landsberg
+06317 Seegebiet Mansfelder Land
+06347 Gerbstedt
+"06333 Hettstedt, Endorf"
+06295 Eisleben
+06311 Helbra
+06313 Hergisdorf
+"06308 Klostermansfeld, Benndorf"
+06343 Mansfeld
+06543 Falkenstein
+06901 Kemberg
+38440 Wolfsburg
+38442 Wolfsburg
+38444 Wolfsburg
+38446 Wolfsburg
+38448 Wolfsburg
+"67822 Winterborn, Waldgrehweiler, Niedermoschel, u.a."
+"67808 Steinbach, Weitersweiler, Bennhausen, Mörsfeld, Würzweiler, Ruppertsecken u.a."
+06888 Wittenberg
+06889 Wittenberg
+90461 Nürnberg
+77833 Ottersweier
+49847 Itterbeck/Wielen
+06773 Gräfenhainichen
+"27245 Bahrenborstel, Barenburg, Kirchdorf"
+20251 Hamburg
+22143 Hamburg
+22145 Hamburg
+22147 Hamburg
+22149 Hamburg
+22159 Hamburg
+22587 Hamburg
+22589 Hamburg
+22605 Hamburg
+22609 Hamburg
+22763 Hamburg
+22955 Hoisdorf
+22961 Oetjendorf
+07955 Auma-Weidatal
+"27259 Freistatt, Varrel, Wehrbleck"
+"26427 Esens, Neuharlingersiel u.a."
+"26835 Hesel, Neukamperfehn u.a."
+26897 Esterwegen u.a.
+"26901 Lorup, Rastdorf"
+27211 Bassum
+"27254 Siedenburg, Staffhorst"
+27232 Sulingen
+"27327 Martfeld, Schwarme"
+27305 Bruchhausen-Vilsen
+"27243 Harpstedt, Groß Ippener, Colnrade u.a."
+27257 Affinghausen und Sudwalde
+27499 Neuwerk
+22335 Hamburg
+22337 Hamburg
+22339 Hamburg
+22399 Hamburg
+22415 Hamburg
+22417 Hamburg
+22419 Hamburg
+22844 Norderstedt
+22846 Norderstedt
+22848 Norderstedt
+22850 Norderstedt
+22851 Norderstedt
+22453 Hamburg
+22455 Hamburg
+22457 Hamburg
+22459 Hamburg
+22043 Hamburg
+22111 Hamburg
+22115 Hamburg
+22117 Hamburg
+22119 Hamburg
+22175 Hamburg
+22177 Hamburg
+22179 Hamburg
+22391 Hamburg
+22393 Hamburg
+22395 Hamburg
+"27318 Hoya, Hoyerhagen, Hilgermissen"
+"04720 Döbeln, Großweitzschen u.a."
+29416 Kuhfelde
+49740 Haselünne
+49777 Stavern
+49716 Meppen
+49744 Geeste
+49733 Haren
+49767 Twist
+37627 Stadtoldendorf u.a.
+88045 Friedrichshafen
+88048 Friedrichshafen
+24976 Handewitt
+99102 Klettbach
+99198 Udestedt
+"53520 Reifferscheid, Kaltenborn, Wershofen u.a."
+"53539 Bodenbach, Kelberg, Kirsbach u.a."
+"53518 Adenau, Kottenborn u.a."
+"53547 Breitscheid, Dattenberg, Hausen, Hümmerich, Kasbach-Ohlenberg, Roßbach u.a."
+"53533 Antweiler, Aremberg, Dorsel, Eichenbach, Aremberg, Fuchshofen und Müsch"
+"53506 Ahrbrück, Heckenbach, Hönningen, Kesseling, Rech"
+"53534 Barweiler, Bauler, Hoffeld, Pomster, Wiesemscheid, Wirft"
+"53545 Linz am Rhein, Ockenfels"
+"53560 Vettelschloß, Kretzhaus (Linz am Rhein)"
+"53505 Altenahr, Berg, Kalenborn, Kirchsahr"
+"48465 Engden, Isterberg, Schüttorf u.a."
+"49448 Lemförde, Hüde, Quernheim, Brockum, Stemshorn und Marl (ohne Burlage)"
+88499 Riedlingen
+"49453 Barver, Dickel, Hemsloh, Rehden, Wetschen, Wehrblecker Heide"
+"49832 Andervenne, Beesten, Freren, Messingen, Thuine"
+"49828 Esche, Georgsdorf, Lage, Neuenhaus, Osterwald"
+"37619 Bodenwerder, Pegestorf, Kirchbrak, Hehlen"
+49751 Sögel u.a.
+40699 Erkrath
+40822 Mettmann
+42489 Wülfrath
+42579 Heiligenhaus
+42781 Haan
+24399 Arnis und Marienhof
+49356 Diepholz
+27239 Twistringen
+27248 Ehrenburg
+32351 Stemwede
+32369 Rahden
+"49406 Barnstorf, Eydelstedt, Drentwede"
+49419 Wagenfeld
+49457 Drebber
+"49459 Lembruch, Burlage, Berglage, Evershorst, Kuhlhorst, Mecklinge und Quernheimerbruch"
+31535 Neustadt am Rübenberge
+30823 Garbsen
+30827 Garbsen
+30826 Garbsen
+30890 Barsinghausen
+30926 Seelze
+30974 Wennigsen (Deister)
+30952 Ronnenberg
+31832 Springe
+30989 Gehrden
+30966 Hemmingen
+30982 Pattensen
+30880 Laatzen
+30457 Hannover
+30459 Hannover
+24222 Schwentinental
+06193 Petersberg
+06198 Salzatal
+31711 Luhden
+23552 Lübeck
+30451 Hannover
+30449 Hannover
+30169 Hannover
+30159 Hannover
+30167 Hannover
+"25776 Sankt Annen, Rehm-Flehde-Bargen, Dammsfeld, Hehm, Leherfeld und Nordfeld"
+36456 Barchfeld-Immelborn
+"15326 Zeschdorf, Podelzig, Lebus"
+"97292 Üttingen, Holzkirchen"
+97286 Winterhausen
+"97285 Röttingen, Tauberrettersheim"
+"97255 Gelchsheim, Sonderhofen"
+"97241 Bergtheim, Oberpleichfeld"
+97222 Rimpar
+"49762 Sustrum, Lathen u.a."
+98630 Römhild
+"84030 Ergolding, Landshut"
+01776 Hermsdorf/Erzgeb.
+30455 Hannover
+30453 Hannover
+"53498 Bad Breisig, Waldorf, Gönnersdorf"
+49838 Lengerich u.a.
+30855 Langenhagen
+"Einige Firmen mit Anschrift in der Nordstraße (Langenhagen) benutzen 30699, die PLZ des Flughafens."
+30853 Langenhagen
+30851 Langenhagen
+38729 Langelsheim
+"49843 Uelsen, Halle, Gölenkamp, Getelo"
+"37632 Holzen, Eschershausen, Eimen"
+"38678 Clausthal-Zellerfeld, Oberschulenberg"
+38723 Seesen
+"37647 Brevörde, Polle, Vahlbruch, Wilmeröderberg"
+"49577 Kettenkamp, Eggermühlen, Ankum"
+"49757 Werlte, Vrees, Lahn"
+"49824 Ringe, Laar, Emlichheim"
+"53426 Schalkenbach, Königsfeld, Dedenbach"
+"26571 Juist, Memmert"
+"73568 Durlangen, Weggen-Ziegelhütte, Leinhäusle"
+39116 Magdeburg
+39110 Magdeburg
+30419 Hannover
+"26909 Neubörger, Neulehe"
+37127 Dransfeld u.a.
+"36115 Hilders, Ehrenberg"
+99090 Erfurt
+99095 Erfurt
+"38667 Bad Harzburg, Torfhaus"
+"36251 Bad Hersfeld, Ludwigsau"
+"97270 Kist, Irtenberger Wald"
+30179 Hannover
+30163 Hannover
+"97234 Reichenberg, Guttenberger Wald"
+"88348 Bad Saulgau, Allmannsweiler"
+30177 Hannover
+30657 Hannover
+99086 Erfurt
+"63860 Rothenbuch, Rothenbucher Forst"
+"63879 Weibersbrunn, Rohrbrunner Forst"
+"63857 Waldaschaff, Waldaschaffer Forst"
+30161 Hannover
+45889 Gelsenkirchen
+45888 Gelsenkirchen
+39108 Magdeburg
+39104 Magdeburg
+39217 Schönebeck (Elbe)
+38685 Langelsheim
+22549 Hamburg
+"90571 Schwaig b. Nürnberg, Behringersdorfer Forst"
+90610 Winkelhaid
+22045 Hamburg
+"90537 Nürnberg-Feucht, Feuchter Forst"
+39112 Magdeburg
+30175 Hannover
+30625 Hannover
+37170 Uslar
+39114 Magdeburg
+39118 Magdeburg
+39120 Magdeburg
+39122 Magdeburg
+30655 Hannover
+30627 Hannover
+90765 Fürth
+"79215 Elzach, Biederbach"
+"49779 Oberlangen, Niederlangen"
+30173 Hannover
+39126 Magdeburg
+71717 Beilstein
+30659 Hannover (Bothfeld und Lahe)
+30629 Hannover
+39124 Magdeburg
+30171 Hannover
+"49626 Berge, Bippen"
+59969 Hallenberg
+39106 Magdeburg
+39128 Magdeburg
+39130 Magdeburg
+30519 Hannover
+30521 Hannover
+30539 Hannover
+30559 Hannover
+"73569 Eschach, Obergröningen"
+22765 Hamburg
+22767 Hamburg
+22769 Hamburg
+22761 Hamburg
+21360 Vögelsen
+"21391 Reppenstedt, Lüneburg"
+97271 Kleinrinderfeld
+"97295 Waldbrunn, Irtenberger Wald"
+63871 Heinrichsthal
+63877 Sailauf
+22607 Hamburg
+"63831 Wiesen, Wiesener Forst"
+22529 Hamburg
+20255 Hamburg
+71686 Remseck am Neckar
+"71543 Wüstenrot, Beilstein-Stocksberg"
+"71711 Steinheim, Murr"
+20259 Hamburg
+73663 Berglen
+71404 Korb
+71729 Erdmannhausen
+71737 Kirchberg
+36391 Sinntal
+36396 Steinau an der Straße
+91284 Neuhaus a.d.Pegnitz
+72525 Münsingen
+"74653 Künzelsau, Ingelfingen"
+56112 Lahnstein
+"56133 Fachbach, Exklave Lahnstein"
+38690 Goslar
+63875 Mespelbrunn
+76571 Gaggenau
+76547 Sinzheim
+20257 Hamburg
+"37434 Gieboldehausen, Rhumequelle"
+22525 Hamburg
+22547 Hamburg
+22527 Hamburg
+22523 Hamburg
+73550 Waldstetten
+73113 Ottenbach
+91315 Höchstadt a.d.Aisch
+73111 Lauterstein
+72127 Kusterdingen
+72138 Kirchentellinsfurt
+72124 Pliezhausen
+22087 Hamburg
+22089 Hamburg
+22085 Hamburg
+22301 Hamburg
+22299 Hamburg
+22303 Hamburg
+22297 Hamburg
+29471 Gartow
+22083 Hamburg
+22081 Hamburg
+87734 Benningen
+87760 Lachen
+88356 Ostrach
+72793 Pfullingen
+79669 Zell im Wiesental
+79674 Todtnau
+79685 Häg-Ehrsberg
+77815 Bühl
+77830 Bühlertal
+77855 Achern (Abweichung Exklaven)
+77880 Sasbach
+77887 Sasbachwalden
+77886 Lauf
+"49586 Merzen, Neuenkirchen"
+"49770 Herzlake, Dohren"
+"52525 Waldfeucht, Heinsberg"
+"52538 Gangelt, Selfkant"
+04703 Leisnig
+04736 Waldheim
+"25869 Habel, Gröde"
+25859 Hallig Hooge
+"25845 Nordstrand, Elisabeth-Sophien-Koog, Südfall"
+25718 Friedrichskoog
+71720 Oberstenfeld
+40472 Düsseldorf
+40474 Düsseldorf - Golzheim - Lohausen - Stockum
+40468 Düsseldorf
+40476 Düsseldorf
+22307 Hamburg
+22309 Hamburg
+"77709 Wolfach, Oberwolfach"
+"53567 Asbach, Buchholz"
+"53572 Bruchhausen, Unkel"
+22305 Hamburg
+22049 Hamburg
+22041 Hamburg
+22047 Hamburg
+40477 Düsseldorf
+40479 Düsseldorf
+65388 Schlangenbad
+65307 Bad Schwalbach
+40211 Düsseldorf
+87459 Pfronten
+28790 Schwanewede
+40210 Düsseldorf
+16766 Kremmen
+40591 Düsseldorf
+"73553 Alfdorf, Schillinghof"
+73565 Spraitbach
+73642 Welzheim
+"73655 Plüderhausen, 73655 Urbach, 73655 Alfdorf"
+73667 Kaisersbach
+73660 Urbach
+40229 Düsseldorf
+40212 Düsseldorf
+65597 Hünfelden
+56330 Kobern-Gondorf
+56736 Kottenheim
+56154 Boppard
+"56323 Waldesch, Hünenfeld"
+67677 Enkenbach-Alsenborn
+67680 Neuhemsbach
+67697 Otterberg
+67735 Mehlbach
+"37574 Einbeck, Kreiensen"
+67701 Schallodenbach
+67700 Niederkirchen
+67686 Mackenbach
+94160 Ringelai
+67706 Krickenbach
+72827 Wannweil
+09430 Drebach
+67707 Schopp
+67718 Schmalenberg
+40213 Düsseldorf
+45884 Gelsenkirchen Rotthausen
+22559 Hamburg
+97070 Würzburg
+97072 Würzburg
+97074 Würzburg
+63477 Maintal
+63165 Mühlheim am Main
+63263 Neu-Isenburg
+63329 Egelsbach
+63225 Langen
+63303 Dreieich
+63150 Heusenstamm
+63128 Dietzenbach
+63322 Rödermark
+63110 Rodgau
+63179 Obertshausen
+64832 Babenhausen
+63579 Freigericht
+45886 Gelsenkirchen
+45891 Gelsenkirchen
+"26524 Hage, Halbemond u.a."
+"26529 Upgant-Schott, Osteel u.a."
+"27367 Sottrum, Reeßum, Bötersen u.a."
+"27386 Bothel, Kirchwalsede u.a."
+"27389 Fintel, Lauenbrück u.a."
+"79194 Gundelfingen, Heuweiler"
+27498 Helgoland
+40215 Düsseldorf
+40227 Düsseldorf
+40231 Düsseldorf
+40233 Düsseldorf
+40235 Düsseldorf
+40237 Düsseldorf
+40239 Düsseldorf
+15344 Strausberg
+15374 Müncheberg
+16341 Panketal
+15324 Letschin
+16303 Schwedt
+06792 Sandersdorf-Brehna
+06796 Sandersdorf-Brehna
+23629 Sarkwitz
+"14789 Wusterwitz, Rosenau, Bensdorf"
+"37136 Seulingen, Waake u.a."
+"38173 Sickte, Dettum u.a."
+"38312 Dorstadt, Flöthe, Börßum u.a."
+23569 Lübeck
+23570 Lübeck
+34399 Wesertal
+34388 Trendelburg
+"27412 Tarmstedt, Breddorf u.a."
+27419 Sittensen u.a.
+27628 Hagen
+"27729 Hambergen, Holste u.a."
+63517 Rodenbach
+63755 Alzenau
+63796 Kahl am Main
+63538 Großkrotzenburg
+63512 Hainburg
+63500 Seligenstadt
+63791 Karlstein am Main
+63533 Mainhausen
+63801 Kleinostheim
+63814 Mainaschaff
+63867 Johannesberg
+63776 Mömbris
+63829 Krombach
+63811 Stockstadt am Main
+63853 Mömlingen
+63785 Obernburg a.Main
+63768 Hösbach
+40217 Düsseldorf
+63843 Niedernberg
+63868 Großwallstadt
+63834 Sulzbach am Main
+63839 Kleinwallstadt
+63840 Hausen
+40223 Düsseldorf
+40225 Düsseldorf
+40219 Düsseldorf
+40221 Düsseldorf
+04741 Roßwein
+04746 Hartha
+04749 Jahnatal
+06774 Muldestausee
+09232 Hartmannsdorf
+09241 Mühlau
+09243 Niederfrohna
+09350 Lichtenstein
+09353 Oberlungwitz
+09355 Gersdorf
+21765 Nordleda
+22969 Witzhave
+23617 Stockelsdorf
+14558 Nuthetal
+14624 Dallgow-Döberitz
+17326 Brüssow
+"17328 Penkun, Schuckmannshöhe"
+18273 Güstrow
+63933 Mönchberg
+63906 Erlenbach a.Main
+63939 Wörth a.Main
+63934 Röllbach
+97903 Collenberg
+97904 Dorfprozelten
+97877 Wertheim
+63920 Großheubach
+63863 Eschau
+88131 Lindau (Bodensee)
+23715 Bosau
+23717 Kasseedorf
+23946 Boltenhagen
+63911 Klingenberg a. Main
+63925 Laudenbach
+24861 Bergenhusen
+24863 Börm und Barkhorn
+24893 Taarstedt
+24955 Harrislee
+24409 Stoltebüll
+24817 Tetenhusen
+24837 Schleswig
+24989 Dollerup
+74585 Rot am See
+74582 Gerabronn
+88367 Hohentengen
+39171 Sülzetal
+39288 Burg
+98593 Floh-Seligenthal
+98596 Brotterode-Trusetal
+66706 Perl
+66693 Mettlach
+66780 Rehlingen-Siersburg
+66763 Dillingen/Saar
+66740 Saarlouis
+66798 Wallerfangen
+66802 Überherrn
+66787 Wadgassen
+66333 Völklingen
+66352 Großrosseln
+87600 Kaufbeuren
+87700 Memmingen
+16244 Schorfheide
+18190 Sanitz
+18196 Dummerstorf
+18225 Kühlungsborn
+18565 Hiddensee
+21435 Stelle
+29308 Winsen (Aller)
+29649 Wietzendorf
+87493 Lauben
+66806 Ensdorf
+66773 Schwalbach
+66346 Püttlingen
+66292 Riegelsberg
+66265 Heusweiler
+66287 Quierschied
+66280 Sulzbach/Saar
+66386 Sankt Ingbert
+66399 Mandelbachtal
+66453 Gersheim
+66440 Blieskastel
+66459 Kirkel
+66424 Homburg
+66450 Bexbach
+"73614 Schorndorf, 73614 Urbach"
+87490 Haldenwang
+87496 Untrasried
+87499 Wildpoldsried
+16792 Zehdenick
+16798 Fürstenberg
+16559 Liebenwalde
+16359 Biesenthal
+"16515 Oranienburg, Mühlenbecker Land"
+66793 Saarwellingen
+66822 Lebach
+66809 Nalbach
+66839 Schmelz
+66636 Tholey
+66646 Marpingen
+66606 Sankt Wendel
+66709 Weiskirchen
+66687 Wadern
+66620 Nonnweiler
+66625 Nohfelden
+66629 Freisen
+66640 Namborn
+66649 Oberthal
+21365 Adendorf
+21382 Brietlingen
+86453 Dasing
+90602 Pyrbaum
+90584 Allersberg
+90559 Burgthann
+90592 Schwarzenbruck
+90518 Altdorf bei Nürnberg
+91249 Weigendorf
+91083 Baiersdorf
+91088 Bubenreuth
+90579 Langenzenn
+37581 Bad Gandersheim
+37589 Kalefeld
+37186 Moringen
+90613 Großhabersdorf
+90574 Roßtal
+90614 Ammerndorf
+90547 Stein
+90522 Oberasbach
+90513 Zirndorf
+91487 Vestenbergsgreuth
+91325 Adelsdorf
+91350 Gremsdorf
+91334 Hemhofen
+91341 Röttenbach bei Erlangen
+91093 Heßdorf
+91074 Herzogenaurach
+91091 Großenseebach
+91086 Aurachtal
+90542 Eckental
+91220 Schnaittach
+91245 Simmelsdorf
+91241 Kirchensittenbach
+91247 Vorra
+91217 Hersbruck
+91239 Henfenfeld
+90617 Puschendorf
+91085 Weisendorf
+97262 Hausen b. Würzburg
+97294 Unterpleichfeld
+97230 Estenfeld
+97273 Kürnach
+97279 Prosselsheim
+97247 Eisenheim
+97228 Rottendorf
+97218 Gerbrunn
+97236 Randersacker
+97288 Theilheim
+97246 Eibelstadt
+97209 Veitshöchheim
+97250 Erlabrunn
+97261 Güntersleben
+97276 Margetshöchheim
+35606 Solms
+35614 Aßlar
+35619 Braunfels
+35625 Hüttenberg
+35630 Ehringshausen
+35633 Lahnau
+35638 Leun
+35641 Schöffengrund
+35644 Hohenahr
+35649 Bischoffen
+35708 Haiger
+35713 Eschenburg
+35716 Dietzhölztal
+35745 Herborn
+35753 Greifenstein
+35756 Mittenaar
+35759 Driedorf
+35764 Sinn
+35767 Breitscheid
+35768 Siegbach
+35075 Gladenbach
+35080 Bad Endbach
+35083 Wetter
+35085 Ebsdorfergrund
+35091 Cölbe
+35096 Weimar (Lahn)
+35102 Lohra
+35112 Fronhausen
+35117 Münchhausen
+35216 Biedenkopf
+35232 Dautphetal
+35236 Breidenbach
+35239 Steffenberg
+35260 Stadtallendorf
+35274 Kirchhain
+35279 Neustadt
+35282 Rauschenberg
+35287 Amöneburg
+35288 Wohratal
+35719 Angelburg
+97280 Remlingen
+97259 Greußenheim
+97274 Leinach
+35315 Homberg (Ohm)
+35325 Mücke
+35327 Ulrichstein
+35329 Gemünden (Felda)
+36110 Schlitz
+36304 Alsfeld
+36318 Schwalmtal
+36320 Kirtorf
+36323 Grebenau
+36325 Feldatal
+36326 Antrifttal
+36329 Romrod
+36341 Lauterbach
+36355 Grebenhain
+36358 Herbstein
+36369 Lautertal
+36399 Freiensteinau
+63679 Schotten
+97299 Zell a. Main
+35094 Lahntal
+97265 Hettstadt
+97297 Waldbüttelbrunn
+97204 Höchberg
+97249 Eisingen
+35305 Grünberg
+35321 Laubach
+35410 Hungen
+35415 Pohlheim
+35418 Buseck
+35423 Lich
+35435 Wettenberg
+35440 Linden
+35444 Biebertal
+35447 Reiskirchen
+35452 Heuchelheim
+35457 Lollar
+35460 Staufenberg
+35463 Fernwald
+35466 Rabenau
+35469 Allendorf
+37154 Northeim
+37176 Nörten-Hardenberg
+37181 Hardegsen
+37191 Katlenburg-Lindau
+97900 Külsheim
+97941 Tauberbischofsheim
+97956 Werbach
+97953 Königheim
+97922 Lauda-Königshofen
+35781 Weilburg
+35789 Weilmünster
+35792 Löhnberg
+35794 Mengerskirchen
+35796 Weinbach
+65589 Hadamar
+65594 Runkel
+65599 Dornburg
+65606 Villmar
+65611 Brechen
+65614 Beselich
+65618 Selters
+65620 Waldbrunn
+97944 Boxberg
+97959 Assamstadt
+35799 Merenberg
+65604 Elz
+65627 Elbtal
+97980 Bad Mergentheim
+97996 Niederstetten
+97993 Creglingen
+97243 Bieberehren
+97239 Aub
+97283 Riedenheim
+97990 Weikersheim
+97999 Igersheim
+97244 Bütthard
+97957 Wittighausen
+97947 Grünsfeld
+97950 Großrinderfeld
+97237 Altertheim
+97264 Helmstadt
+97277 Neubrunn
+97268 Kirchheim
+97232 Giebelstadt
+97256 Geroldshausen
+97253 Gaukönigshofen
+19339 Plattenburg
+39448 Börde-Hakel
+34454 Bad Arolsen
+34471 Volkmarsen
+34474 Diemelstadt
+34477 Twistetal
+34497 Korbach
+34513 Waldeck
+34516 Vöhl
+34519 Diemelsee
+34537 Bad Wildungen
+34549 Edertal
+35066 Frankenberg
+35088 Battenberg
+35099 Burgwald
+35104 Lichtenfels
+35108 Allendorf
+35110 Frankenau
+35114 Haina
+35116 Hatzfeld
+35285 Gemünden
+36088 Hünfeld
+36093 Künzell
+36103 Flieden
+36119 Neuhof
+36124 Eichenzell
+36129 Gersfeld
+36132 Eiterfeld
+36137 Großenlüder
+36142 Tann
+36145 Hofbieber
+36148 Kalbach
+36151 Burghaun
+36154 Hosenfeld
+36157 Ebersburg
+36160 Dipperz
+36163 Poppenhausen
+36167 Nüsttal
+36169 Rasdorf
+35119 Rosenthal
+34508 Willingen (Upland)
+36100 Petersberg
+36364 Bad Salzschlirf
+36367 Wartenberg
+36381 Schlüchtern
+87487 Wiggensbach
+87534 Oberstaufen
+87509 Immenstadt im Allgäu
+87544 Blaichach
+87545 Burgberg im Allgäu
+87549 Rettenberg
+87541 Bad Hindelang
+87497 Wertach
+87484 Nesselwang
+87466 Oy-Mittelberg
+87547 Missen-Wilhams
+87480 Weitnau
+87448 Waltenhofen
+87474 Buchenberg
+87477 Sulzberg
+87471 Durach
+87657 Görisried
+87663 Lengenwang
+87494 Rückholz
+87629 Füssen
+87659 Hopferau
+87669 Rieden am Forggensee
+87672 Roßhaupten
+87642 Halblech
+87645 Schwangau
+82491 Grainau
+23999 Insel Poel
+34212 Melsungen
+34270 Schauenburg
+34281 Gudensberg
+34286 Spangenberg
+34295 Edermünde
+34302 Guxhagen
+34305 Niedenstein
+34326 Morschen
+34327 Körle
+34560 Fritzlar
+34576 Homberg
+34582 Borken
+34587 Felsberg
+34590 Wabern
+34593 Knüllwald
+34596 Bad Zwesten
+34599 Neuental
+34613 Schwalmstadt
+34621 Frielendorf
+34626 Neukirchen (Knüll)
+34628 Willingshausen
+34630 Gilserberg
+34632 Jesberg
+34633 Ottrau
+34637 Schrecksbach
+34639 Schwarzenborn
+36280 Oberaula
+34323 Malsfeld
+36166 Haunetal
+36179 Bebra
+36199 Rotenburg an der Fulda
+36208 Wildeck
+36211 Alheim
+36214 Nentershausen
+36217 Ronshausen
+36219 Cornberg
+36266 Heringen
+36269 Philippsthal
+36272 Niederaula
+36275 Kirchheim (Hessen)
+36277 Schenklengsfeld
+36282 Hauneck
+36284 Hohenroda
+36286 Neuenstein (Hessen)
+36287 Breitenbach am Herzberg
+36289 Friedewald
+36205 Sontra
+37290 Meißner
+37235 Hessisch Lichtenau
+37242 Bad Sooden-Allendorf
+37247 Großalmerode
+37269 Eschwege
+37276 Meinhard
+37281 Wanfried
+37284 Waldkappel
+37287 Wehretal
+37293 Herleshausen
+37296 Ringgau
+37297 Berkatal
+37299 Weißenborn
+35428 Langgöns
+35510 Butzbach
+35516 Münzenberg
+35519 Rockenberg
+61250 Usingen
+34225 Baunatal
+34253 Lohfelden
+34260 Kaufungen
+34289 Zierenberg
+34292 Ahnatal
+34298 Helsa
+34308 Bad Emstal
+34311 Naumburg
+34320 Söhrewald
+34376 Immenhausen
+34379 Calden
+34393 Grebenstein
+34396 Liebenau (Hessen)
+34466 Wolfhagen
+34479 Breuna
+34246 Vellmar
+34277 Fuldabrück
+34314 Espenau
+34317 Habichtswald
+34266 Niestetal
+34329 Nieste
+34359 Reinhardshagen
+63654 Büdingen
+63667 Nidda
+63674 Altenstadt
+63683 Ortenberg
+63691 Ranstadt
+63695 Glauburg
+63697 Hirzenhain
+63699 Kefenrod
+63688 Gedern
+63694 Limeshain
+79206 Breisach am Rhein
+77955 Ettenheim
+77966 Kappel-Grafenhausen
+77977 Rust
+87778 Stetten
+87776 Sontheim
+87784 Westerheim
+87752 Holzgünz
+87779 Trunkelsberg
+87766 Memmingerberg
+77972 Mahlberg
+87719 Mindelheim
+77933 Lahr/Schwarzwald
+77971 Kippenheim
+77975 Ringsheim
+63486 Bruchköbel
+63543 Neuberg
+63546 Hammersbach
+63571 Gelnhausen
+63584 Gründau
+63589 Linsengericht
+63594 Hasselroth
+63599 Biebergemünd
+63607 Wächtersbach
+63619 Bad Orb
+63636 Brachttal
+63637 Jossgrund
+63828 Kleinkahl
+63639 Flörsbachtal
+63505 Langenselbold
+63526 Erlensee
+63549 Ronneburg
+63633 Birstein
+34385 Bad Karlshafen
+77704 Oberkirch
+77836 Rheinmünster
+77839 Lichtenau
+77866 Rheinau
+77871 Renchen
+77876 Kappelrodeck
+71299 Wimsheim
+73453 Abtsgmünd
+73460 Hüttlingen
+73491 Neuler
+71723 Großbottwar
+56249 Herschbach
+56462 Höhn
+56470 Bad Marienberg (Westerwald)
+57223 Kreuztal
+57234 Wilnsdorf
+57250 Netphen
+57258 Freudenberg
+57271 Hilchenbach
+57290 Neunkirchen
+57299 Burbach
+57319 Bad Berleburg
+57334 Bad Laasphe
+57339 Erndtebrück
+57368 Lennestadt
+57399 Kirchhundem
+57413 Finnentrop
+57439 Attendorn
+57462 Olpe
+57482 Wenden
+57489 Drolshagen
+57578 Elkenroth
+57586 Weitefeld
+57581 Katzwinkel (Sieg)
+57587 Birken-Honigsessen
+57392 Schmallenberg
+59872 Meschede
+59889 Eslohe (Sauerland)
+59964 Medebach
+59955 Winterberg
+87452 Altusried
+87764 Legau
+87463 Dietmannsried
+87763 Lautrach
+87758 Kronburg
+87730 Bad Grönenbach
+87789 Woringen
+87740 Buxheim
+88454 Hochdorf
+87787 Wolfertschwenden
+87736 Böhen
+87724 Ottobeuren
+87733 Markt Rettenbach
+87671 Ronsberg
+87782 Unteregg
+87653 Eggenthal
+87650 Baisweil
+87660 Irsee
+87666 Pforzen
+87668 Rieden
+87656 Germaringen
+87679 Westendorf
+87677 Stöttwang
+87665 Mauerstetten
+87651 Bidingen
+87640 Biessenhofen
+87674 Ruderatshofen
+87654 Friesenried
+87751 Heimertingen
+87767 Niederrieden
+87737 Boos
+87748 Fellheim
+87773 Pleß
+87745 Eppishausen
+87757 Kirchheim in Schwaben
+87775 Salgen
+87739 Breitenbrunn
+87772 Pfaffenhausen
+87769 Oberrieden
+87754 Kammlach
+87746 Erkheim
+87770 Oberschönegg
+87755 Kirchhaslach
+87727 Babenhausen
+87785 Winterrieden
+87743 Egg an der Günz
+87761 Lauben
+88662 Überlingen
+88634 Herdwangen-Schönach
+88639 Wald
+88630 Pfullendorf
+88636 Illmensee
+88693 Deggenhausertal
+88263 Horgenzell
+88677 Markdorf
+88094 Oberteuringen
+88697 Bermatingen
+88090 Immenstaad am Bodensee
+88631 Beuron
+88512 Mengen
+88518 Herbertingen
+72537 Mehrstetten
+72535 Heroldstatt
+87561 Oberstdorf
+18239 Satow
+16567 Mühlenbecker Land
+16761 Hennigsdorf
+16767 Leegebruch
+79576 Weil am Rhein
+79591 Eimeldingen
+79588 Efringen-Kirchen
+79589 Binzen
+79592 Fischingen
+79597 Schallbach
+79595 Rümmingen
+79599 Wittlingen
+79400 Kandern
+79585 Steinen
+79429 Malsburg-Marzell
+79418 Schliengen
+79415 Bad Bellingen
+79692 Kleines Wiesental
+79395 Neuenburg am Rhein
+79424 Auggen
+79379 Müllheim
+79426 Buggingen
+79423 Heitersheim
+79427 Eschbach
+79258 Hartheim
+79189 Bad Krozingen
+79227 Schallstadt
+79292 Pfaffenweiler
+79285 Ebringen
+79238 Ehrenkirchen
+21380 Artlenburg
+21395 Tespe
+21436 Marschacht
+21398 Neetze
+21400 Reinstorf
+21401 Thomasburg
+21403 Wendisch Evern
+21407 Deutsch Evern
+29553 Bienenbüttel
+21358 Mechtersen
+21441 Garstedt
+21442 Toppenstedt
+21444 Vierhöfen
+21447 Handorf
+21449 Radbruch
+73054 Eislingen/Fils
+26939 Ovelgönne
+26954 Nordenham
+26969 Butjadingen
+27607 Geestland DebstedtHolßelHymendorfImsumKrempelLangenNeuenwalde
+27612 Loxstedt
+27619 Schiffdorf
+27374 Visselhövede
+27383 Scheeßel
+27442 Gnarrenburg
+27449 Kutenholz
+41836 Hückelhoven
+16548 Glienicke/Nordbahn
+16547 Birkenwerder
+23769 Fehmarn
+23775 Großenbrode
+23779 Neukirchen
+23774 Heiligenhafen
+23777 Heringsdorf
+23749 Grube
+23746 Kellenhusen
+23747 Dahme
+23743 Grömitz
+23744 Schönwalde am Bungsberg
+37120 Bovenden
+37197 Hattorf
+37199 Wulften
+38709 Wildemann
+71706 Markgröningen
+37441 Bad Sachsa
+37445 Walkenried
+37115 Duderstadt
+37130 Gleichen
+"34346 Hann. Münden, Gutsbezirk Reinhardswald"
+37133 Friedland
+37139 Adelebsen
+21770 Mittelstenahe
+21772 Stinstedt
+21776 Wanna
+21730 Balje
+25541 Brunsbüttel
+21732 Krummendeich
+28857 Syke
+29559 Wrestedt
+21438 Brackel
+21439 Marxen
+21445 Wulfsen
+21224 Rosengarten
+21266 Jesteburg
+79594 Inzlingen
+79618 Rheinfelden (Baden)
+79689 Maulburg
+79650 Schopfheim
+79688 Hausen im Wiesental
+79686 Hasel
+79664 Wehr
+79736 Rickenbach
+79737 Herrischried
+79725 Laufenburg (Baden)
+79730 Murg
+79733 Görwihl
+79774 Albbruck
+79804 Dogern
+79875 Dachsberg
+79862 Höchenschwand
+79761 Waldshut-Tiengen
+79809 Weilheim
+79713 Bad Säckingen
+79790 Küssaberg
+79801 Hohentengen am Hochrhein
+79771 Klettgau
+79802 Dettighofen
+79798 Jestetten
+79787 Lauchringen
+79793 Wutöschingen
+79805 Eggingen
+79777 Ühlingen-Birkendorf
+79682 Todtmoos
+79872 Bernau im Schwarzwald
+79868 Feldberg
+79739 Schwörstadt
+79865 Grafenhausen
+79848 Bonndorf im Schwarzwald
+79780 Stühlingen
+04861 Torgau
+60310 Frankfurt am Main (Taunusturm)
+33333 Bertelsmann
+79879 Wutach
+79843 Löffingen
+79853 Lenzkirch
+79877 Friedenweiler
+79859 Schluchsee
+79822 Titisee-Neustadt
+79874 Breitnau
+79856 Hinterzarten
+79254 Oberried
+79244 Münstertal
+79694 Utzenfeld
+79695 Wieden
+79219 Staufen im Breisgau
+79295 Sulzburg
+79282 Ballrechten-Dottingen
+79410 Badenweiler
+79283 Bollschweil
+79294 Sölden
+79299 Wittnau
+79289 Horben
+79280 Au (Breisgau)
+79249 Merzhausen
+76437 Rastatt
+76461 Muggensturm
+76470 Ötigheim
+76473 Iffezheim
+29565 Wriedel
+29633 Munster
+79639 Grenzach-Wyhlen
+79807 Lottstetten
+79871 Eisenbach
+79256 Buchenbach
+79274 St. Märgen
+79199 Kirchzarten
+79252 Stegen
+79271 Sankt Peter
+79286 Glottertal
+79263 Simonswald
+79183 Waldkirch
+79297 Winden im Elztal
+79261 Gutach im Breisgau
+79350 Sexau
+79348 Freiamt
+79211 Denzlingen
+79312 Emmendingen
+79279 Vörstetten
+79276 Reute
+79232 March
+79224 Umkirch
+79288 Gottenheim
+79291 Merdingen
+79241 Ihringen
+79268 Bötzingen
+79356 Eichstetten
+79235 Vogtsburg im Kaiserstuhl
+79361 Sasbach am Kaiserstuhl
+79346 Endingen am Kaiserstuhl
+79353 Bahlingen am Kaiserstuhl
+79331 Teningen
+79364 Malterdingen
+79341 Kenzingen
+79336 Herbolzheim
+79365 Rheinhausen
+79362 Forchheim
+79369 Wyhl
+79359 Riegel Kaiserstuhl
+79367 Weisweil
+40789 Monheim am Rhein
+41564 Kaarst
+41569 Rommerskirchen
+26506 Norden
+26532 Großheide
+26548 Norderney
+26553 Dornum
+26579 Baltrum
+26489 Ochtersum
+26624 Südbrookmerland
+26736 Krummhörn
+26759 Hinte
+72800 Eningen
+72805 Lichtenstein
+72813 St. Johann
+72532 Gomadingen
+72829 Engstingen
+72531 Hohenstein
+72534 Hayingen
+72818 Trochtelfingen
+72539 Pfronstetten
+72820 Sonnenbühl
+72574 Bad Urach
+72581 Dettingen an der Erms
+72555 Metzingen
+72585 Riederich
+72654 Neckartenzlingen
+72658 Bempflingen
+72141 Walddorfhäslach
+72657 Altenriet
+72582 Grabenstetten
+72587 Römerstein
+73252 Lenningen
+72584 Hülben
+73268 Erkenbrechtsweiler
+42477 Radevormwald
+42499 Hückeswagen
+51545 Waldbröl
+51580 Reichshof
+51588 Nümbrecht
+51674 Wiehl
+51688 Wipperfürth
+51702 Bergneustadt
+51709 Marienheide
+51766 Engelskirchen
+51789 Lindlar
+51597 Morsbach
+72639 Neuffen
+72664 Kohlberg
+72589 Westerheim
+73349 Wiesensteig
+73235 Weilheim an der Teck
+73272 Neidlingen
+73344 Gruibingen
+73342 Bad Ditzenbach
+73347 Mühlhausen im Täle
+51598 Friesenhagen
+56170 Bendorf
+56182 Urbar (bei Koblenz)
+56191 Weitersburg
+56322 Spay
+56338 Braubach
+56410 Montabaur
+56427 Siershahn
+56428 Dernbach (Westerwald)
+"56588 Waldbreitbach, Hasuen"
+56594 Willroth
+73312 Geislingen an der Steige
+73326 Deggingen
+73079 Süßen
+73114 Schlat
+73329 Kuchen
+56203 Höhr-Grenzhausen
+56204 Hillscheid
+56335 Neuhäusel
+"56422 Wirges, Stadt"
+56599 Leutesdorf
+73337 Bad Überkingen
+73092 Heiningen
+73107 Eschenbach
+73105 Dürnau
+73108 Gammelshausen
+73084 Salach
+73087 Bad Boll
+73101 Aichelberg
+73333 Gingen an der Fils
+73266 Bissingen an der Teck
+73277 Owen
+72636 Frickenhausen
+72660 Beuren
+72661 Grafenberg
+72622 Nürtingen
+72655 Altdorf
+72663 Großbettlingen
+72631 Aichtal
+72666 Neckartailfingen
+72667 Schlaitdorf
+78148 Gütenbach
+78120 Furtwangen im Schwarzwald
+78141 Schönwald im Schwarzwald
+78098 Triberg im Schwarzwald
+78089 Unterkirnach
+78112 St. Georgen
+78147 Vöhrenbach
+78166 Donaueschingen
+78199 Bräunlingen
+73230 Kirchheim unter Teck
+73265 Dettingen unter Teck
+73119 Zell unter Aichelberg
+73275 Ohmden
+72644 Oberboihingen
+72669 Unterensingen
+73240 Wendlingen am Neckar
+73249 Wernau (Neckar)
+73257 Köngen
+73765 Neuhausen auf den Fildern
+73760 Ostfildern
+73770 Denkendorf
+72649 Wolfschlugen
+73271 Holzmaden
+78086 Brigachtal
+78073 Bad Dürrheim
+78609 Tuningen
+78591 Durchhausen
+78607 Talheim
+78194 Immendingen
+78176 Blumberg
+78183 Hüfingen
+78250 Tengen
+78234 Engen
+78259 Mühlhausen-Ehingen
+78267 Aach
+78247 Hilzingen
+78244 Gottmadingen
+78239 Rielasingen-Worblingen
+78224 Singen
+78337 Öhningen
+78345 Moos
+78343 Gaienhofen
+78315 Radolfzell am Bodensee
+78476 Allensbach
+78479 Reichenau
+78187 Geisingen
+73269 Hochdorf
+73274 Notzingen
+73061 Ebersbach an der Fils
+73278 Schlierbach
+73207 Plochingen
+73262 Reichenbach an der Fils
+73776 Altbach
+73779 Deizisau
+72147 Nehren
+72810 Gomaringen
+72116 Mössingen
+72131 Ofterdingen
+26409 Wittmund
+26419 Schortens
+26434 Wangerland
+26441 Jever
+26452 Sande
+26632 Ihlow
+72149 Neustetten
+72108 Rottenburg am Neckar
+72144 Dußlingen
+72145 Hirrlingen
+72411 Bodelshausen
+72379 Hechingen
+72417 Jungingen
+72393 Burladingen
+72419 Neufra
+72475 Bitz
+72501 Gammertingen
+72513 Hettingen
+78256 Steißlingen
+78269 Volkertshausen
+78359 Orsingen-Nenzingen
+78333 Stockach
+78351 Bodman-Ludwigshafen
+78354 Sipplingen
+78355 Hohenfels
+78253 Eigeltingen
+78357 Mühlingen
+78576 Emmingen-Liptingen
+78579 Neuhausen ob Eck
+78532 Tuttlingen
+78567 Fridingen an der Donau
+78570 Mühlheim an der Donau
+78573 Wurmlingen
+78604 Rietheim-Weilheim
+78589 Dürbheim
+78606 Seitingen-Oberflacht
+78595 Hausen ob Verena
+78582 Balgheim
+78549 Spaichingen
+78594 Gunningen
+78554 Aldingen
+78647 Trossingen
+78588 Denkingen
+78665 Frittlingen
+78559 Gosheim
+78585 Bubsheim
+78592 Egesheim
+78598 Königsheim
+78603 Renquishausen
+78580 Bärenthal
+78597 Irndorf
+78600 Kolbingen
+72474 Winterlingen
+72479 Straßberg
+72488 Sigmaringen
+72519 Veringenstadt
+72362 Nusplingen
+72469 Meßstetten
+72477 Schwenningen
+72510 Stetten am kalten Markt
+72511 Bingen
+72516 Scheer
+72406 Bisingen
+72415 Grosselfingen
+72336 Balingen
+72401 Haigerloch
+72348 Rosenfeld
+72351 Geislingen
+72505 Krauchenwies
+72517 Sigmaringendorf
+72514 Inzigkofen
+78583 Böttingen
+78601 Mahlstetten
+72361 Hausen am Tann
+72364 Obernheim
+72365 Ratshausen
+72367 Weilen unter den Rinnen
+72358 Dormettingen
+72359 Dotternhausen
+72355 Schömberg
+72356 Dautmergen
+72369 Zimmern unter der Burg
+78628 Rottweil
+78661 Dietingen
+78667 Villingendorf
+78652 Deißlingen
+78083 Dauchingen
+78078 Niedereschach
+78655 Dunningen
+78658 Zimmern ob Rottweil
+78126 Königsfeld im Schwarzwald
+78664 Eschbronn
+78727 Oberndorf am Neckar
+78736 Epfendorf
+72181 Starzach
+72414 Rangendingen
+72160 Horb am Neckar
+72186 Empfingen
+72184 Eutingen im Gäu
+72202 Nagold
+78586 Deilingen
+78669 Wellendingen
+78739 Hardt
+78662 Bösingen
+78087 Mönchweiler
+71111 Waldenbuch
+71144 Steinenbronn
+71093 Weil im Schönbuch
+71101 Schönaich
+72135 Dettenhausen
+71088 Holzgerlingen
+71155 Altdorf
+78136 Schonach im Schwarzwald
+78132 Hornberg
+78730 Lauterbach
+77761 Schiltach
+78733 Aichhalden
+78737 Fluorn-Winzeln
+77793 Gutach (Schwarzwaldbahn)
+77796 Mühlenbach
+77756 Hausach
+77978 Schuttertal
+77790 Steinach
+77781 Biberach
+77960 Seelbach
+77736 Zell am Harmersbach
+77723 Gengenbach
+77791 Berghaupten
+77749 Hohberg
+77948 Friesenheim
+77746 Schutterwald
+77743 Neuried
+77974 Meißenheim
+77963 Schwanau
+78262 Gailingen am Hochrhein
+26209 Hatten
+26215 Wiefelstede
+26219 Bösel
+26316 Varel
+26340 Zetel
+26345 Bockhorn
+26349 Jade
+26919 Brake
+25858 Högel
+25864 Löwenstedt
+25866 Mildstedt
+25879 Stapel
+25980 Sylt
+25992 List
+25996 Wenningstedt-Braderup (Sylt)
+25997 Hörnum (Sylt)
+25999 Kampen (Sylt)
+37633 Dielmissen
+37639 Bevern
+38272 Burgdorf
+25826 Sankt Peter-Ording
+25799 Wrohm
+25797 Wöhrden
+38271 Baddeckenstedt
+38274 Elbe
+38275 Haverlah
+38277 Heere
+38279 Sehlde
+38315 Schladen-Werla
+38704 Liebenburg
+71083 Herrenberg
+71126 Gäufelden
+72119 Ammerbuch
+71131 Jettingen
+71149 Bondorf
+71159 Mötzingen
+72172 Sulz am Neckar
+72189 Vöhringen
+72218 Wildberg
+72224 Ebhausen
+71116 Gärtringen
+71134 Aidlingen
+71154 Nufringen
+71157 Hildrizhausen
+73457 Essingen
+73540 Heubach
+73566 Bartholomä
+73066 Uhingen
+73095 Albershausen
+73110 Hattenhofen
+73098 Rechberghausen
+73099 Adelberg
+73104 Börtlingen
+73117 Wangen
+73102 Birenbach
+73116 Wäschenbeuren
+77784 Oberharmersbach
+77740 Bad Peterstal-Griesbach
+77787 Nordrach
+77728 Oppenau
+77770 Durbach
+77797 Ohlsbach
+77799 Ortenberg
+77767 Appenweier
+77731 Willstätt
+77694 Kehl
+77794 Lautenbach
+77883 Ottenhöfen im Schwarzwald
+77889 Seebach
+77776 Bad Rippoldsau-Schapbach
+77773 Schenkenzell
+76549 Hügelsheim
+76456 Kuppenheim
+76476 Bischweier
+76479 Steinmauern
+76467 Bietigheim
+76477 Elchesheim-Illingen
+76448 Durmersheim
+76474 Au am Rhein
+76779 Scheibenhardt
+75203 Königsbach-Stein
+75236 Kämpfelbach
+76593 Gernsbach
+76599 Weisenbach
+76596 Forbach
+72226 Simmersfeld
+72213 Altensteig
+72297 Seewald
+72294 Grömbach
+72299 Wörnersberg
+72227 Egenhausen
+72221 Haiterbach
+72229 Rohrdorf
+72285 Pfalzgrafenweiler
+72178 Waldachtal
+72280 Dornstetten
+72270 Baiersbronn
+72250 Freudenstadt
+71139 Ehningen
+75392 Deckenpfronn
+71384 Weinstadt
+71394 Kernen im Remstal
+72296 Schopfloch
+73666 Baltmannsweiler
+73650 Winterbach
+73669 Lichtenwald
+73630 Remshalden
+73547 Lorch
+73441 Bopfingen
+73450 Neresheim
+73469 Riesbürg
+73463 Westhausen
+73466 Lauchheim
+73492 Rainau
+73557 Mutlangen
+73571 Göggingen
+73572 Heuchlingen
+73575 Leinzell
+73579 Schechingen
+73560 Böbingen an der Rems
+73563 Mögglingen
+73574 Iggingen
+73447 Oberkochen
+73577 Ruppertshofen
+38321 Denkte
+38324 Kissenbrück
+38329 Wittmar
+72275 Alpirsbach
+72290 Loßburg
+72293 Glatten
+72175 Dornhan
+71554 Weissach im Tal
+71566 Althütte
+73635 Rudersberg
+71522 Backnang
+71573 Allmersbach im Tal
+71364 Winnenden
+71397 Leutenbach
+71563 Affalterbach
+71576 Burgstetten
+71691 Freiberg am Neckar
+71726 Benningen am Neckar
+71679 Asperg
+71732 Tamm
+71696 Möglingen
+71701 Schwieberdingen
+71106 Magstadt
+71229 Leonberg
+71272 Renningen
+71277 Rutesheim
+71287 Weissach
+71254 Ditzingen
+71282 Hemmingen
+71665 Vaihingen an der Enz
+71735 Eberdingen
+71739 Oberriexingen
+71409 Schwaikheim
+71546 Aspach
+71579 Spiegelberg
+71560 Sulzbach an der Murr
+71570 Oppenweiler
+71577 Großerlach
+26446 Friedeburg
+26465 Langeoog
+26474 Spiekeroog
+26486 Wangerooge
+26629 Großefehn
+71549 Auenwald
+74405 Gaildorf
+74417 Gschwend
+74429 Sulzbach-Laufen
+26160 Bad Zwischenahn
+26169 Friesoythe
+26180 Rastede
+26188 Edewecht
+26197 Großenkneten
+26203 Wardenburg
+74423 Obersontheim
+74424 Bühlertann
+74426 Bühlerzell
+27246 Borstel
+27283 Verden
+27299 Langwedel
+27308 Kirchlinteln
+27313 Dörverden
+27330 Asendorf
+27337 Blender
+27339 Riede
+73486 Adelmannsfelden
+73494 Rosenberg
+73479 Ellwangen (Jagst)
+73485 Unterschneidheim
+73497 Tannhausen
+73495 Stödtlen
+73488 Ellenberg
+73499 Wört
+73467 Kirchheim am Ries
+21641 Apensen
+21643 Beckdorf
+21739 Dollern
+73489 Jagstzell
+74579 Fichtenau
+74597 Stimpfach
+74564 Crailsheim
+74594 Kreßberg
+74589 Satteldorf
+74592 Kirchberg an der Jagst
+74599 Wallhausen
+75323 Bad Wildbad
+75335 Dobel
+74541 Vellberg
+74586 Frankenhardt
+75328 Schömberg
+74523 Schwäbisch Hall
+74532 Ilshofen
+75394 Oberreichenbach
+75378 Bad Liebenzell
+74538 Rosengarten
+74544 Michelbach an der Bilz
+74545 Michelfeld
+74535 Mainhardt
+74626 Bretzfeld
+74629 Pfedelbach
+74420 Oberrot
+74613 Öhringen
+74542 Braunsbach
+74549 Wolpertshausen
+74547 Untermünkheim
+74635 Kupferzell
+74632 Neuenstein
+74638 Waldenburg
+75242 Neuhausen
+75399 Unterreichenbach
+74595 Langenburg
+74673 Mulfingen
+74572 Blaufelden
+74575 Schrozberg
+71292 Friolzheim
+71296 Heimsheim
+71297 Mönsheim
+74238 Krautheim
+74677 Dörzbach
+75389 Neuweiler
+75385 Bad Teinach-Zavelstein
+74214 Schöntal
+74679 Weißbach
+74670 Forchtenberg
+74676 Niedernhall
+75365 Calw
+75382 Althengstett
+75397 Simmozheim
+74639 Zweiflingen
+71263 Weil der Stadt
+75395 Ostelsheim
+71120 Grafenau
+69254 Malsch
+69231 Rauenberg
+69242 Mühlhausen
+74858 Aglasterhausen
+74867 Neunkirchen
+74869 Schwarzach
+74847 Obrigheim
+74862 Binau
+74855 Haßmersheim
+74928 Hüffenhardt
+74821 Mosbach
+74865 Neckarzimmern
+74834 Elztal
+74842 Billigheim
+74850 Schefflenz
+74838 Limbach
+74864 Fahrenbach
+74706 Osterburken
+74722 Buchen
+74743 Seckach
+74740 Adelsheim
+74747 Ravenstein
+21256 Handeloh
+21258 Heidenau
+21274 Undeloh
+21369 Nahrendorf
+21371 Tosterglope
+74731 Walldürn
+74749 Rosenberg
+74736 Hardheim
+74744 Ahorn
+63936 Schneeberg
+63916 Amorbach
+63931 Kirchzell
+63897 Miltenberg
+63937 Weilbach
+63928 Eichenbühl
+74746 Höpfingen
+63927 Bürgstadt
+63930 Neunkirchen
+21386 Betzendorf
+21409 Embsen
+21509 Glinde
+21524 Brunstorf
+21526 Hohenhorn
+26639 Wiesmoor
+26655 Westerstede
+26689 Apen
+26789 Leer
+26931 Elsfleth
+26670 Uplengen
+26802 Moormerland
+27793 Wildeshausen
+27804 Berne
+27809 Lemwerder
+27777 Ganderkesee
+27798 Hude (Oldenburg)
+27801 Dötlingen
+28816 Stuhr
+28844 Weyhe
+38527 Meine
+27711 Osterholz-Scharmbeck
+27721 Ritterhude
+27726 Worpswede
+38319 Remlingen
+38322 Hedeper
+38325 Roklum
+38327 Semmenstedt
+28832 Achim
+28865 Lilienthal
+28870 Ottersberg
+28876 Oyten
+28879 Grasberg
+31246 Lahstedt
+33175 Bad Lippspringe
+38828 Wegeleben
+38829 Harsleben
+34431 Marsberg
+58675 Hemer
+58739 Wickede (Ruhr)
+58791 Werdohl
+58802 Balve
+58809 Neuenrade
+58840 Plettenberg
+59469 Ense
+59519 Möhnesee
+59581 Warstein
+59602 Rüthen
+59846 Sundern
+59909 Bestwig
+59929 Brilon
+59939 Olsberg
+47559 Kranenburg
+47574 Goch
+47533 Kleve
+47551 Bedburg-Hau
+47546 Kalkar
+47589 Uedem
+47652 Weeze
+47665 Sonsbeck
+47608 Geldern
+47661 Issum
+47475 Kamp-Lintfort
+47506 Neukirchen-Vluyn
+47509 Rheurdt
+32312 Lübbecke
+32339 Espelkamp
+32361 Preußisch Oldendorf
+49143 Bissendorf
+49152 Bad Essen
+49163 Bohmte
+49179 Ostercappeln
+49191 Belm
+47647 Kerken
+47638 Straelen
+47669 Wachtendonk
+47929 Grefrath
+47906 Kempen
+47918 Tönisvorst
+47877 Willich
+41352 Korschenbroich
+41363 Jüchen
+41812 Erkelenz
+41844 Wegberg
+41849 Wassenberg
+41372 Niederkrüchten
+41366 Schwalmtal
+41379 Brüggen
+41334 Nettetal
+53945 Blankenheim
+53949 Dahlem
+53940 Hellenthal
+53947 Nettersheim
+53925 Kall
+53894 Mechernich
+53902 Bad Münstereifel
+53937 Schleiden
+52156 Monschau
+53909 Zülpich
+53919 Weilerswist
+53332 Bornheim
+53859 Niederkassel
+53347 Alfter
+53913 Swisttal
+53359 Rheinbach
+53340 Meckenheim
+53343 Wachtberg
+53501 Grafschaft
+53424 Remagen
+53474 Bad Neuenahr-Ahrweiler
+53489 Sinzig
+53507 Dernau
+53508 Mayschoß
+53557 Bad Hönningen
+21261 Welle
+21388 Soderstorf
+29614 Soltau
+"29640 Schneverdingen, Heimbuch"
+29646 Bispingen
+29683 Bad Fallingbostel mit Oerbke und Wense (Nordhälfte von Osterheide)
+29699 Bomlitz
+38381 Jerxheim
+38382 Beierstedt
+38384 Gevensleben
+38387 Söllingen
+21702 Ahlerstedt
+21706 Drochtersen
+21710 Engelschoff
+21712 Großenwörden
+21714 Hammah
+27356 Rotenburg
+29313 Hambühren
+29320 Hermannsburg
+29323 Wietze
+29328 Faßberg
+21529 Kröppelshagen-Fahrendorf
+21644 Sauensiek
+21646 Halvesbostel
+21647 Moisburg
+21649 Regesbostel
+21727 Estorf
+21734 Oederquart.
+21745 Hemmoor
+21755 Hechthausen
+21756 Osten
+21781 Cadenberge
+21782 Bülkau
+21787 Oberndorf
+21789 Wingst
+26903 Surwold
+26904 Börger
+26906 Dersum
+26907 Walchum
+53577 Neustadt (Wied)
+53562 Sankt Katharinen (Landkreis Neuwied)
+53578 Windhagen
+53579 Erpel
+53604 Bad Honnef
+53619 Rheinbreitbach
+53639 Königswinter
+53773 Hennef (Sieg)
+53757 Sankt Augustin
+53783 Eitorf
+53809 Ruppichteroth
+53804 Much
+32120 Hiddenhausen
+32130 Enger
+32139 Spenge
+32257 Bünde
+32278 Kirchlengern
+32289 Rödinghausen
+32457 Porta Westfalica
+32584 Löhne
+32602 Vlotho
+32609 Hüllhorst
+53819 Neunkirchen-Seelscheid
+58256 Ennepetal
+58332 Schwelm
+58339 Breckerfeld
+58540 Meinerzhagen
+58553 Halver
+58566 Kierspe
+53797 Lohmar
+58579 Schalksmühle
+58762 Altena
+58769 Nachrodt-Wiblingwerde
+58849 Herscheid
+53721 Siegburg
+45549 Sprockhövel
+58300 Wetter (Ruhr)
+58285 Gevelsberg
+51570 Windeck
+51503 Rösrath
+51491 Overath
+51515 Kürten
+51519 Odenthal
+51399 Burscheid
+58239 Schwerte
+58730 Fröndenberg/Ruhr
+59439 Holzwickede
+59457 Werl
+42929 Wermelskirchen
+26676 Barßel
+26683 Saterland
+26810 Westoverledingen
+26817 Rhauderfehn
+26826 Weener
+26831 Bunde
+26842 Ostrhauderfehn
+26844 Jemgum
+26845 Nortmoor
+26847 Detern
+26849 Filsum
+26871 Papenburg
+26899 Rhede (Ems)
+29331 Lachendorf
+29336 Nienhagen
+29339 Wathlingen
+29342 Wienhausen
+29345 Unterlüß
+29392 Wesendorf
+29351 Eldingen
+29352 Adelheidsdorf
+29353 Ahnsbeck
+29355 Beedenbostel
+29356 Bröckel
+29358 Eicklingen
+29359 Habighorst
+38518 Gifhorn
+"38559 Wagenhoff, Ringelah"
+29361 Höfer
+29362 Hohne
+29364 Langlingen
+29365 Sprakensehl
+29367 Steinhorst
+29369 Ummern
+38539 Müden (Aller)
+30900 Wedemark
+30916 Isernhagen
+30938 Burgwedel
+29389 Bad Bodenteich
+29393 Groß Oesingen
+29394 Lüder
+29396 Schönewörde
+29399 Wahrenholz
+48496 Hopsten
+49124 Georgsmarienhütte
+49134 Wallenhorst
+49170 Hagen am Teutoburger Wald
+49205 Hasbergen
+49492 Westerkappeln
+49497 Mettingen
+49504 Lotte
+49509 Recke
+49525 Lengerich
+49545 Tecklenburg
+49565 Bramsche
+49584 Fürstenau
+49594 Alfhausen
+49597 Rieste
+49599 Voltlage
+32469 Petershagen
+22926 Ahrensburg
+22949 Ammersbek
+22927 Großhansdorf
+22962 Siek
+22952 Lütjensee
+22964 Steinburg
+22965 Todendorf
+22885 Barsbüttel
+22956 Grönwohld
+22889 Tangstedt
+23818 Neuengörs
+23820 Pronstorf
+23866 Nahe
+23867 Sülfeld
+23869 Elmenhorst
+25373 Ellerhoop
+25451 Quickborn
+25479 Ellerau
+25486 Alveslohe
+25494 Borstel-Hohenraden
+25495 Kummerfeld
+25499 Tangstedt
+22869 Schenefeld
+25421 Pinneberg
+25462 Rellingen
+25469 Halstenbek
+25497 Prisdorf
+22958 Kuddewörde
+22959 Linau
+58313 Herdecke
+59174 Kamen
+59192 Bergkamen
+59269 Beckum
+59302 Oelde
+59320 Ennigerloh
+59329 Wadersloh
+59494 Soest
+59505 Bad Sassendorf
+59510 Lippetal
+59514 Welver
+59590 Geseke
+59597 Erwitte
+59609 Anröchte
+56656 Brohl-Lützing
+56659 Burgbrohl
+56626 Andernach
+56645 Nickenich
+56630 Kretz
+56637 Plaidt
+56642 Kruft
+56299 Ochtendung
+56648 Saffig
+56218 Mülheim-Kärlich
+56575 Weißenthurm
+42799 Leichlingen
+50259 Pulheim
+50226 Frechen
+38458 Velpke
+38459 Bahrdorf
+38461 Danndorf
+38462 Grafhorst
+38464 Groß Twülpstedt
+38465 Brome
+38467 Bergfeld
+38468 Ehra-Lessien
+48231 Warendorf
+48268 Greven
+48282 Emsdetten
+48291 Telgte
+48336 Sassenberg
+48346 Ostbevern
+48351 Everswinkel
+48361 Beelen
+48369 Saerbeck
+48477 Hörstel
+49176 Hilter
+49186 Bad Iburg
+49196 Bad Laer
+49201 Dissen
+49214 Bad Rothenfelde
+49219 Glandorf
+49549 Ladbergen
+29439 Lüchow
+29451 Dannenberg
+29456 Hitzacker (Elbe)
+29459 Clenze
+29462 Wustrow
+29465 Schnega
+29468 Bergen
+29562 Suhlendorf
+29593 Schwienau
+29594 Soltendiek
+29575 Altenmedingen
+29585 Jelmstorf
+29587 Natendorf
+29482 Küsten
+29487 Luckau (Wendland)
+29496 Waddeweitz
+50354 Hürth
+50321 Brühl
+50389 Wesseling
+50374 Erftstadt
+52388 Nörvenich
+50181 Bedburg
+50189 Elsdorf
+52382 Niederzier
+52445 Titz
+52428 Jülich
+52441 Linnich
+52457 Aldenhoven
+52499 Baesweiler
+52531 Übach-Palenberg
+52511 Geilenkirchen
+52134 Herzogenrath
+52146 Würselen
+52477 Alsdorf
+52249 Eschweiler
+52379 Langerwehe
+52459 Inden
+52399 Merzenich
+52391 Vettweiß
+52385 Nideggen
+52372 Kreuzau
+52152 Simmerath
+52393 Hürtgenwald
+52159 Roetgen
+52396 Heimbach
+29472 Damnatz
+29475 Gorleben
+29476 Gusborn
+29478 Höhbeck
+29479 Jameln
+29481 Karwitz
+29484 Langendorf
+29485 Lemgow
+29488 Lübbow
+29490 Neu Darchau
+29493 Schnackenburg
+29494 Trebel
+29497 Woltersdorf
+29499 Zernien
+29525 Uelzen
+29549 Bad Bevensen
+29571 Rosche
+29576 Barum
+29579 Emmendorf
+29584 Himbergen
+29588 Oetzen
+29590 Rätzlingen
+29591 Römstedt
+29597 Stoetze
+29599 Weste
+"24896 Treia, Ahrenviölfeld"
+24897 Ulsnis
+24899 Wohlde
+24966 Sörup
+24988 Oeversee
+24997 Wanderup
+24999 Wees
+25365 Klein Offenseth-Sparrieshoop
+25368 Kiebitzreihe
+25370 Seester
+25371 Seestermühe
+25377 Kollmar und (veraltet) Pagensand
+"25379 Herzhorn, Kamerlanderdeich"
+38364 Schöningen
+38372 Büddenstedt
+38376 Süpplingenburg
+38378 Warberg
+38379 Wolsdorf
+"25573 Beidenfleth, Klein Kampen"
+25575 Beringstedt
+25576 Brokdorf
+"25585 Lütjenwestedt, Tackesdorf"
+25587 Münsterdorf
+25590 Osterstedt
+25591 Ottenbüttel
+38162 Cremlingen
+38165 Lehre
+25599 Wewelsfleth
+25721 Eggstedt
+"25725 Schafstedt, Weidenhof, Bornholt"
+25729 Windbergen
+25786 Dellstedt
+38159 Vechelde
+38176 Wendeburg
+38268 Lengede
+38179 Schwülper
+38528 Adenbüttel
+38530 Didderse
+38533 Vordorf
+46446 Emmerich am Rhein
+23719 Glasau
+23821 Rohlstorf
+23823 Seedorf
+24401 Böel
+24402 Esgrus
+"24404 Maasholm, Schleimünde"
+46459 Rees
+46419 Isselburg
+46509 Xanten
+46519 Alpen
+47495 Rheinberg
+46562 Voerde (Niederrhein)
+46569 Hünxe
+46514 Schermbeck
+38536 Meinersen
+38542 Leiferde
+38543 Hillerse
+38551 Ribbesbüttel
+46499 Hamminkeln
+32676 Lügde
+32816 Schieder-Schwalenberg
+32825 Blomberg
+34414 Warburg
+34434 Borgentreich
+34439 Willebadessen
+37671 Höxter
+37688 Beverungen
+37696 Marienmünster
+46348 Raesfeld
+32657 Lemgo
+32689 Kalletal
+32694 Dörentrup
+32699 Extertal
+32791 Lage
+32805 Horn-Bad Meinberg
+32832 Augustdorf
+32839 Steinheim
+46414 Rhede
+46325 Borken
+46354 Südlohn
+46359 Heiden
+46342 Velen
+48734 Reken
+48712 Gescher
+45711 Datteln
+45721 Haltern am See
+45739 Oer-Erkenschwick
+45731 Waltrop
+59379 Selm
+59399 Olfen
+59348 Lüdinghausen
+59368 Werne
+59394 Nordkirchen
+59387 Ascheberg
+48317 Drensteinfurt
+48324 Sendenhorst
+48249 Dülmen
+48308 Senden
+48301 Nottuln
+48653 Coesfeld
+48727 Billerbeck
+48720 Rosendahl
+48329 Havixbeck
+48341 Altenberge
+48356 Nordwalde
+48565 Steinfurt
+48366 Laer
+48612 Horstmar
+48624 Schöppingen
+48629 Metelen
+48739 Legden
+48619 Heek
+48683 Ahaus
+48703 Stadtlohn
+48691 Vreden
+48599 Gronau
+48455 Bad Bentheim
+48607 Ochtrup
+48493 Wettringen
+48488 Emsbüren
+48499 Salzbergen
+38524 Sassenburg
+38531 Rötgesbüttel
+38547 Calberlah
+38550 Isenbüttel
+38553 Wasbüttel
+38477 Jembke
+38479 Tappenbeck
+38554 Weyhausen
+38556 Bokensdorf
+38557 Osloß
+38476 Barwedel
+38471 Rühen
+38473 Tiddische
+38474 Tülau
+32683 Barntrup
+37649 Heinsen
+24866 Busdorf
+24867 Dannewerk
+24869 Dörpstedt
+24870 Ellingstedt
+24873 Havetoft
+24876 Hollingstedt
+24881 Nübel
+"24882 Schaalby, Geelbek"
+24885 Sieverstedt
+"24887 Silberstedt, Schwittschau"
+21729 Freiburg (Elbe)
+21737 Wischhafen
+49774 Lähden
+49844 Bawinkel
+49846 Hoogstede
+49849 Wilsum
+49434 Neuenkirchen-Vörden
+49451 Holdorf
+49593 Bersenbrück
+49596 Gehrde
+49377 Vechta
+49393 Lohne
+49624 Löningen
+49637 Menslage
+49638 Nortrup
+49401 Damme
+49413 Dinklage
+49424 Goldenstedt
+49429 Visbek
+49439 Steinfeld
+49456 Bakum
+49632 Essen (Oldenburg)
+49635 Badbergen
+49661 Cloppenburg
+49681 Garrel
+49685 Emstek
+49688 Lastrup
+49692 Cappeln (Oldenburg)
+49696 Molbergen
+49699 Lindern (Oldenburg)
+49610 Quakenbrück
+"99819 Marksuhl, Krauthausen u.a."
+16552 Schildow
+09634 Reinsberg
+04862 Mockrehna
+"60306 Frankfurt am Main, Opernturm"
+24367 Osterby
+82475 Garmisch-Partenkirchen (Schneefernerhaus)
+25867 Oland
+99707 Kyffhäuserland
+27639 Wurster Nordseeküste
+31084 Freden (Leine)
+31195 Lamspringe
+35647 Waldsolms
+64760 Oberzent
+6993 Mittelberg
+39628 Bismark
+98694 Ilmenau
+60312 Frankfurt am Main (Omniturm)
+99331 Geratal
+60315 Frankfurt am Main (FOUR)
+81248 München
+"Situation unklar, evtl. haben die Häuser Marbach 2 und 6 auch diese PLZ. Das ganze sieht aus wie ein Versäumnis der Post."

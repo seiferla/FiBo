@@ -1,5 +1,4 @@
 from datetime import datetime
-
 from django.http import JsonResponse
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -15,7 +14,7 @@ class GetUser(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request):
-        usermail = request.user.username
+        usermail = request.user.email
         user = FiboUser.objects.get(email=usermail)
         serializer = FiboUserSerializer(user, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -25,7 +24,7 @@ class DeleteUser(APIView):
     permission_classes = (IsAuthenticated,)
 
     def delete(self, request):
-        usermail = request.user.username
+        usermail = request.user.email
         user = FiboUser.objects.get(email=usermail)
         # All accounts assigned to the user are deleted as well
         # if there are other users for one account, then the account is not deleted
@@ -49,9 +48,8 @@ class RegisterUser(APIView):
             print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Note that username and email are the same
         user = FiboUser.objects.create_user(
-            username=email, email=email, password=password)
+            email=email, password=password)
         default_account = Account.objects.create(name=email)
         user.account.add(default_account)
 

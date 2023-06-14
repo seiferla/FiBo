@@ -1,18 +1,18 @@
 import json
-
 from django.test import TestCase
 from rest_framework import status
 from rest_framework.test import APIClient
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from ..models import FiboUser, Account, Cashflow, Category, Store, ZipCity, LiteUser, Private, Item
+from ..models import Account, Cashflow, Category, Store, ZipCity, LiteUser, Private, Item
 
 
 class ViewsTestCase(TestCase):
 
     def test_user_get(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -25,7 +25,8 @@ class ViewsTestCase(TestCase):
 
     def test_user_delete(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -39,7 +40,8 @@ class ViewsTestCase(TestCase):
     # If there is only one User with the same Account, the Account will be deleted too if the User gets deleted
     def test_user_delete_account_delete(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -62,8 +64,10 @@ class ViewsTestCase(TestCase):
     # If there are multiple Users with the same Account, the account wont be deleted if one user gets deleted
     def test_user_delete_account_stays(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
-        user2 = FiboUser.objects.create_user(username='test2@fibo.de', email='test2@fibo.de', password='test2')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
+        user2 = LiteUser.objects.create_user(email='test2@fibo.de', password='secure',
+                                             show_premium_ad=True)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -116,7 +120,7 @@ class ViewsTestCase(TestCase):
         # Given
         account = Account.objects.create(name="Test Account")
         zip_city = ZipCity.objects.create(city="SomeCity", zip='76131')
-        user = LiteUser.objects.create_user(username='test user', email='test@fibo.de', password='secure',
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
                                             show_premium_ad=True)
         user.account.add(account)
         refresh = RefreshToken.for_user(user)
@@ -150,7 +154,7 @@ class ViewsTestCase(TestCase):
         # Given
         account = Account.objects.create(name="Test Account")
         zip_city = ZipCity.objects.create(city="SomeCity", zip='76131')
-        user = LiteUser.objects.create_user(username='test user', email='test@fibo.de', password='secure',
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
                                             show_premium_ad=True)
         user.account.add(account)
         refresh = RefreshToken.for_user(user)
@@ -184,7 +188,7 @@ class ViewsTestCase(TestCase):
         # Given
         account = Account.objects.create(name="Test Account")
         zip_city = ZipCity.objects.create(city="SomeCity", zip='76131')
-        user = LiteUser.objects.create_user(username='test user', email='test@fibo.de', password='secure',
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
                                             show_premium_ad=True)
         user.account.add(account)
         refresh = RefreshToken.for_user(user)
@@ -215,7 +219,7 @@ class ViewsTestCase(TestCase):
 
     def test_cashflow_get(self):
         # Given
-        user = LiteUser.objects.create_user(show_premium_ad=True, username='test@fibo.de', email='test@fibo.de',
+        user = LiteUser.objects.create_user(show_premium_ad=True, email='test@fibo.de',
                                             password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
@@ -252,7 +256,7 @@ class ViewsTestCase(TestCase):
     # Try to get a not existing Cashflow
     def test_cashflow_get_bad_parameter(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -268,7 +272,7 @@ class ViewsTestCase(TestCase):
 
     def test_cashflow_delete(self):
         # Given
-        user = LiteUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test',
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='test',
                                             show_premium_ad=True)
 
         refresh = RefreshToken.for_user(user)
@@ -305,7 +309,8 @@ class ViewsTestCase(TestCase):
     # Try to delete a not existing Cashflow
     def test_cashflow_delete_bad_parameter(self):
         # Given
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -321,8 +326,8 @@ class ViewsTestCase(TestCase):
 
     def test_cashflow_put_income(self):
         # Given
-        user = FiboUser.objects.create_user(
-            username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -366,8 +371,8 @@ class ViewsTestCase(TestCase):
 
     def test_cashflow_put_expense(self):
         # Given
-        user = FiboUser.objects.create_user(
-            username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -407,7 +412,7 @@ class ViewsTestCase(TestCase):
 
     def test_update_not_existing_cashflow(self):
         # Given
-        user = LiteUser.objects.create_user(show_premium_ad=True, username='test@fibo.de', email='test@fibo.de',
+        user = LiteUser.objects.create_user(show_premium_ad=True, email='test@fibo.de',
                                             password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
@@ -438,8 +443,8 @@ class ViewsTestCase(TestCase):
     # Try to update a Cashflow with insufficient data
     def test_cashflow_put_bad_request(self):
         # Given
-        user = FiboUser.objects.create_user(
-            username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -478,13 +483,13 @@ class ViewsTestCase(TestCase):
     # Try to update a Cashflow with wrong source type
     def test_cashflow_put_invalid_source_type_request(self):
         # Given
-        user = FiboUser.objects.create_user(
-            username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
 
-        account = Account.objects.create( name="Test Account")
+        account = Account.objects.create(name="Test Account")
         category = Category.objects.create(name="Health", account=account)
         zip_city = ZipCity.objects.create(zip='76131', city="Karlsruhe")
         store = Store.objects.create(
@@ -518,13 +523,13 @@ class ViewsTestCase(TestCase):
     # Try to create a Cashflow with wrong source type
     def test_cashflow_post_invalid_source_type_request(self):
         # Given
-        user = FiboUser.objects.create_user(
-            username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
 
-        account = Account.objects.create( name="Test Account")
+        account = Account.objects.create(name="Test Account")
 
         new_cashflow = {
             "category": "MOBILITY",
@@ -552,7 +557,7 @@ class ViewsTestCase(TestCase):
         # Given
         account = Account.objects.create(name="Test Account")
 
-        user = LiteUser.objects.create_user(show_premium_ad=False, username='test@fibo.de', email='test@fibo.de',
+        user = LiteUser.objects.create_user(show_premium_ad=False, email='test@fibo.de',
                                             password='test')
         refresh = RefreshToken.for_user(user)
         client = APIClient()
@@ -579,7 +584,7 @@ class ViewsTestCase(TestCase):
         # Given
         account = Account.objects.create(name="Test Account")
 
-        user = LiteUser.objects.create_user(show_premium_ad=False, username='test@fibo.de', email='test@fibo.de',
+        user = LiteUser.objects.create_user(show_premium_ad=False, email='test@fibo.de',
                                             password='test')
         zip_city = ZipCity.objects.create(zip='76131', city="someCity")
 
@@ -610,7 +615,8 @@ class ViewsTestCase(TestCase):
     def test_store_post_invalid_format(self):
         # Given
         account = Account.objects.create(name="Test Account")
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
@@ -631,7 +637,8 @@ class ViewsTestCase(TestCase):
     def test_private_post_invalid_format(self):
         # Given
         account = Account.objects.create(name="Test Account")
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         user.account.add(account)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
@@ -652,7 +659,8 @@ class ViewsTestCase(TestCase):
     def test_store_get(self):
         # Given
         account = Account.objects.create(name="Test Account")
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         user.account.add(account)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
@@ -677,7 +685,8 @@ class ViewsTestCase(TestCase):
     def test_private_get(self):
         # Given
         account = Account.objects.create(name="Test Account")
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         user.account.add(account)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
@@ -699,7 +708,8 @@ class ViewsTestCase(TestCase):
     def test_store_get_bad_request(self):
         # Given
         account = Account.objects.create(name="Test Account")
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         user.account.add(account)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
@@ -719,7 +729,8 @@ class ViewsTestCase(TestCase):
     def test_private_get_bad_request(self):
         # Given
         account = Account.objects.create(name="Test Account")
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         user.account.add(account)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
@@ -735,7 +746,8 @@ class ViewsTestCase(TestCase):
     def test_category_post(self):
         # Given
         account = Account.objects.create(name="Test Account")
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         user.account.add(account)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
@@ -753,7 +765,8 @@ class ViewsTestCase(TestCase):
     def test_category_post_invalid_format(self):
         # Given
         account = Account.objects.create(name="Test Account")
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         user.account.add(account)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
@@ -770,7 +783,8 @@ class ViewsTestCase(TestCase):
     def test_category_get(self):
         # Given
         account = Account.objects.create(name="Test Account")
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         user.account.add(account)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
@@ -785,7 +799,8 @@ class ViewsTestCase(TestCase):
     def test_category_get_invalid_parameters(self):
         # Given
         account = Account.objects.create(name="Test Account")
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         user.account.add(account)
         refresh = RefreshToken.for_user(user)
         client = APIClient()
@@ -798,7 +813,8 @@ class ViewsTestCase(TestCase):
     def test_item_successful_post(self):
         # Given
         account = Account.objects.create(name="Test Account")
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         user.account.add(account)
         category = Category.objects.create(name="HEALTH", account=account)
         private = Private.objects.create(first_name="Max", last_name="Mustermann", account=account)
@@ -832,7 +848,8 @@ class ViewsTestCase(TestCase):
     def test_item_post_invalid_format(self):
         # Given
         account = Account.objects.create(name="Test Account")
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         user.account.add(account)
         category = Category.objects.create(name="HEALTH", account=account)
         private = Private.objects.create(first_name="Max", last_name="Mustermann", account=account)
@@ -865,7 +882,8 @@ class ViewsTestCase(TestCase):
     def test_item_get(self):
         # Given
         account = Account.objects.create(name="Test Account")
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         user.account.add(account)
         category = Category.objects.create(name="HEALTH", account=account)
         private = Private.objects.create(first_name="Max", last_name="Mustermann", account=account)
@@ -899,7 +917,8 @@ class ViewsTestCase(TestCase):
     def test_item_invalid_get(self):
         # Given
         account = Account.objects.create(name="Test Account")
-        user = FiboUser.objects.create_user(username='test@fibo.de', email='test@fibo.de', password='test')
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         user.account.add(account)
 
         refresh = RefreshToken.for_user(user)

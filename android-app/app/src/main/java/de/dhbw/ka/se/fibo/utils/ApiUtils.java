@@ -1,7 +1,5 @@
 package de.dhbw.ka.se.fibo.utils;
 
-import android.util.Log;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
@@ -17,13 +15,21 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import de.dhbw.ka.se.fibo.BuildConfig;
+
+
 public class ApiUtils {
+    private ApiUtils() {
+        throw new IllegalStateException("Utility class");
+    }
 
     private static String getBaseURL() {
         if (ActivityUtils.isEspressoTesting()) {
             return "http://localhost:8000";
-        } else {
+        } else if (BuildConfig.DEBUG) {
             return "http://10.0.2.2:8000";
+        } else {
+            return "https://fibo.gtzcloud.de";
         }
     }
 
@@ -77,20 +83,20 @@ public class ApiUtils {
      */
     public static <T> JsonRequest<T> createAPIJSONRequest(Class<T> responseType, String url, int method, Map<String, String> body, Response.Listener<T> onSuccess, Response.ErrorListener onError) {
 
-        String jsonRequestBody = new Gson().toJson(body);
-
         return new JsonRequest<>(
                 method,
                 ApiUtils.getBaseURL() + url,
-                jsonRequestBody,
+                new Gson().toJson(body), //jsonRequestBody
                 onSuccess,
                 onError) {
             @Override
             protected Response<T> parseNetworkResponse(NetworkResponse response) {
                 try {
-                    String json = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
-                    T parsedResponse = new Gson().fromJson(json, responseType);
-                    return Response.success(parsedResponse, HttpHeaderParser.parseCacheHeaders(response));
+                    return Response.success(
+                            new Gson().fromJson( //parsedResponse
+                                    new String(response.data, HttpHeaderParser.parseCharset(response.headers)), //json
+                                    responseType),
+                            HttpHeaderParser.parseCacheHeaders(response));
                 } catch (UnsupportedEncodingException | JsonSyntaxException e) {
                     return Response.error(new ParseError(e));
                 }

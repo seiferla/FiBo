@@ -44,6 +44,8 @@ Update the `POSTGRES_*`,`PGADMIN_DEFAULT_*` variables as needed, so they use the
 
 From now on, you can use the command `sudo docker compose up -d --build` to have the Django backend run on port 8000.
 
+To stop the backend, run the command `sudo docker compose stop`.
+
 Troubleshooting:
 
 You may need to run `rm ~/.docker/config.json` in case you are seeing `ERROR [internal] load metadata for docker.io/library/python:3` when doing the steps
@@ -79,3 +81,11 @@ You can output the test coverage in two different way:
 1. With `docker compose run --rm django coverage report` the test coverage is printed to the console
 2. With `docker compose run --rm django coverage html -d docs/test-coverage-report` an HTML Coverage report is created in the directory `docs/test-coverage-report`
 To look at it simply open the index.html in your preferred browser. In there you can go through the different files and see which code blocks got already tested and which can use some additional testing.
+
+## Install backend on server with continuous deployment
+To install the latest version of the backend continuously you have to create a cron job on your server. To do this run the command
+`crontab -e`. Now you have to choose which text editor you want to use. Select your preferred one and add the following line at the bottom of the file:
+```ini
+0 0 * * * chmod +x $HOME/fibo/backend/server_deployment.sh && $HOME/fibo/backend/server_deployment.sh
+```
+After this save the file. Now the cron job will check for a new version every night and will deploy it if there is one available.
