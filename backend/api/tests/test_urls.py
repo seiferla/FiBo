@@ -49,9 +49,9 @@ class TestUrls(TestCase):
         self.assertEqual(resolve(url).func.view_class, CategoryView)
 
     def test_item_url_resolves(self):
-        url = reverse('item')
+        url = reverse('item', args=[1])
         self.assertEqual(resolve(url).func.view_class, ItemView)
 
     def test_item_with_id_url_resolves(self):
-        url = reverse('item_with_id', args=[1])
+        url = reverse('item_with_id', args=[1, 1])
         self.assertEqual(resolve(url).func.view_class, ItemView)

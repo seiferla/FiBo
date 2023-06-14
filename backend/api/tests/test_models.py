@@ -1,6 +1,7 @@
 from django.test import TestCase
 from ..models import Store, Category, Account, Cashflow, Item, FiboUser, ZipCity, LiteUser
 
+
 class ModelsTestCase(TestCase):
 
     def test_store_creation(self):
@@ -88,8 +89,8 @@ class ModelsTestCase(TestCase):
     def test_fibo_user_creation(self):
         account = Account.objects.create(name="Test Account")
 
-        user = FiboUser.objects.create_user( email='test@fibo.de', password='secure',
-                                             show_premium_ad=True)
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
         user.account.add(account)
         self.assertIsNotNone(user.account)
 
@@ -100,6 +101,7 @@ class ModelsTestCase(TestCase):
     def test_fibo_superuser_creation(self):
         user = FiboUser.objects.create_superuser(email='test@fibo.de', password='secure')
         self.assertEquals(user.is_superuser, True)
+
     def test_fibo_superuser_is_false_creation(self):
         with self.assertRaises(ValueError):
             user = FiboUser.objects.create_superuser(email='test@fibo.de', password='secure', is_superuser=False)

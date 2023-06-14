@@ -1,11 +1,12 @@
 from datetime import datetime
+
 from django.http import JsonResponse
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import FiboUser, Account, Store, Cashflow, Category, ZipCity, Private, Item
+from .models import FiboUser, Account, Store, Cashflow, Category, ZipCity, Private, Item, LiteUser
 from .serializers import FiboUserSerializer, CashflowSerializer, CategorySerializer, StoreSerializer, PrivateSerializer, \
     ItemSerializer
 
@@ -48,8 +49,7 @@ class RegisterUser(APIView):
             print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
-        user = FiboUser.objects.create_user(
-            email=email, password=password)
+        user = LiteUser.objects.create_user(show_premium_ad=True, email=email, password=password)
         default_account = Account.objects.create(name=email)
         user.account.add(default_account)
 
@@ -63,6 +63,8 @@ class CashflowsView(APIView):
     permission_classes = (IsAuthenticated,)
 
     def post(self, request):
+        print("Request:", request)
+
         try:
             account = Account.objects.get(id=request.data['account']['id'])
             # FIXME: Verify the user may access this account
@@ -249,13 +251,13 @@ class PrivateSourcesView(APIView):
 
 
 class ItemView(APIView):
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
-    def post(self, request):
+    def post(self, request, cashflow_id):
         try:
-            cashflow = Cashflow.objects.get(id=request.data['cashflow'])
-            item = Item.objects.create(name=request.data['item']['name'], amount=request.data['item']['amount'],
-                                       value=request.data['item']['value'],
+            cashflow = Cashflow.objects.get(id=cashflow_id)
+            item = Item.objects.create(name=request.data['name'], amount=request.data['amount'],
+                                       value=request.data['value'],
                                        cashflow=cashflow)
         except Exception as e:
             # Fixme differentiate between other exception types
@@ -264,9 +266,11 @@ class ItemView(APIView):
 
         return JsonResponse({'success': True, 'item': item.id}, status=status.HTTP_201_CREATED)
 
-    def get(self, request, item_id):
+    def get(self, request, cashflow_id, item_id):
         try:
             item = Item.objects.get(id=item_id)
+            if item.cashflow.id != cashflow_id:
+                raise AttributeError('invalid item and cashflow combination')
         except Exception as e:
             # FIXME: Differentiate between ObjectDoesNotExist and a broad Exception
             print(e.__cause__)

@@ -1,4 +1,5 @@
 import json
+
 from django.test import TestCase
 from rest_framework import status
 from rest_framework.test import APIClient
@@ -827,18 +828,16 @@ class ViewsTestCase(TestCase):
         item_name = "someItem"
         item_value = 20.2
         item_amount = 3
-        data = {
-            "item":
-                {
-                    "name": item_name,
-                    "value": item_value,
-                    "amount": item_amount
-                },
-            "cashflow": cashflow.id
+        item = {
+            "name": item_name,
+            "value": item_value,
+            "amount": item_amount
         }
 
         # When
-        response = client.post(f'/items/', data, format='json')
+        #   ('cashflows/<int:cashflow_id>/items/'),
+
+        response = client.post(f'/cashflows/{cashflow.id}/items/', item, format='json')
 
         item = Item.objects.get(name=item_name, value=item_value, amount=item_amount)
         # Then
@@ -862,18 +861,14 @@ class ViewsTestCase(TestCase):
         item_name = "someItem"
         item_value = "12.34"
         item_amount = 3
-        data = {
-            "item":
-                {
-                    "invalid": item_name,
-                    "value": item_value,
-                    "amount": item_amount
-                },
-            "cashflow": cashflow.id
+        item = {
+            "invalid": item_name,
+            "value": item_value,
+            "amount": item_amount
         }
 
         # When
-        response = client.post(f'/items/', data, format='json')
+        response = client.post(f'/cashflows/{cashflow.id}/items/', item, format='json')
 
         # Then
         self.assertEqual(response.status_code, 400)
@@ -901,7 +896,7 @@ class ViewsTestCase(TestCase):
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
 
         # When
-        response = client.get(f'/items/{item.id}/', format='json')
+        response = client.get(f'/cashflows/{cashflow.id}/items/{item.id}/', format='json')
         json_response = json.loads(response.content)
 
         # Then
@@ -914,7 +909,36 @@ class ViewsTestCase(TestCase):
             "cashflow": cashflow.id,
         }.items())
 
-    def test_item_invalid_get(self):
+    def test_item_with_wrong_cashflow_get(self):
+        # Given
+        account = Account.objects.create(name="Test Account")
+        user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
+                                            show_premium_ad=True)
+        user.account.add(account)
+        category = Category.objects.create(name="HEALTH", account=account)
+        private = Private.objects.create(first_name="Max", last_name="Mustermann", account=account)
+        cashflow = Cashflow.objects.create(is_income=False, overall_value=20.0, category=category, source=private,
+                                           account=account)
+        item_name = "someItem"
+        item_value = "12.34"
+        item_amount = 3
+
+        item = Item.objects.create(name=item_name, amount=item_amount,
+                                   value=item_value,
+                                   cashflow=cashflow)
+        refresh = RefreshToken.for_user(user)
+        client = APIClient()
+        client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
+
+        # When
+        response = client.get(f'/cashflows/{1337}/items/{item.id}/', format='json')
+
+        # Then
+        self.assertEqual(item, Item.objects.get(id=item.id))
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.json(), {'success': False})
+
+    def test_item_completely_invalid_get(self):
         # Given
         account = Account.objects.create(name="Test Account")
         user = LiteUser.objects.create_user(email='test@fibo.de', password='secure',
@@ -926,7 +950,7 @@ class ViewsTestCase(TestCase):
         client.credentials(HTTP_AUTHORIZATION=f'Bearer {refresh.access_token}')
 
         # When
-        response = client.get(f'/items/{1337}/', format='json')
+        response = client.get(f'/cashflows/{1337}/items/{1337}/', format='json')
         json_response = json.loads(response.content)
 
         # Then
