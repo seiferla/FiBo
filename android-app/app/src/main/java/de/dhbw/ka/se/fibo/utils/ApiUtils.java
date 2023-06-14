@@ -83,20 +83,20 @@ public class ApiUtils {
      */
     public static <T> JsonRequest<T> createAPIJSONRequest(Class<T> responseType, String url, int method, Map<String, String> body, Response.Listener<T> onSuccess, Response.ErrorListener onError) {
 
-        String jsonRequestBody = new Gson().toJson(body);
-
         return new JsonRequest<>(
                 method,
                 ApiUtils.getBaseURL() + url,
-                jsonRequestBody,
+                new Gson().toJson(body), //jsonRequestBody
                 onSuccess,
                 onError) {
             @Override
             protected Response<T> parseNetworkResponse(NetworkResponse response) {
                 try {
-                    String json = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
-                    T parsedResponse = new Gson().fromJson(json, responseType);
-                    return Response.success(parsedResponse, HttpHeaderParser.parseCacheHeaders(response));
+                    return Response.success(
+                            new Gson().fromJson( //parsedResponse
+                                    new String(response.data, HttpHeaderParser.parseCharset(response.headers)), //json
+                                    responseType),
+                            HttpHeaderParser.parseCacheHeaders(response));
                 } catch (UnsupportedEncodingException | JsonSyntaxException e) {
                     return Response.error(new ParseError(e));
                 }
