@@ -43,7 +43,9 @@ public class ApplicationState {
         this.context = context;
 
         cashflows = new TreeSet<>();
-        populateTestData();
+        if (BuildConfig.DEBUG) {
+            populateTestData();
+        }
     }
 
     @VisibleForTesting
