@@ -1,17 +1,19 @@
 package de.dhbw.ka.se.fibo.models;
 
+import java.math.BigDecimal;
+
 public class Item {
     private float amount;
     private String name;
-    private float value;
+    private BigDecimal value;
 
-    public Item(String name, float value, float amount) {
+    public Item(String name, BigDecimal value, float amount) {
         this.name = name;
         this.value = value;
         this.amount = amount;
     }
 
-    public Item(String name, float value) {
+    public Item(String name, BigDecimal value) {
         this.amount = 1;
         this.name = name;
         this.value = value;
@@ -33,11 +35,11 @@ public class Item {
         this.name = name;
     }
 
-    public float getValue() {
+    public BigDecimal getValue() {
         return value;
     }
 
-    public void setValue(float value) {
+    public void setValue(BigDecimal value) {
         this.value = value;
     }
 
