@@ -28,6 +28,9 @@ public class ApplicationState {
     private final Context context;
     @SuppressLint("StaticFieldLeak")
     private static ApplicationState instance;
+    private static final String SHARED_PREFERENCES_AUTHORIZATION_NAME = "authorization";
+    private static final String SHARED_PREFERENCES_AUTHORIZATION_ACCESS_TOKEN = "accessToken";
+    private static final String SHARED_PREFERENCES_AUTHORIZATION_REFRESH_TOKEN = "refreshToken";
     private SortedSet<Cashflow> cashflows;
 
     private static final String TAG = "ApplicationState";
@@ -40,24 +43,27 @@ public class ApplicationState {
         this.context = context;
 
         cashflows = new TreeSet<>();
-        populateTestData();
+        if (BuildConfig.DEBUG) {
+            populateTestData();
+        }
     }
 
     @VisibleForTesting
     public void populateTestData() {
+        String sampleDataAddress = "Lorenzstraße 19, 76135 Karlsruhe";
         cashflows.clear();
         cashflows.add(new Cashflow(Category.RESTAURANT, CashflowType.EXPENSE, BigDecimal.valueOf(8.5), LocalDateTime.now(), new Place("dm", "Am dm-Platz 1")));
         cashflows.add(new Cashflow(Category.HEALTH, CashflowType.EXPENSE, BigDecimal.valueOf(10), LocalDateTime.now().minusDays(1), new Place("kaufland", "Kaufplatz")));
         cashflows.add(new Cashflow(Category.SOCIAL_LIFE, CashflowType.INCOME, BigDecimal.valueOf(5.5), LocalDateTime.now().minusDays(2), new Place("Fabian", "In da club street")));
-        cashflows.add(new Cashflow(Category.CULTURE, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", "Lorenzstraße 19, 76135 Karlsruhe")));
-        cashflows.add(new Cashflow(Category.CLOTHES, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", "Lorenzstraße 19, 76135 Karlsruhe")));
-        cashflows.add(new Cashflow(Category.EDUCATION, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", "Lorenzstraße 19, 76135 Karlsruhe")));
-        cashflows.add(new Cashflow(Category.GIFT, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", "Lorenzstraße 19, 76135 Karlsruhe")));
-        cashflows.add(new Cashflow(Category.INSURANCE, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", "Lorenzstraße 19, 76135 Karlsruhe")));
-        cashflows.add(new Cashflow(Category.LIVING, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", "Lorenzstraße 19, 76135 Karlsruhe")));
-        cashflows.add(new Cashflow(Category.MOBILITY, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", "Lorenzstraße 19, 76135 Karlsruhe")));
-        cashflows.add(new Cashflow(Category.OTHER, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", "Lorenzstraße 19, 76135 Karlsruhe")));
-        cashflows.add(new Cashflow(Category.HOUSEHOLD , CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", "Lorenzstraße 19, 76135 Karlsruhe")));
+        cashflows.add(new Cashflow(Category.CULTURE, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", sampleDataAddress)));
+        cashflows.add(new Cashflow(Category.CLOTHES, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", sampleDataAddress)));
+        cashflows.add(new Cashflow(Category.EDUCATION, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", sampleDataAddress)));
+        cashflows.add(new Cashflow(Category.GIFT, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", sampleDataAddress)));
+        cashflows.add(new Cashflow(Category.INSURANCE, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", sampleDataAddress)));
+        cashflows.add(new Cashflow(Category.LIVING, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", sampleDataAddress)));
+        cashflows.add(new Cashflow(Category.MOBILITY, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", sampleDataAddress)));
+        cashflows.add(new Cashflow(Category.OTHER, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", sampleDataAddress)));
+        cashflows.add(new Cashflow(Category.HOUSEHOLD, CashflowType.EXPENSE, BigDecimal.valueOf(13.5), LocalDateTime.now().minusDays(5), new Place("ZKM", sampleDataAddress)));
     }
 
     @VisibleForTesting
@@ -91,7 +97,7 @@ public class ApplicationState {
         Optional<String> refreshToken = getRefreshToken();
 
         if (!refreshToken.isPresent()) {
-            Log.i(TAG, "isAuthenticated() -> not authenticated, no refresh token persisted");
+            Log.i(ApplicationState.TAG, "isAuthenticated() -> not authenticated, no refresh token persisted");
 
             return false;
         }
@@ -101,24 +107,24 @@ public class ApplicationState {
                     Keys.hmacShaKeyFor(jwsSigningKey)
             ).build().parseClaimsJws(refreshToken.get());
 
-            Log.i(TAG, "claims are " + claims);
+            Log.i(ApplicationState.TAG, "claims are " + claims);
         } catch (JwtException e) {
-            Log.i(TAG, "isAuthenticated() -> not authenticated, refresh token invalid", e);
+            Log.i(ApplicationState.TAG, "isAuthenticated() -> not authenticated, refresh token invalid", e);
 
             return false;
         }
 
-        Log.i(TAG, "isAuthenticated() -> is authenticated");
+        Log.i(ApplicationState.TAG, "isAuthenticated() -> is authenticated");
 
         return true;
     }
 
     public Optional<String> getAccessToken() {
         String accessToken = context
-                .getSharedPreferences("authorization", 0)
-                .getString("accessToken", null);
+                .getSharedPreferences(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_NAME, Context.MODE_PRIVATE)
+                .getString(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_ACCESS_TOKEN, null);
 
-        if (accessToken == null) {
+        if (null == accessToken) {
             return Optional.empty();
         }
 
@@ -127,10 +133,10 @@ public class ApplicationState {
 
     public Optional<String> getRefreshToken() {
         String refreshToken = context
-                .getSharedPreferences("authorization", 0)
-                .getString("refreshToken", null);
+                .getSharedPreferences(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_NAME, Context.MODE_PRIVATE)
+                .getString(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_REFRESH_TOKEN, null);
 
-        if (refreshToken == null) {
+        if (null == refreshToken) {
             return Optional.empty();
         }
         return Optional.of(refreshToken);
@@ -142,19 +148,19 @@ public class ApplicationState {
      */
     public void storeAuthorization(LoginStrategyProduction.LoginResponse response) {
         context
-                .getSharedPreferences("authorization", 0)
+                .getSharedPreferences(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_NAME, Context.MODE_PRIVATE)
                 .edit()
-                .putString("refreshToken", response.refresh)
-                .putString("accessToken", response.access)
+                .putString(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_REFRESH_TOKEN, response.refresh)
+                .putString(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_ACCESS_TOKEN, response.access)
                 .apply();
     }
 
     public void clearAuthorization() {
         context
-                .getSharedPreferences("authorization", 0)
+                .getSharedPreferences(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_NAME, Context.MODE_PRIVATE)
                 .edit()
-                .remove("refreshToken")
-                .remove("accessToken")
+                .remove(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_REFRESH_TOKEN)
+                .remove(ApplicationState.SHARED_PREFERENCES_AUTHORIZATION_ACCESS_TOKEN)
                 .apply();
     }
 

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/adding_fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/adding_fragment_container"
-    android:layout_marginBottom="92dp"> <!-- 80dp (navbar) + 12dp -->
+    android:orientation="vertical">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
@@ -27,13 +26,16 @@
     <!-- be careful when adding too many nested layouts. It might happen that espresso is not able
     to detect everything correctly and stays in an idling after loading this file -->
 
-    <ScrollView
-        android:orientation="vertical"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:id="@+id/adding_fragment_scroll_view"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="80dp"> <!-- 80dp (navbar) -->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:paddingBottom="12dp"
             android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -99,12 +101,12 @@
                     android:layout_weight="0" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_weight="2"
                     android:id="@+id/date_layout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_marginTop="0dp"
+                    android:layout_weight="2"
                     android:paddingTop="0dp"
                     app:endIconDrawable="@drawable/ic_calendar_purple"
                     app:endIconMode="custom"
@@ -135,8 +137,8 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/category_layout"
-                    android:layout_width="0dp"
                     style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -184,20 +186,67 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/address_text_layout">
 
-                <EditText
-                    android:id="@+id/notes_multiLine"
-                    android:layout_width="match_parent"
-                    android:layout_height="128sp"
-                    android:gravity="top"
-                    android:importantForAutofill="no"
-                    android:inputType="textMultiLine"
-                    android:hint="@string/adding_notes"
+                <TextView
+                    android:id="@+id/textview_artikel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/headline_itemlist_view"
+                    android:textSize="@dimen/largeTextSize"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/add_item_button"
+                    style="@style/Widget.Material3.Button.IconButton.Filled"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:contentDescription="@string/add_item_button_description"
+                    app:icon="@drawable/plus_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:nestedScrollingEnabled="false"
+                    android:clipToPadding="false"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="12dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="12dp"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/add_item_button" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/adding_fragment_recyclerview_container"
+                style="@style/Style.FiBo.CardView.Filled.CornerRadiusSharp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fourthLine_constraintLayout">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/adding_fragment_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="16dp" />
+
+            </com.google.android.material.card.MaterialCardView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout2"
@@ -206,7 +255,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fourthLine_constraintLayout">
+                app:layout_constraintTop_toBottomOf="@+id/adding_fragment_recyclerview_container">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/okayButton"
@@ -218,10 +267,10 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/cancel"
+                    style="@style/Widget.Material3.Button.TextButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    style="@style/Widget.Material3.Button.TextButton"
                     android:text="@string/cancelButton"
                     app:layout_constraintEnd_toStartOf="@id/okayButton"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -230,6 +279,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

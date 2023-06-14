@@ -11,7 +11,7 @@ import com.google.android.material.textview.MaterialTextView;
 
 import de.dhbw.ka.se.fibo.R;
 
-public class RecyclerViewHolder extends RecyclerView.ViewHolder {
+public class CashflowViewHolder extends RecyclerView.ViewHolder {
 
     final MaterialCardView materialCard;
     final TextView imageView;
@@ -19,7 +19,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
     final MaterialTextView date;
     final MaterialTextView cashFlowValue;
 
-    public RecyclerViewHolder(@NonNull View itemView) {
+    public CashflowViewHolder(@NonNull View itemView) {
         super(itemView);
         materialCard = itemView.findViewById(R.id.materialCardViewContainer);
         imageView = itemView.findViewById(R.id.initial);

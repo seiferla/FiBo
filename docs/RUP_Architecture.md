@@ -4,7 +4,7 @@
 
 This document is based on the following template: <https://sce.uhcl.edu/helm/RationalUnifiedProcess/webtmpl/templates/a_and_d/rup_sad.htm>
 
-Version: 1.2
+Version: 1.4
 
 ## 2. <a name='RevisionHistory'></a>Revision History
 
@@ -14,6 +14,7 @@ Version: 1.2
 | 12/04/23        | 1.1     | Extended version | Jens   |
 | 18/05/23        | 1.2     | Extended version | Jens   |
 | 27/05/23        | 1.3     | Extended version | Jonas  |
+| 12/06/23        | 1.4     | Fixed version number | Jens  |
 
 ## 3. <a name='TableofContents'></a>Table of Contents
 
