@@ -1,7 +1,6 @@
 package de.dhbw.ka.se.fibo.utils;
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.BuildConfig;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
 import com.android.volley.Response;
@@ -16,12 +15,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import de.dhbw.ka.se.fibo.BuildConfig;
+
+
 public class ApiUtils {
 
     private static String getBaseURL() {
         if (ActivityUtils.isEspressoTesting()) {
             return "http://localhost:8000";
-        } else if (BuildConfig.DEBUG){
+        } else if (BuildConfig.DEBUG) {
             return "http://10.0.2.2:8000";
         } else {
             return "https://fibo.gtzcloud.de";
