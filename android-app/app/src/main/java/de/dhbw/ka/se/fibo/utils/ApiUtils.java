@@ -19,6 +19,9 @@ import de.dhbw.ka.se.fibo.BuildConfig;
 
 
 public class ApiUtils {
+    private ApiUtils() {
+        throw new IllegalStateException("Utility class");
+    }
 
     private static String getBaseURL() {
         if (ActivityUtils.isEspressoTesting()) {
