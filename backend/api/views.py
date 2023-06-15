@@ -168,6 +168,7 @@ class CashflowsView(APIView):
 
 
 class StoreSourcesView(APIView):
+    # FIXME: check authorization (check if user has permission to manage the said cashflow / items)
     permission_classes = (IsAuthenticated,)
 
     def post(self, request):
@@ -197,6 +198,7 @@ class StoreSourcesView(APIView):
 
 
 class CategoryView(APIView):
+    # FIXME: check authorization (check if user has permission to manage the said account)
     permission_classes = (IsAuthenticated,)
 
     def post(self, request):
@@ -224,6 +226,7 @@ class CategoryView(APIView):
 
 
 class PrivateSourcesView(APIView):
+    # FIXME: check authorization (check if user has permission to manage the said cashflow / items)
     permission_classes = (IsAuthenticated,)
 
     def post(self, request):
@@ -251,6 +254,7 @@ class PrivateSourcesView(APIView):
 
 
 class ItemView(APIView):
+    # FIXME: check authorization (check if user has permission to manage the said cashflow / items)
     permission_classes = (IsAuthenticated,)
 
     def post(self, request, cashflow_id):
