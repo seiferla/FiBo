@@ -174,10 +174,10 @@ class StoreSourcesView(APIView):
     def post(self, request):
         try:
             account = Account.objects.get(id=request.data['account'])
-            zip = ZipCity.objects.get(zip=request.data['store']['zip'])
+            zip_city = ZipCity.objects.get(zip=request.data['store']['zip'])
             place = Store.objects.create(account=account,
                                          name=request.data['store']['name'], street=request.data['store']['street'],
-                                         zip=zip, house_number=request.data['store']['house_number'])
+                                         zip=zip_city, house_number=request.data['store']['house_number'])
         except Exception as e:
             # Fixme differentiate between other exception types
             print(e.__cause__)

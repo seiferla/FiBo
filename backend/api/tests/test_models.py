@@ -5,9 +5,9 @@ from ..models import Store, Category, Account, Cashflow, Item, FiboUser, ZipCity
 class ModelsTestCase(TestCase):
 
     def test_store_creation(self):
-        zip = ZipCity.objects.create(zip="12345", city="Karlsruhe")
+        zip_city = ZipCity.objects.create(zip="12345", city="Karlsruhe")
         account = Account.objects.create(name="TestAccount")
-        store = Store.objects.create(account=account, street="Kaiserstraße", zip=zip, house_number="12",
+        store = Store.objects.create(account=account, street="Kaiserstraße", zip=zip_city, house_number="12",
                                      name="Postgalerie")
         self.assertEqual(store.street, 'Kaiserstraße')
         self.assertEqual(store.house_number, '12')
@@ -28,8 +28,8 @@ class ModelsTestCase(TestCase):
     def test_item_creation(self):
         account = Account.objects.create(name="Test Account")
         category = Category.objects.create(name="HEALTH", account=account)
-        zip = ZipCity.objects.create(zip="12345", city="Karlsruhe")
-        store = Store.objects.create(account=account, street="Kaiserstraße", zip=zip, house_number="12",
+        zip_city = ZipCity.objects.create(zip="12345", city="Karlsruhe")
+        store = Store.objects.create(account=account, street="Kaiserstraße", zip=zip_city, house_number="12",
                                      name="Postgalerie")
         cashflow = Cashflow.objects.create(is_income=True, overall_value=100.00, category=category, source=store,
                                            account=account)
@@ -42,8 +42,8 @@ class ModelsTestCase(TestCase):
     def test_create_cashflow(self):
         account = Account.objects.create(name="Test Account")
         category = Category.objects.create(name="HEALTH", account=account)
-        zip = ZipCity.objects.create(zip="12345", city="Karlsruhe")
-        store = Store.objects.create(account=account, street="Kaiserstraße", zip=zip, house_number="12",
+        zip_city = ZipCity.objects.create(zip="12345", city="Karlsruhe")
+        store = Store.objects.create(account=account, street="Kaiserstraße", zip=zip_city, house_number="12",
                                      name="Postgalerie")
         cashflow = Cashflow.objects.create(is_income=True, overall_value=100.00, category=category, source=store,
                                            account=account)
@@ -57,8 +57,8 @@ class ModelsTestCase(TestCase):
     def test_save_cashflow(self):
         account = Account.objects.create(name="Test Account")
         category = Category.objects.create(name="HEALTH", account=account)
-        zip = ZipCity.objects.create(zip="12345", city="Karlsruhe")
-        store = Store.objects.create(account=account, street="Kaiserstraße", zip=zip, house_number="12",
+        zip_city = ZipCity.objects.create(zip="12345", city="Karlsruhe")
+        store = Store.objects.create(account=account, street="Kaiserstraße", zip=zip_city, house_number="12",
                                      name="Postgalerie")
         cashflow = Cashflow.objects.create(is_income=True, overall_value=100.00, category=category, source=store,
                                            account=account)
@@ -75,8 +75,8 @@ class ModelsTestCase(TestCase):
     def test_delete_cashflow(self):
         account = Account.objects.create(name="Test Account")
         category = Category.objects.create(name="HEALTH", account=account)
-        zip = ZipCity.objects.create(zip="12345", city="Karlsruhe")
-        store = Store.objects.create(account=account, street="Kaiserstraße", zip=zip, house_number="12",
+        zip_city = ZipCity.objects.create(zip="12345", city="Karlsruhe")
+        store = Store.objects.create(account=account, street="Kaiserstraße", zip=zip_city, house_number="12",
                                      name="Postgalerie")
         cashflow = Cashflow.objects.create(is_income=True, overall_value=100.00, category=category, source=store,
                                            account=account)
