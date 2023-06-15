@@ -1,8 +1,11 @@
 package de.dhbw.ka.se.fibo;
 
+import static android.content.ContentValues.TAG;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,8 +41,9 @@ public class SplashActivity extends AppCompatActivity {
                     try {
                         super.run();
                         Thread.sleep(2000);
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    } catch (InterruptedException ie) {
+                        Thread.currentThread().interrupt();
+                        Log.i(TAG, ie.getMessage());
                     } finally {
                         Intent i = new Intent(SplashActivity.this,
                                 LoginActivity.class);
