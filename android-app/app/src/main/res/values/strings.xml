@@ -29,19 +29,21 @@
     <string name="adding_expense">Ausgabe</string>
     <string name="adding_income">Einnahme</string>
     <string name="adding_amount">Betrag (€)</string>
-    <string name="adding_date">Zeitstempel</string>
+    <string name="adding_date">Datum</string>
     <string name="adding_category">Kategorie</string>
-    <string name="adding_notes">Notizen</string>
     <string name="adding_address">Adresse</string>
-    <string name="adding_notes_format">Name, Preis, (Menge);</string>
     <string name="error_message_password_field_empty">Passwortfeld ist leer</string>
     <string name="error_message_email_field">Emailfeld ist leer</string>
     <string name="error_message_store_field">Gib bitte ein Geschäft an</string>
     <string name="error_message_source_field">Gib bitte eine Quelle an</string>
-    <string name="error_message_amount_field">Gib bitte einen Betrag an</string>
+    <string name="error_message_price_field">Gib bitte einen Betrag an</string>
+    <string name="error_message_amount_field">Gib bitte eine Anzahl an</string>
+    <string name="error_message_name_field">Gib bitte einen Namen an</string>
     <string name="error_message_date_field">Gib ein bitte Datum an</string>
     <string name="error_message_category_field">Gib bitte eine Kategorie an</string>
     <string name="error_message_address_field">Gib bitte eine Addresse an</string>
+    <string name="headline_itemlist_view">Artikelübersicht</string>
+
     <string name="time_message_date_picker">Uhrzeit auswählen</string>
 
 
@@ -126,4 +128,16 @@
     <string name="delete_user_confirm_button">Benutzer löschen</string>
     <string name="cancel_button">Abbrechen</string>
     <string name="account">Konto</string>
+    <string name="edit_item_description">Artikel bearbeiten</string>
+    <string name="recyclerview_price_placeholder">2,50 €</string>
+    <string name="recyclerview_item_name_placeholder">item name</string>
+    <string name="add_item_button_description">Artikel hinzufügen</string>
+    <string name="item_name_hint">Artikelname</string>
+    <string name="item_price_hint">Preis (€)</string>
+    <string name="item_amount_hint">Anzahl</string>
+    <string name="delete_item_button_description">Artikel entfernen</string>
+    <string name="add_article_dialog_heading">Artikel hinzufügen</string>
+    <string name="edit_article_dialog_heading">Artikel bearbeiten</string>
+    <string name="adding_fragment_dialog_heading_placeholder">Artikel überschrift</string>
+
 </resources>

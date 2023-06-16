@@ -1,14 +1,11 @@
 package de.dhbw.ka.se.fibo.ui.adding;
 
-import static android.content.ContentValues.TAG;
 import static de.dhbw.ka.se.fibo.BuildConfig.TIME_ZONE;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +14,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.datepicker.CalendarConstraints;
@@ -32,12 +32,11 @@ import com.google.android.material.timepicker.TimeFormat;
 import java.math.BigDecimal;
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -74,10 +73,14 @@ public class AddingFragment extends Fragment {
     private MaterialButton okayButton;
     private TabLayout tabLayout;
     private TextInputEditText address;
-    private EditText notes;
-    private int hours;
-    private int minutes;
     private CashflowType newCashFlowType;
+
+    private MaterialButton addItemButton;
+
+    private RecyclerView addingItemsRecyclerView;
+    private AddingItemsListAdapter addingItemsListAdapter;
+    private AddingFragmentDialog addingFragmentDialog;
+
 
     @Nullable
     @Override
@@ -95,13 +98,14 @@ public class AddingFragment extends Fragment {
         okayButton = binding.okayButton;
         tabLayout = binding.tabLayout;
         address = binding.addressText;
-        notes = binding.notesMultiLine;
 
         storeLayout = binding.storeTextLayout;
         amountLayout = binding.amountLayout;
         dateTextLayout = binding.dateLayout;
         addressLayout = binding.addressTextLayout;
         categoriesDropdownLayout = binding.categoryLayout;
+
+        addItemButton = binding.addItemButton;
 
         return view;
     }
@@ -114,17 +118,55 @@ public class AddingFragment extends Fragment {
         initializeDropdownValues();
         createDatePicker();
         setUpDateTextField();
-        createTimePicker();
-
-
-        notes.setOnFocusChangeListener((view1, hasFocus) -> {
-            if (hasFocus) {
-                notes.setHint(requireContext().getString(R.string.adding_notes_format));
-            } else {
-                notes.setHint(requireContext().getString(R.string.adding_notes));
-            }
-        });
+        setUpRecyclerView(view);
+        setUpDialog();
     }
+
+    private void setUpDialog() {
+        addingFragmentDialog = new AddingFragmentFragmentDialogAdd(requireContext());
+        addingFragmentDialog.setAdapter(addingItemsListAdapter);
+
+    }
+
+    private void setUpRecyclerView(View view) {
+        addingItemsRecyclerView = binding.addingFragmentRecyclerview;
+        addingItemsRecyclerView.setOverScrollMode(View.OVER_SCROLL_NEVER); //disable overscroll indicators
+        addingItemsRecyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
+        addingItemsListAdapter = new AddingItemsListAdapter(getContext(), List.of());
+        addingItemsRecyclerView.setVisibility(View.GONE); //initially no items to display
+        addingItemsListAdapter.registerAdapterDataObserver(getRecyclerViewVisibilityObserver());
+        addingItemsRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        addingItemsRecyclerView.setAdapter(addingItemsListAdapter);
+    }
+
+    /**
+     * The recyclerView visibility needs to be changed whenever 0 Items are in the Listview.
+     * This is needed because the Recyclerview has a border which is not displayed correctly if there are no elements to display
+     *
+     * @return Observer that changes the visibility of the recyclerview
+     */
+    @NonNull
+    private RecyclerView.AdapterDataObserver getRecyclerViewVisibilityObserver() {
+        return new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                super.onItemRangeInserted(positionStart, itemCount);
+                setCorrectRecyclerViewVisibility();
+            }
+
+            @Override
+            public void onItemRangeRemoved(int positionStart, int itemCount) {
+                super.onItemRangeRemoved(positionStart, itemCount);
+                setCorrectRecyclerViewVisibility();
+            }
+
+            private void setCorrectRecyclerViewVisibility() {
+                if (0 == addingItemsListAdapter.getItemCount()) {
+                    addingItemsRecyclerView.setVisibility(View.GONE);
+                } else {
+                    addingItemsRecyclerView.setVisibility(View.VISIBLE);
+                }
+            }
 
     private void createTimePicker() {
         Calendar calendar = Calendar.getInstance();
@@ -179,6 +221,11 @@ public class AddingFragment extends Fragment {
         });
         tabLayout.selectTab(tabLayout.getTabAt(0));
     }
+    private void resetErrorMessages() {
+        List<TextInputLayout> textfields = List.of(storeLayout, amountLayout, dateTextLayout, categoriesDropdownLayout, addressLayout);
+
+        textfields.forEach(field -> field.setErrorEnabled(false));
+    }
 
     private void initializeButtons() {
         cancelButton.setOnClickListener(e -> navigateToHome());
@@ -193,6 +240,14 @@ public class AddingFragment extends Fragment {
             }
 
         });
+
+        addItemButton.setOnClickListener(e -> openItemAddingDialog());
+
+    }
+
+    private void openItemAddingDialog() {
+        binding.getRoot().clearFocus(); // prevents the keyboard from opening again unnecessarily
+        addingFragmentDialog.show();
     }
 
     private Cashflow createCashFlow() {
@@ -219,26 +274,14 @@ public class AddingFragment extends Fragment {
 
             date = LocalDateTime.parse(substring_date, formatter);
 
-            if (notes.getText().toString().trim().isEmpty()) {
-                return new Cashflow(category, newCashFlowType, value, date, place);
-            } else {
-                try {
-                    List<Item> items = createItemsFromNotes();
-                    return new Cashflow(category, newCashFlowType, value, date, place, items);
-                } catch (IllegalArgumentException e) {
-                    Log.i(TAG, e.getMessage());
-                }
-                return null;
-            }
+            return new Cashflow(category, newCashFlowType, value, date, place, getAddedItems());
         }
 
         return null;
     }
 
-    private void resetErrorMessages() {
-        List<TextInputLayout> textfields = List.of(storeLayout, amountLayout, dateTextLayout, categoriesDropdownLayout, addressLayout);
-
-        textfields.forEach(field -> field.setErrorEnabled(false));
+    private List<Item> getAddedItems() {
+        return addingItemsListAdapter.getItemList();
     }
 
     private String getFieldValue(TextView field) {
@@ -252,7 +295,7 @@ public class AddingFragment extends Fragment {
         } else {
             fieldsToBeChecked.put(storeLayout, getString(R.string.error_message_source_field));
         }
-        fieldsToBeChecked.put(amountLayout, getString(R.string.error_message_amount_field));
+        fieldsToBeChecked.put(amountLayout, getString(R.string.error_message_price_field));
         fieldsToBeChecked.put(dateTextLayout, getString(R.string.error_message_date_field));
         fieldsToBeChecked.put(categoriesDropdownLayout, getString(R.string.error_message_category_field));
         fieldsToBeChecked.put(addressLayout, getString(R.string.error_message_address_field));
@@ -276,9 +319,7 @@ public class AddingFragment extends Fragment {
 
     private void initializeDropdownValues() {
         String[] items = getAllStringCategories();
-        MaterialAutoCompleteTextView initCategoriesDropdown = binding.categoryText;
-        initCategoriesDropdown.setSimpleItems(items);
-        initCategoriesDropdown.setThreshold(4);
+        categoriesDropdown.setSimpleItems(items);
     }
 
     private String[] getAllStringCategories() {
@@ -307,22 +348,6 @@ public class AddingFragment extends Fragment {
             dateText.setText(formatter.format(selection));
             timePicker.show(requireActivity().getSupportFragmentManager(), "TimePicker");
         });
-    }
-
-    private ArrayList<Item> createItemsFromNotes() throws IllegalArgumentException {
-        String[] lines = notes.getText().toString().trim().split(";");
-        ArrayList<Item> result = new ArrayList<>();
-        for (String s : lines) {
-            String[] item = s.split(",");
-            if (2 == item.length) {
-                result.add(new Item(item[0], Float.parseFloat(item[1])));
-            } else if (3 == item.length) {
-                result.add(new Item(item[0], Float.parseFloat(item[1]), Float.parseFloat(item[2])));
-            } else {
-                throw new IllegalArgumentException("Incorrect input format");
-            }
-        }
-        return result;
     }
 
     @Override

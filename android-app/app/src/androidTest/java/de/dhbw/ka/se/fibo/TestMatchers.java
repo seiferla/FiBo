@@ -9,6 +9,9 @@ import org.hamcrest.TypeSafeMatcher;
 
 public class TestMatchers {
 
+    private TestMatchers(){
+        throw new IllegalStateException("Utility class");
+    }
     public static Matcher<View> hasTextInputLayoutErrorText(String expectedErrorText) {
         return new TypeSafeMatcher<>() {
 

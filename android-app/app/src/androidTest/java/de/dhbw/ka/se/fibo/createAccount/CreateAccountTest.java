@@ -57,6 +57,10 @@ public class CreateAccountTest {
 
     private MockWebServer server = new MockWebServer();
 
+    private static final String testPassword = "testPassword";
+
+    private static final String testEmail = "fibo@fibo.de";
+
     private Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
 
@@ -123,7 +127,7 @@ public class CreateAccountTest {
     @Test
     public void testPasswordWithInput() {
         onView(withId(R.id.create_account_password))
-                .perform(typeText("AsdfJklo1.2"), closeSoftKeyboard());
+                .perform(typeText(testPassword), closeSoftKeyboard());
 
         onView(withId(R.id.create_account_button))
                 .perform(click());
@@ -135,10 +139,10 @@ public class CreateAccountTest {
     @Test
     public void testValidInput() {
         onView(withId(R.id.create_account_email))
-                .perform(typeText("test"), closeSoftKeyboard());
+                .perform(typeText(testEmail), closeSoftKeyboard());
 
         onView(withId(R.id.create_account_password))
-                .perform(typeText("test"), closeSoftKeyboard());
+                .perform(typeText(testPassword), closeSoftKeyboard());
 
         onView(withId(R.id.create_account_button))
                 .perform(click());
@@ -152,13 +156,14 @@ public class CreateAccountTest {
 
     @Test
     public void testPasswordVisibilityToggle() {
+
         onView(withId(R.id.create_account_password))
-                .perform(typeText("testPassword"), closeSoftKeyboard());
+                .perform(typeText(testPassword), closeSoftKeyboard());
 
         // tests that the password is not readable
         activityScenarioRule.getScenario().onActivity(activity -> {
             EditText passwordFieldText = activity.findViewById(R.id.create_account_password);
-            assertNotEquals("testPassword", passwordFieldText.getLayout().getText().toString());
+            assertNotEquals(testPassword, passwordFieldText.getLayout().getText().toString());
         });
 
         // click on the visibility toggle
@@ -168,7 +173,7 @@ public class CreateAccountTest {
         // tests that the password is readable
         activityScenarioRule.getScenario().onActivity(activity -> {
             EditText passwordFieldText = activity.findViewById(R.id.create_account_password);
-            assertEquals("testPassword", passwordFieldText.getLayout().getText().toString());
+            assertEquals(testPassword, passwordFieldText.getLayout().getText().toString());
         });
     }
 
@@ -182,14 +187,11 @@ public class CreateAccountTest {
                         .getTokensAsJsonString()
                 ));
 
-        String email = "fibo@fibo.de";
-        String password = "test";
-
         onView(withId(R.id.create_account_email))
-                .perform(typeText(email), closeSoftKeyboard());
+                .perform(typeText(testEmail), closeSoftKeyboard());
 
         onView(withId(R.id.create_account_password))
-                .perform(typeText(password), closeSoftKeyboard());
+                .perform(typeText(testPassword), closeSoftKeyboard());
 
         onView(withId(R.id.create_account_button))
                 .perform(click());
@@ -201,8 +203,8 @@ public class CreateAccountTest {
         RecordedRequest loginRequest = server.takeRequest(30, TimeUnit.SECONDS);
         Log.i("FiBo", "loginRequest = " + loginRequest);
 
-        TestHelper.checkRegisterRequestResponse(registerRequest, email, password);
-        TestHelper.checkLoginRequest(loginRequest, email, password);
+        TestHelper.checkRegisterRequestResponse(registerRequest, testEmail, testPassword);
+        TestHelper.checkLoginRequest(loginRequest, testEmail, testPassword);
 
         onView(withId(R.id.floatingButton))
                 .check(matches(isDisplayed()));
@@ -212,14 +214,12 @@ public class CreateAccountTest {
     public void testHttpRequestWithInvalidCredentials() throws InterruptedException, UnsupportedEncodingException {
         server.enqueue(new MockResponse().setResponseCode(500));
 
-        String email = "fibo@fibo.de";
-        String password = "test";
 
         onView(withId(R.id.create_account_email))
-                .perform(typeText(email), closeSoftKeyboard());
+                .perform(typeText(testEmail), closeSoftKeyboard());
 
         onView(withId(R.id.create_account_password))
-                .perform(typeText(password), closeSoftKeyboard());
+                .perform(typeText(testPassword), closeSoftKeyboard());
 
         onView(withId(R.id.create_account_button))
                 .perform(click());
@@ -227,7 +227,7 @@ public class CreateAccountTest {
         // Wait for the HTTP request to complete
         RecordedRequest request = server.takeRequest(30, TimeUnit.SECONDS);
 
-        TestHelper.checkRegisterRequestResponse(request, email, password);
+        TestHelper.checkRegisterRequestResponse(request, testEmail, testPassword);
 
         Log.i("FiBo", "request = " + request);
 
@@ -258,14 +258,11 @@ public class CreateAccountTest {
                         .getTokensAsJsonString()
                 ));
 
-        String email = "fibo@fibo.de";
-        String password = "test";
-
         onView(withId(R.id.create_account_email))
-                .perform(typeText(email), closeSoftKeyboard());
+                .perform(typeText(testEmail), closeSoftKeyboard());
 
         onView(withId(R.id.create_account_password))
-                .perform(typeText(password), closeSoftKeyboard());
+                .perform(typeText(testPassword), closeSoftKeyboard());
 
         onView(withId(R.id.create_account_button))
                 .perform(click());
@@ -276,8 +273,8 @@ public class CreateAccountTest {
         RecordedRequest loginRequest = server.takeRequest(30, TimeUnit.SECONDS);
         Log.i("FiBo", "loginRequest = " + loginRequest);
 
-        TestHelper.checkRegisterRequestResponse(request, email, password);
-        TestHelper.checkLoginRequest(loginRequest, email, password);
+        TestHelper.checkRegisterRequestResponse(request, testEmail, testPassword);
+        TestHelper.checkLoginRequest(loginRequest, testEmail, testPassword);
 
         onView(withId(R.id.floatingButton))
                 .check(matches(isDisplayed()));
