@@ -39,4 +39,7 @@ else
     docker compose run --rm django python manage.py makemigrations
     docker compose run --rm django python manage.py migrate
     docker compose run --rm django python manage.py collectstatic --noinput
+    
+    # remove unused docker stuff
+    docker system prune -a -f
 fi
