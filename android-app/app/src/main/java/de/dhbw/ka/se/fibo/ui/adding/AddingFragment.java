@@ -1,8 +1,10 @@
 package de.dhbw.ka.se.fibo.ui.adding;
 
+import static android.content.ContentValues.TAG;
 import static de.dhbw.ka.se.fibo.BuildConfig.TIME_ZONE;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,11 +34,11 @@ import com.google.android.material.timepicker.TimeFormat;
 import java.math.BigDecimal;
 import java.text.Format;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -58,6 +60,7 @@ public class AddingFragment extends Fragment {
 
     private FragmentAddingBinding binding;
     private MaterialDatePicker<Long> datePicker;
+
     private MaterialTimePicker timePicker;
     private NavController navController;
     private TextInputEditText store;
@@ -118,8 +121,32 @@ public class AddingFragment extends Fragment {
         initializeDropdownValues();
         createDatePicker();
         setUpDateTextField();
+        createTimePicker();
         setUpRecyclerView(view);
         setUpDialog();
+    }
+
+    private void createTimePicker() {
+        Calendar calendar = Calendar.getInstance();
+        int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+        int currentMinutes = calendar.get(Calendar.MINUTE);
+
+        Log.i(TAG, String.valueOf(currentHour));
+        Log.i(TAG, String.valueOf(currentMinutes));
+
+        timePicker = new MaterialTimePicker.Builder()
+                .setInputMode(MaterialTimePicker.INPUT_MODE_KEYBOARD)
+                .setTimeFormat(TimeFormat.CLOCK_24H)
+                .setHour(currentHour)
+                .setMinute(currentMinutes)
+                .setTitleText(R.string.time_message_date_picker)
+                .build();
+        timePicker.addOnPositiveButtonClickListener(dialog -> {
+            int hours = timePicker.getHour();
+            int minutes = timePicker.getMinute();
+            dateText.append(", " + hours + ":" + minutes + " Uhr");
+
+        });
     }
 
     private void setUpDialog() {
@@ -168,24 +195,7 @@ public class AddingFragment extends Fragment {
                 }
             }
 
-    private void createTimePicker() {
-        Calendar calendar = Calendar.getInstance();
-        int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
-        int currentMinutes = calendar.get(Calendar.MINUTE);
-
-        timePicker = new MaterialTimePicker.Builder()
-                .setInputMode(MaterialTimePicker.INPUT_MODE_CLOCK)
-                .setTimeFormat(TimeFormat.CLOCK_24H)
-                .setHour(currentHour)
-                .setMinute(currentMinutes)
-                .setTitleText(R.string.time_message_date_picker)
-                .build();
-        timePicker.addOnPositiveButtonClickListener(dialog -> {
-            hours = timePicker.getHour();
-            minutes = timePicker.getMinute();
-            dateText.append(", "+hours+":"+minutes+" Uhr");
-
-        });
+        };
     }
 
     private void setUpTabLayout() {
@@ -197,6 +207,7 @@ public class AddingFragment extends Fragment {
             }
 
             // TODO: Test that the hint changes when switching tabs
+
             private void setDataWithSelectedTab(TabLayout.Tab tab) {
                 if (tab == binding.tabLayout.getTabAt(0)) {
                     newCashFlowType = CashflowType.EXPENSE;
@@ -268,12 +279,11 @@ public class AddingFragment extends Fragment {
 
             place = new Place(getFieldValue(store), getFieldValue(address));
 
-            String substring_date = getFieldValue(dateText).substring(0,getFieldValue(dateText).lastIndexOf(" "));
+            String substring_date = getFieldValue(dateText).substring(0, getFieldValue(dateText).lastIndexOf(" "));
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy, HH:mm");
 
             date = LocalDateTime.parse(substring_date, formatter);
-
             return new Cashflow(category, newCashFlowType, value, date, place, getAddedItems());
         }
 

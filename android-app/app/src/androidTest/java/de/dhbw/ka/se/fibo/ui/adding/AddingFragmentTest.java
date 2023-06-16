@@ -1,21 +1,10 @@
 package de.dhbw.ka.se.fibo.ui.adding;
 
-import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.swipeUp;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.CoreMatchers.not;
-import static de.dhbw.ka.se.fibo.TestMatchers.hasTextInputLayoutErrorText;
 
 import android.content.Context;
-<<<<<<<<< Temporary merge branch 1
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.is;
-
-=========
->>>>>>>>> Temporary merge branch 2
 import android.view.View;
 
 import androidx.navigation.Navigation;
@@ -32,15 +21,10 @@ import com.google.android.material.textfield.TextInputLayout;
 import org.hamcrest.Matcher;
 import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import de.dhbw.ka.se.fibo.MainActivity;
 import de.dhbw.ka.se.fibo.R;
-import de.dhbw.ka.se.fibo.TestMatchers;
 
 @RunWith(AndroidJUnit4.class)
 public abstract class AddingFragmentTest {
