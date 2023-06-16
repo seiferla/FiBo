@@ -32,6 +32,7 @@ else
 
     # Update Docker after Pulling the changes
     cd "$local_dir/backend" || exit
+    docker system prune -a -f
     sudo docker compose up -d --build
 
     # Make migrations in case the database has changed
