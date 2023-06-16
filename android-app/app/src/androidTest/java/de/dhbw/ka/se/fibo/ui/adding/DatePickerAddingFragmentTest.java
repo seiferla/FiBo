@@ -203,8 +203,7 @@ public class DatePickerAddingFragmentTest extends AddingFragmentTest {
                 .perform(scrollTo())
                 .perform(typeText("Fibostraße 1"), closeSoftKeyboard());
 
-        onView(withId(R.id.okayButton))
-                .perform(scrollTo())
+        onView(withText(R.string.saveButton))
                 .perform(click());
         // Checks that the user is back at the home tab
         onView(withId((R.id.navigation_home)))
@@ -242,8 +241,7 @@ public class DatePickerAddingFragmentTest extends AddingFragmentTest {
                 .perform(scrollTo())
                 .perform(typeText("Fibostraße 1"), closeSoftKeyboard());
 
-        onView(withId(R.id.okayButton))
-                .perform(scrollTo())
+        onView(withText(R.string.saveButton))
                 .perform(click());
 
 
