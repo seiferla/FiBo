@@ -35,6 +35,7 @@ import java.math.BigDecimal;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -83,6 +84,12 @@ public class AddingFragment extends Fragment {
     private RecyclerView addingItemsRecyclerView;
     private AddingItemsListAdapter addingItemsListAdapter;
     private AddingFragmentDialog addingFragmentDialog;
+
+    private static final DateTimeFormatter minutesFormat = DateTimeFormatter.ofPattern("mm");
+
+    private static final DateTimeFormatter hoursFormat = DateTimeFormatter.ofPattern("HH");
+
+
 
 
     @Nullable
@@ -144,7 +151,10 @@ public class AddingFragment extends Fragment {
         timePicker.addOnPositiveButtonClickListener(dialog -> {
             int hours = timePicker.getHour();
             int minutes = timePicker.getMinute();
-            dateText.append(", " + hours + ":" + minutes + " Uhr");
+            LocalTime time = LocalTime.of(hours, minutes);
+            String formattedMinutes = minutesFormat.format(time);
+            String formattedHours = hoursFormat.format(time);
+            dateText.append(", " + formattedHours + ":" + formattedMinutes + " Uhr");
 
         });
     }
