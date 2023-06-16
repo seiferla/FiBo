@@ -32,7 +32,6 @@ else
 
     # Update Docker after Pulling the changes
     cd "$local_dir/backend" || exit
-    docker system prune -a -f
     sudo docker compose up -d --build
 
     # Make migrations in case the database has changed
@@ -40,4 +39,7 @@ else
     docker compose run --rm django python manage.py makemigrations
     docker compose run --rm django python manage.py migrate
     docker compose run --rm django python manage.py collectstatic --noinput
+    
+    # remove unused docker stuff
+    docker system prune -a -f
 fi
