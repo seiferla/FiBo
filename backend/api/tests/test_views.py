@@ -514,7 +514,7 @@ class ViewsTestCase(TestCase):
             }
         }
 
-        # Whe
+        # When
         response = client.put(f'/cashflows/{cashflow.id}/', new_cashflow, format='json')
 
         # Then
