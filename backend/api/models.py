@@ -87,7 +87,7 @@ class FiboUser(AbstractUser):
     last_name = None
     is_staff = None
     account = models.ManyToManyField(Account, blank=True)
-    email = models.EmailField(('email address'), unique=True)
+    email = models.EmailField('email address', unique=True)
     objects = UserManager()
 
     USERNAME_FIELD = 'email'

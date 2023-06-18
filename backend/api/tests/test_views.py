@@ -579,7 +579,7 @@ class ViewsTestCase(TestCase):
 
         # Then
         self.assertEqual(response.status_code, 201)
-        self.assertEqual(response.json(), {'success': True, 'private': private.id})
+        self.assertEqual(response.json(), {'success': True, 'private_id': private.id})
 
     def test_store_post(self):
         # Given
@@ -610,7 +610,7 @@ class ViewsTestCase(TestCase):
 
         # Then
         self.assertEqual(response.status_code, 201)
-        self.assertEqual(response.json(), {'success': True, 'place': store.id})
+        self.assertEqual(response.json(), {'success': True, 'store_id': store.id})
 
     # Try to create a Place with missing address
     def test_store_post_invalid_format(self):

@@ -173,7 +173,7 @@ class StoreSourcesView(APIView):
         try:
             account = Account.objects.get(id=request.data['account'])
             zip_city = ZipCity.objects.get(zip=request.data['store']['zip'])
-            place = Store.objects.create(account=account,
+            store = Store.objects.create(account=account,
                                          name=request.data['store']['name'], street=request.data['store']['street'],
                                          zip=zip_city, house_number=request.data['store']['house_number'])
         except Exception as e:
@@ -181,7 +181,7 @@ class StoreSourcesView(APIView):
             print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
-        return JsonResponse({'success': True, 'place': place.id}, status=status.HTTP_201_CREATED)
+        return JsonResponse({'success': True, 'store_id': store.id}, status=status.HTTP_201_CREATED)
 
     def get(self, request, store_id):
         try:
@@ -237,7 +237,7 @@ class PrivateSourcesView(APIView):
             print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
-        return JsonResponse({'success': True, 'private': private.id}, status=status.HTTP_201_CREATED)
+        return JsonResponse({'success': True, 'private_id': private.id}, status=status.HTTP_201_CREATED)
 
     def get(self, request, private_id):
         try:
