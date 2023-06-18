@@ -70,7 +70,6 @@ class CashflowsView(APIView):
             # FIXME: Verify the user may access this account
             cashflow_type = request.data['type']
             overall_value = request.data['overallValue']
-            timestamp = request.data['timestamp']
             category, _ = Category.objects.get_or_create(name=request.data['category'], account=account)
             source = self.get_source_from_request(account, request)
         except AttributeError as e:
@@ -85,7 +84,6 @@ class CashflowsView(APIView):
         cashflow = Cashflow.objects.create(account=account,
                                            is_income=cashflow_type == 'INCOME',
                                            overall_value=overall_value,
-                                           created=timestamp,
                                            category=category,
                                            source=source)
 
