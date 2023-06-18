@@ -2,26 +2,28 @@ openapi: 3.0.3
 info:
   title: FiBo API Documentation
   description: This is the Documentation for the API that is provided by our Django Backend
-  version: 1.0.0
+  version: 1.0.1
 servers:
   - url: 'http://127.0.0.1:8000'
 tags:
-  - name: users
+  - name: user
     description: Everything that has has to do with users like registration and login
   - name: cashflow
     description: CRUD for Cashflows
-  - name: place
-    description: CRUD for Places
+  - name: source
+    description: Create and read operations for sources (Store/Private)
   - name: category
-    description: CRUD for Category
+    description: Create and read operations for category
+  - name: item
+    description: Create and read operations for item
 
 paths:
   /users/register/:
     post:
       tags:
-        - users
+        - user
       summary: Creates a new user
-      description: '`Awaits` email and password in the request body. `Creates` an new user in the database.'
+      description: '`Awaits` email and password in the request body. `Creates` a new user with a default account in the database.'
       operationId: createUser
       requestBody:
         $ref: '#/components/requestBodies/register'
@@ -35,7 +37,7 @@ paths:
   /users/login/:
     post:
       tags:
-        - users
+        - user
       summary: Returns Access and Refresh Token
       description: '`Awaits` email and password in the request body. `Returns` an Access and Refresh Token for the given user.'
       operationId: loginUser
@@ -51,7 +53,7 @@ paths:
   /users/authenticate/:
     post:
       tags:
-        - users
+        - user
       summary: Returns an refreshed Access Token
       description: '`Awaits` an Refresh Token and returns an refreshed Access Token.'
       operationId: authenticateUser
@@ -67,7 +69,7 @@ paths:
   /users/get/:
     get:
       tags:
-        - users
+        - user
       summary: Gets user data from database
       description: '`Returns` the data from the database corresponding to the user that is sending the request.'
       operationId: getUser
@@ -83,7 +85,7 @@ paths:
   /users/delete/:
     delete:
       tags:
-        - users
+        - user
       summary: Deletes an existing user
       description: '`Deletes` the user from the Database, that is sending the request.'
       operationId: deleteUser
@@ -118,12 +120,12 @@ paths:
           $ref: '#/components/responses/accessError'
         '500':
           description: The Cashflow could not be created. There are multiple reasons, for this. For example the account id form the request may be not in the database
-  /cashflows/<int:cashflow_id>:
+  /cashflows/<int:cashflow_id>/:
     get:
       tags:
         - cashflow
-      summary: Returns an Cashflow
-      description: '`Awaits` a Cashflow_ID. `Returns` the corresponding Cashflow.'
+      summary: Returns a Cashflow
+      description: '`Awaits` id of a Cashflow as an url parameter. `Returns` the corresponding Cashflow.'
       operationId: getCashflow
       security:
         - bearerAuth: [ ]
@@ -142,7 +144,7 @@ paths:
     put:
       tags:
         - cashflow
-      summary: Updates an Cashflow
+      summary: Updates a Cashflow
       description: '`Awaits` an Cashflow_ID and all the data needed for a Cashflow. `Updates` the Cashflow with the given ID.'
       operationId: putCashflow
       security:
@@ -179,46 +181,129 @@ paths:
           $ref: '#/components/responses/accessError'
         '500':
           $ref: '#/components/responses/cashflows.500'
-  /place/:
+  /sources/stores/:
     post:
       tags:
-        - place
-      summary: Creates an new Place
-      description: '`Awaits` all the data needed for a Place in the request body. `Creates` a Place with this data in the database.'
-      operationId: postPlace
+        - source
+      summary: Creates a new Store
+      description: '`Awaits` all the data needed for a Store as well as the account-id in the request body. `Creates` a Store with this data in the database.'
+      operationId: postStore
       security:
         - bearerAuth: [ ]
       parameters:
         - $ref: '#/components/parameters/auth'
       requestBody:
-        $ref: '#/components/requestBodies/postPlace'
+        $ref: '#/components/requestBodies/postStore'
       responses:
         '200':
-          $ref: '#/components/responses/postPlace'
+          $ref: '#/components/responses/postStore'
         '400':
           $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/accessError'
     get:
       tags:
-        - place
-      summary: Returns an Place
-      description: '`Awaits` the address of an Place in the request body. `Returns` the Place with the given address.'
-      operationId: getPlace
+        - source
+      summary: Returns a Store
+      description: '`Awaits` the id of a Store as an url parameter. `Returns` the Store with the given id.'
+      operationId: getStore
       security:
         - bearerAuth: [ ]
       parameters:
         - $ref: '#/components/parameters/auth'
       requestBody:
-        $ref: '#/components/requestBodies/getPlace'
+        $ref: '#/components/requestBodies/getStore'
       responses:
         '200':
-          $ref: '#/components/responses/getPlace'
+          $ref: '#/components/responses/getStore'
         '400':
           $ref: '#/components/responses/400'
         '401':
           $ref: '#/components/responses/accessError'
-
+  /sources/privates/:
+    post:
+      tags:
+        - source
+      summary: Creates an new Private entity
+      description: '`Awaits` all the data needed for a Private as well as the account-id in the request body. `Creates` a Private entity with this data in the database.'
+      operationId: postPrivate
+      security:
+        - bearerAuth: [ ]
+      parameters:
+        - $ref: '#/components/parameters/auth'
+      requestBody:
+        $ref: '#/components/requestBodies/postPrivate'
+      responses:
+        '200':
+          $ref: '#/components/responses/postPrivate'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/accessError'
+    get:
+      tags:
+        - source
+      summary: Returns a Store
+      description: '`Awaits` the id of a Private entity as an url parameter. `Returns` the Private entity with the given id.'
+      operationId: getStore
+      security:
+        - bearerAuth: [ ]
+      parameters:
+        - $ref: '#/components/parameters/auth'
+      requestBody:
+        $ref: '#/components/requestBodies/getStore'
+      responses:
+        '200':
+          $ref: '#/components/responses/getStore'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/accessError'
+  /cashflows/<int:cashflow_id>/items/<int:item_id>/:
+    get:
+      tags:
+        - item
+      summary: Returns an item
+      description: '`Awaits` id of an item as well as the corresponding cashflow as url parameters. `Returns` the corresponding Item.'
+      operationId: getItem
+      security:
+        - bearerAuth: [ ]
+      parameters:
+        - $ref: '#/components/parameters/auth'
+        - $ref: '#/components/parameters/cashflow_id'
+        - $ref: '#/components/parameters/item_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/getItem.200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/accessError'
+        '500':
+          $ref: '#/components/responses/cashflows.500'
+  /cashflows/<int:cashflow_id>/items/:
+    post:
+      tags:
+        - item
+      summary: Creates a new Item
+      description: '`Awaits` all the data needed for an Item in the request body as well as cashflow_id as an Url parameter. `Creates` a Private entity with this data in the database.'
+      operationId: postItem
+      security:
+        - bearerAuth: [ ]
+      parameters:
+        - $ref: '#/components/parameters/auth'
+        - $ref: '#/components/parameters/cashflow_id'
+      requestBody:
+        $ref: '#/components/requestBodies/postItem'
+      responses:
+        '200':
+          $ref: '#/components/responses/postItem.200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/accessError'
+        '500':
+          $ref: '#/components/responses/item.500'
   /categories/:
     post:
       tags:
@@ -243,7 +328,7 @@ paths:
       tags:
         - category
       summary: Returns a Category
-      description: '`Awaits` name of a Category. `Returns` the corresponding Category'
+      description: '`Awaits` id of a Category as an url parameter. `Returns` the corresponding Category'
       operationId: getCategory
       security:
         - bearerAuth: [ ]
@@ -292,13 +377,16 @@ components:
           type: string
           format: date
           example: "2023-04-15 12:23:59.602445+00"
+        account:
+            $ref: '#/components/schemas/account'
     cashflows:
       required:
         - id
         - is_income
         - overall_value
         - category
-        - account
+        - source
+        - account_id
       type: object
       properties:
         id:
@@ -320,8 +408,8 @@ components:
           example: "2023-04-15 12:23:59.602445+00"
         category:
           $ref: '#/components/schemas/category'
-        place:
-          $ref: '#/components/schemas/place'
+        source:
+          $ref: '#/components/schemas/source'
         account:
           $ref: '#/components/schemas/account'
     category:
@@ -336,37 +424,76 @@ components:
         name:
           type: string
           example: 'HEALTH'
-    place:
+    source:
       required:
         - id
-        - address
-        - name
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 1
-        address:
-          type: string
-          example: 'Ottostraße 5'
-        name:
-          type: string
-          example: 'Kaufland'
-    account:
-      required:
-        - id
-        - name
-        - overall_value
-        - category
         - account
       type: object
       properties:
         id:
           type: integer
           example: 1
+        account:
+          $ref: '#/components/schemas/account'
+    private:
+      allOf:
+        - $ref: '#/components/schemas/source'
+        - type: object
+        - required:
+          - first_name
+          - last_name
+        - properties:
+            first_name:
+              type: string
+              example: 'Max'
+            last_name:
+              type: string
+              example: 'Mustermann'
+    store:
+      allOf:
+        - $ref: '#/components/schemas/source'
+        - type: object
+        - required:
+          - name
+          - street
+          - zip
+          - house_number
+        - properties:
+            name:
+              type: string
+              example: 'dm'
+            street:
+              type: string
+              example: 'Ottostraße'
+            house_number:
+              type: string
+              example: '13a'
+            zip:
+              $ref: '#/components/schemas/zip'
+    zip:
+      type: object
+      required:
+        - zip
+        - city
+      properties:
+        zip:
+          type: integer
+          example: 76133
+        city:
+          type: string
+          example: "Karlsruhe"
+    account:
+      required:
+      - id
+      - name
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
         name:
           type: string
-          example: 'Max Musterfrau'
+          example: 'WG-Account'
         created:
           type: string
           format: date
@@ -375,6 +502,28 @@ components:
           type: string
           format: date
           example: "2023-04-15 12:23:59.602445+00"
+    item:
+      required:
+        - id
+        - name
+        - amount
+        - value
+        - cashflow
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: 'Shampoo'
+        value:
+          type: number
+          example: 1.99
+        amount:
+          type: integer
+          example: 1
+
   responses:
     login:
       description: Successful operation. Returns Access and Refresh Token
@@ -649,6 +798,40 @@ components:
               address:
                 type: string
                 example: 'Ottostraße 5'
+    postItem:
+      description: Item data
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - name
+              - amount
+              - value
+            properties:
+              name:
+                type: string
+                example: 'Shampoo'
+              amount:
+                type: integer
+                example: 1
+              value:
+                type: number
+                example: 1.99
+    getItem:
+      description: Item data
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - id
+            properties:
+              id:
+                type: number
+                example: 1
     category:
       description: Category data
       required: true
