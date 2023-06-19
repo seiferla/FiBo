@@ -130,7 +130,7 @@ paths:
           $ref: '#/components/responses/access_error'
 
         '500':
-          description: The Cashflow could not be updated. There are multiple reasons, for this. For example the account id form the request may be not in the database
+          description: The Cashflow could not be created. There are multiple reasons, for this. For example the account id form the request may be not in the database
   /cashflows/<int:cashflow_id>/:
     get:
       tags:
