@@ -142,7 +142,7 @@ public class AddingFragment extends Fragment {
         Log.i(TAG, String.valueOf(currentMinutes));
 
         timePicker = new MaterialTimePicker.Builder()
-                .setInputMode(MaterialTimePicker.INPUT_MODE_KEYBOARD)
+                .setInputMode(MaterialTimePicker.INPUT_MODE_CLOCK)
                 .setTimeFormat(TimeFormat.CLOCK_24H)
                 .setHour(currentHour)
                 .setMinute(currentMinutes)
