@@ -44,6 +44,8 @@
     <string name="error_message_address_field">Gib bitte eine Addresse an</string>
     <string name="headline_itemlist_view">Artikelübersicht</string>
 
+    <string name="time_message_date_picker">Uhrzeit auswählen</string>
+
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris

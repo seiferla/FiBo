@@ -170,15 +170,16 @@ public class LayoutFieldsAddingFragmentTest extends AddingFragmentTest {
         // add something to the address field and test that adding fragment has closed without errors
         onView(withId(R.id.address_text))
                 .perform(scrollTo())
-                .perform(typeText(TEST_ADDRESS_STRING), closeSoftKeyboard());
+                .perform(typeText("Fibostraße 1"), closeSoftKeyboard());
 
-        onView(withId(R.id.okayButton))
-                .perform(scrollTo())
+        onView(withText(R.string.saveButton))
                 .perform(click());
 
         // Checks that the user is back at the home tab
         onView(withId((R.id.navigation_home)))
                 .check(matches(isDisplayed()));
+
+
     }
 
     @Test
@@ -267,6 +268,9 @@ public class LayoutFieldsAddingFragmentTest extends AddingFragmentTest {
         onView(hasSibling(withChild(withText(R.string.selectDate))))
                 .check(matches(isDisplayed()));
         onView(withText(R.string.DatePickerPositiveButtonText))
+                .perform(click());
+
+        onView(withId(com.google.android.material.R.id.material_timepicker_ok_button))
                 .perform(click());
 
         onView(withId(R.id.okayButton))
