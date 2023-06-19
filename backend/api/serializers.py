@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from .models import *
+from .models import Account, Cashflow, Store, Private, Item, FiboUser, Category
 
 
 class AccountSerializer(ModelSerializer):
@@ -14,9 +14,15 @@ class CashflowSerializer(ModelSerializer):
         fields = '__all__'
 
 
-class PlaceSerializer(ModelSerializer):
+class StoreSerializer(ModelSerializer):
     class Meta:
-        model = Place
+        model = Store
+        fields = '__all__'
+
+
+class PrivateSerializer(ModelSerializer):
+    class Meta:
+        model = Private
         fields = '__all__'
 
 

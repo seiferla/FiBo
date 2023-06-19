@@ -1,12 +1,14 @@
+from datetime import datetime
+
 from django.http import JsonResponse
-from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .serializers import FiboUserSerializer, PlaceSerializer, CashflowSerializer, CategorySerializer
-from .models import FiboUser, Account, Place, Cashflow, Category
-from datetime import datetime
+from .models import FiboUser, Account, Store, Cashflow, Category, ZipCity, Private, Item, LiteUser
+from .serializers import FiboUserSerializer, CashflowSerializer, CategorySerializer, StoreSerializer, PrivateSerializer, \
+    ItemSerializer
 
 
 class GetUser(APIView):
@@ -42,11 +44,12 @@ class RegisterUser(APIView):
         try:
             email = request.data['email']
             password = request.data['password']
-        except BaseException as e:
+        except Exception as e:
+            # Fixme differentiate between other exception types
             print(e.__cause__)
-            return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST) 
+            return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
-        user = FiboUser.objects.create_user(email=email, password=password)
+        user = LiteUser.objects.create_user(show_premium_ad=True, email=email, password=password)
         default_account = Account.objects.create(name=email)
         user.account.add(default_account)
 
@@ -55,69 +58,79 @@ class RegisterUser(APIView):
 
 
 class CashflowsView(APIView):
+    # FIXME: check authorization (check if user has permission to manage the said account id)
+
     permission_classes = (IsAuthenticated,)
 
     def post(self, request):
+        print("Request:", request)
+
         try:
-            account = request.data['account']
-            account_id = Account.objects.get(id=account['id'])
+            account = Account.objects.get(id=request.data['account']['id'])
+            # FIXME: Verify the user may access this account
             cashflow_type = request.data['type']
             overall_value = request.data['overallValue']
-            timestamp = request.data['timestamp']
-            category, _ = Category.objects.get_or_create(name=request.data['category'])
-            place = request.data['place']
-            place_address, _ = Place.objects.get_or_create(address=place['address'], name=place['name'])
-        except BaseException as e:
+            category, _ = Category.objects.get_or_create(name=request.data['category'], account=account)
+            source = self.get_source_from_request(account, request)
+        except AttributeError as e:
+            print(e.__cause__)
+            return JsonResponse({'success': False, 'message': 'Invalid source type'},
+                                status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            # Fixme differentiate between other exception types
             print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
-        if cashflow_type == 'INCOME':
-            cashflow = Cashflow.objects.create(account=account_id,
-                                               is_income=True,
-                                               overall_value=overall_value,
-                                               created=timestamp,
-                                               category=category,
-                                               place=place_address)
-        else:
-            cashflow = Cashflow.objects.create(account=account_id,
-                                               is_income=False,
-                                               overall_value=overall_value,
-                                               created=timestamp,
-                                               category=category,
-                                               place=place_address)
+        cashflow = Cashflow.objects.create(account=account,
+                                           is_income=cashflow_type == 'INCOME',
+                                           overall_value=overall_value,
+                                           category=category,
+                                           source=source)
 
         return JsonResponse({'success': True, 'cashflow_id': cashflow.id, 'creation_date': cashflow.created},
                             status=status.HTTP_201_CREATED)
 
     def get(self, request, cashflow_id):
         try:
+            # FIXME: Verify the user may access this cashflow (i.e. manages the account of this cashflow)
             cashflow = Cashflow.objects.get(id=cashflow_id)
-        except BaseException as e:
+        except Exception as e:
+            # FIXME: Differentiate between ObjectDoesNotExist and a broad Exception
             print(e.__cause__)
-            return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+            return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
         serializer = CashflowSerializer(cashflow, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def delete(self, _, cashflow_id):
         try:
+            # FIXME: Verify the user may access this cashflow (i.e. manages the account of this cashflow)
             cashflow = Cashflow.objects.get(id=cashflow_id)
-        except BaseException as e:
+        except Exception as e:
+            # FIXME: Differentiate between ObjectDoesNotExist and a broad Exception
             print(e.__cause__)
-            return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+            return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
         cashflow.delete()
         return JsonResponse({'success': True, 'cashflow_id': cashflow_id}, status=status.HTTP_200_OK)
 
     def put(self, request, cashflow_id):
         try:
+            # FIXME: Verify the user may access this cashflow (i.e. manages the account of this cashflow)
             cashflow = Cashflow.objects.get(id=cashflow_id)
 
             cashflow.overall_value = request.data['overallValue']
-            cashflow.category, _ = Category.objects.get_or_create(name=request.data['category'])
-            place = request.data['place']
-            cashflow.place, _ = Place.objects.get_or_create(address=place['address'], name=place['name'])
+            cashflow.category, _ = Category.objects.get_or_create(
+                name=request.data['category'], defaults={"account": cashflow.account})
+            source = self.get_source_from_request(cashflow.account, request)
+
+            cashflow.source = source
             cashflow.updated = datetime.now()
             cashflow_type = request.data['type']
-        except BaseException as e:
+        except AttributeError as e:
+            print(e.__cause__)
+            return JsonResponse({'success': False, 'message': 'Invalid source type'},
+                                status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            # Fixme differentiate between other exception types
             print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -130,45 +143,79 @@ class CashflowsView(APIView):
 
         return JsonResponse({'success': True, 'cashflow_id': cashflow_id}, status=status.HTTP_200_OK)
 
+    def get_source_from_request(self, account, request):
+        source_type = request.data['source_type']
+        source = None
+        if source_type == 'store':
+            source, _ = Store.objects.get_or_create(
+                name=request.data['store']['name'],
+                street=request.data['store']['street'],
+                zip=ZipCity.objects.get(zip=request.data['store']['zip']),
+                house_number=request.data['store']['house_number'],
+                account=account
+            )
+        elif source_type == 'private':
+            source, _ = Private.objects.get_or_create(
+                first_name=request.data['private']['first_name'],
+                last_name=request.data['private']['last_name'],
+                account=account
+            )
+        else:
+            raise AttributeError("invalid source_type")
+        return source
 
-class PlaceView(APIView):
+
+class StoreSourcesView(APIView):
+    # FIXME: check authorization (check if user has permission to manage the said cashflow / items)
     permission_classes = (IsAuthenticated,)
 
     def post(self, request):
         try:
-            place = Place.objects.create(address=request.data['address'], name=request.data['name'])
-        except BaseException as e:
+            account = Account.objects.get(id=request.data['account'])
+            zip_city = ZipCity.objects.get(zip=request.data['store']['zip'])
+            store = Store.objects.create(account=account,
+                                         name=request.data['store']['name'], street=request.data['store']['street'],
+                                         zip=zip_city, house_number=request.data['store']['house_number'])
+        except Exception as e:
+            # Fixme differentiate between other exception types
             print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
-        return JsonResponse({'success': True, 'place': place.name}, status=status.HTTP_201_CREATED)
+        return JsonResponse({'success': True, 'store_id': store.id}, status=status.HTTP_201_CREATED)
 
-    def get(self, request):
+    def get(self, request, store_id):
         try:
-            place = Place.objects.get(address=request.GET['address'])
-        except BaseException as e:
+            store = Store.objects.get(id=store_id)
+        except Exception as e:
+            # FIXME: Differentiate between ObjectDoesNotExist and a broad Exception
             print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
 
-        serializer = PlaceSerializer(place, many=False)
+        serializer = StoreSerializer(store, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class CategoryView(APIView):
+    # FIXME: check authorization (check if user has permission to manage the said account)
+    permission_classes = (IsAuthenticated,)
 
     def post(self, request):
         try:
-            category = Category.objects.create(name=request.POST['name'])
-        except BaseException as e:
+            account = Account.objects.get(id=request.data['account'])
+            category = Category.objects.create(name=request.data['category']['name'], account=account)
+        except Exception as e:
+            # Fixme differentiate between other exception types
             print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
         return JsonResponse({'success': True, 'category_id': category.id}, status=status.HTTP_201_CREATED)
 
-    def get(self, request):
+    def get(self, request, category_id):
+        # FIXME: Verify the user may access this category (i.e. manages the account of this cashflow)
         try:
-            category = Category.objects.get(name=request.GET['name'])
-        except BaseException as e:
+            category = Category.objects.get(id=category_id)
+        except Exception as e:
+            # FIXME: Differentiate between ObjectDoesNotExist and a broad Exception
             print(e.__cause__)
             return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -176,53 +223,60 @@ class CategoryView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-class GetRoutes(APIView):
+class PrivateSourcesView(APIView):
+    # FIXME: check authorization (check if user has permission to manage the said cashflow / items)
     permission_classes = (IsAuthenticated,)
-    tokenNeeded = 'Token needed'
 
-    def get(self, _):
-        routes = [
-            {
-                'Endpoint': '/users/register',
-                'method': 'POST',
-                self.tokenNeeded: 'false',
-                'body': {'email': '', 'password': ''},
-                'description': 'Registration requires an email and a password (see: body). Afterwards the entered credentials can be used to log in.'
-            },
-            {
-                'Endpoint': '/users/login',
-                'method': 'POST',
-                self.tokenNeeded: 'false',
-                'body': {'email': '', 'password': ''},
-                'description': 'To log in, the email and password specified during registration must be sent along. The method returns the Refresh and Access Token.'
-            },
-            {
-                'Endpoint': '/users/authenticate',
-                'method': 'POST',
-                self.tokenNeeded: 'Refresh',
-                'body': {'refresh': ''},
-                'description': 'To authenticate, a valid refresh token needs to be entered. The method returns an Access Token.'
-            },
-            {
-                'Endpoint': '/users/delete',
-                'method': 'DELETE',
-                self.tokenNeeded: 'Access',
-                'body': None,
-                'description': 'Deletes user that corresponds to the Access Token send in the header'
-            },
-            {
-                'Endpoint': '/users/get',
-                'method': 'GET',
-                self.tokenNeeded: 'Access',
-                'body': None,
-                'description': 'Returns user that corresponds to the Access Token send in the header'
-            },
-            {
-                'Endpoint': '/users/update',
-                'method': 'PUT',
-                self.tokenNeeded: 'Access',
-                'body': {'email': '', 'newPassword': '', 'oldPassword': ''},
-                'description': 'Not implemented yet. Updates current user with data sent in put request'
-            },
-        ]
-        return Response(routes)
+    def post(self, request):
+        try:
+            account = Account.objects.get(id=request.data['account'])
+            private = Private.objects.create(account=account, first_name=request.data['private']['first_name'],
+                                             last_name=request.data['private']['last_name'])
+        except Exception as e:
+            # Fixme differentiate between other exception types
+            print(e.__cause__)
+            return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+
+        return JsonResponse({'success': True, 'private_id': private.id}, status=status.HTTP_201_CREATED)
+
+    def get(self, request, private_id):
+        try:
+            private = Private.objects.get(id=private_id)
+        except Exception as e:
+            # Fixme differentiate between other exception types
+            print(e.__cause__)
+            return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = PrivateSerializer(private, many=False)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class ItemView(APIView):
+    # FIXME: check authorization (check if user has permission to manage the said cashflow / items)
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request, cashflow_id):
+        try:
+            cashflow = Cashflow.objects.get(id=cashflow_id)
+            item = Item.objects.create(name=request.data['name'], amount=request.data['amount'],
+                                       value=request.data['value'],
+                                       cashflow=cashflow)
+        except Exception as e:
+            # Fixme differentiate between other exception types
+            print(e.__cause__)
+            return JsonResponse({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+
+        return JsonResponse({'success': True, 'item': item.id}, status=status.HTTP_201_CREATED)
+
+    def get(self, request, cashflow_id, item_id):
+        try:
+            item = Item.objects.get(id=item_id)
+            if item.cashflow.id != cashflow_id:
+                raise AttributeError('invalid item and cashflow combination')
+        except Exception as e:
+            # FIXME: Differentiate between ObjectDoesNotExist and a broad Exception
+            print(e.__cause__)
+            return JsonResponse({'success': False}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = ItemSerializer(item, many=False)
+        return Response(serializer.data, status=status.HTTP_200_OK)

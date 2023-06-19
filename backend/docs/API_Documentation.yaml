@@ -2,44 +2,29 @@ openapi: 3.0.3
 info:
   title: FiBo API Documentation
   description: This is the Documentation for the API that is provided by our Django Backend
-  version: 1.0.0
+  version: 1.0.1
 servers:
   - url: 'http://127.0.0.1:8000'
 tags:
-  - name: default
-  - name: users
+  - name: user
     description: Everything that has has to do with users like registration and login
   - name: cashflow
     description: CRUD for Cashflows
-  - name: place
-    description: CRUD for Places
+  - name: source
+    description: Create and read operations for sources (Store/Private)
   - name: category
-    description: CRUD for Category
+    description: Create and read operations for category
+  - name: item
+    description: Create and read operations for item
 
 paths:
-  /:
-    get:
-      tags:
-        - default
-      summary: Get possible routes
-      description: '`Returns` possible routes for the URL.'
-      operationId: getRoutes
-      security:
-        - bearerAuth: [ ]
-      parameters:
-        - $ref: '#/components/parameters/auth'
-      responses:
-        '200':
-          $ref: '#/components/responses/getRoutes'
-        '401':
-          $ref: '#/components/responses/accessError'
   /users/register/:
     post:
       tags:
-        - users
+        - user
       summary: Creates a new user
-      description: '`Awaits` email and password in the request body. `Creates` an new user in the database.'
-      operationId: createUser
+      description: '`Awaits` email and password in the request body. `Creates` a new user with a default account in the database.'
+      operationId: create_user
       requestBody:
         $ref: '#/components/requestBodies/register'
       responses:
@@ -47,63 +32,70 @@ paths:
           description: User was successfully created
         '400':
           $ref: '#/components/responses/400'
+
         '500':
           description: The User could not be created. There could already be a user with the same email
   /users/login/:
     post:
       tags:
-        - users
+        - user
       summary: Returns Access and Refresh Token
       description: '`Awaits` email and password in the request body. `Returns` an Access and Refresh Token for the given user.'
-      operationId: loginUser
+      operationId: login_user
       requestBody:
         $ref: '#/components/requestBodies/login'
       responses:
         '200':
           $ref: '#/components/responses/login'
+
         '400':
           $ref: '#/components/responses/400'
+
         '401':
           description: There is no matching user in the database
   /users/authenticate/:
     post:
       tags:
-        - users
+        - user
       summary: Returns an refreshed Access Token
       description: '`Awaits` an Refresh Token and returns an refreshed Access Token.'
-      operationId: authenticateUser
+      operationId: authenticate_user
       requestBody:
         $ref: '#/components/requestBodies/authenticate'
       responses:
         '200':
           $ref: '#/components/responses/authenticate'
+
         '400':
           description: Refresh Token is missing from the Request Body
         '401':
-          $ref: '#/components/responses/refreshError'
+          $ref: '#/components/responses/refresh_error'
+
   /users/get/:
     get:
       tags:
-        - users
+        - user
       summary: Gets user data from database
       description: '`Returns` the data from the database corresponding to the user that is sending the request.'
-      operationId: getUser
+      operationId: get_user
       security:
         - bearerAuth: [ ]
       parameters:
         - $ref: '#/components/parameters/auth'
       responses:
         '200':
-          $ref: '#/components/responses/getUser'
+          $ref: '#/components/responses/get_user'
+
         '401':
-          $ref: '#/components/responses/accessError'
+          $ref: '#/components/responses/access_error'
+
   /users/delete/:
     delete:
       tags:
-        - users
+        - user
       summary: Deletes an existing user
       description: '`Deletes` the user from the Database, that is sending the request.'
-      operationId: deleteUser
+      operationId: delete_user
       security:
         - bearerAuth: [ ]
       parameters:
@@ -112,36 +104,40 @@ paths:
         '200':
           description: The Account corresponding to the send Access Token is deleted
         '401':
-          $ref: '#/components/responses/accessError'
-  /cashflow/:
+          $ref: '#/components/responses/access_error'
+
+  /cashflows/:
     post:
       tags:
         - cashflow
       summary: Creates a new Cashflow
       description: '`Awaits` all the data needed for a Cashflow in the request body. `Creates` a Cashflow with this data in the database.'
-      operationId: createCashflow
+      operationId: create_cashflow
       security:
         - bearerAuth: [ ]
       parameters:
         - $ref: '#/components/parameters/auth'
       requestBody:
-        $ref: '#/components/requestBodies/postCashflow'
+        $ref: '#/components/requestBodies/post_cashflow'
       responses:
         '200':
-          $ref: '#/components/responses/postCashflow.200'
+          $ref: '#/components/responses/post_cashflow.200'
+
         '400':
           $ref: '#/components/responses/400'
+
         '401':
-          $ref: '#/components/responses/accessError'
+          $ref: '#/components/responses/access_error'
+
         '500':
           description: The Cashflow could not be created. There are multiple reasons, for this. For example the account id form the request may be not in the database
-  /cashflow/<int:cashflow_id>:
+  /cashflows/<int:cashflow_id>/:
     get:
       tags:
         - cashflow
-      summary: Returns an Cashflow
-      description: '`Awaits` a Cashflow_ID. `Returns` the corresponding Cashflow.'
-      operationId: getCashflow
+      summary: Returns a Cashflow
+      description: '`Awaits` id of a Cashflow as an url parameter. `Returns` the corresponding Cashflow.'
+      operationId: get_cashflow
       security:
         - bearerAuth: [ ]
       parameters:
@@ -149,33 +145,33 @@ paths:
         - $ref: '#/components/parameters/cashflow_id'
       responses:
         '200':
-          $ref: '#/components/responses/getCashflow.200'
+          $ref: '#/components/responses/get_cashflow.200'
         '400':
           $ref: '#/components/responses/400'
         '401':
-          $ref: '#/components/responses/accessError'
+          $ref: '#/components/responses/access_error'
         '500':
           $ref: '#/components/responses/cashflows.500'
     put:
       tags:
         - cashflow
-      summary: Updates an Cashflow
+      summary: Updates a Cashflow
       description: '`Awaits` an Cashflow_ID and all the data needed for a Cashflow. `Updates` the Cashflow with the given ID.'
-      operationId: putCashflow
+      operationId: put_cashflow
       security:
         - bearerAuth: [ ]
       parameters:
         - $ref: '#/components/parameters/auth'
         - $ref: '#/components/parameters/cashflow_id'
       requestBody:
-        $ref: '#/components/requestBodies/putCashflow'
+        $ref: '#/components/requestBodies/put_cashflow'
       responses:
         '200':
-          $ref: '#/components/responses/putAndDeleteCashflow.200'
+          $ref: '#/components/responses/put_and_delete_cashflow.200'
         '400':
           $ref: '#/components/responses/400'
         '401':
-          $ref: '#/components/responses/accessError'
+          $ref: '#/components/responses/access_error'
         '500':
           $ref: '#/components/responses/cashflows.500'
     delete:
@@ -183,7 +179,7 @@ paths:
         - cashflow
       summary: Deletes an Cashflow
       description: '`Awaits` an Cashflow_ID. `Deletes` the Cashflow with the given ID.'
-      operationId: deleteCashflow
+      operationId: delete_cashflow
       security:
         - bearerAuth: [ ]
       parameters:
@@ -191,94 +187,200 @@ paths:
         - $ref: '#/components/parameters/cashflow_id'
       responses:
         '200':
-          $ref: '#/components/responses/putAndDeleteCashflow.200'
+          $ref: '#/components/responses/put_and_delete_cashflow.200'
         '401':
-          $ref: '#/components/responses/accessError'
+          $ref: '#/components/responses/access_error'
         '500':
           $ref: '#/components/responses/cashflows.500'
-  /place/:
+  /sources/stores/:
     post:
       tags:
-        - place
-      summary: Creates an new Place
-      description: '`Awaits` all the data needed for a Place in the request body. `Creates` a Place with this data in the database.'
-      operationId: postPlace
+        - source
+      summary: Creates a new Store
+      description: '`Awaits` all the data needed for a Store as well as the account-id in the request body. `Creates` a Store with this data in the database.'
+      operationId: post_store
       security:
         - bearerAuth: [ ]
       parameters:
         - $ref: '#/components/parameters/auth'
       requestBody:
-        $ref: '#/components/requestBodies/postPlace'
+        $ref: '#/components/requestBodies/post_store'
       responses:
         '200':
-          $ref: '#/components/responses/postPlace'
+          $ref: '#/components/responses/post_store'
         '400':
           $ref: '#/components/responses/400'
         '401':
-          $ref: '#/components/responses/accessError'
+          $ref: '#/components/responses/access_error'
+  /sources/stores/<int:store_id>/:
     get:
       tags:
-        - place
-      summary: Returns an Place
-      description: '`Awaits` the address of an Place in the request body. `Returns` the Place with the given address.'
-      operationId: getPlace
+        - source
+      summary: Returns a Store
+      description: '`Awaits` the id of a Store as an url parameter. `Returns` the Store with the given id.'
+      operationId: get_store
+      security:
+        - bearerAuth: [ ]
+      parameters:
+        - $ref: '#/components/parameters/auth'
+        - $ref: '#/components/parameters/store_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/get_store'
+
+        '400':
+          $ref: '#/components/responses/400'
+
+        '401':
+          $ref: '#/components/responses/access_error'
+
+  /sources/privates/:
+    post:
+      tags:
+        - source
+      summary: Creates a new Private entity
+      description: '`Awaits` all the data needed for a Private as well as the account-id in the request body. `Creates` a Private entity with this data in the database.'
+      operationId: post_private
       security:
         - bearerAuth: [ ]
       parameters:
         - $ref: '#/components/parameters/auth'
       requestBody:
-        $ref: '#/components/requestBodies/getPlace'
+        $ref: '#/components/requestBodies/post_private'
       responses:
         '200':
-          $ref: '#/components/responses/getPlace'
+          $ref: '#/components/responses/post_private'
+
+        '400':
+          $ref: '#/components/responses/400'
+
+        '401':
+          $ref: '#/components/responses/access_error'
+
+  /sources/privates/<int:private_id>:
+    get:
+      tags:
+        - source
+      summary: Returns a Store
+      description: '`Awaits` the id of a Private entity as an url parameter. `Returns` the Private entity with the given id.'
+      operationId: get_private
+      security:
+        - bearerAuth: [ ]
+      parameters:
+        - $ref: '#/components/parameters/auth'
+        - $ref: '#/components/parameters/private_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/get_private'
         '400':
           $ref: '#/components/responses/400'
         '401':
-          $ref: '#/components/responses/accessError'
+          $ref: '#/components/responses/access_error'
+  /cashflows/<int:cashflow_id>/items/<int:item_id>/:
+    get:
+      tags:
+        - item
+      summary: Returns an item
+      description: '`Awaits` id of an item as well as the corresponding cashflow as url parameters. `Returns` the corresponding Item.'
+      operationId: get_item
+      security:
+        - bearerAuth: [ ]
+      parameters:
+        - $ref: '#/components/parameters/auth'
+        - $ref: '#/components/parameters/cashflow_id'
+        - $ref: '#/components/parameters/item_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/get_item.200'
 
-  /category/:
+        '400':
+          $ref: '#/components/responses/400'
+
+        '401':
+          $ref: '#/components/responses/access_error'
+
+        '404':
+          $ref: '#/components/responses/get_item.404'
+
+        '500':
+            $ref: '#/components/responses/cashflows.500'
+
+  /cashflows/<int:cashflow_id>/items/:
+    post:
+      tags:
+        - item
+      summary: Creates a new Item
+      description: '`Awaits` all the data needed for an Item in the request body as well as cashflow_id as an Url parameter. `Creates` a Private entity with this data in the database.'
+      operationId: post_item
+      security:
+        - bearerAuth: [ ]
+      parameters:
+        - $ref: '#/components/parameters/auth'
+        - $ref: '#/components/parameters/cashflow_id'
+      requestBody:
+        $ref: '#/components/requestBodies/post_item'
+      responses:
+        '200':
+          $ref: '#/components/responses/post_item.200'
+
+        '400':
+          $ref: '#/components/responses/400'
+
+        '401':
+          $ref: '#/components/responses/access_error'
+
+        '500':
+          $ref: '#/components/responses/item.500'
+
+  /categories/:
     post:
       tags:
         - category
-      summary: Creates an new Category
+      summary: Creates a new Category
       description: '`Awaits` a name for a Category in the request body. `Creates` a Category with this name in the database.'
-      operationId: postCategory
+      operationId: post_category
       security:
         - bearerAuth: [ ]
       parameters:
         - $ref: '#/components/parameters/auth'
       requestBody:
-        $ref: '#/components/requestBodies/category'
+        $ref: '#/components/requestBodies/post_category'
       responses:
         '200':
-          $ref: '#/components/responses/postCategory'
+          $ref: '#/components/responses/post_category'
+
         '400':
           $ref: '#/components/responses/400'
+
         '401':
-          $ref: '#/components/responses/accessError'
+          $ref: '#/components/responses/access_error'
+
+  /categories/<int:category_id>/:
     get:
       tags:
         - category
       summary: Returns a Category
-      description: '`Awaits` name of a Category. `Returns` the corresponding Category'
-      operationId: getCategory
+      description: '`Awaits` id of a Category as an url parameter. `Returns` the corresponding Category'
+      operationId: get_category
       security:
         - bearerAuth: [ ]
       parameters:
         - $ref: '#/components/parameters/auth'
-      requestBody:
-        $ref: '#/components/requestBodies/category'
+        - $ref: '#/components/parameters/category_id'
       responses:
         '200':
-          $ref: '#/components/responses/getCategory'
+          $ref: '#/components/responses/get_category'
+
         '400':
           $ref: '#/components/responses/400'
+
         '401':
-          $ref: '#/components/responses/accessError'
+          $ref: '#/components/responses/access_error'
+
 
 components:
   schemas:
-    users:
+    fibo_user:
       required:
         - id
         - email
@@ -288,6 +390,7 @@ components:
         id:
           type: integer
           example: 1
+          readOnly: true
         email:
           type: string
           format: email
@@ -309,18 +412,47 @@ components:
           type: string
           format: date
           example: "2023-04-15 12:23:59.602445+00"
-    cashflows:
+        account:
+            $ref: '#/components/schemas/account'
+    lite_user:
+      allOf:
+        - $ref: '#/components/schemas/fibo_user'
+        - type: object
+        - required:
+            - show_premium_ad
+        - properties:
+            show_premium_ad:
+              type: boolean
+              example: true
+    premium_user:
+      allOf:
+        - $ref: '#/components/schemas/fibo_user'
+        - type: object
+        - required:
+            - pay_method
+            - subscription_date
+        - properties:
+            pay_method:
+              type: string
+              example: 'Credit card'
+            subscription_date:
+              type: string
+              format: date
+              example: "2023-04-20 07:56:12.809812+00"
+    cashflow:
       required:
         - id
         - is_income
         - overall_value
         - category
+        - source
         - account
       type: object
       properties:
         id:
           type: integer
           example: 1
+          readOnly: true
         is_income:
           type: boolean
           example: false
@@ -337,8 +469,8 @@ components:
           example: "2023-04-15 12:23:59.602445+00"
         category:
           $ref: '#/components/schemas/category'
-        place:
-          $ref: '#/components/schemas/place'
+        source:
+          $ref: '#/components/schemas/source'
         account:
           $ref: '#/components/schemas/account'
     category:
@@ -350,51 +482,105 @@ components:
         id:
           type: integer
           example: 1
+          readOnly: true
         name:
           type: string
           example: 'HEALTH'
-    place:
+    source:
       required:
         - id
-        - address
-        - name
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 1
-        address:
-          type: string
-          example: 'Ottostraße 5'
-        name:
-          type: string
-          example: 'Kaufland'
-    account:
-      required:
-        - id
-        - name
-        - overall_value
-        - category
         - account
       type: object
       properties:
         id:
           type: integer
           example: 1
+          readOnly: true
+        account:
+          $ref: '#/components/schemas/account'
+    private:
+      allOf:
+        - $ref: '#/components/schemas/source'
+        - type: object
+        - required:
+          - first_name
+          - last_name
+        - properties:
+            first_name:
+              type: string
+              example: 'Max'
+            last_name:
+              type: string
+              example: 'Mustermann'
+    store:
+      allOf:
+        - $ref: '#/components/schemas/source'
+        - type: object
+        - required:
+          - name
+          - street
+          - zip
+          - house_number
+        - properties:
+            name:
+              type: string
+              example: 'dm'
+            street:
+              type: string
+              example: 'Ottostraße'
+            house_number:
+              type: string
+              example: '13a'
+            zip:
+              $ref: '#/components/schemas/zip_city'
+    zip_city:
+      type: object
+      required:
+        - zip
+        - city
+      properties:
+        zip:
+          type: integer
+          example: 76133
+        city:
+          type: string
+          example: "Karlsruhe"
+    account:
+      required:
+      - id
+      - name
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+          readOnly: true
         name:
           type: string
-          example: 'Max Musterfrau'
-        created:
+          example: 'WG-Account'
+    item:
+      required:
+        - id
+        - name
+        - amount
+        - value
+        - cashflow
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+          readOnly: true
+        name:
           type: string
-          format: date
-          example: "2023-04-20 07:56:12.809812+00"
-        updated:
-          type: string
-          format: date
-          example: "2023-04-15 12:23:59.602445+00"
+          example: 'Shampoo'
+        value:
+          type: number
+          example: 1.99
+        amount:
+          type: integer
+          example: 1
   responses:
-    getRoutes:
-      description: Successful operation. Returns possible routes for the API
     login:
       description: Successful operation. Returns Access and Refresh Token
       content:
@@ -423,17 +609,31 @@ components:
                access:
                 type: string
                 example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyMDA0MjU1LCJpYXQiOjE2ODIwMDM0ODgsImp0aSI6IjkyOTg3OGEyMmI5OTRmOWQ4OWQ5ZjE4MGVkOGY2OGExIiwidXNlcl9pZCI6MTJ9._ebETDmruZkTsus4tp-1_rcEwRlLcza1ABGcDXwwGnM
-    getUser:
+    get_user:
       description: Successful operation. The User corresponding to the send Access Token is returned
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/users'
-    accessError:
+            $ref: '#/components/schemas/fibo_user'
+    access_error:
       description: Access token is missing or invalid
-    refreshError:
+    refresh_error:
       description: Refresh token is missing or invalid
-    postCashflow.200:
+    post_item.200:
+      description: Item was successfully created
+      content:
+        application/json:
+          schema:
+            properties:
+              success:
+                type: boolean
+                example: true
+              item_id:
+                type: integer
+                example: 1
+    post_item.500:
+      description: Could not access Item
+    post_cashflow.200:
       description: Cashflow was successfully created
       content:
         application/json:
@@ -449,39 +649,13 @@ components:
                 type: string
                 format: date
                 example: "2023-04-20 07:56:12.809812+00"
-    getCashflow.200:
+    get_cashflow.200:
       description: Successful operation. The Cashflow corresponding to the send Cashflow_ID is returned.
       content:
         application/json:
           schema:
-            properties:
-              id:
-                type: integer
-                example: 1
-              is_income:
-                type: boolean
-                example: false
-              overall_value:
-                type: integer
-                example: 10
-              created:
-                type: string
-                format: date
-                example: "2023-04-20 07:56:12.809812+00"
-              updated:
-                type: string
-                format: date
-                example: "2023-04-15 12:23:59.602445+00"
-              category:
-                type: integer
-                example: 1
-              place:
-                type: integer
-                example: 1
-              account:
-                type: integer
-                example: 1
-    putAndDeleteCashflow.200:
+           $ref: '#/components/schemas/cashflow'
+    put_and_delete_cashflow.200:
       description: Successful operation. The Cashflow corresponding to the send Cashflow_ID was updated.
       content:
         application/json:
@@ -494,26 +668,54 @@ components:
                 type: integer
                 example: 1
     cashflows.500:
-      description: 'The Cashflow could not be deleted. Probably you forgot the `cashflow_id` in the URL Path'
-    postPlace:
-      description: Place was successfully created
+      description: 'could not access the cashflow.'
+    post_store:
+      description: Source was successfully created
       content:
         application/json:
           schema:
             properties:
+              store_id:
+                type: integer
+                example: 1
               success:
                 type: boolean
                 example: true
-              place:
-                type: string
-                example: Kaufland
-    getPlace:
-      description: Place was successfully returned
+    post_private:
+      description: Private was successfully created
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/place'
-    postCategory:
+            properties:
+              private_id:
+                type: integer
+                example: 1
+              success:
+                type: boolean
+                example: true
+    get_store:
+      description: Store was successfully returned
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                $ref: '#/components/schemas/store'
+              success:
+                type: boolean
+                example: true
+    get_private:
+      description: Private was successfully returned
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                $ref: '#/components/schemas/private'
+              success:
+                type: boolean
+                example: true
+    post_category:
       description: Category was successfully created
       content:
         application/json:
@@ -525,13 +727,17 @@ components:
               category_id:
                 type: integer
                 example: 1
-    getCategory:
+    get_category:
       description: Category was successfully returned
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/category'
-
+            properties:
+              data:
+                $ref: '#/components/schemas/category'
+              success:
+                type: boolean
+                example: true
     400:
       description: Some fields are missing from the Request Body
 
@@ -553,6 +759,7 @@ components:
               password:
                 type: string
                 example: password
+                writeOnly: true
     login:
       description: User data for registration
       required: true
@@ -582,105 +789,48 @@ components:
               refresh:
                 type: string
                 example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4MjA4OTg4OCwiaWF0IjoxNjgyMDAzNDg4LCJqdGkiOiI3MzdhYTgyYzMzMWM0YjQ2ODlhYzg0ZDQ5Mjg1ZjVmYiIsInVzZXJfaWQiOjEyfQ.svQ9j-U-Q73lfWKt5D_J4s6PLrzrCNInm8giQ1Y_AJY
-    postCashflow:
+    post_cashflow:
       description: Cashflow data
       required: true
       content:
         application/json:
           schema:
-            type: object
-            required:
-              - id
-              - is_income
-              - overall_value
-              - category
-              - account
-            properties:
-              id:
-                type: integer
-                example: 1
-              is_income:
-                type: boolean
-                example: false
-              overall_value:
-                type: integer
-                example: 10
-              category:
-                $ref: '#/components/schemas/category'
-              place:
-                $ref: '#/components/schemas/place'
-              account:
-                $ref: '#/components/schemas/account'
-    putCashflow:
+            $ref: '#/components/schemas/cashflow'
+    put_cashflow:
       description: Cashflow data
       required: true
       content:
         application/json:
           schema:
-            type: object
-            required:
-              - id
-              - is_income
-              - overall_value
-              - category
-              - account
-            properties:
-              id:
-                type: integer
-                example: 1
-              is_income:
-                type: boolean
-                example: false
-              overall_value:
-                type: integer
-                example: 10
-              category:
-                $ref: '#/components/schemas/category'
-              place:
-                $ref: '#/components/schemas/place'
-    postPlace:
-      description: Place data
+            $ref: '#/components/schemas/cashflow'
+    post_store:
+      description: Store data
       required: true
       content:
         application/json:
           schema:
-            type: object
-            required:
-              - address
-              - name
-            properties:
-              address:
-                type: string
-                example: 'Ottostraße 5'
-              name:
-                type: string
-                example: 'Kaufland'
-    getPlace:
-      description: Place data
+            $ref: '#/components/schemas/store'
+    post_private:
+      description: Private data
       required: true
       content:
         application/json:
           schema:
-            type: object
-            required:
-              - address
-            properties:
-              address:
-                type: string
-                example: 'Ottostraße 5'
-    category:
+            $ref: '#/components/schemas/private'
+    post_item:
+      description: Item data
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/item'
+    post_category:
       description: Category data
       required: true
       content:
         application/json:
           schema:
-            type: object
-            required:
-              - name
-            properties:
-              name:
-                type: string
-                example: 'HEALTH'
+            $ref: '#/components/schemas/category'
 
   parameters:
     auth:
@@ -694,7 +844,39 @@ components:
     cashflow_id:
       name: 'cashflow_id'
       in: path
-      description: 'The `cashflow_id` of the Cashflow that should be deleted'
+      description: 'The `cashflow_id` of the Cashflow'
+      required: true
+      schema:
+        type: integer
+        example: 1
+    private_id:
+      name: 'private_id'
+      in: path
+      description: 'The `private_id` which links to a `Private` entity'
+      required: true
+      schema:
+        type: integer
+        example: 1
+    store_id:
+      name: 'store_id'
+      in: path
+      description: 'The `store_id` which links to a `Store` entity'
+      required: true
+      schema:
+        type: integer
+        example: 1
+    item_id:
+      name: 'item_id'
+      in: path
+      description: 'The `item_id` of the Item'
+      required: true
+      schema:
+        type: integer
+        example: 1
+    category_id:
+      name: 'category_id'
+      in: path
+      description: 'The `category_id` of the Category'
       required: true
       schema:
         type: integer
