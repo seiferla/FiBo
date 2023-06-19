@@ -31,7 +31,7 @@
     <string name="adding_amount">Betrag (€)</string>
     <string name="adding_date">Datum</string>
     <string name="adding_category">Kategorie</string>
-    <string name="adding_address">Adresse</string>
+    <string name="adding_address">Straße</string>
     <string name="error_message_password_field_empty">Passwortfeld ist leer</string>
     <string name="error_message_email_field">Emailfeld ist leer</string>
     <string name="error_message_store_field">Gib bitte ein Geschäft an</string>
